@@ -15,7 +15,7 @@ import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCal
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
-import Editor from 'old-components/Guilds/Editor';
+import Editor from 'Modules/Guilds/Wrappers/EditorWrapper';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -91,17 +91,6 @@ const CreateProposalPage: React.FC = () => {
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
-  const [proposalBodyHTML, setProposalBodyHTML] =
-    useLocalStorageWithExpiry<string>(
-      `guild/newProposal/description/html`,
-      null,
-      ttlMs
-    );
-  const [proposalBodyMd, setProposalBodyMd] = useLocalStorageWithExpiry<string>(
-    `guild/newProposal/description/md`,
-    null,
-    ttlMs
-  );
 
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields

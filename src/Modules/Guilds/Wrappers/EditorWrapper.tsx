@@ -6,7 +6,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Focus from '@tiptap/extension-focus';
 import Highlight from '@tiptap/extension-highlight';
 import Placeholder from '@tiptap/extension-placeholder';
-import MenuBar from './MenuBar';
+import MenuBar from './Editor/MenuBar';
 import TurndownService from 'turndown';
 
 const turndownService = new TurndownService();
