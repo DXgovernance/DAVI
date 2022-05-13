@@ -15,7 +15,7 @@ import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCal
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
-import Editor from 'Modules/Guilds/Wrappers/EditorWrapper';
+import Editor from 'Components/Editor/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
