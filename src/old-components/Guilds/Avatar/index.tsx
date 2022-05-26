@@ -8,17 +8,25 @@ interface AvatarProps {
   size?: number;
 }
 
-const AvatarIcon = styled(ButtonIcon)`
+const AvatarIcon = styled(ButtonIcon)<{ size: number }>`
   border-radius: 50%;
-  height: ${props => props.size}px;
-  width: ${props => props.size}px;
+  ${({ size }) =>
+    size &&
+    `
+      height: ${size}px;
+      width: ${size}px;
+    `}
 `;
 
 const Avatar: React.FC<AvatarProps> = ({ src, defaultSeed, size = 24 }) => {
   return src ? (
-    <AvatarIcon data-testid="avatarSrc" src={src} alt={'Avatar'} size={size} />
+    <AvatarIcon data-testid="avatar" src={src} alt={'Avatar'} size={size} />
   ) : (
-    <Jazzicon diameter={size} seed={jsNumberForAddress(defaultSeed)} />
+    <Jazzicon
+      data-testid="jazzicon"
+      diameter={size}
+      seed={jsNumberForAddress(defaultSeed)}
+    />
   );
 };
 

@@ -1,21 +1,55 @@
 import localhostConfigJSON from '../../../src/configs/localhost/config.json';
+import { clickAnywhereToClose } from '../../utils';
 
 class Guilds {
   public proposalsListId: string;
   public sidebarId: string;
-  public deployedGuildsAddresses: string[];
+  public createProposalTitleId: string;
+  public createProposalLinkId: string;
+  public createProposalEditorId: string;
+  public connectWalletId: string;
+  public guildCardId: string;
+  public proposalCard: string;
+  public createProposalBtn: string;
+  public proposalTypeContinueBtn: string;
+  public actionBuilderCreateProposalBtn: string;
+  public openStakeTokensModalBtn: string;
+  public stakeTokensModal: string;
+  public stakeAmountMaxButton: string;
+  public stakeModalAmountInput: string;
+  public approveTokenSpendingButton: string;
+  public lockTokenSpendingButton: string;
+  public memberActionsButton: string;
+  public deployedGuilds: string[];
 
   constructor() {
     this.proposalsListId = 'proposals-list';
     this.sidebarId = 'sidebar';
-    this.deployedGuildsAddresses = localhostConfigJSON.guilds;
+    this.createProposalTitleId = 'create-proposal-title';
+    this.createProposalLinkId = 'create-proposal-link';
+    this.createProposalEditorId = 'editor-content';
+    this.connectWalletId = 'connectWalletBtn';
+    this.guildCardId = 'guildCard';
+    this.proposalCard = 'proposal-card';
+    this.createProposalBtn = 'create-proposal-button';
+    this.proposalTypeContinueBtn = 'proposal-type-continue-button';
+    this.actionBuilderCreateProposalBtn = 'create-proposal-action-button';
+    this.openStakeTokensModalBtn = 'open-stake-tokens-modal-btn';
+    this.stakeTokensModal = 'stake-tokens-modal';
+    this.stakeAmountMaxButton = 'stake-amount-max-button';
+    this.stakeModalAmountInput = 'stake-amount-input';
+    this.approveTokenSpendingButton = 'approve-token-spending';
+    this.lockTokenSpendingButton = 'lock-token-spending';
+    this.memberActionsButton = 'member-actions-button';
+    this.deployedGuilds = localhostConfigJSON.guilds;
   }
 
-  goToGuildsPage(network: string = 'localhost', address?: string) {
+  goToGuildsPage(address?: string) {
     const baseUrl = Cypress.config('baseUrl');
+    const network = Cypress.env('network');
     cy.visit(`${baseUrl}/guilds/${network}${address ? `/${address}` : ''}`, {
       timeout: 120000,
-    });
+    }).wait(2000);
   }
 
   shouldRenderProposalsList() {
@@ -27,15 +61,15 @@ class Guilds {
   }
 
   fillCreateProposalForm() {
-    cy.findByTestId('create-proposal-title')
+    cy.findByTestId(this.createProposalTitleId)
       .focus()
       .type('Test automated proposal');
-    cy.findByTestId('create-proposal-link')
+    cy.findByTestId(this.createProposalLinkId)
       .focus()
       .type(
         'https://daotalk.org/t/test-synpress-proposal-07-02-2022-03-04-2022/4003'
       );
-    cy.findByTestId('editor-content')
+    cy.findByTestId(this.createProposalEditorId)
       .find('div')
       .type(
         'Test Contributor proposal{enter}Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -44,8 +78,29 @@ class Guilds {
   }
 
   clickOpenWalletModalBtn() {
-    cy.findAllByTestId('connectWalletBtn').eq(0).click();
+    cy.findByTestId(this.connectWalletId).click();
   }
+
+  clickOnGuildCard(guildName: string) {
+    const network = Cypress.env('network');
+    cy.findAllByTestId(this.guildCardId).contains(guildName).first().click();
+    cy.wait(2000);
+    cy.url().then(url =>
+      this.deployedGuilds.some(address =>
+        url.includes(`guilds/${network}/${address}`)
+      )
+    );
+  }
+
+  connectToMetamask = accountName => {
+    cy.switchMetamaskAccount(accountName);
+    this.clickOpenWalletModalBtn();
+    cy.findByTestId('wallet-option-MetaMask').eq(0).click();
+    cy.wait(2000);
+    cy.acceptMetamaskAccess(true);
+    clickAnywhereToClose();
+    cy.wait(500);
+  };
 }
 
 const guilds: Guilds = new Guilds();

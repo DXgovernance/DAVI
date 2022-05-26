@@ -11,12 +11,12 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import ActionModal from 'old-components/Guilds/ActionsModal';
+import { ActionModal } from 'Components/ActionsModal';
 import { Box } from 'Components/Primitives/Layout';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export const OptionWrapper = styled(Box)`
+export const OptionWrapper = styled(Box)<{ dragging: boolean }>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.background};
   padding: 1rem;
@@ -41,7 +41,7 @@ export const Detail = styled(Box)`
   margin-right: 0.75rem;
 `;
 
-const ActionsWrapper = styled.div`
+const ActionsWrapper = styled.div<{ indented?: boolean }>`
   margin-left: ${({ indented }) => (indented ? '1.75rem' : '0')};
 `;
 
@@ -86,7 +86,6 @@ const OptionRow: React.FC<OptionRowProps> = ({
     transform: CSS.Translate.toString(transform),
     transition,
   };
-
   return (
     <OptionWrapper
       dragging={isDragging}
@@ -129,14 +128,16 @@ const OptionRow: React.FC<OptionRowProps> = ({
             items={option?.decodedActions?.map(action => action.id)}
             strategy={verticalListSortingStrategy}
           >
-            {option?.decodedActions?.map((action, index) => (
-              <ActionRow
-                key={index}
-                isEditable={true}
-                decodedAction={action}
-                onEdit={updatedAction => updateAction(index, updatedAction)}
-              />
-            ))}
+            {option?.decodedActions?.map((action, index) => {
+              return (
+                <ActionRow
+                  key={index}
+                  isEditable={true}
+                  decodedAction={action}
+                  onEdit={updatedAction => updateAction(index, updatedAction)}
+                />
+              );
+            })}
           </SortableContext>
         )}
 
