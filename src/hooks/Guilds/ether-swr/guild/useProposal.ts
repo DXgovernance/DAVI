@@ -14,16 +14,16 @@ const formatterMiddleware: Middleware =
 
       switch (clone.state) {
         case 1:
-          clone.state = [ProposalState.Active];
+          clone.state = ProposalState.Active;
           break;
         case 2:
-          clone.state = [ProposalState.Passed];
+          clone.state = ProposalState.Passed;
           break;
         case 3:
-          clone.state = [ProposalState.Executed];
+          clone.state = ProposalState.Executed;
           break;
         case 4:
-          clone.state = [ProposalState.Failed];
+          clone.state = ProposalState.Failed;
           break;
       }
 

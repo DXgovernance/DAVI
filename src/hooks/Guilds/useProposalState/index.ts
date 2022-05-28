@@ -22,12 +22,13 @@ interface useProposalStateReturns {
 }
 
 function useProposalState(): useProposalStateReturns {
-  const { guild_id: guildId, proposal_id: proposalId } =
-    useParams<{ guild_id?: string; proposal_id?: string }>();
+  const { guildId, proposalId } =
+    useParams<{ guildId?: string; proposalId?: string }>();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { createTransaction } = useTransactions();
   const guildContract = useERC20Guild(guildId);
 
+  debugger;
   const executeProposal = () =>
     createTransaction('Execute Proposal', async () => {
       return guildContract.endProposal(proposalId);
@@ -45,7 +46,7 @@ function useProposalState(): useProposalStateReturns {
     return {
       data: {
         isExecutable:
-          proposal.state == ProposalState.Active &&
+          proposal.state === ProposalState.Active &&
           proposal.endTime.isBefore(now),
         executeProposal: executeProposal,
       },

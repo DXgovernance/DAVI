@@ -8,6 +8,7 @@ const ExecuteButton: React.FC = () => {
   } = useProposalState();
 
   if (!isExecutable) return null;
+
   return (
     <Button data-testid="execute-btn" onClick={() => executeProposal()}>
       Execute

@@ -20,6 +20,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
 import { ProposalState } from 'Components/Types';
+import ExecuteButton from 'components/Guilds/ExecuteButton';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -92,9 +93,9 @@ const ProposalPage: React.FC = () => {
 
     const currentTime = moment();
     if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.fromNow();
-    } else {
       return proposal.endTime.toNow();
+    } else {
+      return proposal.endTime.fromNow();
     }
   }, [proposal]);
 
@@ -163,6 +164,7 @@ const ProposalPage: React.FC = () => {
               status={status}
               endTime={proposal?.endTime}
             />
+            <ExecuteButton />
           </HeaderTopRow>
           <PageTitle>
             {proposal?.title || (
