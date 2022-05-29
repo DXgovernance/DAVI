@@ -1,0 +1,442 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ERC20TransferInfoLine renders 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    Transfer
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`ERC20TransferInfoLine renders in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`ERC20TransferInfoLine renders with default values 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    Transfer
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`ERC20TransferInfoLine renders with default values in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`ERC20TransferInfoLine renders without data 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    Transfer
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`ERC20TransferInfoLine renders without data in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon
+        points="3 11 22 2 13 21 11 13 3 11"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+     
+     
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;

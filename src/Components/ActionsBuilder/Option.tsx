@@ -1,8 +1,8 @@
 import ActionRow from './Action';
-import AddButton from './common/AddButton';
-import DataTag from './common/DataTag';
-import EditButton from './common/EditButton';
-import Grip from './common/Grip';
+import { AddButton } from './common/AddButton';
+import { DataTag } from './common/DataTag';
+import { EditButton } from './common/EditButton';
+import { Grip } from './common/Grip';
 import { ProposalOptionTag } from './common/ProposalOptionTag';
 import { DecodedAction, Option } from './types';
 import {

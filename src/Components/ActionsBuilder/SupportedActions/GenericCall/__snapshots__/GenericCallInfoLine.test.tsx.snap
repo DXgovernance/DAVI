@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenericCallInfoLine renders properly 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <span>
+      Test template 
+      <span
+        matchedparam="param1"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param2"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param3"
+      >
+        0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
+      </span>
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallInfoLine renders properly in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallInfoLine renders properly with token approval 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <span>
+      Test template 
+      <span
+        matchedparam="param1"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param2"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param3"
+      >
+        0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
+      </span>
+    </span>
+  </span>
+   
+</div>
+`;

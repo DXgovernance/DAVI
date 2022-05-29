@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ERC20TransferSummary renders 1`] = `
+<div>
+   
+  <div
+    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Receiver
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        <img
+          alt="Avatar"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        test.eth
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+       
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`ERC20TransferSummary renders with default values 1`] = `
+<div>
+   
+  <div
+    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Receiver
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        <img
+          alt="Avatar"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        test.eth
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+       
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`ERC20TransferSummary renders without data 1`] = `
+<div>
+   
+  <div
+    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Receiver
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+  >
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        <img
+          alt="Avatar"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-bdfBQB enldmJ"
+      >
+        test.eth
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    >
+       
+    </div>
+  </div>
+   
+</div>
+`;

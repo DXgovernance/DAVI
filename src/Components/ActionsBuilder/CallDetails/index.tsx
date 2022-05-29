@@ -1,1 +1,1 @@
-export * from "./CallDetails";
+export * from './CallDetails';

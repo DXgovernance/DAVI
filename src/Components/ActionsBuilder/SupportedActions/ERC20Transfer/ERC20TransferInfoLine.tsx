@@ -54,9 +54,10 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
         />
       </Segment>
       <Segment>
-        {ensName || parsedData?.destination
-          ? shortenAddress(parsedData?.destination, compact ? 2 : 4)
-          : ''}
+        {ensName ||
+          (parsedData?.destination
+            ? shortenAddress(parsedData?.destination, compact ? 2 : 4)
+            : '')}
       </Segment>
     </>
   );

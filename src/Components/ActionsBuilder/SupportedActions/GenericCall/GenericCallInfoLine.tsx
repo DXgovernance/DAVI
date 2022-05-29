@@ -37,7 +37,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
   }
 
   const params: FunctionParamWithValue[] = useMemo(() => {
-    if (!functionData?.templateLiteral || !decodedCall) return null;
+    if (!decodedCall) return null;
 
     return functionData.params.map(param => ({
       ...param,

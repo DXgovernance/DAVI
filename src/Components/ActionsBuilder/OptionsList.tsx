@@ -24,7 +24,7 @@ import {
 import { Divider } from '../../old-components/Guilds/common/Divider';
 import { Box } from '../Primitives/Layout';
 import OptionRow from './Option';
-import AddButton from './common/AddButton';
+import { AddButton } from './common/AddButton';
 import { DecodedAction, Option } from './types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {

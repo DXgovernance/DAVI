@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenericCallParamsMatcher renders all component types correctly 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn hvLGCr"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn kWTucm"
+      data-testid="avatar"
+      size="16"
+      src="test"
+    />
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 2`] = `
+<div>
+   
+  1000000000000000000
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 3`] = `
+<div>
+   
+  1
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 4`] = `
+<div>
+   
+  2022-05-29
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 5`] = `
+<div>
+   
+  2022-05-29
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 6`] = `
+<div>
+   
+  false
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 7`] = `
+<div>
+   
+  1
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 8`] = `
+<div>
+   
+  QmXk294ZQebU6J7yYpAhBqBPaMquCKxGmGoNHLBpvUJ9on
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher renders all component types correctly 9`] = `
+<div>
+   
+  Test String
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
+<div>
+   
+  <span
+    matchedparam="addressParam"
+  >
+    <span
+      class="sc-gKseQn hvLGCr"
+    >
+      <img
+        alt="Avatar"
+        class="sc-dlfnuX sc-hKgJUU hZGubn kWTucm"
+        data-testid="avatar"
+        size="16"
+        src="test"
+      />
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 2`] = `
+<div>
+   
+  <span
+    matchedparam="integerParam"
+  >
+    1000000000000000000
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 3`] = `
+<div>
+   
+  <span
+    matchedparam="decimalParam"
+  >
+    1
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 4`] = `
+<div>
+   
+  <span
+    matchedparam="dateParam"
+  >
+    2022-05-29
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 5`] = `
+<div>
+   
+  <span
+    matchedparam="timeParam"
+  >
+    2022-05-29
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 6`] = `
+<div>
+   
+  <span
+    matchedparam="booleanParam"
+  >
+    false
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 7`] = `
+<div>
+   
+  <span
+    matchedparam="tokenAmountParam"
+  >
+    1
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 8`] = `
+<div>
+   
+  <span
+    matchedparam="contentHashParam"
+  >
+    QmXk294ZQebU6J7yYpAhBqBPaMquCKxGmGoNHLBpvUJ9on
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallParamsMatcher replaces all component types correctly 9`] = `
+<div>
+   
+  <span
+    matchedparam="otherParam"
+  >
+    Test String
+  </span>
+   
+</div>
+`;
