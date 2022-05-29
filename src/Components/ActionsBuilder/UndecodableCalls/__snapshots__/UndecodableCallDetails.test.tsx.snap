@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UndecodableCallDetails renders 1`] = `
+<div>
+   
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm iauAsN"
+        color="#9575CD"
+      >
+        from
+      </span>
+    </div>
+    <a
+      class="sc-pGacB edJhPP"
+      href="/"
+    >
+      <div
+        class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      >
+        0x0000000000000000000000000000000000000000
+         
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm gdybBt"
+        color="#F06292"
+      >
+        to
+      </span>
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm OLwHS"
+        color="#4DB6AC"
+      >
+        data
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+    >
+      0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm kfLCCt"
+        color="#64B5F6"
+      >
+        value
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+    >
+      1000000000000000000
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`UndecodableCallDetails renders with approval call 1`] = `
+<div>
+   
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm iauAsN"
+        color="#9575CD"
+      >
+        from
+      </span>
+    </div>
+    <a
+      class="sc-pGacB edJhPP"
+      href="/"
+    >
+      <div
+        class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      >
+        0x0000000000000000000000000000000000000000
+         
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm gdybBt"
+        color="#F06292"
+      >
+        to
+      </span>
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm OLwHS"
+        color="#4DB6AC"
+      >
+        data
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+    >
+      0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
+    </div>
+  </div>
+  <div
+    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+  >
+    <div
+      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+    >
+      <span
+        class="sc-gsTEea sc-kEjbQP eFmXVm kfLCCt"
+        color="#64B5F6"
+      >
+        value
+      </span>
+    </div>
+    <div
+      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+    >
+      1000000000000000000
+    </div>
+  </div>
+   
+</div>
+`;

@@ -49,9 +49,16 @@ const UndecodableCallDetails: React.FC<{ call: Call }> = ({ call }) => {
     return <ParamDetail>{value}</ParamDetail>;
   }
 
+  const renderedCallDetails: Call = {
+    from: call.from,
+    to: call.to,
+    data: call.data,
+    value: call.value,
+  };
+
   return (
     <>
-      {Object.entries(call)?.map(([key, value], index) => (
+      {Object.entries(renderedCallDetails)?.map(([key, value], index) => (
         <ActionParamRow key={index}>
           <ParamTitleRow>
             <ParamTitleTag color={theme?.colors?.params?.[index]}>

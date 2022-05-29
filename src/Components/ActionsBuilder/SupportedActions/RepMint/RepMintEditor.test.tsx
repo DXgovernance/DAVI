@@ -1,25 +1,9 @@
 import { screen } from '@testing-library/react';
-import { BigNumber, utils } from 'ethers';
+import { BigNumber } from 'ethers';
 import { render } from '../../../../utils/tests';
-import { DecodedCall } from '../../types';
+import { repMintEmptyDecodedCallMock } from './fixtures';
 import { Mint } from './RepMintEditor';
-import ERC20SnapshotRep from '../../../../contracts/ERC20SnapshotRep.json';
-import { SupportedAction } from '../../types';
-
-const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const mockBigNumber = BigNumber.from(0);
-
-const decodedCallMock: DecodedCall = {
-  from: '0x0000000000000000000000000000000000000000',
-  callType: SupportedAction.REP_MINT,
-  function: ERC20SnapshotRepContract.getFunction('mint'),
-  to: '',
-  value: BigNumber.from(0),
-  args: {
-    to: '',
-    amount: BigNumber.from(0),
-  },
-};
 
 jest.mock('hooks/Guilds/guild/useTotalSupply', () => ({
   useTotalSupply: () => ({
@@ -53,7 +37,9 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
 
 describe('RepMintEditor', () => {
   beforeAll(() => {
-    render(<Mint decodedCall={decodedCallMock} updateCall={jest.fn()} />);
+    render(
+      <Mint decodedCall={repMintEmptyDecodedCallMock} updateCall={jest.fn()} />
+    );
   });
   it('renders', () => {
     expect(screen.getByText('Recipient')).toBeInTheDocument();

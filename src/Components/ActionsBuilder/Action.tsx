@@ -1,7 +1,7 @@
 import { CallDetails } from './CallDetails';
 import { getInfoLineView, getSummaryView } from './SupportedActions';
 import UndecodableCallDetails from './UndecodableCalls/UndecodableCallDetails';
-import UndecodableCallInfoLine from './UndecodableCalls/UndecodableCallsInfoLine';
+import UndecodableCallInfoLine from './UndecodableCalls/UndecodableCallInfoLine';
 import { EditButton } from './common/EditButton';
 import { Grip } from './common/Grip';
 import { Call, DecodedAction } from './types';

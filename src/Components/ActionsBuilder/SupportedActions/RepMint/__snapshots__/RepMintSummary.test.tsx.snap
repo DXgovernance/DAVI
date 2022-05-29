@@ -1,0 +1,397 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepMintSummary renders 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintSummary renders in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintSummary renders with default values 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintSummary renders with default values in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintSummary renders without data 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintSummary renders without data in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <div
+      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    Mint 
+    NaN
+     %
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    <img
+      alt="Avatar"
+      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-eCstlR jQbHjP"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;

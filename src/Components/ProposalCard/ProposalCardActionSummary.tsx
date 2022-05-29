@@ -1,6 +1,6 @@
 import { Loading } from 'Components/Primitives/Loading';
 import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
-import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallsInfoLine';
+import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
 import { DecodedAction } from 'Components/ActionsBuilder/types';
 import {
   ActionsWrapper,
