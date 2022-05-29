@@ -51,7 +51,7 @@ const ProposalVoteCard = ({
     });
 
   const { hasNoVotingPower, hasVotingPowerAtCurrentSnapshot } = voteOnProposal({
-    votingPowerAtProposalSnapshot: votingPower.atProposal,
+    votingPowerAtProposalSnapshot: votingPower.atSnapshot,
     votingPowerAtProposalCurrentSnapshot: votingPower.atCurrentSnapshot,
   });
 
@@ -149,7 +149,7 @@ const ProposalVoteCard = ({
             contract,
             proposalId: proposal.id,
             selectedAction,
-            userVotingPower: votingPower.atProposal,
+            userVotingPower: votingPower.userVotingPower,
             createTransaction,
           })
         }

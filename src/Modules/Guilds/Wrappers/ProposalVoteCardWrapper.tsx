@@ -64,10 +64,10 @@ const ProposalVoteCardWrapper = () => {
       proposal={{ ...proposal, id: proposalId, metadata: proposalMetadata }}
       timestamp={timestamp}
       votingPower={{
+        userVotingPower,
         percent: votingPowerPercent,
         atSnapshot: votingPowerAtProposalSnapshot,
         atCurrentSnapshot: votingPowerAtProposalCurrentSnapshot,
-        atProposal: userVotingPower,
       }}
       currentLockedPercent={currentLockedPercent}
       contract={contract}
