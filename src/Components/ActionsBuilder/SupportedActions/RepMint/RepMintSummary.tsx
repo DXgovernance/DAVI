@@ -4,7 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
-import { ReactComponent as Mint } from '../../../../../assets/images/mint.svg';
+import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import styled from 'styled-components';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
@@ -15,10 +15,7 @@ const StyledMintIcon = styled(StyledIcon)`
   margin: 0;
 `;
 
-const RepMintInfoLine: React.FC<ActionViewProps> = ({
-  decodedCall,
-  compact,
-}) => {
+const RepMintInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { parsedData } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
 
@@ -34,22 +31,14 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <StyledMintIcon src={Mint} />
       </Segment>
-      <Segment>
-        {!compact && 'Mint'} {roundedRepPercent} %
-      </Segment>
+      <Segment>Mint {roundedRepPercent} %</Segment>
       <Segment>
         <FiArrowRight />
       </Segment>
       <Segment>
-        <Avatar
-          defaultSeed={parsedData?.toAddress}
-          src={imageUrl}
-          size={compact ? 14 : 24}
-        />
+        <Avatar defaultSeed={parsedData?.toAddress} src={imageUrl} size={24} />
       </Segment>
-      <Segment>
-        {ensName || shortenAddress(parsedData?.toAddress, compact ? 2 : 2)}
-      </Segment>
+      <Segment>{ensName || shortenAddress(parsedData?.toAddress)}</Segment>
     </>
   );
 };

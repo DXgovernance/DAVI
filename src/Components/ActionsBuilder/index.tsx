@@ -1,4 +1,4 @@
-import { Header as CardHeader } from '../common/Card';
+import { Header as CardHeader } from '../../old-components/Guilds/common/Card';
 import OptionsList from './OptionsList';
 import EditButton from './common/EditButton';
 import { Option } from './types';

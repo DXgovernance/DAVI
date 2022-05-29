@@ -1,4 +1,4 @@
-import CallDetails from './CallDetails';
+import { CallDetails } from './CallDetails';
 import { getInfoLineView, getSummaryView } from './SupportedActions';
 import UndecodableCallDetails from './UndecodableCalls/UndecodableCallDetails';
 import UndecodableCallInfoLine from './UndecodableCalls/UndecodableCallsInfoLine';

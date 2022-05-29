@@ -1,7 +1,7 @@
 import { Loading } from 'Components/Primitives/Loading';
-import { getInfoLineView } from 'old-components/Guilds/ActionsBuilder/SupportedActions';
-import UndecodableCallInfoLine from 'old-components/Guilds/ActionsBuilder/UndecodableCalls/UndecodableCallsInfoLine';
-import { DecodedAction } from 'old-components/Guilds/ActionsBuilder/types';
+import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
+import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallsInfoLine';
+import { DecodedAction } from 'Components/ActionsBuilder/types';
 import {
   ActionsWrapper,
   BorderedIconDetailWrapper,

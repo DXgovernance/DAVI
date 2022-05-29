@@ -1,9 +1,9 @@
 import { screen } from '@testing-library/react';
 import { BigNumber, utils } from 'ethers';
-import { render } from '../../../../../utils/tests';
+import { render } from '../../../../utils/tests';
 import { DecodedCall } from '../../types';
 import { Mint } from './RepMintEditor';
-import ERC20SnapshotRep from '../../../../../contracts/ERC20SnapshotRep.json';
+import ERC20SnapshotRep from '../../../../contracts/ERC20SnapshotRep.json';
 import { SupportedAction } from '../../types';
 
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);

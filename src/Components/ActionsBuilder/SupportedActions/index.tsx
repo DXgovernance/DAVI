@@ -1,16 +1,15 @@
 import { BigNumber, utils } from 'ethers';
 import { ANY_ADDRESS, ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
 import { DeepPartial } from 'utils/types';
-
 import {
   DecodedAction,
   DecodedCall,
   SupportedAction,
   ApproveSendTokens,
 } from '../types';
-import ERC20ABI from '../../../../abis/ERC20.json';
-import ERC20SnapshotRep from '../../../../contracts/ERC20SnapshotRep.json';
-import ERC20Guild from '../../../../contracts/ERC20Guild.json';
+import ERC20ABI from 'abis/ERC20.json';
+import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
+import ERC20Guild from 'contracts/ERC20Guild.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
 import ERC20TransferInfoLine from './ERC20Transfer/ERC20TransferInfoLine';
 import ERC20TransferSummary from './ERC20Transfer/ERC20TransferSummary';
@@ -20,7 +19,6 @@ import RepMintInfoLine from './RepMint/RepMintInfoLine';
 import RepMintSummary from './RepMint/RepMintSummary';
 import SetPermissionsEditor from './SetPermissions/SetPermissionsEditor';
 import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
-// import SetPermissionsSummary from './SetPermissions/SetPermissionsSummary';
 
 export interface SupportedActionMetadata {
   title: string;
@@ -103,9 +101,7 @@ export const defaultValues: Record<
       },
     },
   },
-
   [SupportedAction.GENERIC_CALL]: {},
-
   [SupportedAction.SET_PERMISSIONS]: {
     contract: ERC20GuildContract,
     decodedCall: {

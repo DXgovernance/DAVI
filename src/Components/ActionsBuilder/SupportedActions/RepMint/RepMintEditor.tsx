@@ -7,7 +7,7 @@ import { ethers } from 'ethers';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { Box } from 'Components/Primitives/Layout';
 import { shortenAddress, MAINNET_ID } from 'utils';
-import { ReactComponent as Info } from '../../../../../assets/images/info.svg';
+import { ReactComponent as Info } from 'assets/images/info.svg';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useState } from 'react';

@@ -6,7 +6,7 @@ import useProposalMetadata from 'hooks/Guilds/ether-swr/guild/useProposalMetadat
 import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import { useProposal } from '../ether-swr/guild/useProposal';
 import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
-import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
+import { Call, Option } from 'Components/ActionsBuilder/types';
 import { ZERO_HASH } from 'utils';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';

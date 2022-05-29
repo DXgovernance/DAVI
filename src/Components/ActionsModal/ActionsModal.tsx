@@ -9,12 +9,12 @@ import {
   defaultValues,
   getEditor,
   supportedActions,
-} from 'old-components/Guilds/ActionsBuilder/SupportedActions';
+} from 'Components/ActionsBuilder/SupportedActions';
 import {
   DecodedAction,
   DecodedCall,
   SupportedAction,
-} from 'old-components/Guilds/ActionsBuilder/types';
+} from 'Components/ActionsBuilder/types';
 import { Modal } from 'old-components/Guilds/common/Modal';
 import {
   ContractActionsList,

@@ -2,7 +2,7 @@ import {
   Call,
   DecodedCall,
   Option,
-} from 'old-components/Guilds/ActionsBuilder/types';
+} from 'Components/ActionsBuilder/types';
 import ERC20ABI from 'abis/ERC20.json';
 import { utils, BigNumber } from 'ethers';
 

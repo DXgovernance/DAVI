@@ -21,8 +21,8 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { Divider } from '../common/Divider';
-import { Box } from '../../../Components/Primitives/Layout';
+import { Divider } from '../../old-components/Guilds/common/Divider';
+import { Box } from '../Primitives/Layout';
 import OptionRow from './Option';
 import AddButton from './common/AddButton';
 import { DecodedAction, Option } from './types';

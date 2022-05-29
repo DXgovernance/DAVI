@@ -14,7 +14,7 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
-import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
+import { Call, Option } from 'Components/ActionsBuilder/types';
 import Editor from 'old-components/Guilds/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';

@@ -3,7 +3,7 @@ import Permissions from './SetPermissionsEditor';
 import { render } from 'utils/tests.js';
 import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
-import ERC20Guild from '../../../../../contracts/ERC20Guild.json';
+import ERC20Guild from 'contracts/ERC20Guild.json';
 import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
