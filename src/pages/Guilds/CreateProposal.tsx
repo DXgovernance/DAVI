@@ -1,7 +1,5 @@
-import {
-  ActionsBuilder,
-  SidebarInfoCard,
-} from '../../old-components/Guilds/CreateProposalPage';
+import { ActionsBuilder } from '../../old-components/Guilds/CreateProposalPage';
+import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
 import { IconButton } from '../../old-components/Guilds/common/Button';
 import Input from '../../old-components/Guilds/common/Form/Input';
 import { Box, Flex } from '../../Components/Primitives/Layout';
@@ -277,7 +275,7 @@ const CreateProposalPage: React.FC = () => {
         </Box>
       </PageContent>
       <SidebarContent>
-        <SidebarInfoCard />
+        <SidebarInfoCardWrapper />
       </SidebarContent>
     </PageContainer>
   );
