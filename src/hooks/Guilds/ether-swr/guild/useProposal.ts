@@ -1,9 +1,8 @@
-import { unix } from 'moment';
+import moment, { unix } from 'moment';
 import { Middleware, SWRHook } from 'swr';
-import { Proposal } from '../../../../types/types.guilds';
 import useEtherSWR from '../useEtherSWR';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import { ContractState } from 'types/types.guilds.d';
+import { Proposal, ContractState } from 'types/types.guilds.d';
 
 const formatterMiddleware: Middleware =
   (useSWRNext: SWRHook) => (key, fetcher, config) => {
@@ -37,6 +36,13 @@ const formatterMiddleware: Middleware =
       clone.endTime = original.endTime
         ? unix(original.endTime.toNumber())
         : null;
+
+      // Add timeDetail
+      const currentTime = moment();
+      if (!clone?.endTime) clone.timeDetail = null;
+      else if (clone.endTime?.isBefore(currentTime))
+        clone.timeDetail = clone.endTime.toNow();
+      else clone.timeDetail = clone.endTime.fromNow();
 
       return { ...swr, data: clone };
     }

@@ -4,9 +4,7 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import useVoteSummary from 'hooks/Guilds/useVoteSummary';
 import { MAINNET_ID } from 'utils/constants';
-import { useMemo } from 'react';
 import { useProposalSummaryActions } from 'hooks/Guilds/guild/useProposalSummaryActions';
-import moment from 'moment';
 import useProposalState from 'hooks/Guilds/useProposalState';
 
 interface ProposalCardWrapperProps {
@@ -22,18 +20,6 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
 
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);
 
-  // Make into hooks
-  const timeDetail = useMemo(() => {
-    if (!proposal?.endTime) return null;
-
-    const currentTime = moment();
-    if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.toNow();
-    } else {
-      return proposal.endTime.fromNow();
-    }
-  }, [proposal]);
-
   const status = useProposalState(proposal);
 
   return (
@@ -42,7 +28,11 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       ensAvatar={ensAvatar}
       votes={votes}
       href={`/${chainName}/${guildId}/proposal/${proposalId}`}
-      statusProps={{ timeDetail, status, endTime: proposal?.endTime }}
+      statusProps={{
+        timeDetail: proposal?.timeDetail,
+        status,
+        endTime: proposal?.endTime,
+      }}
       summaryActions={summaryActions}
     />
   );

@@ -14,11 +14,10 @@ import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
 import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import { Loading } from 'Components/Primitives/Loading';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
-import moment from 'moment';
 import ExecuteButton from 'components/Guilds/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 
@@ -87,18 +86,6 @@ const ProposalPage: React.FC = () => {
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
 
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const timeDetail = useMemo(() => {
-    if (!proposal?.endTime) return null;
-
-    const currentTime = moment();
-    if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.toNow();
-    } else {
-      return proposal.endTime.fromNow();
-    }
-  }, [proposal]);
-
   const status = useProposalState(proposal);
 
   if (!isGuildAvailabilityLoading) {
@@ -140,7 +127,7 @@ const ProposalPage: React.FC = () => {
             </UnstyledLink>
 
             <ProposalStatus
-              timeDetail={timeDetail}
+              timeDetail={proposal.timeDetail}
               status={status}
               endTime={proposal?.endTime}
             />
