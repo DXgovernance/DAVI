@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 import { useEditor, EditorContent } from '@tiptap/react';
@@ -8,6 +7,7 @@ import Highlight from '@tiptap/extension-highlight';
 import Placeholder from '@tiptap/extension-placeholder';
 import MenuBar from './MenuBar';
 import TurndownService from 'turndown';
+import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 
 const turndownService = new TurndownService();
 
@@ -128,22 +128,24 @@ const Content = styled(EditorContent)`
   `}
 `;
 
-interface EditorProps {
-  onHTMLChange?: (string) => void;
-  onMdChange?: (string) => void;
-  onJSONChange?: (string) => void;
-  content?: string;
-  placeholder?: string;
-}
-const Editor: React.FC<EditorProps> = ({
-  onHTMLChange,
-  onMdChange,
-  onJSONChange,
-  content,
-  placeholder = '',
-}) => {
-  const editor = useEditor({
-    content: content ? content : {},
+export const useTextEditor = (
+  localPath: string,
+  ttlMs: number,
+  placeholder: string
+) => {
+  const [html, onHTMLChange] = useLocalStorageWithExpiry<string>(
+    `${localPath}/html`,
+    null,
+    ttlMs
+  );
+  const [md, onMdChange] = useLocalStorageWithExpiry<string>(
+    `${localPath}/md`,
+    null,
+    ttlMs
+  );
+
+  const EditorConfig = useEditor({
+    content: html ? html : {},
     extensions: [
       StarterKit.configure({
         history: { depth: 10 },
@@ -159,22 +161,29 @@ const Editor: React.FC<EditorProps> = ({
     ],
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
+      console.log({ html });
       if (html) {
         onHTMLChange && onHTMLChange(html);
         onMdChange && onMdChange(turndownService.turndown(html));
-        onJSONChange && onJSONChange(JSON.stringify(editor.getJSON()));
+        // onJSONChange && onJSONChange(JSON.stringify(editor.getJSON()));
       }
     },
   });
 
-  return (
-    <div>
-      <EditorWrap>
-        {editor && <MenuBar editor={editor} />}
-        <Content editor={editor} data-testid="editor-content" />
-      </EditorWrap>
-    </div>
-  );
+  return { EditorConfig, html, md };
 };
 
-export default Editor;
+export const Editor = EditorConfig => {
+  if (EditorConfig) {
+    return (
+      <div>
+        <EditorWrap>
+          {EditorConfig && <MenuBar editor={EditorConfig} />}
+          <Content editor={EditorConfig} data-testid="editor-content" />
+        </EditorWrap>
+      </div>
+    );
+  } else {
+    return <div />;
+  }
+};

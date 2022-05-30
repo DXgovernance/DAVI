@@ -13,9 +13,8 @@ import { BigNumber } from 'ethers';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
-import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
-import Editor from 'Components/Editor/Editor';
+import { useTextEditor, Editor } from 'Components/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -91,12 +90,20 @@ const CreateProposalPage: React.FC = () => {
     GuildAvailabilityContext
   );
 
-  const ttlMs = 345600000;
   const history = useHistory();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
+  const {
+    EditorConfig,
+    html: proposalBodyHTML,
+    md: proposalBodyMd,
+  } = useTextEditor(
+    `${guildId}/create-proposal`,
+    345600000,
+    'Enter proposal body'
+  );
 
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
@@ -236,12 +243,7 @@ const CreateProposalPage: React.FC = () => {
           ) : null}
         </Box>
         {editMode ? (
-          <Editor
-            onMdChange={setProposalBodyMd}
-            onHTMLChange={setProposalBodyHTML}
-            content={proposalBodyHTML}
-            placeholder="What do you want to propose?"
-          />
+          <Editor EditorConfig={EditorConfig} />
         ) : (
           <div
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(proposalBodyHTML) }}
