@@ -1,16 +1,25 @@
 import { utils } from 'ethers';
-import { RegistryContract, useContractRegistry } from './useContractRegistry';
+import {
+  RichContractData,
+  useRichContractRegistry,
+} from './useRichContractRegistry';
 import ERC20ABI from '../../../abis/ERC20.json';
+import ERC20Guild from '../../../contracts/ERC20Guild.json';
 import { useWeb3React } from '@web3-react/core';
 import {
   Call,
   DecodedCall,
   Option,
   SupportedAction,
-} from 'components/Guilds/ActionsBuilder/types';
-
-const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
-const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
+} from 'old-components/Guilds/ActionsBuilder/types';
+import { ERC20_APPROVE_SIGNATURE, ERC20_TRANSFER_SIGNATURE } from 'utils';
+import { useEffect, useRef, useState } from 'react';
+import { lookUpContractWithSourcify } from 'utils/sourcify';
+import Web3 from 'web3';
+const web3 = new Web3();
+const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature(
+  'setPermission(address,address,address,bytes4,uint256,bool)'
+);
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -21,6 +30,10 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     [ERC20_APPROVE_SIGNATURE]: {
       callType: SupportedAction.GENERIC_CALL,
       ABI: ERC20ABI,
+    },
+    [SET_PERMISSION_SIGNATURE]: {
+      callType: SupportedAction.SET_PERMISSIONS,
+      ABI: ERC20Guild.abi,
     },
   };
 
@@ -57,22 +70,13 @@ const decodeCallUsingEthersInterface = (
   };
 };
 
-const getContractInterfaceFromRegistryContract = (
-  registryContract: RegistryContract
+const getContractInterfaceFromRichContractData = (
+  richContractData: RichContractData
 ) => {
-  // Construct the interface for the contract.
-  const contractInterface = new utils.Interface(
-    registryContract.functions.map(f => {
-      const name = f.functionName;
-      const params = f.params.reduce(
-        (acc, cur) => acc.concat(`${cur.type} ${cur.name}`),
-        ''
-      );
-      return `function ${name}(${params})`;
-    })
-  );
-
-  return { contractInterface, callType: SupportedAction.GENERIC_CALL };
+  return {
+    contractInterface: richContractData.contractInterface,
+    callType: SupportedAction.GENERIC_CALL,
+  };
 };
 
 const getContractFromKnownSighashes = (data: string) => {
@@ -90,25 +94,32 @@ const getContractFromKnownSighashes = (data: string) => {
   };
 };
 
-const decodeCall = (
+export const decodeCall = async (
   call: Call,
-  contracts: RegistryContract[],
+  contracts: RichContractData[],
   chainId: number
 ) => {
   let decodedCall: DecodedCall = null;
 
   // Detect using the Guild calls registry.
-  const matchedRegistryContract = contracts?.find(
+  const matchedRichContractData = contracts?.find(
     contract => contract.networks[chainId] === call.to
   );
-  const matchedContractData = matchedRegistryContract
-    ? getContractInterfaceFromRegistryContract(matchedRegistryContract)
+  let matchedContract = matchedRichContractData
+    ? getContractInterfaceFromRichContractData(matchedRichContractData)
     : getContractFromKnownSighashes(call.data);
-
-  if (!matchedContractData) return null;
-
-  const { callType, contractInterface } = matchedContractData;
-  if (!contractInterface) return null;
+  if (!matchedContract) {
+    const abi = await lookUpContractWithSourcify({ chainId, address: call.to });
+    if (abi)
+      matchedContract = {
+        contractInterface: new utils.Interface(abi),
+        callType: SupportedAction.GENERIC_CALL,
+      };
+  }
+  if (!matchedContract) {
+    return null;
+  }
+  const { callType, contractInterface } = matchedContract;
 
   decodedCall = decodeCallUsingEthersInterface(
     call,
@@ -116,35 +127,56 @@ const decodeCall = (
     callType
   );
 
+  if (decodedCall && matchedRichContractData) {
+    decodedCall.richData = matchedRichContractData;
+  }
+
   return {
     id: `action-${Math.random()}`,
     decodedCall,
     contract: contractInterface,
+    approval: call.approval || null,
   };
 };
 
 export const bulkDecodeCallsFromOptions = (
   options: Option[],
-  contracts: RegistryContract[],
+  contracts: RichContractData[],
   chainId: number
 ) => {
-  return options.map(option => {
-    const { actions } = option;
-    const decodedCalls = actions?.map(call =>
-      decodeCall(call, contracts, chainId)
-    );
-    return {
-      ...option,
-      decodedActions: decodedCalls,
-    };
-  });
+  return Promise.all(
+    options.map(async option => {
+      const { actions } = option;
+      const actionPromisesArray = actions.map(
+        async action => await decodeCall(action, contracts, chainId)
+      );
+      const decodedActions = await Promise.all(actionPromisesArray);
+      return {
+        ...option,
+        decodedActions,
+      };
+    })
+  );
 };
 
 export const useDecodedCall = (call: Call) => {
+  const [decodedCall, setDecodedCall] = useState<any>(null);
+  const isCancelled = useRef(false);
   const { chainId } = useWeb3React();
-  const { contracts } = useContractRegistry();
+  const { contracts } = useRichContractRegistry();
 
-  return call
-    ? decodeCall(call, contracts, chainId)
-    : { decodedCall: null, contract: null };
+  useEffect(() => {
+    if (call && !isCancelled.current) {
+      decodeCall(call, contracts, chainId).then(decodedData =>
+        setDecodedCall(decodedData)
+      );
+    } else {
+      setDecodedCall(null);
+    }
+    return () => {
+      isCancelled.current = true;
+    };
+  }, [call, contracts, chainId]);
+
+  return decodedCall || { decodedCall: null, contract: null, approval: null };
 };
