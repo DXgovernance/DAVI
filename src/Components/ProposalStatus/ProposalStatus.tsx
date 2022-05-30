@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
 import { Loading } from 'Components/Primitives/Loading';
-import { ProposalState } from 'Components/Types';
+import { ContractState } from 'Components/Types';
 import { ProposalStatusProps } from './types';
 
 const ProposalStatusWrapper = styled.div`
@@ -25,7 +25,7 @@ const Status = styled.div<{ bordered?: boolean }>`
     `}
 `;
 
-const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
+const ProposalStatusDetail = styled(Box)<{ statusDetail?: ContractState }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -33,19 +33,19 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
   border-radius: 15px;
   border: 1px solid
     ${props =>
-      props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
+      props.statusDetail === ContractState.Failed ? '#D500F9' : '#1DE9B6'};
   background-color: ${({ theme }) => theme.colors.background};
   color: ${props =>
-    props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
+    props.statusDetail === ContractState.Failed ? '#D500F9' : '#1DE9B6'};
   padding: 0.25rem 0.4rem;
 `;
 
 const DetailText = styled(Box)`
-padding: 0 0.2rem;
+  padding: 0 0.2rem;
 
-@media only screen and (min-width: 768px) {
-  padding - right: 0.5rem;
-}
+  @media only screen and (min-width: 768px) {
+    padding-right: 0.5rem;
+  }
 `;
 
 const ProposalStatus: React.FC<ProposalStatusProps> = ({

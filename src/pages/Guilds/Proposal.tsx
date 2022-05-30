@@ -19,7 +19,7 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
-import { ProposalState } from 'Components/Types';
+import { ContractState } from 'Components/Types';
 import ExecuteButton from 'components/Guilds/ExecuteButton';
 
 const PageContainer = styled(Box)`
@@ -102,22 +102,22 @@ const ProposalPage: React.FC = () => {
   // TODO These are copied from ProposalCardWrapper and to be replaced
   const status = useMemo(() => {
     if (!proposal?.endTime) return null;
-    switch (proposal.state) {
-      case ProposalState.Active:
+    switch (proposal.contractState) {
+      case ContractState.Active:
         const currentTime = moment();
         if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ProposalState.Failed;
+          return ContractState.Failed;
         } else {
-          return ProposalState.Active;
+          return ContractState.Active;
         }
-      case ProposalState.Executed:
-        return ProposalState.Executed;
-      case ProposalState.Passed:
-        return ProposalState.Passed;
-      case ProposalState.Failed:
-        return ProposalState.Failed;
+      case ContractState.Executed:
+        return ContractState.Executed;
+      case ContractState.Rejected:
+        return ContractState.Rejected;
+      case ContractState.Failed:
+        return ContractState.Failed;
       default:
-        return proposal.state;
+        return null;
     }
   }, [proposal]);
 

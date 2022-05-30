@@ -1,26 +1,26 @@
 import { renderHook } from '@testing-library/react-hooks';
 import useProposalState from '.';
 
-let mockedIsBefore = true;
+let mockedIsAfter = true;
 let mockedData = {
   id: '0x0',
   creator: '0x0',
   startTime: {
     toNumber: () => 3,
-    isBefore: () => false,
+    isAfter: () => false,
     fromNow: () => 'now',
     toNow: () => 'later',
     format: () => 'A Date Formate',
   },
   to: ['0x0', '0x0'],
   data: ['0x0', '0x0'],
-  state: 'Active',
+  contractState: 'Active',
   title: 'Proposal Title',
   description: 'Proposal Description',
   contentHash: '0x0',
   endTime: {
     toNumber: () => 3,
-    isBefore: () => mockedIsBefore,
+    isAfter: () => mockedIsAfter,
     fromNow: () => 'now',
     toNow: () => 'later',
     format: () => 'A Date Formate',
@@ -75,9 +75,10 @@ jest.mock('hooks/Guilds/contracts/useContract', () => ({
 
 describe('useProposalState', () => {
   it('isExecutable is true when proposal is ready to be executed', async () => {
-    //isBefore is set to true in proposal mock
+    //isAfter is set to true in proposal mock
     const { result } = renderHook(() => useProposalState());
     expect(result.current.loading).toBeFalsy();
+    console.log('isExecutable: ', result.current.data.isExecutable);
     expect(result.current.data.isExecutable).toBeTruthy();
   });
   it('executeProposal is able to be fired', async () => {
@@ -85,7 +86,7 @@ describe('useProposalState', () => {
     expect(result.current.data.executeProposal).toBeTruthy();
   });
   it('if Proposal status is not active isExecutable is false', async () => {
-    mockedIsBefore = false;
+    mockedIsAfter = false;
     const { result } = renderHook(() => useProposalState());
     expect(result.current.data.isExecutable).toBeFalsy();
   });

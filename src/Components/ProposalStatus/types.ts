@@ -1,9 +1,9 @@
 import { Moment } from 'moment';
-import { ProposalState } from 'types/types.guilds';
+import { ContractState } from 'types/types.guilds';
 
 export interface ProposalStatusProps {
   endTime: Moment;
-  status: ProposalState;
+  status: ContractState;
   bordered?: boolean;
   hideTime?: boolean;
   timeDetail?: string;

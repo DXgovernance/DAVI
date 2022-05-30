@@ -3,7 +3,7 @@ import { Middleware, SWRHook } from 'swr';
 import { Proposal } from '../../../../types/types.guilds';
 import useEtherSWR from '../useEtherSWR';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import { ProposalState } from 'Components/Types';
+import { ContractState } from 'Components/Types';
 
 const formatterMiddleware: Middleware =
   (useSWRNext: SWRHook) => (key, fetcher, config) => {
@@ -12,18 +12,22 @@ const formatterMiddleware: Middleware =
       const original = swr.data as any;
       const clone: any = Object.assign({}, swr.data);
 
-      switch (clone.state) {
+      //rename state to contractState
+      clone.contractState = clone.state;
+      delete clone.state;
+
+      switch (clone.contractState) {
         case 1:
-          clone.state = ProposalState.Active;
+          clone.contractState = ContractState.Active;
           break;
         case 2:
-          clone.state = ProposalState.Passed;
+          clone.contractState = ContractState.Rejected;
           break;
         case 3:
-          clone.state = ProposalState.Executed;
+          clone.contractState = ContractState.Executed;
           break;
         case 4:
-          clone.state = ProposalState.Failed;
+          clone.contractState = ContractState.Failed;
           break;
       }
 

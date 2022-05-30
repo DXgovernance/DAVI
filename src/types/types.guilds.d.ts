@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
 import {
-  BigNumber,
+  BigNumber
 } from 'ethers';
 export interface Proposal {
   id: string;
@@ -13,16 +13,26 @@ export interface Proposal {
   totalActions: BigNumber;
   title: string;
   contentHash: string;
-  state: ProposalState;
+  contractState: ContractState;
   totalVotes: BigNumber[];
 }
 
+
 export enum ProposalState {
-  Active = "Active",
-  Passed = "Passed",
-  Executed = "Executed",
-  Failed = "Failed",
+  Active = 'Active',
+  Rejected = 'Rejected',
+  Executed = 'Executed',
+  Failed = 'Failed',
+  Finished = 'Finished',
 }
+
+export enum ContractState {
+  Active = 'Active',
+  Rejected = 'Rejected',
+  Executed = 'Executed',
+  Failed = 'Failed',
+}
+
 export interface ProposalMetadata {
   description: string;
   voteOptions: string[];

@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import moment from 'moment';
-import { Proposal, ENSAvatar, ProposalState } from '../Types';
+import { Proposal, ENSAvatar, ContractState } from '../Types';
 
 export const proposalMock: Proposal = {
   id: '0x1234567890123456789012345678901234567890',
@@ -12,7 +12,7 @@ export const proposalMock: Proposal = {
   value: [],
   startTime: moment(),
   endTime: moment(),
-  state: ProposalState.Active,
+  contractState: ContractState.Active,
   totalActions: BigNumber.from(0),
   totalVotes: [],
 };
@@ -24,6 +24,6 @@ export const ensAvatarMock: ENSAvatar = {
 
 export const proposalStatusPropsMock = {
   timeDetail: 'Time',
-  status: ProposalState.Active,
+  status: ContractState.Active,
   endTime: moment('2022-05-09T08:00:00'),
 };

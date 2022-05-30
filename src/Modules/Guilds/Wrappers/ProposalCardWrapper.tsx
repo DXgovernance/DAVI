@@ -5,7 +5,7 @@ import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import useVoteSummary from 'hooks/Guilds/useVoteSummary';
 import { MAINNET_ID } from 'utils/constants';
 import { useMemo } from 'react';
-import { ProposalState } from 'Components/Types';
+import { ContractState } from 'Components/Types';
 import { useProposalSummaryActions } from 'hooks/Guilds/guild/useProposalSummaryActions';
 import moment from 'moment';
 
@@ -28,31 +28,32 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
 
     const currentTime = moment();
     if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.fromNow();
-    } else {
       return proposal.endTime.toNow();
+    } else {
+      return proposal.endTime.fromNow();
     }
   }, [proposal]);
 
   // Make into singular guild state hook
   const status = useMemo(() => {
+    debugger;
     if (!proposal?.endTime) return null;
-    switch (proposal.state) {
-      case ProposalState.Active:
+    switch (proposal.contractState) {
+      case ContractState.Active:
         const currentTime = moment();
         if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ProposalState.Failed;
+          return ContractState.Failed;
         } else {
-          return ProposalState.Active;
+          return ContractState.Active;
         }
-      case ProposalState.Executed:
-        return ProposalState.Executed;
-      case ProposalState.Passed:
-        return ProposalState.Passed;
-      case ProposalState.Failed:
-        return ProposalState.Failed;
+      case ContractState.Executed:
+        return ContractState.Executed;
+      case ContractState.Rejected:
+        return ContractState.Rejected;
+      case ContractState.Failed:
+        return ContractState.Failed;
       default:
-        return proposal.state;
+        return null;
     }
   }, [proposal]);
 

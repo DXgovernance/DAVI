@@ -5,9 +5,17 @@ import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProposal } from '../ether-swr/guild/useProposal';
 
-enum ProposalState {
+export enum ProposalState {
   Active = 'Active',
-  Passed = 'Passed',
+  Rejected = 'Rejected',
+  Executed = 'Executed',
+  Failed = 'Failed',
+  Finished = 'Finished',
+}
+
+export enum ContractState {
+  Active = 'Active',
+  Rejected = 'Rejected',
   Executed = 'Executed',
   Failed = 'Failed',
 }
@@ -46,8 +54,8 @@ function useProposalState(): useProposalStateReturns {
     return {
       data: {
         isExecutable:
-          proposal.state === ProposalState.Active &&
-          proposal.endTime.isBefore(now),
+          proposal.contractState === ContractState.Active &&
+          proposal.endTime.isAfter(now),
         executeProposal: executeProposal,
       },
       loading: false,
