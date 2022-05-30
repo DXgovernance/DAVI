@@ -3,7 +3,7 @@ import SidebarCard, {
   SidebarCardContent,
   SidebarCardHeader,
 } from 'old-components/Guilds/SidebarCard';
-import Skeleton from 'react-loading-skeleton';
+import { Loading } from 'Components/Primitives/Loading';
 import { Row, Label, ColoredLabel } from './SidebarInfoCard.styled';
 import { SidebarInfoCardProps } from './types';
 
@@ -24,14 +24,18 @@ const SidebarInfoCard: React.FC<SidebarInfoCardProps> = ({
             {proposalTime ? (
               duration(proposalTime?.toNumber(), 'seconds').humanize()
             ) : (
-              <Skeleton width={50} />
+              <Loading style={{ margin: 0 }} loading text />
             )}
           </ColoredLabel>
         </Row>
         <Row>
           <Label>Quorum</Label>
           <ColoredLabel>
-            {quorum != null ? `${quorum}%` : <Skeleton width={50} />}
+            {quorum != null ? (
+              `${quorum}%`
+            ) : (
+              <Loading style={{ margin: 0 }} loading text />
+            )}
           </ColoredLabel>
         </Row>
       </SidebarCardContent>
