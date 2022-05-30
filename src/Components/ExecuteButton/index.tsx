@@ -1,5 +1,5 @@
 // import useExecutableState from 'hooks/Guilds/useExecutableState';
-import { Button } from 'old-components/common/Button';
+import { Button } from 'old-components/Guilds/common/Button';
 import React from 'react';
 
 interface ExecuteButtonProps {
