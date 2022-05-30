@@ -10,7 +10,12 @@
     }
   },
   "rules": {
-    "cypress/no-unnecessary-waiting": "off"
+    "cypress/no-unnecessary-waiting": "off",
+    "eqeqeq": "error",
+    "array-callback-return": "error",
+    "react-hooks/exhaustive-deps": 0,
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-useless-constructor": 0
   },
   "env": {
     "cypress/globals": true
