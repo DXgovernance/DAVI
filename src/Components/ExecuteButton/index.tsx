@@ -1,14 +1,12 @@
-import useExecutableState from 'hooks/Guilds/useExecutableState';
+// import useExecutableState from 'hooks/Guilds/useExecutableState';
 import { Button } from 'old-components/common/Button';
 import React from 'react';
 
-const ExecuteButton: React.FC = () => {
-  const {
-    data: { isExecutable, executeProposal },
-  } = useExecutableState();
+interface ExecuteButtonProps {
+  executeProposal: () => void;
+}
 
-  if (!isExecutable) return null;
-
+const ExecuteButton: React.FC<ExecuteButtonProps> = ({ executeProposal }) => {
   return (
     <Button data-testid="execute-btn" onClick={() => executeProposal()}>
       Execute

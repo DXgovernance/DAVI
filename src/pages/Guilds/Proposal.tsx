@@ -18,8 +18,9 @@ import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
-import ExecuteButton from 'components/Guilds/ExecuteButton';
+import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
+import useExecutableState from 'hooks/Guilds/useExecutableState';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -88,6 +89,10 @@ const ProposalPage: React.FC = () => {
 
   const status = useProposalState(proposal);
 
+  const {
+    data: { isExecutable, executeProposal },
+  } = useExecutableState();
+
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {
       return (
@@ -131,7 +136,9 @@ const ProposalPage: React.FC = () => {
               status={status}
               endTime={proposal?.endTime}
             />
-            <ExecuteButton />
+            {isExecutable && (
+              <ExecuteButton executeProposal={executeProposal} />
+            )}
           </HeaderTopRow>
           <PageTitle>
             {proposal?.title || (
