@@ -19,7 +19,7 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
-import { ContractState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 import ExecuteButton from 'components/Guilds/ExecuteButton';
 
 const PageContainer = styled(Box)`

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
 import { Loading } from 'Components/Primitives/Loading';
-import { ContractState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
 
 const ProposalStatusWrapper = styled.div`

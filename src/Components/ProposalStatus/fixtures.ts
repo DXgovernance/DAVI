@@ -1,4 +1,4 @@
-import { ContractState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 import moment from 'moment';
 import { ProposalStatusProps } from './types';
 

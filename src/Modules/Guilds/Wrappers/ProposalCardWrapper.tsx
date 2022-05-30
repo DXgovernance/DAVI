@@ -5,7 +5,7 @@ import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import useVoteSummary from 'hooks/Guilds/useVoteSummary';
 import { MAINNET_ID } from 'utils/constants';
 import { useMemo } from 'react';
-import { ContractState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 import { useProposalSummaryActions } from 'hooks/Guilds/guild/useProposalSummaryActions';
 import moment from 'moment';
 

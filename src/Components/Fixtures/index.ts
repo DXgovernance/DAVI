@@ -1,6 +1,7 @@
 import { BigNumber } from 'ethers';
 import moment from 'moment';
-import { Proposal, ENSAvatar, ContractState } from '../Types';
+import { Proposal, ContractState } from 'types/types.guilds.d';
+import { ENSAvatar } from '../Types';
 
 export const proposalMock: Proposal = {
   id: '0x1234567890123456789012345678901234567890',

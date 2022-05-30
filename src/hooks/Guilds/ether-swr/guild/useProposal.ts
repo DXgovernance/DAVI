@@ -3,7 +3,7 @@ import { Middleware, SWRHook } from 'swr';
 import { Proposal } from '../../../../types/types.guilds';
 import useEtherSWR from '../useEtherSWR';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import { ContractState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 
 const formatterMiddleware: Middleware =
   (useSWRNext: SWRHook) => (key, fetcher, config) => {
