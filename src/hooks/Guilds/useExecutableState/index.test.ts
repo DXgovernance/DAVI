@@ -78,7 +78,6 @@ describe('useExecutableState', () => {
     //isAfter is set to true in proposal mock
     const { result } = renderHook(() => useExecutableState());
     expect(result.current.loading).toBeFalsy();
-    console.log('isExecutable: ', result.current.data.isExecutable);
     expect(result.current.data.isExecutable).toBeTruthy();
   });
   it('executeProposal is able to be fired', async () => {
