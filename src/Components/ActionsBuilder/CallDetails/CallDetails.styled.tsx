@@ -1,7 +1,7 @@
 import { MetadataTag } from '../SupportedActions/common/infoLine';
 import { DetailRow } from '../SupportedActions/common/summary';
 import styled from 'styled-components';
-import { Box } from 'old-components/common';
+import { Box } from 'old-components/common/Box';
 
 export const ParamTag = styled(MetadataTag)`
   border-radius: ${({ theme }) => theme.radii.pill};

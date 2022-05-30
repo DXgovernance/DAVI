@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallDetails Should match 1`] = `
+<div>
+   
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU dpFBPj"
+    >
+      transfer
+       (
+      <span>
+        <span
+          class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+          color="#9575CD"
+        >
+          address
+        </span>
+        <span>
+           , 
+        </span>
+      </span>
+      <span>
+        <span
+          class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+          color="#F06292"
+        >
+          uint256
+        </span>
+      </span>
+      )
+    </div>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        color="#9575CD"
+      >
+        recipient
+         
+        <em>
+          (
+          address
+          )
+        </em>
+      </span>
+    </div>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        color="#F06292"
+      >
+        amount
+         
+        <em>
+          (
+          uint256
+          )
+        </em>
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`CallDetails Should match with empty data 1`] = `
+<div>
+   
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU dpFBPj"
+    >
+      approve (
+       
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+        color="#9575CD"
+      >
+        address
+      </span>
+      , 
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+        color="#F06292"
+      >
+        uint256
+      </span>
+       )
+    </div>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        color="#9575CD"
+      >
+        spender 
+        <em>
+          (address)
+        </em>
+      </span>
+    </div>
+    <a
+      class="sc-iBPTik dFVotB"
+      href="/"
+    >
+      <div
+        class="sc-dQoVA sc-fFucqa ijKhIZ gzJfIk"
+      >
+        0x0000000000000000000000000000000000000000
+         
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        color="#F06292"
+      >
+        amount 
+        <em>
+          (uint256)
+        </em>
+      </span>
+    </div>
+    <div
+      class="sc-dQoVA sc-fFucqa ijKhIZ gzJfIk"
+    >
+      1000
+    </div>
+  </div>
+  <div
+    class="sc-fubCzh dIZEAK"
+    style="margin-bottom: 2rem;"
+  />
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU dpFBPj"
+    >
+      transfer
+       (
+      <span>
+        <span
+          class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+          color="#9575CD"
+        >
+          address
+        </span>
+        <span>
+           , 
+        </span>
+      </span>
+      <span>
+        <span
+          class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+          color="#F06292"
+        >
+          uint256
+        </span>
+      </span>
+      )
+    </div>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        color="#9575CD"
+      >
+        recipient
+         
+        <em>
+          (
+          address
+          )
+        </em>
+      </span>
+    </div>
+  </div>
+  <div
+    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        color="#F06292"
+      >
+        amount
+         
+        <em>
+          (
+          uint256
+          )
+        </em>
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;
