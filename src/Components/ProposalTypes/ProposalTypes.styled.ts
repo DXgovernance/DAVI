@@ -116,4 +116,3 @@ export const TitleWrapper = styled(Flex)`
     width: 90%;
   }
 `;
-
