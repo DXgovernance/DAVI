@@ -28,4 +28,3 @@ export const useProposalState = (proposal: Proposal): ContractState => {
 };
 
 export default useProposalState;
-
