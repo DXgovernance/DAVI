@@ -71,4 +71,3 @@ describe(`useProposalState`, () => {
     expect(result.current).toBe('Failed');
   });
 });
-
