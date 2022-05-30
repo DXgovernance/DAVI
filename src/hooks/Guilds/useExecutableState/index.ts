@@ -34,18 +34,19 @@ function useExecutableState(): useExecutableStateReturns {
         loading: true,
         error: error,
       };
-    const now = moment.unix(moment.now());
 
-    return {
+    let result = {
       data: {
         isExecutable:
           proposal.contractState === ContractState.Active &&
-          proposal.endTime.isAfter(now),
+          proposal.endTime.isAfter(moment.now()),
         executeProposal: executeProposal,
       },
       loading: false,
       error: error,
     };
+
+    return result;
   }, [proposal]);
 
   return { data, error, loading };
