@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { BigNumber } from 'ethers';
-import { render } from '../../../../utils/tests';
+import { render } from 'utils/tests';
 import { repMintEmptyDecodedCallMock } from './fixtures';
 import { Mint } from './RepMintEditor';
 const mockBigNumber = BigNumber.from(0);

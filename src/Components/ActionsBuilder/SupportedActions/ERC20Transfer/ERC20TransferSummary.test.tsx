@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import { render } from '../../../../utils/tests';
+import { render } from 'utils/tests';
 import ERC20TransferSummary from './ERC20TransferSummary';
 import {
   erc20TransferDecodedCallMock,

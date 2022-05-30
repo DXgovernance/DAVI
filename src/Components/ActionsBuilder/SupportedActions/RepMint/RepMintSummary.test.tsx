@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import { render } from '../../../../utils/tests';
+import { render } from 'utils/tests';
 import RepMintSummary from './RepMintSummary';
 import {
   repMintDecodedCallMock,

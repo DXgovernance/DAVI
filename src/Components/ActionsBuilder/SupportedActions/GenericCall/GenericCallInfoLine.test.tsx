@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import { render } from '../../../../utils/tests';
+import { render } from 'utils/tests';
 import { approvetokenSpendingMock, genericDecodedCallMock } from './fixtures';
 import GenericCallInfoLine from './GenericCallInfoLine';
 import { RichContractFunction } from 'hooks/Guilds/contracts/useRichContractRegistry';
