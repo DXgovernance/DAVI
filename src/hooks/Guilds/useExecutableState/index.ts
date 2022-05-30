@@ -4,23 +4,9 @@ import moment from 'moment';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProposal } from '../ether-swr/guild/useProposal';
+import { ContractState } from 'types/types.guilds.d';
 
-export enum ProposalState {
-  Active = 'Active',
-  Rejected = 'Rejected',
-  Executed = 'Executed',
-  Failed = 'Failed',
-  Finished = 'Finished',
-}
-
-export enum ContractState {
-  Active = 'Active',
-  Rejected = 'Rejected',
-  Executed = 'Executed',
-  Failed = 'Failed',
-}
-
-interface useProposalStateReturns {
+interface useExecutableStateReturns {
   data: {
     isExecutable: boolean;
     executeProposal: () => void;
@@ -29,14 +15,13 @@ interface useProposalStateReturns {
   loading: boolean;
 }
 
-function useProposalState(): useProposalStateReturns {
+function useExecutableState(): useExecutableStateReturns {
   const { guildId, proposalId } =
     useParams<{ guildId?: string; proposalId?: string }>();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { createTransaction } = useTransactions();
   const guildContract = useERC20Guild(guildId);
 
-  debugger;
   const executeProposal = () =>
     createTransaction('Execute Proposal', async () => {
       return guildContract.endProposal(proposalId);
@@ -66,4 +51,4 @@ function useProposalState(): useProposalStateReturns {
   return { data, error, loading };
 }
 
-export default useProposalState;
+export default useExecutableState;

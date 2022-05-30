@@ -1,11 +1,11 @@
-import useProposalState from 'hooks/Guilds/useProposalState';
+import useExecutableState from 'hooks/Guilds/useExecutableState';
 import { Button } from 'old-components/common/Button';
 import React from 'react';
 
 const ExecuteButton: React.FC = () => {
   const {
     data: { isExecutable, executeProposal },
-  } = useProposalState();
+  } = useExecutableState();
 
   if (!isExecutable) return null;
 

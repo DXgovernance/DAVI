@@ -5,7 +5,7 @@ import { render } from 'utils/tests';
 
 let mockedIsExecutable = true;
 let mockedExecuteProposal = jest.fn();
-jest.mock('hooks/Guilds/useProposalState', () => ({
+jest.mock('hooks/Guilds/useExecutableState', () => ({
   __esModule: true,
   default: () => ({
     data: {
