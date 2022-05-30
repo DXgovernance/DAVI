@@ -5,9 +5,9 @@ import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import useVoteSummary from 'hooks/Guilds/useVoteSummary';
 import { MAINNET_ID } from 'utils/constants';
 import { useMemo } from 'react';
-import { ContractState } from 'types/types.guilds.d';
 import { useProposalSummaryActions } from 'hooks/Guilds/guild/useProposalSummaryActions';
 import moment from 'moment';
+import useProposalState from 'hooks/Guilds/useProposalState';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -34,28 +34,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
     }
   }, [proposal]);
 
-  // Make into singular guild state hook
-  const status = useMemo(() => {
-    debugger;
-    if (!proposal?.endTime) return null;
-    switch (proposal.contractState) {
-      case ContractState.Active:
-        const currentTime = moment();
-        if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ContractState.Failed;
-        } else {
-          return ContractState.Active;
-        }
-      case ContractState.Executed:
-        return ContractState.Executed;
-      case ContractState.Rejected:
-        return ContractState.Rejected;
-      case ContractState.Failed:
-        return ContractState.Failed;
-      default:
-        return null;
-    }
-  }, [proposal]);
+  const status = useProposalState(proposal);
 
   return (
     <ProposalCard

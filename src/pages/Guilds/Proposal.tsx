@@ -19,8 +19,8 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
-import { ContractState } from 'types/types.guilds.d';
 import ExecuteButton from 'components/Guilds/ExecuteButton';
+import { useProposalState } from 'hooks/Guilds/useProposalState';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -99,27 +99,7 @@ const ProposalPage: React.FC = () => {
     }
   }, [proposal]);
 
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const status = useMemo(() => {
-    if (!proposal?.endTime) return null;
-    switch (proposal.contractState) {
-      case ContractState.Active:
-        const currentTime = moment();
-        if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ContractState.Failed;
-        } else {
-          return ContractState.Active;
-        }
-      case ContractState.Executed:
-        return ContractState.Executed;
-      case ContractState.Rejected:
-        return ContractState.Rejected;
-      case ContractState.Failed:
-        return ContractState.Failed;
-      default:
-        return null;
-    }
-  }, [proposal]);
+  const status = useProposalState(proposal);
 
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {
