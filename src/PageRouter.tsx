@@ -58,6 +58,7 @@ const PageRouter = observer(({ children }) => {
     if (location.pathname === '/' && networkName) {
       history.push(`/${networkName}/proposals`);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkName]);
 
   // Start or auth services

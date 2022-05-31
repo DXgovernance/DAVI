@@ -35,6 +35,7 @@ const FAQPage = observer(() => {
   useEffect(() => {
     if (questionId > 0)
       document.querySelectorAll('#FAQBody div h1')[questionId].scrollIntoView();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let daoAddresses = '';

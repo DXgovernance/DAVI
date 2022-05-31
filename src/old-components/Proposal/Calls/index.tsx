@@ -57,6 +57,7 @@ const Calls = observer(() => {
   useEffect(() => {
     getProposalCalls();
     setProposalCallTexts(proposalCallArray);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {

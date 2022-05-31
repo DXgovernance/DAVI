@@ -61,6 +61,7 @@ const Web3ConnectStatus = observer(props => {
     injected.isAuthorized().then(isAuthorized => {
       setInjectedWalletAuthorized(isAuthorized);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [injected]);
 
   const { chainId, account, error } = providerStore.getActiveWeb3React();

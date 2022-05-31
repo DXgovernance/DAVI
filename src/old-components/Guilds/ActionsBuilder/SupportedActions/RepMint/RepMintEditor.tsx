@@ -83,6 +83,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
     if (repAmount) {
       setCallDataAmount(repAmount.toString());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repPercent, repAmount, totalSupply]);
 
   const handleRepChange = (e: string) => {

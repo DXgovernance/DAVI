@@ -134,8 +134,7 @@ export default class IPFSService {
       await sleep(1000);
       const ipfsContent = await this.getContentFromIPFS(hash);
       console.debug('[IPFS CONTENT]', ipfsContent);
-      // eslint-disable-next-line
-      if (content === content) uploaded = true;
+      if (content === ipfsContent) uploaded = true;
     }
     return hash;
   }

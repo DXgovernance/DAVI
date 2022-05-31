@@ -51,6 +51,7 @@ const Web3ReactManager = ({ children }) => {
   // Make sure providerStore is synchronized with web3-react
   useEffect(() => {
     providerStore.setWeb3Context(web3Context);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [web3Context]);
 
   // try to eagerly connect to a provider if possible
@@ -92,6 +93,7 @@ const Web3ReactManager = ({ children }) => {
         window.location.reload();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId, prevChainId, account, prevAccount]);
 
   // Setup listener to handle injected wallet events
@@ -120,6 +122,7 @@ const Web3ReactManager = ({ children }) => {
     return () => {
       window.ethereum?.removeListener('accountsChanged', handleChainChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, connector]);
 
   const urlNetworkName = useMemo(

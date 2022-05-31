@@ -51,6 +51,7 @@ export function useEagerConnect() {
     tryConnecting().catch(() => {
       setTried(true);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activate, chainId]); // intentionally only running on mount (make sure it's only mounted once :))
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
@@ -78,6 +79,7 @@ export function useRpcUrls() {
 
   useEffect(() => {
     getRpcUrls().then(urls => setRpcUrls(urls));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preferredRpc]);
 
   async function getRpcUrls() {
