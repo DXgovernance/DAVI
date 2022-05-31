@@ -1,11 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout/Box';
 import { Modal } from 'old-components/Guilds/common/Modal';
 import { Button } from 'old-components/Guilds/common/Button';
 import { Option } from './types';
 import Input from 'old-components/Guilds/common/Form/Input';
+import { DeleteButton, Dot } from './AddEditOptionModal.styled';
 
 interface AddEditOptionModalProps {
   onDismiss: () => void;
@@ -13,20 +14,6 @@ interface AddEditOptionModalProps {
   onChange: (options: Option[]) => void;
   options: Option[];
 }
-
-const DeleteButton = styled(Button)`
-  background: ${({ theme }) => theme.colors.muted};
-  &:disabled {
-    color: inherit;
-  }
-`;
-
-const Dot = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 10px;
-  background: ${({ theme, color }) => color ?? theme.colors.muted};
-`;
 
 const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   editableOption,

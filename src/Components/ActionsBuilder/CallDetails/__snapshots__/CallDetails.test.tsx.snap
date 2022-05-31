@@ -4,7 +4,7 @@ exports[`CallDetails Should match 1`] = `
 <div>
    
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
       class="sc-hKgJUU dpFBPj"
@@ -13,7 +13,7 @@ exports[`CallDetails Should match 1`] = `
        (
       <span>
         <span
-          class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+          class="sc-jrAFXE sc-dQoVA hTcuJV dHUJZX"
           color="#9575CD"
         >
           address
@@ -24,7 +24,7 @@ exports[`CallDetails Should match 1`] = `
       </span>
       <span>
         <span
-          class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+          class="sc-jrAFXE sc-dQoVA hTcuJV jqxatX"
           color="#F06292"
         >
           uint256
@@ -34,13 +34,13 @@ exports[`CallDetails Should match 1`] = `
     </div>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        class="sc-jrAFXE sc-kstqJO hTcuJV bYhjrm"
         color="#9575CD"
       >
         recipient
@@ -54,13 +54,13 @@ exports[`CallDetails Should match 1`] = `
     </div>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        class="sc-jrAFXE sc-kstqJO hTcuJV fnqJuG"
         color="#F06292"
       >
         amount
@@ -81,7 +81,7 @@ exports[`CallDetails Should match with empty data 1`] = `
 <div>
    
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
       class="sc-hKgJUU dpFBPj"
@@ -89,14 +89,14 @@ exports[`CallDetails Should match with empty data 1`] = `
       approve (
        
       <span
-        class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+        class="sc-jrAFXE sc-dQoVA hTcuJV dHUJZX"
         color="#9575CD"
       >
         address
       </span>
       , 
       <span
-        class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+        class="sc-jrAFXE sc-dQoVA hTcuJV jqxatX"
         color="#F06292"
       >
         uint256
@@ -105,13 +105,13 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        class="sc-jrAFXE sc-kstqJO hTcuJV bYhjrm"
         color="#9575CD"
       >
         spender 
@@ -125,7 +125,7 @@ exports[`CallDetails Should match with empty data 1`] = `
       href="/"
     >
       <div
-        class="sc-dQoVA sc-fFucqa ijKhIZ gzJfIk"
+        class="sc-hKgJUU sc-fodVek dpFBPj iXCRur"
       >
         0x0000000000000000000000000000000000000000
          
@@ -157,13 +157,13 @@ exports[`CallDetails Should match with empty data 1`] = `
     </a>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        class="sc-jrAFXE sc-kstqJO hTcuJV fnqJuG"
         color="#F06292"
       >
         amount 
@@ -173,7 +173,7 @@ exports[`CallDetails Should match with empty data 1`] = `
       </span>
     </div>
     <div
-      class="sc-dQoVA sc-fFucqa ijKhIZ gzJfIk"
+      class="sc-hKgJUU sc-fodVek dpFBPj iXCRur"
     >
       1000
     </div>
@@ -183,7 +183,7 @@ exports[`CallDetails Should match with empty data 1`] = `
     style="margin-bottom: 2rem;"
   />
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
       class="sc-hKgJUU dpFBPj"
@@ -192,7 +192,7 @@ exports[`CallDetails Should match with empty data 1`] = `
        (
       <span>
         <span
-          class="sc-jrAFXE sc-bqyKOL hTcuJV eHjsis"
+          class="sc-jrAFXE sc-dQoVA hTcuJV dHUJZX"
           color="#9575CD"
         >
           address
@@ -203,7 +203,7 @@ exports[`CallDetails Should match with empty data 1`] = `
       </span>
       <span>
         <span
-          class="sc-jrAFXE sc-bqyKOL hTcuJV bHUmRM"
+          class="sc-jrAFXE sc-dQoVA hTcuJV jqxatX"
           color="#F06292"
         >
           uint256
@@ -213,13 +213,13 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        class="sc-jrAFXE sc-kstqJO hTcuJV bYhjrm"
         color="#9575CD"
       >
         recipient
@@ -233,13 +233,13 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="sc-dQoVA sc-fodVek ijKhIZ jPSkGh"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
   >
     <div
-      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj fUIUMn hZygGC"
+      class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
     >
       <span
-        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        class="sc-jrAFXE sc-kstqJO hTcuJV fnqJuG"
         color="#F06292"
       >
         amount
