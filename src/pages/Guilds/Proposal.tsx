@@ -21,6 +21,7 @@ import styled from 'styled-components';
 import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutableState from 'hooks/Guilds/useExecutableState';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -86,6 +87,7 @@ const ProposalPage: React.FC = () => {
   const { data: proposalIds } = useGuildProposalIds(guildId);
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
+  const { data } = useGuildConfig(guildId);
 
   const status = useProposalState(proposal);
 
@@ -127,12 +129,12 @@ const ProposalPage: React.FC = () => {
           <HeaderTopRow>
             <UnstyledLink to={`/${chainName}/${guildId}`}>
               <StyledIconButton variant="secondary" iconLeft>
-                <FaChevronLeft style={{ marginRight: '15px' }} /> DXdao
+                <FaChevronLeft style={{ marginRight: '15px' }} /> {data?.name}
               </StyledIconButton>
             </UnstyledLink>
 
             <ProposalStatus
-              timeDetail={proposal.timeDetail}
+              timeDetail={proposal?.timeDetail}
               status={status}
               endTime={proposal?.endTime}
             />
