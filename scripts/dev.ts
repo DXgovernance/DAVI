@@ -303,7 +303,7 @@ async function main() {
     },
     {
       type: 'transfer',
-      timestamp: moment().subtract(26, 'minutes').unix(),
+      timestamp: moment().subtract(46, 'minutes').unix(),
       from: accounts[0],
       data: {
         asset: ZERO_ADDRESS,
