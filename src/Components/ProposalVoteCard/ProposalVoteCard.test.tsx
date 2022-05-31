@@ -3,7 +3,7 @@ import ProposalVoteCard from './ProposalVoteCard';
 import { mockProposalVoteCardProps } from './mocks';
 
 describe('ProposalVoteCard', () => {
-  it.only('renders', () => {
+  it('matches the snapshot', () => {
     const { container } = render(
       <ProposalVoteCard {...mockProposalVoteCardProps} />
     );

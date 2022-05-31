@@ -1,10 +1,10 @@
 import moment from 'moment';
 import { BigNumber } from 'ethers';
 
-const mockBignumber = BigNumber.from(1000);
-const mockBigNumberOption = BigNumber.from(300);
-const mockBigNumberTotalSupply = BigNumber.from(10000);
-const mockBigNumberTotalLocked = BigNumber.from(5000);
+const mockBignumber = BigNumber.from(100000000);
+const mockBigNumberOption = BigNumber.from(100000000000000);
+const mockBigNumberTotalSupply = BigNumber.from(1000000000000000);
+const mockBigNumberTotalLocked = BigNumber.from(1000000000000000);
 
 export const mockProposalVoteCardProps = {
   proposal: {
@@ -31,12 +31,12 @@ export const mockProposalVoteCardProps = {
   },
   timestamp: 10,
   votingPower: {
-    percent: 10,
+    percent: 100,
     userVotingPower: mockBignumber,
     atSnapshot: mockBignumber,
     atCurrentSnapshot: mockBignumber,
   },
   contract: {} as any,
   createTransaction: () => {},
-  currentLockedPercent: 10,
+  currentLockedPercent: 100,
 };

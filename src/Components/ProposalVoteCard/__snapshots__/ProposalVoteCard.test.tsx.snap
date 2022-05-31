@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProposalVoteCard renders 1`] = `
+exports[`ProposalVoteCard matches the snapshot 1`] = `
 <div>
    
   <div
@@ -47,7 +47,7 @@ exports[`ProposalVoteCard renders 1`] = `
               Yes
             </div>
             <span>
-              0.0000000000000003 DXD
+              0.0001 DXD
             </span>
           </div>
           <div
@@ -68,7 +68,7 @@ exports[`ProposalVoteCard renders 1`] = `
               No
             </div>
             <span>
-              0.0000000000000003 DXD
+              0.0001 DXD
             </span>
           </div>
           <div
@@ -78,22 +78,22 @@ exports[`ProposalVoteCard renders 1`] = `
               class="sc-dQoVA haSSSn"
             >
               <div
-                class="sc-bqyKOL LzsrA"
+                class="sc-bqyKOL saMbf"
                 color="#295FF4"
               />
               <div
-                class="sc-bqyKOL gwggoE"
+                class="sc-bqyKOL gTKchv"
                 color="#E75C5C"
               />
             </div>
             <div
-              class="sc-fodVek jFFyns"
+              class="sc-fodVek cPVZdq"
             >
               <div
-                class="sc-kstqJO lhZibd"
+                class="sc-kstqJO gmTzOp"
               />
               <div
-                class="sc-hBEYId gVMZeK"
+                class="sc-hBEYId bYImjb"
               >
                 <svg
                   class="sc-fFucqa fFWqdF"
