@@ -1,14 +1,11 @@
 import { useTransactions } from 'contexts/Guilds/transactions';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import moment from 'moment';
 import { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProposal } from '../ether-swr/guild/useProposal';
-import { ContractState } from 'types/types.guilds.d';
 
 interface useExecutableReturns {
   data: {
-    isExecutable: boolean;
     executeProposal: () => void;
   };
   error: Error;
@@ -30,18 +27,13 @@ function useExecutable(): useExecutableReturns {
   const { data, loading } = useMemo(() => {
     if (!proposal)
       return {
-        data: { isExecutable: false, executeProposal: null },
+        data: { executeProposal: null },
         loading: true,
         error: error,
       };
 
     let result = {
-      data: {
-        isExecutable:
-          proposal.contractState === ContractState.Active &&
-          moment(moment.now()).isAfter(proposal.endTime),
-        executeProposal: executeProposal,
-      },
+      data: { executeProposal },
       loading: false,
       error: error,
     };

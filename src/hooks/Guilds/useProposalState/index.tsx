@@ -1,22 +1,23 @@
 import moment from 'moment';
-import { Proposal, ContractState } from 'types/types.guilds.d';
+import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
 
-export const useProposalState = (proposal: Proposal): ContractState => {
+export const useProposalState = (proposal: Proposal): ProposalState => {
   if (!proposal?.endTime) return null;
   switch (proposal.contractState) {
     case ContractState.Active:
       const currentTime = moment();
+
       if (currentTime.isSameOrAfter(proposal.endTime)) {
-        return ContractState.Failed;
+        return ProposalState.Executable;
       } else {
-        return ContractState.Active;
+        return ProposalState.Active;
       }
     case ContractState.Executed:
-      return ContractState.Executed;
+      return ProposalState.Executed;
     case ContractState.Rejected:
-      return ContractState.Rejected;
+      return ProposalState.Rejected;
     case ContractState.Failed:
-      return ContractState.Failed;
+      return ProposalState.Failed;
     default:
       return null;
   }

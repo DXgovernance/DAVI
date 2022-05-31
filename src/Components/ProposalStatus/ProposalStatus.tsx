@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
 import { Loading } from 'Components/Primitives/Loading';
-import { ContractState } from 'types/types.guilds.d';
+import { ProposalState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
 
 const ProposalStatusWrapper = styled.div`
@@ -25,7 +25,7 @@ const Status = styled.div<{ bordered?: boolean }>`
     `}
 `;
 
-const ProposalStatusDetail = styled(Box)<{ statusDetail?: ContractState }>`
+const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -33,10 +33,10 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ContractState }>`
   border-radius: 15px;
   border: 1px solid
     ${props =>
-      props.statusDetail === ContractState.Failed ? '#D500F9' : '#1DE9B6'};
+      props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
   background-color: ${({ theme }) => theme.colors.background};
   color: ${props =>
-    props.statusDetail === ContractState.Failed ? '#D500F9' : '#1DE9B6'};
+    props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
   padding: 0.25rem 0.4rem;
 `;
 

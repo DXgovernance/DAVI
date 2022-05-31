@@ -22,6 +22,7 @@ import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { ProposalState } from 'types/types.guilds.d';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -92,7 +93,7 @@ const ProposalPage: React.FC = () => {
   const status = useProposalState(proposal);
 
   const {
-    data: { isExecutable, executeProposal },
+    data: { executeProposal },
   } = useExecutable();
 
   if (!isGuildAvailabilityLoading) {
@@ -138,7 +139,7 @@ const ProposalPage: React.FC = () => {
               status={status}
               endTime={proposal?.endTime}
             />
-            {isExecutable && (
+            {status === ProposalState.Executable && (
               <ExecuteButton executeProposal={executeProposal} />
             )}
           </HeaderTopRow>
