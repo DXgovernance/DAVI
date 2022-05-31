@@ -48,3 +48,21 @@ export interface ProposalVoteCardProps {
     txFunction: () => Promise<providers.TransactionResponse>
   ) => void;
 }
+
+export interface ResultRowProps {
+  isPercent: boolean;
+  optionKey?: number;
+  voteData: VoteData;
+  proposalMetadata: ProposalMetadata;
+}
+
+export interface VoteChartProps {
+  isPercent: boolean;
+  voteData: VoteData;
+}
+
+export interface Voter {
+  avatar: string;
+}
+
+export type VoteResultsProps = Omit<ResultRowProps, 'optionKey'>;

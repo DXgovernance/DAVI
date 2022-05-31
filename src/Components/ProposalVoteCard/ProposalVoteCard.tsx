@@ -4,7 +4,7 @@ import SidebarCard, {
 } from 'old-components/Guilds/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
-import { VoteResults } from './components/VoteResults/VoteResults';
+import VoteResults from './components/VoteResults/VoteResults';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
 import { Loading } from 'Components/Primitives/Loading';
@@ -36,7 +36,7 @@ const ProposalVoteCard = ({
   const [selectedAction, setSelectedAction] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
   const isOpen = useMemo(
-    () => proposal?.endTime.isAfter(moment(timestamp)),
+    () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
   );
 
@@ -51,8 +51,8 @@ const ProposalVoteCard = ({
     });
 
   const { hasNoVotingPower, hasVotingPowerAtCurrentSnapshot } = voteOnProposal({
-    votingPowerAtProposalSnapshot: votingPower.atSnapshot,
-    votingPowerAtProposalCurrentSnapshot: votingPower.atCurrentSnapshot,
+    votingPowerAtProposalSnapshot: votingPower?.atSnapshot,
+    votingPowerAtProposalCurrentSnapshot: votingPower?.atCurrentSnapshot,
   });
 
   const handleVoteOnProposal = ({
@@ -99,8 +99,12 @@ const ProposalVoteCard = ({
     >
       <SidebarCardContent>
         <VotesContainer>
-          <VoteResults isPercent={isPercent} />
-          <VotesChart isPercent={isPercent} />
+          <VoteResults
+            isPercent={isPercent}
+            voteData={voteData}
+            proposalMetadata={proposal?.metadata}
+          />
+          <VotesChart isPercent={isPercent} voteData={voteData} />
         </VotesContainer>
 
         {isOpen && voteData?.options && (

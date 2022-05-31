@@ -1,47 +1,33 @@
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { formatUnits } from 'ethers/lib/utils';
-import useProposalMetadata from 'hooks/Guilds/ether-swr/guild/useProposalMetadata';
-import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import Bullet from 'old-components/Guilds/common/Bullet';
 import { Loading } from 'Components/Primitives/Loading';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
+import {
+  ResultRowProps,
+  VoteResultsProps,
+} from 'Components/ProposalVoteCard/types';
+import {
+  VotesRowWrapper,
+  VoteOption,
+  OptionBullet,
+} from './VoteResults.styled';
 
-const VotesRowWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  font-size: ${({ theme }) => theme.fontSizes.body};
-  margin: 5px 0px 5px 0px;
-`;
-
-const VoteOption = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const OptionBullet = styled.span`
-  margin-right: 0.5rem;
-`;
-
-interface ResultRowProps {
-  isPercent: boolean;
-  optionKey?: number;
-}
-
-const VoteResultRow: React.FC<ResultRowProps> = ({ isPercent, optionKey }) => {
-  const { guildId, proposalId } = useTypedParams();
+const VoteResultRow: React.FC<ResultRowProps> = ({
+  isPercent,
+  optionKey,
+  voteData,
+  proposalMetadata,
+}) => {
+  const theme = useTheme();
 
   const isReady = optionKey !== undefined;
 
-  const votingResults = useVotingResults();
   const votingPowerPercent = useVotingPowerPercent(
-    votingResults?.options?.[optionKey],
-    votingResults?.totalLocked,
+    voteData?.options?.[optionKey],
+    voteData?.totalLocked,
     2
   );
-  const theme = useTheme();
-  const { data: proposalMetadata } = useProposalMetadata(guildId, proposalId);
 
   return (
     <VotesRowWrapper>
@@ -65,11 +51,11 @@ const VoteResultRow: React.FC<ResultRowProps> = ({ isPercent, optionKey }) => {
           <Loading loading text />
         )}
       </VoteOption>
-      {isReady && votingResults ? (
+      {isReady && voteData ? (
         <span>
           {isPercent
-            ? `${formatUnits(votingResults?.options?.[optionKey] || 0)} ${
-                votingResults?.token?.symbol
+            ? `${formatUnits(voteData?.options?.[optionKey] || 0)} ${
+                voteData?.token?.symbol
               }`
             : `${votingPowerPercent}%`}
         </span>
@@ -80,21 +66,34 @@ const VoteResultRow: React.FC<ResultRowProps> = ({ isPercent, optionKey }) => {
   );
 };
 
-export const VoteResults: React.FC<{
-  isPercent: boolean;
-}> = ({ isPercent }) => {
-  const votingResults = useVotingResults();
-
-  return votingResults ? (
+const VoteResults: React.FC<VoteResultsProps> = ({
+  isPercent,
+  voteData,
+  proposalMetadata,
+}) => {
+  return voteData ? (
     <>
-      {Object.entries(votingResults.options).map((_, i) => (
-        <VoteResultRow optionKey={i} isPercent={isPercent} />
+      {Object.entries(voteData.options).map((_, i) => (
+        <VoteResultRow
+          optionKey={i}
+          isPercent={isPercent}
+          voteData={voteData}
+          proposalMetadata={proposalMetadata}
+        />
       ))}
     </>
   ) : (
     <>
-      <VoteResultRow isPercent={isPercent} />
-      <VoteResultRow isPercent={isPercent} />
+      <VoteResultRow
+        isPercent={isPercent}
+        voteData={voteData}
+        proposalMetadata={proposalMetadata}
+      />
+      <VoteResultRow
+        isPercent={isPercent}
+        voteData={voteData}
+        proposalMetadata={proposalMetadata}
+      />
     </>
   );
 };

@@ -7,25 +7,27 @@ export default {
   component: ProposalVoteCard,
   argTypes: {
     voteData: {
-      description: '',
+      description:
+        'Information about vote options, quorum, total locked and token',
     },
     votingPower: {
-      description: '',
+      description: 'Information about user voting power',
     },
     proposal: {
-      description: '',
+      description:
+        'Information about proposal id, description, vote options descriptions, and proposal endtime',
     },
     timestamp: {
-      description: '',
+      description: 'Timestamp of last rerender',
     },
     contract: {
-      description: '',
+      description: 'ERC20 Guild contract methods',
     },
     currentLockedPercent: {
-      description: '',
+      description: 'Current locked percent in the contract',
     },
     createTransaction: {
-      description: '',
+      description: 'Transaction to be created',
     },
   },
 } as ComponentMeta<typeof ProposalVoteCard>;

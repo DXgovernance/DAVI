@@ -4,6 +4,9 @@ import { mockProposalVoteCardProps } from './mocks';
 
 describe('ProposalVoteCard', () => {
   it.only('renders', () => {
-    render(<ProposalVoteCard {...mockProposalVoteCardProps} />);
+    const { container } = render(
+      <ProposalVoteCard {...mockProposalVoteCardProps} />
+    );
+    expect(container).toMatchSnapshot();
   });
 });

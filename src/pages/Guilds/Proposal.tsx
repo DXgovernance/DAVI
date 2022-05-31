@@ -2,7 +2,6 @@ import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import ProposalDescription from '../../old-components/Guilds/ProposalPage/ProposalDescription';
 import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
-import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
 import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
 import { Box } from '../../Components/Primitives/Layout';
@@ -20,6 +19,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
 import { ProposalState } from 'Components/Types';
+import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWrapper';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -180,7 +180,7 @@ const ProposalPage: React.FC = () => {
         </ProposalActionsWrapper>
       </PageContent>
       <SidebarContent>
-        <ProposalVoteCard />
+        <ProposalVoteCardWrapper />
         <ProposalInfoCard />
       </SidebarContent>
     </PageContainer>

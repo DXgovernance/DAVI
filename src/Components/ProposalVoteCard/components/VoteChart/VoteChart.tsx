@@ -1,9 +1,7 @@
 import { useTheme } from 'styled-components';
-
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { Loading } from 'Components/Primitives/Loading';
-import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
 import { BigNumber } from 'ethers';
 import {
   VotesChartContainer,
@@ -14,10 +12,10 @@ import {
   VoteQuorumLabel,
   PaddedFlagCheckered,
 } from './VoteChart.styled';
+import { VoteChartProps } from '../../types';
 
 //TODO: rewrite css dynamics types
-const VotesChart = ({ isPercent }) => {
-  const voteData = useVotingResults();
+const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
   const theme = useTheme();
 
   const nQuorum = useBigNumberToNumber(
