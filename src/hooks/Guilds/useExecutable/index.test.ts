@@ -1,30 +1,31 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { BigNumber } from 'ethers';
+import { ContractState } from 'types/types.guilds.d';
 import useExecutable from '.';
+import * as hooks from '../ether-swr/guild/useProposal';
 
-let mockedIsAfter = false;
+jest.mock('moment', () => {
+  return () =>
+    jest.requireActual('moment')('01.01.2022 10:10', 'DD.MM.YYYY HH:mm');
+});
+
 let mockedData = {
   id: '0x0',
   creator: '0x0',
-  startTime: {
-    toNumber: () => 3,
-    isAfter: () => false,
-    fromNow: () => 'now',
-    toNow: () => 'later',
-    format: () => 'A Date Formate',
-  },
+  startTime: jest.requireActual('moment')(
+    '01.01.2022 10:10',
+    'DD.MM.YYYY HH:mm'
+  ),
+  endTime: jest.requireActual('moment')('01.01.2022 11:10', 'DD.MM.YYYY HH:mm'),
+  timeDetail: '',
   to: ['0x0', '0x0'],
   data: ['0x0', '0x0'],
-  contractState: 'Active',
+  value: [BigNumber.from(0), BigNumber.from(0)],
+  totalActions: BigNumber.from(0),
   title: 'Proposal Title',
-  description: 'Proposal Description',
   contentHash: '0x0',
-  endTime: {
-    toNumber: () => 3,
-    isAfter: () => mockedIsAfter,
-    fromNow: () => 'now',
-    toNow: () => 'later',
-    format: () => 'A Date Formate',
-  },
+  contractState: ContractState.Active,
+  totalVotes: [BigNumber.from(0)],
 };
 
 jest.mock('react-router-dom', () => ({
@@ -34,13 +35,6 @@ jest.mock('react-router-dom', () => ({
     proposalId: 'proposal_id',
   }),
   useRouteMatch: () => ({ url: '/guild_id/proposal_id/' }),
-}));
-
-jest.mock('hooks/Guilds/ether-swr/guild/useProposal', () => ({
-  useProposal: () => ({
-    data: mockedData,
-    isValidating: false,
-  }),
 }));
 
 jest.mock('contexts/Guilds/transactions', () => ({
@@ -74,20 +68,25 @@ jest.mock('hooks/Guilds/contracts/useContract', () => ({
 }));
 
 describe('useExecutable', () => {
-  it('isExecutable is true when proposal is ready to be executed', async () => {
-    //isAfter is set to true in proposal mock
+  it(`executeProposal function is valid if there is proposal data`, async () => {
+    jest.spyOn(hooks, 'useProposal').mockImplementation(() => ({
+      data: mockedData,
+      isValidating: false,
+      mutate: null,
+    }));
     const { result } = renderHook(() => useExecutable());
     expect(result.current.loading).toBeFalsy();
-    expect(result.current.data.isExecutable).toBeTruthy();
-  });
-  it('executeProposal is able to be fired', async () => {
-    const { result } = renderHook(() => useExecutable());
     expect(result.current.data.executeProposal).toBeTruthy();
   });
-  it('if Proposal does not exist then isExecutable is false', async () => {
-    mockedData = undefined;
+
+  it(`executeProposal function is null if there isn't proposal data`, async () => {
+    jest.spyOn(hooks, 'useProposal').mockImplementation(() => ({
+      data: null,
+      isValidating: false,
+      mutate: null,
+    }));
     const { result } = renderHook(() => useExecutable());
-    expect(result.current.data.isExecutable).toBeFalsy();
+    expect(result.current.loading).toBeTruthy();
     expect(result.current.data.executeProposal).toBeNull();
   });
 });
