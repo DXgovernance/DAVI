@@ -20,7 +20,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
-import useExecutableState from 'hooks/Guilds/useExecutableState';
+import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
 const PageContainer = styled(Box)`
@@ -93,7 +93,7 @@ const ProposalPage: React.FC = () => {
 
   const {
     data: { isExecutable, executeProposal },
-  } = useExecutableState();
+  } = useExecutable();
 
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {

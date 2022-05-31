@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useProposal } from '../ether-swr/guild/useProposal';
 import { ContractState } from 'types/types.guilds.d';
 
-interface useExecutableStateReturns {
+interface useExecutableReturns {
   data: {
     isExecutable: boolean;
     executeProposal: () => void;
@@ -15,7 +15,7 @@ interface useExecutableStateReturns {
   loading: boolean;
 }
 
-function useExecutableState(): useExecutableStateReturns {
+function useExecutable(): useExecutableReturns {
   const { guildId, proposalId } =
     useParams<{ guildId?: string; proposalId?: string }>();
   const { data: proposal, error } = useProposal(guildId, proposalId);
@@ -39,7 +39,7 @@ function useExecutableState(): useExecutableStateReturns {
       data: {
         isExecutable:
           proposal.contractState === ContractState.Active &&
-          proposal.endTime.isAfter(moment.now()),
+          moment(moment.now()).isAfter(proposal.endTime),
         executeProposal: executeProposal,
       },
       loading: false,
@@ -52,4 +52,4 @@ function useExecutableState(): useExecutableStateReturns {
   return { data, error, loading };
 }
 
-export default useExecutableState;
+export default useExecutable;

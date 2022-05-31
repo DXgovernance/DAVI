@@ -21,10 +21,10 @@ export interface Proposal {
 
 export enum ProposalState {
   Active = 'Active',
-  Rejected = 'Rejected',
+  Executable = 'Executable',
   Executed = 'Executed',
+  Rejected = 'Rejected',
   Failed = 'Failed',
-  Finished = 'Finished',
 }
 
 export enum ContractState {

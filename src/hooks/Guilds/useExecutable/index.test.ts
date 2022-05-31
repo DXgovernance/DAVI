@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useExecutableState from '.';
+import useExecutable from '.';
 
-let mockedIsAfter = true;
+let mockedIsAfter = false;
 let mockedData = {
   id: '0x0',
   creator: '0x0',
@@ -73,25 +73,20 @@ jest.mock('hooks/Guilds/contracts/useContract', () => ({
   }),
 }));
 
-describe('useExecutableState', () => {
+describe('useExecutable', () => {
   it('isExecutable is true when proposal is ready to be executed', async () => {
     //isAfter is set to true in proposal mock
-    const { result } = renderHook(() => useExecutableState());
+    const { result } = renderHook(() => useExecutable());
     expect(result.current.loading).toBeFalsy();
     expect(result.current.data.isExecutable).toBeTruthy();
   });
   it('executeProposal is able to be fired', async () => {
-    const { result } = renderHook(() => useExecutableState());
+    const { result } = renderHook(() => useExecutable());
     expect(result.current.data.executeProposal).toBeTruthy();
-  });
-  it('if Proposal status is not active isExecutable is false', async () => {
-    mockedIsAfter = false;
-    const { result } = renderHook(() => useExecutableState());
-    expect(result.current.data.isExecutable).toBeFalsy();
   });
   it('if Proposal does not exist then isExecutable is false', async () => {
     mockedData = undefined;
-    const { result } = renderHook(() => useExecutableState());
+    const { result } = renderHook(() => useExecutable());
     expect(result.current.data.isExecutable).toBeFalsy();
     expect(result.current.data.executeProposal).toBeNull();
   });
