@@ -72,10 +72,6 @@ export default class DaoStore {
       ].values.map(value => {
         return bnum(value);
       });
-      // unparsedCache.proposals[proposalId].stateInScheme =
-      //   unparsedCache.proposals[proposalId].stateInScheme; // eslint-disable-line no-self-assign
-      // unparsedCache.proposals[proposalId].stateInVotingMachine =
-      //   unparsedCache.proposals[proposalId].stateInVotingMachine; // eslint-disable-line no-self-assign
       unparsedCache.proposals[proposalId].currentBoostedVotePeriodLimit = bnum(
         unparsedCache.proposals[proposalId].currentBoostedVotePeriodLimit
       );
