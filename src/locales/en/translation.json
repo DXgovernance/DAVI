@@ -35,5 +35,7 @@
   "chooseProposal": "Choose Proposal",
   "continue": "Continue",
   "onchainAction": "On-chain Action",
-  "noOnchainAction": "No on-chain action"
+  "noOnchainAction": "No on-chain action",
+  "selectAToken": "Select a token",
+  "searchToken": "Search token"
 }

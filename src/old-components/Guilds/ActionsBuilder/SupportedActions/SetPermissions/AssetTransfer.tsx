@@ -10,7 +10,7 @@ import {
 } from 'Components/Primitives/Forms/Control';
 import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
 import Toggle from 'old-components/Guilds/common/Form/Toggle';
-import TokenPicker from 'old-components/Guilds/TokenPicker';
+import { TokenPicker } from 'Components';
 import { ParsedDataInterface, ValidationsInterface } from './types';
 import { BigNumber } from 'ethers';
 import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
