@@ -74,11 +74,8 @@ const ProposalInfoCard: React.FC = () => {
     if (!proposal || !proposal.endTime) return null;
 
     const currentTime = moment();
-    if (proposal.endTime.isBefore(currentTime)) {
-      return `Ended ${proposal.endTime.fromNow()}`;
-    } else {
-      return `Ends ${proposal.endTime.toNow()}`;
-    }
+    let prefix = proposal.endTime.isBefore(currentTime) ? 'Ended' : 'Ends';
+    return `${prefix} ${proposal.endTime.fromNow()}`;
   }, [proposal]);
 
   if (error) return <div>Error</div>;

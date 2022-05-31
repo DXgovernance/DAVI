@@ -39,10 +39,13 @@ const formatterMiddleware: Middleware =
 
       // Add timeDetail
       const currentTime = moment();
-      if (!clone?.endTime) clone.timeDetail = null;
-      else if (clone.endTime?.isBefore(currentTime))
-        clone.timeDetail = clone.endTime.toNow();
-      else clone.timeDetail = clone.endTime.fromNow();
+      let differenceInMilliseconds = currentTime.diff(clone.endTime);
+      let timeDifference = moment.duration(differenceInMilliseconds).humanize();
+      if (clone.endTime.isBefore(currentTime)) {
+        clone.timeDetail = `ended ${timeDifference} ago`;
+      } else {
+        clone.timeDetail = `${timeDifference} left`;
+      }
 
       return { ...swr, data: clone };
     }
