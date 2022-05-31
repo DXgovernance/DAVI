@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepMintEditor renders 1`] = `
+<div>
+   
+  <div
+    class="sc-iBPTik sc-crrszt eoNdMM eCejHX"
+  >
+    <div
+      class="sc-iBPTik sc-dQoVA eoNdMM fUOEeB"
+    >
+      repMint.recipient
+      <div
+        class="sc-kEjbQP ekqecE sc-hBEYId kmSjMd"
+      >
+        <svg>
+          info.svg
+        </svg>
+      </div>
+      <div
+        class="sc-iBPTik sc-iqHYmW eoNdMM gsLXMo"
+      >
+        repMint.recipientTooltip
+      </div>
+    </div>
+    <div
+      class="sc-iBPTik sc-bqyKOL eoNdMM jAxZgR"
+    >
+      <div
+        class="sc-gsTEea fbvUhu"
+      >
+        <div
+          class="sc-dlfnuX jRxgXa"
+        >
+          <img
+            alt="Avatar"
+            class="sc-jSgvzq sc-gKseQn iUxzmp fyfiWy"
+            data-testid="avatar"
+            size="18"
+            src="test"
+          />
+        </div>
+        <input
+          class="sc-bdfBQB wpJaf"
+          readonly=""
+          value="0x0000...0000"
+        />
+        <div
+          class="sc-dlfnuX gJuvwh"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-iBPTik sc-bqyKOL eoNdMM jAxZgR"
+  >
+    <div
+      class="sc-iBPTik sc-crrszt eoNdMM eCejHX"
+    >
+      <div
+        class="sc-iBPTik sc-dQoVA eoNdMM fUOEeB"
+      >
+        repMint.repPercent
+        <div
+          class="sc-kEjbQP ekqecE sc-hBEYId kmSjMd"
+        >
+          <svg>
+            info.svg
+          </svg>
+        </div>
+        <div
+          class="sc-iBPTik sc-iqHYmW eoNdMM gsLXMo"
+        >
+          repMint.repPercentTooltip
+        </div>
+      </div>
+      <div
+        class="sc-iBPTik sc-bqyKOL eoNdMM jAxZgR"
+      >
+        <div
+          class="sc-gsTEea fbvUhu"
+        >
+          <div
+            class="sc-dlfnuX jRxgXa"
+          />
+          <input
+            autocomplete="off"
+            autocorrect="off"
+            class="sc-bdfBQB wpJaf sc-kstqJO cOlXjq"
+            inputmode="decimal"
+            maxlength="79"
+            minlength="1"
+            pattern="^[0-9]*[.,]?[0-9]*$"
+            placeholder="0.0"
+            spellcheck="false"
+            type="text"
+            value="0"
+          />
+          <div
+            class="sc-dlfnuX gJuvwh"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="sc-iBPTik sc-bqyKOL eoNdMM jAxZgR"
+  >
+    <div
+      class="sc-iBPTik sc-crrszt eoNdMM eCejHX"
+    >
+      <div
+        class="sc-iBPTik sc-dQoVA eoNdMM fUOEeB"
+      >
+        repMint.repAmount
+        <div
+          class="sc-kEjbQP ekqecE sc-hBEYId kmSjMd"
+        >
+          <svg>
+            info.svg
+          </svg>
+        </div>
+        <div
+          class="sc-iBPTik sc-iqHYmW eoNdMM gsLXMo"
+        >
+          repMint.repAmountTooltip
+        </div>
+      </div>
+      <div
+        class="sc-iBPTik sc-bqyKOL eoNdMM jAxZgR"
+      >
+        <div
+          class="sc-gsTEea fbvUhu"
+        >
+          <div
+            class="sc-dlfnuX jRxgXa"
+          />
+          <input
+            autocomplete="off"
+            autocorrect="off"
+            class="sc-bdfBQB wpJaf sc-kstqJO cOlXjq"
+            inputmode="decimal"
+            maxlength="79"
+            minlength="1"
+            pattern="^[0-9]*[.,]?[0-9]*$"
+            placeholder="0.0"
+            readonly=""
+            spellcheck="false"
+            type="text"
+            value="0"
+          />
+          <div
+            class="sc-dlfnuX gJuvwh"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;

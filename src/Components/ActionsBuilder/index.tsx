@@ -8,6 +8,7 @@ import SidebarCard, {
   SidebarCardHeaderSpaced,
 } from 'old-components/Guilds/SidebarCard';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface ActionsBuilderProps {
   options: Option[];
@@ -20,6 +21,8 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
   options,
   onChange,
 }) => {
+  const { t } = useTranslation();
+
   const [isEditable, setIsEditable] = useState(editable);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editableOption, setEditableOption] = useState(null);
@@ -42,7 +45,7 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
               variant="secondary"
               onClick={() => (isEditable ? onSave() : onEdit())}
             >
-              {isEditable ? 'Save' : 'Edit'}
+              {isEditable ? t('save') : t('edit')}
             </EditButton>
           )}
         </SidebarCardHeaderSpaced>

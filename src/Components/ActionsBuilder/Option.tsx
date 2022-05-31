@@ -19,6 +19,7 @@ import {
   DetailWrapper,
   OptionWrapper,
 } from './Option.styled';
+import { useTranslation } from 'react-i18next';
 
 interface OptionRowProps {
   option: Option;
@@ -33,6 +34,8 @@ const OptionRow: React.FC<OptionRowProps> = ({
   onChange,
   editOption,
 }) => {
+  const { t } = useTranslation();
+
   const {
     attributes,
     listeners,
@@ -80,14 +83,15 @@ const OptionRow: React.FC<OptionRowProps> = ({
           </Detail>
           <Detail>
             <DataTag>
-              {option?.decodedActions?.length || 'No'} on-chain{' '}
-              {option?.decodedActions?.length >= 2 ? 'actions' : 'action'}
+              {t('onChainActions', { count: option?.decodedActions?.length })}
             </DataTag>
           </Detail>
         </div>
         {isEditable && (
           <div>
-            <EditButton onClick={() => editOption(option)}>Edit</EditButton>
+            <EditButton onClick={() => editOption(option)}>
+              {t('edit')}
+            </EditButton>
           </div>
         )}
       </DetailWrapper>
@@ -118,7 +122,7 @@ const OptionRow: React.FC<OptionRowProps> = ({
 
         {isEditable && (
           <AddButton
-            label="Add Action"
+            label={t('addAction')}
             onClick={() => setIsActionsModalOpen(true)}
           />
         )}

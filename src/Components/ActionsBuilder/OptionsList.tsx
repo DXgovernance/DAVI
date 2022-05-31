@@ -34,6 +34,7 @@ import {
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import { BigNumber } from 'ethers';
+import { useTranslation } from 'react-i18next';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -54,6 +55,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
   addOption,
   editOption,
 }) => {
+  const { t } = useTranslation();
   const [activeId, setActiveId] = useState<string | null>(null);
   const lastOverId = useRef<UniqueIdentifier | null>(null);
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
@@ -352,7 +354,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
         <>
           <Divider />
           <AddOptionWrapper>
-            <AddButton label="Add Option" onClick={addOption} />
+            <AddButton label={t('addOption')} onClick={addOption} />
           </AddOptionWrapper>
         </>
       )}

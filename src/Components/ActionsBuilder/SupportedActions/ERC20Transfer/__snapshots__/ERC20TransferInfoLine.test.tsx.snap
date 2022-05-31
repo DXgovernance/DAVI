@@ -25,7 +25,7 @@ exports[`ERC20TransferInfoLine renders 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
-    Transfer
+    transfer
      
      
   </span>
@@ -99,6 +99,7 @@ exports[`ERC20TransferInfoLine renders in compact mode 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
+    
      
      
   </span>
@@ -172,7 +173,7 @@ exports[`ERC20TransferInfoLine renders with default values 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
-    Transfer
+    transfer
      
      
   </span>
@@ -246,6 +247,7 @@ exports[`ERC20TransferInfoLine renders with default values in compact mode 1`] =
   <span
     class="sc-bdfBQB enldmJ"
   >
+    
      
      
   </span>
@@ -319,7 +321,7 @@ exports[`ERC20TransferInfoLine renders without data 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
-    Transfer
+    transfer
      
      
   </span>
@@ -393,6 +395,7 @@ exports[`ERC20TransferInfoLine renders without data in compact mode 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
+    
      
      
   </span>

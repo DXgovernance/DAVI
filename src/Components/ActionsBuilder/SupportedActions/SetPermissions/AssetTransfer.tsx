@@ -14,6 +14,7 @@ import TokenPicker from 'old-components/Guilds/TokenPicker';
 import { ParsedDataInterface, ValidationsInterface } from './types';
 import { BigNumber } from 'ethers';
 import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
+import { useTranslation } from 'react-i18next';
 
 interface AssetTransferProps {
   validations: ValidationsInterface;
@@ -48,6 +49,8 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
   anyAddressToggled,
   handleToggleAnyAddressChange,
 }) => {
+  const { t } = useTranslation();
+
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
 
   return (
@@ -59,7 +62,7 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
             name="asset"
             aria-label="asset picker"
             value={tokenInfo?.symbol || ''}
-            placeholder="Token"
+            placeholder={t('token')}
             icon={
               <div>
                 {pickedAsset && (
@@ -87,7 +90,7 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
       </Control>
 
       <Control>
-        <ControlLabel>To address</ControlLabel>
+        <ControlLabel>{t('toAddress')}</ControlLabel>
         <ControlRow>
           <AddressInput
             value={customToAddress}
@@ -96,7 +99,7 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
             name="to-address"
             aria-label="to address input"
             disabled={anyAddressToggled}
-            placeholder="Ethereum address"
+            placeholder={t('ethereumAddress')}
           />
           <ToggleWrapper>
             <Toggle
@@ -105,12 +108,14 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
               value={anyAddressToggled}
               onChange={handleToggleAnyAddressChange}
             />
-            <ToggleLabel selected={anyAddressToggled}>Any address</ToggleLabel>
+            <ToggleLabel selected={anyAddressToggled}>
+              {t('anyAddress')}
+            </ToggleLabel>
           </ToggleWrapper>
         </ControlRow>
       </Control>
       <Control>
-        <ControlLabel>Amount</ControlLabel>
+        <ControlLabel>{t('amount')}</ControlLabel>
         <ControlRow>
           <StyledTokenAmount
             name="amount"
@@ -127,7 +132,9 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
               value={maxValueToggled}
               onChange={handleToggleMaxValueChange}
             />
-            <ToggleLabel selected={maxValueToggled}>Max value</ToggleLabel>
+            <ToggleLabel selected={maxValueToggled}>
+              {t('maxValue')}
+            </ToggleLabel>
           </ToggleWrapper>
         </ControlRow>
       </Control>

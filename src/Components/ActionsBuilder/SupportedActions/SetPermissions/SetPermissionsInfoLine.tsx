@@ -6,10 +6,13 @@ import { FiArrowRight, FiNavigation } from 'react-icons/fi';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { ParsedDataInterface } from './types';
+import { useTranslation } from 'react-i18next';
 
 // TODO: What is the most logical way to present the information? Is more information needed?
 
 const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
+  const { t } = useTranslation();
+
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
 
@@ -33,7 +36,7 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
       <Segment>
         <FiNavigation size={16} />
       </Segment>
-      <Segment>Permission</Segment>
+      <Segment>{t('permission')}</Segment>
       <Segment>
         <FiArrowRight />
       </Segment>

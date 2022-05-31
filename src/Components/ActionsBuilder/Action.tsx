@@ -19,6 +19,7 @@ import {
   GripWithMargin,
   TabButton,
 } from './Action.styled';
+import { useTranslation } from 'react-i18next';
 
 interface ActionViewProps {
   call?: Call;
@@ -32,6 +33,7 @@ const ActionRow: React.FC<ActionViewProps> = ({
   decodedAction,
   isEditable,
 }) => {
+  const { t } = useTranslation();
   const {
     attributes,
     listeners,
@@ -74,7 +76,9 @@ const ActionRow: React.FC<ActionViewProps> = ({
           {!decodedCall && <UndecodableCallInfoLine />}
         </CardLabel>
         <CardActions>
-          {isEditable && <EditButtonWithMargin>Edit</EditButtonWithMargin>}
+          {isEditable && (
+            <EditButtonWithMargin>{t('edit')}</EditButtonWithMargin>
+          )}
           <ChevronIcon onClick={() => setExpanded(!expanded)}>
             {expanded ? (
               <FiChevronUp height={16} />
@@ -94,13 +98,13 @@ const ActionRow: React.FC<ActionViewProps> = ({
                 active={activeTab === 0}
                 onClick={() => setActiveTab(0)}
               >
-                Default
+                {t('default')}
               </TabButton>
               <TabButton
                 active={activeTab === 1}
                 onClick={() => setActiveTab(1)}
               >
-                Function Calls
+                {t('functionCalls')}
               </TabButton>
             </DetailWrapper>
           )}

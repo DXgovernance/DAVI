@@ -8,8 +8,11 @@ import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
 import { MAINNET_ID, shortenAddress } from 'utils';
+import { useTranslation } from 'react-i18next';
 
 const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
+  const { t } = useTranslation();
+
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
@@ -35,8 +38,8 @@ const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
   return (
     <>
       <DetailHeader>
-        <DetailCell>Receiver</DetailCell>
-        <DetailCell>Amount</DetailCell>
+        <DetailCell>{t('receiver')}</DetailCell>
+        <DetailCell>{t('amount')}</DetailCell>
       </DetailHeader>
 
       <DetailRow>

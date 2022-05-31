@@ -10,7 +10,7 @@ exports[`ERC20TransferEditor renders 1`] = `
       <div
         class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
       >
-        Recipient
+        recipient
       </div>
       <div
         class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -33,7 +33,7 @@ exports[`ERC20TransferEditor renders 1`] = `
           </div>
           <input
             class="sc-eCstlR ia-DdDN"
-            placeholder="Ethereum address"
+            placeholder="ethereumAddress"
             value="0x0000000000000000000000000000000000000000"
           />
           <div
@@ -80,7 +80,7 @@ exports[`ERC20TransferEditor renders 1`] = `
         <div
           class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
         >
-          Amount
+          amount
         </div>
         <div
           class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -119,7 +119,7 @@ exports[`ERC20TransferEditor renders 1`] = `
         <div
           class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
         >
-          Asset
+          asset
         </div>
         <div
           class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -188,7 +188,7 @@ exports[`ERC20TransferEditor renders 1`] = `
             </div>
             <input
               class="sc-eCstlR ia-DdDN"
-              placeholder="Token"
+              placeholder="token"
               readonly=""
               value=""
             />
@@ -230,7 +230,7 @@ exports[`ERC20TransferEditor renders with default values 1`] = `
       <div
         class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
       >
-        Recipient
+        recipient
       </div>
       <div
         class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -245,7 +245,7 @@ exports[`ERC20TransferEditor renders with default values 1`] = `
           </div>
           <input
             class="sc-eCstlR ia-DdDN"
-            placeholder="Ethereum address"
+            placeholder="ethereumAddress"
             value=""
           />
           <div
@@ -263,7 +263,7 @@ exports[`ERC20TransferEditor renders with default values 1`] = `
         <div
           class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
         >
-          Amount
+          amount
         </div>
         <div
           class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -302,7 +302,7 @@ exports[`ERC20TransferEditor renders with default values 1`] = `
         <div
           class="sc-fubCzh sc-iktFfs iYPEgl jlZbtv"
         >
-          Asset
+          asset
         </div>
         <div
           class="sc-fubCzh sc-jJEKmz iYPEgl foaCaO"
@@ -317,7 +317,7 @@ exports[`ERC20TransferEditor renders with default values 1`] = `
             </div>
             <input
               class="sc-eCstlR ia-DdDN"
-              placeholder="Token"
+              placeholder="token"
               readonly=""
               value=""
             />

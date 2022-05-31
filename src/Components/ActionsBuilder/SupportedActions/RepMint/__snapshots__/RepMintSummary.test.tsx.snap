@@ -17,7 +17,8 @@ exports[`RepMintSummary renders 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>
@@ -83,7 +84,8 @@ exports[`RepMintSummary renders in compact mode 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>
@@ -149,7 +151,8 @@ exports[`RepMintSummary renders with default values 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>
@@ -215,7 +218,8 @@ exports[`RepMintSummary renders with default values in compact mode 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>
@@ -281,7 +285,8 @@ exports[`RepMintSummary renders without data 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>
@@ -347,7 +352,8 @@ exports[`RepMintSummary renders without data in compact mode 1`] = `
   <span
     class="sc-eCstlR jQbHjP"
   >
-    Mint 
+    mint
+     
     NaN
      %
   </span>

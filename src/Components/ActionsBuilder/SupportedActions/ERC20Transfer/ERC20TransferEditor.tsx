@@ -19,6 +19,7 @@ import {
   ControlLabel,
   ControlRow,
 } from 'Components/Primitives/Forms/Control';
+import { useTranslation } from 'react-i18next';
 
 const Spacer = styled(Box)`
   margin-right: 1rem;
@@ -41,6 +42,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
 }) => {
+  const { t } = useTranslation();
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
 
   const { chainId } = useWeb3React();
@@ -108,7 +110,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   return (
     <div>
       <Control>
-        <ControlLabel>Recipient</ControlLabel>
+        <ControlLabel>{t('recipient')}</ControlLabel>
         <ControlRow>
           <Input
             value={parsedData.destination || ''}
@@ -130,7 +132,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                 </ClickableIcon>
               ) : null
             }
-            placeholder="Ethereum address"
+            placeholder={t('ethereumAddress')}
             onChange={e => setTransferAddress(e.target.value)}
           />
         </ControlRow>
@@ -138,7 +140,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 
       <ControlRow>
         <Control>
-          <ControlLabel>Amount</ControlLabel>
+          <ControlLabel>{t('amount')}</ControlLabel>
           <ControlRow>
             <TokenAmountInput
               decimals={tokenInfo?.decimals}
@@ -151,11 +153,11 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
         <Spacer />
 
         <Control>
-          <ControlLabel>Asset</ControlLabel>
+          <ControlLabel>{t('asset')}</ControlLabel>
           <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
             <Input
               value={tokenInfo?.symbol || ''}
-              placeholder="Token"
+              placeholder={t('token')}
               icon={
                 <div>
                   {parsedData?.tokenAddress && (

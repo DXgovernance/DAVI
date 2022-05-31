@@ -41,7 +41,7 @@ exports[`UndecodableCallInfoLine renders 1`] = `
   <span
     class="sc-bdfBQB sc-dlfnuX enldmJ dJRRZW"
   >
-    Unknown Action
+    unknownAction
   </span>
    
 </div>

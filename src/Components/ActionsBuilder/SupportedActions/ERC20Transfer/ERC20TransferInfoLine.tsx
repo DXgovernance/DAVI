@@ -8,11 +8,14 @@ import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
 import { FiArrowRight, FiNavigation } from 'react-icons/fi';
 import { MAINNET_ID, shortenAddress } from 'utils';
+import { useTranslation } from 'react-i18next';
 
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
 }) => {
+  const { t } = useTranslation();
+
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
@@ -41,7 +44,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
         <FiNavigation size={16} />
       </Segment>
       <Segment>
-        {!compact && 'Transfer'} {roundedBalance} {tokenInfo?.symbol}
+        {!compact ? t('transfer') : ''} {roundedBalance} {tokenInfo?.symbol}
       </Segment>
       <Segment>
         <FiArrowRight />

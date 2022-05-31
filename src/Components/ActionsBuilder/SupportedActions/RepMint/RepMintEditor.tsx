@@ -15,6 +15,7 @@ import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
 import { StyledToolTip } from 'old-components/common/ToolTip';
+import { useTranslation } from 'react-i18next';
 
 const Control = styled(Box)`
   display: flex;
@@ -58,6 +59,8 @@ export const Mint: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
 }) => {
+  const { t } = useTranslation();
+
   // parse transfer state from calls
   const [repPercent, setRepPercent] = useState<string>('0');
   const [repAmount, setRepAmount] = useState<string>('0');
@@ -94,11 +97,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
     <React.Fragment>
       <Control>
         <ControlLabel>
-          Recipient
+          {t('repMint.recipient')}
           <StyledInfoIcon src={Info} />
-          <StyledToolTip data-testid="rep-address-info">
-            The address that will receive the REP minted.
-          </StyledToolTip>
+          <StyledToolTip>{t('repMint.recipientTooltip')}</StyledToolTip>
         </ControlLabel>
         <ControlRow>
           <Input
@@ -117,11 +118,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
       <ControlRow>
         <Control>
           <ControlLabel>
-            Reputation in %
+            {t('repMint.repPercent')}
             <StyledInfoIcon src={Info} />
-            <StyledToolTip data-testid="rep-percentage-info">
-              The percentage of the total reputation supply that will be minted.
-            </StyledToolTip>
+            <StyledToolTip>{t('repMint.repPercentTooltip')}</StyledToolTip>
           </ControlLabel>
           <ControlRow>
             <RepMintInput value={repPercent} onChange={handleRepChange} />
@@ -131,11 +130,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
       <ControlRow>
         <Control>
           <ControlLabel>
-            Reputation Amount
+            {t('repMint.repAmount')}
             <StyledInfoIcon src={Info} />
-            <StyledToolTip data-testid="rep-amount-info">
-              The amount of REP that will be minted.
-            </StyledToolTip>
+            <StyledToolTip>{t('repMint.repAmountTooltip')}</StyledToolTip>
           </ControlLabel>
           <ControlRow>
             <RepMintInput

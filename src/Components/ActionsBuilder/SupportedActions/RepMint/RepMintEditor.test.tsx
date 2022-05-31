@@ -1,4 +1,3 @@
-import { screen } from '@testing-library/react';
 import { BigNumber } from 'ethers';
 import { render } from 'utils/tests';
 import { repMintEmptyDecodedCallMock } from './fixtures';
@@ -36,14 +35,10 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
 }));
 
 describe('RepMintEditor', () => {
-  beforeAll(() => {
-    render(
+  it('renders', () => {
+    const { container } = render(
       <Mint decodedCall={repMintEmptyDecodedCallMock} updateCall={jest.fn()} />
     );
-  });
-  it('renders', () => {
-    expect(screen.getByText('Recipient')).toBeInTheDocument();
-    expect(screen.getByText('Reputation in %')).toBeInTheDocument();
-    expect(screen.getByText('Reputation Amount')).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
   });
 });

@@ -9,12 +9,12 @@ exports[`ERC20TransferSummary renders 1`] = `
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Receiver
+      receiver
     </div>
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Amount
+      amount
     </div>
   </div>
   <div
@@ -59,12 +59,12 @@ exports[`ERC20TransferSummary renders with default values 1`] = `
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Receiver
+      receiver
     </div>
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Amount
+      amount
     </div>
   </div>
   <div
@@ -109,12 +109,12 @@ exports[`ERC20TransferSummary renders without data 1`] = `
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Receiver
+      receiver
     </div>
     <div
       class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
     >
-      Amount
+      amount
     </div>
   </div>
   <div

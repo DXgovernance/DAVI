@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import { BigNumber } from 'ethers';
 import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
+import { useTranslation } from 'react-i18next';
 
 const FunctionSignatureWrapper = styled.div`
   color: ${({ theme }) => theme.colors.proposalText.grey};
@@ -48,12 +49,14 @@ const FunctionCall: React.FC<FunctionCallProps> = ({
   anyAddressToggled,
   handleToggleAnyAddressChange,
 }) => {
+  const { t } = useTranslation();
+
   // ? maybe change the input validation so it doesn't validates until blur?
 
   return (
     <div>
       <Control>
-        <ControlLabel>To address</ControlLabel>
+        <ControlLabel>{t('toAddress')}</ControlLabel>
         <ControlRow>
           <AddressInput
             value={customToAddress}
@@ -62,7 +65,7 @@ const FunctionCall: React.FC<FunctionCallProps> = ({
             name="to-address"
             aria-label="to address input"
             disabled={anyAddressToggled}
-            placeholder="Ethereum address"
+            placeholder={t('ethereumAddress')}
           />
           <ToggleWrapper>
             <Toggle
@@ -71,32 +74,34 @@ const FunctionCall: React.FC<FunctionCallProps> = ({
               value={anyAddressToggled}
               onChange={handleToggleAnyAddressChange}
             />
-            <ToggleLabel selected={anyAddressToggled}>Any address</ToggleLabel>
+            <ToggleLabel selected={anyAddressToggled}>
+              {t('anyAddress')}
+            </ToggleLabel>
           </ToggleWrapper>
         </ControlRow>
       </Control>
       <Control>
-        <ControlLabel>Function name</ControlLabel>
+        <ControlLabel>{t('functionName')}</ControlLabel>
         <ControlRow>
           <Input
             isInvalid={!validations.functionName}
             name="function-signature"
             aria-label="function signature input"
             value={customFunctionName || ''}
-            placeholder="Function name"
+            placeholder={t('functionName')}
             onChange={e => handleCustomFunctionSignature(e.target.value)}
           />
         </ControlRow>
         <ControlRow>
           {customFunctionName.substring(0, 2) !== '0x' && (
             <FunctionSignatureWrapper>
-              Function signature: {parsedData?.functionSignature}
+              {t('functionSignature')}: {parsedData?.functionSignature}
             </FunctionSignatureWrapper>
           )}
         </ControlRow>
       </Control>
       <Control>
-        <ControlLabel>Amount</ControlLabel>
+        <ControlLabel>{t('amount')}</ControlLabel>
         <ControlRow>
           <StyledTokenAmount
             name="amount"
@@ -113,7 +118,9 @@ const FunctionCall: React.FC<FunctionCallProps> = ({
               value={maxValueToggled}
               onChange={handleToggleMaxValueChange}
             />
-            <ToggleLabel selected={maxValueToggled}>Max value</ToggleLabel>
+            <ToggleLabel selected={maxValueToggled}>
+              {t('maxValue')}
+            </ToggleLabel>
           </ToggleWrapper>
         </ControlRow>
       </Control>

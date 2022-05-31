@@ -13,12 +13,14 @@ import {
   ParamTitleRow,
   ParamTitleTag,
 } from './CallDetails.styled';
+import { useTranslation } from 'react-i18next';
 
 export const CallDetails: React.FC<ActionViewProps> = ({
   decodedCall,
   approveSpendTokens,
 }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -108,7 +110,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
               {param.name} <em>({param.type})</em>
             </ParamTitleTag>
             {param.type === 'bytes' && (
-              <Button variant="secondary">Decode</Button>
+              <Button variant="secondary">{t('decode')}</Button>
             )}
           </ParamTitleRow>
 

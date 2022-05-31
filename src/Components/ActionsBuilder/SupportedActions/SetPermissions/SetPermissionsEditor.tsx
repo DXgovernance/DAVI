@@ -12,6 +12,7 @@ import { Button } from 'old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
 import { MAX_UINT, ANY_ADDRESS } from 'utils';
 import { ParsedDataInterface, ValidationsInterface } from './types';
+import { useTranslation } from 'react-i18next';
 
 const Web3 = require('web3');
 const web3 = new Web3();
@@ -44,6 +45,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
 }) => {
+  const { t } = useTranslation();
+
   const [activeTab, setActiveTab] = useState(0);
 
   const { chainId } = useWeb3React();
@@ -247,7 +250,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
 
   const tabArray = [
     {
-      title: 'Assets transfer',
+      title: t('assetTransfer'),
+      id: 'asset-transfer-tab',
       component: () => (
         <AssetTransfer
           validations={validations}
@@ -268,7 +272,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
       ),
     },
     {
-      title: 'Functions call',
+      title: t('functionCall'),
+      id: 'functions-call-tab',
       component: () => (
         <FunctionCall
           validations={validations}
@@ -294,10 +299,11 @@ const Permissions: React.FC<ActionEditorProps> = ({
       <DetailWrapper>
         {tabArray.map((tab, index) => (
           <TabButton
-            aria-label={`${tab.title} tab`}
+            aria-label={tab.title}
+            data-testid={tab.id}
             active={activeTab === index}
             onClick={() => setActiveTab(index)}
-            key={index}
+            key={tab.id}
           >
             {tab.title}
           </TabButton>

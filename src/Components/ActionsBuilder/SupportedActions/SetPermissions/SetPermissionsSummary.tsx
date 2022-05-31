@@ -8,10 +8,13 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
+import { useTranslation } from 'react-i18next';
 
 // TODO: What is the best way to display the information?
 
 const SetPermissionsSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
+  const { t } = useTranslation();
+
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
 
@@ -40,8 +43,8 @@ const SetPermissionsSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
   return (
     <>
       <DetailHeader>
-        <DetailCell>Receiver</DetailCell>
-        <DetailCell>Amount</DetailCell>
+        <DetailCell>{t('receiver')}</DetailCell>
+        <DetailCell>{t('amount')}</DetailCell>
       </DetailHeader>
 
       <DetailRow>

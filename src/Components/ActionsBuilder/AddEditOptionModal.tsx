@@ -79,7 +79,7 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
           <Input
             value={label}
             placeholder={t('optionLabel', {
-              defaultValue: 'Delete Option',
+              defaultValue: 'Option Label',
             })}
             icon={<Dot color={theme?.colors?.votes?.[options.length]} />}
             onChange={e => setLabel(e.target.value)}
@@ -89,7 +89,7 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
         {!!editableOption && (
           <Box padding="0 0 1rem 0">
             <DeleteButton onClick={deleteOption} fullWidth variant="secondary">
-              {t('deleteOption', { defaultValue: 'Delete Option' })}
+              {t('deleteOption')}
             </DeleteButton>
           </Box>
         )}
@@ -100,7 +100,7 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
             fullWidth
             onClick={handleConfirmSave}
           >
-            {t('save', { defaultValue: 'Save' })}
+            {t('save')}
           </Button>
         </Box>
       </Box>
