@@ -12,7 +12,6 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { ActionModal } from 'Components/ActionsModal';
-import { Box } from 'Components/Primitives/Layout';
 import { useState } from 'react';
 import {
   ActionsWrapper,

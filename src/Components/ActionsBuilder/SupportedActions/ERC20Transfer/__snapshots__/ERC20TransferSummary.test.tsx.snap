@@ -28,7 +28,7 @@ exports[`ERC20TransferSummary renders 1`] = `
       >
         <img
           alt="Avatar"
-          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh cQownQ"
           data-testid="avatar"
           size="24"
           src="test"
@@ -78,7 +78,7 @@ exports[`ERC20TransferSummary renders with default values 1`] = `
       >
         <img
           alt="Avatar"
-          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh cQownQ"
           data-testid="avatar"
           size="24"
           src="test"
@@ -128,7 +128,7 @@ exports[`ERC20TransferSummary renders without data 1`] = `
       >
         <img
           alt="Avatar"
-          class="sc-kEjbQP sc-iqHYmW hMKsfh kkxmkb"
+          class="sc-kEjbQP sc-iqHYmW hMKsfh cQownQ"
           data-testid="avatar"
           size="24"
           src="test"

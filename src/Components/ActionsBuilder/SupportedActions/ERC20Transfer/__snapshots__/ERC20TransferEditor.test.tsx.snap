@@ -24,7 +24,7 @@ exports[`ERC20TransferEditor renders 1`] = `
             <div>
               <img
                 alt="Avatar"
-                class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+                class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
                 data-testid="avatar"
                 size="24"
                 src="test"

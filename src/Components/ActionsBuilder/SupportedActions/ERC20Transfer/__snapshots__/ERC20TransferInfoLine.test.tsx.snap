@@ -59,7 +59,7 @@ exports[`ERC20TransferInfoLine renders 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
@@ -132,7 +132,7 @@ exports[`ERC20TransferInfoLine renders in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"
@@ -206,7 +206,7 @@ exports[`ERC20TransferInfoLine renders with default values 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
@@ -279,7 +279,7 @@ exports[`ERC20TransferInfoLine renders with default values in compact mode 1`] =
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"
@@ -353,7 +353,7 @@ exports[`ERC20TransferInfoLine renders without data 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bbuZrv"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
@@ -426,7 +426,7 @@ exports[`ERC20TransferInfoLine renders without data in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl dcNSzf"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"

@@ -51,7 +51,7 @@ exports[`RepMintSummary renders 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"
@@ -117,7 +117,7 @@ exports[`RepMintSummary renders in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"
@@ -183,7 +183,7 @@ exports[`RepMintSummary renders with default values 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"
@@ -249,7 +249,7 @@ exports[`RepMintSummary renders with default values in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"
@@ -315,7 +315,7 @@ exports[`RepMintSummary renders without data 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"
@@ -381,7 +381,7 @@ exports[`RepMintSummary renders without data in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn hMXzsC"
+      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
       data-testid="avatar"
       size="24"
       src="test"

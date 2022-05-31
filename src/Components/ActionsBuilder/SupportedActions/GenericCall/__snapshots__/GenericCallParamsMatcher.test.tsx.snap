@@ -8,7 +8,7 @@ exports[`GenericCallParamsMatcher renders all component types correctly 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn kWTucm"
+      class="sc-dlfnuX sc-hKgJUU hZGubn gZeqnV"
       data-testid="avatar"
       size="16"
       src="test"
@@ -93,7 +93,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-hKgJUU hZGubn kWTucm"
+        class="sc-dlfnuX sc-hKgJUU hZGubn gZeqnV"
         data-testid="avatar"
         size="16"
         src="test"

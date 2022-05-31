@@ -17,7 +17,7 @@ exports[`UndecodableCallDetails renders 1`] = `
       </span>
     </div>
     <a
-      class="sc-pGacB edJhPP"
+      class="sc-pGacB fgXijQ"
       href="/"
     >
       <div
@@ -125,7 +125,7 @@ exports[`UndecodableCallDetails renders with approval call 1`] = `
       </span>
     </div>
     <a
-      class="sc-pGacB edJhPP"
+      class="sc-pGacB fgXijQ"
       href="/"
     >
       <div
