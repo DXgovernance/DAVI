@@ -19,12 +19,12 @@ function useExecutable(): useExecutableReturns {
   const { createTransaction } = useTransactions();
   const guildContract = useERC20Guild(guildId);
 
-  const executeProposal = () =>
-    createTransaction('Execute Proposal', async () => {
-      return guildContract.endProposal(proposalId);
-    });
-
   const { data, loading } = useMemo(() => {
+    const executeProposal = () =>
+      createTransaction('Execute Proposal', async () => {
+        return guildContract.endProposal(proposalId);
+      });
+
     if (!proposal)
       return {
         data: { executeProposal: null },
@@ -39,7 +39,7 @@ function useExecutable(): useExecutableReturns {
     };
 
     return result;
-  }, [proposal]);
+  }, [createTransaction, error, guildContract, proposal, proposalId]);
 
   return { data, error, loading };
 }

@@ -1,12 +1,11 @@
 import useProposalState from '.';
 import { Proposal, ContractState } from 'types/types.guilds.d';
-// import moment from 'moment';
 import { BigNumber } from 'ethers';
 import { renderHook } from '@testing-library/react-hooks';
 
 jest.mock('moment', () => {
   return () =>
-    jest.requireActual('moment')('01.01.2022 10:10', 'DD.MM.YYYY HH:mm');
+    jest.requireActual('moment')('01.01.2022 11:10', 'DD.MM.YYYY HH:mm');
 });
 
 const proposal: Proposal = {
@@ -16,7 +15,7 @@ const proposal: Proposal = {
     '01.01.2022 10:10',
     'DD.MM.YYYY HH:mm'
   ),
-  endTime: jest.requireActual('moment')('01.01.2022 11:10', 'DD.MM.YYYY HH:mm'),
+  endTime: jest.requireActual('moment')('01.01.2022 12:10', 'DD.MM.YYYY HH:mm'),
   timeDetail: '',
   to: ['0x0', '0x0'],
   data: ['0x0', '0x0'],
@@ -45,7 +44,17 @@ describe(`useProposalState`, () => {
     expect(result.current).toBe('Active');
   });
 
-  it(`Should return 'Failed' if the state is 'Active' and the current time is after the endTime`, () => {});
+  it(`Should return 'Executable' if the state is 'Active' and the current time is after the endTime`, () => {
+    const tempProposal = { ...proposal };
+    tempProposal.contractState = ContractState.Active;
+    tempProposal.endTime = jest.requireActual('moment')(
+      '01.01.2022 11:00',
+      'DD.MM.YYYY HH:mm'
+    );
+
+    const { result } = renderHook(() => useProposalState(tempProposal));
+    expect(result.current).toBe('Executable');
+  });
 
   it(`Should return 'Executed' if the state is 'Executed'`, () => {
     const tempProposal = { ...proposal };
