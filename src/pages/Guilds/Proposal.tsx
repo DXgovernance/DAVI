@@ -1,6 +1,6 @@
 import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
-import ProposalDescription from '../../old-components/Guilds/ProposalPage/ProposalDescription';
+import ProposalDescription from 'Components/ProposalDescription/ProposalDescription';
 import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
 import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
 import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
@@ -20,6 +20,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import moment from 'moment';
 import { ProposalState } from 'Components/Types';
+import { useTranslation } from 'react-i18next';
+import useProposalMetadata from 'hooks/Guilds/ether-swr/guild/useProposalMetadata';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -85,6 +87,12 @@ const ProposalPage: React.FC = () => {
   const { data: proposalIds } = useGuildProposalIds(guildId);
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
+
+  const { data: metadata, error: metadataError } = useProposalMetadata(
+    guildId,
+    proposalId
+  );
+  const { t } = useTranslation();
 
   // TODO These are copied from ProposalCardWrapper and to be replaced
   const timeDetail = useMemo(() => {
@@ -173,7 +181,7 @@ const ProposalPage: React.FC = () => {
 
         <AddressButton address={proposal?.creator} />
 
-        <ProposalDescription />
+        <ProposalDescription t={t} metadata={metadata} error={metadataError} />
 
         <ProposalActionsWrapper>
           <ActionsBuilder options={options} editable={false} />
