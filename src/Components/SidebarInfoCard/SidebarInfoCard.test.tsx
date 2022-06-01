@@ -1,13 +1,9 @@
 import SidebarInfoCard from './SidebarInfoCard';
 import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
+
 jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
   useGuildConfig: () => jest.fn(),
-}));
-
-jest.mock('hooks/Guilds/guild/useVotingPowerPercent', () => ({
-  __esModule: true,
-  default: () => jest.fn(),
 }));
 
 describe('SidebarInfoCard', () => {

@@ -15,7 +15,7 @@ Object {
           <h2
             class="sc-iBPTik sc-fubCzh cBZYjx gMMEXo"
           >
-            Information
+            information
           </h2>
         </div>
         <div
@@ -30,12 +30,12 @@ Object {
               <span
                 class="sc-dQoVA dZpTnI"
               >
-                Consensus System
+                consensusSystem
               </span>
               <span
                 class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
               >
-                Guild
+                guilds.guild
               </span>
             </div>
             <div
@@ -44,7 +44,7 @@ Object {
               <span
                 class="sc-dQoVA dZpTnI"
               >
-                Proposal Duration
+                proposalDuration
               </span>
               <span
                 class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
@@ -58,7 +58,7 @@ Object {
               <span
                 class="sc-dQoVA dZpTnI"
               >
-                Quorum
+                quorum
               </span>
               <span
                 class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
@@ -83,7 +83,7 @@ Object {
         <h2
           class="sc-iBPTik sc-fubCzh cBZYjx gMMEXo"
         >
-          Information
+          information
         </h2>
       </div>
       <div
@@ -98,12 +98,12 @@ Object {
             <span
               class="sc-dQoVA dZpTnI"
             >
-              Consensus System
+              consensusSystem
             </span>
             <span
               class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
             >
-              Guild
+              guilds.guild
             </span>
           </div>
           <div
@@ -112,7 +112,7 @@ Object {
             <span
               class="sc-dQoVA dZpTnI"
             >
-              Proposal Duration
+              proposalDuration
             </span>
             <span
               class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
@@ -126,7 +126,7 @@ Object {
             <span
               class="sc-dQoVA dZpTnI"
             >
-              Quorum
+              quorum
             </span>
             <span
               class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
