@@ -83,7 +83,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             class="sc-hOqruk cHwGYV"
           >
             <div
-              class="sc-jrAFXE sc-dacGJm jLAWlL dTZYfv"
+              class="sc-jrAFXE sc-dacGJm jLAWlL jqIJTf"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
@@ -229,7 +229,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
             class="sc-hOqruk cHwGYV"
           >
             <div
-              class="sc-jrAFXE sc-dacGJm jLAWlL dTZYfv"
+              class="sc-jrAFXE sc-dacGJm jLAWlL jqIJTf"
             >
               <div
                 class="sc-bdfBQB"

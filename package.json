@@ -134,6 +134,7 @@
     "@storybook/testing-library": "^0.0.11",
     "@synthetixio/synpress": "^1.2.0",
     "@testing-library/cypress": "^8.0.2",
+    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.4.0",
