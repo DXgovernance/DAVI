@@ -98,6 +98,7 @@ export const CreateMetadataPage = observer(() => {
   useEffect(() => {
     const proposalTypes = configStore.getProposalTypes();
     setProposalConfig(proposalTypes.find(type => type.id === proposalType));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [descriptionText, setDescriptionText] = useState(
