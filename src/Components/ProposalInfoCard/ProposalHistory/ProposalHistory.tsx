@@ -39,4 +39,3 @@ const ProposalHistory: React.FC<ProposalHistoryProps> = ({ proposal }) => {
 };
 
 export default ProposalHistory;
-
