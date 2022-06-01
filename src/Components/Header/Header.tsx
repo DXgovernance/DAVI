@@ -19,7 +19,7 @@ const Header = () => {
     <HeaderWrapper as="header">
       <HeaderContainer>
         <ClickableHeading onClick={() => history.push('/')} size={2}>
-          <strong>{t('guilds.guilds')}</strong>
+          <strong>{t('guilds.guilds_other')}</strong>
         </ClickableHeading>
         {active && !error && (
           <MenuItems>

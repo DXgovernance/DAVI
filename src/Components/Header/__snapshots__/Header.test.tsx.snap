@@ -14,7 +14,7 @@ exports[`Header Should match snapshot 1`] = `
         size="2"
       >
         <strong>
-          guilds.guilds
+          guilds.guilds_other
         </strong>
       </h2>
     </div>

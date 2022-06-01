@@ -5,4 +5,5 @@ export interface ProposalInfoCardProps {
   proposal: Proposal;
   guildConfig: GuildConfigProps;
   quorum: any;
+  t: any;
 }

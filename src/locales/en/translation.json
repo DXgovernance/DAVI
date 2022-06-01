@@ -1,7 +1,8 @@
 {
   "guilds": {
     "create": "Create Guild",
-    "guilds": "Guilds"
+    "guilds_one": "Guild",
+    "guilds_other": "Guilds"
   },
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
@@ -35,5 +36,13 @@
   "chooseProposal": "Choose Proposal",
   "continue": "Continue",
   "onchainAction": "On-chain Action",
-  "noOnchainAction": "No on-chain action"
+  "noOnchainAction": "No on-chain action",
+  "guild": "Guild",
+  "quorum": "Quorum",
+  "information": "Information",
+  "proposalInfoCard": {
+    "consensusSystem": "Consensus System",
+    "proposalDuration": "Proposal Duration",
+    "proposalHistory": "Proposal History"
+  }
 }
