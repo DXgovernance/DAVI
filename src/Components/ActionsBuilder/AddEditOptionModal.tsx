@@ -78,9 +78,7 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
         <Box padding="0 0 1rem 0">
           <Input
             value={label}
-            placeholder={t('optionLabel', {
-              defaultValue: 'Option Label',
-            })}
+            placeholder={t('optionLabel')}
             icon={<Dot color={theme?.colors?.votes?.[options.length]} />}
             onChange={e => setLabel(e.target.value)}
           />
