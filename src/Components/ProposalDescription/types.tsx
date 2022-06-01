@@ -5,5 +5,5 @@ interface metadata {
 export interface ProposalDescriptionProps {
   t: any;
   metadata?: metadata;
-  error?: string;
+  error?: any;
 }
