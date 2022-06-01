@@ -24,6 +24,7 @@ export const useTokenService = (token: String): UseABIServiceReturns => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

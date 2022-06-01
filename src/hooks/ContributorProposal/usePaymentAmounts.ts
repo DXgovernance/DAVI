@@ -45,6 +45,7 @@ export const usePaymentAmounts = (
         ? 0
         : formatNumberValue(totalSupply.times(0.001667).times(discount), 0)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     confirm,
     discount,

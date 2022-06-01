@@ -288,7 +288,8 @@ export async function tryCacheUpdates(promises, networkCache) {
   let retry = true;
   while (retry) {
     try {
-      (await Promise.all(promises)).map(networkCacheUpdated => {
+      //eslint-disable-next-line no-loop-func
+      (await Promise.all(promises)).forEach(networkCacheUpdated => {
         networkCache = Object.assign(networkCache, networkCacheUpdated);
       });
     } catch (e) {
@@ -317,7 +318,8 @@ export async function batchPromisesOntarget(
 
   while (promisesBatchIndex < promisesBatch.length && maxTries > 0) {
     try {
-      (await Promise.all(promisesBatch[promisesBatchIndex])).map(
+      (await Promise.all(promisesBatch[promisesBatchIndex])).forEach(
+        //eslint-disable-next-line no-loop-func
         targetObjectUpdated => {
           targetObject = Object.assign(targetObject, targetObjectUpdated);
         }
