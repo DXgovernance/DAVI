@@ -1,6 +1,6 @@
 module.exports = {
-  'src/**/*.{ts,tsx,json}': ['yarn run format'],
-  'src/**/*.{ts,tsx}': [
+  'src/**/*.{js,jsx,ts,tsx,json}': ['yarn run format'],
+  'src/**/*.{js,jsx,ts,tsx}': [
     'yarn run lint --fix',
     'yarn run test --bail --findRelatedTests',
   ],
