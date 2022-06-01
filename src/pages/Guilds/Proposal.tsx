@@ -1,11 +1,11 @@
-import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
-import ProposalDescription from 'Components/ProposalDescription/ProposalDescription';
+import { ProposalDescription } from 'Components/ProposalDescription';
 import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
 import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
-import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
+import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
-import { Box } from '../../Components/Primitives/Layout';
+import { Box } from 'Components/Primitives/Layout';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
