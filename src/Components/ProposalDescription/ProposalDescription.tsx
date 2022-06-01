@@ -11,8 +11,7 @@ const ProposalDescription: React.FC<ProposalDescriptionProps> = ({
   if (error) {
     return (
       <ProposalDescriptionWrapper>
-        We ran into an error while trying to load the proposal content. Please
-        refresh the page and try again.
+        {t('errorMessage.proposalDescriptionError')}
       </ProposalDescriptionWrapper>
     );
   }

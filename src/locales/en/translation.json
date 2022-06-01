@@ -35,5 +35,8 @@
   "chooseProposal": "Choose Proposal",
   "continue": "Continue",
   "onchainAction": "On-chain Action",
-  "noOnchainAction": "No on-chain action"
+  "noOnchainAction": "No on-chain action",
+  "errorMessage": {
+    "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again."
+  }
 }
