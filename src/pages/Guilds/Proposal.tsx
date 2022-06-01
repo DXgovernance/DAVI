@@ -1,7 +1,7 @@
 import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import ProposalDescription from '../../old-components/Guilds/ProposalPage/ProposalDescription';
-import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
+import { ProposalInfoCard } from 'Components/ProposalInfoCard';
 import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
 import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
@@ -23,6 +23,7 @@ import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -89,6 +90,10 @@ const ProposalPage: React.FC = () => {
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
+  const quorum = useVotingPowerPercent(
+    guildConfig?.votingPowerForProposalExecution,
+    guildConfig?.totalLocked
+  );
 
   const status = useProposalState(proposal);
 
@@ -161,7 +166,11 @@ const ProposalPage: React.FC = () => {
       </PageContent>
       <SidebarContent>
         <ProposalVoteCard />
-        <ProposalInfoCard />
+        <ProposalInfoCard
+          proposal={proposal}
+          guildConfig={guildConfig}
+          quorum={quorum}
+        />
       </SidebarContent>
     </PageContainer>
   );

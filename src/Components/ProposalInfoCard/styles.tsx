@@ -1,5 +1,4 @@
 import { Box } from 'Components/Primitives/Layout';
-import { SidebarCardContent } from 'old-components/Guilds/SidebarCard';
 import styled, { css } from 'styled-components';
 
 export const Separator = styled.hr`
@@ -37,10 +36,6 @@ export const ProposalHistoryIcon = styled.span<{ active?: boolean }>`
     css`
       border-color: ${({ theme }) => theme.colors.border.hover};
     `}
-`;
-
-export const SidebarCardContentUnpadded = styled(SidebarCardContent)`
-  padding: 0;
 `;
 
 export const SidebarInfoContent = styled.div`

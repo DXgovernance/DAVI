@@ -1,20 +1,19 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import {
-  Separator,
   InfoDetail,
   InfoDetailMuted,
-  SidebarCardContentUnpadded,
   SidebarInfoContent,
   ProposalHistoryIcon,
-} from './styled';
+} from './styles';
 import SidebarCard, {
   SidebarCardHeader,
+  SidebarCardContentUnpadded,
 } from 'old-components/Guilds/SidebarCard';
 import { Loading } from 'Components/Primitives/Loading';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
-import { InfoItem } from './InfoItem';
-import moment, { duration } from 'moment';
+import { duration } from 'moment';
 import { ProposalInfoCardProps } from './types';
+import { ProposalHistory } from './ProposalHistory';
 
 const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
   proposal,
@@ -22,14 +21,6 @@ const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
   quorum,
 }) => {
   const [isHistoryExpanded, setIsHistoryExpanded] = useState(false);
-
-  const endDetail = useMemo(() => {
-    if (!proposal || !proposal.endTime) return null;
-
-    const currentTime = moment();
-    let prefix = proposal.endTime.isBefore(currentTime) ? 'Ended' : 'Ends';
-    return `${prefix} ${proposal.endTime.fromNow()}`;
-  }, [proposal]);
 
   return (
     <SidebarCard header={<SidebarCardHeader>Information</SidebarCardHeader>}>
@@ -78,32 +69,7 @@ const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
           </InfoDetail>
         </SidebarInfoContent>
 
-        {isHistoryExpanded && (
-          <>
-            <Separator />
-
-            <SidebarInfoContent>
-              {!proposal ? (
-                <Loading loading text skeletonProps={{ height: '100px' }} />
-              ) : (
-                <>
-                  <InfoItem
-                    title="Proposal created"
-                    description={proposal.startTime.format(
-                      'MMM Do, YYYY - h:mm a'
-                    )}
-                  />
-                  <InfoItem
-                    title={endDetail}
-                    description={proposal.endTime.format(
-                      'MMM Do, YYYY - h:mm a'
-                    )}
-                  />
-                </>
-              )}
-            </SidebarInfoContent>
-          </>
-        )}
+        {isHistoryExpanded && <ProposalHistory proposal={proposal} />}
       </SidebarCardContentUnpadded>
     </SidebarCard>
   );

@@ -33,3 +33,7 @@ export const SidebarCardContent = styled(Box)`
   padding: 1rem;
   color: ${({ theme }) => theme.colors.text};
 `;
+
+export const SidebarCardContentUnpadded = styled(SidebarCardContent)`
+  padding: 0;
+`;
