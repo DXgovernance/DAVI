@@ -56,7 +56,13 @@
   "unknownAction": "Unknown Action",
   "default": "Default",
   "edit": "Edit",
+  "backToOverview": "Back to Overview",
+  "createProposal": "Create Proposal",
+  "chooseProposal": "Choose Proposal",
+  "continue": "Continue",
   "onChainActions_zero": "No on-chain action",
   "onChainActions_one": "{{count}} on-chain action",
-  "onChainActions_other": "{{count}} on-chain actions"
+  "onChainActions_other": "{{count}} on-chain actions",
+  "onchainAction": "On-chain Action",
+  "noOnchainAction": "No on-chain action"
 }
