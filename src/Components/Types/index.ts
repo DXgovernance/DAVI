@@ -3,7 +3,15 @@ import { Moment } from 'moment';
 
 export enum ProposalState {
   Active = 'Active',
-  Passed = 'Passed',
+  Rejected = 'Rejected',
+  Executed = 'Executed',
+  Failed = 'Failed',
+  Finished = 'Finished',
+}
+
+export enum ContractState {
+  Active = 'Active',
+  Rejected = 'Rejected',
   Executed = 'Executed',
   Failed = 'Failed',
 }
@@ -19,7 +27,7 @@ export interface Proposal {
   totalActions: BigNumber;
   title: string;
   contentHash: string;
-  state: ProposalState;
+  contractState: ContractState;
   totalVotes: BigNumber[];
 }
 

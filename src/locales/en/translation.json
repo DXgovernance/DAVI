@@ -10,6 +10,7 @@
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
+  "execute": "Execute",
   "core": "Core",
   "switch": "Switch",
   "wallet": "Wallet",
@@ -33,5 +34,11 @@
   "information": "Information",
   "consensusSystem": "Consensus System",
   "proposalDuration": "Proposal Duration",
-  "quorum": "Quorum"
+  "quorum": "Quorum",
+  "backToOverview": "Back to Overview",
+  "createProposal": "Create Proposal",
+  "chooseProposal": "Choose Proposal",
+  "continue": "Continue",
+  "onchainAction": "On-chain Action",
+  "noOnchainAction": "No on-chain action"
 }

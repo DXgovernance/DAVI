@@ -303,7 +303,8 @@ async function main() {
     },
     {
       type: 'transfer',
-      timestamp: moment().subtract(26, 'minutes').unix(),
+      // We use this to reset to local time, in future we should ensure the automatic process works
+      timestamp: moment().subtract(46, 'minutes').unix(),
       from: accounts[0],
       data: {
         asset: ZERO_ADDRESS,
