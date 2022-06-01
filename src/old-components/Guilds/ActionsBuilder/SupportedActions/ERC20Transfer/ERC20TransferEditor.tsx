@@ -5,7 +5,7 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import Avatar from 'old-components/Guilds/Avatar';
-import TokenPicker from 'old-components/Guilds/TokenPicker';
+import { TokenPicker } from 'Components';
 import Input from 'old-components/Guilds/common/Form/Input';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { Box } from 'Components/Primitives/Layout';

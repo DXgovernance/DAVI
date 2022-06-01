@@ -12,8 +12,8 @@ const configs = {
 
 const useNetworkConfig = (chain?: number): NetworkConfig => {
   const { chainId } = useWeb3React();
-  const { name } = getNetworkById(chain || chainId);
-  return configs[name];
+
+  return configs[getNetworkById(chain || chainId)?.name ?? 'mainnet'];
 };
 
 export default useNetworkConfig;
