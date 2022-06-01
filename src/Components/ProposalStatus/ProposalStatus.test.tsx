@@ -1,12 +1,12 @@
 import ProposalStatus from './ProposalStatus';
 import { render } from '../../utils/tests';
 import { ProposalStatusProps } from './types';
-import { ProposalState } from 'Components/Types';
+import { ContractState } from 'types/types.guilds.d';
 import moment from 'moment';
 
 const validProps: ProposalStatusProps = {
   timeDetail: 'Time',
-  status: ProposalState.Active,
+  status: ContractState.Active,
   endTime: moment('2022-05-09T08:00:00'),
 };
 

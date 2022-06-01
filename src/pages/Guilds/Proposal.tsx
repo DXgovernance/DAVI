@@ -14,14 +14,17 @@ import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
 import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import { Loading } from 'Components/Primitives/Loading';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
-import moment from 'moment';
-import { ProposalState } from 'Components/Types';
+import ExecuteButton from 'Components/ExecuteButton';
+import { useProposalState } from 'hooks/Guilds/useProposalState';
+import useExecutable from 'hooks/Guilds/useExecutable';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { ProposalState } from 'types/types.guilds.d';
+import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import { useTranslation } from 'react-i18next';
-import useProposalMetadata from 'hooks/Guilds/ether-swr/guild/useProposalMetadata';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -87,6 +90,7 @@ const ProposalPage: React.FC = () => {
   const { data: proposalIds } = useGuildProposalIds(guildId);
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
+  const { data: guildConfig } = useGuildConfig(guildId);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
@@ -94,39 +98,11 @@ const ProposalPage: React.FC = () => {
   );
   const { t } = useTranslation();
 
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const timeDetail = useMemo(() => {
-    if (!proposal?.endTime) return null;
+  const status = useProposalState(proposal);
 
-    const currentTime = moment();
-    if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.fromNow();
-    } else {
-      return proposal.endTime.toNow();
-    }
-  }, [proposal]);
-
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const status = useMemo(() => {
-    if (!proposal?.endTime) return null;
-    switch (proposal.state) {
-      case ProposalState.Active:
-        const currentTime = moment();
-        if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ProposalState.Failed;
-        } else {
-          return ProposalState.Active;
-        }
-      case ProposalState.Executed:
-        return ProposalState.Executed;
-      case ProposalState.Passed:
-        return ProposalState.Passed;
-      case ProposalState.Failed:
-        return ProposalState.Failed;
-      default:
-        return proposal.state;
-    }
-  }, [proposal]);
+  const {
+    data: { executeProposal },
+  } = useExecutable();
 
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {
@@ -162,15 +138,19 @@ const ProposalPage: React.FC = () => {
           <HeaderTopRow>
             <UnstyledLink to={`/${chainName}/${guildId}`}>
               <StyledIconButton variant="secondary" iconLeft>
-                <FaChevronLeft style={{ marginRight: '15px' }} /> DXdao
+                <FaChevronLeft style={{ marginRight: '15px' }} />{' '}
+                {guildConfig?.name}
               </StyledIconButton>
             </UnstyledLink>
 
             <ProposalStatus
-              timeDetail={timeDetail}
+              timeDetail={proposal?.timeDetail}
               status={status}
               endTime={proposal?.endTime}
             />
+            {status === ProposalState.Executable && (
+              <ExecuteButton executeProposal={executeProposal} />
+            )}
           </HeaderTopRow>
           <PageTitle>
             {proposal?.title || (
