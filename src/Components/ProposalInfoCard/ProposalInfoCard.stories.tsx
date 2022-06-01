@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import ProposalInfoCard from './ProposalInfoCard';
 import { useTranslation } from 'react-i18next';
-import { fullParameters } from './fixture';
+import { fullParameters, loadingParameters } from './fixture';
 
 export default {
   title: 'ProposalInfoCard',
@@ -35,3 +35,6 @@ const Template: ComponentStory<typeof ProposalInfoCard> = args => (
 
 export const Simple = Template.bind({});
 Simple.args = fullParameters;
+
+export const Loading = Template.bind({});
+Loading.args = loadingParameters;
