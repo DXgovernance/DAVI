@@ -1,6 +1,8 @@
 import moment from 'moment';
 import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
 
+// Contract state is direct contract storage state but we want to show more accurate up to date data to the user so we process into proposalState
+
 export const useProposalState = (proposal: Proposal): ProposalState => {
   if (!proposal?.endTime) return null;
   switch (proposal.contractState) {

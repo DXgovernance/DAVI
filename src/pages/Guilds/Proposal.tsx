@@ -88,7 +88,7 @@ const ProposalPage: React.FC = () => {
   const { data: proposalIds } = useGuildProposalIds(guildId);
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
-  const { data } = useGuildConfig(guildId);
+  const { data: guildConfig } = useGuildConfig(guildId);
 
   const status = useProposalState(proposal);
 
@@ -130,7 +130,8 @@ const ProposalPage: React.FC = () => {
           <HeaderTopRow>
             <UnstyledLink to={`/${chainName}/${guildId}`}>
               <StyledIconButton variant="secondary" iconLeft>
-                <FaChevronLeft style={{ marginRight: '15px' }} /> {data?.name}
+                <FaChevronLeft style={{ marginRight: '15px' }} />{' '}
+                {guildConfig?.name}
               </StyledIconButton>
             </UnstyledLink>
 
