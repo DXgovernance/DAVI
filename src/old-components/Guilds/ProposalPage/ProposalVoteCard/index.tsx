@@ -1,7 +1,4 @@
-import SidebarCard, {
-  SidebarCardContent,
-  SidebarCardHeaderSpaced,
-} from '../../SidebarCard';
+import SidebarCard from '../../SidebarCard';
 import { Button } from '../../common/Button';
 import { VotesChart } from './VoteChart';
 import { VoteConfirmationModal } from './VoteConfirmationModal';
@@ -175,7 +172,7 @@ const ProposalVoteCard = () => {
   return (
     <SidebarCard
       header={
-        <SidebarCardHeaderSpaced>
+        <>
           {!voteData ? (
             <Loading loading text />
           ) : isOpen ? (
@@ -195,47 +192,42 @@ const ProposalVoteCard = () => {
               '%'
             )}
           </SmallButton>
-        </SidebarCardHeaderSpaced>
+        </>
       }
     >
-      <SidebarCardContent>
-        <VotesContainer>
-          <VoteResults isPercent={isPercent} />
-          <VotesChart isPercent={isPercent} />
-        </VotesContainer>
+      <VotesContainer>
+        <VoteResults isPercent={isPercent} />
+        <VotesChart isPercent={isPercent} />
+      </VotesContainer>
 
-        {isOpen && voteData?.options && (
-          <ButtonsContainer>
-            <VoteOptionsLabel>Options</VoteOptionsLabel>
+      {isOpen && voteData?.options && (
+        <ButtonsContainer>
+          <VoteOptionsLabel>Options</VoteOptionsLabel>
 
-            {Object.keys(voteData?.options).map(optionKey => {
-              const bItem = BigNumber.from(optionKey);
+          {Object.keys(voteData?.options).map(optionKey => {
+            const bItem = BigNumber.from(optionKey);
 
-              return (
-                <VoteOptionButton
-                  variant="secondary"
-                  active={selectedAction && selectedAction.eq(bItem)}
-                  onClick={() => {
-                    setSelectedAction(
-                      selectedAction && selectedAction.eq(bItem) ? null : bItem
-                    );
-                  }}
-                >
-                  {proposalMetadata?.voteOptions?.[optionKey] ||
-                    'Option ' + (optionKey + 1)}
-                </VoteOptionButton>
-              );
-            })}
+            return (
+              <VoteOptionButton
+                variant="secondary"
+                active={selectedAction && selectedAction.eq(bItem)}
+                onClick={() => {
+                  setSelectedAction(
+                    selectedAction && selectedAction.eq(bItem) ? null : bItem
+                  );
+                }}
+              >
+                {proposalMetadata?.voteOptions?.[optionKey] ||
+                  'Option ' + (optionKey + 1)}
+              </VoteOptionButton>
+            );
+          })}
 
-            <VoteActionButton
-              disabled={!selectedAction}
-              onClick={voteOnProposal}
-            >
-              Vote
-            </VoteActionButton>
-          </ButtonsContainer>
-        )}
-      </SidebarCardContent>
+          <VoteActionButton disabled={!selectedAction} onClick={voteOnProposal}>
+            Vote
+          </VoteActionButton>
+        </ButtonsContainer>
+      )}
       <VoteConfirmationModal
         isOpen={modalOpen}
         onDismiss={() => setModalOpen(false)}

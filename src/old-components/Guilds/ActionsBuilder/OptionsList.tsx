@@ -1,4 +1,4 @@
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import {
   closestCenter,
   CollisionDetection,
@@ -21,8 +21,7 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-import { Divider } from '../common/Divider';
-import { Box } from '../../../Components/Primitives/Layout';
+// import { Divider } from '../common/Divider';
 import OptionRow from './Option';
 import AddButton from './common/AddButton';
 import { DecodedAction, Option } from './types';
@@ -34,11 +33,9 @@ import {
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import { BigNumber } from 'ethers';
+import { SidebarCardDivider } from '../SidebarCard';
 
-const AddOptionWrapper = styled(Box)`
-  padding: 1rem;
-`;
-
+//asd
 interface OptionsListProps {
   isEditable: boolean;
   options: Option[];
@@ -321,7 +318,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
                 isEditable={isEditable}
                 editOption={editOption}
               />
-              {idx !== options.length - 1 && <Divider />}
+              {idx !== options.length - 1 && <SidebarCardDivider />}
             </>
           ))}
         </SortableContext>
@@ -330,7 +327,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
       {/* Show a placeholder No option when editing EnforcedBinaryGuilds */}
       {isEnforcedBinaryGuild && isEditable && (
         <>
-          <Divider />
+          <SidebarCardDivider />
           <OptionRow
             key={options.length}
             option={{
@@ -350,10 +347,8 @@ const OptionsList: React.FC<OptionsListProps> = ({
 
       {isEditable && (
         <>
-          <Divider />
-          <AddOptionWrapper>
-            <AddButton label="Add Option" onClick={addOption} />
-          </AddOptionWrapper>
+          {options.length && <SidebarCardDivider />}
+          <AddButton label="Add Option" onClick={addOption} />
         </>
       )}
     </DndContext>

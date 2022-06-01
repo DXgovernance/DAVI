@@ -1,12 +1,9 @@
-import { Header as CardHeader } from '../common/Card';
 import OptionsList from './OptionsList';
 import EditButton from './common/EditButton';
 import { Option } from './types';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import AddEditOptionModal from './AddEditOptionModal';
-import SidebarCard, {
-  SidebarCardHeaderSpaced,
-} from 'old-components/Guilds/SidebarCard';
+import SidebarCard from 'old-components/Guilds/SidebarCard';
 import { useState } from 'react';
 
 interface ActionsBuilderProps {
@@ -35,8 +32,8 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
   return (
     <SidebarCard
       header={
-        <SidebarCardHeaderSpaced>
-          <CardHeader>Actions</CardHeader>
+        <>
+          Actions
           {editable && (
             <EditButton
               variant="secondary"
@@ -45,7 +42,7 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
               {isEditable ? 'Save' : 'Edit'}
             </EditButton>
           )}
-        </SidebarCardHeaderSpaced>
+        </>
       }
     >
       <OptionsList
