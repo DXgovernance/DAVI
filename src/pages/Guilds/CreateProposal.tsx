@@ -14,7 +14,7 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
-import { useTextEditor, Editor } from 'Components/Editor';
+import { useTextEditor } from 'Components/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -96,9 +96,9 @@ const CreateProposalPage: React.FC = () => {
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
   const {
-    EditorConfig,
     html: proposalBodyHTML,
     md: proposalBodyMd,
+    Editor,
   } = useTextEditor(
     `${guildId}/create-proposal`,
     345600000,
@@ -243,7 +243,7 @@ const CreateProposalPage: React.FC = () => {
           ) : null}
         </Box>
         {editMode ? (
-          <Editor EditorConfig={EditorConfig} />
+          <Editor />
         ) : (
           <div
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(proposalBodyHTML) }}

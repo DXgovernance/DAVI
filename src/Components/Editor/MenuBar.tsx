@@ -38,6 +38,7 @@ const Divider = styled.div`
 `;
 
 const MenuBar = ({ editor }) => {
+  console.log({ editor });
   const iconSize = 20;
   const items = [
     {

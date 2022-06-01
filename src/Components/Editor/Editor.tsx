@@ -169,21 +169,20 @@ export const useTextEditor = (
       }
     },
   });
+  const Editor = () => {
+    if (EditorConfig) {
+      return (
+        <div>
+          <EditorWrap>
+            {EditorConfig && <MenuBar editor={EditorConfig} />}
+            <Content editor={EditorConfig} data-testid="editor-content" />
+          </EditorWrap>
+        </div>
+      );
+    } else {
+      return <div />;
+    }
+  };
 
-  return { EditorConfig, html, md };
-};
-
-export const Editor = EditorConfig => {
-  if (EditorConfig) {
-    return (
-      <div>
-        <EditorWrap>
-          {EditorConfig && <MenuBar editor={EditorConfig} />}
-          <Content editor={EditorConfig} data-testid="editor-content" />
-        </EditorWrap>
-      </div>
-    );
-  } else {
-    return <div />;
-  }
+  return { Editor, EditorConfig, html, md };
 };
