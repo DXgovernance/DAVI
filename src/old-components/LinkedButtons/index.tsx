@@ -148,6 +148,7 @@ export const LinkedButtons: React.FC<LinkedButtonsProps> = ({
 
   useEffect(() => {
     createButtons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [buttons, active]);
 
   return (

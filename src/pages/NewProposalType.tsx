@@ -76,6 +76,7 @@ export const NewProposalTypePage = observer(() => {
 
   useEffect(() => {
     setProposalTypes(configStore.getProposalTypes());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   proposalTypes.forEach(type => {

@@ -110,6 +110,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       return bulkDecodeCallsFromOptions(encodedOptions, contracts, chainId);
     }
     decodeOptions().then(options => setOptions(options));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     guildId,
     proposalId,
