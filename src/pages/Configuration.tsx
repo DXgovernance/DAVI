@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { observer } from 'mobx-react';
 import { useContext } from '../contexts';
+import { Row, Box, Question, Button } from '../old-components/common';
+import { observer } from 'mobx-react';
+import React from 'react';
 import { FiCheckCircle, FiX } from 'react-icons/fi';
-import { Row, Box, Question, Button } from '../components/common';
+import styled from 'styled-components';
 
 const FormLabel = styled.label`
   padding: 10px 0px;
@@ -123,7 +123,6 @@ const ConfigPage = observer(() => {
           <FormLabel>Etherscan:</FormLabel>
           <InputBox
             type="text"
-            serviceName="etherscan"
             onChange={event =>
               onApiKeyValueChange(event.target.value, 'etherscan')
             }
@@ -137,7 +136,6 @@ const ConfigPage = observer(() => {
           <FormLabel>Pinata:</FormLabel>
           <InputBox
             type="text"
-            serviceName="pinata"
             onChange={event =>
               onApiKeyValueChange(event.target.value, 'pinata')
             }
@@ -167,7 +165,6 @@ const ConfigPage = observer(() => {
             <FormLabel>Pokt:</FormLabel>
             <InputBox
               type="text"
-              serviceName="pokt"
               onChange={event =>
                 onApiKeyValueChange(event.target.value, 'pokt')
               }
@@ -181,7 +178,6 @@ const ConfigPage = observer(() => {
             <FormLabel>Infura:</FormLabel>
             <InputBox
               type="text"
-              serviceName="infura"
               onChange={event =>
                 onApiKeyValueChange(event.target.value, 'infura')
               }
@@ -197,7 +193,6 @@ const ConfigPage = observer(() => {
             <FormLabel>Alchemy:</FormLabel>
             <InputBox
               type="text"
-              serviceName="alchemy"
               onChange={event =>
                 onApiKeyValueChange(event.target.value, 'alchemy')
               }
@@ -213,7 +208,6 @@ const ConfigPage = observer(() => {
             <FormLabel>RPC URL:</FormLabel>
             <InputBox
               type="text"
-              serviceName="customRpcUrl"
               onChange={event =>
                 onApiKeyValueChange(event.target.value, 'customRpcUrl')
               }

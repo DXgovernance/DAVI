@@ -22,6 +22,7 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
   isSnapshotRepGuild: boolean;
+  isEnforcedBinaryGuild: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
@@ -34,23 +35,24 @@ const parseConfig = (
       config.features.includes('SNAPSHOT') && !config.features.includes('REP'),
     isSnapshotRepGuild:
       config.features.includes('SNAPSHOT') && config.features.includes('REP'),
+    isEnforcedBinaryGuild: config.features.includes('ENFORCED_BINARY'),
   };
 };
 
 /**
  * @function useGuildImplementationType
  * @param {string} guildAddress
- * @returns {string} GuildImplementationType. 'SnapshotRepERC20Guild' | 'DXDGuild' | 'ERC20Guild' | 'IERC20Guild'
+ * @returns {ImplementationTypeConfigReturn}
  */
 export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
   const [guildBytecode, setGuildBytecode] = useState<string>('');
   const provider = useJsonRpcProvider();
-
   useEffect(() => {
     const getBytecode = async () => {
-      const hashedBytecode = utils.sha256(await provider.getCode(guildAddress));
+      const btcode = await provider.getCode(guildAddress);
+      const hashedBytecode = utils.sha256(btcode);
       setGuildBytecode(hashedBytecode);
     };
     getBytecode();
@@ -58,13 +60,10 @@ export default function useGuildImplementationTypeConfig(
 
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
     if (!guildBytecode) return defaultImplementation;
-
     const match = deployedHashedBytecodes.find(
       ({ bytecode_hash }) => guildBytecode === bytecode_hash
     );
-
-    return match ? match : defaultImplementation; // default to IERC20Guild
+    return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode]);
-
   return parseConfig(implementationTypeConfig);
 }
