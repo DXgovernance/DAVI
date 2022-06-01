@@ -28,5 +28,16 @@
   "asset": "Asset",
   "approve": "Approve",
   "unsupportedNetwork": "Unsupported Network",
-  "notConnected": "Not Connected"
+  "notConnected": "Not Connected",
+  "castVote": "Cast your vote",
+  "voteResults": "Vote Results",
+  "option": "Option {{optionKey}}",
+  "options": "Options",
+  "vote": "Vote",
+  "confirmVote": "Confirm Vote",
+  "voteQuestion": "Are you sure you want to vote {{action}}?",
+  "noRevertAction": "This action cannot be reverted",
+  "votingPower": "Voting Power",
+  "voteImpact": "Vote Impact",
+  "cancel": "Cancel"
 }

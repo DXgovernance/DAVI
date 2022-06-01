@@ -40,3 +40,52 @@ export const mockProposalVoteCardProps = {
   createTransaction: () => {},
   currentLockedPercent: 100,
 };
+
+export const mockVoteResults = {
+  isPercent: true,
+  voteData: {
+    options: {
+      0: mockBigNumberOption,
+      1: mockBigNumberOption,
+    },
+    quorum: mockBignumber,
+    totalLocked: mockBigNumberTotalLocked,
+    token: {
+      name: 'DXdao',
+      symbol: 'DXD',
+      decimals: 18,
+      totalSupply: mockBigNumberTotalSupply,
+    },
+  },
+  proposalMetadata: {
+    description: 'This is a test proposal',
+    voteOptions: ['Yes', 'No'],
+  },
+};
+
+export const mockVoteConfirmationModal = {
+  isOpen: true,
+  onDismiss: () => {},
+  onConfirm: () => {},
+  selectedAction: 'Yes',
+  votingPower: 100,
+  totalLocked: 100,
+};
+
+export const mockVoteChart = {
+  isPercent: true,
+  voteData: {
+    options: {
+      0: mockBigNumberOption,
+      1: mockBigNumberOption,
+    },
+    quorum: mockBignumber,
+    totalLocked: mockBigNumberTotalLocked,
+    token: {
+      name: 'DXdao',
+      symbol: 'DXD',
+      decimals: 18,
+      totalSupply: mockBigNumberTotalSupply,
+    },
+  },
+};

@@ -13,6 +13,8 @@ import {
 import { Modal } from 'old-components/Guilds/common/Modal';
 import React from 'react';
 import { VoteConfirmationModalProps } from '../../types';
+import { useTranslation } from 'react-i18next';
+
 const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
   isOpen,
   onDismiss,
@@ -21,6 +23,8 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
   votingPower,
   totalLocked,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal
       isOpen={isOpen}
@@ -30,29 +34,29 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
       maxWidth={380}
     >
       <Container>
-        <Title>Are you sure you want to vote "{selectedAction}"?</Title>
-        <InfoItem>This action cannot be reverted</InfoItem>
+        <Title>{t('voteQuestion', { action: selectedAction })}</Title>
+        <InfoItem>{t('noRevertAction')}</InfoItem>
 
         <Widget>
           <InfoRow>
-            <InfoLabel>Option</InfoLabel>
+            <InfoLabel>{t('option')}</InfoLabel>
             <InfoValue>{selectedAction}</InfoValue>
           </InfoRow>
           <InfoRow>
-            <InfoLabel>Voting Power</InfoLabel>
+            <InfoLabel>{t('votingPower')}</InfoLabel>
             <InfoValue>{votingPower}%</InfoValue>
           </InfoRow>
           <InfoRow>
-            <InfoLabel>Vote Impact</InfoLabel>
+            <InfoLabel>{t('voteImpact')}</InfoLabel>
             <InfoValue>
               <InfoValue grey> {totalLocked}% </InfoValue>
-              {' -> '} {votingPower + totalLocked}%
+              {`-->  ${votingPower + totalLocked}%`}
             </InfoValue>
           </InfoRow>
         </Widget>
         <ActionWrapper>
-          <CancelButton onClick={onDismiss}>Cancel</CancelButton>
-          <ConfirmButton onClick={onConfirm}>Vote</ConfirmButton>
+          <CancelButton onClick={onDismiss}>{t('cancel')}</CancelButton>
+          <ConfirmButton onClick={onConfirm}>{t('vote')}</ConfirmButton>
         </ActionWrapper>
       </Container>
     </Modal>

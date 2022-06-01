@@ -12,7 +12,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
       <h2
         class="sc-iBPTik sc-fubCzh sc-pGacB cBZYjx gMMEXo lhAFpQ"
       >
-        Cast your vote
+        castVote
         <button
           class="sc-bkzYnD sc-cOajNj hkwzGu jSiXcp"
         >
@@ -125,7 +125,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
           <div
             class="sc-khAkCZ hApWKW"
           >
-            Options
+            options
           </div>
           <button
             class="sc-bkzYnD sc-hTZgZg sc-jgHCSr hkwzGu fWwfTG fThMbI"
@@ -141,7 +141,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
             class="sc-bkzYnD sc-hTZgZg gLdLhY fWwfTG"
             disabled=""
           >
-            Vote
+            vote
           </button>
         </div>
       </div>

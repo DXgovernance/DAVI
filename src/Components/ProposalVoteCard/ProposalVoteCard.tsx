@@ -21,6 +21,7 @@ import {
 import { voteOnProposal, confirmVoteProposal } from './utils';
 import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
+import { useTranslation } from 'react-i18next';
 
 const ProposalVoteCard = ({
   voteData,
@@ -32,6 +33,8 @@ const ProposalVoteCard = ({
   createTransaction,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
+  const { t } = useTranslation();
+
   const [isPercent, setIsPercent] = useState(true);
   const [selectedAction, setSelectedAction] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
@@ -78,9 +81,9 @@ const ProposalVoteCard = ({
           {!voteData ? (
             <Loading loading text />
           ) : isOpen ? (
-            'Cast your vote'
+            t('castVote')
           ) : (
-            'Vote results'
+            t('voteResults')
           )}
           <SmallButton
             variant="secondary"
@@ -109,7 +112,7 @@ const ProposalVoteCard = ({
 
         {isOpen && voteData?.options && (
           <ButtonsContainer>
-            <VoteOptionsLabel>Options</VoteOptionsLabel>
+            <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 
             {Object.keys(voteData?.options).map(optionKey => {
               const bItem = BigNumber.from(optionKey);
@@ -125,7 +128,7 @@ const ProposalVoteCard = ({
                   }}
                 >
                   {proposal?.metadata?.voteOptions?.[optionKey] ||
-                    'Option ' + (optionKey + 1)}
+                    t('option ', { optionKey: optionKey + 1 })}
                 </VoteOptionButton>
               );
             })}
@@ -139,7 +142,7 @@ const ProposalVoteCard = ({
                 })
               }
             >
-              Vote
+              {t('vote')}
             </VoteActionButton>
           </ButtonsContainer>
         )}
