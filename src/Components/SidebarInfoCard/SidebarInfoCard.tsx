@@ -6,20 +6,25 @@ import SidebarCard, {
 import { Loading } from 'Components/Primitives/Loading';
 import { Row, Label, ColoredLabel } from './SidebarInfoCard.styled';
 import { SidebarInfoCardProps } from './types';
+import { useTranslation } from 'react-i18next';
 
 const SidebarInfoCard: React.FC<SidebarInfoCardProps> = ({
   proposalTime,
   quorum,
 }) => {
+  const { t } = useTranslation();
+
   return (
-    <SidebarCard header={<SidebarCardHeader>Information</SidebarCardHeader>}>
+    <SidebarCard
+      header={<SidebarCardHeader>{t('information')}</SidebarCardHeader>}
+    >
       <SidebarCardContent>
         <Row>
-          <Label>Consensus System</Label>
-          <ColoredLabel>Guild</ColoredLabel>
+          <Label>{t('consensusSystem')}</Label>
+          <ColoredLabel>{t('guilds.guild')}</ColoredLabel>
         </Row>
         <Row>
-          <Label>Proposal Duration</Label>
+          <Label>{t('proposalDuration')}</Label>
           <ColoredLabel>
             {proposalTime ? (
               duration(proposalTime?.toNumber(), 'seconds').humanize()
@@ -29,7 +34,7 @@ const SidebarInfoCard: React.FC<SidebarInfoCardProps> = ({
           </ColoredLabel>
         </Row>
         <Row>
-          <Label>Quorum</Label>
+          <Label>{t('quorum')}</Label>
           <ColoredLabel>
             {quorum != null ? (
               `${quorum}%`

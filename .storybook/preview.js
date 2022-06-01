@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'Components/theme';
 import GlobalStyle from 'theme/GlobalTheme';
 import MultichainProvider from 'contexts/MultichainProvider/index';
+import initializeI18Next from "../src/i18n";
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -14,7 +15,7 @@ export const parameters = {
     },
   },
 };
-
+initializeI18Next();
 const ComponentContainer = ({ children }) => (
   <ThemeProvider theme={GuildsDarkTheme}>
     <HashRouter basename="/">
