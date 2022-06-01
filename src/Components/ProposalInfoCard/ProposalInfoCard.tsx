@@ -1,5 +1,9 @@
 import { useState } from 'react';
-import { InfoDetail, InfoDetailMuted, ProposalHistoryIcon } from './styles';
+import {
+  InfoDetail,
+  InfoDetailMuted,
+  ProposalHistoryIcon,
+} from './ProposalInfoCard.styled';
 import SidebarCard from 'old-components/Guilds/SidebarCard';
 import { Loading } from 'Components/Primitives/Loading';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
