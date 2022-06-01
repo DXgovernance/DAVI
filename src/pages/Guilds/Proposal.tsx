@@ -24,7 +24,6 @@ import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
-import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -95,7 +94,6 @@ const ProposalPage: React.FC = () => {
     guildConfig?.votingPowerForProposalExecution,
     guildConfig?.totalLocked
   );
-  const { t } = useTranslation();
 
   const status = useProposalState(proposal);
 
@@ -172,7 +170,6 @@ const ProposalPage: React.FC = () => {
           proposal={proposal}
           guildConfig={guildConfig}
           quorum={quorum}
-          t={t}
         />
       </SidebarContent>
     </PageContainer>

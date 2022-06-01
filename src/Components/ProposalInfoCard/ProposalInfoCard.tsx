@@ -6,14 +6,15 @@ import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { duration } from 'moment';
 import { ProposalInfoCardProps } from './types';
 import { ProposalHistory } from './ProposalHistory';
+import { useTranslation } from 'react-i18next';
 
 const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
   proposal,
   guildConfig,
   quorum,
-  t,
 }) => {
   const [isHistoryExpanded, setIsHistoryExpanded] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <SidebarCard header={t('information')}>
