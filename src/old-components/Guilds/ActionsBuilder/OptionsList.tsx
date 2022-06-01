@@ -347,7 +347,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
 
       {isEditable && (
         <>
-          {options.length && <SidebarCardDivider />}
+          {options.length > 0 && <SidebarCardDivider />}
           <AddButton label="Add Option" onClick={addOption} />
         </>
       )}
