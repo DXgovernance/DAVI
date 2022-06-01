@@ -24,7 +24,6 @@ import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
-import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -96,7 +95,6 @@ const ProposalPage: React.FC = () => {
     guildId,
     proposalId
   );
-  const { t } = useTranslation();
 
   const status = useProposalState(proposal);
 
@@ -161,7 +159,7 @@ const ProposalPage: React.FC = () => {
 
         <AddressButton address={proposal?.creator} />
 
-        <ProposalDescription t={t} metadata={metadata} error={metadataError} />
+        <ProposalDescription metadata={metadata} error={metadataError} />
 
         <ProposalActionsWrapper>
           <ActionsBuilder options={options} editable={false} />

@@ -1,13 +1,15 @@
-import { ProposalDescriptionWrapper } from './styles';
+import { ProposalDescriptionWrapper } from './ProposalDescription.styled';
 import { ProposalDescriptionProps } from './types';
 import Markdown from 'markdown-to-jsx';
 import { Loading } from 'Components/Primitives/Loading';
+import { useTranslation } from 'react-i18next';
 
 const ProposalDescription: React.FC<ProposalDescriptionProps> = ({
-  t,
   metadata,
   error,
 }) => {
+  const { t } = useTranslation();
+
   if (error) {
     return (
       <ProposalDescriptionWrapper>
