@@ -9,6 +9,7 @@
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
+  "execute": "Execute",
   "core": "Core",
   "switch": "Switch",
   "wallet": "Wallet",
@@ -39,5 +40,13 @@
   "noRevertAction": "This action cannot be reverted",
   "votingPower": "Voting Power",
   "voteImpact": "Vote Impact",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "backToOverview": "Back to Overview",
+  "createProposal": "Create Proposal",
+  "chooseProposal": "Choose Proposal",
+  "continue": "Continue",
+  "onchainAction": "On-chain Action",
+  "noOnchainAction": "No on-chain action",
+  "selectAToken": "Select a token",
+  "searchToken": "Search token"
 }

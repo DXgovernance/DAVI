@@ -55,6 +55,7 @@ export const BlockchainLink = ({
       setENSName(response);
     }
     getENS();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, rpcUrls]);
 
   let formatedAddress;
