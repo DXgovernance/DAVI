@@ -29,6 +29,7 @@ const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   const amountBN = useStringToBigNumber(amount, decimals);
   useEffect(() => {
     onChange(amountBN);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amountBN]);
 
   const setAmountEnforceDecimals = (amount: string) => {

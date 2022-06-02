@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
-import TokenPicker from 'old-components/Guilds/TokenPicker';
+import { TokenPicker } from 'Components';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -31,7 +31,7 @@ interface ApproveSpendTokensProps {
 const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
   onConfirm,
 }) => {
-  const { t } = useTranslation('guilds');
+  const { t } = useTranslation();
   const { chainId } = useWeb3React();
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
@@ -58,7 +58,7 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
   return (
     <Wrapper>
       <SectionWrapper>
-        <SectionTitle>{t('createProposal.selectTokensToSpend')}</SectionTitle>
+        <SectionTitle>{t('selectTokensToSpend')}</SectionTitle>
         <ControlRow>
           <Control>
             <ControlLabel>{t('amount')}</ControlLabel>

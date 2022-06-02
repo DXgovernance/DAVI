@@ -4,7 +4,7 @@ import { DetailRow } from '../SupportedActions/common/summary';
 import { BigNumber } from 'ethers';
 import { Button } from 'old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
-import UnstyledLink from 'old-components/Guilds/common/UnstyledLink';
+import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { FiExternalLink } from 'react-icons/fi';
 import styled, { useTheme } from 'styled-components';
 import { Divider } from 'old-components/Guilds/common/Divider';
@@ -54,6 +54,21 @@ const CallDetails: React.FC<ActionViewProps> = ({
     }
 
     if (type.startsWith('uint') || type.startsWith('int')) {
+      if (Array.isArray(value)) {
+        let valuesStringFromArray: string = '[';
+
+        value.forEach((element, index) => {
+          let separator = ', ';
+          if (index === 0) separator = '';
+
+          const elementBigNumber = BigNumber.from(element).toString();
+          return (valuesStringFromArray += separator += elementBigNumber);
+        });
+        valuesStringFromArray += ']';
+
+        return <ParamDetail>{valuesStringFromArray}</ParamDetail>;
+      }
+
       return <ParamDetail>{BigNumber.from(value).toString()}</ParamDetail>;
     }
 

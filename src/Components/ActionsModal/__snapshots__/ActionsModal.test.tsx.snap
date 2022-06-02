@@ -11,24 +11,24 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 <body>
   <div>
     <div
-      class="sc-crrszt jBqxuR"
+      class="sc-jrAFXE QWeDt"
     />
     <div
-      class="sc-iqHYmW crryic"
+      class="sc-pGacB eXezYo"
     >
       <div
-        class="sc-dQoVA jYXFLB"
+        class="sc-kEjbQP bhXrYT"
       >
         
          
         <div
-          class="sc-bqyKOL ATKti"
+          class="sc-iqHYmW gVIZiL"
         >
           <div
-            class="sc-jrAFXE sc-hHfuMS fguxYT ijBGJk"
+            class="sc-iBPTik sc-bkzYnD iZxSbw iLZnzN"
           >
             <svg
-              class="sc-dmlqKv lcxXPI"
+              class="sc-idOiZg hdeSTv"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -42,13 +42,13 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
               />
             </svg>
             <h2
-              class="sc-iBPTik sc-hBEYId cBZYjx eyJyRi"
+              class="sc-eCstlR sc-dQoVA TTlbv hKuUWY"
             >
               Generic Call
             </h2>
           </div>
           <svg
-            class="sc-fodVek jXmmJt"
+            class="sc-bqyKOL ihXXu"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -74,19 +74,19 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
           </svg>
         </div>
         <div
-          class="sc-bkzYnD jrpQyy"
+          class="sc-hBEYId hCwRDp"
         >
           <div
-            class="sc-gTgzoy kFxbiQ"
+            class="sc-bQdRvg bYtjBk"
             data-testid="actions-modal-editor"
           >
             <div>
               Generic Call Editor
             </div>
             <button
-              class="sc-bdfBQB sc-laRQdt cnzpap erdehE"
+              class="sc-bdfBQB sc-fXoxaI cnzpap edhiYn"
             >
-              guilds.saveAction
+              saveAction
             </button>
           </div>
         </div>

@@ -1,12 +1,12 @@
-import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
-import ProposalDescription from '../../old-components/Guilds/ProposalPage/ProposalDescription';
+import { ProposalDescription } from 'Components/ProposalDescription';
 import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
 import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
-import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
+import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
-import { Box } from '../../Components/Primitives/Layout';
-import UnstyledLink from '../../old-components/Guilds/common/UnstyledLink';
+import { Box } from 'Components/Primitives/Layout';
+import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
@@ -14,12 +14,16 @@ import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
 import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import { Loading } from 'Components/Primitives/Loading';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
-import moment from 'moment';
-import { ProposalState } from 'Components/Types';
+import ExecuteButton from 'Components/ExecuteButton';
+import { useProposalState } from 'hooks/Guilds/useProposalState';
+import useExecutable from 'hooks/Guilds/useExecutable';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { ProposalState } from 'types/types.guilds.d';
+import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -85,40 +89,18 @@ const ProposalPage: React.FC = () => {
   const { data: proposalIds } = useGuildProposalIds(guildId);
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
+  const { data: guildConfig } = useGuildConfig(guildId);
 
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const timeDetail = useMemo(() => {
-    if (!proposal?.endTime) return null;
+  const { data: metadata, error: metadataError } = useProposalMetadata(
+    guildId,
+    proposalId
+  );
 
-    const currentTime = moment();
-    if (proposal.endTime?.isBefore(currentTime)) {
-      return proposal.endTime.fromNow();
-    } else {
-      return proposal.endTime.toNow();
-    }
-  }, [proposal]);
+  const status = useProposalState(proposal);
 
-  // TODO These are copied from ProposalCardWrapper and to be replaced
-  const status = useMemo(() => {
-    if (!proposal?.endTime) return null;
-    switch (proposal.state) {
-      case ProposalState.Active:
-        const currentTime = moment();
-        if (currentTime.isSameOrAfter(proposal.endTime)) {
-          return ProposalState.Failed;
-        } else {
-          return ProposalState.Active;
-        }
-      case ProposalState.Executed:
-        return ProposalState.Executed;
-      case ProposalState.Passed:
-        return ProposalState.Passed;
-      case ProposalState.Failed:
-        return ProposalState.Failed;
-      default:
-        return proposal.state;
-    }
-  }, [proposal]);
+  const {
+    data: { executeProposal },
+  } = useExecutable();
 
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {
@@ -154,15 +136,19 @@ const ProposalPage: React.FC = () => {
           <HeaderTopRow>
             <UnstyledLink to={`/${chainName}/${guildId}`}>
               <StyledIconButton variant="secondary" iconLeft>
-                <FaChevronLeft style={{ marginRight: '15px' }} /> DXdao
+                <FaChevronLeft style={{ marginRight: '15px' }} />{' '}
+                {guildConfig?.name}
               </StyledIconButton>
             </UnstyledLink>
 
             <ProposalStatus
-              timeDetail={timeDetail}
+              timeDetail={proposal?.timeDetail}
               status={status}
               endTime={proposal?.endTime}
             />
+            {status === ProposalState.Executable && (
+              <ExecuteButton executeProposal={executeProposal} />
+            )}
           </HeaderTopRow>
           <PageTitle>
             {proposal?.title || (
@@ -173,7 +159,7 @@ const ProposalPage: React.FC = () => {
 
         <AddressButton address={proposal?.creator} />
 
-        <ProposalDescription />
+        <ProposalDescription metadata={metadata} error={metadataError} />
 
         <ProposalActionsWrapper>
           <ActionsBuilder options={options} editable={false} />

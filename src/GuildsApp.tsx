@@ -1,5 +1,5 @@
 import GlobalErrorBoundary from './old-components/Guilds/ErrorBoundary/GlobalErrorBoundary';
-import Header from './old-components/Guilds/Header';
+import { Header } from 'Components';
 import ToastNotificationContainer from './old-components/Guilds/ToastNotifications/ToastNotificationContainer';
 import WalletWeb3Manager from './old-components/Guilds/Web3Manager/WalletWeb3Manager';
 import { Container } from './Components/Primitives/Layout';
@@ -9,7 +9,7 @@ import GlobalStyle from './theme/GlobalTheme';
 import { ProposalTypesConfig } from 'configs/proposalTypes';
 import { GuildsContextProvider, TransactionsProvider } from 'contexts/Guilds';
 import GuildAvailabilityProvider from 'contexts/Guilds/guildAvailability';
-import ProposalTypes from 'old-components/Guilds/ProposalTypes';
+import { ProposalTypes } from 'Components/ProposalTypes';
 import CreateProposalPage from 'pages/Guilds/CreateProposal';
 import LandingPage from 'pages/Guilds/LandingPage';
 import NotFound from 'pages/Guilds/NotFound';

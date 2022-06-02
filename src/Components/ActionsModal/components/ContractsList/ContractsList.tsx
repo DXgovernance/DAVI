@@ -47,7 +47,17 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            {t('guilds.createProposal.transferAndMint')}
+            {t('transferAndMint')}
+          </ButtonLabel>
+        </ActionsButton>
+        <ActionsButton
+          onClick={() => {
+            onSupportedActionSelect(SupportedAction.SET_PERMISSIONS);
+          }}
+        >
+          <ButtonLabel>
+            <StyledIcon src={Vector} />
+            Set Permissions
           </ButtonLabel>
         </ActionsButton>
         {isRepGuild ? (
@@ -56,15 +66,13 @@ const ContractsList: React.FC<ContractsListProps> = ({
           >
             <ButtonLabel>
               <StyledIcon src={Mint} />
-              {t('guilds.createProposal.mintRep')}
+              {t('mintRep')}
             </ButtonLabel>
           </ActionsButton>
         ) : null}
       </SectionWrapper>
       <SectionWrapper>
-        <SectionTitle>
-          {t('guilds.createProposal.externalContracts')}
-        </SectionTitle>
+        <SectionTitle>{t('externalContracts')}</SectionTitle>
         {contracts?.map(contract => (
           <ActionsButton
             key={contract.title}

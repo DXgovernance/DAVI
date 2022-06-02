@@ -15,6 +15,7 @@ function useQueryStringValue(
       setValue(newValue);
       setQueryParamDebounced(key, newValue);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [key]
   );
 

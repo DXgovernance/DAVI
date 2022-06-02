@@ -11,13 +11,16 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\" \"scripts/*.{js,jsx,ts,tsx,json,md}\"",
     "format-check": "prettier --check \"src/**/*.{js,jsx,ts,tsx,json,md}\" \"scripts/*.{js,jsx,ts,tsx,json,md}\"",
     "cy:run": "./scripts/integration.sh",
+    "test:light": "react-app-rewired test --watch --detectOpenHandles",
     "test:e2e": "ETHERNAL_CONTRACTS=false start-server-and-test 'yarn dev --no-browser' 3000 cy:run",
-    "test": "react-app-rewired test --watchAll=false --coverage --verbose --testTimeout=10000 --detectOpenHandles",
+    "test": "react-app-rewired test --watchAll=false --verbose --testTimeout=10000 --detectOpenHandles",
+    "test:coverage": "yarn run test --coverage",
     "updateBytecodes": "node scripts/updateDeployedBytecodes.js",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "postinstall": "yarn run updateBytecodes"
+    "postinstall": "yarn run updateBytecodes",
+    "pre-commit": "lint-staged"
   },
   "engines": {
     "node": "^16.13.0"
@@ -121,7 +124,6 @@
     "workbox-webpack-plugin": "^5.1.4"
   },
   "devDependencies": {
-    "hardhat-ethernal": "^1.0.0",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
@@ -132,6 +134,7 @@
     "@storybook/testing-library": "^0.0.11",
     "@synthetixio/synpress": "^1.2.0",
     "@testing-library/cypress": "^8.0.2",
+    "@testing-library/react-hooks": "^8.0.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react-hooks": "^8.0.0",
     "@types/jest": "^27.4.0",
@@ -142,7 +145,9 @@
     "cypress": "^9.5.2",
     "cypress-react-selector": "^2.3.17",
     "cypress-wait-until": "^1.7.2",
+    "hardhat-ethernal": "^1.0.0",
     "husky": "^6.0.0",
+    "lint-staged": "^12.4.3",
     "prettier": "2.5.0",
     "start-server-and-test": "^1.14.0",
     "typechain": "7.0.0",

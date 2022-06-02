@@ -5,7 +5,7 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import Avatar from 'old-components/Guilds/Avatar';
-import TokenPicker from 'old-components/Guilds/TokenPicker';
+import { TokenPicker } from 'Components';
 import Input from 'old-components/Guilds/common/Form/Input';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { Box } from 'Components/Primitives/Layout';
@@ -14,23 +14,11 @@ import { FiChevronDown, FiX } from 'react-icons/fi';
 import styled from 'styled-components';
 import { MAINNET_ID } from 'utils';
 import { resolveUri } from 'utils/url';
-
-const Control = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  margin: 0.75rem 0;
-  width: 100%;
-`;
-
-const ControlLabel = styled(Box)`
-  margin-bottom: 0.75rem;
-`;
-
-const ControlRow = styled(Box)`
-  display: flex;
-  align-items: stretch;
-  height: 100%;
-`;
+import {
+  Control,
+  ControlLabel,
+  ControlRow,
+} from 'Components/Primitives/Forms/Control';
 
 const Spacer = styled(Box)`
   margin-right: 1rem;
