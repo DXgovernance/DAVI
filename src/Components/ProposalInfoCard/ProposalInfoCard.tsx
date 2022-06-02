@@ -4,7 +4,9 @@ import {
   InfoDetailMuted,
   ProposalHistoryIcon,
 } from './ProposalInfoCard.styled';
-import SidebarCard from 'old-components/Guilds/SidebarCard';
+import SidebarCard, {
+  SidebarCardContent,
+} from 'old-components/Guilds/SidebarCard';
 import { Loading } from 'Components/Primitives/Loading';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { duration } from 'moment';
@@ -22,48 +24,49 @@ const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
 
   return (
     <SidebarCard header={t('information')}>
-      <InfoDetail>
-        <span>{t('proposalInfoCard.consensusSystem')}</span>
-        <InfoDetailMuted>{t('guilds.guilds_one')}</InfoDetailMuted>
-      </InfoDetail>
-      <InfoDetail>
-        <span>{t('proposalInfoCard.proposalDuration')}</span>
-        <InfoDetailMuted>
-          {guildConfig?.proposalTime ? (
-            duration(
-              guildConfig?.proposalTime?.toNumber(),
-              'seconds'
-            ).humanize()
-          ) : (
-            <Loading loading text skeletonProps={{ width: '50px' }} />
-          )}
-        </InfoDetailMuted>
-      </InfoDetail>
-      <InfoDetail>
-        <span>{t('quorum')}</span>
-        <InfoDetailMuted>
-          {quorum != null ? (
-            `${quorum}%`
-          ) : (
-            <Loading loading text skeletonProps={{ width: '50px' }} />
-          )}
-        </InfoDetailMuted>
-      </InfoDetail>
+      <SidebarCardContent>
+        <InfoDetail>
+          <span>{t('proposalInfoCard.consensusSystem')}</span>
+          <InfoDetailMuted>{t('guilds.guilds_one')}</InfoDetailMuted>
+        </InfoDetail>
+        <InfoDetail>
+          <span>{t('proposalInfoCard.proposalDuration')}</span>
+          <InfoDetailMuted>
+            {guildConfig?.proposalTime ? (
+              duration(
+                guildConfig?.proposalTime?.toNumber(),
+                'seconds'
+              ).humanize()
+            ) : (
+              <Loading loading text skeletonProps={{ width: '50px' }} />
+            )}
+          </InfoDetailMuted>
+        </InfoDetail>
+        <InfoDetail>
+          <span>{t('quorum')}</span>
+          <InfoDetailMuted>
+            {quorum != null ? (
+              `${quorum}%`
+            ) : (
+              <Loading loading text skeletonProps={{ width: '50px' }} />
+            )}
+          </InfoDetailMuted>
+        </InfoDetail>
 
-      <InfoDetail>
-        <span>{t('proposalInfoCard.proposalHistory')}</span>
-        <ProposalHistoryIcon
-          active={isHistoryExpanded}
-          onClick={() => setIsHistoryExpanded(!isHistoryExpanded)}
-        >
-          {isHistoryExpanded ? (
-            <FiChevronUp height={16} />
-          ) : (
-            <FiChevronDown height={16} />
-          )}
-        </ProposalHistoryIcon>
-      </InfoDetail>
-
+        <InfoDetail>
+          <span>{t('proposalInfoCard.proposalHistory')}</span>
+          <ProposalHistoryIcon
+            active={isHistoryExpanded}
+            onClick={() => setIsHistoryExpanded(!isHistoryExpanded)}
+          >
+            {isHistoryExpanded ? (
+              <FiChevronUp height={16} />
+            ) : (
+              <FiChevronDown height={16} />
+            )}
+          </ProposalHistoryIcon>
+        </InfoDetail>
+      </SidebarCardContent>
       {isHistoryExpanded && <ProposalHistory proposal={proposal} />}
     </SidebarCard>
   );
