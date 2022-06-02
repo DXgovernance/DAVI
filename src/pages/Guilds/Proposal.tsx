@@ -1,10 +1,10 @@
-import { useProposal } from '../../hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
-import ProposalDescription from '../../old-components/Guilds/ProposalPage/ProposalDescription';
+import { ProposalDescription } from 'Components/ProposalDescription';
 import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
-import ProposalStatus from '../../Components/ProposalStatus/ProposalStatus';
+import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
-import { Box } from '../../Components/Primitives/Layout';
+import { Box } from 'Components/Primitives/Layout';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
@@ -23,6 +23,7 @@ import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
+import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -90,6 +91,11 @@ const ProposalPage: React.FC = () => {
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
 
+  const { data: metadata, error: metadataError } = useProposalMetadata(
+    guildId,
+    proposalId
+  );
+
   const status = useProposalState(proposal);
 
   const {
@@ -153,7 +159,7 @@ const ProposalPage: React.FC = () => {
 
         <AddressButton address={proposal?.creator} />
 
-        <ProposalDescription />
+        <ProposalDescription metadata={metadata} error={metadataError} />
 
         <ProposalActionsWrapper>
           <ActionsBuilder options={options} editable={false} />

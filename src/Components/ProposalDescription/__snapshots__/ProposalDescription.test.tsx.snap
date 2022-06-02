@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProposalDescription Should render an error 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB kCzFam"
+  >
+    errorMessage.proposalDescriptionError
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalDescription Should render loading if it has no metadata 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB kCzFam"
+  >
+    <div
+      class="sc-gsTEea"
+    >
+      <span
+        aria-busy="true"
+        aria-live="polite"
+      >
+        <span
+          class="react-loading-skeleton"
+          style="width: 800px; --base-color: #333; --highlight-color: #555;"
+        >
+          ‌
+        </span>
+        <br />
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalDescription Should render with description 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB kCzFam"
+  >
+    <span>
+      This is the description of the proposal
+    </span>
+  </div>
+   
+</div>
+`;
