@@ -23,6 +23,7 @@ import { useHistory } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -91,6 +92,7 @@ const CreateProposalPage: React.FC = () => {
   );
 
   const history = useHistory();
+  const { t } = useTranslation();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
@@ -103,7 +105,7 @@ const CreateProposalPage: React.FC = () => {
   } = useTextEditor(
     `${guildId}/create-proposal`,
     345600000,
-    'Enter proposal body'
+    t('enterProposalDescription')
   );
 
   const handleToggleEditMode = () => {

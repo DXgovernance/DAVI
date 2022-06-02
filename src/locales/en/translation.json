@@ -22,5 +22,6 @@
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
-  "core": "Core"
+  "core": "Core",
+  "enterProposalDescription": "Enter proposal body"
 }
