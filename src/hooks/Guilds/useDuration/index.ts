@@ -3,12 +3,12 @@ import { useMemo, useState } from 'react';
 
 export const useDuration = () => {
   const [duration, setDuration] = useState({
-    years: '',
-    months: '',
-    days: '',
-    hours: '',
-    minutes: '',
-    seconds: '',
+    years: '0',
+    months: '0',
+    days: '0',
+    hours: '0',
+    minutes: '0',
+    seconds: '0',
   });
 
   const handleConversion = (value: string) => {

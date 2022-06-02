@@ -1,6 +1,7 @@
 import { Flex } from 'Components/Primitives/Layout';
 import { Button } from 'old-components/Guilds/common/Button';
 import styled from 'styled-components';
+import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 
 export const Column = styled(Flex)`
   flex-direction: column;
@@ -10,7 +11,8 @@ export const Column = styled(Flex)`
 
 export const Container = styled(Flex)`
   flex-direction: row;
-  justify-content: centre;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 export const ColumnButton = styled(Button).attrs({
@@ -22,6 +24,16 @@ export const ColumnButton = styled(Button).attrs({
   :hover:enabled {
     border-color: none;
   }
+  :active:enabled {
+    border: none;
+  }
+`;
+
+export const NumberInput = styled(NumericalInput)`
+  input {
+    color: red;
+  }
+  /* ${({ value }) => (value === '0' ? 'color: red;' : 'color: blue;')} */
 `;
 
 export const WarningRow = styled(Flex)``;
