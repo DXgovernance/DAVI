@@ -18,7 +18,6 @@ export const parameters = {
     },
   },
 };
-initializeI18Next();
 const ComponentContainer = ({ children }) => (
   <ThemeProvider theme={GuildsDarkTheme}>
     <HashRouter basename="/">
