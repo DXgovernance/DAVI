@@ -17,4 +17,3 @@ const Editor = ({ EditorConfig }) => {
 };
 
 export default Editor;
-
