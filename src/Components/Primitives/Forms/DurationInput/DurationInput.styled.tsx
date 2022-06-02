@@ -5,14 +5,18 @@ import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 
 export const Column = styled(Flex)`
   flex-direction: column;
-  width: 100px;
+  width: 70px;
   margin: 20px 10px;
 `;
 
-export const Container = styled(Flex)`
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
+export const Container = styled.div`
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (min-width: 1340px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 `;
 
 export const ColumnButton = styled(Button).attrs({
@@ -29,11 +33,6 @@ export const ColumnButton = styled(Button).attrs({
   }
 `;
 
-export const NumberInput = styled(NumericalInput)`
-  input {
-    color: red;
-  }
-  /* ${({ value }) => (value === '0' ? 'color: red;' : 'color: blue;')} */
-`;
+export const NumberInput = styled(NumericalInput)``;
 
 export const WarningRow = styled(Flex)``;
