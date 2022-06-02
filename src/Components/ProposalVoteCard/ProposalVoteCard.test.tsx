@@ -1,6 +1,6 @@
 import { render } from 'utils/tests';
 import ProposalVoteCard from './ProposalVoteCard';
-import { mockProposalVoteCardProps } from './mocks';
+import { mockProposalVoteCardProps } from 'Components/Fixtures';
 
 describe('ProposalVoteCard', () => {
   it('matches the snapshot', () => {

@@ -1,7 +1,9 @@
+import { ConfirmVoteProposalProps, VoteOnProposalProps } from './types';
+
 export const voteOnProposal = ({
   votingPowerAtProposalSnapshot,
   votingPowerAtProposalCurrentSnapshot,
-}) => {
+}: VoteOnProposalProps) => {
   const hasNoVotingPower =
     votingPowerAtProposalSnapshot &&
     Number(votingPowerAtProposalSnapshot?.toString()) <= 0;
@@ -18,12 +20,11 @@ export const voteOnProposal = ({
 export const confirmVoteProposal = ({
   proposal,
   contract,
-  proposalId,
   selectedAction,
   userVotingPower,
   createTransaction,
-}) => {
+}: ConfirmVoteProposalProps) => {
   createTransaction(`Vote on proposal ${proposal?.title}`, async () =>
-    contract.setVote(proposalId, selectedAction, userVotingPower)
+    contract.setVote(proposal?.id, selectedAction, userVotingPower)
   );
 };

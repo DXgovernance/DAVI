@@ -154,7 +154,6 @@ const ProposalVoteCard = ({
           confirmVoteProposal({
             proposal,
             contract,
-            proposalId: proposal.id,
             selectedAction,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,

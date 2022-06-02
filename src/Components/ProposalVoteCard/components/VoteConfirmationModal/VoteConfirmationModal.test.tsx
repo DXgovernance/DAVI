@@ -1,6 +1,6 @@
 import { render } from 'utils/tests';
 import VoteConfirmationModal from './VoteConfirmationModal';
-import { mockVoteConfirmationModal } from '../../mocks';
+import { mockVoteConfirmationModal } from 'Components/Fixtures';
 import { screen } from '@testing-library/react';
 
 describe('VoteConfirmationModal', () => {

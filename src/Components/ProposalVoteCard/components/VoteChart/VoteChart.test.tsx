@@ -1,6 +1,6 @@
 import { render } from 'utils/tests';
 import VoteChart from './VoteChart';
-import { mockVoteChart } from '../../mocks';
+import { mockVoteChart } from 'Components/Fixtures';
 
 describe('VoteChart', () => {
   it('matches the snapshot', () => {

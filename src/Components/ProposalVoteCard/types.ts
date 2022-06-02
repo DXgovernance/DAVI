@@ -34,6 +34,7 @@ interface Proposal {
   id: string;
   metadata: ProposalMetadata;
   endTime: Moment;
+  title?: string;
 }
 
 export interface ProposalVoteCardProps {
@@ -63,6 +64,22 @@ export interface VoteChartProps {
 
 export interface Voter {
   avatar: string;
+}
+
+export interface ConfirmVoteProposalProps {
+  proposal: Proposal;
+  contract: ERC20Guild;
+  selectedAction: BigNumber;
+  userVotingPower: BigNumber;
+  createTransaction: (
+    summary: string,
+    txFunction: () => Promise<providers.TransactionResponse>
+  ) => void;
+}
+
+export interface VoteOnProposalProps {
+  votingPowerAtProposalSnapshot: BigNumber;
+  votingPowerAtProposalCurrentSnapshot: BigNumber;
 }
 
 export type VoteResultsProps = Omit<ResultRowProps, 'optionKey'>;

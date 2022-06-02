@@ -1,6 +1,6 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
-import useProposalMetadata from 'hooks/Guilds/ether-swr/guild/useProposalMetadata';
+import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
@@ -8,8 +8,8 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
 import { useWeb3React } from '@web3-react/core';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useTransactions } from 'contexts/Guilds';
 import { ProposalVoteCard } from 'Components/ProposalVoteCard';
+import { useTransactions } from 'contexts/Guilds';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
@@ -25,12 +25,13 @@ const ProposalVoteCardWrapper = () => {
     contractAddress: guildId,
     userAddress,
   });
-  const { createTransaction } = useTransactions();
   const contract = useERC20Guild(guildId, true);
   const { data: snapshotId } = useSnapshotId({
     contractAddress: guildId,
     proposalId,
   });
+
+  const { createTransaction } = useTransactions();
 
   // Get voting power without fallbackSnapshotId
   const { data: votingPowerAtProposalSnapshot } = useVotingPowerOf({
