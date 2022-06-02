@@ -2,7 +2,7 @@ import { Loading } from 'Components/Primitives/Loading';
 import moment from 'moment';
 import { useMemo } from 'react';
 import { InfoItem } from '../InfoItem';
-import { Separator, SidebarInfoContent } from '../styles';
+import { Separator, SidebarInfoContent } from '../ProposalInfoCard.styled';
 import { ProposalHistoryProps } from './ProposalHistory.types';
 
 const ProposalHistory: React.FC<ProposalHistoryProps> = ({ proposal }) => {
