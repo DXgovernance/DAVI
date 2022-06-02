@@ -19,96 +19,100 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
       class="sc-bdfBQB bmhbKs"
     >
       <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        class="sc-bdfBQB sc-crrszt bmhbKs caXmQI"
       >
-        <span>
-          proposalInfoCard.consensusSystem
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
         >
-          guilds.guilds_one
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          proposalInfoCard.proposalDuration
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
-        >
-          <div
-            class="sc-dQoVA"
+          <span>
+            proposalInfoCard.consensusSystem
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
           >
-            <span
-              aria-busy="true"
-              aria-live="polite"
+            guilds.guilds_one
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        >
+          <span>
+            proposalInfoCard.proposalDuration
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
+          >
+            <div
+              class="sc-dQoVA"
             >
               <span
-                class="react-loading-skeleton"
-                style="width: 50px; --base-color: #333; --highlight-color: #555;"
+                aria-busy="true"
+                aria-live="polite"
               >
-                ‌
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 50px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
               </span>
-              <br />
-            </span>
-          </div>
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          quorum
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
         >
-          <div
-            class="sc-dQoVA"
+          <span>
+            quorum
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
           >
-            <span
-              aria-busy="true"
-              aria-live="polite"
+            <div
+              class="sc-dQoVA"
             >
               <span
-                class="react-loading-skeleton"
-                style="width: 50px; --base-color: #333; --highlight-color: #555;"
+                aria-busy="true"
+                aria-live="polite"
               >
-                ‌
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 50px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
               </span>
-              <br />
-            </span>
-          </div>
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          proposalInfoCard.proposalHistory
-        </span>
-        <span
-          class="sc-gKseQn hghDMX"
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
         >
-          <svg
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <span>
+            proposalInfoCard.proposalHistory
+          </span>
+          <span
+            class="sc-gKseQn hghDMX"
           >
-            <polyline
-              points="6 9 12 15 18 9"
-            />
-          </svg>
-        </span>
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="6 9 12 15 18 9"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -135,66 +139,70 @@ exports[`ProposalInfoCard Should render will full parameters 1`] = `
       class="sc-bdfBQB bmhbKs"
     >
       <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        class="sc-bdfBQB sc-crrszt bmhbKs caXmQI"
       >
-        <span>
-          proposalInfoCard.consensusSystem
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
         >
-          guilds.guilds_one
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          proposalInfoCard.proposalDuration
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
-        >
-          3 minutes
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          quorum
-        </span>
-        <span
-          class="sc-jSgvzq bJbUXH"
-        >
-          0.3%%
-        </span>
-      </div>
-      <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
-      >
-        <span>
-          proposalInfoCard.proposalHistory
-        </span>
-        <span
-          class="sc-gKseQn hghDMX"
-        >
-          <svg
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <span>
+            proposalInfoCard.consensusSystem
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
           >
-            <polyline
-              points="6 9 12 15 18 9"
-            />
-          </svg>
-        </span>
+            guilds.guilds_one
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        >
+          <span>
+            proposalInfoCard.proposalDuration
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
+          >
+            3 minutes
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        >
+          <span>
+            quorum
+          </span>
+          <span
+            class="sc-jSgvzq bJbUXH"
+          >
+            0.3%%
+          </span>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+        >
+          <span>
+            proposalInfoCard.proposalHistory
+          </span>
+          <span
+            class="sc-gKseQn hghDMX"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <polyline
+                points="6 9 12 15 18 9"
+              />
+            </svg>
+          </span>
+        </div>
       </div>
     </div>
   </div>
