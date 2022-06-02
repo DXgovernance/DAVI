@@ -1,4 +1,4 @@
-import { useTheme } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import {
   closestCenter,
   CollisionDetection,
@@ -21,7 +21,8 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
-// import { Divider } from '../common/Divider';
+import { Divider } from '../common/Divider';
+import { Box } from '../../../Components/Primitives/Layout';
 import OptionRow from './Option';
 import AddButton from './common/AddButton';
 import { DecodedAction, Option } from './types';
@@ -33,9 +34,11 @@ import {
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import { BigNumber } from 'ethers';
-import { SidebarCardDivider } from '../SidebarCard';
 
-//asd
+const AddOptionWrapper = styled(Box)`
+  padding: 1rem;
+`;
+
 interface OptionsListProps {
   isEditable: boolean;
   options: Option[];
@@ -318,7 +321,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
                 isEditable={isEditable}
                 editOption={editOption}
               />
-              {idx !== options.length - 1 && <SidebarCardDivider />}
+              {idx !== options.length - 1 && <Divider />}
             </>
           ))}
         </SortableContext>
@@ -327,7 +330,7 @@ const OptionsList: React.FC<OptionsListProps> = ({
       {/* Show a placeholder No option when editing EnforcedBinaryGuilds */}
       {isEnforcedBinaryGuild && isEditable && (
         <>
-          <SidebarCardDivider />
+          <Divider />
           <OptionRow
             key={options.length}
             option={{
@@ -347,8 +350,10 @@ const OptionsList: React.FC<OptionsListProps> = ({
 
       {isEditable && (
         <>
-          {options.length > 0 && <SidebarCardDivider />}
-          <AddButton label="Add Option" onClick={addOption} />
+          <Divider />
+          <AddOptionWrapper>
+            <AddButton label="Add Option" onClick={addOption} />
+          </AddOptionWrapper>
         </>
       )}
     </DndContext>

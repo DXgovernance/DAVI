@@ -1,8 +1,8 @@
 import { Loading } from 'Components/Primitives/Loading';
 import moment from 'moment';
-import { SidebarCardDivider } from 'old-components/Guilds/SidebarCard';
 import { useMemo } from 'react';
 import { InfoItem } from '../InfoItem';
+import { Separator, SidebarInfoContent } from '../styles';
 import { ProposalHistoryProps } from './ProposalHistory.types';
 
 const ProposalHistory: React.FC<ProposalHistoryProps> = ({ proposal }) => {
@@ -16,22 +16,24 @@ const ProposalHistory: React.FC<ProposalHistoryProps> = ({ proposal }) => {
 
   return (
     <>
-      <SidebarCardDivider />
+      <Separator />
 
-      {!proposal ? (
-        <Loading loading text skeletonProps={{ height: '100px' }} />
-      ) : (
-        <>
-          <InfoItem
-            title="Proposal created"
-            description={proposal.startTime.format('MMM Do, YYYY - h:mm a')}
-          />
-          <InfoItem
-            title={endDetail}
-            description={proposal.endTime.format('MMM Do, YYYY - h:mm a')}
-          />
-        </>
-      )}
+      <SidebarInfoContent>
+        {!proposal ? (
+          <Loading loading text skeletonProps={{ height: '100px' }} />
+        ) : (
+          <>
+            <InfoItem
+              title="Proposal created"
+              description={proposal.startTime.format('MMM Do, YYYY - h:mm a')}
+            />
+            <InfoItem
+              title={endDetail}
+              description={proposal.endTime.format('MMM Do, YYYY - h:mm a')}
+            />
+          </>
+        )}
+      </SidebarInfoContent>
     </>
   );
 };
