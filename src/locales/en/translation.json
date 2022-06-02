@@ -1,8 +1,8 @@
 {
   "guilds": {
     "create": "Create Guild",
-    "guilds_one": "Guilds",
-    "guilds_other": "Guilds"
+    "guild": "Guild",
+    "guilds": "Guilds"
   },
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
@@ -31,6 +31,10 @@
   "approve": "Approve",
   "unsupportedNetwork": "Unsupported Network",
   "notConnected": "Not Connected",
+  "information": "Information",
+  "consensusSystem": "Consensus System",
+  "proposalDuration": "Proposal Duration",
+  "quorum": "Quorum",
   "backToOverview": "Back to Overview",
   "createProposal": "Create Proposal",
   "chooseProposal": "Choose Proposal",
