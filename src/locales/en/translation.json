@@ -46,13 +46,9 @@
   },
   "selectAToken": "Select a token",
   "searchToken": "Search token",
-  "quorum": "Quorum",
-  "information": "Information",
   "proposalInfoCard": {
     "consensusSystem": "Consensus System",
     "proposalDuration": "Proposal Duration",
     "proposalHistory": "Proposal History"
-  },
-  "consensusSystem": "Consensus System",
-  "proposalDuration": "Proposal Duration"
+  }
 }
