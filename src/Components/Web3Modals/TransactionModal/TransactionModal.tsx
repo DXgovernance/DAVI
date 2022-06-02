@@ -1,46 +1,20 @@
-import { getChains } from '../../../provider/connectors';
-import { getBlockchainLink } from '../../../utils';
-import { Button } from '../common/Button';
-import { Circle, Flex } from '../../../Components/Primitives/Layout';
-import { ContainerText } from '../../../Components/Primitives/Layout/Text';
-import { Modal, ModalProps } from '../common/Modal';
+import { getChains } from 'provider/connectors';
+import { getBlockchainLink } from 'utils';
+import { Circle, Flex } from 'Components/Primitives/Layout';
+import { ContainerText } from 'Components/Primitives/Layout/Text';
+import { Modal } from 'old-components/Guilds/common/Modal';
 import { useWeb3React } from '@web3-react/core';
 import PendingCircle from 'old-components/common/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
-import styled from 'styled-components';
 
-export const ModalButton = styled(Button)`
-  margin: 0 0 16px 0;
-  width: 90%;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
-  :hover:enabled {
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-export const Container = styled.div`
-  margin: 0.5rem 0 1rem 0;
-`;
-
-export const Header = styled(Flex)`
-  margin-top: 2rem;
-`;
-
-enum TransactionModalView {
-  Confirm,
-  Submit,
-  Reject,
-}
-
-type TransactionModalProps = {
-  message: string;
-  transactionHash: string;
-  txCancelled: boolean;
-} & Pick<ModalProps, 'onCancel'>;
+import { TransactionModalView, TransactionModalProps } from './types';
+import {
+  //  ModalButton,
+  Container,
+  Header,
+} from './TransactionModal.styled';
 
 const TransactionModal: React.FC<TransactionModalProps> = ({
   message,
