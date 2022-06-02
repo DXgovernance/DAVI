@@ -18,7 +18,7 @@ import {
   RiArrowGoForwardLine,
 } from 'react-icons/ri';
 
-import MenuItem from './MenuItem';
+import MenuItem from '../MenuItem/MenuItem';
 
 const Header = styled.div`
   align-items: center;

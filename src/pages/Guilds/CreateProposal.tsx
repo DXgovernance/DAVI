@@ -96,9 +96,10 @@ const CreateProposalPage: React.FC = () => {
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
   const {
-    html: proposalBodyHTML,
-    md: proposalBodyMd,
     Editor,
+    EditorConfig,
+    md: proposalBodyMd,
+    html: proposalBodyHTML,
   } = useTextEditor(
     `${guildId}/create-proposal`,
     345600000,
@@ -243,7 +244,7 @@ const CreateProposalPage: React.FC = () => {
           ) : null}
         </Box>
         {editMode ? (
-          <Editor />
+          <Editor EditorConfig={EditorConfig} />
         ) : (
           <div
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(proposalBodyHTML) }}
