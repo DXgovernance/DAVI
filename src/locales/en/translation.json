@@ -1,8 +1,8 @@
 {
   "guilds": {
     "create": "Create Guild",
-    "guild": "Guild",
-    "guilds": "Guilds"
+    "guilds_one": "Guilds",
+    "guilds_other": "Guilds"
   },
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
