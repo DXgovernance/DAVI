@@ -47,13 +47,8 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
 }));
 
 describe('Filter', () => {
-  let props;
-  beforeEach(() => {
-    props = {};
-  });
-
-  it('Should match snapshot 1', () => {
-    const { container } = render(<Filter {...props} />);
+  it('Should match snapshot', () => {
+    const { container } = render(<Filter />);
     expect(container).toMatchSnapshot();
   });
 });
