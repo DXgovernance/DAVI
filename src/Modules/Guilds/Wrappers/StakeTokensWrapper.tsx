@@ -9,12 +9,9 @@ import useGuildImplementationType from '../../../hooks/Guilds/guild/useGuildImpl
 import { useERC20, useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useWeb3React } from '@web3-react/core';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
-import { BigNumber } from 'ethers';
-import { useState } from 'react';
+
 
 const StakeTokensWrapper = () => {
-  const [stakeAmount, setStakeAmount] = useState<BigNumber>(null);
   const { account: userAddress } = useWeb3React();
   const { guildId: guildAddress } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildAddress);
@@ -39,16 +36,6 @@ const StakeTokensWrapper = () => {
     userAddress,
   });
 
-  const votingPowerPercent = useVotingPowerPercent(
-    userVotingPower,
-    guildConfig?.totalLocked,
-    3
-  );
-  const nextVotingPowerPercent = useVotingPowerPercent(
-    stakeAmount?.add(userVotingPower),
-    stakeAmount?.add(guildConfig?.totalLocked),
-    3
-  );
 
   return (
     <StakeTokens
@@ -58,15 +45,10 @@ const StakeTokensWrapper = () => {
         info: tokenInfo,
         contract: tokenContract,
       }}
+      userVotingPower={userVotingPower}
       createTransaction={createTransaction}
       guild={{ contract: guildContract, config: guildConfig }}
       isRepGuild={isRepGuild}
-      votingPowerPercent={{
-        current: votingPowerPercent,
-        next: nextVotingPowerPercent,
-      }}
-      stakeAmount={stakeAmount}
-      setStakeAmount={setStakeAmount}
     />
   );
 };

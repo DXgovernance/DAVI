@@ -2,7 +2,7 @@ import dxIcon from '../../../assets/images/dxdao-icon.svg';
 import { Loading } from '../../../Components/Primitives/Loading';
 import { formatUnits } from 'ethers/lib/utils';
 import moment from 'moment';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { FiArrowRight, FiInfo } from 'react-icons/fi';
 import { useHistory, useLocation } from 'react-router-dom';
 import { MAX_UINT } from 'utils';
@@ -22,17 +22,18 @@ import {
 } from './StakeTokens.styled';
 import { Button } from "old-components/Guilds/common/Button"
 import useBigNumberToNumber from '../../../hooks/Guilds/conversions/useBigNumberToNumber';
+import { BigNumber } from 'ethers';
+import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
 
 
 export const StakeTokens = ({
   token,
-  votingPowerPercent,
+  userVotingPower,
   createTransaction,
   guild,
   isRepGuild,
-  stakeAmount,
-  setStakeAmount
 }) => {
+  const [stakeAmount, setStakeAmount] = useState<BigNumber>(null);
 
   const isStakeAmountValid = useMemo(
     () =>
@@ -66,6 +67,17 @@ export const StakeTokens = ({
     token?.balance,
     token?.info?.decimals,
     4
+  );
+
+  const currentvotingPowerPercent = useVotingPowerPercent(
+    userVotingPower,
+    guild?.config?.totalLocked,
+    3
+  );
+  const nextVotingPowerPercent = useVotingPowerPercent(
+    stakeAmount?.add(userVotingPower),
+    stakeAmount?.add(guild?.config?.totalLocked),
+    3
   );
 
   const history = useHistory();
@@ -144,16 +156,16 @@ export const StakeTokens = ({
           {isStakeAmountValid ? (
             <>
               <InfoOldValue>
-                {votingPowerPercent?.current != null ? (
-                  `${votingPowerPercent?.current}%`
+                {currentvotingPowerPercent != null ? (
+                  `${currentvotingPowerPercent}%`
                 ) : (
                   <Loading loading text skeletonProps={{ width: 40 }} />
                 )}{' '}
                 <FiArrowRight />
               </InfoOldValue>{' '}
               <strong>
-                {votingPowerPercent.next != null ? (
-                  `${votingPowerPercent.next}%`
+                {nextVotingPowerPercent != null ? (
+                  `${nextVotingPowerPercent}%`
                 ) : (
                   <Loading loading text skeletonProps={{ width: 40 }} />
                 )}
