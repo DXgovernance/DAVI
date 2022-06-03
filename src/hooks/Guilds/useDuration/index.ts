@@ -23,7 +23,11 @@ export const useDuration = () => {
 
   // convert to number form string and then calculate
   const handleChange = (e: string, value: string) => {
-    return setDuration({ ...duration, [value]: e });
+    let formattedValue: number;
+    if (e === '') formattedValue = 0;
+    else formattedValue = parseInt(e);
+
+    return setDuration({ ...duration, [value]: formattedValue });
   };
 
   const { time } = useMemo(() => {
@@ -41,7 +45,7 @@ export const useDuration = () => {
     };
   }, [duration]);
 
-  return {
+  let result = {
     data: {
       duration,
       setDuration,
@@ -51,4 +55,6 @@ export const useDuration = () => {
       decrement,
     },
   };
+
+  return result;
 };
