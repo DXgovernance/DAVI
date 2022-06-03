@@ -2,6 +2,11 @@ import { Flex } from 'Components/Primitives/Layout';
 import { Button } from 'old-components/Guilds/common/Button';
 import styled from 'styled-components';
 
+export const MainWrapper = styled(Flex)`
+  flex-direction: column;
+  margin-bottom: 1rem;
+`;
+
 export const Column = styled(Flex)`
   flex-direction: column;
   width: 70px;
@@ -34,4 +39,8 @@ export const ColumnButton = styled(Button).attrs({
 
 export const WarningRow = styled(Flex)`
   margin: 1rem;
+`;
+
+export const StyledButton = styled(Button)`
+  width: 150px;
 `;

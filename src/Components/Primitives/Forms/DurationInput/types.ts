@@ -1,5 +1,6 @@
 export interface DurationInputProps {
   value: number;
+  onChange?: (value: number) => void;
 }
 
 export interface WarningInputProps {
