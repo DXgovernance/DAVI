@@ -1,6 +1,7 @@
 import { useWeb3React } from '@web3-react/core';
 import { FiCheckCircle, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { isMobile, isDesktop } from 'react-device-detect';
+import { useTranslation } from 'react-i18next';
 
 import {
   getBlockchainLink,
@@ -37,6 +38,7 @@ export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
   const { account, connector, chainId } = useWeb3React();
   const { ensName, imageUrl } = useENSAvatar(account, MAINNET_ID);
   const [isCopied, copyAddress] = useClipboard(account, 3000);
+  const { t } = useTranslation();
 
   const networkName = NETWORK_NAMES[chainId];
 
@@ -45,11 +47,11 @@ export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
       <ConnectionStatusRow>
         <ConnectionStatusText>
           <LiveIndicator />
-          Connected to {findWalletType(connector)}
+          {t('connectedTo')} {findWalletType(connector)}
         </ConnectionStatusText>
         {isDesktop && (
           <div>
-            <Button onClick={openOptions}>Change</Button>
+            <Button onClick={openOptions}>{t('change')}</Button>
           </div>
         )}
       </ConnectionStatusRow>
@@ -68,7 +70,7 @@ export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
           iconLeft
         >
           {isCopied ? <FiCheckCircle /> : <FiCopy />}
-          {isCopied ? 'Copied Address!' : 'Copy Address'}
+          {isCopied ? t('copiedAddress') : t('copyAddress')}
         </ConnectionActionButton>
 
         <ExternalLink
@@ -77,12 +79,14 @@ export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
         >
           <ConnectionActionButton variant="minimal" iconLeft>
             <FiExternalLink />
-            View on Explorer
+            {t('viewOnBlockExplorer')}
           </ConnectionActionButton>
         </ExternalLink>
       </Row>
       {isMobile && (
-        <CenteredButton onClick={openOptions}>Change Connection</CenteredButton>
+        <CenteredButton onClick={openOptions}>
+          {t('changeConnection')}
+        </CenteredButton>
       )}
     </Wrapper>
   );

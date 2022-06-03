@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { useWeb3React } from '@web3-react/core';
+import { useTranslation } from 'react-i18next';
 
 import { usePrevious } from 'utils';
 import { injected, getWallets, isChainIdSupported } from 'provider/connectors';
@@ -30,6 +31,7 @@ const WALLET_VIEWS = {
 };
 
 const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const { active, connector, error, activate, account, chainId } =
     useWeb3React();
   const rpcUrls = useRpcUrls();
@@ -112,7 +114,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
               <Option
                 key={key}
                 icon={option.icon}
-                header={'Install Metamask'}
+                header={t('installMetamask')}
                 link={'https://metamask.io/'}
               />
             );
@@ -160,12 +162,12 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       return (
         <Container>
           <ErrorHeading size={2}>
-            {isUnsupportedChain ? 'Wrong Network' : 'Error connecting'}
+            {isUnsupportedChain ? t('wrongNetwork') : t('errorConnecting')}
           </ErrorHeading>
           <div>
             {isUnsupportedChain
-              ? 'Please connect to a valid ethereum network.'
-              : 'Error connecting. Try refreshing the page.'}
+              ? t('pleaseConnectToAValidEthNetwork')
+              : `${t('errorConnecting')}. ${t('tryRefreshingThePage')}`}
           </div>
         </Container>
       );
@@ -178,8 +180,8 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
     ) {
       return (
         <Container>
-          <ErrorHeading size={2}>Wrong Network</ErrorHeading>
-          <div>Please connect to a valid ethereum network.</div>
+          <ErrorHeading size={2}>{t('wrongNetwork')}</ErrorHeading>
+          <div>{t('pleaseConnectToAValidEthNetwork')}.</div>
         </Container>
       );
     }
@@ -199,12 +201,12 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
           <TransactionsList>
             {recentTransactions?.length === 0 ? (
               <TransactionsListHeading>
-                Your transactions will appear here...
+                {t('yourTransactionsWillAppearHere')}...
               </TransactionsListHeading>
             ) : (
               <>
                 <TransactionsListHeading>
-                  Recent Transactions
+                  {t('recentTransactions')}
                 </TransactionsListHeading>
                 <Divider />
                 {recentTransactions?.map(transaction => (
@@ -212,7 +214,9 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
                 ))}
                 {recentTransactions?.length > 0 && (
                   <ButtonContainer>
-                    <Button onClick={clearAllTransactions}>Clear all</Button>
+                    <Button onClick={clearAllTransactions}>
+                      {t('clearAll')}
+                    </Button>
                   </ButtonContainer>
                 )}
               </>
@@ -236,9 +240,9 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       );
     }
 
-    if (walletView === WALLET_VIEWS.ACCOUNT) return 'Account';
+    if (walletView === WALLET_VIEWS.ACCOUNT) return t('account');
 
-    return 'Connect to a wallet';
+    return t('connectToAWallet');
   };
 
   return (

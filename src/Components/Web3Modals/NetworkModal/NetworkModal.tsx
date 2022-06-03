@@ -1,4 +1,5 @@
 import { useWeb3React } from '@web3-react/core';
+import { useTranslation } from 'react-i18next';
 
 import { useRpcUrls } from 'provider/providerHooks';
 import { getChains } from 'provider/connectors';
@@ -18,10 +19,11 @@ const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
   const { chainId } = useWeb3React();
   const rpcUrls = useRpcUrls();
   const { trySwitching } = useNetworkSwitching();
+  const { t } = useTranslation();
 
   return (
     <Modal
-      header={<div>Switch network</div>}
+      header={<div>{t('switchNetwork')}</div>}
       isOpen={isOpen}
       onDismiss={onClose}
       maxWidth={380}
