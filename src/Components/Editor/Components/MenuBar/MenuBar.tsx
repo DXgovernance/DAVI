@@ -18,10 +18,11 @@ import {
 
 import { Divider, Header } from './MenuBar.styled';
 import MenuItem from '../MenuItem/MenuItem';
+import { MenuItemProps } from '../MenuItem/types';
 
 const MenuBar = ({ editor }) => {
   const iconSize = 20;
-  const items = [
+  const items: MenuItemProps[] = [
     {
       icon: <RiH1 size={iconSize} />,
       title: 'Heading 1',
