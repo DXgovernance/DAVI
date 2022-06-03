@@ -14,6 +14,7 @@ import Input from 'old-components/Guilds/common/Form/Input';
 import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
+import { DurationInput } from 'Components/Primitives/Forms/DurationInput';
 
 interface FormElementRendererProps extends FormElementProps<any> {
   param: RichContractFunctionParam;
@@ -33,8 +34,9 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
       case 'decimal':
         return NumericalInput;
       case 'date':
-      case 'time':
         return DateInput;
+      case 'time':
+        return DurationInput;
       case 'boolean':
         return Toggle;
       case 'tokenAmount':
@@ -57,8 +59,6 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
         };
       case 'time':
         return {
-          isUTC: true,
-          inputType: InputType.DATETIME,
           value: value ? moment.unix(BigNumber.from(value).toNumber()) : value,
           onChange: (value: Moment) => onChange(BigNumber.from(value?.unix())),
         };

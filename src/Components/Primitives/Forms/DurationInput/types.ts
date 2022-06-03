@@ -1,6 +1,5 @@
 export interface DurationInputProps {
-  isOpen: boolean;
-  onDismiss: () => void;
+  value: number;
 }
 
 export interface WarningInputProps {
