@@ -12,7 +12,11 @@ const UnstyledInput = styled.input`
   outline: none;
 `;
 
-const InputWrapper = styled.div<{ isInvalid?: boolean; textAlign?: string }>`
+const InputWrapper = styled.div<{
+  isInvalid?: boolean;
+  textAlign?: string;
+  muted?: boolean;
+}>`
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -26,8 +30,12 @@ const InputWrapper = styled.div<{ isInvalid?: boolean; textAlign?: string }>`
   background-color: transparent;
 
   input {
-    color: ${({ theme, isInvalid }) =>
-      isInvalid ? theme.colors.red : theme.colors.text};
+    color: ${({ theme, isInvalid, muted }) =>
+      isInvalid
+        ? theme.colors.red
+        : muted
+        ? theme.colors.muted
+        : theme.colors.text};
     font-family: ${({ theme }) => theme.fonts.body};
     font-size: ${({ theme }) => theme.fontSizes.body};
     font-weight: ${({ theme }) => theme.fontWeights.regular};
@@ -60,7 +68,9 @@ export interface InputProps<T>
     FormElementProps<T> {
   icon?: React.ReactElement;
   iconRight?: React.ReactElement;
+  isInvalid?: boolean;
   textAlign?: string;
+  muted?: boolean;
 }
 
 const Input: React.FC<InputProps<any>> = ({
@@ -68,10 +78,11 @@ const Input: React.FC<InputProps<any>> = ({
   iconRight = null,
   isInvalid,
   textAlign,
+  muted,
   ...rest
 }) => {
   return (
-    <InputWrapper textAlign={textAlign} isInvalid={isInvalid}>
+    <InputWrapper textAlign={textAlign} isInvalid={isInvalid} muted={muted}>
       <IconContainer>{icon}</IconContainer>
       <UnstyledInput {...rest} />
       <IconContainer right>{iconRight}</IconContainer>
