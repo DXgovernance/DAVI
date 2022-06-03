@@ -57,7 +57,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
           value: value ? moment.unix(BigNumber.from(value).toNumber()) : value,
           onChange: (value: Moment) => onChange(BigNumber.from(value?.unix())),
         };
-      case 'time':
+      case 'duration':
         return {
           value,
           onChange: (value: number) => onChange(value),

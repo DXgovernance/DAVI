@@ -31,14 +31,14 @@
           },
           {
             "type": "uint256",
-            "component": "time",
+            "component": "duration",
             "name": "cliffDuration",
             "defaultValue": "",
             "description": "How long before cliff (in seconds)"
           },
           {
             "type": "uint256",
-            "component": "time",
+            "component": "duration",
             "name": "duration",
             "defaultValue": "",
             "description": "How long before contract finishes fully (in seconds)"

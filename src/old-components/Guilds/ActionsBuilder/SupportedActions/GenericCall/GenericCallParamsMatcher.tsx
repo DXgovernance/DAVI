@@ -26,7 +26,7 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
         return bn.toString();
       case 'date':
         return moment.unix(Number(param.value)).format('YYYY-MM-DD');
-      case 'time':
+      case 'duration':
         return `${param.value}`;
       case 'boolean':
         return `${param.value}`;
