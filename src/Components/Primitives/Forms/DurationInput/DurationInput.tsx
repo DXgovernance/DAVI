@@ -3,14 +3,13 @@ import React from 'react';
 import { DURATION_LIMITS } from 'constants/Duration';
 import { useDuration } from 'hooks/Guilds/useDuration';
 import { Modal } from 'old-components/Guilds/common/Modal';
-// import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
+import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import { WarningInput } from './WarningInput';
 import {
   Column,
   ColumnButton,
   Container,
   WarningRow,
-  NumberInput,
 } from './DurationInput.styled';
 import { DurationInputProps } from './types';
 
@@ -36,13 +35,13 @@ const DurationInput: React.FC<DurationInputProps> = ({ isOpen, onDismiss }) => {
                   <GoTriangleUp />
                 </ColumnButton>
 
-                <NumberInput
+                <NumericalInput
                   value={count}
                   onChange={e => handleChange(e, value)}
-                  placeholder={value}
                   textAlign="center"
                   data-testid={value}
                   id={value}
+                  muted={count === 0 ? true : false}
                 />
                 <ColumnButton
                   disabled={count <= DURATION_LIMITS[value].min}

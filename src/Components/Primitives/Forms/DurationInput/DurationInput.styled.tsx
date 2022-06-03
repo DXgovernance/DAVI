@@ -1,7 +1,6 @@
 import { Flex } from 'Components/Primitives/Layout';
 import { Button } from 'old-components/Guilds/common/Button';
 import styled from 'styled-components';
-import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 
 export const Column = styled(Flex)`
   flex-direction: column;
@@ -32,7 +31,5 @@ export const ColumnButton = styled(Button).attrs({
     border: none;
   }
 `;
-
-export const NumberInput = styled(NumericalInput)``;
 
 export const WarningRow = styled(Flex)``;
