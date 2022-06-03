@@ -27,7 +27,7 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
       case 'date':
         return moment.unix(Number(param.value)).format('YYYY-MM-DD');
       case 'time':
-        return moment.unix(Number(param.value)).format('YYYY-MM-DD');
+        return `${param.value}`;
       case 'boolean':
         return `${param.value}`;
       case 'tokenAmount':

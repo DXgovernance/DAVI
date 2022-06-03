@@ -59,8 +59,8 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
         };
       case 'time':
         return {
-          value: value ? moment.unix(BigNumber.from(value).toNumber()) : value,
-          onChange: (value: Moment) => onChange(BigNumber.from(value?.unix())),
+          value,
+          onChange: (value: number) => onChange(value),
         };
       case 'tokenAmount':
         return {
