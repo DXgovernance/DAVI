@@ -1,13 +1,7 @@
 import { Item } from './MenuItem.styled';
+import { MenuItemProps } from './types';
 
-interface Props {
-  icon?: any;
-  title: any;
-  action?: any;
-  isActive?: any;
-}
-
-const MenuItem = ({ icon, title, action, isActive = null }: Props) => {
+const MenuItem = ({ icon, title, action, isActive = null }: MenuItemProps) => {
   return (
     <Item active={isActive && isActive()} onClick={action} title={title}>
       {icon}

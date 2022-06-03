@@ -27,3 +27,4 @@ function DemoEditor() {
 const Template: ComponentStory<typeof Editor> = () => <DemoEditor />;
 
 export const Simple = Template.bind({});
+Simple.storyName = 'Editor';
