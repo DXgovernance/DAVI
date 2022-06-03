@@ -1,24 +1,23 @@
-import { useTransactions } from '../../../contexts/Guilds';
-import { useERC20Guild } from '../../../hooks/Guilds/contracts/useContract';
-import useBigNumberToNumber from '../../../hooks/Guilds/conversions/useBigNumberToNumber';
-import useENSAvatar from '../../../hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { useERC20Info } from '../../../hooks/Guilds/ether-swr/erc20/useERC20Info';
-import { useGuildConfig } from '../../../hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVoterLockTimestamp } from '../../../hooks/Guilds/ether-swr/guild/useVoterLockTimestamp';
-import { useVotingPowerOf } from '../../../hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import useGuildImplementationType from '../../../hooks/Guilds/guild/useGuildImplementationType';
-import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
-import { shortenAddress } from '../../../utils';
-import { MAINNET_ID } from '../../../utils/constants';
-import Avatar from '../Avatar';
-import StakeTokensModal from '../StakeTokensModal';
-import { IconButton, Button } from '../common/Button';
+import { useTransactions } from 'contexts/Guilds';
+import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
+import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
+import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useVoterLockTimestamp } from 'hooks/Guilds/ether-swr/guild/useVoterLockTimestamp';
+import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import { shortenAddress } from 'utils';
+import { MAINNET_ID } from 'utils/constants';
+import Avatar from 'old-components/Guilds/Avatar';
+import StakeTokensModal from 'old-components/Guilds/StakeTokensModal';
 import {
   DropdownMenu,
   DropdownContent,
   DropdownHeader,
-} from '../common/DropdownMenu';
-import { Loading } from '../../../Components/Primitives/Loading';
+} from 'old-components/Guilds/common/DropdownMenu';
+import { Loading } from '../../Primitives/Loading';
 import { useWeb3React } from '@web3-react/core';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { formatUnits } from 'ethers/lib/utils';
@@ -27,58 +26,14 @@ import moment from 'moment';
 import { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { FiArrowLeft } from 'react-icons/fi';
-import styled from 'styled-components';
-
-const UserActionButton = styled(IconButton)`
-  border-radius: 50px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
-  & > div:first-child {
-    display: flex;
-  }
-`;
-
-const IconHolder = styled.span`
-  display: flex;
-  justify-content: center;
-
-  @media only screen and (min-width: 768px) {
-    margin-right: 0.3rem;
-  }
-
-  img {
-    border-radius: 50%;
-    margin-right: 0;
-  }
-`;
-
-const VotingPower = styled.div`
-  background-color: #282b30;
-  color: #fff;
-  border-radius: 32px;
-  padding: 2px 8px;
-  font-weight: 500;
-  font-size: 14px;
-`;
-
-const MemberContainer = styled.div`
-  padding: 20px;
-`;
-
-const ContentItem = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  font-size: 14px;
-  padding-bottom: 8px;
-`;
-
-const LockButton = styled(Button)`
-  margin-top: 12px;
-  width: 100%;
-`;
+import {
+  ContentItem,
+  IconHolder,
+  LockButton,
+  MemberContainer,
+  UserActionButton,
+  VotingPower,
+} from './MemberActions.styled';
 
 export const MemberActions = () => {
   const [showMenu, setShowMenu] = useState(false);

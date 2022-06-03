@@ -1,7 +1,7 @@
-import { useGuildProposalIds } from '../../hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import { Filter } from '../../old-components/Guilds/Filter';
-import { Sidebar } from '../../old-components/Guilds/Sidebar';
-import { Box } from '../../Components/Primitives/Layout';
+import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { Filter } from 'old-components/Guilds/Filter';
+import { GuildSidebar } from 'Components/GuildSidebar';
+import { Box } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
@@ -65,7 +65,7 @@ const GuildsPage: React.FC = () => {
   return (
     <PageContainer>
       <SidebarContent>
-        <Sidebar />
+        <GuildSidebar />
       </SidebarContent>
       <PageContent>
         <Filter />
