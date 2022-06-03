@@ -24,6 +24,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ isOpen, onDismiss }) => {
         <Container>
           {Object.keys(duration).map((value, index) => {
             const count = duration[value];
+
             return (
               <Column>
                 <ColumnButton
@@ -42,6 +43,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ isOpen, onDismiss }) => {
                   data-testid={value}
                   id={value}
                   muted={count === 0 ? true : false}
+                  isInvalid={count > DURATION_LIMITS[value].max}
                 />
                 <ColumnButton
                   disabled={count <= DURATION_LIMITS[value].min}
@@ -50,7 +52,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ isOpen, onDismiss }) => {
                 >
                   <GoTriangleDown />
                 </ColumnButton>
-                {value}
+                {count === 1 ? `${value.slice(0, -1)}` : value}
               </Column>
             );
           })}

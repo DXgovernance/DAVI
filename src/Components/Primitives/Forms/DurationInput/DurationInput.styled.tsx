@@ -32,4 +32,6 @@ export const ColumnButton = styled(Button).attrs({
   }
 `;
 
-export const WarningRow = styled(Flex)``;
+export const WarningRow = styled(Flex)`
+  margin: 1rem;
+`;
