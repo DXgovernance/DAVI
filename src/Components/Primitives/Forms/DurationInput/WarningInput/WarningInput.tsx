@@ -1,16 +1,18 @@
 import { WarningContainer } from './WarningInput.styled';
 import { WarningInputProps } from '../types';
+import { useTranslation } from 'react-i18next';
 
 const WarningInput: React.FC<WarningInputProps> = ({
   timeColumn,
   value,
   limit,
 }) => {
+  const { t } = useTranslation();
+
   if (value > limit.max) {
     return (
       <WarningContainer data-testid="warning-max">
-        Please change {value} input for the {timeColumn} column as it is over
-        the limit. The maximum value allowed is {limit.max}.
+        {t('durationWarningMessage', { value, timeColumn, limit })}
       </WarningContainer>
     );
   }

@@ -1,5 +1,5 @@
-import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import React, { useEffect, useState } from 'react';
+import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import { DURATION_LIMITS } from 'constants/Duration';
 import { useDuration } from 'hooks/Guilds/useDuration';
 import { Modal } from 'old-components/Guilds/common/Modal';
@@ -15,6 +15,7 @@ import {
 } from './DurationInput.styled';
 import { DurationInputProps } from './types';
 import Input from 'old-components/Guilds/common/Form/Input';
+import { useTranslation } from 'react-i18next';
 
 const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
   const {
@@ -22,6 +23,8 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
   } = useDuration();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     let SECOND_DURATION = 1;
@@ -51,7 +54,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
       <Modal
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
-        header="Select duration"
+        header={t('selectDuration')}
       >
         <>
           <MainWrapper>
@@ -86,7 +89,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
                     >
                       <GoTriangleDown />
                     </ColumnButton>
-                    {count === 1 ? `${value.slice(0, -1)}` : value}
+                    {t(`duration.${value}`, { count })}
                   </Column>
                 );
               })}
@@ -102,7 +105,9 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
                 );
               })}
             </WarningRow>
-            <StyledButton onClick={() => setIsOpen(false)}>Save</StyledButton>
+            <StyledButton onClick={() => setIsOpen(false)}>
+              {t('save')}
+            </StyledButton>
           </MainWrapper>
         </>
       </Modal>
