@@ -11,7 +11,10 @@ const WarningInput: React.FC<WarningInputProps> = ({
 
   if (value > limit.max) {
     return (
-      <WarningContainer data-testid="warning-max">
+      <WarningContainer
+        data-testid="warning-max"
+        aria-label={`Warning message for ${timeColumn}`}
+      >
         {t('durationWarningMessage', { value, timeColumn, limit })}
       </WarningContainer>
     );
