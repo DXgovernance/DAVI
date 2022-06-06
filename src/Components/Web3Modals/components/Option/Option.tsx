@@ -26,7 +26,7 @@ export const Option: React.FC<OptionProps> = ({
       variant="secondary"
       onClick={onClick}
       active={active}
-      data-testId={dataTestId}
+      data-testid={dataTestId}
     >
       <OptionButtonText>
         {active && <LiveIndicator />}

@@ -66,7 +66,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
 
         const networkName = getChains().find(
           chain => chain.id === chainId
-        ).name;
+        )?.name;
         children = (
           <Flex>
             <ContainerText variant="bold">

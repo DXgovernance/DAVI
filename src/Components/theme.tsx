@@ -1,4 +1,5 @@
 import theme from 'theme/dark.json';
+import { mediaWidthTemplates } from 'theme';
 
 // TODO: This is a hack to make the GuildsTheme interface work with DXvote themes.
 // Refactor this once we move DXvote into a separate repo.
@@ -66,4 +67,8 @@ export interface GuildsTheme extends ThemeBase {
   };
 }
 
-export const GuildsDarkTheme: GuildsTheme = theme;
+export const GuildsDarkTheme: GuildsTheme = {
+  ...theme,
+  // media queries
+  mediaWidth: mediaWidthTemplates,
+};
