@@ -50,5 +50,11 @@
     "consensusSystem": "Consensus System",
     "proposalDuration": "Proposal Duration",
     "proposalHistory": "Proposal History"
-  }
+  },
+  "filter": "Filter",
+  "searchTitleEnsAddress": "Search title, ENS, address",
+  "state": "State",
+  "reset": "Reset",
+  "type": "Type",
+  "currency": "Currency"
 }
