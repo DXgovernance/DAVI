@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ProposalVoteCard } from 'Components/ProposalVoteCard';
-import { mockProposalVoteCardProps } from 'Components/Fixtures';
+import { mockProposalVoteCardProps } from './fixture';
 
 export default {
   title: 'ProposalVoteCard',
