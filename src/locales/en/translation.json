@@ -45,5 +45,10 @@
     "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again."
   },
   "selectAToken": "Select a token",
-  "searchToken": "Search token"
+  "searchToken": "Search token",
+  "proposalInfoCard": {
+    "consensusSystem": "Consensus System",
+    "proposalDuration": "Proposal Duration",
+    "proposalHistory": "Proposal History"
+  }
 }
