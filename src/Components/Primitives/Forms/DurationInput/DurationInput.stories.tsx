@@ -1,9 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import DurationInput from './DurationInput';
-// import { useArgs } from '@storybook/client-api';
 import { within, fireEvent } from '@storybook/testing-library';
-
-// import { fullParameters, loadingParameters, noProposals } from './fixture';
+import { defaultProps } from './fixtures';
 
 export default {
   title: 'DurationInput',
@@ -20,7 +18,7 @@ const Template: ComponentStory<typeof DurationInput> = args => {
 };
 
 export const Opened = Template.bind({});
-Opened.args = {};
+Opened.args = defaultProps;
 Opened.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
@@ -30,4 +28,4 @@ Opened.play = async ({ canvasElement }) => {
 };
 
 export const Closed = Template.bind({});
-Closed.args = {};
+Closed.args = defaultProps;

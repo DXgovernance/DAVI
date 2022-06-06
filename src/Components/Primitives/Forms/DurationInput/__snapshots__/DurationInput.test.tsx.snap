@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Duration Input Should render an input 1`] = `
+<div>
+   
+  <div
+    class="sc-dIUeWJ gQcXkl"
+  >
+    <div
+      class="sc-hHfuMS bScybG"
+    />
+    <input
+      class="sc-idOiZg jelFGI"
+      role="input-modal"
+      value="0"
+    />
+    <div
+      class="sc-hHfuMS jNxMeF"
+    />
+  </div>
+   
+</div>
+`;

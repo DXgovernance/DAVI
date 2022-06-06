@@ -49,7 +49,12 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
 
   return (
     <>
-      <Input value={value} onClick={() => setIsOpen(true)} role="input-modal" />
+      <Input
+        value={value}
+        onChange={onChange}
+        onClick={() => setIsOpen(true)}
+        role="input-modal"
+      />
 
       <Modal
         isOpen={isOpen}
@@ -95,12 +100,13 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
               })}
             </Container>
             <WarningRow>
-              {Object.keys(duration).map(value => {
+              {Object.keys(duration).map((value, index) => {
                 return (
                   <WarningInput
                     timeColumn={value}
                     value={duration[value]}
                     limit={DURATION_LIMITS[value]}
+                    key={index}
                   />
                 );
               })}
