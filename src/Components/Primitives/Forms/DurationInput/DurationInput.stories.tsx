@@ -3,6 +3,8 @@ import DurationInput from './DurationInput';
 import { within, fireEvent } from '@storybook/testing-library';
 import { defaultProps } from './fixtures';
 
+// TODO: Currently, the number of seconds in the input component in storybook does not reflect what the user picked. This is just in storybook. Tests are working OK and the component works correctly in the app
+
 export default {
   title: 'DurationInput',
   component: DurationInput,

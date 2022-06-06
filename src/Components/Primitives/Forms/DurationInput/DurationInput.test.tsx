@@ -1,8 +1,15 @@
 import DurationInput from './DurationInput';
 import { render } from 'utils/tests';
-import { defaultProps } from './fixtures';
+// import { defaultProps } from './fixtures';
 import { fireEvent } from '@testing-library/react';
 import { DURATION_LIMITS } from 'constants/Duration';
+
+let spyOnChange = jest.fn();
+
+let defaultProps = {
+  value: 0,
+  onChange: spyOnChange,
+};
 
 describe('Duration Input', () => {
   // Define methods
@@ -22,22 +29,32 @@ describe('Duration Input', () => {
       fireEvent.click(inputElement);
     });
 
+    it('input value reflects duration picker selection', () => {
+      const increaseButton = getByLabelText('Increase seconds');
+      fireEvent.click(increaseButton);
+
+      const saveButton = getByLabelText('Save');
+      fireEvent.click(saveButton);
+
+      expect(spyOnChange).toHaveBeenCalledWith(1);
+    });
+
     it('should increase value if user clicks the arrow up', () => {
-      const arrowUpButton = getByLabelText('Increase seconds');
-      fireEvent.click(arrowUpButton);
+      const increaseButton = getByLabelText('Increase seconds');
+      fireEvent.click(increaseButton);
 
       const numericalInput = getByLabelText('Numerical input for seconds');
       expect(numericalInput).toHaveDisplayValue('1');
     });
 
     it('should decrease value if user clicks the arrow down', () => {
-      const arrowUpButton = getByLabelText('Increase seconds');
-      fireEvent.click(arrowUpButton);
-      fireEvent.click(arrowUpButton);
-      fireEvent.click(arrowUpButton);
+      const increaseButton = getByLabelText('Increase seconds');
+      fireEvent.click(increaseButton);
+      fireEvent.click(increaseButton);
+      fireEvent.click(increaseButton);
 
-      const arrowDownButton = getByLabelText('Decrease seconds');
-      fireEvent.click(arrowDownButton);
+      const decreaseButton = getByLabelText('Decrease seconds');
+      fireEvent.click(decreaseButton);
 
       const numericalInput = getByLabelText('Numerical input for seconds');
       expect(numericalInput).toHaveDisplayValue('2');
@@ -59,15 +76,15 @@ describe('Duration Input', () => {
     });
 
     it('arrow down gets disabled if value cannot be decreased', () => {
-      const arrowDownButton = getByLabelText('Decrease seconds');
-      expect(arrowDownButton).toBeDisabled();
+      const decreaseButton = getByLabelText('Decrease seconds');
+      expect(decreaseButton).toBeDisabled();
     });
 
     it('arrow up gets disabled if value cannot be increased', () => {
       const numericalInput = getByLabelText('Numerical input for seconds');
       fireEvent.change(numericalInput, { target: { value: 59 } });
-      const arrowUpButton = getByLabelText('Increase seconds');
-      expect(arrowUpButton).toBeDisabled();
+      const increaseButton = getByLabelText('Increase seconds');
+      expect(increaseButton).toBeDisabled();
     });
 
     it('all values have a numerical input, and increase and decrease buttons', () => {
@@ -87,7 +104,19 @@ describe('Duration Input', () => {
       expect(numberOfDecreaseButtons).toEqual(numberOfNumericalInputs);
     });
 
-    it('input value reflects duration picker selection', () => {});
-    it('values in seconds are correctly calculated', () => {});
+    it('values in seconds are correctly calculated', () => {
+      // Click ALL the increase buttons once
+      Object.keys(DURATION_LIMITS).forEach(duration => {
+        const increaseButton = getByLabelText(`Increase ${duration}`);
+        fireEvent.click(increaseButton);
+      });
+
+      const saveButton = getByLabelText('Save');
+      fireEvent.click(saveButton);
+
+      // Total number of seconds in one year, one month, one day, one hour one minute and one second
+      const totalNumberOfSeconds = 34909261;
+      expect(spyOnChange).toHaveBeenNthCalledWith(7, totalNumberOfSeconds);
+    });
   });
 });
