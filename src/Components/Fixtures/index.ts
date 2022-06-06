@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import moment from 'moment';
-import { Proposal, ContractState } from 'types/types.guilds.d';
+import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
 import { ENSAvatar } from '../Types';
 import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
@@ -27,7 +27,7 @@ export const ensAvatarMock: ENSAvatar = {
 
 export const proposalStatusPropsMock = {
   timeDetail: 'Time',
-  status: ContractState.Active,
+  status: ProposalState.Active,
   endTime: moment('2022-05-09T08:00:00'),
 };
 
