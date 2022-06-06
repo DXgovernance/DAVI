@@ -1,7 +1,7 @@
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import { ProposalDescription } from 'Components/ProposalDescription';
-import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
+import { ProposalInfoCard } from 'Components/ProposalInfoCard';
 import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
@@ -24,6 +24,7 @@ import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -94,6 +95,11 @@ const ProposalPage: React.FC = () => {
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
     proposalId
+  );
+
+  const quorum = useVotingPowerPercent(
+    guildConfig?.votingPowerForProposalExecution,
+    guildConfig?.totalLocked
   );
 
   const status = useProposalState(proposal);
@@ -167,7 +173,11 @@ const ProposalPage: React.FC = () => {
       </PageContent>
       <SidebarContent>
         <ProposalVoteCardWrapper />
-        <ProposalInfoCard />
+        <ProposalInfoCard
+          proposal={proposal}
+          guildConfig={guildConfig}
+          quorum={quorum}
+        />
       </SidebarContent>
     </PageContainer>
   );

@@ -2,6 +2,7 @@ import { BigNumber } from 'ethers';
 import moment from 'moment';
 import { Proposal, ContractState } from 'types/types.guilds.d';
 import { ENSAvatar } from '../Types';
+import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
 export const proposalMock: Proposal = {
   id: '0x1234567890123456789012345678901234567890',
@@ -117,4 +118,18 @@ export const mockVoteChart = {
       totalSupply: mockBigNumberTotalSupply,
     },
   },
+};
+
+export const guildConfigMock: GuildConfigProps = {
+  name: 'TESTGuild',
+  token: '0xB58b358Be2B16Cb8992fc7340F92127083de33cE',
+  permissionRegistry: '0x8164f9f291c50A133b23aFcB800da15dBB954b22',
+  proposalTime: BigNumber.from(180),
+  timeForExecution: BigNumber.from(999),
+  maxActiveProposals: BigNumber.from(999),
+  votingPowerForProposalCreation: BigNumber.from(500000000000000),
+  votingPowerForProposalExecution: BigNumber.from(3000000000000000),
+  tokenVault: '0xEE945a0fa35b2B9046D244e465861221c766069F',
+  lockTime: BigNumber.from(300),
+  totalLocked: BigNumber.from(1000000000000000),
 };

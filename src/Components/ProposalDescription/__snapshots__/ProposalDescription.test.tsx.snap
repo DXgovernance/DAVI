@@ -27,7 +27,7 @@ exports[`ProposalDescription Should render loading if it has no metadata 1`] = `
       >
         <span
           class="react-loading-skeleton"
-          style="width: 800px; --base-color: #333; --highlight-color: #555;"
+          style="width: 100%; --base-color: #333; --highlight-color: #555;"
         >
           ‌
         </span>

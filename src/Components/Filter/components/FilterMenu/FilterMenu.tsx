@@ -1,6 +1,7 @@
-import styled from 'styled-components';
 import { useState, useRef } from 'react';
 import { isMobile, isDesktop } from 'react-device-detect';
+import { FiChevronDown, FiCheck, FiArrowLeft } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 import { useFilter } from 'contexts/Guilds/filters';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
@@ -10,60 +11,20 @@ import {
   DropdownHeader,
   DropdownMenu,
   DropdownPosition,
-} from '../common/DropdownMenu';
-import { DropdownButton } from '../common/DropdownMenu';
+} from 'old-components/Guilds/common/DropdownMenu';
 
-import { FiChevronDown, FiCheck, FiArrowLeft } from 'react-icons/fi';
-import { Menu, MenuItem } from '../common/Menu';
-import { Badge } from '../common/Badge';
+import { Menu } from 'old-components/Guilds/common/Menu';
 
-const DropdownMenuItem = styled(MenuItem)`
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  cursor: pointer;
-  color: ${({ theme }) => theme.colors.text};
+import {
+  DropdownMenuItem,
+  FilterButtons,
+  FilterResetMobile,
+  FilterResetDesktop,
+  FilterButton,
+} from './FilterMenu.styled';
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.hoverMenu};
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const FilterButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  color: ${({ theme }) => theme.colors.text};
-  & img,
-  svg {
-    margin-left: 15px;
-  }
-`;
-
-const FilterResetMobile = styled.div`
-  margin-left: auto;
-  margin-right: 20px;
-`;
-
-const FilterResetDesktop = styled.div`
-  background: ${({ theme }) => theme.colors.background};
-  padding: 10px;
-  text-align: center;
-  cursor: pointer;
-  border-top: 0.5px solid ${({ theme }) => theme.colors.text};
-`;
-
-export const FilterButton = styled(DropdownButton)`
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
-  margin-right: 1rem;
-`;
-
-export const FilterBadge = styled(Badge)`
-  margin-left: 5px;
-`;
-
-export const FilterMenu = () => {
+const FilterMenu = () => {
+  const { t } = useTranslation();
   const [showState, setShowState] = useState(false);
   const [showType, setShowType] = useState(false);
   const [showCurrency, setShowCurrency] = useState(false);
@@ -82,6 +43,7 @@ export const FilterMenu = () => {
     isCurrencySelected,
     countCurrencySelected,
   } = useFilter();
+
   const stateRef = useRef(null);
   const typeRef = useRef(null);
   const currencyRef = useRef(null);
@@ -100,96 +62,100 @@ export const FilterMenu = () => {
             setShowState(!showState);
           }}
         >
-          State <FiChevronDown />
+          {t('state')} <FiChevronDown />
         </FilterButton>
         <DropdownContent fullScreenMobile={true} show={showState}>
           {isMobile && (
             <DropdownHeader onClick={() => setShowState(false)}>
-              <FiArrowLeft /> <span>State</span>{' '}
+              <FiArrowLeft /> <span>{t('state')}</span>{' '}
               <FilterResetMobile onClick={onResetState}>
-                Reset
+                {t('reset')}
               </FilterResetMobile>
             </DropdownHeader>
           )}
           <Menu>
             <DropdownMenuItem onClick={() => onToggleState('a')}>
-              State 1 {isStateSelected('a') && <FiCheck />}
+              {t('state')} 1 {isStateSelected('a') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleState('b')}>
-              State 2 {isStateSelected('b') && <FiCheck />}
+              {t('state')} 2 {isStateSelected('b') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleState('c')}>
-              State 3 {isStateSelected('c') && <FiCheck />}
+              {t('state')} 3 {isStateSelected('c') && <FiCheck />}
             </DropdownMenuItem>
           </Menu>
           {isDesktop && countStateSelected > 0 && (
             <FilterResetDesktop onClick={onResetState}>
-              Reset
+              {t('reset')}
             </FilterResetDesktop>
           )}
         </DropdownContent>
       </DropdownMenu>
       <DropdownMenu ref={typeRef} position={DropdownPosition.BottomRight}>
         <FilterButton iconRight onClick={() => setShowType(!showType)}>
-          Type <FiChevronDown />
+          {t('type')} <FiChevronDown />
         </FilterButton>
         <DropdownContent fullScreenMobile={true} show={showType}>
           {isMobile && (
             <DropdownHeader onClick={() => setShowType(false)}>
-              <FiArrowLeft /> <span>Type</span>{' '}
-              <FilterResetMobile onClick={onResetType}>Reset</FilterResetMobile>
+              <FiArrowLeft /> <span> {t('type')}</span>{' '}
+              <FilterResetMobile onClick={onResetType}>
+                {t('reset')}
+              </FilterResetMobile>
             </DropdownHeader>
           )}
           <Menu>
             <DropdownMenuItem onClick={() => onToggleType('a')}>
-              Type a {isTypeSelected('a') && <FiCheck />}
+              {t('type')} a {isTypeSelected('a') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleType('b')}>
-              Type b {isTypeSelected('b') && <FiCheck />}
+              {t('type')} b {isTypeSelected('b') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleType('c')}>
-              Type c {isTypeSelected('c') && <FiCheck />}
+              {t('type')} c {isTypeSelected('c') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleType('d')}>
-              Type d {isTypeSelected('d') && <FiCheck />}
+              {t('type')} d {isTypeSelected('d') && <FiCheck />}
             </DropdownMenuItem>
           </Menu>
           {isDesktop && countTypeSelected > 0 && (
-            <FilterResetDesktop onClick={onResetType}>Reset</FilterResetDesktop>
+            <FilterResetDesktop onClick={onResetType}>
+              {t('reset')}
+            </FilterResetDesktop>
           )}
         </DropdownContent>
       </DropdownMenu>
 
       <DropdownMenu ref={currencyRef} position={DropdownPosition.BottomRight}>
         <FilterButton iconRight onClick={() => setShowCurrency(!showCurrency)}>
-          Currency <FiChevronDown />
+          {t('currency')} <FiChevronDown />
         </FilterButton>
         <DropdownContent fullScreenMobile={true} show={showCurrency}>
           {isMobile && (
             <DropdownHeader onClick={() => setShowCurrency(false)}>
-              <FiArrowLeft /> <span>Currency</span>{' '}
+              <FiArrowLeft /> <span>{t('currency')}</span>{' '}
               <FilterResetMobile onClick={onResetCurrency}>
-                Reset
+                {t('reset')}
               </FilterResetMobile>
             </DropdownHeader>
           )}
           <Menu>
             <DropdownMenuItem onClick={() => onToggleCurrency('a')}>
-              Currency a {isCurrencySelected('a') && <FiCheck />}
+              {t('currency')} a {isCurrencySelected('a') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleCurrency('b')}>
-              Currency b {isCurrencySelected('b') && <FiCheck />}
+              {t('currency')} b {isCurrencySelected('b') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleCurrency('c')}>
-              Currency c {isCurrencySelected('c') && <FiCheck />}
+              {t('currency')} c {isCurrencySelected('c') && <FiCheck />}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => onToggleCurrency('d')}>
-              Currency d {isCurrencySelected('d') && <FiCheck />}
+              {t('currency')} d {isCurrencySelected('d') && <FiCheck />}
             </DropdownMenuItem>
           </Menu>
           {isDesktop && countCurrencySelected > 0 && (
             <FilterResetDesktop onClick={onResetCurrency}>
-              Reset
+              {t('reset')}
             </FilterResetDesktop>
           )}
         </DropdownContent>
@@ -197,3 +163,5 @@ export const FilterMenu = () => {
     </FilterButtons>
   );
 };
+
+export default FilterMenu;
