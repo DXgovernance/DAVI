@@ -1,4 +1,4 @@
 export const defaultProps = {
-  value: 10,
+  value: 0,
   onChange: value => value,
 };
