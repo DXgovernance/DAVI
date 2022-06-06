@@ -49,7 +49,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
 
   return (
     <>
-      <Input value={value} onClick={() => setIsOpen(true)} />
+      <Input value={value} onClick={() => setIsOpen(true)} role="input-modal" />
 
       <Modal
         isOpen={isOpen}
