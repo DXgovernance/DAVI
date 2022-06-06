@@ -3,7 +3,7 @@ import { ProposalState } from 'types/types.guilds';
 
 export interface ProposalStatusProps {
   endTime: Moment;
-  status: ProposalState;
+  status: keyof typeof ProposalState;
   bordered?: boolean;
   hideTime?: boolean;
   timeDetail?: string;
