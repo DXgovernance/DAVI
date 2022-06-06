@@ -24,3 +24,12 @@ export const DURATION_LIMITS = {
     max: 59,
   },
 };
+
+export const DURATION_IN_SECONDS = {
+  second: 1,
+  minute: 60,
+  hour: 60 * 60,
+  day: 60 * 60 * 24,
+  month: 60 * 60 * 24 * 31,
+  year: 60 * 60 * 24 * 31 * 12,
+};
