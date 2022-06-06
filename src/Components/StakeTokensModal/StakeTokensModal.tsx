@@ -1,13 +1,13 @@
 import { Loading } from 'Components/Primitives/Loading';
 import { Modal } from 'old-components/Guilds/common/Modal';
 import { StakeTokensModalProps } from './types';
-import StakeTokensWrapper from 'Modules/Guilds/Wrappers/StakeTokensWrapper';
 
 const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
   isOpen,
   onDismiss,
   token,
-}) => {
+  StakeTokens
+}: any) => {
   return (
     <Modal
       header={
@@ -21,10 +21,12 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
       onDismiss={onDismiss}
       maxWidth={300}
     >
-      <StakeTokensWrapper />
+      <StakeTokens />
     </Modal>
   );
 };
 
 export default StakeTokensModal;
+
+// StakeTokensModal --> StakeTokensWrapper
 

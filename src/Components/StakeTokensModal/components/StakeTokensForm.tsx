@@ -1,5 +1,5 @@
 import dxIcon from '../../../assets/images/dxdao-icon.svg';
-import { Loading } from '../../../Components/Primitives/Loading';
+import { Loading } from '../../Primitives/Loading';
 import { formatUnits } from 'ethers/lib/utils';
 import moment from 'moment';
 import { useMemo, useState } from 'react';
@@ -19,11 +19,12 @@ import {
   InfoOldValue,
   StakeAmountInput,
   ActionButton,
-} from './StakeTokens.styled';
+} from './StakeTokensForm.styled';
 import { Button } from "old-components/Guilds/common/Button"
 import useBigNumberToNumber from '../../../hooks/Guilds/conversions/useBigNumberToNumber';
 import { BigNumber } from 'ethers';
 import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
+import { StakeTokensFormsProps } from '../types';
 
 
 export const StakeTokens = ({
@@ -32,7 +33,7 @@ export const StakeTokens = ({
   createTransaction,
   guild,
   isRepGuild,
-}) => {
+}: StakeTokensFormsProps) => {
   const [stakeAmount, setStakeAmount] = useState<BigNumber>(null);
 
   const isStakeAmountValid = useMemo(

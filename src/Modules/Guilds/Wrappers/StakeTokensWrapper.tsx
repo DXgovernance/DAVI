@@ -1,4 +1,4 @@
-import { StakeTokens } from 'Components/StakeTokensModal/components/StakeTokens';
+import { StakeTokens } from 'Components/StakeTokensModal/components/StakeTokensForm';
 import { useTransactions } from '../../../contexts/Guilds';
 import { useERC20Allowance } from '../../../hooks/Guilds/ether-swr/erc20/useERC20Allowance';
 import { useERC20Balance } from '../../../hooks/Guilds/ether-swr/erc20/useERC20Balance';
