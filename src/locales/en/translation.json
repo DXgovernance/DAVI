@@ -1,6 +1,7 @@
 {
   "guilds": {
     "create": "Create Guild",
+    "guild": "Guild",
     "guilds": "Guilds"
   },
   "proposals_zero": "No proposals",
@@ -30,6 +31,10 @@
   "approve": "Approve",
   "unsupportedNetwork": "Unsupported Network",
   "notConnected": "Not Connected",
+  "information": "Information",
+  "consensusSystem": "Consensus System",
+  "proposalDuration": "Proposal Duration",
+  "quorum": "Quorum",
   "backToOverview": "Back to Overview",
   "createProposal": "Create Proposal",
   "chooseProposal": "Choose Proposal",
@@ -56,5 +61,16 @@
     "months_other": "months",
     "years_one": "year",
     "years_other": "years"
-  }
+  },
+  "proposalInfoCard": {
+    "consensusSystem": "Consensus System",
+    "proposalDuration": "Proposal Duration",
+    "proposalHistory": "Proposal History"
+  },
+  "filter": "Filter",
+  "searchTitleEnsAddress": "Search title, ENS, address",
+  "state": "State",
+  "reset": "Reset",
+  "type": "Type",
+  "currency": "Currency"
 }

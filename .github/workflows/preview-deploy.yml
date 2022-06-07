@@ -48,13 +48,13 @@ jobs:
           path_to_add: 'build'
 
       - name: Update DNS record for Develop branch
-        run: npx dnslink-cloudflare --domain dxvote.dev --record _dnslink --link /ipfs/${{ steps.web3.outputs.cid }}
+        run: npx dnslink-cloudflare --domain project-davi.dev --record _dnslink --link /ipfs/${{ steps.web3.outputs.cid }}
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         if: steps.source-run-info.outputs.sourceHeadRepo == 'DXgovernance/DAVI' && steps.source-run-info.outputs.sourceHeadBranch == 'develop'
 
       - name: Update DNS record for Master branch
-        run: npx dnslink-cloudflare --domain dxvote.dev --record _dnslink.prod --link /ipfs/${{ steps.web3.outputs.cid }}
+        run: npx dnslink-cloudflare --domain project-davi.dev --record _dnslink.prod --link /ipfs/${{ steps.web3.outputs.cid }}
         env:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
         if: steps.source-run-info.outputs.sourceHeadRepo == 'DXgovernance/DAVI' && steps.source-run-info.outputs.sourceHeadBranch == 'master'

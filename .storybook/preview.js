@@ -6,7 +6,7 @@ import initializeI18Next from '../src/i18n';
 import GlobalStyle from 'theme/GlobalTheme';
 import MultichainProvider from 'contexts/MultichainProvider/index';
 
-initializeI18Next();
+initializeI18Next({ debug: false });
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
