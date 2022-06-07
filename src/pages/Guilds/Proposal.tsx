@@ -10,6 +10,9 @@ import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
+
 import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
 import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import { Loading } from 'Components/Primitives/Loading';
@@ -97,9 +100,16 @@ const ProposalPage: React.FC = () => {
     proposalId
   );
 
+  const { data: snapshotId } = useSnapshotId({
+    contractAddress: guildId,
+    proposalId,
+  });
+
+  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+
   const quorum = useVotingPowerPercent(
     guildConfig?.votingPowerForProposalExecution,
-    guildConfig?.totalLocked
+    totalLocked
   );
 
   const status = useProposalState(proposal);
