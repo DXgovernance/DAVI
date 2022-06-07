@@ -1,9 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import DurationInput from './DurationInput';
 import { within, fireEvent } from '@storybook/testing-library';
-import { defaultProps } from './fixtures';
-
-// TODO: Currently, the number of seconds in the input component in storybook does not reflect what the user picked. This is just in storybook. Tests are working OK and the component works correctly in the app
+import { useState } from 'react';
 
 export default {
   title: 'DurationInput',
@@ -15,12 +13,19 @@ export default {
   },
 } as ComponentMeta<typeof DurationInput>;
 
+const StateWrapper = () => {
+  const [value, setValue] = useState(0);
+
+  const onChange = e => setValue(e);
+
+  return <DurationInput value={value} onChange={onChange} />;
+};
+
 const Template: ComponentStory<typeof DurationInput> = args => {
-  return <DurationInput {...args} />;
+  return <StateWrapper />;
 };
 
 export const Opened = Template.bind({});
-Opened.args = defaultProps;
 Opened.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
@@ -30,4 +35,3 @@ Opened.play = async ({ canvasElement }) => {
 };
 
 export const Closed = Template.bind({});
-Closed.args = defaultProps;

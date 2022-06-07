@@ -1,14 +1,15 @@
 import DurationInput from './DurationInput';
 import { render } from 'utils/tests';
-// import { defaultProps } from './fixtures';
 import { fireEvent } from '@testing-library/react';
 import { DURATION_LIMITS } from 'constants/Duration';
+import { useState } from 'react';
 
-let spyOnChange = jest.fn();
+const StateWrapper = () => {
+  const [value, setValue] = useState(0);
 
-let defaultProps = {
-  value: 0,
-  onChange: spyOnChange,
+  const onChange = e => setValue(e);
+
+  return <DurationInput value={value} onChange={onChange} />;
 };
 
 describe('Duration Input', () => {
@@ -19,7 +20,7 @@ describe('Duration Input', () => {
 
   describe('Basic interactions', () => {
     beforeEach(() => {
-      let result = render(<DurationInput {...defaultProps} />);
+      let result = render(<StateWrapper />);
 
       // Link methods to the DOM
       getByRole = result.getByRole;
@@ -36,7 +37,8 @@ describe('Duration Input', () => {
       const saveButton = getByLabelText('Save');
       fireEvent.click(saveButton);
 
-      expect(spyOnChange).toHaveBeenCalledWith(1);
+      const inputElement = getByRole('input-modal');
+      expect(inputElement).toHaveValue('1');
     });
 
     it('should increase value if user clicks the arrow up', () => {
@@ -115,8 +117,9 @@ describe('Duration Input', () => {
       fireEvent.click(saveButton);
 
       // Total number of seconds in one year, one month, one day, one hour one minute and one second
-      const totalNumberOfSeconds = 34909261;
-      expect(spyOnChange).toHaveBeenNthCalledWith(7, totalNumberOfSeconds);
+      const totalNumberOfSeconds = '34909261';
+      const inputElement = getByRole('input-modal');
+      expect(inputElement).toHaveValue(totalNumberOfSeconds);
     });
   });
 });
