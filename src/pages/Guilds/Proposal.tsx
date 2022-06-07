@@ -2,7 +2,6 @@ import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import { ProposalDescription } from 'Components/ProposalDescription';
 import { ProposalInfoCard } from 'Components/ProposalInfoCard';
-import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
 import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
@@ -18,6 +17,7 @@ import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
+import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWrapper';
 import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
@@ -172,7 +172,7 @@ const ProposalPage: React.FC = () => {
         </ProposalActionsWrapper>
       </PageContent>
       <SidebarContent>
-        <ProposalVoteCard />
+        <ProposalVoteCardWrapper />
         <ProposalInfoCard
           proposal={proposal}
           guildConfig={guildConfig}
