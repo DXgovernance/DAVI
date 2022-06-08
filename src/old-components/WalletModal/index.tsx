@@ -2,7 +2,7 @@ import { useContext } from '../../contexts';
 import { isChainIdSupported } from '../../provider/connectors';
 import AccountDetails from '../AccountDetails';
 import { Modal } from '../Modal';
-import Link from '../common/Link';
+import Link from '../Guilds/common/Link';
 import Option from './Option';
 import { useWeb3React } from '@web3-react/core';
 import { observer } from 'mobx-react';

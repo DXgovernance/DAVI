@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { getChains } from '../../../../provider/connectors';
 import { Transaction as TransactionInterface } from '../../../../types/types.guilds';
 import { getBlockchainLink } from '../../../../utils';
-import PendingCircle from '../../../common/PendingCircle';
+import PendingCircle from '../../common/PendingCircle';
 
 const TransactionContainer = styled.div`
   display: flex;

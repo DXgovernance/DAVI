@@ -7,7 +7,7 @@ import {
   toAddressStub,
   isAddress,
 } from 'utils';
-import { useContext } from '../../contexts';
+import { useContext } from '../../../contexts';
 import { FiExternalLink } from 'react-icons/fi';
 import { useEffect, useState } from 'react';
 import { useRpcUrls } from 'provider/providerHooks';

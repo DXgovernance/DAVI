@@ -3,24 +3,25 @@ import { Header } from 'Components';
 import ToastNotificationContainer from './old-components/Guilds/ToastNotifications/ToastNotificationContainer';
 import WalletWeb3Manager from './old-components/Guilds/Web3Manager/WalletWeb3Manager';
 import { Container } from './Components/Primitives/Layout';
-import GuildsPage from './pages/Guilds/Guilds';
-import ProposalPage from './pages/Guilds/Proposal';
+import GuildsPage from './Modules/Guilds/pages/Guilds';
+import ProposalPage from './Modules/Guilds/pages/Proposal';
 import GlobalStyle from './theme/GlobalTheme';
 import { ProposalTypesConfig } from 'configs/proposalTypes';
 import { GuildsContextProvider, TransactionsProvider } from 'contexts/Guilds';
 import GuildAvailabilityProvider from 'contexts/Guilds/guildAvailability';
 import { ProposalTypes } from 'Components/ProposalTypes';
-import CreateProposalPage from 'pages/Guilds/CreateProposal';
-import LandingPage from 'pages/Guilds/LandingPage';
-import NotFound from 'pages/Guilds/NotFound';
+import CreateProposalPage from 'Modules/Guilds/pages/CreateProposal';
+import LandingPage from 'Modules/Guilds/pages/LandingPage';
+import NotFound from 'Modules/Guilds/pages/NotFound';
 import { HashRouter, Route, Switch, useHistory } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'Components/theme';
 
-const GuildsApp = () => {
+const App = () => {
   const history = useHistory();
 
-  const isTestingEnv = !window.location?.hostname?.startsWith('dxvote.eth');
+  const isTestingEnv =
+    !window.location?.hostname?.startsWith('project-davi.eth');
   if (!isTestingEnv) {
     history.push('/');
     return null;
@@ -72,4 +73,4 @@ const GuildsApp = () => {
   );
 };
 
-export default GuildsApp;
+export default App;

@@ -1,4 +1,4 @@
-import { useCopyClipboard } from '../../utils';
+import { useCopyClipboard } from '../../../utils';
 import Link from './Link';
 import { FiCopy, FiCheckCircle } from 'react-icons/fi';
 import styled from 'styled-components';
