@@ -44,3 +44,7 @@ export const WarningRow = styled(Flex)`
 export const StyledButton = styled(Button)`
   width: 150px;
 `;
+
+export const TransparentButton = styled(Button)`
+  background-color: transparent;
+`;

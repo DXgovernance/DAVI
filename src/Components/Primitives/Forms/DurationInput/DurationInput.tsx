@@ -12,9 +12,9 @@ import {
   Container,
   WarningRow,
   StyledButton,
+  TransparentButton,
 } from './DurationInput.styled';
 import { DurationInputProps } from './types';
-import Input from 'old-components/Guilds/common/Form/Input';
 import { useTranslation } from 'react-i18next';
 import { DURATION_IN_SECONDS } from 'constants/Duration';
 
@@ -24,6 +24,7 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
   } = useDuration();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [durationString, setDurationString] = useState('');
 
   const { t } = useTranslation();
 
@@ -41,15 +42,52 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [duration]);
 
+  useEffect(() => {
+    let numbersToStringDuration = Object.keys(duration).reduce(
+      (durationString, timePeriod) => {
+        if (duration[timePeriod] === 0) return durationString;
+
+        let formattedTimePeriod =
+          duration[timePeriod] === 1
+            ? `${timePeriod.slice(0, -1)}`
+            : `${timePeriod}`;
+
+        let separator = durationString.length === 0 ? '' : ', ';
+
+        return (
+          durationString +
+          `${separator}${duration[timePeriod]} ${formattedTimePeriod}`
+        );
+      },
+      ''
+    );
+
+    const replaceLastCommaWithAnd = (string: string) => {
+      const lastIndex = string.lastIndexOf(',');
+      if (lastIndex === -1) return string;
+
+      const replacedString =
+        string.substring(0, lastIndex) +
+        ' and' +
+        string.substring(lastIndex + 1);
+      return replacedString;
+    };
+
+    numbersToStringDuration = replaceLastCommaWithAnd(numbersToStringDuration);
+
+    setDurationString(numbersToStringDuration);
+  }, [duration]);
+
   return (
     <>
-      <Input
-        value={value}
-        onChange={onChange}
+      {!durationString.length ? '' : durationString}{' '}
+      <TransparentButton
+        variant="secondary"
         onClick={() => setIsOpen(true)}
-        role="input-modal"
-      />
-
+        aria-label="Duration picker button"
+      >
+        Select a duration
+      </TransparentButton>
       <Modal
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
