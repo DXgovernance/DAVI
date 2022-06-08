@@ -30,3 +30,44 @@ export interface Token {
   info: ERC20Info;
   contract: ERC20;
 }
+
+export interface BalanceWidgetWrapperProps {
+  token: Token;
+  stakeAmount: BigNumber;
+  setStakeAmount: (amount: BigNumber) => void;
+  roundedBalance: number;
+}
+
+export interface StakeTokenButtonProps {
+  isRepGuild: boolean;
+  stakeAmount: BigNumber;
+  token: Token;
+  guild: Guild;
+  isStakeAmountValid: boolean;
+  createTransaction: (
+    summary: string,
+    txFunction: () => Promise<providers.TransactionResponse>
+  ) => void;
+}
+
+export interface BalanceInfoLineProps {
+  token: Token;
+  roundedBalance: number;
+}
+
+export interface LockTimeInfoLineProps {
+  guild: Guild;
+}
+
+export interface VotingPowerInfoLineProps {
+  isStakeAmountValid: boolean;
+  userVotingPower: BigNumber;
+  guild: Guild;
+  stakeAmount: BigNumber;
+}
+
+export interface UnlockDateInfoLineProps {
+  guild: Guild;
+  isStakeAmountValid: boolean;
+  isRepGuild: boolean;
+}

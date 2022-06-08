@@ -25,7 +25,6 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       class="sc-crrszt cGMjRh"
     >
       a few seconds staking period
-       
     </div>
     <div
       class="sc-dQoVA bHndUh"
@@ -67,7 +66,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             placeholder="0.0"
             spellcheck="false"
             type="text"
-            value=""
+            value="0.0"
           />
           <div
             class="sc-jSgvzq iDoZOX"
@@ -80,6 +79,22 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           Max
         </button>
       </div>
+    </div>
+    <div
+      class="sc-bqyKOL bFgWEW"
+    >
+      <span
+        class="sc-kstqJO eCKOSo"
+      >
+        Balance
+      </span>
+      <span
+        class="sc-hBEYId jtmCId"
+      >
+        0
+         
+        REP
+      </span>
     </div>
     <div
       class="sc-bqyKOL bFgWEW"
@@ -111,14 +126,12 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
     </div>
     <button
       class="sc-gKseQn sc-bkzYnD cJydjh brvGTX"
-      data-testid="approve-token-spending"
+      data-testid="lock-token-spending"
       disabled=""
     >
-      Approve
+      Lock
        
       REP
-       
-      Spending
     </button>
   </div>
    
