@@ -60,12 +60,12 @@ export const VotingPowerInfoLine = ({
 }: VotingPowerInfoLineProps) => {
   const currentvotingPowerPercent = useVotingPowerPercent(
     userVotingPower,
-    guild?.config?.totalLocked,
+    guild?.totalLocked,
     3
   );
   const nextVotingPowerPercent = useVotingPowerPercent(
     stakeAmount?.add(userVotingPower),
-    stakeAmount?.add(guild?.config?.totalLocked),
+    stakeAmount?.add(guild?.totalLocked),
     3
   );
 

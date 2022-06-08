@@ -22,6 +22,7 @@ export interface StakeTokensFormsProps {
 interface Guild {
   contract: ERC20Guild;
   config: GuildConfigProps;
+  totalLocked: BigNumber;
 }
 export interface Token {
   name: string;

@@ -10,6 +10,7 @@ import useGuildImplementationType from '../../../hooks/Guilds/guild/useGuildImpl
 import { useERC20, useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useWeb3React } from '@web3-react/core';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 
 const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
   const { guildId: guildAddress } = useTypedParams();
@@ -37,6 +38,7 @@ const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
     contractAddress: guildAddress,
     userAddress,
   });
+  const { data: totalLocked } = useTotalLocked(guildAddress);
 
   return (
     <StakeTokensModal
@@ -53,7 +55,7 @@ const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
         },
         userVotingPower,
         createTransaction,
-        guild: { contract: guildContract, config: guildConfig },
+        guild: { contract: guildContract, config: guildConfig, totalLocked },
         isRepGuild,
       }}
     />
