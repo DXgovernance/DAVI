@@ -67,5 +67,6 @@
   "state": "State",
   "reset": "Reset",
   "type": "Type",
-  "currency": "Currency"
+  "currency": "Currency",
+  "enterProposalDescription": "Enter proposal body"
 }

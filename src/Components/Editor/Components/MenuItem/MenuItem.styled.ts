@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 
-interface Props {
-  icon?: any;
-  title: any;
-  action?: any;
-  isActive?: any;
-}
-
-const Item = styled.button<{ active?: boolean }>`
+export const Item = styled.button<{ active?: boolean }>`
   background-color: ${props =>
     props.active ? 'white' : ({ theme }) => theme.colors.background};
   border: none;
@@ -24,12 +17,3 @@ const Item = styled.button<{ active?: boolean }>`
     color: #0d0d0d;
   }
 `;
-
-const MenuItem = ({ icon, title, action, isActive = null }: Props) => {
-  return (
-    <Item active={isActive && isActive()} onClick={action} title={title}>
-      {icon}
-    </Item>
-  );
-};
-export default MenuItem;

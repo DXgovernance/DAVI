@@ -1,6 +1,4 @@
 import { Fragment } from 'react';
-import styled from 'styled-components';
-import { transparentize } from 'polished';
 import {
   RiH1,
   RiH2,
@@ -18,28 +16,13 @@ import {
   RiArrowGoForwardLine,
 } from 'react-icons/ri';
 
-import MenuItem from './MenuItem';
-
-const Header = styled.div`
-  align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border.initial};
-  display: flex;
-  flex: 0 0 auto;
-  flex-wrap: wrap;
-  padding: 1rem;
-`;
-
-const Divider = styled.div`
-  background-color: ${({ theme }) => transparentize(0.9, theme.colors.primary)};
-  height: 1.25rem;
-  margin-left: 0.5rem;
-  margin-right: 0.75rem;
-  width: 2px;
-`;
+import { Divider, Header } from './MenuBar.styled';
+import MenuItem from '../MenuItem/MenuItem';
+import { MenuItemProps } from '../MenuItem/types';
 
 const MenuBar = ({ editor }) => {
   const iconSize = 20;
-  const items = [
+  const items: MenuItemProps[] = [
     {
       icon: <RiH1 size={iconSize} />,
       title: 'Heading 1',
