@@ -18,43 +18,13 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       <h2
         class="sc-dlfnuX sc-iqHYmW bvZvxV dbvXAA"
       >
-        <div
-          class="sc-bdfBQB"
-        >
-          <span
-            aria-busy="true"
-            aria-live="polite"
-          >
-            <span
-              class="react-loading-skeleton"
-              style="width: 100px; --base-color: #333; --highlight-color: #555;"
-            >
-              ‌
-            </span>
-            <br />
-          </span>
-        </div>
+        mockGuildName
       </h2>
     </div>
     <div
       class="sc-crrszt cGMjRh"
     >
-      <div
-        class="sc-bdfBQB"
-      >
-        <span
-          aria-busy="true"
-          aria-live="polite"
-        >
-          <span
-            class="react-loading-skeleton"
-            style="width: 200px; --base-color: #333; --highlight-color: #555;"
-          >
-            ‌
-          </span>
-          <br />
-        </span>
-      </div>
+      a few seconds staking period
        
     </div>
     <div

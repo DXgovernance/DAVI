@@ -1,33 +1,41 @@
 import { BigNumber } from 'ethers';
-import { GuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { ERC20 } from 'types/contracts/ERC20';
+import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { ERC20 } from 'types/contracts';
 import { ERC20Guild } from 'types/contracts/ERC20Guild';
+import { StakeTokensForm } from './components/StakeTokensForm';
 
 export const mockStakeTokensFormProps = {
   token: {
-    name: "Mock Token",
-    allowance: BigNumber.from(0),
-    balance: BigNumber.from(0),
+    name: 'Mock Token',
+    allowance: BigNumber.from(1000000),
+    balance: BigNumber.from(1000000),
     info: {
       decimals: 18,
       symbol: 'REP',
       name: 'mockName',
       totalSupply: BigNumber.from(0),
     },
-    contract: {} as ERC20,
+    contract: {
+      approve: () => {},
+    } as unknown as ERC20,
   },
   userVotingPower: BigNumber.from(0),
   guild: {
     contract: {} as ERC20Guild,
-    config: {} as GuildConfig,
+    config: {
+      name: 'mockGuildName',
+      totalLocked: BigNumber.from(0),
+      tokenVault: 'mockTokenVault',
+      lockTime: BigNumber.from(0),
+    } as GuildConfigProps,
   },
   createTransaction: () => {},
   isRepGuild: false,
 };
 
 export const mockStakeTokensModalProps = {
-    isOpen: true,
-    onDismiss: () => {},
-    StakeTokensForm: () => <div />,
-    StakeTokensFormProps: mockStakeTokensFormProps,
-}
+  isOpen: true,
+  onDismiss: () => {},
+  StakeTokensForm: StakeTokensForm,
+  StakeTokensFormProps: mockStakeTokensFormProps,
+};

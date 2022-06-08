@@ -6,12 +6,12 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
   isOpen,
   onDismiss,
   StakeTokensForm,
-  StakeTokensFormProps
+  StakeTokensFormProps,
 }) => {
   return (
     <Modal
       header={
-        StakeTokensFormProps.token ? (
+        StakeTokensFormProps?.token ? (
           `Stake ${StakeTokensFormProps.token.name} tokens`
         ) : (
           <Loading loading text skeletonProps={{ width: '100px' }} />
@@ -21,7 +21,7 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
       onDismiss={onDismiss}
       maxWidth={300}
     >
-      <StakeTokensForm {...StakeTokensFormProps}/>
+      <StakeTokensForm {...StakeTokensFormProps} />
     </Modal>
   );
 };
