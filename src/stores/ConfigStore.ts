@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from 'mobx';
+// import { makeObservable, observable, action } from 'mobx';
 import RootContext from '../contexts';
 
 import {
@@ -22,13 +22,6 @@ export default class ConfigStore {
     this.context = context;
     this.darkMode = false;
     this.networkConfigLoaded = false;
-
-    makeObservable(this, {
-      darkMode: observable,
-      loadNetworkConfig: action,
-      toggleDarkMode: action,
-      reset: action,
-    });
   }
 
   reset() {
@@ -160,7 +153,7 @@ export default class ConfigStore {
     this.darkMode = !this.darkMode;
   }
 
-  @action setDarkMode(visible: boolean) {
+  setDarkMode(visible: boolean) {
     this.darkMode = visible;
   }
 

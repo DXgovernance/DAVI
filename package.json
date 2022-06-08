@@ -1,7 +1,7 @@
 {
-  "name": "dxvote",
-  "version": "1.0.13",
-  "description": "dxvote application of DXdao.",
+  "name": "Project-DAVI",
+  "version": "1.0.0",
+  "description": "Decentralized Autonomous Voting Interface",
   "scripts": {
     "dev": "./scripts/dev.sh",
     "start": "./scripts/start.sh",
