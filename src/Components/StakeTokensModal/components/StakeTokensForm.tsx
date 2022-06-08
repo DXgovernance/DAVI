@@ -20,12 +20,11 @@ import {
   StakeAmountInput,
   ActionButton,
 } from './StakeTokensForm.styled';
-import { Button } from "old-components/Guilds/common/Button"
+import { Button } from 'old-components/Guilds/common/Button';
 import useBigNumberToNumber from '../../../hooks/Guilds/conversions/useBigNumberToNumber';
 import { BigNumber } from 'ethers';
 import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
 import { StakeTokensFormsProps } from '../types';
-
 
 export const StakeTokensForm = ({
   token,
@@ -44,7 +43,6 @@ export const StakeTokensForm = ({
     [stakeAmount, token?.balance, token?.info]
   );
 
-
   const lockTokens = async () => {
     if (!isStakeAmountValid) return;
 
@@ -56,12 +54,12 @@ export const StakeTokensForm = ({
     );
   };
 
-
   const approveTokenSpending = async () => {
     if (!isStakeAmountValid) return;
 
-    createTransaction(`Approve ${token?.info?.symbol} token spending`, async () =>
-      token?.contract.approve(guild?.config?.tokenVault, MAX_UINT)
+    createTransaction(
+      `Approve ${token?.info?.symbol} token spending`,
+      async () => token?.contract.approve(guild?.config?.tokenVault, MAX_UINT)
     );
   };
   const roundedBalance = useBigNumberToNumber(

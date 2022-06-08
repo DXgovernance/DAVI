@@ -13,14 +13,13 @@ export default {
       description: 'Closing the modal',
     },
     StakeTokensForm: {
-        description: 'Form for staking tokens',
+      description: 'Form for staking tokens',
     },
     StakeTokensFormProps: {
-        description: 'Props for staking tokens form',
+      description: 'Props for staking tokens form',
     },
   },
 } as ComponentMeta<typeof StakeTokensModal>;
-
 
 const Template: ComponentStory<typeof StakeTokensModal> = args => (
   <StakeTokensModal {...args} />

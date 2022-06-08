@@ -1,8 +1,7 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 import { Heading } from 'old-components/Guilds/common/Typography';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { Button } from 'old-components/Guilds/common/Button';
-
 
 export const GuestContainer = styled.div`
   display: flex;
