@@ -29,7 +29,7 @@ export const Opened = Template.bind({});
 Opened.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const getItem = () => canvas.findByRole('input-modal');
+  const getItem = () => canvas.findByText('Select a duration');
   const inputItem = await getItem();
   await fireEvent.click(inputItem);
 };

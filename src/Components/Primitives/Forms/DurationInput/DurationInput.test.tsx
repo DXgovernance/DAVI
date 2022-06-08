@@ -14,20 +14,20 @@ const StateWrapper = () => {
 
 describe('Duration Input', () => {
   // Define methods
-  let getByRole;
   let getByLabelText;
   let getAllByLabelText;
+  let getByText;
 
   describe('Basic interactions', () => {
     beforeEach(() => {
       let result = render(<StateWrapper />);
 
       // Link methods to the DOM
-      getByRole = result.getByRole;
       getByLabelText = result.getByLabelText;
       getAllByLabelText = result.getAllByLabelText;
-      const inputElement = getByRole('input-modal');
-      fireEvent.click(inputElement);
+      getByText = result.getByText;
+      const pickDurationButton = getByLabelText('Duration picker button');
+      fireEvent.click(pickDurationButton);
     });
 
     it('input value reflects duration picker selection', () => {
@@ -37,8 +37,10 @@ describe('Duration Input', () => {
       const saveButton = getByLabelText('Save');
       fireEvent.click(saveButton);
 
-      const inputElement = getByRole('input-modal');
-      expect(inputElement).toHaveValue('1');
+      const durationString = getByText('1 second', {
+        exact: false,
+      });
+      expect(durationString).toHaveTextContent('1 second');
     });
 
     it('should increase value if user clicks the arrow up', () => {
@@ -116,10 +118,14 @@ describe('Duration Input', () => {
       const saveButton = getByLabelText('Save');
       fireEvent.click(saveButton);
 
-      // Total number of seconds in one year, one month, one day, one hour one minute and one second
-      const totalNumberOfSeconds = '34909261';
-      const inputElement = getByRole('input-modal');
-      expect(inputElement).toHaveValue(totalNumberOfSeconds);
+      const textContent =
+        '1 year, 1 month, 1 day, 1 hour, 1 minute and 1 second';
+
+      const durationString = getByText(textContent, {
+        exact: false,
+      });
+
+      expect(durationString).toHaveTextContent(textContent);
     });
   });
 });
