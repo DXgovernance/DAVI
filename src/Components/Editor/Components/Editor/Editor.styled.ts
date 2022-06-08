@@ -1,28 +1,20 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
-import { useEditor, EditorContent } from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import Focus from '@tiptap/extension-focus';
-import Highlight from '@tiptap/extension-highlight';
-import Placeholder from '@tiptap/extension-placeholder';
-import MenuBar from './MenuBar';
-import TurndownService from 'turndown';
 
-const turndownService = new TurndownService();
+import { EditorContent } from '@tiptap/react';
 
-const EditorWrap = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
-  border-radius: 10px;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
-  display: flex;
-  flex-direction: column;
-  max-height: 26rem;
+export const EditorWrap = styled.div`
+background-color: ${({ theme }) => theme.colors.background};
+border: 1px solid ${({ theme }) => theme.colors.border.initial};
+border-radius: 10px;
+color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+display: flex;
+flex-direction: column;
+max-height: 26rem;
 }
 `;
 
-const Content = styled(EditorContent)`
+export const Content = styled(EditorContent)`
   flex: 1 1 auto;
   overflow-x: hidden;
   overflow-y: auto;
@@ -127,54 +119,3 @@ const Content = styled(EditorContent)`
     }
   `}
 `;
-
-interface EditorProps {
-  onHTMLChange?: (string) => void;
-  onMdChange?: (string) => void;
-  onJSONChange?: (string) => void;
-  content?: string;
-  placeholder?: string;
-}
-const Editor: React.FC<EditorProps> = ({
-  onHTMLChange,
-  onMdChange,
-  onJSONChange,
-  content,
-  placeholder = '',
-}) => {
-  const editor = useEditor({
-    content: content ? content : {},
-    extensions: [
-      StarterKit.configure({
-        history: { depth: 10 },
-      }),
-      Focus.configure({
-        className: 'has-focus',
-        mode: 'all',
-      }),
-      Placeholder.configure({
-        placeholder,
-      }),
-      Highlight,
-    ],
-    onUpdate: ({ editor }) => {
-      const html = editor.getHTML();
-      if (html) {
-        onHTMLChange && onHTMLChange(html);
-        onMdChange && onMdChange(turndownService.turndown(html));
-        onJSONChange && onJSONChange(JSON.stringify(editor.getJSON()));
-      }
-    },
-  });
-
-  return (
-    <div>
-      <EditorWrap>
-        {editor && <MenuBar editor={editor} />}
-        <Content editor={editor} data-testid="editor-content" />
-      </EditorWrap>
-    </div>
-  );
-};
-
-export default Editor;
