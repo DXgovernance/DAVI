@@ -31,6 +31,17 @@
   "approve": "Approve",
   "unsupportedNetwork": "Unsupported Network",
   "notConnected": "Not Connected",
+  "castVote": "Cast your vote",
+  "voteResults": "Vote Results",
+  "option": "Option {{optionKey}}",
+  "options": "Options",
+  "vote": "Vote",
+  "confirmVote": "Confirm Vote",
+  "voteQuestion": "Are you sure you want to vote {{action}}?",
+  "noRevertAction": "This action cannot be reverted",
+  "votingPower": "Voting Power",
+  "voteImpact": "Vote Impact",
+  "cancel": "Cancel",
   "information": "Information",
   "consensusSystem": "Consensus System",
   "proposalDuration": "Proposal Duration",
@@ -45,5 +56,16 @@
     "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again."
   },
   "selectAToken": "Select a token",
-  "searchToken": "Search token"
+  "searchToken": "Search token",
+  "proposalInfoCard": {
+    "consensusSystem": "Consensus System",
+    "proposalDuration": "Proposal Duration",
+    "proposalHistory": "Proposal History"
+  },
+  "filter": "Filter",
+  "searchTitleEnsAddress": "Search title, ENS, address",
+  "state": "State",
+  "reset": "Reset",
+  "type": "Type",
+  "currency": "Currency"
 }

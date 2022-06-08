@@ -6,7 +6,7 @@ import useEtherSWR from '../useEtherSWR';
 import useTotalLocked from './useTotalLocked';
 import useGuildToken from './useGuildToken';
 
-export type GuildConfig = {
+export type GuildConfigProps = {
   name: string;
   token: string;
   permissionRegistry: string;
@@ -22,7 +22,7 @@ export type GuildConfig = {
 
 export const useGuildConfig = (
   guildAddress: string
-): SWRResponse<GuildConfig> => {
+): SWRResponse<GuildConfigProps> => {
   const { data, error, isValidating, mutate } = useEtherSWR(
     guildAddress
       ? [
