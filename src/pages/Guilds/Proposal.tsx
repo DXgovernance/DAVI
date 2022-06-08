@@ -1,8 +1,7 @@
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import { ProposalDescription } from 'Components/ProposalDescription';
-import ProposalInfoCard from '../../old-components/Guilds/ProposalPage/ProposalInfoCard';
-import ProposalVoteCard from '../../old-components/Guilds/ProposalPage/ProposalVoteCard';
+import { ProposalInfoCard } from 'Components/ProposalInfoCard';
 import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from '../../old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
@@ -18,12 +17,14 @@ import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
+import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWrapper';
 import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -96,6 +97,11 @@ const ProposalPage: React.FC = () => {
     proposalId
   );
 
+  const quorum = useVotingPowerPercent(
+    guildConfig?.votingPowerForProposalExecution,
+    guildConfig?.totalLocked
+  );
+
   const status = useProposalState(proposal);
 
   const {
@@ -166,8 +172,12 @@ const ProposalPage: React.FC = () => {
         </ProposalActionsWrapper>
       </PageContent>
       <SidebarContent>
-        <ProposalVoteCard />
-        <ProposalInfoCard />
+        <ProposalVoteCardWrapper />
+        <ProposalInfoCard
+          proposal={proposal}
+          guildConfig={guildConfig}
+          quorum={quorum}
+        />
       </SidebarContent>
     </PageContainer>
   );
