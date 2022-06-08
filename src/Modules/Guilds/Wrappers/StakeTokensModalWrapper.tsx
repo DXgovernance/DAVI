@@ -45,7 +45,7 @@ const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
       StakeTokensForm={StakeTokensForm}
       StakeTokensFormProps={{
         token: {
-          name: tokenInfo.name,
+          name: tokenInfo?.name,
           allowance: tokenAllowance,
           balance: tokenBalance,
           info: tokenInfo,

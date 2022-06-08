@@ -34,7 +34,6 @@ export const StakeTokensForm = ({
   isRepGuild,
 }: StakeTokensFormsProps) => {
   const [stakeAmount, setStakeAmount] = useState<BigNumber>(null);
-
   const isStakeAmountValid = useMemo(
     () =>
       stakeAmount?.gt(0) &&

@@ -12,7 +12,7 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
     <Modal
       header={
         StakeTokensFormProps?.token ? (
-          `Stake ${StakeTokensFormProps.token.name} tokens`
+          `Stake ${StakeTokensFormProps.token?.name} tokens`
         ) : (
           <Loading loading text skeletonProps={{ width: '100px' }} />
         )

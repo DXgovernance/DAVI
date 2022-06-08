@@ -11,7 +11,6 @@ import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPer
 import { shortenAddress } from '../../../utils';
 import { MAINNET_ID } from '../../../utils/constants';
 import Avatar from '../Avatar';
-import StakeTokensModal from '../StakeTokensModal';
 import { IconButton, Button } from '../common/Button';
 import {
   DropdownMenu,
@@ -28,6 +27,7 @@ import { useEffect, useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
+import StakeTokensModalWrapper from 'Modules/Guilds/Wrappers/StakeTokensModalWrapper';
 
 const UserActionButton = styled(IconButton)`
   border-radius: 50px;
@@ -205,7 +205,7 @@ export const MemberActions = () => {
         </DropdownContent>
       </DropdownMenu>
 
-      <StakeTokensModal
+      <StakeTokensModalWrapper
         isOpen={showStakeModal}
         onDismiss={() => setShowStakeModal(false)}
       />
