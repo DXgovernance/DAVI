@@ -5,10 +5,8 @@ import { GuildConfig } from "hooks/Guilds/ether-swr/guild/useGuildConfig";
 export interface StakeTokensModalProps {
     isOpen: boolean;
     onDismiss: () => void;
-    token: {
-        name: string;
-    };
-    StakeTokensForm: React.FC<StakeTokensFormsProps>
+    StakeTokensForm: React.FC<StakeTokensFormsProps>;
+    StakeTokensFormProps: StakeTokensFormsProps;
   }
 
 export interface StakeTokensFormsProps {
@@ -23,6 +21,7 @@ interface Guild {
     config: GuildConfig;
 }
 interface Token {
+    name: string;
     allowance: BigNumber;
     balance: BigNumber;
     info: ERC20Info

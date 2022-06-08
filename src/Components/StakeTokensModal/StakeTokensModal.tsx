@@ -5,14 +5,14 @@ import { StakeTokensModalProps } from './types';
 const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
   isOpen,
   onDismiss,
-  token,
-  StakeTokens
-}: any) => {
+  StakeTokensForm,
+  StakeTokensFormProps
+}) => {
   return (
     <Modal
       header={
-        token ? (
-          `Stake ${token.name} tokens`
+        StakeTokensFormProps.token ? (
+          `Stake ${StakeTokensFormProps.token.name} tokens`
         ) : (
           <Loading loading text skeletonProps={{ width: '100px' }} />
         )
@@ -21,12 +21,9 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
       onDismiss={onDismiss}
       maxWidth={300}
     >
-      <StakeTokens />
+      <StakeTokensForm {...StakeTokensFormProps}/>
     </Modal>
   );
 };
 
 export default StakeTokensModal;
-
-// StakeTokensModal --> StakeTokensWrapper
-

@@ -27,7 +27,7 @@ import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPer
 import { StakeTokensFormsProps } from '../types';
 
 
-export const StakeTokens = ({
+export const StakeTokensForm = ({
   token,
   userVotingPower,
   createTransaction,
