@@ -33,7 +33,7 @@ export default class ConfigStore {
     const { ensService, ipfsService } = this.context;
 
     this.networkConfig = getAppConfig()[this.getActiveChainName()];
-    const isTestingEnv = !window?.location?.href?.includes('dxvote.eth');
+    const isTestingEnv = !window?.location?.href?.includes('project-davi.eth');
 
     if (this.getActiveChainName() !== 'localhost' && !this.networkConfigLoaded)
       try {
@@ -113,20 +113,20 @@ export default class ConfigStore {
       arbitrumTestnet_toBlock: defaultAppConfigs.arbitrumTestnet.cache.toBlock,
       arbitrumTestnet_rpcURL: getNetworkByName('arbitrumTestnet').defaultRpc,
     };
-    const configInLocalStorage = localStorage.getItem('dxvote-config')
-      ? JSON.parse(localStorage.getItem('dxvote-config'))
+    const configInLocalStorage = localStorage.getItem('davi-config')
+      ? JSON.parse(localStorage.getItem('davi-config'))
       : {};
     return Object.assign(defaultConfig, configInLocalStorage);
   }
 
   setLocalConfig(config) {
-    localStorage.setItem('dxvote-config', JSON.stringify(config));
+    localStorage.setItem('davi-config', JSON.stringify(config));
   }
 
   resetLocalConfig() {
     const defaultAppConfigs = getAppConfig();
     localStorage.setItem(
-      'dxvote-config',
+      'davi-config',
       JSON.stringify({
         etherscan: '',
         pinata: '',
