@@ -8,19 +8,28 @@ import Input from 'old-components/Guilds/common/Form/Input';
 import { FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
-const Picker: React.FC<PickerProps> = ({ data, isOpen, onSelect, onClose }) => {
+const Picker: React.FC<PickerProps> = ({
+  data,
+  isOpen,
+  onSelect,
+  onClose,
+  searchConfig,
+  numberOfVisibleItems,
+}) => {
   const { t } = useTranslation();
-
   const [searchQuery, setSearchQuery] = useState('');
 
-  const { instance, buildIndex, query } = useMiniSearch<Option>({
+  const defaultSearchConfig = {
     fields: ['title', 'subtitle', 'value'],
-    storeFields: ['title', 'id'],
     searchOptions: {
       fuzzy: 2,
       prefix: true,
     },
-  });
+  };
+
+  const { instance, buildIndex, query } = useMiniSearch<Option>(
+    searchConfig ? searchConfig : defaultSearchConfig
+  );
 
   useEffect(() => {
     if (instance?.documentCount !== data?.length) {
@@ -51,13 +60,15 @@ const Picker: React.FC<PickerProps> = ({ data, isOpen, onSelect, onClose }) => {
           />
         </SearchWrapper>
         <OptionList>
-          {(searchQuery ? searchResults : data).map((option, index) => (
-            <OptionListItem
-              key={index}
-              item={option}
-              onSelect={() => onSelect(option)}
-            />
-          ))}
+          {(searchQuery ? searchResults : data)
+            .slice(0, numberOfVisibleItems ? numberOfVisibleItems : undefined)
+            .map((option, index) => (
+              <OptionListItem
+                key={index}
+                item={option}
+                onSelect={() => onSelect(option)}
+              />
+            ))}
         </OptionList>
       </MainWrapper>
     </Modal>
@@ -65,3 +76,5 @@ const Picker: React.FC<PickerProps> = ({ data, isOpen, onSelect, onClose }) => {
 };
 
 export default Picker;
+
+// TODO: Handle long lists of items

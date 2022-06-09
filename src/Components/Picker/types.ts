@@ -3,6 +3,8 @@ export interface PickerProps {
   isOpen: boolean;
   onSelect: any;
   onClose: () => void;
+  searchConfig?: SearchConfig;
+  numberOfVisibleItems?: number;
 }
 
 export interface Option {
@@ -17,4 +19,10 @@ export interface Option {
 export interface OptionListItemProps {
   item: Option;
   onSelect: (argument: any) => any;
+}
+
+interface SearchConfig {
+  fields: string[];
+  storeFields: string[];
+  searchOptions?: object;
 }
