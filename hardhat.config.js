@@ -9,7 +9,7 @@ require('hardhat-ethernal');
 const MNEMONIC =
   'cream core pear sure dinner indoor citizen divorce sudden captain subject remember';
 
-require('dotenv').config()
+require('dotenv').config();
 
 // # Accounts
 // # ========
@@ -132,11 +132,11 @@ module.exports = {
       gasLimit: 9000000,
       timeout: 20000,
     },
-    rinkeby: {
+    goerli: {
       url:
         ALCHEMY_API_KEY.length > 0
-          ? `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
-          : `https://rinkeby.infura.io/v3/${INFURA_API_KEY}`,
+          ? `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
+          : `https://goerli.infura.io/v3/${INFURA_API_KEY}`,
       accounts: { mnemonic: MNEMONIC },
       gasLimit: 9000000,
       gasPrice: 1000000000, // 1 gwei
@@ -174,7 +174,7 @@ module.exports = {
     workspace: 'localhost', // Set the workspace to use, will default to the default workspace (latest one used in the dashboard). It is also possible to set it through the ETHERNAL_WORKSPACE env variable
     uploadAst: false, // If set to true, plugin will upload AST, and you'll be able to use the storage feature (longer sync time though)
     disabled: !process.env.ETHERNAL_PASSWORD && !process.env.ETHERNAL_EMAIL, // If set to true, the plugin will be disabled, nohting will be synced, ethernal.push won't do anything either
-    resetOnStart: 'localhost' // Pass a workspace name to reset it automatically when restarting the node, note that if the workspace doesn't exist it won't error
-  }
+    resetOnStart: 'localhost', // Pass a workspace name to reset it automatically when restarting the node, note that if the workspace doesn't exist it won't error
+  },
 };
 
