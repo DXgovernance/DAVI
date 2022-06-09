@@ -80,77 +80,75 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
 
   return (
     <>
-      {!durationString.length ? '' : durationString}{' '}
       <TransparentButton
         variant="secondary"
         onClick={() => setIsOpen(true)}
         aria-label="Duration picker button"
+        type="button"
       >
-        Select a duration
+        {!durationString.length ? '' : durationString}
       </TransparentButton>
       <Modal
         isOpen={isOpen}
         onDismiss={() => setIsOpen(false)}
         header={t('selectDuration')}
       >
-        <>
-          <MainWrapper>
-            <Container>
-              {Object.keys(duration).map((value, index) => {
-                const count = duration[value];
+        <MainWrapper>
+          <Container>
+            {Object.keys(duration).map((value, index) => {
+              const count = duration[value];
 
-                return (
-                  <Column key={index}>
-                    <ColumnButton
-                      disabled={count >= DURATION_LIMITS[value].max}
-                      onClick={() => increment(value)}
-                      key={index}
-                      data-testid={`upper-limit-btn-${value}`}
-                      aria-label={`Increase ${value}`}
-                    >
-                      <GoTriangleUp />
-                    </ColumnButton>
-
-                    <NumericalInput
-                      value={count}
-                      onChange={e => handleChange(e, value)}
-                      textAlign="center"
-                      data-testid={value}
-                      id={value}
-                      muted={count === 0 ? true : false}
-                      isInvalid={count > DURATION_LIMITS[value].max}
-                      aria-label={`Numerical input for ${value}`}
-                    />
-                    <ColumnButton
-                      disabled={count <= DURATION_LIMITS[value].min}
-                      onClick={() => decrement(value)}
-                      data-testid={`lower-limit-btn-${value}`}
-                      aria-label={`Decrease ${value}`}
-                    >
-                      <GoTriangleDown />
-                    </ColumnButton>
-                    {t(`duration.${value}`, { count })}
-                  </Column>
-                );
-              })}
-            </Container>
-            <WarningRow>
-              {Object.keys(duration).map((value, index) => {
-                return (
-                  <WarningInput
-                    timeColumn={value}
-                    value={duration[value]}
-                    limit={DURATION_LIMITS[value]}
+              return (
+                <Column key={index}>
+                  <ColumnButton
+                    disabled={count >= DURATION_LIMITS[value].max}
+                    onClick={() => increment(value)}
                     key={index}
+                    data-testid={`upper-limit-btn-${value}`}
+                    aria-label={`Increase ${value}`}
+                  >
+                    <GoTriangleUp />
+                  </ColumnButton>
+
+                  <NumericalInput
+                    value={count}
+                    onChange={e => handleChange(e, value)}
+                    textAlign="center"
+                    data-testid={value}
+                    id={value}
+                    muted={count === 0 ? true : false}
+                    isInvalid={count > DURATION_LIMITS[value].max}
+                    aria-label={`Numerical input for ${value}`}
                   />
-                );
-              })}
-            </WarningRow>
-            <StyledButton onClick={() => setIsOpen(false)} aria-label="Save">
-              {t('save')}
-            </StyledButton>
-          </MainWrapper>
-        </>
+                  <ColumnButton
+                    disabled={count <= DURATION_LIMITS[value].min}
+                    onClick={() => decrement(value)}
+                    data-testid={`lower-limit-btn-${value}`}
+                    aria-label={`Decrease ${value}`}
+                  >
+                    <GoTriangleDown />
+                  </ColumnButton>
+                  {t(`duration.${value}`, { count })}
+                </Column>
+              );
+            })}
+          </Container>
+          <WarningRow>
+            {Object.keys(duration).map((value, index) => {
+              return (
+                <WarningInput
+                  timeColumn={value}
+                  value={duration[value]}
+                  limit={DURATION_LIMITS[value]}
+                  key={index}
+                />
+              );
+            })}
+          </WarningRow>
+          <StyledButton onClick={() => setIsOpen(false)} aria-label="Save">
+            {t('save')}
+          </StyledButton>
+        </MainWrapper>
       </Modal>
     </>
   );

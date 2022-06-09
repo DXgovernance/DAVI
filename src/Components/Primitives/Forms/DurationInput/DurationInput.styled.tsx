@@ -46,5 +46,9 @@ export const StyledButton = styled(Button)`
 `;
 
 export const TransparentButton = styled(Button)`
+  width: 100%;
+  min-height: 37px;
   background-color: transparent;
+  justify-content: flex-start;
+  text-align: left;
 `;
