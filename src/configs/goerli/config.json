@@ -7,5 +7,15 @@
       "multicall": "0x1FDD273e0B7E0d921Bda044Ebf64811428A79f15"
     }
   },
+  "tokens": [
+    {
+      "address": "0x1ED317E1Bc4D75E500d72416beFf850caB534932",
+      "name": "SWAPR",
+      "decimals": 18,
+      "symbol": "SWPR",
+      "fetchPrice": true,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/200x200/12368.png"
+    }
+  ],
   "version": 1
 }

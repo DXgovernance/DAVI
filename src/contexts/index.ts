@@ -9,7 +9,6 @@ import AlchemyService from '../services/AlchemyService';
 import CustomRpcService from '../services/CustomRpcService';
 import ENSService from '../services/ENSService';
 import SubgraphService from '../services/SubgraphService';
-import OrbitDBService from '../services/OrbitDBService';
 
 import ProviderStore from '../stores/Provider';
 import ConfigStore from '../stores/ConfigStore';
@@ -42,7 +41,6 @@ export default class RootContext {
   customRpcService: CustomRpcService;
   ensService: ENSService;
   subgraphService: SubgraphService;
-  orbitDBService: OrbitDBService;
 
   constructor() {
     this.providerStore = new ProviderStore(this);
@@ -58,7 +56,6 @@ export default class RootContext {
     this.customRpcService = new CustomRpcService(this);
     this.ensService = new ENSService(this);
     this.subgraphService = new SubgraphService(this);
-    this.orbitDBService = new OrbitDBService(this);
   }
 
   reset() {

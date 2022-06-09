@@ -17,7 +17,10 @@ export const useTokenList = (chainId?: number) => {
     if (chainId) {
       list = list.filter(token => token.chainId === chainId);
     }
-    if (chainName === 'localhost' && config?.tokens) {
+    if (
+      (chainName === 'localhost' || chainName === 'goerli') &&
+      config?.tokens
+    ) {
       // for localhost, we add the tokens from local config file
       config?.tokens?.forEach(token => {
         list.push({

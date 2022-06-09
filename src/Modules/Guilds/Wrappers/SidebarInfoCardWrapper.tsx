@@ -4,10 +4,8 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import { SidebarInfoCard } from 'Components/SidebarInfoCard';
 const SidebarInfoCardWrapper = () => {
   const { guildId } = useTypedParams();
-  const {
-    data: { proposalTime, votingPowerForProposalExecution, totalLocked },
-  } = useGuildConfig(guildId);
-
+  const { data } = useGuildConfig(guildId);
+  const { proposalTime, votingPowerForProposalExecution, totalLocked } = data;
   const quorum = useVotingPowerPercent(
     votingPowerForProposalExecution,
     totalLocked
