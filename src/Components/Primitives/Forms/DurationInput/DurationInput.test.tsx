@@ -4,6 +4,8 @@ import { fireEvent } from '@testing-library/react';
 import { DURATION_LIMITS } from 'constants/Duration';
 import { useState } from 'react';
 
+jest.mock('contexts/index', () => jest.fn());
+
 const StateWrapper = () => {
   const [value, setValue] = useState(0);
 
