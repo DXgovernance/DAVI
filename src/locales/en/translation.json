@@ -68,5 +68,6 @@
   "reset": "Reset",
   "type": "Type",
   "currency": "Currency",
-  "enterProposalDescription": "Enter proposal body"
+  "enterProposalDescription": "Enter proposal body",
+  "search": "Search"
 }

@@ -8,3 +8,8 @@ export const OptionList = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const SearchWrapper = styled.div`
+  display: flex;
+  margin-bottom: 1.5rem;
+`;

@@ -6,6 +6,7 @@ export interface PickerProps {
 }
 
 export interface Option {
+  id: string;
   title: string;
   subtitle?: string;
   value?: any;
