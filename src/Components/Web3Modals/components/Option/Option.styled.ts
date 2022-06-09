@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { Button } from '../../common/Button';
-import LiveIndicator from './LiveIndicator';
+import { Button } from 'old-components/Guilds/common/Button';
 
 interface OptionButtonProps {
   active: boolean;
 }
 
-const OptionButton = styled(Button)<OptionButtonProps>`
+export const OptionButton = styled(Button)<OptionButtonProps>`
   width: 100%;
 
   padding: 0.6rem 1.5rem;
@@ -30,13 +29,13 @@ const OptionButton = styled(Button)<OptionButtonProps>`
   ${props => props.active && `border: 2px solid #fff;`};
 `;
 
-const OptionButtonText = styled.div`
+export const OptionButtonText = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.colors.text};
 `;
 
-const IconWrapper = styled.div<{ size?: number }>`
+export const IconWrapper = styled.div<{ size?: number }>`
   ${({ theme }) => theme.flexColumnNoWrap};
   align-items: center;
   justify-content: center;
@@ -46,39 +45,6 @@ const IconWrapper = styled.div<{ size?: number }>`
     width: ${({ size }) => (size ? size + 'px' : '24px')};
   }
   ${({ theme }) => theme.mediaWidth.upToMedium`
-    align-items: flex-end;
-  `};
+  align-items: flex-end;
+`};
 `;
-
-export default function Option({
-  link = null,
-  clickable = true,
-  size = null,
-  onClick = null,
-  icon,
-  header,
-  active = false,
-  dataTestId = '',
-}) {
-  const content = (
-    <OptionButton
-      variant="secondary"
-      onClick={onClick}
-      active={active}
-      data-testId={dataTestId}
-    >
-      <OptionButtonText>
-        {active && <LiveIndicator />}
-        {header}
-      </OptionButtonText>
-      <IconWrapper size={size}>
-        {icon && <img src={icon} alt={'Icon'} />}
-      </IconWrapper>
-    </OptionButton>
-  );
-  if (link) {
-    return <a href={link}>{content}</a>;
-  }
-
-  return content;
-}

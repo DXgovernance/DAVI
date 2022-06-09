@@ -9,7 +9,7 @@ import {
   ButtonIcon,
   IconButton,
 } from 'old-components/Guilds/common/Button';
-import NetworkModal from 'old-components/Guilds/Web3Modals/NetworkModal';
+import { NetworkModal } from 'Components';
 
 const NetworkButton = () => {
   const { t } = useTranslation();

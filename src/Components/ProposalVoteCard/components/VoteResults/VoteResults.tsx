@@ -75,6 +75,7 @@ const VoteResults: React.FC<VoteResultsProps> = ({
     <>
       {Object.entries(voteData.options).map((_, i) => (
         <VoteResultRow
+          key={i}
           optionKey={i}
           isPercent={isPercent}
           voteData={voteData}

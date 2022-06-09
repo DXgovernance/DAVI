@@ -3,6 +3,8 @@ import { screen } from '@testing-library/react';
 
 import Avatar from './';
 
+jest.mock('contexts/index', () => jest.fn());
+
 describe('Avatar', () => {
   it('Should render image when src is given', () => {
     const { container } = render(

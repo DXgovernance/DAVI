@@ -21,7 +21,6 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);
 
   const status = useProposalState(proposal);
-
   return (
     <ProposalCard
       proposal={{ ...proposal, id: proposalId }}
