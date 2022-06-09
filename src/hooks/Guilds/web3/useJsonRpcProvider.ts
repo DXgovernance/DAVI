@@ -7,7 +7,6 @@ export default function useJsonRpcProvider(chainId?: number) {
   const { providers: multichainProviders } = useContext(MultichainContext);
 
   const { library, chainId: walletChainId } = useWeb3React();
-
   return useMemo(
     () =>
       (!chainId || walletChainId === chainId) && library
