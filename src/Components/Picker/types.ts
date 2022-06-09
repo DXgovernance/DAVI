@@ -1,14 +1,19 @@
 export interface PickerProps {
   data: Option[];
   isOpen: boolean;
-  onSelect: () => void;
+  onSelect: any;
   onClose: () => void;
 }
 
-interface Option {
-  value: string | number;
+export interface Option {
   title: string;
-  subtitle: string;
+  subtitle?: string;
+  value?: any;
   icon?: any;
   balance?: number;
+}
+
+export interface OptionListItemProps {
+  item: Option;
+  onSelect: (argument: any) => any;
 }

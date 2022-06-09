@@ -1,18 +1,9 @@
 import { Modal } from 'old-components/Guilds/common/Modal';
-import styled from 'styled-components';
 import { PickerProps } from './types';
-
-const MainWrapper = styled.div`
-  margin: 2rem;
-`;
-
-const OptionList = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import { MainWrapper, OptionList } from './Picker.styled';
+import { OptionListItem } from './OptionListItem';
 
 const Picker: React.FC<PickerProps> = ({ data, isOpen, onSelect, onClose }) => {
-  console.log(data);
   return (
     <Modal
       header={'Some header'}
@@ -21,7 +12,15 @@ const Picker: React.FC<PickerProps> = ({ data, isOpen, onSelect, onClose }) => {
       maxWidth={390}
     >
       <MainWrapper>
-        <OptionList>{data.map(option => option.title)}</OptionList>
+        <OptionList>
+          {data.map((option, index) => (
+            <OptionListItem
+              key={index}
+              item={option}
+              onSelect={() => onSelect(option.title)}
+            />
+          ))}
+        </OptionList>
       </MainWrapper>
     </Modal>
   );
