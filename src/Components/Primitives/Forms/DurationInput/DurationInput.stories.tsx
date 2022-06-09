@@ -29,9 +29,9 @@ export const Opened = Template.bind({});
 Opened.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const getItem = () => canvas.findByText('Select a duration');
-  const inputItem = await getItem();
-  await fireEvent.click(inputItem);
+  const getItem = () => canvas.findByLabelText('Duration picker button');
+  const pickerButton = await getItem();
+  await fireEvent.click(pickerButton);
 };
 
 export const Closed = Template.bind({});
