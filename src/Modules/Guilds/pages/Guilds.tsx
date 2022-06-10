@@ -1,5 +1,5 @@
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import { Filter } from 'old-components/Guilds/Filter';
+import { Filter } from 'Components';
 import { Sidebar } from 'old-components/Guilds/Sidebar';
 import { Box } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';

@@ -17,7 +17,6 @@ export const parameters = {
     },
   },
 };
-
 const ComponentContainer = ({ children }) => (
   <ThemeProvider theme={GuildsDarkTheme}>
     <HashRouter basename="/">

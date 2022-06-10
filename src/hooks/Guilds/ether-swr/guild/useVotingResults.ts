@@ -3,6 +3,8 @@ import { useGuildConfig } from './useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { BigNumber } from 'ethers';
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
+import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import { useMemo } from 'react';
 
 export interface VoteData {
@@ -23,8 +25,16 @@ export const useVotingResults = (
     optionalGuildId || guildId,
     optionalProposalId || proposalId
   );
+
   const { data } = useGuildConfig(optionalGuildId || guildId);
   const { data: tokenInfo } = useERC20Info(data?.token);
+
+  const { data: snapshotId } = useSnapshotId({
+    contractAddress: guildId,
+    proposalId: proposal?.id,
+  });
+
+  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
 
   const voteData = useMemo(() => {
     if (!proposal || !data || !tokenInfo) return undefined;
@@ -38,10 +48,10 @@ export const useVotingResults = (
     return {
       options,
       quorum: data?.votingPowerForProposalExecution,
-      totalLocked: data?.totalLocked,
+      totalLocked,
       token: tokenInfo,
     };
-  }, [data, proposal, tokenInfo]);
+  }, [data, proposal, tokenInfo, totalLocked]);
 
   return voteData;
 };

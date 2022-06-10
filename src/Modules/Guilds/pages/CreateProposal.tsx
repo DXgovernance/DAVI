@@ -11,9 +11,8 @@ import { BigNumber } from 'ethers';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
-import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 import { Call, Option } from 'old-components/Guilds/ActionsBuilder/types';
-import Editor from 'old-components/Guilds/Editor';
+import { useTextEditor } from 'Components/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
@@ -22,6 +21,7 @@ import { useHistory } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
+import { useTranslation } from 'react-i18next';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -89,22 +89,21 @@ const CreateProposalPage: React.FC = () => {
     GuildAvailabilityContext
   );
 
-  const ttlMs = 345600000;
   const history = useHistory();
+  const { t } = useTranslation();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
-  const [proposalBodyHTML, setProposalBodyHTML] =
-    useLocalStorageWithExpiry<string>(
-      `guild/newProposal/description/html`,
-      null,
-      ttlMs
-    );
-  const [proposalBodyMd, setProposalBodyMd] = useLocalStorageWithExpiry<string>(
-    `guild/newProposal/description/md`,
-    null,
-    ttlMs
+  const {
+    Editor,
+    EditorConfig,
+    md: proposalBodyMd,
+    html: proposalBodyHTML,
+  } = useTextEditor(
+    `${guildId}/create-proposal`,
+    345600000,
+    t('enterProposalDescription')
   );
 
   const handleToggleEditMode = () => {
@@ -245,12 +244,7 @@ const CreateProposalPage: React.FC = () => {
           ) : null}
         </Box>
         {editMode ? (
-          <Editor
-            onMdChange={setProposalBodyMd}
-            onHTMLChange={setProposalBodyHTML}
-            content={proposalBodyHTML}
-            placeholder="What do you want to propose?"
-          />
+          <Editor EditorConfig={EditorConfig} />
         ) : (
           <div
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(proposalBodyHTML) }}

@@ -4,7 +4,7 @@ import {
   TransactionOutcome,
   TransactionPending,
 } from '../../old-components/Guilds/ToastNotifications/TransactionToasts';
-import TransactionModal from '../../old-components/Guilds/Web3Modals/TransactionModal';
+import { TransactionModal } from 'Components';
 import { Transaction } from '../../types/types.guilds';
 import { useWeb3React } from '@web3-react/core';
 import { providers } from 'ethers';

@@ -12,9 +12,10 @@ interface UseSnapshotIdProps {
 type UseSnapshotIdHook = (args: UseSnapshotIdProps) => SWRResponse<BigNumber>;
 
 const useSnapshotId: UseSnapshotIdHook = ({ contractAddress, proposalId }) => {
-  const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
+  const { isSnapshotGuild, isSnapshotRepGuild } =
+    useGuildImplementationTypeConfig(contractAddress);
   return useEtherSWR(
-    isSnapshotGuild && proposalId && contractAddress
+    (isSnapshotGuild || isSnapshotRepGuild) && proposalId && contractAddress
       ? [contractAddress, 'getProposalSnapshotId', proposalId]
       : [],
     {

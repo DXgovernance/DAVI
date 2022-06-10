@@ -8,6 +8,7 @@ import { useVoterLockTimestamp } from '../../../hooks/Guilds/ether-swr/guild/use
 import { useVotingPowerOf } from '../../../hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import useGuildImplementationType from '../../../hooks/Guilds/guild/useGuildImplementationType';
 import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import { shortenAddress } from '../../../utils';
 import { MAINNET_ID } from '../../../utils/constants';
 import Avatar from '../Avatar';
@@ -101,9 +102,11 @@ export const MemberActions = () => {
     if (showStakeModal) setShowMenu(false);
   }, [showStakeModal]);
 
+  const { data: totalLocked } = useTotalLocked(guildAddress);
+
   const votingPowerPercent = useVotingPowerPercent(
     userVotingPower,
-    guildConfig?.totalLocked
+    totalLocked
   );
 
   const roundedBalance = useBigNumberToNumber(
