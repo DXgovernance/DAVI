@@ -108,5 +108,6 @@
   "change": "Change",
   "copiedAddress": "Copied Address",
   "copyAddress": "copy Address",
-  "changeConnection": "Change Connection"
+  "changeConnection": "Change Connection",
+  "pickSwaprPair": "Pick Swapr pair"
 }

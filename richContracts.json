@@ -31,17 +31,17 @@
           },
           {
             "type": "uint256",
-            "component": "duration",
+            "component": "time",
             "name": "cliffDuration",
             "defaultValue": "",
-            "description": "How long before cliff (in seconds)"
+            "description": "How long before cliff"
           },
           {
             "type": "uint256",
-            "component": "duration",
+            "component": "time",
             "name": "duration",
             "defaultValue": "",
-            "description": "How long before contract finishes fully (in seconds)"
+            "description": "How long before contract finishes fully"
           },
           {
             "type": "uint256",
@@ -131,7 +131,7 @@
         "params": [
           {
             "type": "address",
-            "component": "swaprPicker",
+            "component": "address",
             "name": "pair",
             "title": "Pool",
             "defaultValue": "",

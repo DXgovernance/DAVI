@@ -5,7 +5,7 @@ import { RegisterOptions } from 'react-hook-form';
 
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
-import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
+// import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
 import { FormElementProps } from 'old-components/Guilds/common/Form/common';
 import DateInput, {
   InputType,
@@ -15,6 +15,7 @@ import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { DurationInput } from 'Components/Primitives/Forms/DurationInput';
+import { SwaprPicker } from 'Components/SwaprPicker';
 
 interface FormElementRendererProps extends FormElementProps<any> {
   param: RichContractFunctionParam;
@@ -27,9 +28,11 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
   ...remainingProps
 }) => {
   const FormElement: React.FC<FormElementProps<any>> = useMemo(() => {
+    console.log('param.component: ', param.component);
     switch (param.component) {
       case 'address':
-        return AddressInput;
+        return SwaprPicker; //! Revert - only for develop
+      // return AddressInput;
       case 'integer':
       case 'decimal':
         return NumericalInput;
@@ -43,6 +46,8 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
         return TokenAmountInput;
       case 'contentHash':
         return Input;
+      case 'swaprPicker':
+        return SwaprPicker;
       default:
         return Input;
     }
