@@ -2,7 +2,7 @@ import { BigNumber } from 'ethers';
 import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ERC20 } from 'types/contracts';
 import { ERC20Guild } from 'types/contracts/ERC20Guild';
-import { StakeTokensForm } from './components/StakeTokensForm';
+import StakeTokensForm from './components/StakeTokensForm/StakeTokensForm';
 
 export const mockStakeTokensFormProps = {
   token: {

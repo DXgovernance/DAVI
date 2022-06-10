@@ -4,21 +4,22 @@ import {
   InfoRow,
   InfoLabel,
   InfoValue,
-} from './StakeTokensForm.styled';
+} from '../StakeTokensForm/StakeTokensForm.styled';
 import { Button } from 'old-components/Guilds/common/Button';
-import { Loading } from '../../Primitives/Loading';
-import { BalanceWidgetWrapperProps } from '../types';
-
-export const BalanceWidgetWrapper = ({
+import { Loading } from 'Components/Primitives/Loading';
+import { BalanceWidgetWrapperProps } from '../../types';
+import { useTranslation } from 'react-i18next';
+const BalanceWidgetWrapper = ({
   token,
   stakeAmount,
   setStakeAmount,
   roundedBalance,
 }: BalanceWidgetWrapperProps) => {
+  const { t } = useTranslation();
   return (
     <BalanceWidget>
       <InfoRow>
-        <InfoLabel>Balance:</InfoLabel>
+        <InfoLabel>{t('balance')}:</InfoLabel>
         <InfoValue>
           {token?.balance && token?.info ? (
             roundedBalance
@@ -41,9 +42,11 @@ export const BalanceWidgetWrapper = ({
           data-testid="stake-amount-max-button"
           onClick={() => setStakeAmount(token?.balance)}
         >
-          Max
+          {t('max')}
         </Button>
       </InfoRow>
     </BalanceWidget>
   );
 };
+
+export default BalanceWidgetWrapper;

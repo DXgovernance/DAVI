@@ -4,18 +4,19 @@ import {
   InfoValue,
   InfoOldValue,
   InfoItem,
-} from './StakeTokensForm.styled';
+} from '../StakeTokensForm/StakeTokensForm.styled';
 import { FiArrowRight } from 'react-icons/fi';
-import { Loading } from '../../Primitives/Loading';
-import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
+import { Loading } from 'Components/Primitives/Loading';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import { FiInfo } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import {
   BalanceInfoLineProps,
   LockTimeInfoLineProps,
   UnlockDateInfoLineProps,
   VotingPowerInfoLineProps,
-} from '../types';
+} from '../../types';
 
 export const LockTimeInfoLine = ({ guild }: LockTimeInfoLineProps) => {
   return (
@@ -35,9 +36,10 @@ export const BalanceInfoLine = ({
   token,
   roundedBalance,
 }: BalanceInfoLineProps) => {
+  const { t } = useTranslation();
   return (
     <InfoRow>
-      <InfoLabel>Balance</InfoLabel>
+      <InfoLabel>{t('balance')}</InfoLabel>
       <InfoValue>
         {token?.balance && token?.info ? (
           roundedBalance
@@ -58,6 +60,7 @@ export const VotingPowerInfoLine = ({
   guild,
   stakeAmount,
 }: VotingPowerInfoLineProps) => {
+  const { t } = useTranslation();
   const currentvotingPowerPercent = useVotingPowerPercent(
     userVotingPower,
     guild?.totalLocked,
@@ -71,7 +74,7 @@ export const VotingPowerInfoLine = ({
 
   return (
     <InfoRow>
-      <InfoLabel>Your voting power</InfoLabel>
+      <InfoLabel>{t('yourVotingPower')}</InfoLabel>
       <InfoValue>
         {isStakeAmountValid ? (
           <>
@@ -104,11 +107,12 @@ export const UnlockDateInfoLine = ({
   isStakeAmountValid,
   guild,
 }: UnlockDateInfoLineProps) => {
+  const { t } = useTranslation();
   return (
     <>
       {!isRepGuild && (
         <InfoRow>
-          <InfoLabel>Unlock Date</InfoLabel>
+          <InfoLabel>{t('unlockDate')}</InfoLabel>
           <InfoValue>
             {isStakeAmountValid ? (
               <>

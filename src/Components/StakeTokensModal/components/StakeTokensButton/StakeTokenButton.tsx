@@ -1,11 +1,11 @@
 import { useHistory, useLocation } from 'react-router-dom';
 import { MAX_UINT } from 'utils';
 import { formatUnits } from 'ethers/lib/utils';
-import { ActionButton } from './StakeTokensForm.styled';
-import { Loading } from '../../Primitives/Loading';
-import { StakeTokenButtonProps } from '../types';
-
-export const StakeTokenButton = ({
+import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
+import { Loading } from 'Components/Primitives/Loading';
+import { StakeTokenButtonProps } from '../../types';
+import { useTranslation } from 'react-i18next';
+const StakeTokensButton = ({
   isRepGuild,
   stakeAmount,
   token,
@@ -15,7 +15,7 @@ export const StakeTokenButton = ({
 }: StakeTokenButtonProps) => {
   const history = useHistory();
   const location = useLocation();
-
+  const { t } = useTranslation();
   const lockTokens = async () => {
     if (!isStakeAmountValid) return;
 
@@ -56,20 +56,22 @@ export const StakeTokenButton = ({
             onClick={approveTokenSpending}
             data-testid="approve-token-spending"
           >
-            Approve{' '}
+            {t('approve')}{' '}
             {token?.info?.symbol || (
               <Loading loading text skeletonProps={{ width: 10 }} />
             )}{' '}
-            Spending
+            {t('spending')}
           </ActionButton>
         )
       ) : (
         <ActionButton
           onClick={() => history.push(location.pathname + '/proposalType')}
         >
-          Mint Rep
+          {t('mintRep')}
         </ActionButton>
       )}
     </>
   );
 };
+
+export default StakeTokensButton;

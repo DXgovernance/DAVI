@@ -35,7 +35,8 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
         <span
           class="sc-kstqJO eCKOSo"
         >
-          Balance:
+          balance
+          :
         </span>
         <span
           class="sc-hBEYId jtmCId"
@@ -76,7 +77,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           class="sc-gKseQn cJydjh"
           data-testid="stake-amount-max-button"
         >
-          Max
+          max
         </button>
       </div>
     </div>
@@ -86,7 +87,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       <span
         class="sc-kstqJO eCKOSo"
       >
-        Balance
+        balance
       </span>
       <span
         class="sc-hBEYId jtmCId"
@@ -102,7 +103,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       <span
         class="sc-kstqJO eCKOSo"
       >
-        Your voting power
+        yourVotingPower
       </span>
       <span
         class="sc-hBEYId jtmCId"
@@ -116,7 +117,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       <span
         class="sc-kstqJO eCKOSo"
       >
-        Unlock Date
+        unlockDate
       </span>
       <span
         class="sc-hBEYId jtmCId"

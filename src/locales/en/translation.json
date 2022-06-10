@@ -68,5 +68,10 @@
   "reset": "Reset",
   "type": "Type",
   "currency": "Currency",
-  "enterProposalDescription": "Enter proposal body"
+  "enterProposalDescription": "Enter proposal body",
+  "yourVotingPower": "Your Voting Power",
+  "balance": "Balance",
+  "unlockDate": "Unlock Date",
+  "spending": "Spending",
+  "max": "Max"
 }

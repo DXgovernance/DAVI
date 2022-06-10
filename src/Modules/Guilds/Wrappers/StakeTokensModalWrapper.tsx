@@ -1,5 +1,5 @@
 import { StakeTokensModal } from 'Components/StakeTokensModal';
-import { StakeTokensForm } from 'Components/StakeTokensModal/components/StakeTokensForm';
+import StakeTokensForm from 'Components/StakeTokensModal/components/StakeTokensForm/StakeTokensForm';
 import { useERC20Info } from '../../../hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useGuildConfig } from '../../../hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';

@@ -1,5 +1,5 @@
-import dxIcon from '../../../assets/images/dxdao-icon.svg';
-import { Loading } from '../../Primitives/Loading';
+import dxIcon from 'assets/images/dxdao-icon.svg';
+import { Loading } from 'Components/Primitives/Loading';
 import { useMemo, useState } from 'react';
 
 import {
@@ -8,19 +8,20 @@ import {
   DaoIcon,
   DaoTitle,
 } from './StakeTokensForm.styled';
-import useBigNumberToNumber from '../../../hooks/Guilds/conversions/useBigNumberToNumber';
+import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { BigNumber } from 'ethers';
-import { StakeTokensFormsProps } from '../types';
-import { BalanceWidgetWrapper } from './BalanceWidgetWrapper';
-import { StakeTokenButton } from './StakeTokenButton';
+import { StakeTokensFormsProps } from '../../types';
+
 import {
   VotingPowerInfoLine,
   UnlockDateInfoLine,
   BalanceInfoLine,
   LockTimeInfoLine,
-} from './StakeTokensInfoLine';
+} from '../StakeTokensInfoLine/StakeTokensInfoLine';
+import { BalanceWidgetWrapper } from '../BalanceWidgetWrapper';
+import { StakeTokensButton } from '../StakeTokensButton';
 
-export const StakeTokensForm = ({
+const StakeTokensForm = ({
   token,
   userVotingPower,
   createTransaction,
@@ -76,7 +77,7 @@ export const StakeTokensForm = ({
         isStakeAmountValid={isStakeAmountValid}
         guild={guild}
       />
-      <StakeTokenButton
+      <StakeTokensButton
         isRepGuild={isRepGuild}
         isStakeAmountValid={isStakeAmountValid}
         createTransaction={createTransaction}
@@ -87,3 +88,5 @@ export const StakeTokensForm = ({
     </GuestContainer>
   );
 };
+
+export default StakeTokensForm;
