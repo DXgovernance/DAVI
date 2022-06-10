@@ -1,5 +1,5 @@
 import { Modal } from 'old-components/Guilds/common/Modal';
-import { Option, PickerProps } from './types';
+import { OptionWithId, PickerProps } from './types';
 import { MainWrapper, OptionList, SearchWrapper } from './Picker.styled';
 import { OptionListItem } from './OptionListItem';
 import { useEffect, useMemo, useState } from 'react';
@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 const Picker: React.FC<PickerProps> = ({
   data,
+  header,
   isOpen,
   onSelect,
   onClose,
@@ -27,15 +28,25 @@ const Picker: React.FC<PickerProps> = ({
     },
   };
 
-  const { instance, buildIndex, query } = useMiniSearch<Option>(
+  // Check data for ID field. If it doesn't have one, populate it with the array index
+  const dataWithId: OptionWithId[] = useMemo(() => {
+    return data.map((item, index) => {
+      return {
+        ...item,
+        id: item.id ? item.id : index.toString(),
+      };
+    });
+  }, [data]);
+
+  const { instance, buildIndex, query } = useMiniSearch<OptionWithId>(
     searchConfig ? searchConfig : defaultSearchConfig
   );
 
   useEffect(() => {
-    if (instance?.documentCount !== data?.length) {
-      buildIndex(data);
+    if (instance?.documentCount !== dataWithId?.length) {
+      buildIndex(dataWithId);
     }
-  }, [data, buildIndex, instance]);
+  }, [dataWithId, buildIndex, instance]);
 
   const searchResults = useMemo(() => {
     if (!searchQuery) return [];
@@ -44,12 +55,7 @@ const Picker: React.FC<PickerProps> = ({
   }, [searchQuery, query]);
 
   return (
-    <Modal
-      header={'Some header'}
-      isOpen={isOpen}
-      onDismiss={onClose}
-      maxWidth={390}
-    >
+    <Modal header={header} isOpen={isOpen} onDismiss={onClose} maxWidth={390}>
       <MainWrapper>
         <SearchWrapper>
           <Input
@@ -60,7 +66,7 @@ const Picker: React.FC<PickerProps> = ({
           />
         </SearchWrapper>
         <OptionList>
-          {(searchQuery ? searchResults : data)
+          {(searchQuery ? searchResults : dataWithId)
             .slice(0, numberOfVisibleItems ? numberOfVisibleItems : undefined)
             .map((option, index) => (
               <OptionListItem

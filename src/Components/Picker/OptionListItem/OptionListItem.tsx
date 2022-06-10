@@ -11,7 +11,7 @@ const OptionListItem: React.FC<OptionListItemProps> = ({ item, onSelect }) => {
   return (
     <OptionItem onClick={onSelect}>
       <OptionDetail>
-        <OptionIcon>ICON</OptionIcon>
+        {item.icon && <OptionIcon>{item.icon}</OptionIcon>}
         <div>
           <OptionTitle>{item.title}</OptionTitle>
           <OptionSubtitle>{item.subtitle}</OptionSubtitle>

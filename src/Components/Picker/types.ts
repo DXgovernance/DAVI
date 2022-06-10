@@ -1,5 +1,6 @@
 export interface PickerProps {
   data: Option[];
+  header: string;
   isOpen: boolean;
   onSelect: any;
   onClose: () => void;
@@ -8,13 +9,16 @@ export interface PickerProps {
 }
 
 export interface Option {
-  id: string;
   title: string;
   subtitle?: string;
+  id?: string;
   value?: any;
   icon?: any;
   balance?: number;
+  [key: string]: any;
 }
+
+export type OptionWithId = Option & { id: string };
 
 export interface OptionListItemProps {
   item: Option;

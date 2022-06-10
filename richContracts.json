@@ -131,7 +131,7 @@
         "params": [
           {
             "type": "address",
-            "component": "address",
+            "component": "swaprPicker",
             "name": "pair",
             "title": "Pool",
             "defaultValue": "",
