@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import CallDetails from './CallDetails';
 import { getInfoLineView, getSummaryView } from './SupportedActions';
 import UndecodableCallDetails from './UndecodableCalls/UndecodableCallDetails';
@@ -14,6 +15,7 @@ import { Box } from 'Components/Primitives/Layout';
 import { useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import styled, { css } from 'styled-components';
+import { ConfirmRemoveActionModal } from './ConfirmRemoveActionModal';
 
 const CardWrapperWithMargin = styled(CardWrapper)<{ dragging?: boolean }>`
   position: relative;
@@ -97,12 +99,14 @@ interface ActionViewProps {
   decodedAction?: DecodedAction;
   isEditable?: boolean;
   onEdit?: (updatedCall: DecodedAction) => void;
+  onRemove?: (updatedCall: DecodedAction) => void;
 }
 
 const ActionRow: React.FC<ActionViewProps> = ({
   call,
   decodedAction,
   isEditable,
+  onRemove,
 }) => {
   const {
     attributes,
@@ -113,12 +117,15 @@ const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
   } = useSortable({ id: decodedAction?.id, disabled: !isEditable });
   const action = useDecodedCall(call);
+  const { t } = useTranslation();
 
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
 
   const [expanded, setExpanded] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
+    useState(false);
 
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
@@ -147,6 +154,13 @@ const ActionRow: React.FC<ActionViewProps> = ({
         </CardLabel>
         <CardActions>
           {isEditable && <EditButtonWithMargin>Edit</EditButtonWithMargin>}
+          {onRemove && (
+            <EditButtonWithMargin
+              onClick={() => setConfirmRemoveActionModalIsOpen(v => !v)}
+            >
+              {t('remove')}
+            </EditButtonWithMargin>
+          )}
           <ChevronIcon onClick={() => setExpanded(!expanded)}>
             {expanded ? (
               <FiChevronUp height={16} />
@@ -197,6 +211,16 @@ const ActionRow: React.FC<ActionViewProps> = ({
           )}
         </>
       )}
+      <ConfirmRemoveActionModal
+        isOpen={confirmRemoveActionModalIsOpen}
+        onDismiss={() => {
+          setConfirmRemoveActionModalIsOpen(false);
+        }}
+        onConfirm={() => {
+          onRemove(decodedAction);
+          setConfirmRemoveActionModalIsOpen(false);
+        }}
+      />
     </CardWrapperWithMargin>
   );
 };

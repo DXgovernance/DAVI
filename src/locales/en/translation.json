@@ -107,5 +107,10 @@
   "change": "Change",
   "copiedAddress": "Copied Address",
   "copyAddress": "copy Address",
-  "changeConnection": "Change Connection"
+  "changeConnection": "Change Connection",
+  "confirmRemoval": "Confirm Removal",
+  "areYuoSureYouWantToRemoveAction": "Are you sure you want to remove this action?",
+  "theRemovalCannotBeReverted": "The removal cannot be reverted",
+  "removeAction": "Remove Action",
+  "remove": "Remove"
 }
