@@ -57,6 +57,22 @@
   },
   "selectAToken": "Select a token",
   "searchToken": "Search token",
+  "selectDuration": "Select duration",
+  "durationWarningMessage": "Please change {{value}} input for the {{timeColumn}} column as it is over the limit. The maximum value allowed is {{limit.max}}.",
+  "duration": {
+    "seconds_one": "second",
+    "seconds_other": "seconds",
+    "minutes_one": "minute",
+    "minutes_other": "minutes",
+    "hours_one": "hour",
+    "hours_other": "hours",
+    "days_one": "day",
+    "days_other": "days",
+    "months_one": "month",
+    "months_other": "months",
+    "years_one": "year",
+    "years_other": "years"
+  },
   "proposalInfoCard": {
     "consensusSystem": "Consensus System",
     "proposalDuration": "Proposal Duration",
