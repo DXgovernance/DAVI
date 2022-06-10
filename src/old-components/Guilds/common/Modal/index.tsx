@@ -42,13 +42,13 @@ export const StyledModal = styled.div`
   /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
-    scrollbar-width: 10px;
+    scrollbar-width: 12px;
     scrollbar-color: ${({ theme }) => theme.colors.muted} transparent;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
   }
 
   *::-webkit-scrollbar-track {
@@ -58,6 +58,7 @@ export const StyledModal = styled.div`
   *::-webkit-scrollbar-thumb {
     background-color: ${({ theme }) => theme.colors.muted};
     border-radius: 10px;
+    border: 3px solid ${({ theme }) => theme.colors.modalBackground};
   }
 
   @media only screen and (max-width: 768px) {
