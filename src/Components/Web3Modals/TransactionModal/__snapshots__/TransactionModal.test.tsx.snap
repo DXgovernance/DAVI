@@ -10,7 +10,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
       class="sc-pGacB dPhapg"
     >
       <div
-        class="sc-kEjbQP bhXrYT"
+        class="sc-kEjbQP ieZize"
       >
         
          
@@ -69,7 +69,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
           </svg>
         </div>
         <div
-          class="sc-hBEYId eqrmZT"
+          class="sc-hBEYId QwPRG"
         >
           <div
             class="sc-dlfnuX ghjVNo"
