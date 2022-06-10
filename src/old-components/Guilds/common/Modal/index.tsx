@@ -39,6 +39,27 @@ export const StyledModal = styled.div`
   box-sizing: border-box;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
 
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: 10px;
+    scrollbar-color: ${({ theme }) => theme.colors.muted} transparent;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.muted};
+    border-radius: 10px;
+  }
+
   @media only screen and (max-width: 768px) {
     padding: 0px 20px;
     height: 100vh;
@@ -91,7 +112,7 @@ export const Content = styled.div<{ modal?: boolean }>`
   color: ${({ theme }) => theme.colors.text};
   max-height: 80vh;
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
 
   ${props =>
     props.modal === true &&
