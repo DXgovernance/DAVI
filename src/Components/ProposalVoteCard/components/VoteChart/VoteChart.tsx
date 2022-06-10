@@ -39,7 +39,11 @@ const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
             const percent = Math.round(percentBN.toNumber()) / Math.pow(10, 2);
 
             return (
-              <ChartBar percent={percent} color={theme?.colors?.votes?.[i]} />
+              <ChartBar
+                key={i}
+                percent={percent}
+                color={theme?.colors?.votes?.[i]}
+              />
             );
           })}
         </VotesChartRow>

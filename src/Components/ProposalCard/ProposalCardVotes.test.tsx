@@ -1,6 +1,8 @@
 import ProposalCardVotes from './ProposalCardVotes';
 import { render } from '../../utils/tests';
 
+jest.mock('contexts/index', () => jest.fn());
+
 describe('ProposalCardVotes.test', () => {
   it('Should match snapshot with votes', async () => {
     const { container } = render(

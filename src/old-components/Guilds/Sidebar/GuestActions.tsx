@@ -1,4 +1,4 @@
-import WalletModal from '../Web3Modals/WalletModal';
+import { WalletModal } from 'Components';
 import { useWeb3React } from '@web3-react/core';
 import { Button } from 'old-components/Guilds/common/Button';
 import { useState } from 'react';

@@ -7,6 +7,8 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
   useAllERC20Balances: jest.fn(),
 }));
 
+jest.mock('contexts/index', () => jest.fn());
+
 const mockedERC20Balances = useAllERC20Balances as jest.Mock;
 
 describe('TokenPicker', () => {
