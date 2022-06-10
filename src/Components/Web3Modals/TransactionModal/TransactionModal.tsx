@@ -1,46 +1,17 @@
-import { getChains } from '../../../provider/connectors';
-import { getBlockchainLink } from '../../../utils';
-import { Button } from '../common/Button';
-import { Circle, Flex } from '../../../Components/Primitives/Layout';
-import { ContainerText } from '../../../Components/Primitives/Layout/Text';
-import { Modal, ModalProps } from '../common/Modal';
+import { getChains } from 'provider/connectors';
+import { getBlockchainLink } from 'utils';
+import { Circle, Flex } from 'Components/Primitives/Layout';
+import { ContainerText } from 'Components/Primitives/Layout/Text';
+import { Modal } from 'old-components/Guilds/common/Modal';
 import { useWeb3React } from '@web3-react/core';
 import PendingCircle from 'old-components/common/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
-import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
-export const ModalButton = styled(Button)`
-  margin: 0 0 16px 0;
-  width: 90%;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
-  :hover:enabled {
-    background-color: ${({ theme }) => theme.colors.background};
-    color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-export const Container = styled.div`
-  margin: 0.5rem 0 1rem 0;
-`;
-
-export const Header = styled(Flex)`
-  margin-top: 2rem;
-`;
-
-enum TransactionModalView {
-  Confirm,
-  Submit,
-  Reject,
-}
-
-type TransactionModalProps = {
-  message: string;
-  transactionHash: string;
-  txCancelled: boolean;
-} & Pick<ModalProps, 'onCancel'>;
+import { TransactionModalView, TransactionModalProps } from './types';
+import { Container, Header } from './TransactionModal.styled';
 
 const TransactionModal: React.FC<TransactionModalProps> = ({
   message,
@@ -48,6 +19,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   txCancelled,
   onCancel,
 }) => {
+  const { t } = useTranslation();
   const { chainId } = useWeb3React();
   const modalView = useMemo<TransactionModalView>(() => {
     if (txCancelled) {
@@ -73,12 +45,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           <Flex>
             <Container>
               <ContainerText variant="bold">
-                Waiting For Confirmation
+                {t('waitingForConfirmation')}
               </ContainerText>
               <ContainerText variant="medium">{message}</ContainerText>
             </Container>
             <ContainerText variant="medium" color="grey">
-              Confirm this Transaction in your Wallet
+              {t('confirmThisTransactionInYourWallet')}
             </ContainerText>
           </Flex>
         );
@@ -94,10 +66,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
 
         const networkName = getChains().find(
           chain => chain.id === chainId
-        ).name;
+        )?.name;
         children = (
           <Flex>
-            <ContainerText variant="bold">Transaction Submitted</ContainerText>
+            <ContainerText variant="bold">
+              {t('transactionSubmitted')}
+            </ContainerText>
             <Container>
               <ContainerText
                 as="a"
@@ -106,12 +80,12 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
                 href={getBlockchainLink(transactionHash, networkName)}
                 target="_blank"
               >
-                View on Block Explorer
+                {t('viewOnBlockExplorer')}
               </ContainerText>
             </Container>
           </Flex>
         );
-        footerText = 'Close';
+        footerText = t('close');
         break;
       case TransactionModalView.Reject:
         header = (
@@ -123,15 +97,17 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
         );
         children = (
           <Flex>
-            <ContainerText variant="bold">Transaction Rejected</ContainerText>
+            <ContainerText variant="bold">
+              {t('transactionRejected')}
+            </ContainerText>
           </Flex>
         );
-        footerText = 'Dismiss';
+        footerText = t('dismiss');
         break;
     }
 
     return [header, children, footerText];
-  }, [modalView, chainId, message, transactionHash]);
+  }, [modalView, chainId, message, transactionHash, t]);
 
   return (
     <Modal

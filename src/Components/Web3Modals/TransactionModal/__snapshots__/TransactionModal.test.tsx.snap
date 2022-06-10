@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransactionModal Should match snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-jrAFXE eHzIhx"
+    />
+    <div
+      class="sc-pGacB dPhapg"
+    >
+      <div
+        class="sc-kEjbQP bhXrYT"
+      >
+        
+         
+        <div
+          class="sc-iqHYmW sc-crrszt gVIZiL bAsWEw"
+        >
+          <h2
+            class="sc-fubCzh sc-dQoVA lkMZWw hKuUWY"
+          >
+            <div
+              class="sc-dlfnuX sc-dmlqKv ghjVNo eJhMAF"
+            >
+              <div
+                class="sc-gsTEea fSStiW"
+              >
+                <svg
+                  fill="currentColor"
+                  height="40"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 1024 1024"
+                  width="40"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M868 545.5L536.1 163a31.96 31.96 0 0 0-48.3 0L156 545.5a7.97 7.97 0 0 0 6 13.2h81c4.6 0 9-2 12.1-5.5L474 300.9V864c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V300.9l218.9 252.3c3 3.5 7.4 5.5 12.1 5.5h81c6.8 0 10.5-8 6-13.2z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </h2>
+          <svg
+            class="sc-bqyKOL sc-kstqJO ihXXu jnbpOY"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="18"
+              x2="6"
+              y1="6"
+              y2="18"
+            />
+            <line
+              x1="6"
+              x2="18"
+              y1="6"
+              y2="18"
+            />
+          </svg>
+        </div>
+        <div
+          class="sc-hBEYId eqrmZT"
+        >
+          <div
+            class="sc-dlfnuX ghjVNo"
+          >
+            <div
+              class="sc-dlfnuX sc-eCstlR ghjVNo ctJTEk"
+            >
+              transactionSubmitted
+            </div>
+            <div
+              class="sc-hHfuMS cJNRVB"
+            >
+              <a
+                class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"
+                color="grey"
+                href="https://etherscan.io/tx/0x123456789"
+                target="_blank"
+              >
+                viewOnBlockExplorer
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-fodVek fGQwdd"
+        >
+          <button
+            class="sc-jSgvzq sc-fFucqa jXQRoF hpQKPN"
+          >
+            close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+   
+</body>
+`;

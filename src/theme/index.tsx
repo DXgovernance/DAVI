@@ -18,7 +18,7 @@ const MEDIA_WIDTHS = {
   upToLarge: 1280,
 };
 
-const mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce(
+export const mediaWidthTemplates = Object.keys(MEDIA_WIDTHS).reduce(
   (accumulator, size) => {
     accumulator[size] = (...args: any[]) => css`
       @media (max-width: ${MEDIA_WIDTHS[size]}px) {

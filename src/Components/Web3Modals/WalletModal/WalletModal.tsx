@@ -1,58 +1,27 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { isMobile } from 'react-device-detect';
-import { FiArrowLeft } from 'react-icons/fi';
 import { useWeb3React } from '@web3-react/core';
+import { useTranslation } from 'react-i18next';
 
 import { usePrevious } from 'utils';
 import { injected, getWallets, isChainIdSupported } from 'provider/connectors';
 import { useRpcUrls } from 'provider/providerHooks';
-import Option from './components/Option';
-import { Modal } from '../common/Modal';
-import { Heading } from '../common/Typography';
-import WalletInfoBox from './components/WalletInfoBox';
-import Transaction from './components/Transaction';
-import { Button } from '../common/Button';
+import { Modal } from 'old-components/Guilds/common/Modal';
+import { Button } from 'old-components/Guilds/common/Button';
 import { useTransactions } from '../../../contexts/Guilds';
-import { Divider } from '../common/Divider';
+import { Divider } from 'old-components/Guilds/common/Divider';
 
-const Container = styled.div`
-  margin: 2rem;
-`;
+import { Option, WalletInfoBox, Transaction } from '../components';
 
-const ErrorHeading = styled(Heading)`
-  line-height: 0;
-  margin: 0;
-  margin-bottom: 1.5rem;
-  padding: 0;
-`;
-
-const BackIcon = styled(FiArrowLeft)`
-  height: 1.5rem;
-  width: 1.5rem;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.muted};
-  }
-`;
-
-const ButtonContainer = styled.div`
-  margin: 1.5rem;
-  text-align: center;
-`;
-
-const TransactionsList = styled.div`
-  margin: 1.5rem 0;
-`;
-
-const TransactionsListHeading = styled(Heading)`
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-  font-size: ${({ theme }) => theme.fontSizes.body};
-`;
+import {
+  Container,
+  ErrorHeading,
+  BackIcon,
+  ButtonContainer,
+  TransactionsList,
+  TransactionsListHeading,
+} from './WalletModal.styled';
+import { WalletModalProps } from './types';
 
 const WALLET_VIEWS = {
   OPTIONS: 'options',
@@ -61,12 +30,8 @@ const WALLET_VIEWS = {
   PENDING: 'pending',
 };
 
-interface WalletModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
 const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const { active, connector, error, activate, account, chainId } =
     useWeb3React();
   const rpcUrls = useRpcUrls();
@@ -149,7 +114,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
               <Option
                 key={key}
                 icon={option.icon}
-                header={'Install Metamask'}
+                header={t('installMetamask')}
                 link={'https://metamask.io/'}
               />
             );
@@ -197,12 +162,12 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       return (
         <Container>
           <ErrorHeading size={2}>
-            {isUnsupportedChain ? 'Wrong Network' : 'Error connecting'}
+            {isUnsupportedChain ? t('wrongNetwork') : t('errorConnecting')}
           </ErrorHeading>
           <div>
             {isUnsupportedChain
-              ? 'Please connect to a valid ethereum network.'
-              : 'Error connecting. Try refreshing the page.'}
+              ? t('pleaseConnectToAValidEthNetwork')
+              : `${t('errorConnecting')}. ${t('tryRefreshingThePage')}`}
           </div>
         </Container>
       );
@@ -215,8 +180,8 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
     ) {
       return (
         <Container>
-          <ErrorHeading size={2}>Wrong Network</ErrorHeading>
-          <div>Please connect to a valid ethereum network.</div>
+          <ErrorHeading size={2}>{t('wrongNetwork')}</ErrorHeading>
+          <div>{t('pleaseConnectToAValidEthNetwork')}.</div>
         </Container>
       );
     }
@@ -236,12 +201,12 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
           <TransactionsList>
             {recentTransactions?.length === 0 ? (
               <TransactionsListHeading>
-                Your transactions will appear here...
+                {t('yourTransactionsWillAppearHere')}...
               </TransactionsListHeading>
             ) : (
               <>
                 <TransactionsListHeading>
-                  Recent Transactions
+                  {t('recentTransactions')}
                 </TransactionsListHeading>
                 <Divider />
                 {recentTransactions?.map(transaction => (
@@ -249,7 +214,9 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
                 ))}
                 {recentTransactions?.length > 0 && (
                   <ButtonContainer>
-                    <Button onClick={clearAllTransactions}>Clear all</Button>
+                    <Button onClick={clearAllTransactions}>
+                      {t('clearAll')}
+                    </Button>
                   </ButtonContainer>
                 )}
               </>
@@ -273,9 +240,9 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       );
     }
 
-    if (walletView === WALLET_VIEWS.ACCOUNT) return 'Account';
+    if (walletView === WALLET_VIEWS.ACCOUNT) return t('account');
 
-    return 'Connect to a wallet';
+    return t('connectToAWallet');
   };
 
   return (

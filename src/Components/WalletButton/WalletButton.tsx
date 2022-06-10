@@ -5,7 +5,7 @@ import { getChains, injected } from 'provider/connectors';
 import { useRpcUrls } from 'provider/providerHooks';
 import { Button } from 'old-components/Guilds/common/Button';
 import { useWeb3React } from '@web3-react/core';
-import WalletModal from 'old-components/Guilds/Web3Modals/WalletModal';
+import { WalletModal } from 'Components';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import { useTransactions } from 'contexts/Guilds';
 
