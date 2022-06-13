@@ -27,7 +27,7 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
   const { t } = useTranslation();
 
   return (
-    <SidebarWrapper>
+    <SidebarWrapper data-testid="sidebar">
       <DaoInfoPanel>
         <DaoInfo>
           <DaoBrand>

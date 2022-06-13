@@ -5,6 +5,7 @@ exports[`GuildSidebar Should render with data 1`] = `
    
   <div
     class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    data-testid="sidebar"
   >
     <div
       class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
@@ -72,6 +73,7 @@ exports[`GuildSidebar Should render without data 1`] = `
    
   <div
     class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    data-testid="sidebar"
   >
     <div
       class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
