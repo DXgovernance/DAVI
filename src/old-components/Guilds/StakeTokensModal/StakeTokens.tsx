@@ -99,7 +99,7 @@ const InfoValue = styled.span`
 `;
 
 const InfoOldValue = styled(InfoValue)`
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.card.grey};
   display: inline-flex;
   align-items: center;
 `;

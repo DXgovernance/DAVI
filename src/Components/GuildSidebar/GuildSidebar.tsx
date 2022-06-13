@@ -11,10 +11,10 @@ import {
   SidebarWrapper,
 } from './GuildSidebar.styled';
 
-interface GuildSidebarProps {
-  guildName: string;
-  numberOfMembers: number;
-  actions: React.ReactNode;
+export interface GuildSidebarProps {
+  guildName?: string;
+  numberOfMembers?: number;
+  actions?: React.ReactNode;
 }
 
 export const GuildSidebar: React.FC<GuildSidebarProps> = ({

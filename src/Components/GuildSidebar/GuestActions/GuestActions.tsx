@@ -1,9 +1,9 @@
 import { Button } from 'old-components/Guilds/common/Button';
 
-interface GuestActionsProps {
-  userWalletAddress: string;
-  onShowStakeModal: () => void;
-  onShowWalletModal: () => void;
+export interface GuestActionsProps {
+  userWalletAddress?: string;
+  onShowStakeModal?: () => void;
+  onShowWalletModal?: () => void;
 }
 
 export const GuestActions: React.FC<GuestActionsProps> = ({

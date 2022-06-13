@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GuildSidebar Should render with data 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB sc-iBPTik bmhbKs usvUU"
+  >
+    <div
+      class="sc-bdfBQB sc-fubCzh bmhbKs hNwxkY"
+    >
+      <div
+        class="sc-pGacB coA-Dha"
+      >
+        <div
+          class="sc-jrAFXE jlptGR"
+        >
+          <img
+            alt="DXdao Logo"
+            class="sc-kEjbQP gWbxpV"
+            src="dxdao-icon.svg"
+          />
+          <h1
+            class="sc-gKseQn sc-iqHYmW fMfHRo iyXQFt"
+            size="2"
+          >
+            Test Guild
+          </h1>
+        </div>
+        <div
+          class="sc-bdfBQB sc-crrszt bmhbKs uTbjj"
+        >
+          10
+           Members
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bdfBQB sc-eCstlR sc-dQoVA bmhbKs hPdNYY fnEvkC"
+    >
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Proposals
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Members
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Portfolio
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Settings
+      </a>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`GuildSidebar Should render without data 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB sc-iBPTik bmhbKs usvUU"
+  >
+    <div
+      class="sc-bdfBQB sc-fubCzh bmhbKs hNwxkY"
+    >
+      <div
+        class="sc-pGacB coA-Dha"
+      >
+        <div
+          class="sc-jrAFXE jlptGR"
+        >
+          <img
+            alt="DXdao Logo"
+            class="sc-kEjbQP gWbxpV"
+            src="dxdao-icon.svg"
+          />
+          <h1
+            class="sc-gKseQn sc-iqHYmW fMfHRo iyXQFt"
+            size="2"
+          />
+        </div>
+        <div
+          class="sc-bdfBQB sc-crrszt bmhbKs uTbjj"
+        >
+           Members
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-bdfBQB sc-eCstlR sc-dQoVA bmhbKs hPdNYY fnEvkC"
+    >
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Proposals
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Members
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Portfolio
+      </a>
+      <a
+        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        href="#"
+      >
+        Settings
+      </a>
+    </div>
+  </div>
+   
+</div>
+`;

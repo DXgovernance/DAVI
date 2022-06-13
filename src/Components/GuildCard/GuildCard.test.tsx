@@ -1,7 +1,7 @@
 import GuildCard from './GuildCard';
 import { render } from '../../utils/tests';
 import '@testing-library/jest-dom';
-import { fullParameters, loadingParameters, noProposals } from './fixture';
+import { fullParameters, loadingParameters, noProposals } from './fixtures';
 
 describe('GuildCard', () => {
   it(`Should render with full parameters`, async () => {

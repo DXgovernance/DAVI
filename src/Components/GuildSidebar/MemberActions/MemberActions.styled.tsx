@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconButton, Button } from 'old-components/Guilds/common/Button';
+import { IconButton } from 'old-components/Guilds/common/Button';
 
 export const UserActionButton = styled(IconButton)`
   border-radius: 50px;
@@ -33,21 +33,4 @@ export const VotingPower = styled.div`
   padding: 2px 8px;
   font-weight: 500;
   font-size: 14px;
-`;
-
-export const MemberContainer = styled.div`
-  padding: 20px;
-`;
-
-export const ContentItem = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  font-size: 14px;
-  padding-bottom: 8px;
-`;
-
-export const LockButton = styled(Button)`
-  margin-top: 12px;
-  width: 100%;
 `;
