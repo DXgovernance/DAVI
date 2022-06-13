@@ -16,6 +16,7 @@ const AddressButton: React.FC<AddressButtonProps> = ({
   address,
   transactionsCounter,
   onClick,
+  showFullAddress = false,
 }) => {
   const { ensName, imageUrl } = useENSAvatar(address, 1);
 
@@ -35,7 +36,11 @@ const AddressButton: React.FC<AddressButtonProps> = ({
       {isDesktop && (
         <AddressText>
           {ensName || address ? (
-            shortenAddress(address)
+            showFullAddress ? (
+              address
+            ) : (
+              shortenAddress(address)
+            )
           ) : (
             <Loading loading text />
           )}
