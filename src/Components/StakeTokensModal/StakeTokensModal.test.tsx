@@ -9,8 +9,12 @@ jest.mock('ipfs-only-hash', () => jest.fn());
 
 describe('StakeTokensModal', () => {
   it('StakeTokensModal renders properly', () => {
+    console.error = jest.fn();
     const { container } = render(
-      <StakeTokensModal {...mockStakeTokensModalProps} />
+      <StakeTokensModal {...mockStakeTokensModalProps} />,
+      {
+        container: document.body,
+      }
     );
     expect(container).toMatchSnapshot();
   });
