@@ -185,7 +185,6 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         >
           <div
             class="sc-bdfBQB"
-            style="margin: 0px;"
           >
             <span
               aria-busy="true"

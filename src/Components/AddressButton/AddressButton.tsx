@@ -22,15 +22,7 @@ const AddressButton: React.FC<AddressButtonProps> = ({
   return (
     <StyledAddressButton variant="secondary" onClick={onClick} iconLeft>
       <IconHolder>
-        {address ? (
-          <Avatar src={imageUrl} defaultSeed={address} size={24} />
-        ) : (
-          <Loading
-            loading
-            text
-            skeletonProps={{ circle: true, width: '24px', height: '24px' }}
-          />
-        )}
+        <Avatar src={imageUrl} defaultSeed={address} size={24} />
       </IconHolder>
       {isDesktop && (
         <AddressText>

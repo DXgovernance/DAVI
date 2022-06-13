@@ -1,7 +1,8 @@
+import { ProposalStatusProps } from 'Components/ProposalStatus/types';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
 import { Proposal, ContractState } from 'types/types.guilds.d';
-import { ENSAvatar } from '../Types';
+import { ENSAvatar, ProposalState } from '../Types';
 
 export const proposalMock: Proposal = {
   id: '0x1234567890123456789012345678901234567890',
@@ -24,8 +25,8 @@ export const ensAvatarMock: ENSAvatar = {
   ensName: 'venky0x.eth',
 };
 
-export const proposalStatusPropsMock = {
+export const proposalStatusPropsMock: ProposalStatusProps = {
   timeDetail: 'Time',
-  status: ContractState.Active,
+  status: ProposalState.Active,
   endTime: moment('2022-05-09T08:00:00'),
 };

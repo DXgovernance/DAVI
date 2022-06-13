@@ -71,7 +71,7 @@ exports[`ENSAvatar Should render skeleton when address is not given 1`] = `
     class="sc-gKseQn hvLGCr"
   >
     <div
-      class="sc-eCstlR"
+      class="sc-bdfBQB"
     >
       <span
         aria-busy="true"
