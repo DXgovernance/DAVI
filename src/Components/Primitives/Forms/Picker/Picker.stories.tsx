@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Picker from './Picker';
-import { fullProps, swaprPairs } from './fixtures';
+import { fullProps, lengthyData } from './fixtures';
 
 export default {
   title: 'Picker',
@@ -44,4 +44,4 @@ export const Simple = Template.bind({});
 Simple.args = fullProps;
 
 export const Swapr = SwaprTemplate.bind({});
-Swapr.args = swaprPairs;
+Swapr.args = lengthyData;

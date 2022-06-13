@@ -33,3 +33,7 @@ export const OptionSubtitle = styled.div`
   color: ${({ theme }) => theme.colors.proposalText.grey};
   font-size: ${({ theme }) => theme.fontSizes.label};
 `;
+
+export const OptionRightData = styled.div`
+  margin-left: 0.5rem;
+`;

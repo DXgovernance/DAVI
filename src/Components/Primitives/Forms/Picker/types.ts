@@ -14,7 +14,7 @@ export interface Option {
   id?: string;
   value?: any;
   icon?: any;
-  balance?: number;
+  rightData?: number | string;
   [key: string]: any;
 }
 

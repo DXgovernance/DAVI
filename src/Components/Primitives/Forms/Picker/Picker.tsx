@@ -82,5 +82,3 @@ const Picker: React.FC<PickerProps> = ({
 };
 
 export default Picker;
-
-// TODO: Handle long lists of items

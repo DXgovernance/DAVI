@@ -5,6 +5,7 @@ import {
   OptionItem,
   OptionSubtitle,
   OptionTitle,
+  OptionRightData,
 } from './OptionListItem.styled';
 
 const OptionListItem: React.FC<OptionListItemProps> = ({ item, onSelect }) => {
@@ -17,7 +18,7 @@ const OptionListItem: React.FC<OptionListItemProps> = ({ item, onSelect }) => {
           <OptionSubtitle>{item.subtitle}</OptionSubtitle>
         </div>
       </OptionDetail>
-      <div>{item.balance}</div>
+      <OptionRightData>{item.rightData}</OptionRightData>
     </OptionItem>
   );
 };
