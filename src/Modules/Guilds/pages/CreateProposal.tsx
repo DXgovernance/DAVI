@@ -1,8 +1,8 @@
-import { ActionsBuilder } from '../../../old-components/Guilds/CreateProposalPage';
+import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import { IconButton } from '../../../old-components/Guilds/common/Button';
-import Input from '../../../old-components/Guilds/common/Form/Input';
-import { Box, Flex } from '../../../Components/Primitives/Layout';
+import { IconButton } from 'old-components/Guilds/common/Button';
+import Input from 'old-components/Guilds/common/Form/Input';
+import { Box, Flex } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import contentHash from 'content-hash';
 import { useTransactions } from 'contexts/Guilds';
