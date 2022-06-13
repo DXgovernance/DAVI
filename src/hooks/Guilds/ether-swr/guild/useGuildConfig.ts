@@ -21,7 +21,6 @@ export type GuildConfigProps = {
 export const useGuildConfig = (
   guildAddress: string
 ): SWRResponse<GuildConfigProps> => {
-  console.log({ guildAddress });
   const { data, error, isValidating, mutate } = useEtherSWR(
     guildAddress
       ? [
