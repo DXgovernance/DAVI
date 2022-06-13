@@ -25,9 +25,9 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
         const bn = BigNumber.from(param.value);
         return bn.toString();
       case 'date':
-      case 'time':
-        // TODO: Update to support duration picker
         return moment.unix(Number(param.value)).format('YYYY-MM-DD');
+      case 'duration':
+        return `${param.value}`;
       case 'boolean':
         return `${param.value}`;
       case 'tokenAmount':
