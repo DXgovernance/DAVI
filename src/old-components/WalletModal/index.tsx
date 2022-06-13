@@ -5,7 +5,6 @@ import { Modal } from '../Modal';
 import Link from '../Guilds/common/Link';
 import Option from './Option';
 import { useWeb3React } from '@web3-react/core';
-// import { observer } from 'mobx-react';
 import { injected, getWallets } from 'provider/connectors';
 import { useRpcUrls } from 'provider/providerHooks';
 import { useEffect, useState } from 'react';

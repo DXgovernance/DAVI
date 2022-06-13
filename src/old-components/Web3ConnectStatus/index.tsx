@@ -2,7 +2,6 @@ import { useContext } from '../../contexts';
 import { toCamelCaseString } from '../../utils';
 import { Box } from '../Guilds/common/Box';
 import BlockchainLink from '../Guilds/common/BlockchainLink';
-// import { observer } from 'mobx-react';
 import NetworkModal from 'old-components/NetworkModal';
 import WalletModal from 'old-components/WalletModal';
 import { getChains, injected, isChainIdSupported } from 'provider/connectors';

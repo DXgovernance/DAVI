@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-// import { observer } from 'mobx-react';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../Modal';
