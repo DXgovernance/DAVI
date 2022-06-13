@@ -8,6 +8,7 @@ import { useGuildConfig } from '../../../hooks/Guilds/ether-swr/guild/useGuildCo
 import { useVotingPowerOf } from '../../../hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import useGuildImplementationType from '../../../hooks/Guilds/guild/useGuildImplementationType';
 import useVotingPowerPercent from '../../../hooks/Guilds/guild/useVotingPowerPercent';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import { Button } from '../common/Button';
 import TokenAmountInput from '../common/Form/TokenAmountInput';
 import { Loading } from '../../../Components/Primitives/Loading';
@@ -125,6 +126,7 @@ export const StakeTokens = () => {
   const { guildId: guildAddress } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildAddress);
   const { data: tokenInfo } = useERC20Info(guildConfig?.token);
+  const { data: totalLocked } = useTotalLocked(guildAddress);
 
   const { data: tokenBalance } = useERC20Balance(
     guildConfig?.token,
@@ -178,12 +180,12 @@ export const StakeTokens = () => {
 
   const votingPowerPercent = useVotingPowerPercent(
     userVotingPower,
-    guildConfig?.totalLocked,
+    totalLocked,
     3
   );
   const nextVotingPowerPercent = useVotingPowerPercent(
     stakeAmount?.add(userVotingPower),
-    stakeAmount?.add(guildConfig?.totalLocked),
+    stakeAmount?.add(totalLocked),
     3
   );
   const history = useHistory();

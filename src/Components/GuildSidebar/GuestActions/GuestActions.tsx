@@ -1,6 +1,5 @@
 import { Button } from 'old-components/Guilds/common/Button';
 import { useTranslation } from 'react-i18next';
-
 export interface GuestActionsProps {
   userWalletAddress?: string;
   onShowStakeModal?: () => void;

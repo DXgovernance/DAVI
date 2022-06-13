@@ -17,7 +17,8 @@ import { formatUnits } from 'ethers/lib/utils';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import StakeTokensModal from 'old-components/Guilds/StakeTokensModal';
 import { useState } from 'react';
-import WalletModal from 'old-components/Guilds/Web3Modals/WalletModal';
+import { WalletModal } from 'Components/Web3Modals';
+import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -36,9 +37,10 @@ const GuildSidebarWrapper = () => {
     contractAddress: guildAddress,
     userAddress,
   });
+  const { data: totalLocked } = useTotalLocked(guildAddress);
   const votingPowerPercent = useVotingPowerPercent(
     userVotingPower,
-    guildConfig?.totalLocked
+    totalLocked
   );
 
   const { createTransaction } = useTransactions();

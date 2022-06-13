@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NetworkModal Should match snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-pGacB doHKro"
+    />
+    <div
+      class="sc-fubCzh jCETGP"
+    >
+      <div
+        class="sc-jrAFXE htMdPC"
+      >
+        
+         
+        <div
+          class="sc-kEjbQP UrNhf"
+        >
+          <h2
+            class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
+          >
+            <div>
+              switchNetwork
+            </div>
+          </h2>
+          <svg
+            class="sc-dQoVA bcpZXt"
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="18"
+              x2="6"
+              y1="6"
+              y2="18"
+            />
+            <line
+              x1="6"
+              x2="18"
+              y1="6"
+              y2="18"
+            />
+          </svg>
+        </div>
+        <div
+          class="sc-kstqJO kILPXC"
+        >
+          <div
+            class="sc-jcVcSv cIOoqA"
+          >
+            <div
+              class="sc-iUuxjF laIObK"
+            >
+              <div
+                class="sc-bZSRNg bfqtpQ"
+              >
+                <div
+                  class="sc-iBaQBe kwsOSD"
+                >
+                  <button
+                    class="sc-bdfBQB sc-dIUeWJ cAORUT eWWNGz"
+                    data-testid=""
+                  >
+                    <div
+                      class="sc-hHfuMS bSclpm"
+                    >
+                      Ethereum Mainnet
+                    </div>
+                    <div
+                      class="sc-dmlqKv xyaYn"
+                    >
+                      <img
+                        alt="Icon"
+                        src="ethereum.svg"
+                      />
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+   
+</body>
+`;

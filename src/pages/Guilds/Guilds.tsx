@@ -1,6 +1,6 @@
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import { Filter } from 'old-components/Guilds/Filter';
-import { Box } from 'Components/Primitives/Layout';
+import { useGuildProposalIds } from '../../hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { Filter } from 'Components';
+import { Box } from '../../Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';

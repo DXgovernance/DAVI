@@ -1,1 +1,0 @@
-export { VoteConfirmationModal } from './VoteConfirmationModal';

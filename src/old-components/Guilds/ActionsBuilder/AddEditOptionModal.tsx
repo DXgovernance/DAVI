@@ -84,7 +84,7 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
     <Modal
       isOpen
       onDismiss={onDismiss}
-      header={t(!!editableOption ? 'guilds.editOption' : 'guilds.addOption')}
+      header={t(!!editableOption ? 'editOption' : 'addOption')}
       maxWidth={300}
     >
       <Box padding="1rem 2rem">

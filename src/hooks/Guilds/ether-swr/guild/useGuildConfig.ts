@@ -3,10 +3,9 @@ import { useMemo } from 'react';
 import { SWRResponse } from 'swr';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import useEtherSWR from '../useEtherSWR';
-import useTotalLocked from './useTotalLocked';
 import useGuildToken from './useGuildToken';
 
-export type GuildConfig = {
+export type GuildConfigProps = {
   name: string;
   token: string;
   permissionRegistry: string;
@@ -17,12 +16,11 @@ export type GuildConfig = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
-  totalLocked: BigNumber;
 };
 
 export const useGuildConfig = (
   guildAddress: string
-): SWRResponse<GuildConfig> => {
+): SWRResponse<GuildConfigProps> => {
   const { data, error, isValidating, mutate } = useEtherSWR(
     guildAddress
       ? [
@@ -43,7 +41,6 @@ export const useGuildConfig = (
     }
   );
   const { data: token } = useGuildToken(guildAddress);
-  const { data: totalLocked } = useTotalLocked(guildAddress);
 
   // TODO: Move this into a SWR middleware
   const transformedData = useMemo(() => {
@@ -82,8 +79,6 @@ export const useGuildConfig = (
     error,
     isValidating,
     mutate,
-    data: transformedData
-      ? { ...transformedData, totalLocked, token }
-      : undefined,
+    data: transformedData ? { ...transformedData, token } : undefined,
   };
 };

@@ -20,6 +20,7 @@ const decodedCallMock: DecodedCall = {
     amount: BigNumber.from(0),
   },
 };
+jest.mock('contexts/index', () => jest.fn());
 
 jest.mock('hooks/Guilds/guild/useTotalSupply', () => ({
   useTotalSupply: () => ({

@@ -17,6 +17,8 @@ jest.mock('hooks/Guilds/useExecutable', () => ({
   }),
 }));
 
+jest.mock('contexts/index', () => jest.fn());
+
 describe('Execute Button', () => {
   beforeAll(() => {
     render(<ExecuteButton executeProposal={mockedExecuteProposal} />);
