@@ -1,11 +1,4 @@
 import dxIcon from 'assets/images/dxdao-icon.svg';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import { GuestActions } from './GuestActions';
-import { MemberActions } from './MemberActions';
-import { useWeb3React } from '@web3-react/core';
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import {
   DaoBrand,
   DaoIcon,
@@ -18,35 +11,31 @@ import {
   SidebarWrapper,
 } from './GuildSidebar.styled';
 
-export const GuildSidebar = () => {
-  const { account: userAddress } = useWeb3React();
-  const { guildId: guildAddress } = useTypedParams();
-  const { data } = useGuildConfig(guildAddress);
-  const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
+interface GuildSidebarProps {
+  guildName: string;
+  numberOfMembers: number;
+  actions: React.ReactNode;
+}
 
-  const { data: votingPower } = useVotingPowerOf({
-    contractAddress: guildAddress,
-    userAddress,
-  });
-
+export const GuildSidebar: React.FC<GuildSidebarProps> = ({
+  guildName,
+  numberOfMembers,
+  actions,
+}) => {
   return (
-    <SidebarWrapper data-testid="sidebar">
+    <SidebarWrapper>
       <DaoInfoPanel>
         <DaoInfo>
           <DaoBrand>
             <DaoIcon src={dxIcon} alt={'DXdao Logo'} />
 
             <DaoTitle size={2} as="h1">
-              {data?.name}
+              {guildName}
             </DaoTitle>
           </DaoBrand>
           <DaoMemberCount>{numberOfMembers?.toString()} Members</DaoMemberCount>
         </DaoInfo>
-        {votingPower && !votingPower?.isZero() ? (
-          <MemberActions />
-        ) : (
-          <GuestActions />
-        )}
+        {actions}
       </DaoInfoPanel>
       <SidebarMenu>
         <SidebarMenuItem href="#">Proposals</SidebarMenuItem>

@@ -1,29 +1,16 @@
-import { useTransactions } from 'contexts/Guilds';
-import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVoterLockTimestamp } from 'hooks/Guilds/ether-swr/guild/useVoterLockTimestamp';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { shortenAddress } from 'utils';
-import { MAINNET_ID } from 'utils/constants';
 import Avatar from 'old-components/Guilds/Avatar';
-import StakeTokensModal from 'old-components/Guilds/StakeTokensModal';
 import {
   DropdownMenu,
   DropdownContent,
   DropdownHeader,
 } from 'old-components/Guilds/common/DropdownMenu';
 import { Loading } from '../../Primitives/Loading';
-import { useWeb3React } from '@web3-react/core';
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { formatUnits } from 'ethers/lib/utils';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
-import moment from 'moment';
-import { useEffect, useRef, useState } from 'react';
+import moment, { Moment } from 'moment';
+import { useRef, useState } from 'react';
 import { isMobile } from 'react-device-detect';
 import { FiArrowLeft } from 'react-icons/fi';
 import {
@@ -34,81 +21,85 @@ import {
   UserActionButton,
   VotingPower,
 } from './MemberActions.styled';
+import { BigNumber } from 'ethers';
+import { ENSAvatar } from 'Components/Types';
 
-export const MemberActions = () => {
-  const [showMenu, setShowMenu] = useState(false);
-  const [showStakeModal, setShowStakeModal] = useState(false);
-  const { guildId: guildAddress } = useTypedParams();
-  const { account: userAddress } = useWeb3React();
-  const { ensName, imageUrl } = useENSAvatar(userAddress, MAINNET_ID);
-  const { data: guildConfig } = useGuildConfig(guildAddress);
-  const { data: tokenInfo } = useERC20Info(guildConfig?.token);
-  const { data: userVotingPower } = useVotingPowerOf({
-    contractAddress: guildAddress,
-    userAddress,
-  });
-  const { data: unlockedTimestamp } = useVoterLockTimestamp(
-    guildAddress,
-    userAddress
-  );
+interface MemberActionsProps {
+  guildToken?: ERC20Info;
+  isRepGuild: boolean;
+  userWalletAddress: string;
+  userEnsAvatar?: ENSAvatar;
+  userVotingPower?: BigNumber;
+  userVotingPowerPercent?: number;
+  unlockedAt: Moment;
+  onWithdraw: () => void;
+  onShowStakeModal: () => void;
+}
 
-  useEffect(() => {
-    if (showStakeModal) setShowMenu(false);
-  }, [showStakeModal]);
-
-  const votingPowerPercent = useVotingPowerPercent(
-    userVotingPower,
-    guildConfig?.totalLocked
-  );
+export const MemberActions: React.FC<MemberActionsProps> = ({
+  isRepGuild,
+  guildToken,
+  userWalletAddress,
+  userEnsAvatar,
+  userVotingPower,
+  userVotingPowerPercent,
+  unlockedAt,
+  onWithdraw,
+  onShowStakeModal,
+}) => {
+  const [isInfoDropdownOpen, setIsInfoDropdownOpen] = useState(false);
 
   const roundedBalance = useBigNumberToNumber(
     userVotingPower,
-    tokenInfo?.decimals,
+    guildToken?.decimals,
     3
   );
 
-  const isUnlockable = unlockedTimestamp
-    ? unlockedTimestamp.isBefore(moment.now())
-    : false;
+  const isUnlockable = unlockedAt ? unlockedAt.isBefore(moment.now()) : false;
 
-  const { createTransaction } = useTransactions();
-  const guildContract = useERC20Guild(guildAddress);
+  function showStakeModal() {
+    setIsInfoDropdownOpen(false);
+    onShowStakeModal();
+  }
+
   const withdrawTokens = async () => {
-    setShowMenu(false);
-    createTransaction(
-      `Unlock and withdraw ${formatUnits(
-        userVotingPower,
-        tokenInfo?.decimals
-      )} ${tokenInfo?.symbol} tokens`,
-      async () => guildContract.withdrawTokens(userVotingPower)
-    );
+    setIsInfoDropdownOpen(false);
+    onWithdraw();
   };
 
   const memberMenuRef = useRef(null);
-  useDetectBlur(memberMenuRef, () => setShowMenu(false));
+  useDetectBlur(memberMenuRef, () => setIsInfoDropdownOpen(false));
 
-  const { isRepGuild } = useGuildImplementationType(guildAddress);
   return (
     <>
       <DropdownMenu data-testid="member-actions-button" ref={memberMenuRef}>
-        <UserActionButton iconLeft onClick={() => setShowMenu(!showMenu)}>
+        <UserActionButton
+          iconLeft
+          onClick={() => setIsInfoDropdownOpen(!isInfoDropdownOpen)}
+        >
           <div>
             <IconHolder>
-              <Avatar src={imageUrl} defaultSeed={userAddress} size={18} />
+              <Avatar
+                src={userEnsAvatar?.imageUrl}
+                defaultSeed={userWalletAddress}
+                size={18}
+              />
             </IconHolder>
-            <span>{ensName || shortenAddress(userAddress)}</span>
+            <span>
+              {userEnsAvatar?.ensName || shortenAddress(userWalletAddress)}
+            </span>
           </div>
           <VotingPower>
-            {votingPowerPercent != null ? (
-              `${votingPowerPercent}%`
+            {userVotingPowerPercent != null ? (
+              `${userVotingPowerPercent}%`
             ) : (
               <Loading loading text skeletonProps={{ width: '40px' }} />
             )}
           </VotingPower>
         </UserActionButton>
-        <DropdownContent fullScreenMobile={true} show={showMenu}>
+        <DropdownContent fullScreenMobile={true} show={isInfoDropdownOpen}>
           {isMobile && (
-            <DropdownHeader onClick={() => setShowMenu(false)}>
+            <DropdownHeader onClick={() => setIsInfoDropdownOpen(false)}>
               <FiArrowLeft /> <span>Membership</span>
             </DropdownHeader>
           )}
@@ -116,8 +107,8 @@ export const MemberActions = () => {
             <ContentItem>
               Voting Power{' '}
               <span>
-                {votingPowerPercent != null ? (
-                  `${votingPowerPercent}%`
+                {userVotingPowerPercent != null ? (
+                  `${userVotingPowerPercent}%`
                 ) : (
                   <Loading loading text skeletonProps={{ width: '40px' }} />
                 )}
@@ -126,8 +117,8 @@ export const MemberActions = () => {
             <ContentItem>
               {!isUnlockable ? 'Locked' : 'Staked'}{' '}
               <span>
-                {userVotingPower && tokenInfo ? (
-                  `${roundedBalance} ${tokenInfo.symbol}`
+                {userVotingPower && guildToken ? (
+                  `${roundedBalance} ${guildToken.symbol}`
                 ) : (
                   <Loading loading text skeletonProps={{ width: '40px' }} />
                 )}
@@ -137,11 +128,11 @@ export const MemberActions = () => {
             <ContentItem>
               {isUnlockable ? 'Unlocked' : 'Unlocked in'}{' '}
               <span>
-                {unlockedTimestamp ? (
+                {unlockedAt ? (
                   isUnlockable ? (
-                    unlockedTimestamp?.fromNow()
+                    unlockedAt?.fromNow()
                   ) : (
-                    unlockedTimestamp?.toNow(true)
+                    unlockedAt?.toNow(true)
                   )
                 ) : (
                   <Loading loading text skeletonProps={{ width: '40px' }} />
@@ -149,7 +140,7 @@ export const MemberActions = () => {
               </span>
             </ContentItem>
 
-            <LockButton onClick={() => setShowStakeModal(true)}>
+            <LockButton onClick={showStakeModal}>
               Increase Voting Power
             </LockButton>
 
@@ -159,11 +150,6 @@ export const MemberActions = () => {
           </MemberContainer>
         </DropdownContent>
       </DropdownMenu>
-
-      <StakeTokensModal
-        isOpen={showStakeModal}
-        onDismiss={() => setShowStakeModal(false)}
-      />
     </>
   );
 };

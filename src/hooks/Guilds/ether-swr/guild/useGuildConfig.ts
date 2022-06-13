@@ -6,7 +6,7 @@ import useEtherSWR from '../useEtherSWR';
 import useTotalLocked from './useTotalLocked';
 import useGuildToken from './useGuildToken';
 
-type GuildConfig = {
+export type GuildConfig = {
   name: string;
   token: string;
   permissionRegistry: string;
