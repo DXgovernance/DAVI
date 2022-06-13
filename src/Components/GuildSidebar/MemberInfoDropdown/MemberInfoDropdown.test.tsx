@@ -1,4 +1,7 @@
-import { MemberInfoDropdown } from './MemberInfoDropdown';
+import {
+  MemberInfoDropdown,
+  MemberInfoDropdownProps,
+} from './MemberInfoDropdown';
 import { render } from 'utils/tests';
 import {
   closedWithData,
@@ -7,10 +10,34 @@ import {
   openWithoutData,
 } from './fixtures';
 
+const mockClosedWithoutData: MemberInfoDropdownProps = {
+  ...closedWithoutData,
+  onClose: jest.fn(),
+};
+
+const mockClosedWithData: MemberInfoDropdownProps = {
+  ...closedWithData,
+  onClose: jest.fn(),
+  onShowStakeModal: jest.fn(),
+  onWithdraw: jest.fn(),
+};
+
+const mockOpenWithoutData: MemberInfoDropdownProps = {
+  ...openWithoutData,
+  onClose: jest.fn(),
+};
+
+const mockOpenWithData: MemberInfoDropdownProps = {
+  ...openWithData,
+  onClose: jest.fn(),
+  onShowStakeModal: jest.fn(),
+  onWithdraw: jest.fn(),
+};
+
 describe('MemberInfoDropdown', () => {
   it('Should match snapshot in closed without data', () => {
     const { container } = render(
-      <MemberInfoDropdown {...closedWithoutData}>
+      <MemberInfoDropdown {...mockClosedWithoutData}>
         <button>Open</button>
       </MemberInfoDropdown>
     );
@@ -19,7 +46,7 @@ describe('MemberInfoDropdown', () => {
 
   it('Should match snapshot in closed with data', () => {
     const { container } = render(
-      <MemberInfoDropdown {...closedWithData}>
+      <MemberInfoDropdown {...mockClosedWithData}>
         <button>Open</button>
       </MemberInfoDropdown>
     );
@@ -28,7 +55,7 @@ describe('MemberInfoDropdown', () => {
 
   it('Should match snapshot when open without data', () => {
     const { container } = render(
-      <MemberInfoDropdown {...openWithoutData}>
+      <MemberInfoDropdown {...mockOpenWithoutData}>
         <button>Open</button>
       </MemberInfoDropdown>
     );
@@ -37,7 +64,7 @@ describe('MemberInfoDropdown', () => {
 
   it('Should match snapshot when open with data', () => {
     const { container } = render(
-      <MemberInfoDropdown {...openWithData}>
+      <MemberInfoDropdown {...mockOpenWithData}>
         <button>Open</button>
       </MemberInfoDropdown>
     );

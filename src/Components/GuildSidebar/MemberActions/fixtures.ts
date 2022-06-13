@@ -11,13 +11,11 @@ export const propsWithData: MemberActionsProps = {
   },
   userWalletAddress: '0x1234567890123456789012345678901234567890',
   userEnsAvatar: {
-    imageUrl: '/test/avatar.png',
+    imageUrl: '/assets/favicon-32x32.png',
     ensName: 'test.eth',
   },
   isRepGuild: false,
   unlockedAt: moment().add(1, 'day'),
   userVotingPower: BigNumber.from('250000000'),
   userVotingPowerPercent: 50,
-  onShowStakeModal: jest.fn(),
-  onWithdraw: jest.fn(),
 };

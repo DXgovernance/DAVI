@@ -38,7 +38,13 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
             </DaoTitle>
           </DaoBrand>
           <DaoMemberCount>
-            {t('members', { count: numberOfMembers })}
+            {numberOfMembers != null ? (
+              t('members', {
+                count: numberOfMembers,
+              })
+            ) : (
+              <Loading loading text />
+            )}
           </DaoMemberCount>
         </DaoInfo>
         {actions}

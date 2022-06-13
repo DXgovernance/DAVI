@@ -19,7 +19,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
             class="sc-eCstlR sc-jSgvzq ebJAYl fbWVQg"
             data-testid="avatar"
             size="18"
-            src="/test/avatar.png"
+            src="/assets/favicon-32x32.png"
           />
         </span>
         <span>
