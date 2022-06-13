@@ -42,7 +42,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Voting Power
+          votingPower
            
           <span>
             50%
@@ -51,7 +51,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Locked
+          locked
            
           <span>
             0 GT
@@ -60,7 +60,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             a day
@@ -69,7 +69,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
         <button
           class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>
@@ -159,7 +159,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Voting Power
+          votingPower
            
           <span>
             <div
@@ -183,7 +183,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Locked
+          locked
            
           <span>
             <div
@@ -207,7 +207,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         <div
           class="sc-fodVek jyvpfu"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             <div
@@ -231,7 +231,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         <button
           class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>

@@ -4,63 +4,62 @@ exports[`GuildSidebar Should render with data 1`] = `
 <div>
    
   <div
-    class="sc-bdfBQB sc-iBPTik bmhbKs usvUU"
+    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
   >
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs hNwxkY"
+      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
     >
       <div
-        class="sc-pGacB coA-Dha"
+        class="sc-kEjbQP fycuIK"
       >
         <div
-          class="sc-jrAFXE jlptGR"
+          class="sc-iqHYmW jrXVBE"
         >
           <img
-            alt="DXdao Logo"
-            class="sc-kEjbQP gWbxpV"
+            alt="Test Guild"
+            class="sc-crrszt citRkA"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-gKseQn sc-iqHYmW fMfHRo iyXQFt"
+            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
             size="2"
           >
             Test Guild
           </h1>
         </div>
         <div
-          class="sc-bdfBQB sc-crrszt bmhbKs uTbjj"
+          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
         >
-          10
-           Members
+          members
         </div>
       </div>
     </div>
     <div
-      class="sc-bdfBQB sc-eCstlR sc-dQoVA bmhbKs hPdNYY fnEvkC"
+      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
     >
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Proposals
+        proposals
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Members
+        members
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Portfolio
+        portfolio
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Settings
+        settings
       </a>
     </div>
   </div>
@@ -72,60 +71,76 @@ exports[`GuildSidebar Should render without data 1`] = `
 <div>
    
   <div
-    class="sc-bdfBQB sc-iBPTik bmhbKs usvUU"
+    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
   >
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs hNwxkY"
+      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
     >
       <div
-        class="sc-pGacB coA-Dha"
+        class="sc-kEjbQP fycuIK"
       >
         <div
-          class="sc-jrAFXE jlptGR"
+          class="sc-iqHYmW jrXVBE"
         >
           <img
-            alt="DXdao Logo"
-            class="sc-kEjbQP gWbxpV"
+            class="sc-crrszt citRkA"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-gKseQn sc-iqHYmW fMfHRo iyXQFt"
+            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
             size="2"
-          />
+          >
+            <div
+              class="sc-bdfBQB"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 100px; height: 16px; border-radius: 50px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </h1>
         </div>
         <div
-          class="sc-bdfBQB sc-crrszt bmhbKs uTbjj"
+          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
         >
-           Members
+          members
         </div>
       </div>
     </div>
     <div
-      class="sc-bdfBQB sc-eCstlR sc-dQoVA bmhbKs hPdNYY fnEvkC"
+      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
     >
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Proposals
+        proposals
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Members
+        members
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Portfolio
+        portfolio
       </a>
       <a
-        class="sc-jSgvzq sc-bqyKOL RJAec kmntIG"
+        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
         href="#"
       >
-        Settings
+        settings
       </a>
     </div>
   </div>

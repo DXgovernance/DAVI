@@ -7,7 +7,7 @@ exports[`GuestActions Should match snapshot with data 1`] = `
     class="sc-bdfBQB cAORUT"
     data-testid="open-stake-tokens-modal-btn"
   >
-    Join
+    join
   </button>
    
 </div>
@@ -19,7 +19,7 @@ exports[`GuestActions Should match snapshot without data 1`] = `
   <button
     class="sc-bdfBQB cAORUT"
   >
-    Connect Wallet
+    connectWallet
   </button>
    
 </div>

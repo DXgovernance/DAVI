@@ -1,4 +1,5 @@
 import { Button } from 'old-components/Guilds/common/Button';
+import { useTranslation } from 'react-i18next';
 
 export interface GuestActionsProps {
   userWalletAddress?: string;
@@ -11,6 +12,8 @@ export const GuestActions: React.FC<GuestActionsProps> = ({
   onShowStakeModal,
   onShowWalletModal,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <>
       {userWalletAddress ? (
@@ -19,11 +22,11 @@ export const GuestActions: React.FC<GuestActionsProps> = ({
           variant="secondary"
           onClick={onShowStakeModal}
         >
-          Join
+          {t('join')}
         </Button>
       ) : (
         <Button variant="secondary" onClick={onShowWalletModal}>
-          Connect Wallet
+          {t('connectWallet')}
         </Button>
       )}
     </>

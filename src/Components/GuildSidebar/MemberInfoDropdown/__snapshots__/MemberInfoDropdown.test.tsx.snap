@@ -20,7 +20,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Voting Power
+          votingPower
            
           <span>
             50%
@@ -29,7 +29,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Locked
+          locked
            
           <span>
             0 GT
@@ -38,7 +38,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             a day
@@ -47,7 +47,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
         <button
           class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>
@@ -76,7 +76,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Voting Power
+          votingPower
            
           <span>
             <div
@@ -100,7 +100,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Locked
+          locked
            
           <span>
             <div
@@ -124,7 +124,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             <div
@@ -148,7 +148,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
         <button
           class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>
@@ -177,7 +177,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Voting Power
+          votingPower
            
           <span>
             50%
@@ -186,7 +186,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Locked
+          locked
            
           <span>
             0 GT
@@ -195,7 +195,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             a day
@@ -204,7 +204,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
         <button
           class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>
@@ -233,7 +233,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Voting Power
+          votingPower
            
           <span>
             <div
@@ -257,7 +257,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Locked
+          locked
            
           <span>
             <div
@@ -281,7 +281,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
         <div
           class="sc-dQoVA cvHUTm"
         >
-          Unlocked in
+          unlockedIn
            
           <span>
             <div
@@ -305,7 +305,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
         <button
           class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
         >
-          Increase Voting Power
+          increaseVotingPower
         </button>
       </div>
     </div>

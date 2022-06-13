@@ -17,6 +17,7 @@ import {
 import moment, { Moment } from 'moment';
 import { BigNumber } from 'ethers';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
+import { useTranslation } from 'react-i18next';
 
 export interface MemberInfoDropdownProps {
   isOpen: boolean;
@@ -42,6 +43,8 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
   onWithdraw,
   onShowStakeModal,
 }) => {
+  const { t } = useTranslation();
+
   const memberMenuRef = useRef(null);
   useDetectBlur(memberMenuRef, onClose);
 
@@ -70,12 +73,12 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
       <DropdownContent fullScreenMobile={true} show={isOpen}>
         {isMobile && (
           <DropdownHeader onClick={onClose}>
-            <FiArrowLeft /> <span>Membership</span>
+            <FiArrowLeft /> <span>{t('membership')}</span>
           </DropdownHeader>
         )}
         <MemberContainer>
           <ContentItem>
-            Voting Power{' '}
+            {t('votingPower')}{' '}
             <span>
               {userVotingPowerPercent != null ? (
                 `${userVotingPowerPercent}%`
@@ -85,7 +88,7 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
             </span>
           </ContentItem>
           <ContentItem>
-            {!isUnlockable ? 'Locked' : 'Staked'}{' '}
+            {!isUnlockable ? t('locked') : t('staked')}{' '}
             <span>
               {userVotingPower && guildToken ? (
                 `${roundedBalance} ${guildToken.symbol}`
@@ -96,7 +99,7 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
           </ContentItem>
 
           <ContentItem>
-            {isUnlockable ? 'Unlocked' : 'Unlocked in'}{' '}
+            {isUnlockable ? t('unlocked') : t('unlockedIn')}{' '}
             <span>
               {unlockedAt ? (
                 isUnlockable ? (
@@ -111,11 +114,11 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
           </ContentItem>
 
           <LockButton onClick={showStakeModal}>
-            Increase Voting Power
+            {t('increaseVotingPower')}
           </LockButton>
 
           {isUnlockable && !isRepGuild && (
-            <LockButton onClick={withdrawTokens}>Withdraw</LockButton>
+            <LockButton onClick={withdrawTokens}>{t('withdraw')}</LockButton>
           )}
         </MemberContainer>
       </DropdownContent>
