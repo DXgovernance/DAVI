@@ -67,7 +67,7 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
         <TransparentButton
           variant="secondary"
           onClick={() => setIsModalOpen(true)}
-          aria-label="Duration picker button"
+          aria-label="Swapr picker button"
           type="button"
         >
           {value}
@@ -77,6 +77,7 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
           address={value}
           onClick={() => setIsModalOpen(true)}
           showFullAddress={true}
+          aria-label="Swapr picker button"
         />
       )}
       <Picker

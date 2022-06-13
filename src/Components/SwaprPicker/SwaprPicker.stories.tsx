@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { fireEvent, within } from '@storybook/testing-library';
 import { useState } from 'react';
 import SwaprPicker from './SwaprPicker';
 
@@ -18,4 +19,12 @@ const Template: ComponentStory<typeof SwaprPicker> = args => {
   return <StateWrapper />;
 };
 
-export const Simple = Template.bind({});
+export const Opened = Template.bind({});
+Opened.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const getItem = () => canvas.findByLabelText('Swapr picker button');
+  const pickerButton = await getItem();
+  await fireEvent.click(pickerButton);
+};
+export const Closed = Template.bind({});
