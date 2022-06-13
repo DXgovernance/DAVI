@@ -2,8 +2,11 @@ import { Picker } from 'Components/Primitives/Forms/Picker';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { dummyData } from './dummyData';
+import { TransparentButton } from './SwaprPicker.styled';
+import { SwaprPickerProps } from './types';
+import AddressButton from 'Components/AddressButton/AddressButton';
 
-const SwaprPicker = () => {
+const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
   let data = dummyData.pairs;
@@ -18,17 +21,31 @@ const SwaprPicker = () => {
   }, [data]);
 
   const onSelect = value => {
-    console.log(value);
+    onChange(value.address);
+    setIsModalOpen(false);
   };
 
   return (
     <>
-      <button type="button" onClick={() => setIsModalOpen(true)}>
-        {t('pickSwaprPair')}
-      </button>
+      {value === '' ? (
+        <TransparentButton
+          variant="secondary"
+          onClick={() => setIsModalOpen(true)}
+          aria-label="Duration picker button"
+          type="button"
+        >
+          {value}
+        </TransparentButton>
+      ) : (
+        <AddressButton
+          address={value}
+          onClick={() => setIsModalOpen(true)}
+          showFullAddress={true}
+        />
+      )}
       <Picker
         data={parsedPairs}
-        header={'Pick swapr pair'}
+        header={t('pickSwaprPair')}
         isOpen={isModalOpen}
         onSelect={onSelect}
         onClose={() => setIsModalOpen(false)}
