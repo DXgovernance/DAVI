@@ -5,7 +5,7 @@ import { RegisterOptions } from 'react-hook-form';
 
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
-// import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
+import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
 import { FormElementProps } from 'old-components/Guilds/common/Form/common';
 import DateInput, {
   InputType,
@@ -31,8 +31,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
     console.log('param.component: ', param.component);
     switch (param.component) {
       case 'address':
-        return SwaprPicker; //! Revert - only for develop
-      // return AddressInput;
+        return AddressInput;
       case 'integer':
       case 'decimal':
         return NumericalInput;
