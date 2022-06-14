@@ -28,7 +28,6 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
   ...remainingProps
 }) => {
   const FormElement: React.FC<FormElementProps<any>> = useMemo(() => {
-    console.log('param.component: ', param.component);
     switch (param.component) {
       case 'address':
         return AddressInput;
