@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
 import { Loading } from 'Components/Primitives/Loading';
-import { ProposalState } from 'Components/Types';
+import { ProposalState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
 
 const ProposalStatusWrapper = styled.div`
@@ -41,11 +41,11 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
 `;
 
 const DetailText = styled(Box)`
-padding: 0 0.2rem;
+  padding: 0 0.2rem;
 
-@media only screen and (min-width: 768px) {
-  padding - right: 0.5rem;
-}
+  @media only screen and (min-width: 768px) {
+    padding-right: 0.5rem;
+  }
 `;
 
 const ProposalStatus: React.FC<ProposalStatusProps> = ({

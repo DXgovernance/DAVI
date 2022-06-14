@@ -45,7 +45,7 @@ exports[`GenericCallParamsMatcher renders all component types correctly 4`] = `
 exports[`GenericCallParamsMatcher renders all component types correctly 5`] = `
 <div>
    
-  2022-05-29
+  1653848238
    
 </div>
 `;
@@ -146,7 +146,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 5`] = `
   <span
     matchedparam="timeParam"
   >
-    2022-05-29
+    1653848238
   </span>
    
 </div>

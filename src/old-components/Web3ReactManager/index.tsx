@@ -51,6 +51,7 @@ const Web3ReactManager = ({ children }) => {
   // Make sure providerStore is synchronized with web3-react
   useEffect(() => {
     providerStore.setWeb3Context(web3Context);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [web3Context]);
 
   // try to eagerly connect to a provider if possible
@@ -63,7 +64,7 @@ const Web3ReactManager = ({ children }) => {
       const chains = getChains(rpcUrls);
       const urlNetworkName = location.pathname.split('/')[1];
       const chainId =
-        chains.find(chain => chain.name == urlNetworkName)?.id ||
+        chains.find(chain => chain.name === urlNetworkName)?.id ||
         DEFAULT_CHAIN_ID;
       const networkConnector = getNetworkConnector(rpcUrls, chainId);
 
@@ -92,6 +93,7 @@ const Web3ReactManager = ({ children }) => {
         window.location.reload();
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId, prevChainId, account, prevAccount]);
 
   // Setup listener to handle injected wallet events
@@ -101,7 +103,7 @@ const Web3ReactManager = ({ children }) => {
     const handleChainChange = (chainId: string) => {
       const chains = getChains();
       const chain = chains.find(
-        chain => `0x${chain.id.toString(16)}` == chainId
+        chain => `0x${chain.id.toString(16)}` === chainId
       );
 
       // If currently connected to an injected wallet, keep synced with it
@@ -109,7 +111,7 @@ const Web3ReactManager = ({ children }) => {
         history.push(`/${chain.name}/proposals`);
       } else if (connector instanceof NetworkConnector) {
         const urlNetworkName = location.pathname.split('/')[1];
-        if (urlNetworkName == chain.name) {
+        if (urlNetworkName === chain.name) {
           tryConnecting();
         }
       }
@@ -120,6 +122,7 @@ const Web3ReactManager = ({ children }) => {
     return () => {
       window.ethereum?.removeListener('accountsChanged', handleChainChange);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location, connector]);
 
   const urlNetworkName = useMemo(

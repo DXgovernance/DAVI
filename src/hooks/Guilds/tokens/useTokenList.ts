@@ -28,6 +28,7 @@ export const useTokenList = (chainId?: number) => {
     }
 
     return list;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [chainId, tokenList]);
 
   return { tokens };

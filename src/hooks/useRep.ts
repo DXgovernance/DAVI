@@ -57,6 +57,7 @@ export const useRep = (userAddress: string = ZERO_ADDRESS): UseRepReturns => {
 
   useEffect(() => {
     setMemo(cache);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [repEvents]);
 
   const getRep = (atBlock: number = 0) => {

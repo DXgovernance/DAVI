@@ -165,6 +165,7 @@ export const ContributorProposalPage = observer(() => {
     setDiscount(
       (percentage ? parseFloat(percentage) / 100 : 1) * (trialPeriod ? 0.8 : 1)
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trialPeriod, percentage]);
 
   // Reset stable override when changing level

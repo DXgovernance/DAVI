@@ -18,7 +18,7 @@ export function useEagerConnect() {
   const tryConnecting = async () => {
     const chains = getChains();
     const urlNetworkName = location.pathname.split('/')[1];
-    const urlChainId = chains.find(chain => chain.name == urlNetworkName)?.id;
+    const urlChainId = chains.find(chain => chain.name === urlNetworkName)?.id;
     const urlChainIdHex = urlChainId ? `0x${urlChainId.toString(16)}` : null;
 
     const isAuthorized = await injected.isAuthorized();
@@ -29,7 +29,7 @@ export function useEagerConnect() {
 
     try {
       const injectedChainId = await injected.getChainId();
-      if (injectedChainId != urlChainIdHex) {
+      if (injectedChainId !== urlChainIdHex) {
         setTried(true);
         return;
       }
@@ -51,6 +51,7 @@ export function useEagerConnect() {
     tryConnecting().catch(() => {
       setTried(true);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activate, chainId]); // intentionally only running on mount (make sure it's only mounted once :))
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
@@ -78,6 +79,7 @@ export function useRpcUrls() {
 
   useEffect(() => {
     getRpcUrls().then(urls => setRpcUrls(urls));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [preferredRpc]);
 
   async function getRpcUrls() {

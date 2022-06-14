@@ -95,6 +95,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
     if (!pickedAsset || !tokens) return null;
 
     return tokens.find(({ address }) => address === pickedAsset);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tokens, parsedData]);
 
   const { data: tokenInfo } = useERC20Info(pickedAsset);
@@ -114,6 +115,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
   useEffect(() => {
     if (activeTab === 0) setAsset(pickedAsset);
     if (activeTab === 1) setAsset(ZERO_ADDRESS);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   //
@@ -173,6 +175,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
   useEffect(() => {
     if (activeTab === 0) setFunctionSignature(ANY_FUNC_SIGNATURE);
     if (activeTab === 1) setFunctionSignature(customFunctionName);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   //
@@ -246,6 +249,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
   // show the address input empty, instead of the long 0xAaaAaaa address
   useEffect(() => {
     if (parsedData?.to[0] === ANY_ADDRESS) handleCustomAddress('');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const tabArray = [

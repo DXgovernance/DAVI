@@ -1,7 +1,7 @@
 import ProposalStatus from './ProposalStatus';
 import { render } from '../../utils/tests';
 import { ProposalStatusProps } from './types';
-import { ProposalState } from 'Components/Types';
+import { ProposalState } from 'types/types.guilds.d';
 import moment from 'moment';
 
 const validProps: ProposalStatusProps = {
@@ -15,6 +15,8 @@ const invalidProps: ProposalStatusProps = {
   status: null,
   endTime: null,
 };
+
+jest.mock('contexts/index', () => jest.fn());
 
 test('ProposalStatus votes', async () => {
   const { container } = render(<ProposalStatus {...validProps} />);
