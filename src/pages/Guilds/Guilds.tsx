@@ -6,9 +6,16 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import InView from 'react-intersection-observer';
 import styled from 'styled-components';
+
+import {
+  useProposals,
+  matchTitle,
+  matchCreatorAddress,
+  matchRecipientAddresses,
+} from 'hooks/Guilds/ether-swr/guild/useProposals';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -40,17 +47,11 @@ const GuildsPage: React.FC = () => {
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
-  const filteredProposalIds = useMemo(() => {
-    if (!proposalIds) return null;
-
-    // clone array as the original proposalIds array from Ethers is immutable
-    const clone = [...proposalIds];
-
-    // TODO: Implement filtering
-
-    // Show latest proposals first
-    return clone.reverse();
-  }, [proposalIds]);
+  const { proposals: filteredProposals, setFilter } = useProposals(
+    guildId,
+    proposalIds,
+    [matchTitle, matchCreatorAddress, matchRecipientAddresses]
+  );
 
   if (!isLoading && !proposalIds && error) {
     return (
@@ -68,16 +69,14 @@ const GuildsPage: React.FC = () => {
         <Sidebar />
       </SidebarContent>
       <PageContent>
-        <Filter />
+        <Filter onFilterChange={setFilter} />
         <ProposalsList data-testid="proposals-list">
-          {filteredProposalIds ? (
-            filteredProposalIds.map(proposalId => (
-              <InView key={proposalId}>
+          {filteredProposals ? (
+            filteredProposals.map((proposal, idx) => (
+              <InView key={idx}>
                 {({ inView, ref }) => (
                   <div ref={ref}>
-                    <ProposalCardWrapper
-                      proposalId={inView ? proposalId : null}
-                    />
+                    <ProposalCardWrapper proposal={inView ? proposal : null} />
                   </div>
                 )}
               </InView>

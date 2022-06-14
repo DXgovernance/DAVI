@@ -21,7 +21,7 @@ import {
   FilterBadge,
 } from './Filter.styled';
 
-const Filter = () => {
+const Filter = ({ onFilterChange }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
@@ -46,6 +46,7 @@ const Filter = () => {
     return false;
   }, [votingPower, guildConfig]);
   const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [value, setValue] = useState('');
   return (
     <FilterContainer>
       <FilterRow>
@@ -80,7 +81,11 @@ const Filter = () => {
       {openSearchBar ? (
         <StyledInputWrapper>
           <Input
-            value={''}
+            value={value}
+            onChange={e => {
+              setValue(e.target.value);
+              onFilterChange(e.target.value);
+            }}
             icon={<AiOutlineSearch size={24} />}
             placeholder={t('searchTitleEnsAddress')}
           />
