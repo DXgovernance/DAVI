@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Picker from './Picker';
-import { fullProps, lengthyData } from './fixtures';
+import { fullProps, propsWithIcon, lengthyData } from './fixtures';
+import Avatar from 'old-components/Guilds/Avatar';
+import dxdaoIcon from 'assets/images/dxdao-icon.svg';
 
 export default {
   title: 'Picker',
@@ -32,16 +34,19 @@ export default {
   },
 } as ComponentMeta<typeof Picker>;
 
-const Template: ComponentStory<typeof Picker> = args => {
-  return <Picker {...args} />;
-};
+propsWithIcon.data.map(token => {
+  return (token.icon = <Avatar src={dxdaoIcon} defaultSeed={null} />);
+});
 
-const SwaprTemplate: ComponentStory<typeof Picker> = args => {
+const Template: ComponentStory<typeof Picker> = args => {
   return <Picker {...args} />;
 };
 
 export const Simple = Template.bind({});
 Simple.args = fullProps;
 
-export const Swapr = SwaprTemplate.bind({});
-Swapr.args = lengthyData;
+export const WithIcons = Template.bind({});
+WithIcons.args = propsWithIcon;
+
+export const Lengthy = Template.bind({});
+Lengthy.args = lengthyData;

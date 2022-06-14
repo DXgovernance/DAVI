@@ -47,6 +47,45 @@ export const fullProps: PickerProps = {
   onClose: () => {},
 };
 
+export const propsWithIcon: PickerProps = {
+  data: [
+    {
+      id: '0',
+      title: 'Other value',
+      subtitle: 'There are no tokens here',
+      value: '0',
+      icon: null,
+    },
+    {
+      id: '1',
+      title: 'Token1',
+      subtitle: 'This is the token one',
+      value: 'value token 1',
+      rightData: 135,
+      icon: null,
+    },
+    {
+      id: '2',
+      title: 'Token2',
+      value: 'value token 2',
+      icon: null,
+    },
+    {
+      id: '3',
+      title: 'Token3',
+      subtitle:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vehicula ex non malesuada pretium. Morbi tristique justo id placerat tincidunt. Mauris tincidunt, enim id molestie sagittis, urna nisl pretium elit',
+
+      value: 'value token 3',
+      icon: null,
+    },
+  ],
+  header: 'Pick a token',
+  isOpen: true,
+  onSelect: option => console.log(option),
+  onClose: () => {},
+};
+
 export const lengthyData: PickerProps = {
   isOpen: true,
   onSelect: option => console.log(option),
