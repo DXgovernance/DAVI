@@ -93,7 +93,7 @@ const OptionRow: React.FC<OptionRowProps> = ({
     transform: CSS.Translate.toString(transform),
     transition,
   };
-  console.log('option?.decodedActions', option?.decodedActions);
+
   return (
     <OptionWrapper
       dragging={isDragging}
