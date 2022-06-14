@@ -22,10 +22,10 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Divider } from 'old-components/Guilds/common/Divider';
-import { Box } from '../Primitives/Layout';
-import OptionRow from './Option';
-import { AddButton } from './common/AddButton';
-import { DecodedAction, Option } from './types';
+import { Box } from 'Components/Primitives/Layout';
+import { OptionRow } from '../Option';
+import { AddButton } from '../common/AddButton';
+import { DecodedAction, Option } from '../types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   restrictToVerticalAxis,
@@ -48,7 +48,7 @@ interface OptionsListProps {
   editOption: (option: Option) => void;
 }
 
-const OptionsList: React.FC<OptionsListProps> = ({
+export const OptionsList: React.FC<OptionsListProps> = ({
   isEditable,
   options,
   onChange,
@@ -361,5 +361,3 @@ const OptionsList: React.FC<OptionsListProps> = ({
     </DndContext>
   );
 };
-
-export default OptionsList;

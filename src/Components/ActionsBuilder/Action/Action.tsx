@@ -1,8 +1,8 @@
-import { CallDetails } from './CallDetails';
-import { getInfoLineView, getSummaryView } from './SupportedActions';
-import UndecodableCallDetails from './UndecodableCalls/UndecodableCallDetails';
-import UndecodableCallInfoLine from './UndecodableCalls/UndecodableCallInfoLine';
-import { Call, DecodedAction } from './types';
+import { CallDetails } from '../CallDetails';
+import { getInfoLineView, getSummaryView } from '../SupportedActions';
+import UndecodableCallDetails from '../UndecodableCalls/UndecodableCallDetails';
+import UndecodableCallInfoLine from '../UndecodableCalls/UndecodableCallInfoLine';
+import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
@@ -28,7 +28,7 @@ interface ActionViewProps {
   onEdit?: (updatedCall: DecodedAction) => void;
 }
 
-const ActionRow: React.FC<ActionViewProps> = ({
+export const ActionRow: React.FC<ActionViewProps> = ({
   call,
   decodedAction,
   isEditable,
@@ -132,5 +132,3 @@ const ActionRow: React.FC<ActionViewProps> = ({
     </CardWrapperWithMargin>
   );
 };
-
-export default ActionRow;

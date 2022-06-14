@@ -1,10 +1,10 @@
-import ActionRow from './Action';
-import { AddButton } from './common/AddButton';
-import { DataTag } from './common/DataTag';
-import { EditButton } from './common/EditButton';
-import { Grip } from './common/Grip';
-import { ProposalOptionTag } from './common/ProposalOptionTag';
-import { DecodedAction, Option } from './types';
+import { ActionRow } from '../Action';
+import { AddButton } from '../common/AddButton';
+import { DataTag } from '../common/DataTag';
+import { EditButton } from '../common/EditButton';
+import { Grip } from '../common/Grip';
+import { ProposalOptionTag } from '../common/ProposalOptionTag';
+import { DecodedAction, Option } from '../types';
 import {
   SortableContext,
   useSortable,
@@ -28,7 +28,7 @@ interface OptionRowProps {
   editOption: (option: Option) => void;
 }
 
-const OptionRow: React.FC<OptionRowProps> = ({
+export const OptionRow: React.FC<OptionRowProps> = ({
   isEditable,
   option,
   onChange,
@@ -139,5 +139,3 @@ const OptionRow: React.FC<OptionRowProps> = ({
     </OptionWrapper>
   );
 };
-
-export default OptionRow;

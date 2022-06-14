@@ -4,7 +4,7 @@ import { useTheme } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout/Box';
 import { Modal } from 'old-components/Guilds/common/Modal';
 import { Button } from 'old-components/Guilds/common/Button';
-import { Option } from './types';
+import { Option } from '../types';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { DeleteButton, Dot } from './AddEditOptionModal.styled';
 
@@ -15,7 +15,7 @@ interface AddEditOptionModalProps {
   options: Option[];
 }
 
-const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
+export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   editableOption,
   options,
   onDismiss,
@@ -105,5 +105,3 @@ const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
     </Modal>
   );
 };
-
-export default AddEditOptionModal;
