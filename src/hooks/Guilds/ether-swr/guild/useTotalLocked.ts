@@ -1,3 +1,4 @@
+import { BigNumber } from 'ethers';
 import useEtherSWR from '../useEtherSWR';
 import useCurrentSnapshotId from './useCurrentSnapshotId';
 import useGuildToken from './useGuildToken';
@@ -26,7 +27,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   const { isSnapshotGuild, isRepGuild, isSnapshotRepGuild } =
     useGuildImplementationType(guildAddress);
 
-  const totalLockedResponse = useEtherSWR(
+  const totalLockedResponse = useEtherSWR<BigNumber>(
     guildAddress ? [guildAddress, 'getTotalLocked'] : [],
     {
       ABIs: new Map([[guildAddress, ERC20GuildContract.abi]]),

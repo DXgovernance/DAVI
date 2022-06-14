@@ -1,5 +1,5 @@
 import theme from 'theme/dark.json';
-import { mediaWidthTemplates } from 'theme';
+import { mediaWidthTemplates } from 'theme/utils';
 
 // TODO: This is a hack to make the GuildsTheme interface work with DXvote themes.
 // Refactor this once we move DXvote into a separate repo.
