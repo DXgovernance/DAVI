@@ -5,6 +5,7 @@ exports[`AddressButton Should render properly with full props 1`] = `
    
   <button
     class="sc-bdfBQB sc-gsTEea sc-fubCzh cAORUT hqMJhH eLNaRf"
+    type="submit"
   >
     <span
       class="sc-iBPTik lkybgw"
@@ -38,6 +39,7 @@ exports[`AddressButton Should render properly with partial props 1`] = `
    
   <button
     class="sc-bdfBQB sc-gsTEea sc-fubCzh cAORUT hqMJhH eLNaRf"
+    type="submit"
   >
     <span
       class="sc-iBPTik lkybgw"

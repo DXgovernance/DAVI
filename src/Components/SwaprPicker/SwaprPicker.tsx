@@ -76,8 +76,8 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
         <AddressButton
           address={value}
           onClick={() => setIsModalOpen(true)}
-          showFullAddress={true}
           aria-label="Swapr picker button"
+          type="button"
         />
       )}
       <Picker

@@ -17,11 +17,17 @@ const AddressButton: React.FC<AddressButtonProps> = ({
   transactionsCounter,
   onClick,
   showFullAddress = false,
+  type = 'submit',
 }) => {
   const { ensName, imageUrl } = useENSAvatar(address, 1);
 
   return (
-    <StyledAddressButton variant="secondary" onClick={onClick} iconLeft>
+    <StyledAddressButton
+      variant="secondary"
+      onClick={onClick}
+      iconLeft
+      type={type}
+    >
       <IconHolder>
         {address ? (
           <Avatar src={imageUrl} defaultSeed={address} size={24} />

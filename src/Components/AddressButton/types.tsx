@@ -3,4 +3,5 @@ export interface AddressButtonProps {
   transactionsCounter?: number;
   onClick?: () => void;
   showFullAddress?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
