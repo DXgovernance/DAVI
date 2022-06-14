@@ -1,5 +1,5 @@
 import { Picker } from 'Components/Primitives/Forms/Picker';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TransparentButton } from './SwaprPicker.styled';
 import { SwaprPickerProps } from './types';
@@ -7,36 +7,56 @@ import AddressButton from 'Components/AddressButton/AddressButton';
 import { Loading } from 'Components/Primitives/Loading';
 import moment from 'moment';
 import { useSwaprFetchPairs } from 'hooks/Guilds/useSwaprFetchPairs';
+import { useWeb3React } from '@web3-react/core';
+import { SwaprFetchPairsInterface } from 'hooks/Guilds/useSwaprFetchPairs';
 
 const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
   const { t } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [swaprPairsFetchedData, setSwaprPairsFetchedData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [swaprPairsFetchedData, setSwaprPairsFetchedData] = useState<
+    SwaprFetchPairsInterface[]
+  >([]);
 
   const currentUnixTimestamp = moment().unix();
   const pageSize = 1000;
-  useSwaprFetchPairs(currentUnixTimestamp, '', pageSize, '').then(response => {
-    setSwaprPairsFetchedData(response);
-    setIsLoading(false);
-  });
+  const { chainId } = useWeb3React();
+
+  let data = useSwaprFetchPairs(
+    chainId,
+    currentUnixTimestamp,
+    '',
+    pageSize,
+    ''
+  );
+
+  useEffect(() => {
+    async function assignData() {
+      setSwaprPairsFetchedData(await data);
+    }
+    assignData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const parsedPairs = useMemo(() => {
-    return swaprPairsFetchedData.map(pair => {
-      return {
-        ...pair,
-        title: `${pair?.token0.symbol} - ${pair?.token1.symbol}`,
-        subtitle: `${pair?.token0.name} - ${pair?.token1.name}`,
-      };
-    });
-  }, [swaprPairsFetchedData]);
+    if (swaprPairsFetchedData !== undefined) {
+      return swaprPairsFetchedData.map(pair => {
+        return {
+          ...pair,
+          title: `${pair?.token0.symbol} - ${pair?.token1.symbol}`,
+          subtitle: `${pair?.token0.name} - ${pair?.token1.name}`,
+        };
+      });
+    }
+    return [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const onSelect = value => {
     onChange(value.address);
     setIsModalOpen(false);
   };
 
-  if (isLoading)
+  if (swaprPairsFetchedData === undefined)
     return (
       <TransparentButton
         variant="secondary"

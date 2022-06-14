@@ -8,6 +8,8 @@ export default {
   component: SwaprPicker,
 } as ComponentMeta<typeof SwaprPicker>;
 
+// jest.mock('useWeb3React', () => 1);
+
 const StateWrapper = () => {
   const [value, setValue] = useState('');
   const onChange = (e: string) => setValue(e);

@@ -1,6 +1,6 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-interface SwaprFetchPairsInterface {
+export interface SwaprFetchPairsInterface {
   address: string;
   reserve0: string;
   reserve1: string;
@@ -23,13 +23,22 @@ interface SwaprFetchPairsInterface {
 }
 
 export const useSwaprFetchPairs = async (
-  lowerTimeLimit: number,
+  chainId: number,
+  lowerTimeLimit: number = 1,
   userId: string,
   pageSize: number,
   lastId: string
 ): Promise<SwaprFetchPairsInterface[]> => {
-  const subgraphUrl =
-    'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2';
+  const networkApiPair = {
+    1: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2', //mainnet
+    5: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // goerly
+    100: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // gnosis
+    1337: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', //localhost
+    42161:
+      'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-arbitrum-one-v3', //arbitrum
+  };
+
+  let subgraphUrl = networkApiPair[chainId];
 
   const query = `
     {
@@ -77,15 +86,28 @@ export const useSwaprFetchPairs = async (
     }
   }`;
 
-  let { data } = await (
-    await fetch(subgraphUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    })
-  ).json();
+  const [data, setData] = useState();
 
-  return data.pairs;
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(subgraphUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ query }),
+        });
+
+        const result = await response.json();
+        setData(await result.data.pairs);
+      } catch (err) {
+        console.log('Error: ', err);
+      }
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return data;
 };
