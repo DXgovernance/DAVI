@@ -10,7 +10,7 @@ import {
 
 const OptionListItem: React.FC<OptionListItemProps> = ({ item, onSelect }) => {
   return (
-    <OptionItem onClick={onSelect}>
+    <OptionItem onClick={onSelect} aria-label={`Option item ${item.title}`}>
       <OptionDetail>
         {item.icon && <OptionIcon>{item.icon}</OptionIcon>}
         <div>

@@ -23,7 +23,7 @@ const Picker: React.FC<PickerProps> = ({
   const defaultSearchConfig = {
     fields: ['title', 'subtitle', 'value'],
     searchOptions: {
-      fuzzy: 2,
+      fuzzy: 0.2,
       prefix: true,
     },
   };

@@ -7,6 +7,7 @@ export const fullProps: PickerProps = {
       title: 'Other value',
       subtitle: 'There are no tokens here',
       value: '0',
+      rightData: 310,
     },
     {
       id: '1',
@@ -50,7 +51,7 @@ export const fullProps: PickerProps = {
 export const propsWithIcon: PickerProps = {
   data: [
     {
-      id: '0',
+      id: '1',
       title: 'Other value',
       subtitle: 'There are no tokens here',
       value: '0',
