@@ -1,5 +1,4 @@
-import { EditButton } from '../common/EditButton';
-import { Grip } from '../common/Grip';
+import { EditButton, Grip } from '../common';
 import { Button } from 'old-components/Guilds/common/Button';
 import { CardWrapper, Header } from 'old-components/Guilds/common/Card';
 import { Box } from 'Components/Primitives/Layout';

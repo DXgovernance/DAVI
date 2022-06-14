@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RepMintInfoLine renders 1`] = `
+exports[`RepMintInfoLine Should match snapshot 1`] = `
 <div>
    
   <span
@@ -67,7 +67,7 @@ exports[`RepMintInfoLine renders 1`] = `
 </div>
 `;
 
-exports[`RepMintInfoLine renders in compact mode 1`] = `
+exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
 <div>
    
   <span
@@ -134,7 +134,7 @@ exports[`RepMintInfoLine renders in compact mode 1`] = `
 </div>
 `;
 
-exports[`RepMintInfoLine renders with default values 1`] = `
+exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
 <div>
    
   <span
@@ -201,7 +201,7 @@ exports[`RepMintInfoLine renders with default values 1`] = `
 </div>
 `;
 
-exports[`RepMintInfoLine renders with default values in compact mode 1`] = `
+exports[`RepMintInfoLine Should match snapshot with default values in compact mode 1`] = `
 <div>
    
   <span
@@ -268,7 +268,7 @@ exports[`RepMintInfoLine renders with default values in compact mode 1`] = `
 </div>
 `;
 
-exports[`RepMintInfoLine renders without data 1`] = `
+exports[`RepMintInfoLine Should match snapshot without data 1`] = `
 <div>
    
   <span
@@ -335,7 +335,7 @@ exports[`RepMintInfoLine renders without data 1`] = `
 </div>
 `;
 
-exports[`RepMintInfoLine renders without data in compact mode 1`] = `
+exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] = `
 <div>
    
   <span

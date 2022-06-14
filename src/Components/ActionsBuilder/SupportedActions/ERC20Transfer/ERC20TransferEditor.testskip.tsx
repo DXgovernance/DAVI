@@ -51,7 +51,7 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
 }));
 
 describe.skip('ERC20TransferEditor', () => {
-  it('renders', () => {
+  it('Should match snapshot', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferDecodedCallMock}
@@ -60,7 +60,7 @@ describe.skip('ERC20TransferEditor', () => {
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders with default values', () => {
+  it('Should match snapshot with default values', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferEmptyDecodedCallMock}

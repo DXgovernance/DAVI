@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UndecodableCallDetails renders 1`] = `
+exports[`UndecodableCallDetails Should match snapshot 1`] = `
 <div>
    
   <div
@@ -108,7 +108,7 @@ exports[`UndecodableCallDetails renders 1`] = `
 </div>
 `;
 
-exports[`UndecodableCallDetails renders with approval call 1`] = `
+exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
 <div>
    
   <div

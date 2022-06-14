@@ -1,9 +1,6 @@
 import { ActionRow } from '../Action';
-import { AddButton } from '../common/AddButton';
-import { DataTag } from '../common/DataTag';
-import { EditButton } from '../common/EditButton';
-import { Grip } from '../common/Grip';
-import { ProposalOptionTag } from '../common/ProposalOptionTag';
+import { AddButton, DataTag, EditButton, Grip } from '../common';
+import { ProposalOptionTag } from '../common';
 import { DecodedAction, Option } from '../types';
 import {
   SortableContext,

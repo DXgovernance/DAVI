@@ -27,17 +27,17 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
 }));
 
 describe('ERC20TransferSummary', () => {
-  it('renders', () => {
+  it('Should match snapshot', () => {
     const { container } = render(
       <ERC20TransferSummary decodedCall={erc20TransferDecodedCallMock} />
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders without data', () => {
+  it('Should match snapshot without data', () => {
     const { container } = render(<ERC20TransferSummary decodedCall={null} />);
     expect(container).toMatchSnapshot();
   });
-  it('renders with default values', () => {
+  it('Should match snapshot with default values', () => {
     const { container } = render(
       <ERC20TransferSummary decodedCall={erc20TransferEmptyDecodedCallMock} />
     );

@@ -2,7 +2,7 @@ import { render } from 'utils/tests';
 import UndecodableCallInfoLine from './UndecodableCallInfoLine';
 
 describe('UndecodableCallInfoLine', () => {
-  it('renders', () => {
+  it('Should match snapshot', () => {
     const { container } = render(<UndecodableCallInfoLine />);
     expect(container).toMatchSnapshot();
   });

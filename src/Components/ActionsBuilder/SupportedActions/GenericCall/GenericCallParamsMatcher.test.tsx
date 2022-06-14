@@ -111,7 +111,7 @@ describe('GenericCallParamsMatcher', () => {
     expect(match).toBeNull();
   });
 
-  it('renders all component types correctly', () => {
+  it('Should match snapshot for all component types', () => {
     params.forEach(param => {
       const { container } = render(matcher.renderByParamType(param));
       expect(container).toMatchSnapshot();

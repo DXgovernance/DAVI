@@ -62,21 +62,21 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
 }));
 
 describe('GenericCallInfoLine', () => {
-  it('renders properly', () => {
+  it('Should match snapshot', () => {
     const { container } = render(
       <GenericCallInfoLine decodedCall={genericDecodedCallMock} />
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('renders properly in compact mode', () => {
+  it('Should match snapshot in compact mode', () => {
     const { container } = render(
       <GenericCallInfoLine decodedCall={genericDecodedCallMock} compact />
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('renders properly with token approval', () => {
+  it('Should match snapshot with token approval', () => {
     const { container } = render(
       <GenericCallInfoLine
         decodedCall={genericDecodedCallMock}

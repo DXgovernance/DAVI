@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ERC20TransferInfoLine renders 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
 <div>
    
   <span
@@ -74,7 +74,7 @@ exports[`ERC20TransferInfoLine renders 1`] = `
 </div>
 `;
 
-exports[`ERC20TransferInfoLine renders in compact mode 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
 <div>
    
   <span
@@ -148,7 +148,7 @@ exports[`ERC20TransferInfoLine renders in compact mode 1`] = `
 </div>
 `;
 
-exports[`ERC20TransferInfoLine renders with default values 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
 <div>
    
   <span
@@ -222,7 +222,7 @@ exports[`ERC20TransferInfoLine renders with default values 1`] = `
 </div>
 `;
 
-exports[`ERC20TransferInfoLine renders with default values in compact mode 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot with default values in compact mode 1`] = `
 <div>
    
   <span
@@ -296,7 +296,7 @@ exports[`ERC20TransferInfoLine renders with default values in compact mode 1`] =
 </div>
 `;
 
-exports[`ERC20TransferInfoLine renders without data 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
 <div>
    
   <span
@@ -370,7 +370,7 @@ exports[`ERC20TransferInfoLine renders without data 1`] = `
 </div>
 `;
 
-exports[`ERC20TransferInfoLine renders without data in compact mode 1`] = `
+exports[`ERC20TransferInfoLine Should match snapshot without data in compact mode 1`] = `
 <div>
    
   <span

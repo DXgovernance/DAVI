@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UndecodableCallInfoLine renders 1`] = `
+exports[`UndecodableCallInfoLine Should match snapshot 1`] = `
 <div>
    
   <span

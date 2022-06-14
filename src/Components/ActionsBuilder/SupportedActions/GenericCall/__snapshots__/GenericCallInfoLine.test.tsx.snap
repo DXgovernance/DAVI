@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GenericCallInfoLine renders properly 1`] = `
+exports[`GenericCallInfoLine Should match snapshot 1`] = `
 <div>
    
   <span
@@ -53,7 +53,7 @@ exports[`GenericCallInfoLine renders properly 1`] = `
 </div>
 `;
 
-exports[`GenericCallInfoLine renders properly in compact mode 1`] = `
+exports[`GenericCallInfoLine Should match snapshot in compact mode 1`] = `
 <div>
    
   <span
@@ -82,7 +82,7 @@ exports[`GenericCallInfoLine renders properly in compact mode 1`] = `
 </div>
 `;
 
-exports[`GenericCallInfoLine renders properly with token approval 1`] = `
+exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
 <div>
    
   <span

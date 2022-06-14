@@ -30,36 +30,36 @@ jest.mock('hooks/Guilds/guild/useTokenData', () => ({
 }));
 
 describe('RepMintSummary', () => {
-  it('renders', () => {
+  it('Should match snapshot', () => {
     const { container } = render(
       <RepMintSummary decodedCall={repMintDecodedCallMock} />
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders in compact mode', () => {
+  it('Should match snapshot in compact mode', () => {
     const { container } = render(
       <RepMintSummary decodedCall={repMintDecodedCallMock} compact={true} />
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders without data', () => {
+  it('Should match snapshot without data', () => {
     const { container } = render(<RepMintSummary decodedCall={null} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('renders without data in compact mode', () => {
+  it('Should match snapshot without data in compact mode', () => {
     const { container } = render(
       <RepMintSummary decodedCall={null} compact={true} />
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders with default values', () => {
+  it('Should match snapshot with default values', () => {
     const { container } = render(
       <RepMintSummary decodedCall={repMintEmptyDecodedCallMock} />
     );
     expect(container).toMatchSnapshot();
   });
-  it('renders with default values in compact mode', () => {
+  it('Should match snapshot with default values in compact mode', () => {
     const { container } = render(
       <RepMintSummary
         decodedCall={repMintEmptyDecodedCallMock}
