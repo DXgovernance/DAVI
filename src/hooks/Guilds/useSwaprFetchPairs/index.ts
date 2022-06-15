@@ -103,7 +103,7 @@ export const useSwaprFetchPairs = async (
         const result = await response.json();
         setData(await result.data.pairs);
       } catch (err) {
-        console.log('Error: ', err);
+        setError(err.message);
       }
     }
 
