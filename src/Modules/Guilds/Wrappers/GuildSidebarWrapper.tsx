@@ -15,10 +15,10 @@ import { useTransactions } from 'contexts/Guilds';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { formatUnits } from 'ethers/lib/utils';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
-import StakeTokensModal from 'old-components/Guilds/StakeTokensModal';
 import { useState } from 'react';
 import { WalletModal } from 'Components/Web3Modals';
 import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import StakeTokensModalWrapper from './StakeTokensModalWrapper';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -83,7 +83,7 @@ const GuildSidebarWrapper = () => {
         }
       />
 
-      <StakeTokensModal
+      <StakeTokensModalWrapper
         isOpen={isStakeModalOpen}
         onDismiss={() => setIsStakeModalOpen(false)}
       />
