@@ -47,11 +47,16 @@ const GuildsPage: React.FC = () => {
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
-  const { proposals: filteredProposals, setFilter } = useProposals(
-    guildId,
-    proposalIds,
-    [matchTitle, matchCreatorAddress, matchRecipientAddresses]
-  );
+
+  const {
+    proposals: filteredProposals,
+    setFilter,
+    loading,
+  } = useProposals(guildId, proposalIds, [
+    matchTitle,
+    matchCreatorAddress,
+    matchRecipientAddresses,
+  ]);
 
   if (!isLoading && !proposalIds && error) {
     return (
@@ -71,16 +76,21 @@ const GuildsPage: React.FC = () => {
       <PageContent>
         <Filter onFilterChange={setFilter} />
         <ProposalsList data-testid="proposals-list">
-          {filteredProposals ? (
-            filteredProposals.map((proposal, idx) => (
-              <InView key={idx}>
-                {({ inView, ref }) => (
-                  <div ref={ref}>
-                    <ProposalCardWrapper proposal={inView ? proposal : null} />
-                  </div>
-                )}
-              </InView>
-            ))
+          {filteredProposals.length ? (
+            <>
+              {filteredProposals.map((proposal, idx) => (
+                <InView key={idx}>
+                  {({ inView, ref }) => (
+                    <div ref={ref}>
+                      <ProposalCardWrapper
+                        proposal={inView ? proposal : null}
+                      />
+                    </div>
+                  )}
+                </InView>
+              ))}
+              {loading && <ProposalCardWrapper />}
+            </>
           ) : (
             <>
               <ProposalCardWrapper />

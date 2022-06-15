@@ -14,6 +14,7 @@ export const useProposals = (
 ) => {
   const [proposals, setProposals] = React.useState([]);
   const [filter, setFilter] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
 
   const { library } = useWeb3React();
   const { cache } = useSWRConfig();
@@ -26,7 +27,8 @@ export const useProposals = (
   React.useEffect(() => {
     const fetch = async () => {
       setProposals([]);
-      ids.forEach(id => {
+      setLoading(true);
+      ids.forEach((id, index) => {
         const cacheKey = JSON.stringify([guildAddress, 'getProposal', id]);
         const cachedProposal = cache.get(cacheKey);
         if (cachedProposal) {
@@ -41,14 +43,18 @@ export const useProposals = (
             }
           });
         }
+
+        if (index === ids.length - 1) {
+          setLoading(false);
+        }
       });
     };
     fetch();
-  }, [filter]); // eslint-disable-line
+  }, [filter, ids]); // eslint-disable-line
 
   return React.useMemo(() => {
-    return { proposals, setFilter, filter };
-  }, [proposals]); // eslint-disable-line
+    return { proposals, setFilter, filter, loading };
+  }, [proposals, loading]); // eslint-disable-line
 };
 
 // ------------------> Common Matchers
