@@ -16,22 +16,28 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
   const [swaprPairsFetchedData, setSwaprPairsFetchedData] = useState<
     SwaprFetchPairsInterface[]
   >([]);
+  const [errorFetchingData, setErrorFetchingData] = useState(null);
 
-  const currentUnixTimestamp = moment().unix();
-  const pageSize = 1000;
   const { chainId } = useWeb3React();
+  const currentUnixTimestamp = moment().unix();
+  const userId = '';
+  const pageSize = 1000;
+  const lastId = '';
 
   let data = useSwaprFetchPairs(
     chainId,
     currentUnixTimestamp,
-    '',
+    userId,
     pageSize,
-    ''
+    lastId
   );
 
   useEffect(() => {
     async function assignData() {
-      setSwaprPairsFetchedData(await data);
+      data.then(response => {
+        setSwaprPairsFetchedData(response[0]);
+        setErrorFetchingData(response[1]);
+      });
     }
     assignData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,6 +61,18 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
     onChange(value.address);
     setIsModalOpen(false);
   };
+
+  if (errorFetchingData) {
+    return (
+      <TransparentButton
+        variant="secondary"
+        aria-label="Skeleton loading button"
+        type="button"
+      >
+        {errorFetchingData}
+      </TransparentButton>
+    );
+  }
 
   if (swaprPairsFetchedData === undefined)
     return (

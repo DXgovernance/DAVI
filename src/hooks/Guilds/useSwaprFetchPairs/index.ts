@@ -28,7 +28,7 @@ export const useSwaprFetchPairs = async (
   userId: string,
   pageSize: number,
   lastId: string
-): Promise<SwaprFetchPairsInterface[]> => {
+): Promise<[SwaprFetchPairsInterface[], string]> => {
   const networkApiPair = {
     1: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2', //mainnet
     5: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // goerly
@@ -87,6 +87,7 @@ export const useSwaprFetchPairs = async (
   }`;
 
   const [data, setData] = useState();
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -105,9 +106,14 @@ export const useSwaprFetchPairs = async (
         console.log('Error: ', err);
       }
     }
+
+    if (!subgraphUrl) {
+      setError('There are no data for this chain');
+      return;
+    }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return data;
+  return [data, error];
 };
