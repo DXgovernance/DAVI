@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 import useENSAvatar from '../../../hooks/Guilds/ether-swr/ens/useENSAvatar';
 import Avatar from '.';
-import { Loading } from 'Components/Primitives/Loading';
 
 const ENSAvatarContainer = styled.span`
   display: inline-flex;
@@ -23,19 +22,7 @@ const ENSAvatar: React.FC<ENSAvatarProps> = ({ address, size = 24 }) => {
 
   return (
     <ENSAvatarContainer>
-      {address ? (
-        <Avatar src={imageUrl} defaultSeed={address} size={size} />
-      ) : (
-        <Loading
-          loading
-          text
-          skeletonProps={{
-            circle: true,
-            width: `${size}px`,
-            height: `${size}px`,
-          }}
-        />
-      )}
+      <Avatar src={imageUrl} defaultSeed={address} size={size} />
     </ENSAvatarContainer>
   );
 };

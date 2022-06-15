@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import GuildCard from 'Components/GuildCard/GuildCard';
-import { fullParameters, loadingParameters, noProposals } from './fixture';
+import { fullParameters, loadingParameters, noProposals } from './fixtures';
 import { useTranslation } from 'react-i18next';
 import 'i18n';
 
