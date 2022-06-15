@@ -4,14 +4,14 @@ exports[`AddressButton Should render properly with full props 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-fubCzh cAORUT hqMJhH eLNaRf"
+    class="sc-dlfnuX sc-hKgJUU sc-fubCzh dZCqzv eRtASc jmvQcZ"
   >
     <span
       class="sc-iBPTik lkybgw"
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+        class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
         data-testid="avatar"
         size="24"
         src="test"
@@ -23,7 +23,7 @@ exports[`AddressButton Should render properly with full props 1`] = `
       0x7970...0928
     </span>
     <div
-      class="sc-eCstlR rHMeD"
+      class="sc-gKseQn eOEXWN"
       size="25"
     >
       5
@@ -37,14 +37,14 @@ exports[`AddressButton Should render properly with partial props 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-fubCzh cAORUT hqMJhH eLNaRf"
+    class="sc-dlfnuX sc-hKgJUU sc-fubCzh dZCqzv eRtASc jmvQcZ"
   >
     <span
       class="sc-iBPTik lkybgw"
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+        class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
         data-testid="avatar"
         size="24"
         src="test"

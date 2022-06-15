@@ -1,6 +1,5 @@
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import { Filter } from 'Components';
-import { Sidebar } from 'old-components/Guilds/Sidebar';
+import { Filter } from 'Components/Filter';
 import { Box } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
@@ -9,6 +8,7 @@ import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import React, { useContext, useMemo } from 'react';
 import InView from 'react-intersection-observer';
 import styled from 'styled-components';
+import GuildSidebarWrapper from 'Modules/Guilds/Wrappers/GuildSidebarWrapper';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -65,7 +65,7 @@ const GuildsPage: React.FC = () => {
   return (
     <PageContainer>
       <SidebarContent>
-        <Sidebar />
+        <GuildSidebarWrapper />
       </SidebarContent>
       <PageContent>
         <Filter />

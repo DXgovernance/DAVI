@@ -65,11 +65,34 @@ exports[`Avatar Should render image when src is given 1`] = `
    
   <img
     alt="Avatar"
-    class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+    class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
     data-testid="avatar"
     size="24"
     src="/test/image.png"
   />
+   
+</div>
+`;
+
+exports[`Avatar Should render loader when no src or seed is given 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB"
+  >
+    <span
+      aria-busy="true"
+      aria-live="polite"
+    >
+      <span
+        class="react-loading-skeleton"
+        style="width: 24px; height: 24px; border-radius: 50%; --base-color: #333; --highlight-color: #555;"
+      >
+        ‌
+      </span>
+      <br />
+    </span>
+  </div>
    
 </div>
 `;

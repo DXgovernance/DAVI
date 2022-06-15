@@ -30,20 +30,11 @@ const ProposalCard: React.FC<ProposalCardProps> = ({
       <CardWrapper>
         <CardHeader>
           <IconDetailWrapper>
-            {proposal?.creator && ensAvatar ? (
-              <Avatar
-                src={ensAvatar.imageUrl}
-                defaultSeed={proposal.creator}
-                size={24}
-              />
-            ) : (
-              <Loading
-                style={{ margin: 0 }}
-                loading
-                text
-                skeletonProps={{ circle: true, width: '24px', height: '24px' }}
-              />
-            )}
+            <Avatar
+              src={ensAvatar?.imageUrl}
+              defaultSeed={proposal?.creator}
+              size={24}
+            />
             <Detail>
               {ensAvatar?.ensName ||
                 (proposal?.creator ? (
