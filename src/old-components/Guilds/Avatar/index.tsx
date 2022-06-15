@@ -1,10 +1,11 @@
+import { Loading } from 'Components/Primitives/Loading';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { ButtonIcon } from '../common/Button';
 
 interface AvatarProps {
   src?: string;
-  defaultSeed: string;
+  defaultSeed?: string;
   size?: number;
 }
 
@@ -19,6 +20,21 @@ const AvatarIcon = styled(ButtonIcon)<{ size: number }>`
 `;
 
 const Avatar: React.FC<AvatarProps> = ({ src, defaultSeed, size = 24 }) => {
+  if (!src && !defaultSeed) {
+    return (
+      <Loading
+        data-testid="loading"
+        loading
+        text
+        skeletonProps={{
+          circle: true,
+          width: `${size}px`,
+          height: `${size}px`,
+        }}
+      />
+    );
+  }
+
   return src ? (
     <AvatarIcon data-testid="avatar" src={src} alt={'Avatar'} size={size} />
   ) : (

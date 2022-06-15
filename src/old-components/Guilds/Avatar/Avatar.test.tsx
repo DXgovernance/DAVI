@@ -6,6 +6,12 @@ import Avatar from './';
 jest.mock('contexts/index', () => jest.fn());
 
 describe('Avatar', () => {
+  it('Should render loader when no src or seed is given', () => {
+    const { container } = render(<Avatar />);
+    expect(container).toMatchSnapshot();
+    expect(screen.queryByTestId('avatar')).not.toBeInTheDocument();
+  });
+
   it('Should render image when src is given', () => {
     const { container } = render(
       <Avatar src="/test/image.png" defaultSeed="test-image-seed" />
