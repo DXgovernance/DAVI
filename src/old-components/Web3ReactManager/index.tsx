@@ -1,23 +1,21 @@
-import { LoadingBox } from '../../pages/proposals/styles';
-import LoadingNetworkHeader from '../Header/loadingNetwork';
+// import { LoadingBox } from '../../Modules/Guilds/pages/proposals/styles';
+// import LoadingNetworkHeader from '../Header/loadingNetwork';
 import { useWeb3React } from '@web3-react/core';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { NetworkConnector } from '@web3-react/network-connector';
 import { useContext } from 'contexts';
-import PulsingIcon from 'old-components/common/LoadingIcon';
+import PulsingIcon from 'old-components/Guilds/common/LoadingIcon';
 import { getChains, getNetworkConnector } from 'provider/connectors';
 import { useEagerConnect, useRpcUrls } from 'provider/providerHooks';
 import { useEffect, useMemo } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ThemeProvider, { GlobalStyle } from 'theme';
-import { DEFAULT_CHAIN_ID, useInterval, usePrevious } from 'utils';
-
-const BLOKCHAIN_FETCH_INTERVAL = 10000;
+import { DEFAULT_CHAIN_ID, usePrevious } from 'utils';
 
 const Web3ReactManager = ({ children }) => {
   const { context } = useContext();
-  const { providerStore, blockchainStore } = context;
+  const { providerStore } = context;
 
   const location = useLocation();
   const history = useHistory();
@@ -85,9 +83,6 @@ const Web3ReactManager = ({ children }) => {
       try {
         providerStore.setWeb3Context(web3Context);
         context.reset();
-        if (location.pathname !== '/cache') {
-          blockchainStore.fetchData(web3Context, true);
-        }
       } catch (e) {
         // Fallback if something goes wrong
         window.location.reload();
@@ -138,18 +133,6 @@ const Web3ReactManager = ({ children }) => {
     tryConnecting();
   }
 
-  // Fetch user blockchain data on an interval using current params
-  useInterval(
-    async () => {
-      if (networkActive) {
-        if (location.pathname !== '/cache') {
-          blockchainStore.fetchData(providerStore.getActiveWeb3React(), false);
-        }
-      }
-    },
-    networkActive ? BLOKCHAIN_FETCH_INTERVAL : 10
-  );
-
   const Content = styled.div`
     margin: auto;
     height: 100%;
@@ -166,12 +149,12 @@ const Web3ReactManager = ({ children }) => {
       <ThemeProvider>
         <GlobalStyle />
         <Content>
-          <LoadingNetworkHeader />
-          <LoadingBox>
+          {/* <LoadingNetworkHeader /> */}
+          <div>
             <div className="loader">
               <PulsingIcon size={80} inactive={false} />
             </div>
-          </LoadingBox>
+          </div>
         </Content>
       </ThemeProvider>
     );

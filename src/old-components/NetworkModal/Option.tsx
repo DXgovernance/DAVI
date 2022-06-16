@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import Link from '../common/Link';
+import Link from '../Guilds/common/Link';
 
 const InfoCard = styled.button<{ active?: boolean; clickable?: boolean }>`
   background-color: ${({ theme, active }) =>

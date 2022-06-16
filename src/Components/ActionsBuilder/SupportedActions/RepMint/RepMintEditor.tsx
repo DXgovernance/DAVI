@@ -14,7 +14,7 @@ import { useState } from 'react';
 import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
-import { StyledToolTip } from 'old-components/common/ToolTip';
+import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
 import { useTranslation } from 'react-i18next';
 
 const Control = styled(Box)`

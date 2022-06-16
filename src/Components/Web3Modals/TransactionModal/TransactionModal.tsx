@@ -4,7 +4,7 @@ import { Circle, Flex } from 'Components/Primitives/Layout';
 import { ContainerText } from 'Components/Primitives/Layout/Text';
 import { Modal } from 'old-components/Guilds/common/Modal';
 import { useWeb3React } from '@web3-react/core';
-import PendingCircle from 'old-components/common/PendingCircle';
+import PendingCircle from 'old-components/Guilds/common/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';
