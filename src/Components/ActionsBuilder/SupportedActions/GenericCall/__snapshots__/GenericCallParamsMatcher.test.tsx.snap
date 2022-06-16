@@ -8,7 +8,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn gZeqnV"
+      class="sc-eCstlR sc-jSgvzq ebJAYl dLtHAM"
       data-testid="avatar"
       size="16"
       src="test"
@@ -93,7 +93,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-hKgJUU hZGubn gZeqnV"
+        class="sc-eCstlR sc-jSgvzq ebJAYl dLtHAM"
         data-testid="avatar"
         size="16"
         src="test"

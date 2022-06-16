@@ -21,7 +21,7 @@ const useENSAvatar = (nameOrAddress: string, chainId?: number) => {
     }
   }, [imageUrl, ENSName, avatarUri]);
 
-  return { ensName: ENSName, avatarUri, imageUrl: imageUrlToUse };
+  return { ensName: ENSName, imageUrl: imageUrlToUse };
 };
 
 const useENSAvatarNFT = (

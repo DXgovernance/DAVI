@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberActions Should match snapshot with data 1`] = `
+<div>
+   
+  <div
+    class="sc-pGacB sc-kstqJO kELkBy fkHEBq"
+    data-testid="member-actions-button"
+  >
+    <button
+      class="sc-dlfnuX sc-hKgJUU sc-gKseQn dEJhZx eRtASc eHKpXr"
+    >
+      <div>
+        <span
+          class="sc-iBPTik lkybgw"
+        >
+          <img
+            alt="Avatar"
+            class="sc-eCstlR sc-jSgvzq ebJAYl fbWVQg"
+            data-testid="avatar"
+            size="18"
+            src="/assets/favicon-32x32.png"
+          />
+        </span>
+        <span>
+          test.eth
+        </span>
+      </div>
+      <div
+        class="sc-fubCzh kFYzWV"
+      >
+        50%
+      </div>
+    </button>
+    <div
+      class="sc-pGacB sc-bqyKOL kELkBy eA-dQQq"
+    >
+      
+      <div
+        class="sc-hBEYId gPHLnk"
+      >
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          votingPower
+           
+          <span>
+            50%
+          </span>
+        </div>
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          locked
+           
+          <span>
+            0 GT
+          </span>
+        </div>
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          unlockedIn
+           
+          <span>
+            a day
+          </span>
+        </div>
+        <button
+          class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`MemberActions Should match snapshot without data 1`] = `
+<div>
+   
+  <div
+    class="sc-pGacB sc-kstqJO kELkBy fkHEBq"
+    data-testid="member-actions-button"
+  >
+    <button
+      class="sc-dlfnuX sc-hKgJUU sc-gKseQn dEJhZx eRtASc eHKpXr"
+    >
+      <div>
+        <span
+          class="sc-iBPTik lkybgw"
+        >
+          <div
+            class="sc-bdfBQB"
+          >
+            <span
+              aria-busy="true"
+              aria-live="polite"
+            >
+              <span
+                class="react-loading-skeleton"
+                style="width: 18px; height: 18px; border-radius: 50%; --base-color: #333; --highlight-color: #555;"
+              >
+                ‌
+              </span>
+              <br />
+            </span>
+          </div>
+        </span>
+        <span>
+          <div
+            class="sc-bdfBQB"
+          >
+            <span
+              aria-busy="true"
+              aria-live="polite"
+            >
+              <span
+                class="react-loading-skeleton"
+                style="width: 100px; height: 16px; border-radius: 50px; --base-color: #333; --highlight-color: #555;"
+              >
+                ‌
+              </span>
+              <br />
+            </span>
+          </div>
+        </span>
+      </div>
+      <div
+        class="sc-fubCzh kFYzWV"
+      >
+        <div
+          class="sc-bdfBQB"
+        >
+          <span
+            aria-busy="true"
+            aria-live="polite"
+          >
+            <span
+              class="react-loading-skeleton"
+              style="width: 40px; --base-color: #333; --highlight-color: #555;"
+            >
+              ‌
+            </span>
+            <br />
+          </span>
+        </div>
+      </div>
+    </button>
+    <div
+      class="sc-pGacB sc-bqyKOL kELkBy eA-dQQq"
+    >
+      
+      <div
+        class="sc-hBEYId gPHLnk"
+      >
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          votingPower
+           
+          <span>
+            <div
+              class="sc-bdfBQB"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          locked
+           
+          <span>
+            <div
+              class="sc-bdfBQB"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-fodVek jyvpfu"
+        >
+          unlockedIn
+           
+          <span>
+            <div
+              class="sc-bdfBQB"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <button
+          class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;

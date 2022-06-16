@@ -57,10 +57,18 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     onChange({ ...option, decodedActions: updatedActions });
   }
 
+  function removeAction(action: DecodedAction) {
+    const updatedActions = option?.decodedActions.filter(
+      a => a.id !== action.id
+    );
+    onChange({ ...option, decodedActions: updatedActions });
+  }
+
   const dndStyles = {
     transform: CSS.Translate.toString(transform),
     transition,
   };
+
   return (
     <OptionWrapper
       dragging={isDragging}
@@ -111,6 +119,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
                   isEditable={true}
                   decodedAction={action}
                   onEdit={updatedAction => updateAction(index, updatedAction)}
+                  onRemove={targetAction => removeAction(targetAction)}
                 />
               );
             })}

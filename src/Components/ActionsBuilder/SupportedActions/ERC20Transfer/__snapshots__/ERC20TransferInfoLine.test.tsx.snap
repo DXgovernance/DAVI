@@ -59,7 +59,7 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
       data-testid="avatar"
       size="24"
       src="test"
@@ -133,7 +133,7 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
       data-testid="avatar"
       size="14"
       src="test"
@@ -207,7 +207,7 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
       data-testid="avatar"
       size="24"
       src="test"
@@ -281,7 +281,7 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
       data-testid="avatar"
       size="14"
       src="test"
@@ -355,7 +355,7 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
       data-testid="avatar"
       size="24"
       src="test"
@@ -429,7 +429,7 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
       data-testid="avatar"
       size="14"
       src="test"

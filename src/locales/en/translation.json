@@ -4,6 +4,7 @@
     "guild": "Guild",
     "guilds": "Guilds"
   },
+  "proposals": "Proposals",
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
   "proposals_other": "{{count}} proposals",
@@ -87,6 +88,20 @@
   },
   "selectAToken": "Select a token",
   "searchToken": "Search token",
+  "members": "Members",
+  "members_zero": "No Members",
+  "members_one": "{{count}} Member",
+  "members_other": "{{count}} Members",
+  "portfolio": "Portfolio",
+  "settings": "Settings",
+  "join": "Join",
+  "membership": "Membership",
+  "locked": "Locked",
+  "unlocked": "Unlocked",
+  "unlockedIn": "Unlocked in",
+  "staked": "Staked",
+  "increaseVotingPower": "Increase Voting Power",
+  "withdraw": "Withdraw",
   "selectDuration": "Select duration",
   "durationWarningMessage": "Please change {{value}} input for the {{timeColumn}} column as it is over the limit. The maximum value allowed is {{limit.max}}.",
   "duration": {
@@ -137,5 +152,10 @@
   "change": "Change",
   "copiedAddress": "Copied Address",
   "copyAddress": "copy Address",
-  "changeConnection": "Change Connection"
+  "changeConnection": "Change Connection",
+  "confirmRemoval": "Confirm Removal",
+  "areYuoSureYouWantToRemoveAction": "Are you sure you want to remove this action?",
+  "theRemovalCannotBeReverted": "The removal cannot be reverted",
+  "removeAction": "Remove Action",
+  "remove": "Remove"
 }

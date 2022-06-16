@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CallDetails } from '../CallDetails';
 import { getInfoLineView, getSummaryView } from '../SupportedActions';
 import UndecodableCallDetails from '../UndecodableCalls/UndecodableCallDetails';
@@ -19,19 +20,21 @@ import {
   GripWithMargin,
   TabButton,
 } from './Action.styled';
-import { useTranslation } from 'react-i18next';
+import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
   onEdit?: (updatedCall: DecodedAction) => void;
+  onRemove?: (updatedCall: DecodedAction) => void;
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
   decodedAction,
   isEditable,
+  onRemove,
 }) => {
   const { t } = useTranslation();
   const {
@@ -49,6 +52,8 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   const [expanded, setExpanded] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
+    useState(false);
 
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
@@ -78,6 +83,13 @@ export const ActionRow: React.FC<ActionViewProps> = ({
         <CardActions>
           {isEditable && (
             <EditButtonWithMargin>{t('edit')}</EditButtonWithMargin>
+          )}
+          {onRemove && (
+            <EditButtonWithMargin
+              onClick={() => setConfirmRemoveActionModalIsOpen(v => !v)}
+            >
+              {t('remove')}
+            </EditButtonWithMargin>
           )}
           <ChevronIcon onClick={() => setExpanded(!expanded)}>
             {expanded ? (
@@ -129,6 +141,16 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           )}
         </>
       )}
+      <ConfirmRemoveActionModal
+        isOpen={confirmRemoveActionModalIsOpen}
+        onDismiss={() => {
+          setConfirmRemoveActionModalIsOpen(false);
+        }}
+        onConfirm={() => {
+          onRemove(decodedAction);
+          setConfirmRemoveActionModalIsOpen(false);
+        }}
+      />
     </CardWrapperWithMargin>
   );
 };

@@ -4,10 +4,10 @@ exports[`RepMintInfoLine Should match snapshot 1`] = `
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -15,7 +15,7 @@ exports[`RepMintInfoLine Should match snapshot 1`] = `
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     mint
      
@@ -23,7 +23,7 @@ exports[`RepMintInfoLine Should match snapshot 1`] = `
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -48,18 +48,18 @@ exports[`RepMintInfoLine Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
@@ -71,10 +71,10 @@ exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -82,7 +82,7 @@ exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     
      
@@ -90,7 +90,7 @@ exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -115,18 +115,18 @@ exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn jZkYSd"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
@@ -138,10 +138,10 @@ exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -149,7 +149,7 @@ exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     mint
      
@@ -157,7 +157,7 @@ exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -182,18 +182,18 @@ exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
@@ -205,10 +205,10 @@ exports[`RepMintInfoLine Should match snapshot with default values in compact mo
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -216,7 +216,7 @@ exports[`RepMintInfoLine Should match snapshot with default values in compact mo
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     
      
@@ -224,7 +224,7 @@ exports[`RepMintInfoLine Should match snapshot with default values in compact mo
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -249,18 +249,18 @@ exports[`RepMintInfoLine Should match snapshot with default values in compact mo
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn jZkYSd"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
@@ -272,10 +272,10 @@ exports[`RepMintInfoLine Should match snapshot without data 1`] = `
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -283,7 +283,7 @@ exports[`RepMintInfoLine Should match snapshot without data 1`] = `
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     mint
      
@@ -291,7 +291,7 @@ exports[`RepMintInfoLine Should match snapshot without data 1`] = `
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -316,18 +316,18 @@ exports[`RepMintInfoLine Should match snapshot without data 1`] = `
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn iOmOTp"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
@@ -339,10 +339,10 @@ exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] 
 <div>
    
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-gKseQn fRavPG sc-iBPTik bQLENr"
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
     >
       <svg>
         mint.svg
@@ -350,7 +350,7 @@ exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] 
     </div>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     
      
@@ -358,7 +358,7 @@ exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] 
      %
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <svg
       fill="none"
@@ -383,18 +383,18 @@ exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] 
     </svg>
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     <img
       alt="Avatar"
-      class="sc-dlfnuX sc-hKgJUU hZGubn jZkYSd"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-eCstlR jQbHjP"
+    class="sc-gKseQn lnpFdR"
   >
     test.eth
   </span>
