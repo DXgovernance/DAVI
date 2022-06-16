@@ -8,3 +8,8 @@ export const fullProps: AddressButtonProps = {
 export const partialProps: AddressButtonProps = {
   address: '0x79706C8e413CDaeE9E63f282507287b9Ea9C0928',
 };
+
+export const showFullAddress: AddressButtonProps = {
+  address: '0x79706C8e413CDaeE9E63f282507287b9Ea9C0928',
+  showFullAddress: true,
+};

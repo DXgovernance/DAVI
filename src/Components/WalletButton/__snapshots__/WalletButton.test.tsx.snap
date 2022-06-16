@@ -18,6 +18,7 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
    
   <button
     class="sc-bdfBQB sc-gsTEea sc-ctaXho cAORUT hqMJhH rXBSM"
+    type="submit"
   >
     <span
       class="sc-eGCaLh ledizJ"
