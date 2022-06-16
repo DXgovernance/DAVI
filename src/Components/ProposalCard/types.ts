@@ -1,7 +1,6 @@
 import { ProposalStatusProps } from 'Components/ProposalStatus/types';
-import { Proposal } from 'types/types.guilds.d';
-import { ENSAvatar } from '../Types';
-import { DecodedAction } from 'old-components/Guilds/ActionsBuilder/types';
+import { Proposal, ENSAvatar } from '../Types';
+import { DecodedAction } from 'Components/ActionsBuilder/types';
 
 export interface ProposalCardProps {
   proposal?: Proposal;

@@ -11,9 +11,7 @@ import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
-
 import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
-import { ActionsBuilder } from 'old-components/Guilds/CreateProposalPage';
 import { Loading } from 'Components/Primitives/Loading';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import React, { useContext } from 'react';
@@ -28,6 +26,7 @@ import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import { ActionsBuilder } from 'Components/ActionsBuilder';
 
 const PageContainer = styled(Box)`
   display: grid;

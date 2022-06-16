@@ -8,7 +8,7 @@ import { Modal } from 'old-components/Guilds/common/Modal';
 import { useAllERC20Balances } from 'hooks/Guilds/ether-swr/erc20/useAllERC20Balances';
 import useMiniSearch from 'hooks/useMiniSearch';
 
-import { TokenListItem } from './components';
+import { TokenListItem } from './components/TokenListItem';
 import { TokenPickerProps, TokenWithBalanceIndexable } from './types';
 
 import {

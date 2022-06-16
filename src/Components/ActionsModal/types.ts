@@ -1,4 +1,4 @@
-import { DecodedAction } from 'old-components/Guilds/ActionsBuilder/types';
+import { DecodedAction } from 'Components/ActionsBuilder/types';
 
 export interface ActionModalProps {
   isOpen: boolean;
