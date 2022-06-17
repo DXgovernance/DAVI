@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useWeb3React } from '@web3-react/core';
 import { BigNumber, utils } from 'ethers';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +26,7 @@ import { EditorWrapper, BlockButton } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 
 const ActionModal: React.FC<ActionModalProps> = ({
+  action,
   isOpen,
   setIsOpen,
   onAddAction,
@@ -45,7 +46,24 @@ const ActionModal: React.FC<ActionModalProps> = ({
   const [selectedFunction, setSelectedFunction] = React.useState<string>(null);
 
   const [data, setData] = React.useState<DecodedCall>(null);
-  const [payableFnData, updatePayableFnData] = React.useState<any>(null);
+  const [showTokenApprovalForm, setShowTokenApprovalForm] =
+    React.useState(false);
+  const [payableFnData, setPayableFnData] = React.useState<any>(null);
+
+  useEffect(() => {
+    if (!action?.decodedCall) return;
+
+    if (action.decodedCall.callType === SupportedAction.GENERIC_CALL) {
+      setSelectedContract(action.decodedCall.richData);
+      setSelectedFunction(action.decodedCall.function.name);
+    } else {
+      setSelectedAction(action.decodedCall.callType);
+    }
+
+    setData(action.decodedCall);
+    setPayableFnData(action.approval);
+    setShowTokenApprovalForm(action.approval ? true : false);
+  }, [action]);
 
   function getHeader() {
     if (selectedFunction) {
@@ -74,13 +92,14 @@ const ActionModal: React.FC<ActionModalProps> = ({
       );
       const isPayable: boolean = fn?.spendsTokens;
       // Return approval form if function is marked with spendsTokens=true
-      if (isPayable && !payableFnData) {
-        return <ApproveSpendTokens onConfirm={updatePayableFnData} />;
+      if (showTokenApprovalForm || (isPayable && !payableFnData)) {
+        return <ApproveSpendTokens onConfirm={setPayableFnData} />;
       }
 
       return (
         <ParamsForm
           fn={fn}
+          defaultValues={data?.args}
           onSubmit={args => {
             onAddAction({
               id: `action-${Math.random()}`,
@@ -134,7 +153,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   function goBack() {
     if (selectedFunction) {
       setSelectedFunction(null);
-      updatePayableFnData(null);
+      setPayableFnData(null);
     } else if (selectedContract) {
       setSelectedContract(null);
     } else if (selectedAction) {
@@ -179,7 +198,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedContract(null);
     setSelectedAction(null);
     setSelectedActionContract(null);
-    updatePayableFnData(null);
+    setPayableFnData(null);
     setIsOpen(false);
   };
 
@@ -189,7 +208,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
       onDismiss={handleClose}
       header={getHeader()}
       maxWidth={300}
-      backnCross={!!selectedAction || !!selectedContract}
+      backnCross={!action && (!!selectedAction || !!selectedContract)}
       prevContent={goBack}
     >
       {getContent()}

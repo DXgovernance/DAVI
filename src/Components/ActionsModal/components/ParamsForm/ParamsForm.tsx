@@ -21,10 +21,16 @@ const SubmitButton = styled(ActionsButton).attrs(() => ({
 
 interface ParamsFormProps {
   fn: RichContractFunction;
+  defaultValues?: Record<string, any>;
   onSubmit: (args: Record<string, any>) => void;
 }
 
-const ParamsForm: React.FC<ParamsFormProps> = ({ fn, onSubmit }) => {
+const ParamsForm: React.FC<ParamsFormProps> = ({
+  fn,
+  defaultValues,
+  onSubmit,
+}) => {
+  console.log({ fn });
   const { control, handleSubmit } = useForm();
 
   return (
@@ -36,7 +42,7 @@ const ParamsForm: React.FC<ParamsFormProps> = ({ fn, onSubmit }) => {
             <Controller
               name={param.name}
               control={control}
-              defaultValue={param.defaultValue}
+              defaultValue={defaultValues?.[param.name] || param.defaultValue}
               rules={getDefaultValidationsByFormElement(param)}
               render={({ field, fieldState }) => (
                 <>
