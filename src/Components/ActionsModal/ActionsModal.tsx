@@ -24,6 +24,7 @@ import {
 } from './components';
 import { EditorWrapper, BlockButton } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
+import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
 
 const ActionModal: React.FC<ActionModalProps> = ({
   action,
@@ -48,7 +49,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
   const [data, setData] = React.useState<DecodedCall>(null);
   const [showTokenApprovalForm, setShowTokenApprovalForm] =
     React.useState(false);
-  const [payableFnData, setPayableFnData] = React.useState<any>(null);
+  const [payableFnData, setPayableFnData] =
+    React.useState<TokenSpendApproval>(null);
 
   useEffect(() => {
     if (!action?.decodedCall) return;
@@ -93,7 +95,15 @@ const ActionModal: React.FC<ActionModalProps> = ({
       const isPayable: boolean = fn?.spendsTokens;
       // Return approval form if function is marked with spendsTokens=true
       if (showTokenApprovalForm || (isPayable && !payableFnData)) {
-        return <ApproveSpendTokens onConfirm={setPayableFnData} />;
+        return (
+          <ApproveSpendTokens
+            defaultValue={payableFnData}
+            onConfirm={values => {
+              setPayableFnData(values);
+              setShowTokenApprovalForm(false);
+            }}
+          />
+        );
       }
 
       return (
