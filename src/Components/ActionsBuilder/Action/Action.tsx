@@ -21,6 +21,7 @@ import {
   TabButton,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
+import { ActionModal } from 'Components/ActionsModal';
 
 interface ActionViewProps {
   call?: Call;
@@ -34,6 +35,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   call,
   decodedAction,
   isEditable,
+  onEdit,
   onRemove,
 }) => {
   const { t } = useTranslation();
@@ -54,6 +56,8 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const [activeTab, setActiveTab] = useState(0);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
     useState(false);
+
+  const [isEditActionModalOpen, setIsEditActionModalOpen] = useState(false);
 
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
@@ -82,7 +86,11 @@ export const ActionRow: React.FC<ActionViewProps> = ({
         </CardLabel>
         <CardActions>
           {isEditable && (
-            <EditButtonWithMargin>{t('edit')}</EditButtonWithMargin>
+            <EditButtonWithMargin
+              onClick={() => setIsEditActionModalOpen(true)}
+            >
+              {t('edit')}
+            </EditButtonWithMargin>
           )}
           {onRemove && (
             <EditButtonWithMargin
@@ -151,6 +159,15 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           setConfirmRemoveActionModalIsOpen(false);
         }}
       />
+
+      {isEditActionModalOpen && (
+        <ActionModal
+          isOpen={isEditActionModalOpen}
+          setIsOpen={setIsEditActionModalOpen}
+          action={decodedAction}
+          onAddAction={onEdit}
+        />
+      )}
     </CardWrapperWithMargin>
   );
 };
