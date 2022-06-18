@@ -4,7 +4,7 @@ import gnosisIcon from 'assets/images/gnosis-icon-green.svg';
 
 const iconsByChain = {
   1: ethereumIcon,
-  4: ethereumIcon,
+  5: ethereumIcon,
   100: gnosisIcon,
   42161: arbitrumIcon,
   421611: arbitrumIcon,

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { observer } from 'mobx-react';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../Modal';
@@ -52,7 +51,7 @@ const OptionGrid = styled.div`
   flex-direction: column;
 `;
 
-const NetworkModal = observer(() => {
+const NetworkModal = () => {
   const {
     context: { modalStore, providerStore },
   } = useContext();
@@ -141,6 +140,6 @@ const NetworkModal = observer(() => {
       </>
     </Modal>
   );
-});
+};
 
 export default NetworkModal;

@@ -3,7 +3,7 @@ import { FiArrowUpRight, FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { getChains } from 'provider/connectors';
 import { Transaction as TransactionInterface } from 'types/types.guilds';
 import { getBlockchainLink } from 'utils';
-import PendingCircle from 'old-components/common/PendingCircle';
+import PendingCircle from 'old-components/Guilds/common/PendingCircle';
 
 import { TransactionContainer, Link, Icon } from './Transaction.styled';
 

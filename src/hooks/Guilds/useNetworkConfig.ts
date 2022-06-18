@@ -6,7 +6,7 @@ const configs = {
   arbitrumTestnet: require('configs/arbitrumTestnet/config.json'),
   mainnet: require('configs/mainnet/config.json'),
   xdai: require('configs/xdai/config.json'),
-  rinkeby: require('configs/rinkeby/config.json'),
+  goerli: require('configs/goerli/config.json'),
   localhost: require('configs/localhost/config.json'),
 };
 

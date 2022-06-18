@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import AddressButton from 'Components/AddressButton/AddressButton';
-import { fullProps, partialProps } from './fixtures';
+import { fullProps, partialProps, showFullAddress } from './fixtures';
 
 export default {
   title: 'Components/AddressButton',
@@ -24,6 +24,9 @@ WithTransactions.args = fullProps;
 
 export const WithoutTransactions = Template.bind({});
 WithoutTransactions.args = partialProps;
+
+export const ShowFullAddress = Template.bind({});
+ShowFullAddress.args = showFullAddress;
 
 export const Loading = Template.bind({});
 Loading.args = {};

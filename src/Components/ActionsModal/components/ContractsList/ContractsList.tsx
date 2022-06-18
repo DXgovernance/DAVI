@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import { ReactComponent as Vector } from 'assets/images/vector.svg';
-import { SupportedAction } from 'old-components/Guilds/ActionsBuilder/types';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import {
   ActionsButton,

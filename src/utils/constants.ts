@@ -27,7 +27,7 @@ export const DEFAULT_CHAIN_ID =
 
 export const POKT_NETWORK_URLS = {
   '1': 'https://eth-archival.gateway.pokt.network/v1/lb/61f86d630d66d80038fb8c38',
-  '4': 'https://eth-rinkeby.gateway.pokt.network/v1/lb/61116c81a585a20035149067',
+  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/6229f9b8abc11f0039cb2d2c',
   '100':
     'https://poa-xdai-archival.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
 };
@@ -49,17 +49,17 @@ export const NETWORKS: ChainConfig[] =
           api: 'https://api.etherscan.io',
         },
         {
-          id: 4,
-          name: 'rinkeby',
-          displayName: 'Rinkeby Testnet',
-          defaultRpc: POKT_NETWORK_URLS['4'],
+          id: 5,
+          name: 'goerli',
+          displayName: 'Goerli Testnet',
+          defaultRpc: POKT_NETWORK_URLS['5'],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',
             decimals: 18,
           },
-          blockExplorer: 'https://rinkeby.etherscan.io/',
-          api: 'https://api-rinkeby.etherscan.io/',
+          blockExplorer: 'https://goerli.etherscan.io/',
+          api: 'https://api-goerli.etherscan.io/',
         },
         {
           id: 100,
@@ -126,17 +126,17 @@ export const NETWORKS: ChainConfig[] =
           api: 'https://api.etherscan.io',
         },
         {
-          id: 4,
-          name: 'rinkeby',
-          displayName: 'Rinkeby Testnet',
-          defaultRpc: POKT_NETWORK_URLS['4'],
+          id: 5,
+          name: 'goerli',
+          displayName: 'Goerli Testnet',
+          defaultRpc: POKT_NETWORK_URLS['5'],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',
             decimals: 18,
           },
-          blockExplorer: 'https://rinkeby.etherscan.io/',
-          api: 'https://api-rinkeby.etherscan.io/',
+          blockExplorer: 'https://goerli.etherscan.io/',
+          api: 'https://api-goerli.etherscan.io/',
         },
         {
           id: 100,
@@ -228,14 +228,14 @@ export const NETWORK_ASSET_SYMBOL: Record<
 
 export const INFURA_NETWORK_NAMES = {
   '1': 'mainnet',
-  '4': 'rinkeby',
+  '5': 'goerli',
   '42161': 'arbitrum-mainnet',
   '421611': 'arbitrum-rinkeby',
 };
 
 export const ALCHEMY_NETWORK_URLS = {
   '1': 'eth-mainnet.alchemyapi.io',
-  '4': 'eth-rinkeby.alchemyapi.io',
+  '5': 'eth-goerli.alchemyapi.io',
   '42161': 'arb-mainnet.g.alchemy.com',
   '421611': 'arb-rinkeby.g.alchemy.com',
 };

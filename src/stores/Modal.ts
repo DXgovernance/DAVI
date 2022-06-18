@@ -1,4 +1,4 @@
-import { makeObservable, observable, action } from 'mobx';
+// import { makeObservable, observable, action } from 'mobx';
 import RootContext from '../contexts';
 
 export default class ModalStore {
@@ -10,15 +10,6 @@ export default class ModalStore {
     this.context = context;
     this.walletModalVisible = false;
     this.networkModalVisible = false;
-    makeObservable(this, {
-      walletModalVisible: observable,
-      toggleWalletModal: action,
-      setWalletModalVisible: action,
-      networkModalVisible: observable,
-      toggleNetworkModal: action,
-      setNetworkModalVisible: action,
-      reset: action,
-    });
   }
 
   reset() {
@@ -26,19 +17,19 @@ export default class ModalStore {
     this.networkModalVisible = false;
   }
 
-  @action toggleWalletModal() {
+  toggleWalletModal() {
     this.walletModalVisible = !this.walletModalVisible;
   }
 
-  @action setWalletModalVisible(visible: boolean) {
+  setWalletModalVisible(visible: boolean) {
     this.walletModalVisible = visible;
   }
 
-  @action toggleNetworkModal() {
+  toggleNetworkModal() {
     this.networkModalVisible = !this.networkModalVisible;
   }
 
-  @action setNetworkModalVisible(visible: boolean) {
+  setNetworkModalVisible(visible: boolean) {
     this.networkModalVisible = visible;
   }
 }

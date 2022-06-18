@@ -1,4 +1,4 @@
-import Link from '../common/Link';
+import Link from '../Guilds/common/Link';
 import { transparentize } from 'polished';
 import styled from 'styled-components';
 

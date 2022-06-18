@@ -11,7 +11,7 @@ import {
   DecodedCall,
   Option,
   SupportedAction,
-} from 'old-components/Guilds/ActionsBuilder/types';
+} from 'Components/ActionsBuilder/types';
 import { ERC20_APPROVE_SIGNATURE, ERC20_TRANSFER_SIGNATURE } from 'utils';
 import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
