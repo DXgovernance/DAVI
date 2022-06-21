@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ReactDOM from 'react-dom';
 
-import { Button } from '../common';
+import { Button } from '../Guilds/common/Button';
 
 import { ReactComponent as Close } from '../../assets/images/x.svg';
 

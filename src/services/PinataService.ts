@@ -12,19 +12,6 @@ export default class PinataService {
   defaultApiKey =
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI4MTJmMzIwZC1iOTA1LTQwOTgtYmViZC1jMjMwNzhlNDNmM2MiLCJlbWFpbCI6ImZsdWlkZHJvcDU2NDgyM0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwicGluX3BvbGljeSI6eyJyZWdpb25zIjpbeyJpZCI6Ik5ZQzEiLCJkZXNpcmVkUmVwbGljYXRpb25Db3VudCI6MX1dLCJ2ZXJzaW9uIjoxfSwibWZhX2VuYWJsZWQiOmZhbHNlfSwiYXV0aGVudGljYXRpb25UeXBlIjoic2NvcGVkS2V5Iiwic2NvcGVkS2V5S2V5IjoiYmFhMjllYjUxZWYzZWQyMDY4MWEiLCJzY29wZWRLZXlTZWNyZXQiOiI0OTIyYzQ2MThhYWZlNzZmNzhiNWQzNzU0NzY4MjBiNTk1MWM5MjdkZjFiNzY3ZGI3OWUzMGY5OTI3MDBmYTc5IiwiaWF0IjoxNjUyMTg4MjAyfQ.c8CpCVxvdknULzW6dJALyWgHD_DMq5167Nlb1KkXNRI';
 
-  async updatePinList() {
-    // const pinList = await this.getPinList();
-    const ipfsHashes = this.context.daoStore.daoCache.ipfsHashes;
-    // const alreadyPinned = pinList.data.rows;
-    for (let i = 0; i < ipfsHashes.length; i++) {
-      // if (alreadyPinned.indexOf(pinned => alreadyPinned.ipfs_pin_hash === ipfsHashes[i].hash) < 0) {
-      //   console.debug('[PINATA] Pinning:', ipfsHashes[i].hash);
-      // } else {
-      //   console.debug('[PINATA] Alpready pinned:', ipfsHashes[i].hash);
-      // }
-    }
-  }
-
   async isAuthenticated() {
     const pinataApiKey = this.context.configStore.getLocalConfig().pinata;
     try {

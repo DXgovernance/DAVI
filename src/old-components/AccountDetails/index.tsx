@@ -1,7 +1,7 @@
 import { useContext } from '../../contexts';
 import { getBlockchainLink } from '../../utils';
-import Copy from '../common/Copy';
-import Link from '../common/Link';
+import Copy from '../Guilds/common/Copy';
+import Link from '../Guilds/common/Link';
 import { injected } from 'provider/connectors';
 import styled from 'styled-components';
 

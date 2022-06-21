@@ -5,7 +5,7 @@ import useIPFSFile from '../ipfs/useIPFSFile';
 
 // TODO: Get the actual token registry hash
 const RICH_CONTRACT_DATA_REGISTRY =
-  'QmT9ZNjZ1JNDmnLQPkFYRGzXRTAHZXeue5QVRq4V6VmAk2';
+  'QmXzDJU14QbYREbaNaornE4QUJA5ANxmTg3zh9fCghmJFQ';
 
 export interface RichContractFunctionParam {
   type: string;

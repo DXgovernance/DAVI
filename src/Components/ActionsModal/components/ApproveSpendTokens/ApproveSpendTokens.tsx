@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { useWeb3React } from '@web3-react/core';
 import { BigNumber } from 'ethers';
@@ -24,11 +24,18 @@ import {
   Spacer,
 } from './ApproveSpendTokens.styled';
 
+export interface TokenSpendApproval {
+  amount: BigNumber;
+  token: string;
+}
+
 interface ApproveSpendTokensProps {
-  onConfirm: (args: { amount: BigNumber; token: string }) => void;
+  defaultValue?: TokenSpendApproval;
+  onConfirm: (args: TokenSpendApproval) => void;
 }
 
 const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
+  defaultValue,
   onConfirm,
 }) => {
   const { t } = useTranslation();
@@ -46,6 +53,13 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
   }, [tokens, token]);
 
   const { data: tokenInfo } = useERC20Info(token);
+
+  useEffect(() => {
+    if (defaultValue) {
+      setAmount(defaultValue.amount);
+      setToken(defaultValue.token);
+    }
+  }, [defaultValue]);
 
   const confirm = () => {
     if (!amount || !token) return; // TODO: validate

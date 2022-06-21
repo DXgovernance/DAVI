@@ -5,7 +5,7 @@ const arbitrum = require('../configs/arbitrum/config.json');
 const arbitrumTestnet = require('../configs/arbitrumTestnet/config.json');
 const mainnet = require('../configs/mainnet/config.json');
 const xdai = require('../configs/xdai/config.json');
-const rinkeby = require('../configs/rinkeby/config.json');
+const goerli = require('../configs/goerli/config.json');
 const localhost = require('../configs/localhost/config.json');
 
 const appConfig: AppConfig = {
@@ -13,7 +13,7 @@ const appConfig: AppConfig = {
   arbitrumTestnet,
   mainnet,
   xdai,
-  rinkeby,
+  goerli,
   localhost,
 };
 

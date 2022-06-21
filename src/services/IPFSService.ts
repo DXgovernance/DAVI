@@ -93,12 +93,12 @@ export default class IPFSService {
     const bodyTextToUpload = JSON.stringify({
       description,
       title,
-      tags: [...tags, 'dxvote'],
+      tags: [...tags, 'davi'],
       url: '',
     });
 
     const hash = await this.add(bodyTextToUpload);
-    localStorage.setItem('dxvote-newProposal-hash', hash);
+    localStorage.setItem('davi-newProposal-hash', hash);
 
     if (pinataService.auth) {
       const pinataPin = await pinataService.pin(hash);

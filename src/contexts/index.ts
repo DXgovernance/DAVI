@@ -1,29 +1,18 @@
 import React from 'react';
 
-import ABIService from '../services/ABIService';
-import DaoService from '../services/DaoService';
-import EventsService from '../services/EventsService';
 import IPFSService from '../services/IPFSService';
 import PinataService from '../services/PinataService';
-import EtherscanService from '../services/EtherscanService';
 import CoingeckoService from '../services/CoingeckoService';
 import InfuraService from '../services/InfuraService';
 import PoktService from '../services/PoktService';
 import AlchemyService from '../services/AlchemyService';
 import CustomRpcService from '../services/CustomRpcService';
 import ENSService from '../services/ENSService';
-import TokenVestingService from '../services/TokenVestingService';
 import SubgraphService from '../services/SubgraphService';
-import OrbitDBService from '../services/OrbitDBService';
 
 import ProviderStore from '../stores/Provider';
-import TransactionStore from '../stores/Transaction';
-import ModalStore from '../stores/Modal';
 import ConfigStore from '../stores/ConfigStore';
-import DaoStore from '../stores/DaoStore';
-import BlockchainStore from '../stores/BlockchainStore';
-import NotificationStore from '../stores/NotificationStore';
-import CacheService from 'services/CacheService';
+import ModalStore from '../stores/Modal';
 
 /*
 https://reactjs.org/docs/context.html#reactcreatecontext
@@ -40,64 +29,38 @@ Stores: Context that are used to store data and expose them all around the dapp.
 
 export default class RootContext {
   providerStore: ProviderStore;
-  transactionStore: TransactionStore;
-  modalStore: ModalStore;
   configStore: ConfigStore;
-  daoStore: DaoStore;
-  notificationStore: NotificationStore;
-  blockchainStore: BlockchainStore;
+  modalStore: ModalStore;
 
-  abiService: ABIService;
-  daoService: DaoService;
-  eventsService: EventsService;
   ipfsService: IPFSService;
   pinataService: PinataService;
-  etherscanService: EtherscanService;
   coingeckoService: CoingeckoService;
   infuraService: InfuraService;
   poktService: PoktService;
   alchemyService: AlchemyService;
   customRpcService: CustomRpcService;
   ensService: ENSService;
-  tokenVestingService: TokenVestingService;
   subgraphService: SubgraphService;
-  orbitDBService: OrbitDBService;
-  cacheService: CacheService;
 
   constructor() {
     this.providerStore = new ProviderStore(this);
-    this.transactionStore = new TransactionStore(this);
-    this.modalStore = new ModalStore(this);
     this.configStore = new ConfigStore(this);
-    this.daoStore = new DaoStore(this);
-    this.notificationStore = new NotificationStore(this);
-    this.blockchainStore = new BlockchainStore(this);
+    this.modalStore = new ModalStore(this);
 
-    this.abiService = new ABIService(this);
-    this.eventsService = new EventsService(this);
-    this.daoService = new DaoService(this);
     this.ipfsService = new IPFSService(this);
     this.pinataService = new PinataService(this);
-    this.etherscanService = new EtherscanService(this);
     this.coingeckoService = new CoingeckoService(this);
     this.infuraService = new InfuraService(this);
     this.poktService = new PoktService(this);
     this.alchemyService = new AlchemyService(this);
     this.customRpcService = new CustomRpcService(this);
     this.ensService = new ENSService(this);
-    this.tokenVestingService = new TokenVestingService(this);
     this.subgraphService = new SubgraphService(this);
-    this.orbitDBService = new OrbitDBService(this);
-    this.cacheService = new CacheService(this);
   }
 
   reset() {
     this.configStore.reset();
-    this.notificationStore.reset();
-    this.transactionStore.reset();
     this.modalStore.reset();
-    this.blockchainStore.reset();
-    this.daoStore.reset();
   }
 }
 

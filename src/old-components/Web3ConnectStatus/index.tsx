@@ -1,8 +1,7 @@
 import { useContext } from '../../contexts';
 import { toCamelCaseString } from '../../utils';
-import { Box } from '../common';
-import BlockchainLink from '../common/BlockchainLink';
-import { observer } from 'mobx-react';
+import { Box } from '../Guilds/common/Box';
+import BlockchainLink from '../Guilds/common/BlockchainLink';
 import NetworkModal from 'old-components/NetworkModal';
 import WalletModal from 'old-components/WalletModal';
 import { getChains, injected, isChainIdSupported } from 'provider/connectors';
@@ -49,7 +48,7 @@ const ChainButton = styled(AccountButton)`
   font-size: 14px;
 `;
 
-const Web3ConnectStatus = observer(props => {
+const Web3ConnectStatus = props => {
   const {
     context: { modalStore, providerStore, configStore },
   } = useContext();
@@ -153,6 +152,6 @@ const Web3ConnectStatus = observer(props => {
       <NetworkModal />
     </>
   );
-});
+};
 
 export default Web3ConnectStatus;

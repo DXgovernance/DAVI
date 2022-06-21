@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { BigNumber } from 'ethers';
-import { SupportedAction } from 'old-components/Guilds/ActionsBuilder/types';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useDecodedCall } from './useDecodedCall';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
