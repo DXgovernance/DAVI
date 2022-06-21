@@ -200,7 +200,7 @@ export const useDecodedCall = (call: Call) => {
       decodeCall(call, contracts, chainId).then(decodedData =>
         setDecodedCall(decodedData)
       );
-    } else {
+    } else if (!call) {
       setDecodedCall(null);
     }
     return () => {
