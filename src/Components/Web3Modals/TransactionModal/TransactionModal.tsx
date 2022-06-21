@@ -2,7 +2,7 @@ import { getChains } from 'provider/connectors';
 import { getBlockchainLink } from 'utils';
 import { Circle, Flex } from 'Components/Primitives/Layout';
 import { ContainerText } from 'Components/Primitives/Layout/Text';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import { useWeb3React } from '@web3-react/core';
 import PendingCircle from 'old-components/Guilds/common/PendingCircle';
 import { useMemo } from 'react';

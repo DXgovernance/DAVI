@@ -4,26 +4,26 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
 <body>
   <div>
     <div
-      class="sc-kEjbQP bzazPo"
+      class="sc-jUEmfL dqHmtS"
     />
     <div
-      class="sc-jrAFXE llhtMl"
+      class="sc-dacGJm cfBEgF"
     >
       <div
-        class="sc-iqHYmW szzQD"
+        class="sc-jQbJRc jmpEnk"
       >
         
          
         <div
-          class="sc-crrszt cBSLGO"
+          class="sc-fvhFOF cENDtL"
         >
           <h2
-            class="sc-jSgvzq sc-bqyKOL cRjjSL jifZfj"
+            class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
           >
             Stake Mock Token tokens
           </h2>
           <svg
-            class="sc-kstqJO hzSxOY"
+            class="sc-gsxoIA crhTvN"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -49,45 +49,45 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
           </svg>
         </div>
         <div
-          class="sc-fodVek lfYhYq"
+          class="sc-eGCaLh fVNRqd"
         >
           <div
-            class="sc-fKFxtB hlGRna"
+            class="sc-euMpEg hnKhQM"
             data-testid="stake-tokens-modal"
           >
             <div
-              class="sc-bBXrwG liTHlb"
+              class="sc-fHuLxr hTPwrw"
             >
               <img
                 alt="DXdao Logo"
-                class="sc-iwyWTf fAYefQ"
+                class="sc-dtTHTy hoSZr"
                 src="dxdao-icon.svg"
               />
               <h2
-                class="sc-jSgvzq sc-cxFLGX cRjjSL bEXoRt"
+                class="sc-kstqJO sc-dkIXZx gWTdRY eTbmMf"
               >
                 mockGuildName
               </h2>
             </div>
             <div
-              class="sc-lmoMya lkEShk"
+              class="sc-XhUvE ixQcEd"
             >
               a few seconds staking period
             </div>
             <div
-              class="sc-iJuVqt gWruih"
+              class="sc-ikPAEB eqppyM"
             >
               <div
-                class="sc-giImIA bXFJC"
+                class="sc-tYqdw dlouVz"
               >
                 <span
-                  class="sc-ezredP jfguEc"
+                  class="sc-biBsmb cnIXBN"
                 >
                   balance
                   :
                 </span>
                 <span
-                  class="sc-bYEvvW kyHhUX"
+                  class="sc-eHfRjS dKwMWW"
                 >
                   0
                    
@@ -95,18 +95,18 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                 </span>
               </div>
               <div
-                class="sc-giImIA bXFJC"
+                class="sc-tYqdw dlouVz"
               >
                 <div
-                  class="sc-dmlqKv EErVo"
+                  class="sc-dIUeWJ gQcXkl"
                 >
                   <div
-                    class="sc-kfzBvY bULhKJ"
+                    class="sc-hHfuMS bScybG"
                   />
                   <input
                     autocomplete="off"
                     autocorrect="off"
-                    class="sc-hHfuMS vHHvv sc-iktFfs jHQtuR"
+                    class="sc-idOiZg jelFGI sc-kYrlTI jYlBSF"
                     data-testid="stake-amount-input"
                     inputmode="decimal"
                     maxlength="79"
@@ -118,7 +118,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                     value="0.0"
                   />
                   <div
-                    class="sc-kfzBvY hldwzK"
+                    class="sc-hHfuMS jNxMeF"
                   />
                 </div>
                 <button
@@ -130,15 +130,15 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
               </div>
             </div>
             <div
-              class="sc-giImIA bXFJC"
+              class="sc-tYqdw dlouVz"
             >
               <span
-                class="sc-ezredP jfguEc"
+                class="sc-biBsmb cnIXBN"
               >
                 balance
               </span>
               <span
-                class="sc-bYEvvW kyHhUX"
+                class="sc-eHfRjS dKwMWW"
               >
                 0
                  
@@ -146,35 +146,35 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
               </span>
             </div>
             <div
-              class="sc-giImIA bXFJC"
+              class="sc-tYqdw dlouVz"
             >
               <span
-                class="sc-ezredP jfguEc"
+                class="sc-biBsmb cnIXBN"
               >
                 yourVotingPower
               </span>
               <span
-                class="sc-bYEvvW kyHhUX"
+                class="sc-eHfRjS dKwMWW"
               >
                 -
               </span>
             </div>
             <div
-              class="sc-giImIA bXFJC"
+              class="sc-tYqdw dlouVz"
             >
               <span
-                class="sc-ezredP jfguEc"
+                class="sc-biBsmb cnIXBN"
               >
                 unlockDate
               </span>
               <span
-                class="sc-bYEvvW kyHhUX"
+                class="sc-eHfRjS dKwMWW"
               >
                 -
               </span>
             </div>
             <button
-              class="sc-dlfnuX sc-jJEKmz dEJhZx igikKC"
+              class="sc-dlfnuX sc-xyEDr dEJhZx dNQpXJ"
               data-testid="lock-token-spending"
               disabled=""
             >

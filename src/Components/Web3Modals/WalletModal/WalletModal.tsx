@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { usePrevious } from 'utils';
 import { injected, getWallets, isChainIdSupported } from 'provider/connectors';
 import { useRpcUrls } from 'provider/providerHooks';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import { Button } from 'old-components/Guilds/common/Button';
 import { useTransactions } from '../../../contexts/Guilds';
 import { Divider } from 'old-components/Guilds/common/Divider';

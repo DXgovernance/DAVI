@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useRpcUrls } from 'provider/providerHooks';
 import { getChains } from 'provider/connectors';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
 import { getChainIcon } from 'utils';
 import { Option } from '../components';

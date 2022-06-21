@@ -7,7 +7,7 @@ import {
   ConfirmButton,
   TextContainer,
 } from './ConfirmRemoveActionModal.styled';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 

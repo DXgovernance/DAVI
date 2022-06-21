@@ -6,26 +6,26 @@ exports[`WalletModal Should match snapshot 1`] = `
     data-testid="wallet-modal"
   >
     <div
-      class="sc-pGacB doHKro"
+      class="sc-aemIz iegKhJ"
     />
     <div
-      class="sc-fubCzh jCETGP"
+      class="sc-jHVedQ jaSA-db"
     >
       <div
-        class="sc-jrAFXE coyoLG"
+        class="sc-jONnzC jFaGea"
       >
         
          
         <div
-          class="sc-kEjbQP UrNhf"
+          class="sc-hlTwrV hTyPNj"
         >
           <h2
-            class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
+            class="sc-dQoVA sc-bTvSiT fvNDvx iJsJQz"
           >
             account
           </h2>
           <svg
-            class="sc-dQoVA bcpZXt"
+            class="sc-kIeSZW ktHRrf"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -51,25 +51,25 @@ exports[`WalletModal Should match snapshot 1`] = `
           </svg>
         </div>
         <div
-          class="sc-kstqJO lobtyv"
+          class="sc-dtwnrN gnLHYk"
         >
           <div
-            class="sc-bZSRNg dtatWi"
+            class="sc-GTVdH QKZBv"
           >
             <a
               href="https://metamask.io/"
             >
               <button
-                class="sc-bdfBQB sc-hHfuMS cAORUT iwPeli"
+                class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
                 data-testid=""
               >
                 <div
-                  class="sc-dmlqKv boBMou"
+                  class="sc-dOSRxR bvcoLH"
                 >
                   installMetamask
                 </div>
                 <div
-                  class="sc-kfzBvY ikNTFk"
+                  class="sc-bBrNTY dkBKFH"
                 >
                   <img
                     alt="Icon"
@@ -79,16 +79,16 @@ exports[`WalletModal Should match snapshot 1`] = `
               </button>
             </a>
             <button
-              class="sc-bdfBQB sc-hHfuMS cAORUT iwPeli"
+              class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
               data-testid="wallet-option-WalletConnect"
             >
               <div
-                class="sc-dmlqKv boBMou"
+                class="sc-dOSRxR bvcoLH"
               >
                 WalletConnect
               </div>
               <div
-                class="sc-kfzBvY ikNTFk"
+                class="sc-bBrNTY dkBKFH"
               >
                 <img
                   alt="Icon"

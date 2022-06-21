@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { useHistory } from 'react-router-dom';
-import { Modal } from '../Modal';
+import { Modal } from 'Components';
 import Option from './Option';
 import { useContext } from 'contexts';
 import { useRpcUrls } from 'provider/providerHooks';

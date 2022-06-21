@@ -14,7 +14,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
       >
         castVote
         <button
-          class="sc-bkzYnD sc-cOajNj hkwzGu jSiXcp"
+          class="sc-bkzYnD sc-fHYyUA hkwzGu jbxuJc"
         >
           DXD
         </button>
@@ -27,19 +27,19 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
         class="sc-bdfBQB sc-jrAFXE bmhbKs ldFlnI"
       >
         <div
-          class="sc-Azgjq jhohpQ"
+          class="sc-gyUflj cxRkXw"
         >
           <div
-            class="sc-cTkxnA jaCKiw"
+            class="sc-cbDFGl bbFDdj"
           >
             <div
-              class="sc-jNMcJZ cJxFZd"
+              class="sc-hjWSTT jAAsWZ"
             >
               <span
-                class="sc-dOSRxR dbxHLi"
+                class="sc-gVgoRu ivoywQ"
               >
                 <span
-                  class="sc-eggMyH jMNmzk"
+                  class="sc-httYss fzsMGw"
                   color="#295FF4"
                   size="8"
                 />
@@ -51,16 +51,16 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="sc-cTkxnA jaCKiw"
+            class="sc-cbDFGl bbFDdj"
           >
             <div
-              class="sc-jNMcJZ cJxFZd"
+              class="sc-hjWSTT jAAsWZ"
             >
               <span
-                class="sc-dOSRxR dbxHLi"
+                class="sc-gVgoRu ivoywQ"
               >
                 <span
-                  class="sc-eggMyH cxDvHI"
+                  class="sc-httYss gqziMw"
                   color="#E75C5C"
                   size="8"
                 />
@@ -120,25 +120,25 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          class="sc-bBrNTY hzZqSq"
+          class="sc-fWPcWZ gTcqjQ"
         >
           <div
-            class="sc-khAkCZ hApWKW"
+            class="sc-gkdBiK kgDTai"
           >
             options
           </div>
           <button
-            class="sc-bkzYnD sc-hTZgZg sc-jgHCSr hkwzGu fWwfTG fThMbI"
+            class="sc-bkzYnD sc-flMpop sc-eWVLlQ hkwzGu fRhKxu dCmehy"
           >
             Yes
           </button>
           <button
-            class="sc-bkzYnD sc-hTZgZg sc-jgHCSr hkwzGu fWwfTG fThMbI"
+            class="sc-bkzYnD sc-flMpop sc-eWVLlQ hkwzGu fRhKxu dCmehy"
           >
             No
           </button>
           <button
-            class="sc-bkzYnD sc-hTZgZg gLdLhY fWwfTG"
+            class="sc-bkzYnD sc-flMpop gLdLhY fRhKxu"
             disabled=""
           >
             vote
