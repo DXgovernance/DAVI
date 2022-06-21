@@ -4,7 +4,6 @@ import { mockStakeTokensModalProps } from './fixture';
 
 jest.mock('ipfs', () => jest.fn());
 jest.mock('cids', () => jest.fn());
-jest.mock('orbit-db', () => jest.fn());
 jest.mock('ipfs-only-hash', () => jest.fn());
 
 describe('StakeTokensModal', () => {
