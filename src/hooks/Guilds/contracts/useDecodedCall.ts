@@ -3,8 +3,8 @@ import {
   RichContractData,
   useRichContractRegistry,
 } from './useRichContractRegistry';
-import ERC20ABI from '../../../abis/ERC20.json';
-import ERC20Guild from '../../../contracts/ERC20Guild.json';
+import ERC20ABI from 'abis/ERC20.json';
+import ERC20Guild from 'contracts/ERC20Guild.json';
 import { useWeb3React } from '@web3-react/core';
 import {
   Call,
@@ -17,9 +17,39 @@ import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 import Web3 from 'web3';
 const web3 = new Web3();
-const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature(
-  'setPermission(address,address,address,bytes4,uint256,bool)'
-);
+const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature({
+  inputs: [
+    {
+      internalType: 'address[]',
+      name: 'asset',
+      type: 'address[]',
+    },
+    {
+      internalType: 'address[]',
+      name: 'to',
+      type: 'address[]',
+    },
+    {
+      internalType: 'bytes4[]',
+      name: 'functionSignature',
+      type: 'bytes4[]',
+    },
+    {
+      internalType: 'uint256[]',
+      name: 'valueAllowed',
+      type: 'uint256[]',
+    },
+    {
+      internalType: 'bool[]',
+      name: 'allowance',
+      type: 'bool[]',
+    },
+  ],
+  name: 'setPermission',
+  outputs: [],
+  stateMutability: 'nonpayable',
+  type: 'function',
+});
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -170,7 +200,7 @@ export const useDecodedCall = (call: Call) => {
       decodeCall(call, contracts, chainId).then(decodedData =>
         setDecodedCall(decodedData)
       );
-    } else {
+    } else if (!call) {
       setDecodedCall(null);
     }
     return () => {

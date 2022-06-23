@@ -69,7 +69,7 @@ const Filter = () => {
             <Button
               variant="secondary"
               onClick={() => history.push(location.pathname + '/proposalType')}
-              data-testId="create-proposal-button"
+              data-testid="create-proposal-button"
             >
               {t('createProposal')}
             </Button>

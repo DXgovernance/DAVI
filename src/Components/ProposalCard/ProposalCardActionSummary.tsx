@@ -33,7 +33,7 @@ const ProposalCardActionSummary: React.FC<ProposalCardActionSummaryProps> = ({
         const InfoLine = getInfoLineView(action?.decodedCall?.callType);
 
         return !!InfoLine ? (
-          <BorderedIconDetailWrapper>
+          <BorderedIconDetailWrapper key={action.id}>
             <InfoLine
               decodedCall={action?.decodedCall}
               approveSpendTokens={action?.approval}

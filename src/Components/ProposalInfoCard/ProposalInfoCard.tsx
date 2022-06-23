@@ -27,7 +27,7 @@ const ProposalInfoCard: React.FC<ProposalInfoCardProps> = ({
       <SidebarCardContent>
         <InfoDetail>
           <span>{t('proposalInfoCard.consensusSystem')}</span>
-          <InfoDetailMuted>{t('guilds.guilds_one')}</InfoDetailMuted>
+          <InfoDetailMuted>{t('guilds.guild')}</InfoDetailMuted>
         </InfoDetail>
         <InfoDetail>
           <span>{t('proposalInfoCard.proposalDuration')}</span>

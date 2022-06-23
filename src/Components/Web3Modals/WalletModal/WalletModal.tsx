@@ -210,7 +210,10 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
                 </TransactionsListHeading>
                 <Divider />
                 {recentTransactions?.map(transaction => (
-                  <Transaction transaction={transaction} />
+                  <Transaction
+                    transaction={transaction}
+                    key={transaction.hash}
+                  />
                 ))}
                 {recentTransactions?.length > 0 && (
                   <ButtonContainer>

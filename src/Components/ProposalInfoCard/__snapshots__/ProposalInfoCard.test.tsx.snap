@@ -30,7 +30,7 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
           <span
             class="sc-jSgvzq bJbUXH"
           >
-            guilds.guilds_one
+            guilds.guild
           </span>
         </div>
         <div
@@ -150,7 +150,7 @@ exports[`ProposalInfoCard Should render will full parameters 1`] = `
           <span
             class="sc-jSgvzq bJbUXH"
           >
-            guilds.guilds_one
+            guilds.guild
           </span>
         </div>
         <div

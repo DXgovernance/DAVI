@@ -33,6 +33,7 @@ const ContractActionsList: React.FC<ContractActionsListProps> = ({
           <ActionsButton
             vertical
             onClick={() => onSelect(contractFunction.functionName)}
+            key={contractFunction.functionName}
           >
             <ButtonLabel>{contractFunction.title}</ButtonLabel>
             <ButtonDetail vertical>
