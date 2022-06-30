@@ -3,15 +3,19 @@ import { Box } from 'Components/Primitives/Layout';
 import { Heading } from 'old-components/Guilds/common/Typography';
 
 // TODO: base these components on a generic Card component
-export const CardWrapper = styled(Box)`
+export const CardWrapper = styled(Box)<{ disabled?: boolean }>`
   border: 1px solid ${({ theme }) => theme.colors.muted};
   border-radius: ${({ theme }) => theme.radii.curved};
   margin-bottom: 1rem;
   padding: 1rem;
   color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+
   &:hover {
-    border-color: ${({ theme }) => theme.colors.border.hover};
-    color: ${({ theme }) => theme.colors.text};
+    ${({ theme, disabled }) =>
+      disabled
+        ? `cursor: default;`
+        : `border-color: ${theme.colors.border.hover};
+          color: ${theme.colors.text};`}
   }
 `;
 
