@@ -17,9 +17,7 @@ async function main() {
   const GuildRegistry = await hre.artifacts.require('GuildRegistry');
   const ERC20Guild = await hre.artifacts.require('ERC20Guild');
   const ERC20SnapshotRep = await hre.artifacts.require('ERC20SnapshotRep');
-  const EnforcedBinaryGuild = await hre.artifacts.require(
-    'EnforcedBinaryGuild'
-  );
+
   const accounts = await web3.eth.getAccounts();
 
   const deployconfig = {
@@ -272,7 +270,7 @@ async function main() {
       },
       {
         token: 'SWPR',
-        contractName: 'EnforcedBinaryGuild',
+        contractName: 'ERC20GuildUpgradeable',
         name: 'SWPRGuild',
         proposalTime: moment.duration(3, 'minutes').asSeconds(),
         timeForExecution: moment.duration(2, 'minutes').asSeconds(),
@@ -842,7 +840,7 @@ async function main() {
         guildName: 'SWPRGuild',
         to: ['SWPRGuild'],
         callData: [
-          new web3.eth.Contract(EnforcedBinaryGuild.abi).methods
+          new web3.eth.Contract(ERC20Guild.abi).methods
             .setPermission(
               [ZERO_ADDRESS],
               [ANY_ADDRESS],
@@ -1013,7 +1011,7 @@ async function main() {
       address: networkContracts.addresses.DXDGuild,
     });
     await hre.ethernal.push({
-      name: 'EnforcedBinaryGuild',
+      name: 'ERC20',
       address: networkContracts.addresses.SWPRGuild,
     });
     await hre.ethernal.push({
