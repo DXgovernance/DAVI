@@ -9,7 +9,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
     href="/testUrl"
   >
     <div
-      class="sc-iqHYmW sc-flMpop fkFZia fhkIyA"
+      class="sc-iqHYmW sc-flMpop fkFZia cbiNNm"
     >
       <div
         class="sc-iqHYmW sc-eWVLlQ fkFZia fKXacY"
@@ -175,7 +175,8 @@ exports[`ProposalCard ProposalCard loading 1`] = `
     href="/"
   >
     <div
-      class="sc-iqHYmW sc-flMpop fkFZia fhkIyA"
+      class="sc-iqHYmW sc-flMpop fkFZia jtJLDV"
+      disabled=""
     >
       <div
         class="sc-iqHYmW sc-eWVLlQ fkFZia fKXacY"

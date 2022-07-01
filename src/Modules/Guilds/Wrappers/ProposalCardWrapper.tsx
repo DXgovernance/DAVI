@@ -26,7 +26,9 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       proposal={{ ...proposal, id: proposalId }}
       ensAvatar={ensAvatar}
       votes={votes}
-      href={`/${chainName}/${guildId}/proposal/${proposalId}`}
+      href={
+        proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
+      }
       statusProps={{
         timeDetail: proposal?.timeDetail,
         status,
