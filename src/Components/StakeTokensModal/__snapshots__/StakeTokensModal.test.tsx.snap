@@ -4,79 +4,131 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
 <body>
   <div>
     <div
-      class="sc-jUEmfL dqHmtS"
-    />
-    <div
-      class="sc-dacGJm cfBEgF"
+      class="sc-jUEmfL dqHmtS backdropModal-78"
     >
       <div
-        class="sc-jQbJRc jmpEnk"
+        class="sc-dacGJm cfBEgF"
       >
-        
-         
         <div
-          class="sc-fvhFOF cENDtL"
+          class="sc-jQbJRc joteHf"
         >
-          <h2
-            class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
-          >
-            Stake Mock Token tokens
-          </h2>
-          <svg
-            class="sc-gsxoIA crhTvN"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-eGCaLh fVNRqd"
-        >
+          
+           
           <div
-            class="sc-euMpEg hnKhQM"
-            data-testid="stake-tokens-modal"
+            class="sc-fvhFOF cENDtL"
+          >
+            <h2
+              class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
+            >
+              Stake Mock Token tokens
+            </h2>
+            <svg
+              class="sc-gsxoIA crhTvN"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-eGCaLh fVNRqd"
           >
             <div
-              class="sc-fHuLxr hTPwrw"
+              class="sc-euMpEg hnKhQM"
+              data-testid="stake-tokens-modal"
             >
-              <img
-                alt="DXdao Logo"
-                class="sc-dtTHTy hoSZr"
-                src="dxdao-icon.svg"
-              />
-              <h2
-                class="sc-kstqJO sc-dkIXZx gWTdRY eTbmMf"
+              <div
+                class="sc-fHuLxr hTPwrw"
               >
-                mockGuildName
-              </h2>
-            </div>
-            <div
-              class="sc-XhUvE ixQcEd"
-            >
-              a few seconds staking period
-            </div>
-            <div
-              class="sc-ikPAEB eqppyM"
-            >
+                <img
+                  alt="DXdao Logo"
+                  class="sc-dtTHTy hoSZr"
+                  src="dxdao-icon.svg"
+                />
+                <h2
+                  class="sc-kstqJO sc-dkIXZx gWTdRY eTbmMf"
+                >
+                  mockGuildName
+                </h2>
+              </div>
+              <div
+                class="sc-XhUvE ixQcEd"
+              >
+                a few seconds staking period
+              </div>
+              <div
+                class="sc-ikPAEB eqppyM"
+              >
+                <div
+                  class="sc-tYqdw dlouVz"
+                >
+                  <span
+                    class="sc-biBsmb cnIXBN"
+                  >
+                    balance
+                    :
+                  </span>
+                  <span
+                    class="sc-eHfRjS dKwMWW"
+                  >
+                    0
+                     
+                    REP
+                  </span>
+                </div>
+                <div
+                  class="sc-tYqdw dlouVz"
+                >
+                  <div
+                    class="sc-dIUeWJ gQcXkl"
+                  >
+                    <div
+                      class="sc-hHfuMS bScybG"
+                    />
+                    <input
+                      autocomplete="off"
+                      autocorrect="off"
+                      class="sc-idOiZg jelFGI sc-kYrlTI jYlBSF"
+                      data-testid="stake-amount-input"
+                      inputmode="decimal"
+                      maxlength="79"
+                      minlength="1"
+                      pattern="^[0-9]*[.,]?[0-9]*$"
+                      placeholder="0.0"
+                      spellcheck="false"
+                      type="text"
+                      value="0.0"
+                    />
+                    <div
+                      class="sc-hHfuMS jNxMeF"
+                    />
+                  </div>
+                  <button
+                    class="sc-dlfnuX dEJhZx"
+                    data-testid="stake-amount-max-button"
+                  >
+                    max
+                  </button>
+                </div>
+              </div>
               <div
                 class="sc-tYqdw dlouVz"
               >
@@ -84,7 +136,6 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                   class="sc-biBsmb cnIXBN"
                 >
                   balance
-                  :
                 </span>
                 <span
                   class="sc-eHfRjS dKwMWW"
@@ -97,91 +148,41 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
               <div
                 class="sc-tYqdw dlouVz"
               >
-                <div
-                  class="sc-dIUeWJ gQcXkl"
+                <span
+                  class="sc-biBsmb cnIXBN"
                 >
-                  <div
-                    class="sc-hHfuMS bScybG"
-                  />
-                  <input
-                    autocomplete="off"
-                    autocorrect="off"
-                    class="sc-idOiZg jelFGI sc-kYrlTI jYlBSF"
-                    data-testid="stake-amount-input"
-                    inputmode="decimal"
-                    maxlength="79"
-                    minlength="1"
-                    pattern="^[0-9]*[.,]?[0-9]*$"
-                    placeholder="0.0"
-                    spellcheck="false"
-                    type="text"
-                    value="0.0"
-                  />
-                  <div
-                    class="sc-hHfuMS jNxMeF"
-                  />
-                </div>
-                <button
-                  class="sc-dlfnuX dEJhZx"
-                  data-testid="stake-amount-max-button"
+                  yourVotingPower
+                </span>
+                <span
+                  class="sc-eHfRjS dKwMWW"
                 >
-                  max
-                </button>
+                  -
+                </span>
               </div>
-            </div>
-            <div
-              class="sc-tYqdw dlouVz"
-            >
-              <span
-                class="sc-biBsmb cnIXBN"
+              <div
+                class="sc-tYqdw dlouVz"
               >
-                balance
-              </span>
-              <span
-                class="sc-eHfRjS dKwMWW"
+                <span
+                  class="sc-biBsmb cnIXBN"
+                >
+                  unlockDate
+                </span>
+                <span
+                  class="sc-eHfRjS dKwMWW"
+                >
+                  -
+                </span>
+              </div>
+              <button
+                class="sc-dlfnuX sc-xyEDr dEJhZx dNQpXJ"
+                data-testid="lock-token-spending"
+                disabled=""
               >
-                0
+                Lock
                  
                 REP
-              </span>
+              </button>
             </div>
-            <div
-              class="sc-tYqdw dlouVz"
-            >
-              <span
-                class="sc-biBsmb cnIXBN"
-              >
-                yourVotingPower
-              </span>
-              <span
-                class="sc-eHfRjS dKwMWW"
-              >
-                -
-              </span>
-            </div>
-            <div
-              class="sc-tYqdw dlouVz"
-            >
-              <span
-                class="sc-biBsmb cnIXBN"
-              >
-                unlockDate
-              </span>
-              <span
-                class="sc-eHfRjS dKwMWW"
-              >
-                -
-              </span>
-            </div>
-            <button
-              class="sc-dlfnuX sc-xyEDr dEJhZx dNQpXJ"
-              data-testid="lock-token-spending"
-              disabled=""
-            >
-              Lock
-               
-              REP
-            </button>
           </div>
         </div>
       </div>

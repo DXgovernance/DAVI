@@ -11,83 +11,84 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 <body>
   <div>
     <div
-      class="sc-jUEmfL dqHmtS"
-    />
-    <div
-      class="sc-dacGJm cfBEgF"
+      class="sc-jUEmfL dqHmtS backdropModal-55"
     >
       <div
-        class="sc-jQbJRc jmpEnk"
+        class="sc-dacGJm cfBEgF"
       >
-        
-         
         <div
-          class="sc-fvhFOF cENDtL"
+          class="sc-jQbJRc joteHf"
         >
+          
+           
           <div
-            class="sc-dQoVA sc-bsipwG fyXNmk jcnqAR"
+            class="sc-fvhFOF cENDtL"
           >
+            <div
+              class="sc-dQoVA sc-bsipwG fyXNmk jcnqAR"
+            >
+              <svg
+                class="sc-gInthZ eiqHSj"
+                fill="currentColor"
+                height="1em"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 512 512"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"
+                />
+              </svg>
+              <h2
+                class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
+              >
+                Generic Call
+              </h2>
+            </div>
             <svg
-              class="sc-gInthZ eiqHSj"
-              fill="currentColor"
+              class="sc-gsxoIA crhTvN"
+              fill="none"
               height="1em"
               stroke="currentColor"
-              stroke-width="0"
-              viewBox="0 0 512 512"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M217.9 256L345 129c9.4-9.4 9.4-24.6 0-33.9-9.4-9.4-24.6-9.3-34 0L167 239c-9.1 9.1-9.3 23.7-.7 33.1L310.9 417c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.4 9.4-24.6 0-33.9L217.9 256z"
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
               />
             </svg>
-            <h2
-              class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
-            >
-              Generic Call
-            </h2>
           </div>
-          <svg
-            class="sc-gsxoIA crhTvN"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-eGCaLh fVNRqd"
-        >
           <div
-            class="sc-gkdBiK gZJBIY"
-            data-testid="actions-modal-editor"
+            class="sc-eGCaLh fVNRqd"
           >
-            <div>
-              Generic Call Editor
-            </div>
-            <button
-              class="sc-dlfnuX sc-flMpop dEJhZx hyCbTi"
+            <div
+              class="sc-gkdBiK gZJBIY"
+              data-testid="actions-modal-editor"
             >
-              saveAction
-            </button>
+              <div>
+                Generic Call Editor
+              </div>
+              <button
+                class="sc-dlfnuX sc-flMpop dEJhZx hyCbTi"
+              >
+                saveAction
+              </button>
+            </div>
           </div>
         </div>
       </div>
