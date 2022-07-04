@@ -10,7 +10,7 @@ import {
   CancelButton,
   ConfirmButton,
 } from './VoteConfirmationModal.styled';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import React from 'react';
 import { VoteConfirmationModalProps } from '../../types';
 import { useTranslation } from 'react-i18next';

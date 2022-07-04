@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import { DURATION_LIMITS } from 'constants/Duration';
 import { useDuration } from 'hooks/Guilds/useDuration';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import { WarningInput } from './WarningInput';
 import {

@@ -15,7 +15,7 @@ import {
   DecodedCall,
   SupportedAction,
 } from 'Components/ActionsBuilder/types';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import {
   ContractActionsList,
   ApproveSpendTokens,

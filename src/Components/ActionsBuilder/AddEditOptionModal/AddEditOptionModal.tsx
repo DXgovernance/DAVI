@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout/Box';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import { Button } from 'old-components/Guilds/common/Button';
 import { Option } from '../types';
 import Input from 'old-components/Guilds/common/Form/Input';

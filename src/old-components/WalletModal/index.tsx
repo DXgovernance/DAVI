@@ -1,7 +1,7 @@
 import { useContext } from '../../contexts';
 import { isChainIdSupported } from '../../provider/connectors';
 import AccountDetails from '../AccountDetails';
-import { Modal } from '../Modal';
+import { Modal } from 'Components';
 import Link from '../Guilds/common/Link';
 import Option from './Option';
 import { useWeb3React } from '@web3-react/core';

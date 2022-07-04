@@ -4,28 +4,28 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-pGacB doHKro"
+      class="sc-kIeSZW jXVHIu"
     />
     <div
-      class="sc-fubCzh jCETGP"
+      class="sc-bTvSiT SdznJ"
     >
       <div
-        class="sc-jrAFXE coyoLG"
+        class="sc-hOqruk brMWlA"
       >
         
          
         <div
-          class="sc-kEjbQP UrNhf"
+          class="sc-dtwnrN bOjCed"
         >
           <h2
-            class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
+            class="sc-kstqJO sc-jUEmfL gWTdRY rnOac"
           >
             <div>
               switchNetwork
             </div>
           </h2>
           <svg
-            class="sc-dQoVA bcpZXt"
+            class="sc-jQbJRc eldqEA"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -51,31 +51,31 @@ exports[`NetworkModal Should match snapshot 1`] = `
           </svg>
         </div>
         <div
-          class="sc-kstqJO lobtyv"
+          class="sc-fbNZge bQGdmf"
         >
           <div
-            class="sc-jcVcSv cIOoqA"
+            class="sc-ctaXho gHfmlU"
           >
             <div
-              class="sc-iUuxjF laIObK"
+              class="sc-bsipwG hWdyDz"
             >
               <div
-                class="sc-bZSRNg bfqtpQ"
+                class="sc-dFJtaz lnjXvD"
               >
                 <div
-                  class="sc-iBaQBe kwsOSD"
+                  class="sc-gInthZ iSfbIF"
                 >
                   <button
-                    class="sc-bdfBQB sc-dIUeWJ cAORUT eWWNGz"
+                    class="sc-bdfBQB sc-jgHCSr cAORUT bZvjtI"
                     data-testid=""
                   >
                     <div
-                      class="sc-hHfuMS bSclpm"
+                      class="sc-gTgzoy bydeuT"
                     >
                       Ethereum Mainnet
                     </div>
                     <div
-                      class="sc-dmlqKv xyaYn"
+                      class="sc-laRQdt TJqlg"
                     >
                       <img
                         alt="Icon"
