@@ -4,7 +4,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
 <body>
   <div>
     <div
-      class="sc-jUEmfL dqHmtS backdropModal-78"
+      class="sc-jUEmfL dqHmtS backdropModal"
     >
       <div
         class="sc-dacGJm cfBEgF"

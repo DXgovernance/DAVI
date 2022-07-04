@@ -4,7 +4,7 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-kIeSZW jXVHIu backdropModal-172"
+      class="sc-kIeSZW jXVHIu backdropModal"
     >
       <div
         class="sc-bTvSiT SdznJ"

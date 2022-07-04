@@ -4,7 +4,7 @@ exports[`TokenPicker Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-jONnzC hUvaRT backdropModal-3"
+      class="sc-jONnzC hUvaRT backdropModal"
     >
       <div
         class="sc-aemIz fpuFHE"

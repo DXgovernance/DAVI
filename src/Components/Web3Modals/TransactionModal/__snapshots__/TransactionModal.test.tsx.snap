@@ -4,7 +4,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-dtwnrN dbGlES backdropModal-135"
+      class="sc-dtwnrN dbGlES backdropModal"
     >
       <div
         class="sc-hOqruk hmPtox"

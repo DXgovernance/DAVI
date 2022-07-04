@@ -6,7 +6,7 @@ exports[`WalletModal Should match snapshot 1`] = `
     data-testid="wallet-modal"
   >
     <div
-      class="sc-aemIz iegKhJ backdropModal-117"
+      class="sc-aemIz iegKhJ backdropModal"
     >
       <div
         class="sc-jHVedQ jaSA-db"
