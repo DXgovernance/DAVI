@@ -26,10 +26,10 @@ export const DURATION_LIMITS = {
 };
 
 export const DURATION_IN_SECONDS = {
-  second: 1, // 1
-  minute: 60, // 60
-  hour: 60 * 60, // 3600
-  day: 60 * 60 * 24, // 86.400
-  month: 60 * 60 * 24 * 31, // 2.678.400
-  year: 60 * 60 * 24 * 31 * 12, // 32.140.800
+  seconds: 1, // 1
+  minutes: 60, // 60
+  hours: 60 * 60, // 3600
+  days: 60 * 60 * 24, // 86.400
+  months: 60 * 60 * 24 * 30, // 2.592.000
+  years: 60 * 60 * 24 * 30 * 12, // 31.104.000
 };
