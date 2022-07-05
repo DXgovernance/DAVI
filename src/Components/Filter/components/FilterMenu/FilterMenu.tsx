@@ -3,6 +3,7 @@ import { isMobile, isDesktop } from 'react-device-detect';
 import { FiChevronDown, FiCheck, FiArrowLeft } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
+import { ProposalState } from 'types/types.guilds.d';
 import { useFilter } from 'contexts/Guilds/filters';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
 
@@ -74,15 +75,16 @@ const FilterMenu = () => {
             </DropdownHeader>
           )}
           <Menu>
-            <DropdownMenuItem onClick={() => onToggleState('a')}>
-              {t('state')} 1 {isStateSelected('a') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleState('b')}>
-              {t('state')} 2 {isStateSelected('b') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleState('c')}>
-              {t('state')} 3 {isStateSelected('c') && <FiCheck />}
-            </DropdownMenuItem>
+            {Object.values(ProposalState).map(state => {
+              return (
+                <DropdownMenuItem
+                  key={state}
+                  onClick={() => onToggleState(state)}
+                >
+                  {state} {isStateSelected(state) && <FiCheck />}
+                </DropdownMenuItem>
+              );
+            })}
           </Menu>
           {isDesktop && countStateSelected > 0 && (
             <FilterResetDesktop onClick={onResetState}>

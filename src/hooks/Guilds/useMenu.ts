@@ -30,12 +30,14 @@ export const useMenu = ({
     onResetState: () => setFilterState([]),
     isStateSelected: value => filterState.indexOf(value) > -1,
     countStateSelected: filterState.length,
+    filterState,
 
     //Type
     onToggleType: value => onToggleFilter(value, filterType, setFilterType),
     onResetType: () => setFilterType([]),
     isTypeSelected: value => filterType.indexOf(value) > -1,
     countTypeSelected: filterType.length,
+    filterType,
 
     //Currency
     onToggleCurrency: value =>
@@ -43,6 +45,7 @@ export const useMenu = ({
     onResetCurrency: () => setFilterCurrency([]),
     isCurrencySelected: value => filterCurrency.indexOf(value) > -1,
     countCurrencySelected: filterCurrency.length,
+    filterCurrency,
 
     totalFilters:
       filterState.length + filterType.length + filterCurrency.length,

@@ -9,9 +9,11 @@ import useProposalState from 'hooks/Guilds/useProposalState';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
+  match?: (proposal, status) => boolean;
 }
 const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,
+  match,
 }) => {
   const { guildId, chainName } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -21,22 +23,29 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);
 
   const status = useProposalState(proposal);
+
   return (
-    <ProposalCard
-      proposal={{ ...proposal, id: proposalId }}
-      ensAvatar={ensAvatar}
-      votes={votes}
-      href={
-        proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
-      }
-      statusProps={{
-        timeDetail: proposal?.timeDetail,
-        status,
-        endTime: proposal?.endTime,
-      }}
-      summaryActions={summaryActions}
-    />
+    match(proposal, status) && (
+      <ProposalCard
+        proposal={{ ...proposal, id: proposalId }}
+        ensAvatar={ensAvatar}
+        votes={votes}
+        href={
+          proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
+        }
+        statusProps={{
+          timeDetail: proposal?.timeDetail,
+          status,
+          endTime: proposal?.endTime,
+        }}
+        summaryActions={summaryActions}
+      />
+    )
   );
+};
+
+ProposalCardWrapper.defaultProps = {
+  match: () => true,
 };
 
 export default ProposalCardWrapper;

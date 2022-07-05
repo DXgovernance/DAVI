@@ -47,20 +47,32 @@ exports[`Filter Should match snapshot 1`] = `
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 1 
+                Active
+                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 2 
+                Executable
+                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 3 
+                Executed
+                 
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
+                Rejected
+                 
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
+                Failed
+                 
               </a>
             </div>
           </div>
