@@ -1,7 +1,10 @@
 import { useMemo, useState } from 'react';
 import { DURATION_IN_SECONDS } from 'constants/Duration';
 
-export const useDuration = (passedValue: number) => {
+export const useDuration = (
+  passedValue: number,
+  onChange: (value: number) => void
+) => {
   const [durationString, setDurationString] = useState('');
   const [durationObject, setDurationObject] = useState({
     years: 0,
@@ -65,29 +68,31 @@ export const useDuration = (passedValue: number) => {
     setDurationString(numbersToStringDuration);
   }, [durationObject]);
 
-  const handleConversion = (value: string) => {
-    if (!value) return 0;
-    return parseInt(value);
+  const increment = (key: string) => {
+    let newValue = passedValue;
+    newValue += DURATION_IN_SECONDS[key];
+    onChange(newValue);
   };
 
-  const increment = (key: string) =>
-    setDurationObject({
-      ...durationObject,
-      [key]: handleConversion(durationObject[key]) + 1,
-    });
-  const decrement = (key: string) =>
-    setDurationObject({
-      ...durationObject,
-      [key]: handleConversion(durationObject[key]) - 1,
-    });
+  const decrement = (key: string) => {
+    let newValue = passedValue;
+    if (newValue >= DURATION_IN_SECONDS[key]) {
+      newValue -= DURATION_IN_SECONDS[key];
+      onChange(newValue);
+    }
+  };
 
   // convert to number form string and then calculate
-  const handleChange = (e: string, value: string) => {
-    let formattedValue: number;
-    if (e === '') formattedValue = 0;
-    else formattedValue = parseInt(e);
+  const handleChange = (e: string, durationKey: string) => {
+    let previousValue =
+      durationObject[durationKey] * DURATION_IN_SECONDS[durationKey];
 
-    return setDurationObject({ ...durationObject, [value]: formattedValue });
+    let currentInputValue: number;
+    if (e === '') currentInputValue = 0;
+    else currentInputValue = parseInt(e) * DURATION_IN_SECONDS[durationKey];
+
+    let finalValue = passedValue - previousValue + currentInputValue;
+    onChange(finalValue);
   };
 
   let result = {

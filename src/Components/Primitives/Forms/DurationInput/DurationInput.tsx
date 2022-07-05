@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import { useDuration } from 'hooks/Guilds/useDuration';
 import { Modal } from 'Components';
@@ -13,28 +13,13 @@ import {
 } from './DurationInput.styled';
 import { DurationInputProps } from './types';
 import { useTranslation } from 'react-i18next';
-import { DURATION_IN_SECONDS } from 'constants/Duration';
 
 const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
   const { durationObject, durationString, handleChange, increment, decrement } =
-    useDuration(value);
+    useDuration(value, onChange);
 
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
-
-  useEffect(() => {
-    let totalDuration = 0;
-    totalDuration += durationObject.seconds * DURATION_IN_SECONDS.seconds;
-    totalDuration += durationObject.minutes * DURATION_IN_SECONDS.minutes;
-    totalDuration += durationObject.hours * DURATION_IN_SECONDS.hours;
-    totalDuration += durationObject.days * DURATION_IN_SECONDS.days;
-    totalDuration += durationObject.months * DURATION_IN_SECONDS.months;
-    totalDuration += durationObject.years * DURATION_IN_SECONDS.years;
-
-    onChange(totalDuration);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [durationObject]);
 
   return (
     <>
@@ -53,37 +38,37 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
       >
         <MainWrapper>
           <Container>
-            {Object.keys(durationObject).map((value, index) => {
-              const count = durationObject[value];
+            {Object.keys(durationObject).map((duration, index) => {
+              const count = durationObject[duration];
 
               return (
                 <Column key={index}>
                   <ColumnButton
-                    onClick={() => increment(value)}
+                    onClick={() => increment(duration)}
                     key={index}
-                    data-testid={`upper-limit-btn-${value}`}
-                    aria-label={`Increase ${value}`}
+                    data-testid={`upper-limit-btn-${duration}`}
+                    aria-label={`Increase ${duration}`}
                   >
                     <GoTriangleUp />
                   </ColumnButton>
 
                   <NumericalInput
                     value={count}
-                    onChange={e => handleChange(e, value)}
+                    onChange={e => handleChange(e, duration)}
                     textAlign="center"
-                    data-testid={value}
-                    id={value}
+                    data-testid={duration}
+                    id={duration}
                     muted={count === 0 ? true : false}
-                    aria-label={`Numerical input for ${value}`}
+                    aria-label={`Numerical input for ${duration}`}
                   />
                   <ColumnButton
-                    onClick={() => decrement(value)}
-                    data-testid={`lower-limit-btn-${value}`}
-                    aria-label={`Decrease ${value}`}
+                    onClick={() => decrement(duration)}
+                    data-testid={`lower-limit-btn-${duration}`}
+                    aria-label={`Decrease ${duration}`}
                   >
                     <GoTriangleDown />
                   </ColumnButton>
-                  {t(`duration.${value}`, { count })}
+                  {t(`duration.${duration}`, { count })}
                 </Column>
               );
             })}
