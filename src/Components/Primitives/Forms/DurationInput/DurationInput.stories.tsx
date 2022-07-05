@@ -14,7 +14,7 @@ export default {
 } as ComponentMeta<typeof DurationInput>;
 
 const StateWrapper = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(31104266);
 
   const onChange = e => setValue(e);
 

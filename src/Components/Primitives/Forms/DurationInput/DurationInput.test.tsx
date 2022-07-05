@@ -8,7 +8,13 @@ jest.mock('contexts/index', () => jest.fn());
 
 const StateWrapper = () => {
   const [value, setValue] = useState(0);
+  const onChange = e => setValue(e);
 
+  return <DurationInput value={value} onChange={onChange} />;
+};
+
+const WrapperWithValue = () => {
+  const [value, setValue] = useState(31104266);
   const onChange = e => setValue(e);
 
   return <DurationInput value={value} onChange={onChange} />;
@@ -73,24 +79,26 @@ describe('Duration Input', () => {
       expect(numericalInput).toHaveDisplayValue('5');
     });
 
-    it('should render a warning if value is higher than permitted', async () => {
-      const numericalInput = getByLabelText('Numerical input for seconds');
-      fireEvent.change(numericalInput, { target: { value: 61 } });
-
-      const warningMessage = getByLabelText('Warning message for seconds');
-      expect(warningMessage).toBeInTheDocument();
-    });
-
-    it('arrow down gets disabled if value cannot be decreased', () => {
-      const decreaseButton = getByLabelText('Decrease seconds');
-      expect(decreaseButton).toBeDisabled();
-    });
-
-    it('arrow up gets disabled if value cannot be increased', () => {
-      const numericalInput = getByLabelText('Numerical input for seconds');
-      fireEvent.change(numericalInput, { target: { value: 59 } });
+    it('should increment minutes if more than 59 seconds is clicked', () => {
+      const secondsInput = getByLabelText('Numerical input for seconds');
+      fireEvent.change(secondsInput, { target: { value: 59 } });
       const increaseButton = getByLabelText('Increase seconds');
-      expect(increaseButton).toBeDisabled();
+      fireEvent.click(increaseButton);
+
+      const minutesInput = getByLabelText('Numerical input for minutes');
+      expect(minutesInput).toHaveDisplayValue('1');
+      expect(secondsInput).toHaveDisplayValue('0');
+    });
+
+    it('should reduce minutes if less than 0 seconds is clicked', () => {
+      const minutesInput = getByLabelText('Numerical input for minutes');
+      fireEvent.change(minutesInput, { target: { value: 10 } });
+      const secondsInput = getByLabelText('Numerical input for seconds');
+      const decreaseButton = getByLabelText('Decrease seconds');
+      fireEvent.click(decreaseButton);
+
+      expect(minutesInput).toHaveDisplayValue('9');
+      expect(secondsInput).toHaveDisplayValue('59');
     });
 
     it('all values have a numerical input, and increase and decrease buttons', () => {
@@ -128,6 +136,19 @@ describe('Duration Input', () => {
       });
 
       expect(durationString).toHaveTextContent(textContent);
+    });
+  });
+
+  describe('Data parsing', () => {
+    it('Parses value correctly', () => {
+      let result = render(<WrapperWithValue />);
+
+      // Link methods to the DOM
+      getByLabelText = result.getByLabelText;
+      getAllByLabelText = result.getAllByLabelText;
+      getByText = result.getByText;
+      const durationString = getByText('1 year, 4 minutes and 26 seconds');
+      expect(durationString).toBeInTheDocument();
     });
   });
 });
