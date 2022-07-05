@@ -72,6 +72,13 @@ describe('Duration Input', () => {
       expect(numericalInput).toHaveDisplayValue('2');
     });
 
+    it('decrease button gets disabled if you cannot substract that duration', () => {
+      const secondsInput = getByLabelText('Numerical input for seconds');
+      fireEvent.change(secondsInput, { target: { value: 59 } });
+      const decreaseMinutesButton = getByLabelText('Decrease minutes');
+      expect(decreaseMinutesButton).toBeDisabled();
+    });
+
     it('input can be set manually', () => {
       const numericalInput = getByLabelText('Numerical input for seconds');
       fireEvent.change(numericalInput, { target: { value: 5 } });
