@@ -51,64 +51,7 @@ describe('Duration Input', () => {
       expect(durationString).toHaveTextContent('1 second');
     });
 
-    it('should increase value if user clicks the arrow up', () => {
-      const increaseButton = getByLabelText('Increase seconds');
-      fireEvent.click(increaseButton);
-
-      const numericalInput = getByLabelText('Numerical input for seconds');
-      expect(numericalInput).toHaveDisplayValue('1');
-    });
-
-    it('should decrease value if user clicks the arrow down', () => {
-      const increaseButton = getByLabelText('Increase seconds');
-      fireEvent.click(increaseButton);
-      fireEvent.click(increaseButton);
-      fireEvent.click(increaseButton);
-
-      const decreaseButton = getByLabelText('Decrease seconds');
-      fireEvent.click(decreaseButton);
-
-      const numericalInput = getByLabelText('Numerical input for seconds');
-      expect(numericalInput).toHaveDisplayValue('2');
-    });
-
-    it('decrease button gets disabled if you cannot substract that duration', () => {
-      const secondsInput = getByLabelText('Numerical input for seconds');
-      fireEvent.change(secondsInput, { target: { value: 59 } });
-      const decreaseMinutesButton = getByLabelText('Decrease minutes');
-      expect(decreaseMinutesButton).toBeDisabled();
-    });
-
-    it('input can be set manually', () => {
-      const numericalInput = getByLabelText('Numerical input for seconds');
-      fireEvent.change(numericalInput, { target: { value: 5 } });
-
-      expect(numericalInput).toHaveDisplayValue('5');
-    });
-
-    it('should increment minutes if more than 59 seconds is clicked', () => {
-      const secondsInput = getByLabelText('Numerical input for seconds');
-      fireEvent.change(secondsInput, { target: { value: 59 } });
-      const increaseButton = getByLabelText('Increase seconds');
-      fireEvent.click(increaseButton);
-
-      const minutesInput = getByLabelText('Numerical input for minutes');
-      expect(minutesInput).toHaveDisplayValue('1');
-      expect(secondsInput).toHaveDisplayValue('0');
-    });
-
-    it('should reduce minutes if less than 0 seconds is clicked', () => {
-      const minutesInput = getByLabelText('Numerical input for minutes');
-      fireEvent.change(minutesInput, { target: { value: 10 } });
-      const secondsInput = getByLabelText('Numerical input for seconds');
-      const decreaseButton = getByLabelText('Decrease seconds');
-      fireEvent.click(decreaseButton);
-
-      expect(minutesInput).toHaveDisplayValue('9');
-      expect(secondsInput).toHaveDisplayValue('59');
-    });
-
-    it('all values have a numerical input, and increase and decrease buttons', () => {
+    it('all values have a numerical input, increase and decrease buttons', () => {
       const numberOfTimePeriods = Object.keys(DURATION_LIMITS).length;
       const numberOfNumericalInputs = getAllByLabelText('Numerical input', {
         exact: false,
@@ -143,6 +86,73 @@ describe('Duration Input', () => {
       });
 
       expect(durationString).toHaveTextContent(textContent);
+    });
+
+    describe('Button interactions', () => {
+      it('should increase value if user clicks the arrow up', () => {
+        const increaseButton = getByLabelText('Increase seconds');
+        fireEvent.click(increaseButton);
+
+        const numericalInput = getByLabelText('Numerical input for seconds');
+        expect(numericalInput).toHaveDisplayValue('1');
+      });
+
+      it('should decrease value if user clicks the arrow down', () => {
+        const increaseButton = getByLabelText('Increase seconds');
+        fireEvent.click(increaseButton);
+        fireEvent.click(increaseButton);
+        fireEvent.click(increaseButton);
+
+        const decreaseButton = getByLabelText('Decrease seconds');
+        fireEvent.click(decreaseButton);
+
+        const numericalInput = getByLabelText('Numerical input for seconds');
+        expect(numericalInput).toHaveDisplayValue('2');
+      });
+
+      it('decrease button gets disabled if you cannot substract that duration', () => {
+        const secondsInput = getByLabelText('Numerical input for seconds');
+        fireEvent.change(secondsInput, { target: { value: 59 } });
+        const decreaseMinutesButton = getByLabelText('Decrease minutes');
+        expect(decreaseMinutesButton).toBeDisabled();
+      });
+
+      it('should increment minutes if more than 59 seconds is clicked', () => {
+        const secondsInput = getByLabelText('Numerical input for seconds');
+        fireEvent.change(secondsInput, { target: { value: 59 } });
+        const increaseButton = getByLabelText('Increase seconds');
+        fireEvent.click(increaseButton);
+
+        const minutesInput = getByLabelText('Numerical input for minutes');
+        expect(minutesInput).toHaveDisplayValue('1');
+        expect(secondsInput).toHaveDisplayValue('0');
+      });
+
+      it('should reduce minutes if less than 0 seconds is clicked', () => {
+        const minutesInput = getByLabelText('Numerical input for minutes');
+        fireEvent.change(minutesInput, { target: { value: 10 } });
+        const secondsInput = getByLabelText('Numerical input for seconds');
+        const decreaseButton = getByLabelText('Decrease seconds');
+        fireEvent.click(decreaseButton);
+
+        expect(minutesInput).toHaveDisplayValue('9');
+        expect(secondsInput).toHaveDisplayValue('59');
+      });
+    });
+
+    describe('Input field interactions', () => {
+      it('input can be set manually', () => {
+        const numericalInput = getByLabelText('Numerical input for seconds');
+        fireEvent.change(numericalInput, { target: { value: 5 } });
+
+        expect(numericalInput).toHaveDisplayValue('5');
+      });
+
+      it('cannot input negative values', () => {
+        const secondsInput = getByLabelText('Numerical input for seconds');
+        fireEvent.change(secondsInput, { target: { value: -1 } });
+        expect(secondsInput).toHaveDisplayValue('0');
+      });
     });
   });
 
