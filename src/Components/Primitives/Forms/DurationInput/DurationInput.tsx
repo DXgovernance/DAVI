@@ -16,8 +16,13 @@ import { useTranslation } from 'react-i18next';
 import { DURATION_IN_SECONDS } from 'constants/Duration';
 
 const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
-  const { durationObject, durationString, handleChange, increment, decrement } =
-    useDuration(value, onChange);
+  const {
+    durationObject,
+    durationString,
+    handleInputChange,
+    increment,
+    decrement,
+  } = useDuration(value, onChange);
 
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
@@ -44,38 +49,38 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
       >
         <MainWrapper>
           <Container>
-            {Object.keys(durationObject).map((duration, index) => {
-              const count = durationObject[duration];
+            {Object.keys(durationObject).map((durationKey, index) => {
+              const count = durationObject[durationKey];
 
               return (
                 <Column key={index}>
                   <ColumnButton
-                    onClick={() => increment(duration)}
+                    onClick={() => increment(durationKey)}
                     key={index}
-                    data-testid={`upper-limit-btn-${duration}`}
-                    aria-label={`Increase ${duration}`}
+                    data-testid={`upper-limit-btn-${durationKey}`}
+                    aria-label={`Increase ${durationKey}`}
                   >
                     <GoTriangleUp />
                   </ColumnButton>
 
                   <NumericalInput
                     value={count}
-                    onChange={e => handleChange(e, duration)}
+                    onChange={e => handleInputChange(e, durationKey)}
                     textAlign="center"
-                    data-testid={duration}
-                    id={duration}
+                    data-testid={durationKey}
+                    id={durationKey}
                     muted={count === 0 ? true : false}
-                    aria-label={`Numerical input for ${duration}`}
+                    aria-label={`Numerical input for ${durationKey}`}
                   />
                   <ColumnButton
-                    onClick={() => decrement(duration)}
-                    data-testid={`lower-limit-btn-${duration}`}
-                    aria-label={`Decrease ${duration}`}
-                    disabled={checkDisabledButton(duration)}
+                    onClick={() => decrement(durationKey)}
+                    data-testid={`lower-limit-btn-${durationKey}`}
+                    aria-label={`Decrease ${durationKey}`}
+                    disabled={checkDisabledButton(durationKey)}
                   >
                     <GoTriangleDown />
                   </ColumnButton>
-                  {t(`duration.${duration}`, { count })}
+                  {t(`duration.${durationKey}`, { count })}
                 </Column>
               );
             })}
