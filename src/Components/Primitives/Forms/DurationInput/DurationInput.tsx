@@ -6,8 +6,8 @@ import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import {
   MainWrapper,
   Column,
-  ColumnButton,
   Container,
+  ColumnButton,
   StyledButton,
   TransparentButton,
 } from './DurationInput.styled';
