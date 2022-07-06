@@ -20,7 +20,9 @@ import RepMintSummary from './RepMint/RepMintSummary';
 import SetPermissionsEditor from './SetPermissions/SetPermissionsEditor';
 import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
 import SetPermissionsSummary from './SetPermissions/SetPermissionsSummary';
-
+import UpdateENSNameEditor from './UpdateENSName/UpdateENSNameEditor';
+import UpdateENSNameSummary from './UpdateENSName/UpdateENSNameSummary';
+import UpdateENSNameInfoLine from './UpdateENSName/UpdateENSNameInfoLine';
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -70,6 +72,12 @@ export const supportedActions: Record<
     summaryView: SetPermissionsSummary,
     editor: SetPermissionsEditor,
   },
+  [SupportedAction.UPDATE_ENS_NAME]: {
+    title: 'Update ENS name',
+    infoLineView: UpdateENSNameInfoLine,
+    summaryView: UpdateENSNameSummary,
+    editor: UpdateENSNameEditor,
+  },
 };
 const ERC20Contract = new utils.Interface(ERC20ABI);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
@@ -118,6 +126,10 @@ export const defaultValues: Record<
         allowance: ['true'],
       },
     },
+  },
+  [SupportedAction.UPDATE_ENS_NAME]: {
+    contract: ERC20Contract,
+    decodedCall: {},
   },
 };
 

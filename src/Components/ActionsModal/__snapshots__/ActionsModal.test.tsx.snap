@@ -77,14 +77,14 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
           class="sc-eGCaLh fVNRqd"
         >
           <div
-            class="sc-gkdBiK gZJBIY"
+            class="sc-gyUflj jqsBBD"
             data-testid="actions-modal-editor"
           >
             <div>
               Generic Call Editor
             </div>
             <button
-              class="sc-dlfnuX sc-flMpop dEJhZx hyCbTi"
+              class="sc-dlfnuX sc-gkdBiK dEJhZx eruxYe"
             >
               saveAction
             </button>

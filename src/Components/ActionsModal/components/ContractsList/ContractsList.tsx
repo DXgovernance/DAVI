@@ -70,6 +70,16 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonLabel>
           </ActionsButton>
         ) : null}
+        <ActionsButton
+          onClick={() =>
+            onSupportedActionSelect(SupportedAction.UPDATE_ENS_NAME)
+          }
+        >
+          <ButtonLabel>
+            <StyledIcon src={Vector} />
+            {t('updateENSName')}
+          </ButtonLabel>
+        </ActionsButton>
       </SectionWrapper>
       <SectionWrapper>
         <SectionTitle>{t('externalContracts')}</SectionTitle>
