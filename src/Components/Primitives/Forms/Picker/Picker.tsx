@@ -1,4 +1,4 @@
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import { OptionWithId, PickerProps } from './types';
 import { MainWrapper, OptionList, SearchWrapper } from './Picker.styled';
 import { OptionListItem } from './OptionListItem';

@@ -11,24 +11,24 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 <body>
   <div>
     <div
-      class="sc-kfzBvY iEehCp"
+      class="sc-jQbJRc eKVfdl"
     />
     <div
-      class="sc-dmlqKv fgvpdm"
+      class="sc-jUEmfL bBKUIe"
     >
       <div
-        class="sc-fKFxtB bBUiJ"
+        class="sc-fvhFOF lcvipV"
       >
         
          
         <div
-          class="sc-bBXrwG CEcTy"
+          class="sc-fbNZge jLZtmu"
         >
           <div
-            class="sc-dQoVA sc-kLgnNl fyXNmk ia-doFB"
+            class="sc-dQoVA sc-gInthZ fyXNmk gzPIxH"
           >
             <svg
-              class="sc-iktFfs eRVgOk"
+              class="sc-euMpEg caWKAy"
               fill="currentColor"
               height="1em"
               stroke="currentColor"
@@ -42,13 +42,13 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
               />
             </svg>
             <h2
-              class="sc-kstqJO sc-cxFLGX gWTdRY eynPYz"
+              class="sc-kstqJO sc-gsxoIA gWTdRY hdFReu"
             >
               Generic Call
             </h2>
           </div>
           <svg
-            class="sc-lmoMya eeThf"
+            class="sc-bXDkGd hzVbso"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -74,7 +74,7 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
           </svg>
         </div>
         <div
-          class="sc-giImIA dFjTrB"
+          class="sc-ctaXho jxgTzA"
         >
           <div
             class="sc-gkdBiK gZJBIY"

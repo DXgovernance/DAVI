@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'old-components/Guilds/common/Modal';
+import { Modal } from 'Components';
 import { getChainIcon } from 'utils';
 import { Option } from '../components';
 import {

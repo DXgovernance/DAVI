@@ -1,4 +1,4 @@
-import { ModalProps } from 'old-components/Guilds/common/Modal';
+import { ModalProps } from 'Components/Primitives/Modal';
 
 export enum TransactionModalView {
   Confirm,

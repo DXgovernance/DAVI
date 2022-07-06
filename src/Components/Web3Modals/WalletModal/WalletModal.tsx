@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Modal } from 'Components';
 import {
   BackIcon,
   ButtonContainer,
@@ -21,7 +22,6 @@ import { getIcon } from 'provider/wallets';
 import { useTransactions } from 'contexts/Guilds';
 import { Divider } from 'old-components/Guilds/common/Divider';
 import { Button } from 'old-components/Guilds/common/Button';
-import { Modal } from 'old-components/Guilds/common/Modal';
 
 const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();

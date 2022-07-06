@@ -4,28 +4,28 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-pGacB doHKro"
+      class="sc-kIeSZW jXVHIu"
     />
     <div
-      class="sc-fubCzh jCETGP"
+      class="sc-bTvSiT SdznJ"
     >
       <div
-        class="sc-jrAFXE coyoLG"
+        class="sc-hOqruk brMWlA"
       >
         
          
         <div
-          class="sc-kEjbQP UrNhf"
+          class="sc-dtwnrN bOjCed"
         >
           <h2
-            class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
+            class="sc-kstqJO sc-jUEmfL gWTdRY rnOac"
           >
             <div>
               switchNetwork
             </div>
           </h2>
           <svg
-            class="sc-dQoVA bcpZXt"
+            class="sc-jQbJRc eldqEA"
             fill="none"
             height="1em"
             stroke="currentColor"
@@ -51,7 +51,7 @@ exports[`NetworkModal Should match snapshot 1`] = `
           </svg>
         </div>
         <div
-          class="sc-kstqJO lobtyv"
+          class="sc-fbNZge bQGdmf"
         >
           <div
             class="sc-bZSRNg gVERDF"

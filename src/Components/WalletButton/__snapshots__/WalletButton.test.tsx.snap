@@ -17,7 +17,7 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-ctaXho cAORUT hqMJhH rXBSM"
+    class="sc-bdfBQB sc-gsTEea sc-ctaXho cAORUT hqMJhH jgXNbk"
     type="submit"
   >
     <span
@@ -25,7 +25,7 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-lmoMya hZGubn bHRoPY"
+        class="sc-dlfnuX sc-hBEYId hZGubn cLydgE"
         data-testid="avatar"
         size="24"
         src="test"
