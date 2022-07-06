@@ -12,12 +12,10 @@ jest.mock('contexts/Guilds/filters', () => ({
       onResetState: jest.fn(),
       isStateSelected: jest.fn(),
       countStateSelected: jest.fn(),
-
       onToggleActionType: jest.fn(),
       onResetActionType: jest.fn(),
       isActionTypeSelected: jest.fn(),
       countActionTypeSelected: jest.fn(),
-      // filterActionTypes
       onToggleCurrency: jest.fn(),
       onResetCurrency: jest.fn(),
       isCurrencySelected: jest.fn(),
@@ -50,7 +48,7 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
 
 describe('Filter', () => {
   it('Should match snapshot', () => {
-    const { container } = render(<Filter onSearchChange={() => {}} />);
+    const { container } = render(<Filter />);
     expect(container).toMatchSnapshot();
   });
 });

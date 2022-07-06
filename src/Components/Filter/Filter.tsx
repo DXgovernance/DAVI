@@ -21,11 +21,11 @@ import {
   FilterBadge,
 } from './Filter.styled';
 
-const Filter = ({ onSearchChange }) => {
+const Filter = () => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
-  const { totalFilters } = useFilter();
+  const { totalFilters, searchQuery, setSearchQuery } = useFilter();
 
   const history = useHistory();
   const location = useLocation();
@@ -46,7 +46,7 @@ const Filter = ({ onSearchChange }) => {
     return false;
   }, [votingPower, guildConfig]);
   const [openSearchBar, setOpenSearchBar] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+
   return (
     <FilterContainer>
       <FilterRow>
@@ -84,7 +84,6 @@ const Filter = ({ onSearchChange }) => {
             value={searchQuery}
             onChange={e => {
               setSearchQuery(e.target.value);
-              onSearchChange(e.target.value);
             }}
             icon={<AiOutlineSearch size={24} />}
             placeholder={t('searchTitleEnsAddress')}

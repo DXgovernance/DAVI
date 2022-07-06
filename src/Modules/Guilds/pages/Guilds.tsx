@@ -5,11 +5,10 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useMemo } from 'react';
 import InView from 'react-intersection-observer';
 import styled from 'styled-components';
 import GuildSidebarWrapper from 'Modules/Guilds/Wrappers/GuildSidebarWrapper';
-import { useFilter } from 'contexts/Guilds/filters';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -38,21 +37,9 @@ const ProposalsList = styled(Box)`
 `;
 
 const GuildsPage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
-  const {
-    matchTitle,
-    matchCreatorAddress,
-    matchRecipientAddresses,
-    filterState,
-    countStateSelected,
-    countActionTypeSelected,
-    filterActionTypes,
-    countCurrencySelected,
-    filterCurrency,
-  } = useFilter();
 
   const filteredProposalIds = useMemo(() => {
     if (!proposalIds) return null;
@@ -76,39 +63,13 @@ const GuildsPage: React.FC = () => {
     );
   }
 
-  const match = (proposal, proposalState, summaryActions) => {
-    const matchState = countStateSelected
-      ? filterState.includes(proposalState)
-      : true;
-
-    const matchActionType = countActionTypeSelected
-      ? summaryActions?.some(action =>
-          filterActionTypes.includes(action?.decodedCall?.callType)
-        )
-      : true;
-
-    const matchCurrency = countCurrencySelected
-      ? summaryActions.some(action =>
-          filterCurrency.includes(action.decodedCall?.to)
-        )
-      : true;
-
-    const matchSearch = searchQuery
-      ? [matchTitle, matchCreatorAddress, matchRecipientAddresses].some(
-          matcher => matcher(proposal, searchQuery)
-        )
-      : true;
-
-    return matchState && matchActionType && matchCurrency && matchSearch;
-  };
-
   return (
     <PageContainer>
       <SidebarContent>
         <GuildSidebarWrapper />
       </SidebarContent>
       <PageContent>
-        <Filter onSearchChange={setSearchQuery} />
+        <Filter />
         <ProposalsList data-testid="proposals-list">
           {filteredProposalIds ? (
             filteredProposalIds.map(proposalId => (
@@ -117,7 +78,6 @@ const GuildsPage: React.FC = () => {
                   <div ref={ref}>
                     <ProposalCardWrapper
                       proposalId={inView ? proposalId : null}
-                      match={match}
                     />
                   </div>
                 )}
