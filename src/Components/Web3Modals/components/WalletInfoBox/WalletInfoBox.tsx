@@ -1,13 +1,10 @@
 import { FiCheckCircle, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { isMobile, isDesktop } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
-
-import { getBlockchainLink, shortenAddress } from 'utils';
+import { shortenAddress } from 'utils';
 import useClipboard from 'hooks/Guilds/useClipboard';
-
 import { LiveIndicator } from '../LiveIndicator';
 import { Button } from 'old-components/Guilds/common/Button';
-
 import {
   Wrapper,
   Row,
@@ -22,6 +19,7 @@ import {
 } from './WalletInfoBox.styled';
 import { useAccount, useEnsName, useNetwork } from 'wagmi';
 import ENSAvatar from 'old-components/Guilds/Avatar/ENSAvatar';
+import { getBlockExplorerUrl } from 'provider';
 
 interface WalletInfoBoxProps {
   openOptions: () => void;
@@ -64,7 +62,7 @@ export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
         </ConnectionActionButton>
 
         <ExternalLink
-          href={getBlockchainLink(address, chain.name, 'address')}
+          href={getBlockExplorerUrl(chain, address, 'address')}
           target="_blank"
         >
           <ConnectionActionButton>

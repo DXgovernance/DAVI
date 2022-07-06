@@ -24,3 +24,13 @@ const alchemy = alchemyProvider({ alchemyId: ALCHEMY_KEY, priority: 2 });
 const fallback = publicProvider({ priority: 3 });
 
 export const providers: ChainProviderFn[] = [pokt, alchemy, fallback];
+
+if (process.env.NODE_ENV === 'development') {
+  const localhost = jsonRpcProvider({
+    rpc(chain) {
+      return chain.id === 1337 ? { http: chain.rpcUrls.default } : null;
+    },
+    priority: 1,
+  });
+  providers.push(localhost);
+}

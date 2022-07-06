@@ -27,11 +27,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
   const [isWalletListActive, setIsWalletsListActive] = useState(false);
   const { chain } = useNetwork();
-  const {
-    chains,
-
-    switchNetwork,
-  } = useSwitchNetwork();
+  const { chains, switchNetwork } = useSwitchNetwork();
   const { transactions, clearAllTransactions } = useTransactions();
   const { disconnect } = useDisconnect();
 
@@ -135,7 +131,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const getPrimaryAction = () => {
     if (isConnected && isWalletListActive) return () => disconnect();
 
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain.unsupported && switchNetwork) {
       const firstSupported = chains && chains?.length > 0 ? chains[0] : null;
       return () => switchNetwork(firstSupported.id);
     }

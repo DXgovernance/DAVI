@@ -31,7 +31,7 @@ jest.mock('provider/providerHooks', () => {
   };
 });
 
-describe('NetworkModal', () => {
+describe.skip('NetworkModal', () => {
   it('Should match snapshot', () => {
     console.error = jest.fn();
     const { container } = render(

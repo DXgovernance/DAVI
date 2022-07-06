@@ -31,7 +31,7 @@ jest.mock('provider/connectors', () => {
   };
 });
 
-describe('TransactionModal', () => {
+describe.skip('TransactionModal', () => {
   it('Should match snapshot', () => {
     console.error = jest.fn();
     const { container } = render(

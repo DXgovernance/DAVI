@@ -1,23 +1,21 @@
-import { useWeb3React } from '@web3-react/core';
 import { FiArrowUpRight, FiCheckCircle, FiXCircle } from 'react-icons/fi';
-import { getChains } from 'provider/connectors';
 import { Transaction as TransactionInterface } from 'types/types.guilds';
-import { getBlockchainLink } from 'utils';
 import PendingCircle from 'old-components/Guilds/common/PendingCircle';
-
 import { TransactionContainer, Link, Icon } from './Transaction.styled';
+import { getBlockExplorerUrl } from 'provider';
+import { useNetwork } from 'wagmi';
 
 interface TransactionProps {
   transaction: TransactionInterface;
 }
 
 export const Transaction: React.FC<TransactionProps> = ({ transaction }) => {
-  const { chainId } = useWeb3React();
-  const networkName = getChains().find(chain => chain.id === chainId).name;
+  const { chain } = useNetwork();
+
   return (
     <TransactionContainer>
       <Link
-        href={getBlockchainLink(transaction.hash, networkName)}
+        href={getBlockExplorerUrl(chain, transaction.hash, 'address')}
         target="_blank"
       >
         {transaction.summary} <FiArrowUpRight />

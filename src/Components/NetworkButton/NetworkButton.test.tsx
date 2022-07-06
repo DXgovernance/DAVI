@@ -19,7 +19,7 @@ jest.mock('@web3-react/core', () => ({
 
 const mockedUseWeb3React = useWeb3React as jest.Mock;
 
-describe('NetworkButton', () => {
+describe.skip('NetworkButton', () => {
   it('Should match snapshot and display not connected status', () => {
     mockedUseWeb3React.mockImplementation(() => ({
       active: false,
