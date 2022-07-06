@@ -1,6 +1,7 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, FC } from 'react';
 import { useMenu } from '../../hooks/Guilds/useMenu';
-import { Proposal } from 'types/types.guilds.d';
+import { Proposal, ProposalState } from 'types/types.guilds.d';
+import { PointedDecodedAction } from 'hooks/Guilds/guild/useProposalSummaryActions';
 
 const FilterContext = createContext(null);
 
@@ -53,30 +54,34 @@ export const FilterProvider = ({
     return false;
   };
 
-  const matchState = proposalState =>
+  const matchState = (proposalState: ProposalState) =>
     countStateSelected ? filterState.includes(proposalState) : true;
 
-  const matchActionType = summaryActions =>
+  const matchActionType = (summaryActions: PointedDecodedAction[]) =>
     countActionTypeSelected
       ? summaryActions?.some(action =>
           filterActionTypes.includes(action?.decodedCall?.callType)
         )
       : true;
 
-  const matchCurrency = summaryActions =>
+  const matchCurrency = (summaryActions: PointedDecodedAction[]) =>
     countCurrencySelected
       ? summaryActions.some(action =>
           filterCurrency.includes(action.decodedCall?.to)
         )
       : true;
-  const matchSearch = proposal =>
+  const matchSearch = (proposal: Proposal) =>
     searchQuery
       ? [matchTitle, matchCreatorAddress, matchRecipientAddresses].some(
           matcher => matcher(proposal, searchQuery)
         )
       : true;
 
-  const match = (proposal, proposalState, summaryActions) => {
+  const match = (
+    proposal: Proposal,
+    proposalState: ProposalState,
+    summaryActions: PointedDecodedAction[]
+  ) => {
     return (
       matchState(proposalState) &&
       matchActionType(summaryActions) &&
@@ -86,7 +91,12 @@ export const FilterProvider = ({
   };
 
   const withFilters =
-    Component => (proposal, proposalState, summaryActions) => {
+    (Component: FC<any>) =>
+    (
+      proposal: Proposal,
+      proposalState: ProposalState,
+      summaryActions: PointedDecodedAction[]
+    ) => {
       return match(proposal, proposalState, summaryActions) ? Component : null;
     };
 
