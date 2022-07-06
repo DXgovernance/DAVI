@@ -60,7 +60,7 @@ export const FilterProvider = ({
   const matchActionType = (summaryActions: PointedDecodedAction[]) =>
     countActionTypeSelected
       ? summaryActions?.some(action =>
-          filterActionTypes.includes(action?.decodedCall?.callType)
+          filterActionTypes.includes(action.decodedCall?.callType)
         )
       : true;
 

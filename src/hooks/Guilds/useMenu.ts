@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { ProposalState } from 'types/types.guilds.d';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
 
 // This hooks controls the filter for the menus.
 export const useMenu = ({
@@ -6,9 +8,12 @@ export const useMenu = ({
   initialTypes = [],
   initialCurrencies = [],
 }) => {
-  const [filterState, setFilterState] = useState(initialStates);
-  const [filterActionTypes, setFilterActionType] = useState(initialTypes);
-  const [filterCurrency, setFilterCurrency] = useState(initialCurrencies);
+  const [filterState, setFilterState] =
+    useState<ProposalState[]>(initialStates);
+  const [filterActionTypes, setFilterActionType] =
+    useState<SupportedAction[]>(initialTypes);
+  const [filterCurrency, setFilterCurrency] =
+    useState<string[]>(initialCurrencies);
 
   // abstract function to toggle given value, state, and setSate params.
   const onToggleFilter = (value, stateToUse, setStateToUse) => {
