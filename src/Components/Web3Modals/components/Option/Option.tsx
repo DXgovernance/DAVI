@@ -1,45 +1,42 @@
+import { Loading } from 'Components/Primitives/Loading';
 import React from 'react';
 import { LiveIndicator } from '../LiveIndicator';
 import { OptionButton, OptionButtonText, IconWrapper } from './Option.styled';
 
 export interface OptionProps {
-  link?: string;
-  size?: number;
   onClick?: () => void;
   icon: string;
   header: React.ReactNode | string;
   active?: boolean;
+  loading?: boolean;
+  disabled?: boolean;
   dataTestId?: string;
 }
 
 export const Option: React.FC<OptionProps> = ({
-  link = null,
-  size = null,
   onClick = null,
   icon,
   header,
   active = false,
+  loading = false,
+  disabled = false,
   dataTestId = '',
 }) => {
   const content = (
     <OptionButton
       variant="secondary"
       onClick={onClick}
-      active={active}
+      disabled={disabled}
       data-testid={dataTestId}
     >
       <OptionButtonText>
         {active && <LiveIndicator />}
+        {loading && <Loading loading iconProps={{ size: 16 }} />}
         {header}
       </OptionButtonText>
-      <IconWrapper size={size}>
-        {icon && <img src={icon} alt={'Icon'} />}
-      </IconWrapper>
+      <IconWrapper>{icon && <img src={icon} alt={'Icon'} />}</IconWrapper>
     </OptionButton>
   );
-  if (link) {
-    return <a href={link}>{content}</a>;
-  }
 
   return content;
 };

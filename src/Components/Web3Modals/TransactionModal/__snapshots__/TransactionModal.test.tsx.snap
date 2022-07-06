@@ -97,7 +97,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
           class="sc-fodVek fGQwdd"
         >
           <button
-            class="sc-jSgvzq sc-fFucqa jXQRoF hpQKPN"
+            class="sc-jSgvzq sc-fFucqa heCmEB hpQKPN"
           >
             close
           </button>

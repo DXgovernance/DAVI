@@ -54,28 +54,28 @@ exports[`NetworkModal Should match snapshot 1`] = `
           class="sc-kstqJO lobtyv"
         >
           <div
-            class="sc-jcVcSv cIOoqA"
+            class="sc-bZSRNg gVERDF"
           >
             <div
-              class="sc-iUuxjF laIObK"
+              class="sc-iBaQBe kpLoPf"
             >
               <div
-                class="sc-bZSRNg bfqtpQ"
+                class="sc-iUuxjF jOOmrx"
               >
                 <div
-                  class="sc-iBaQBe kwsOSD"
+                  class="sc-eggMyH dHnyFC"
                 >
                   <button
-                    class="sc-bdfBQB sc-dIUeWJ cAORUT eWWNGz"
+                    class="sc-bdfBQB sc-dmlqKv igQAuX eLvDHF"
                     data-testid=""
                   >
                     <div
-                      class="sc-hHfuMS bSclpm"
+                      class="sc-kfzBvY VQpPp"
                     >
                       Ethereum Mainnet
                     </div>
                     <div
-                      class="sc-dmlqKv xyaYn"
+                      class="sc-fKFxtB gJFluz"
                     >
                       <img
                         alt="Icon"

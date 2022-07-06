@@ -15,6 +15,18 @@ import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import Web3 from 'web3';
+import { createClient, configureChains, WagmiConfig } from 'wagmi';
+import { chains, providers } from 'provider';
+import { getConnectors } from 'provider/wallets';
+
+const { provider, webSocketProvider } = configureChains(chains, providers);
+
+const client = createClient({
+  autoConnect: true,
+  connectors: getConnectors(chains),
+  provider,
+  webSocketProvider,
+});
 
 initializeI18Next();
 
@@ -51,15 +63,17 @@ const Application = () => {
 const Root = () => {
   return (
     <GlobalErrorBoundary>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        <MultichainProvider>
-          <ThemeProvider>
-            <HashRouter>
-              <Application />
-            </HashRouter>
-          </ThemeProvider>
-        </MultichainProvider>
-      </Web3ReactProvider>
+      <WagmiConfig client={client}>
+        <Web3ReactProvider getLibrary={getLibrary}>
+          <MultichainProvider>
+            <ThemeProvider>
+              <HashRouter>
+                <Application />
+              </HashRouter>
+            </ThemeProvider>
+          </MultichainProvider>
+        </Web3ReactProvider>
+      </WagmiConfig>
     </GlobalErrorBoundary>
   );
 };
