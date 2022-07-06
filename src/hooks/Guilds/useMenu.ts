@@ -7,7 +7,7 @@ export const useMenu = ({
   initialCurrencies = [],
 }) => {
   const [filterState, setFilterState] = useState(initialStates);
-  const [filterType, setFilterType] = useState(initialTypes);
+  const [filterActionTypes, setFilterActionType] = useState(initialTypes);
   const [filterCurrency, setFilterCurrency] = useState(initialCurrencies);
 
   // abstract function to toggle given value, state, and setSate params.
@@ -33,11 +33,12 @@ export const useMenu = ({
     filterState,
 
     //Type
-    onToggleType: value => onToggleFilter(value, filterType, setFilterType),
-    onResetType: () => setFilterType([]),
-    isTypeSelected: value => filterType.indexOf(value) > -1,
-    countTypeSelected: filterType.length,
-    filterType,
+    onToggleActionType: value =>
+      onToggleFilter(value, filterActionTypes, setFilterActionType),
+    onResetActionType: () => setFilterActionType([]),
+    isActionTypeSelected: value => filterActionTypes.indexOf(value) > -1,
+    countActionTypeSelected: filterActionTypes.length,
+    filterActionTypes,
 
     //Currency
     onToggleCurrency: value =>
@@ -48,6 +49,6 @@ export const useMenu = ({
     filterCurrency,
 
     totalFilters:
-      filterState.length + filterType.length + filterCurrency.length,
+      filterState.length + filterActionTypes.length + filterCurrency.length,
   };
 };

@@ -48,6 +48,10 @@ const GuildsPage: React.FC = () => {
     matchRecipientAddresses,
     filterState,
     countStateSelected,
+    countActionTypeSelected,
+    filterActionTypes,
+    countCurrencySelected,
+    filterCurrency,
   } = useFilter();
 
   const filteredProposalIds = useMemo(() => {
@@ -72,14 +76,30 @@ const GuildsPage: React.FC = () => {
     );
   }
 
-  const match = (proposal, proposalState) => {
+  const match = (proposal, proposalState, summaryActions) => {
     const matchState = countStateSelected
       ? filterState.includes(proposalState)
       : true;
 
-    return [matchTitle, matchCreatorAddress, matchRecipientAddresses].some(
-      matcher => matcher(proposal, searchQuery) && matchState
-    );
+    const matchActionType = countActionTypeSelected
+      ? summaryActions?.some(action =>
+          filterActionTypes.includes(action?.decodedCall?.callType)
+        )
+      : true;
+
+    const matchCurrency = countCurrencySelected
+      ? summaryActions.some(action =>
+          filterCurrency.includes(action.decodedCall?.to)
+        )
+      : true;
+
+    const matchSearch = searchQuery
+      ? [matchTitle, matchCreatorAddress, matchRecipientAddresses].some(
+          matcher => matcher(proposal, searchQuery)
+        )
+      : true;
+
+    return matchState && matchActionType && matchCurrency && matchSearch;
   };
 
   return (

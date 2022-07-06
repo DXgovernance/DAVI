@@ -2,10 +2,13 @@ import { useState, useRef } from 'react';
 import { isMobile, isDesktop } from 'react-device-detect';
 import { FiChevronDown, FiCheck, FiArrowLeft } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
+import { useWeb3React } from '@web3-react/core';
 
 import { ProposalState } from 'types/types.guilds.d';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
 import { useFilter } from 'contexts/Guilds/filters';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
+import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 
 import {
   DropdownContent,
@@ -29,16 +32,18 @@ const FilterMenu = () => {
   const [showState, setShowState] = useState(false);
   const [showType, setShowType] = useState(false);
   const [showCurrency, setShowCurrency] = useState(false);
+  const { chainId } = useWeb3React();
+  const { tokens } = useTokenList(chainId);
 
   const {
     onToggleState,
     onResetState,
     isStateSelected,
     countStateSelected,
-    onToggleType,
-    onResetType,
-    isTypeSelected,
-    countTypeSelected,
+    onToggleActionType,
+    onResetActionType,
+    isActionTypeSelected,
+    countActionTypeSelected,
     onToggleCurrency,
     onResetCurrency,
     isCurrencySelected,
@@ -93,75 +98,82 @@ const FilterMenu = () => {
           )}
         </DropdownContent>
       </DropdownMenu>
+
       <DropdownMenu ref={typeRef} position={DropdownPosition.BottomRight}>
         <FilterButton iconRight onClick={() => setShowType(!showType)}>
-          {t('type')} <FiChevronDown />
+          {t('actions_one')} <FiChevronDown />
         </FilterButton>
         <DropdownContent fullScreenMobile={true} show={showType}>
           {isMobile && (
             <DropdownHeader onClick={() => setShowType(false)}>
               <FiArrowLeft /> <span> {t('type')}</span>{' '}
-              <FilterResetMobile onClick={onResetType}>
+              <FilterResetMobile onClick={onResetActionType}>
                 {t('reset')}
               </FilterResetMobile>
             </DropdownHeader>
           )}
           <Menu>
-            <DropdownMenuItem onClick={() => onToggleType('a')}>
-              {t('type')} a {isTypeSelected('a') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleType('b')}>
-              {t('type')} b {isTypeSelected('b') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleType('c')}>
-              {t('type')} c {isTypeSelected('c') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleType('d')}>
-              {t('type')} d {isTypeSelected('d') && <FiCheck />}
-            </DropdownMenuItem>
+            {Object.values(SupportedAction).map(action => (
+              <DropdownMenuItem
+                key={action}
+                onClick={() => onToggleActionType(action)}
+              >
+                {action
+                  .split('_')
+                  .map(
+                    s => s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase()
+                  )
+                  .join(' ')}{' '}
+                {isActionTypeSelected(action) && <FiCheck />}
+              </DropdownMenuItem>
+            ))}
           </Menu>
-          {isDesktop && countTypeSelected > 0 && (
-            <FilterResetDesktop onClick={onResetType}>
+          {isDesktop && countActionTypeSelected > 0 && (
+            <FilterResetDesktop onClick={onResetActionType}>
               {t('reset')}
             </FilterResetDesktop>
           )}
         </DropdownContent>
       </DropdownMenu>
 
-      <DropdownMenu ref={currencyRef} position={DropdownPosition.BottomRight}>
-        <FilterButton iconRight onClick={() => setShowCurrency(!showCurrency)}>
-          {t('currency')} <FiChevronDown />
-        </FilterButton>
-        <DropdownContent fullScreenMobile={true} show={showCurrency}>
-          {isMobile && (
-            <DropdownHeader onClick={() => setShowCurrency(false)}>
-              <FiArrowLeft /> <span>{t('currency')}</span>{' '}
-              <FilterResetMobile onClick={onResetCurrency}>
+      {tokens.length && (
+        <DropdownMenu ref={currencyRef} position={DropdownPosition.BottomRight}>
+          <FilterButton
+            iconRight
+            onClick={() => setShowCurrency(!showCurrency)}
+          >
+            {t('currency')} <FiChevronDown />
+          </FilterButton>
+          <DropdownContent fullScreenMobile={true} show={showCurrency}>
+            {isMobile && (
+              <DropdownHeader onClick={() => setShowCurrency(false)}>
+                <FiArrowLeft /> <span>{t('currency')}</span>{' '}
+                <FilterResetMobile onClick={onResetCurrency}>
+                  {t('reset')}
+                </FilterResetMobile>
+              </DropdownHeader>
+            )}
+            <Menu>
+              {tokens.map(token => {
+                return (
+                  <DropdownMenuItem
+                    onClick={() => onToggleCurrency(token.address)}
+                    key={token.address}
+                  >
+                    {token.symbol}
+                    {isCurrencySelected(token.address) && <FiCheck />}
+                  </DropdownMenuItem>
+                );
+              })}
+            </Menu>
+            {isDesktop && countCurrencySelected > 0 && (
+              <FilterResetDesktop onClick={onResetCurrency}>
                 {t('reset')}
-              </FilterResetMobile>
-            </DropdownHeader>
-          )}
-          <Menu>
-            <DropdownMenuItem onClick={() => onToggleCurrency('a')}>
-              {t('currency')} a {isCurrencySelected('a') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleCurrency('b')}>
-              {t('currency')} b {isCurrencySelected('b') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleCurrency('c')}>
-              {t('currency')} c {isCurrencySelected('c') && <FiCheck />}
-            </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => onToggleCurrency('d')}>
-              {t('currency')} d {isCurrencySelected('d') && <FiCheck />}
-            </DropdownMenuItem>
-          </Menu>
-          {isDesktop && countCurrencySelected > 0 && (
-            <FilterResetDesktop onClick={onResetCurrency}>
-              {t('reset')}
-            </FilterResetDesktop>
-          )}
-        </DropdownContent>
-      </DropdownMenu>
+              </FilterResetDesktop>
+            )}
+          </DropdownContent>
+        </DropdownMenu>
+      )}
     </FilterButtons>
   );
 };

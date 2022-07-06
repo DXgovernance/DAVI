@@ -9,7 +9,7 @@ import useProposalState from 'hooks/Guilds/useProposalState';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
-  match?: (proposal, status) => boolean;
+  match?: (proposal, status, summaryActions) => boolean;
 }
 const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,
@@ -25,7 +25,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
 
   return (
-    match(proposal, status) && (
+    match(proposal, status, summaryActions) && (
       <ProposalCard
         proposal={{ ...proposal, id: proposalId }}
         ensAvatar={ensAvatar}
