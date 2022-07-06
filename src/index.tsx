@@ -2,7 +2,6 @@ import App from './App';
 import initializeI18Next from './i18n';
 import GlobalErrorBoundary from './old-components/ErrorBoundary/GlobalErrorBoundary';
 import * as serviceWorker from './serviceWorker';
-import ThemeProvider from './theme';
 import { Web3ReactProvider } from '@web3-react/core';
 import moment from 'moment';
 import EtherSWRManager from 'old-components/Guilds/EtherSWRManager';
@@ -53,11 +52,9 @@ const Root = () => {
       <WagmiConfig client={client}>
         <Web3ReactProvider getLibrary={getLibrary}>
           <MultichainProvider>
-            <ThemeProvider>
-              <HashRouter>
-                <Application />
-              </HashRouter>
-            </ThemeProvider>
+            <HashRouter>
+              <Application />
+            </HashRouter>
           </MultichainProvider>
         </Web3ReactProvider>
       </WagmiConfig>

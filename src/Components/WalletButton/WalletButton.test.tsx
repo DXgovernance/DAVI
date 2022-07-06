@@ -12,21 +12,10 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   }),
 }));
 
-jest.mock('contexts/index', () => jest.fn());
 jest.mock('contexts/Guilds', () => {
   return {
     useTransactions: () => {
       return [];
-    },
-  };
-});
-
-jest.mock('provider/providerHooks', () => {
-  return {
-    useRpcUrls: () => {
-      return {
-        '1': 'https://mainnet.infura.io/v3/dummy',
-      };
     },
   };
 });

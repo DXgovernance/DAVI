@@ -3,8 +3,6 @@ import VoteConfirmationModal from './VoteConfirmationModal';
 import { mockVoteConfirmationModal } from '../../fixture';
 import { screen } from '@testing-library/react';
 
-jest.mock('contexts/index', () => jest.fn());
-
 describe('VoteConfirmationModal', () => {
   it('contains components in the modal', () => {
     render(<VoteConfirmationModal {...mockVoteConfirmationModal} />);

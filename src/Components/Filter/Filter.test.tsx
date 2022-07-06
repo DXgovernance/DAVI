@@ -3,7 +3,6 @@ import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
 const bn = (value: number) => BigNumber.from(value);
 
-jest.mock('contexts/index', () => jest.fn());
 jest.mock('contexts/Guilds/filters', () => ({
   useFilter: () => {
     return {

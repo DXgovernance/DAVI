@@ -1,8 +1,6 @@
 import NetworkModal from './NetworkModal';
 import { render } from 'utils/tests';
 
-jest.mock('contexts/index', () => jest.fn());
-
 jest.mock('provider/connectors', () => {
   return {
     getChains: () => {
@@ -22,12 +20,6 @@ jest.mock('provider/connectors', () => {
         },
       ];
     },
-  };
-});
-
-jest.mock('provider/providerHooks', () => {
-  return {
-    useRpcUrls: () => jest.fn(),
   };
 });
 

@@ -2,17 +2,6 @@ import NetworkButton from './NetworkButton';
 import { render } from 'utils/tests';
 import { useWeb3React } from '@web3-react/core';
 
-jest.mock('contexts/index', () => jest.fn());
-jest.mock('provider/providerHooks', () => {
-  return {
-    useRpcUrls: () => {
-      return {
-        '1': 'https://mainnet.infura.io/v3/dummy',
-      };
-    },
-  };
-});
-
 jest.mock('@web3-react/core', () => ({
   useWeb3React: jest.fn(),
 }));

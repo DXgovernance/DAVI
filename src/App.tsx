@@ -1,7 +1,6 @@
 import GlobalErrorBoundary from './old-components/Guilds/ErrorBoundary/GlobalErrorBoundary';
 import { Header } from 'Components';
 import ToastNotificationContainer from './old-components/Guilds/ToastNotifications/ToastNotificationContainer';
-import WalletWeb3Manager from './old-components/Guilds/Web3Manager/WalletWeb3Manager';
 import { Container } from './Components/Primitives/Layout';
 import GuildsPage from './Modules/Guilds/pages/Guilds';
 import ProposalPage from './Modules/Guilds/pages/Proposal';
@@ -31,40 +30,38 @@ const App = () => {
     <ThemeProvider theme={GuildsDarkTheme}>
       <HashRouter basename="/guilds">
         <GlobalErrorBoundary>
-          <WalletWeb3Manager>
-            <TransactionsProvider>
-              <GuildsContextProvider>
-                <GlobalStyle />
-                <Header />
-                <Container>
-                  <GuildAvailabilityProvider>
-                    <Switch>
-                      <Route exact path="/:chainName">
-                        <LandingPage />
-                      </Route>
+          <TransactionsProvider>
+            <GuildsContextProvider>
+              <GlobalStyle />
+              <Header />
+              <Container>
+                <GuildAvailabilityProvider>
+                  <Switch>
+                    <Route exact path="/:chainName">
+                      <LandingPage />
+                    </Route>
 
-                      <Route exact path="/:chainName/:guildId">
-                        <GuildsPage />
-                      </Route>
-                      <Route path="/:chainName/:guildId/proposalType">
-                        <ProposalTypes data={ProposalTypesConfig} />
-                      </Route>
-                      <Route path="/:chainName/:guildId/proposal/:proposalId">
-                        <ProposalPage />
-                      </Route>
-                      <Route path="/:chainName/:guildId/create/:proposalType">
-                        <CreateProposalPage />
-                      </Route>
+                    <Route exact path="/:chainName/:guildId">
+                      <GuildsPage />
+                    </Route>
+                    <Route path="/:chainName/:guildId/proposalType">
+                      <ProposalTypes data={ProposalTypesConfig} />
+                    </Route>
+                    <Route path="/:chainName/:guildId/proposal/:proposalId">
+                      <ProposalPage />
+                    </Route>
+                    <Route path="/:chainName/:guildId/create/:proposalType">
+                      <CreateProposalPage />
+                    </Route>
 
-                      <Route>
-                        <NotFound />
-                      </Route>
-                    </Switch>
-                  </GuildAvailabilityProvider>
-                </Container>
-              </GuildsContextProvider>
-            </TransactionsProvider>
-          </WalletWeb3Manager>
+                    <Route>
+                      <NotFound />
+                    </Route>
+                  </Switch>
+                </GuildAvailabilityProvider>
+              </Container>
+            </GuildsContextProvider>
+          </TransactionsProvider>
         </GlobalErrorBoundary>
       </HashRouter>
 

@@ -9,7 +9,6 @@ import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
 
 // Mocked hooks
-jest.mock('contexts/index', () => jest.fn());
 
 jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   __esModule: true,

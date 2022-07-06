@@ -3,8 +3,6 @@ import { render } from '../../utils/tests';
 import '@testing-library/jest-dom';
 import { fullParameters, loadingParameters, noProposals } from './fixtures';
 
-jest.mock('contexts/index', () => jest.fn());
-
 describe('GuildCard', () => {
   it(`Should render with full parameters`, async () => {
     const { container } = render(<GuildCard {...fullParameters} />);

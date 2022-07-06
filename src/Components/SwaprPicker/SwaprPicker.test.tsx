@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { render } from 'utils/tests';
 import SwaprPicker from './SwaprPicker';
 
-jest.mock('contexts/index', () => jest.fn());
-
 let fullResponse = [
   [
     {

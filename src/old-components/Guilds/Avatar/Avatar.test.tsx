@@ -3,8 +3,6 @@ import { screen } from '@testing-library/react';
 
 import Avatar from './';
 
-jest.mock('contexts/index', () => jest.fn());
-
 describe('Avatar', () => {
   it('Should render loader when no src or seed is given', () => {
     const { container } = render(<Avatar />);
