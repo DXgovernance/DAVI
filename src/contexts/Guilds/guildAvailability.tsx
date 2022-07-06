@@ -1,4 +1,3 @@
-import { useWeb3React } from '@web3-react/core';
 import { MultichainContext } from 'contexts/MultichainProvider';
 import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
 import { ButtonIcon, IconButton } from 'old-components/Guilds/common/Button';
@@ -7,9 +6,10 @@ import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
-import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { getNetworkById, getChainIcon } from 'utils';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { useNetwork } from 'wagmi';
 
 interface ContractAvailability {
   [chainId: number]: boolean;
@@ -34,14 +34,13 @@ export const GuildAvailabilityContext =
   createContext<GuildAvailabilityContextInterface>({});
 
 const GuildAvailabilityProvider = ({ children }) => {
-  const routeMatch = useRouteMatch<{ guildId?: string }>(
-    '/:chain_name/:guildId'
-  );
-  const guildId = routeMatch?.params?.guildId;
+  const { guildId } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);
   const [availability, setAvailability] = useState<ContractAvailability>({});
-  const { chainId: currentChainId } = useWeb3React();
+  const { chain: currentChain } = useNetwork();
   const { trySwitching } = useNetworkSwitching();
+
+  const currentChainId = useMemo(() => currentChain?.id, [currentChain]);
 
   useEffect(() => {
     if (!guildId || !multichainProviders) {

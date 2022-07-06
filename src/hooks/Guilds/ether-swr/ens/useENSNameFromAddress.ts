@@ -5,7 +5,7 @@ export default function useENSNameFromAddress(
   ensAddress?: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider(chainId);
+  const provider = useJsonRpcProvider();
   const { data: ensName } = useEtherSWR<string>(
     ensAddress ? ['lookupAddress', ensAddress] : [],
     {

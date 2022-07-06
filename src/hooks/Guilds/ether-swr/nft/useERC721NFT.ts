@@ -15,7 +15,7 @@ export default function useERC721NFT(
   tokenId: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider(chainId);
+  const provider = useJsonRpcProvider();
   const { data: result } = useEtherSWR(
     contractId
       ? [

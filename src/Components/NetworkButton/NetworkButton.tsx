@@ -1,37 +1,34 @@
 import { useState } from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { useTranslation } from 'react-i18next';
-
-import { isChainIdSupported } from 'provider/connectors';
-import { getNetworkById, getChainIcon } from 'utils';
+import { getChainIcon } from 'utils';
 import {
   Button,
   ButtonIcon,
   IconButton,
 } from 'old-components/Guilds/common/Button';
 import { NetworkModal } from 'Components';
+import { useAccount, useNetwork } from 'wagmi';
 
 const NetworkButton = () => {
   const { t } = useTranslation();
   const [isNetworkModalOpen, setIsNetworkModalOpen] = useState(false);
-
-  const { chainId, error } = useWeb3React();
-  const chainName = getNetworkById(chainId)?.displayName || null;
+  const { isConnected } = useAccount();
+  const { chain } = useNetwork();
 
   const toggleNetworkModal = () => {
     setIsNetworkModalOpen(!isNetworkModalOpen);
   };
 
   function getNetworkStatus() {
-    if ((chainId && !isChainIdSupported(chainId)) || error) {
+    if (isConnected && chain.unsupported) {
       return (
         <Button onClick={toggleNetworkModal}>{t('unsupportedNetwork')}</Button>
       );
-    } else if (chainId) {
+    } else if (isConnected) {
       return (
         <IconButton onClick={toggleNetworkModal} iconLeft>
-          <ButtonIcon src={getChainIcon(chainId)} alt={'Icon'} />
-          {chainName}
+          <ButtonIcon src={getChainIcon(chain.id)} alt={'Icon'} />
+          {chain.name}
         </IconButton>
       );
     } else {

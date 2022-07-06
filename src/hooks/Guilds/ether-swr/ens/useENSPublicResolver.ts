@@ -13,7 +13,7 @@ export default function useENSPublicResolver(
   ensName: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider(chainId);
+  const provider = useJsonRpcProvider();
   const { resolverAddress } = useENSRegistry(ensName, chainId);
 
   const { data } = useEtherSWR(
