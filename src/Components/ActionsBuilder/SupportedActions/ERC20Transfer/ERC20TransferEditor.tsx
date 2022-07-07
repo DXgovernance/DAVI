@@ -1,5 +1,4 @@
 import { ActionEditorProps } from '..';
-import { useWeb3React } from '@web3-react/core';
 import { BigNumber, utils } from 'ethers';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
@@ -20,6 +19,7 @@ import {
   ControlRow,
 } from 'Components/Primitives/Forms/Control';
 import { useTranslation } from 'react-i18next';
+import { useNetwork } from 'wagmi';
 
 const Spacer = styled(Box)`
   margin-right: 1rem;
@@ -44,8 +44,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 }) => {
   const { t } = useTranslation();
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
-
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
 
   // parse transfer state from calls
   const parsedData = useMemo<TransferState>(() => {
@@ -67,7 +66,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   }, [parsedData]);
 
   // Get token details from the token address
-  const { tokens } = useTokenList(chainId);
+  const { tokens } = useTokenList(chain?.id);
   const token = useMemo(() => {
     if (!parsedData?.tokenAddress || !tokens) return null;
 

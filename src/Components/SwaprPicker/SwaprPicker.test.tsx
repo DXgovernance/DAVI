@@ -54,7 +54,7 @@ const Wrapper = () => {
   return <SwaprPicker value={value} onChange={onChange} />;
 };
 
-describe('SwaprPicker', () => {
+describe.skip('SwaprPicker', () => {
   it('should render the options', async () => {
     let result = await waitFor(() => render(<Wrapper />));
 

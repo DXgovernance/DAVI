@@ -7,8 +7,8 @@ import AddressButton from 'Components/AddressButton/AddressButton';
 import { Loading } from 'Components/Primitives/Loading';
 import moment from 'moment';
 import { useSwaprFetchPairs } from 'hooks/Guilds/useSwaprFetchPairs';
-import { useWeb3React } from '@web3-react/core';
 import { SwaprFetchPairsInterface } from 'hooks/Guilds/useSwaprFetchPairs';
+import { useNetwork } from 'wagmi';
 
 const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
   const { t } = useTranslation();
@@ -18,14 +18,14 @@ const SwaprPicker: React.FC<SwaprPickerProps> = ({ value, onChange }) => {
   >([]);
   const [errorFetchingData, setErrorFetchingData] = useState(null);
 
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
   const currentUnixTimestamp = moment().unix();
   const userId = '';
   const pageSize = 1000;
   const lastId = '';
 
   let data = useSwaprFetchPairs(
-    chainId,
+    chain?.id,
     currentUnixTimestamp,
     userId,
     pageSize,

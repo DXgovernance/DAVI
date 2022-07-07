@@ -1,5 +1,4 @@
 import { MultichainContext } from 'contexts/MultichainProvider';
-import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
 import { ButtonIcon, IconButton } from 'old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
@@ -9,7 +8,7 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import { getNetworkById, getChainIcon } from 'utils';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useNetwork } from 'wagmi';
+import { useNetwork, useSwitchNetwork } from 'wagmi';
 
 interface ContractAvailability {
   [chainId: number]: boolean;
@@ -33,12 +32,13 @@ const NetworkIconButton = styled(IconButton)`
 export const GuildAvailabilityContext =
   createContext<GuildAvailabilityContextInterface>({});
 
+// TODO: Refactor
 const GuildAvailabilityProvider = ({ children }) => {
   const { guildId } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);
   const [availability, setAvailability] = useState<ContractAvailability>({});
   const { chain: currentChain } = useNetwork();
-  const { trySwitching } = useNetworkSwitching();
+  const { switchNetwork } = useSwitchNetwork();
 
   const currentChainId = useMemo(() => currentChain?.id, [currentChain]);
 
@@ -100,7 +100,9 @@ const GuildAvailabilityProvider = ({ children }) => {
                     <div key={chainConfig?.id}>
                       <NetworkIconButton
                         iconLeft
-                        onClick={() => trySwitching(chainConfig)}
+                        onClick={() =>
+                          switchNetwork ? switchNetwork(chainConfig?.id) : null
+                        }
                       >
                         <ButtonIcon
                           src={getChainIcon(chainConfig?.id)}

@@ -9,7 +9,7 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
 
 const mockedERC20Balances = useAllERC20Balances as jest.Mock;
 
-describe('TokenPicker', () => {
+describe.skip('TokenPicker', () => {
   let props;
   beforeEach(() => {
     props = {

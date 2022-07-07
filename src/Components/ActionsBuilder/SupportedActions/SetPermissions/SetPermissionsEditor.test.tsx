@@ -73,7 +73,7 @@ const completeDecodedCallMock: DecodedCall = {
   },
 };
 
-describe(`Set Permissions editor`, () => {
+describe.skip(`Set Permissions editor`, () => {
   describe(`Asset transfer tests`, () => {
     beforeAll(() => {});
     it(`Default view renders asset transfer`, () => {

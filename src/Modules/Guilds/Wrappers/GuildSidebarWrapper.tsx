@@ -17,6 +17,7 @@ import { WalletModal } from 'Components/Web3Modals';
 import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import StakeTokensModalWrapper from './StakeTokensModalWrapper';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
+import { isReadOnly } from 'provider/wallets';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -28,7 +29,7 @@ const GuildSidebarWrapper = () => {
   const { data: guildToken } = useERC20Info(guildConfig?.token);
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
 
-  const { address: userAddress } = useAccount();
+  const { address: userAddress, connector } = useAccount();
   const { data: ensName } = useEnsName({ address: userAddress });
   const { data: ensAvatar } = useEnsAvatar({ addressOrName: userAddress });
   const { data: unlockedAt } = useVoterLockTimestamp(guildAddress, userAddress);
@@ -74,7 +75,7 @@ const GuildSidebarWrapper = () => {
             />
           ) : (
             <GuestActions
-              userWalletAddress={userAddress}
+              userWalletAddress={isReadOnly(connector) ? null : userAddress}
               onShowStakeModal={() => setIsStakeModalOpen(true)}
               onShowWalletModal={() => setIsWalletModalOpen(true)}
             />

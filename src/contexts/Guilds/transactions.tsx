@@ -6,7 +6,6 @@ import {
 } from '../../old-components/Guilds/ToastNotifications/TransactionToasts';
 import { TransactionModal } from 'Components';
 import { Transaction } from '../../types/types.guilds';
-import { useWeb3React } from '@web3-react/core';
 import { providers } from 'ethers';
 import {
   createContext,
@@ -18,6 +17,7 @@ import {
 } from 'react';
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { toast } from 'react-toastify';
+import { useAccount, useNetwork } from 'wagmi';
 
 export interface TransactionState {
   [chainId: number]: {
@@ -43,10 +43,12 @@ interface TransactionsContextInterface {
 const TransactionsContext = createContext<TransactionsContextInterface>(null);
 
 export const TransactionsProvider = ({ children }) => {
-  const { chainId, account } = useWeb3React();
+  const { chain } = useNetwork();
+  const chainId = useMemo(() => chain?.id, [chain]);
+  const { address } = useAccount();
 
   const [transactions, setTransactions] = useLocalStorage<TransactionState>(
-    `transactions/${account}`,
+    `transactions/${address}`,
     {}
   );
   const [pendingTransaction, setPendingTransaction] =

@@ -1,6 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { useWeb3React } from '@web3-react/core';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
@@ -23,6 +22,7 @@ import {
   ControlLabel,
   Spacer,
 } from './ApproveSpendTokens.styled';
+import { useNetwork } from 'wagmi';
 
 export interface TokenSpendApproval {
   amount: BigNumber;
@@ -39,13 +39,13 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
   onConfirm,
 }) => {
   const { t } = useTranslation();
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
   const [amount, setAmount] = useState<BigNumber>(null);
   const [token, setToken] = useState<string>(null);
 
-  const { tokens } = useTokenList(chainId);
+  const { tokens } = useTokenList(chain?.id);
   const selectedToken = useMemo(() => {
     if (!token || !tokens) return null;
 

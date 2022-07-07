@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
@@ -16,6 +15,7 @@ import {
   SearchWrapper,
   TokenList,
 } from './TokenPicker.styled';
+import { useAccount } from 'wagmi';
 
 const TokenPicker: React.FC<TokenPickerProps> = ({
   walletAddress,
@@ -25,8 +25,8 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useTranslation();
-  const { account } = useWeb3React();
-  const { data } = useAllERC20Balances(walletAddress || account);
+  const { address } = useAccount();
+  const { data } = useAllERC20Balances(walletAddress || address);
 
   const { instance, buildIndex, query } =
     useMiniSearch<TokenWithBalanceIndexable>({

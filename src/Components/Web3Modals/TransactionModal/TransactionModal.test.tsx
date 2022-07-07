@@ -1,12 +1,6 @@
 import TransactionModal from './TransactionModal';
 import { render } from 'utils/tests';
 
-jest.mock('@web3-react/core', () => ({
-  useWeb3React: () => ({
-    chainId: 1,
-  }),
-}));
-
 jest.mock('provider/connectors', () => {
   return {
     getChains: () => {

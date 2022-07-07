@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { BigNumber, utils } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
@@ -25,6 +24,7 @@ import {
 import { EditorWrapper, BlockButton } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
+import { useAccount } from 'wagmi';
 
 const ActionModal: React.FC<ActionModalProps> = ({
   action,
@@ -34,7 +34,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
-  const { account: walletAddress } = useWeb3React();
+  const { address: walletAddress } = useAccount();
   // Supported Actions
   const [selectedAction, setSelectedAction] =
     React.useState<SupportedAction>(null);
