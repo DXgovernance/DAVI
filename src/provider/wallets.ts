@@ -1,11 +1,12 @@
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { Chain } from 'wagmi';
+import { Chain, Connector } from 'wagmi';
 import metamaskIcon from 'assets/images/metamask.png';
 import walletConnectIcon from 'assets/images/walletconnect.png';
 import coinbaseWalletIcon from 'assets/images/coinbaseWallet.png';
 import frameIcon from 'assets/images/frame.svg';
+import { ReadOnlyConnector, READ_ONLY_CONNECTOR_ID } from './ReadOnlyConnector';
 
 const getInjected = (chains: Chain[]) =>
   new InjectedConnector({
@@ -38,10 +39,19 @@ const getCoinbaseWallet = (chains: Chain[]) =>
     },
   });
 
+const getReadOnly = (chains: Chain[]) =>
+  new ReadOnlyConnector({
+    chains,
+    options: {
+      name: 'Read Only',
+    },
+  });
+
 export const getConnectors = (chains: Chain[]) => [
   getInjected(chains),
   getWalletConnect(chains),
   getCoinbaseWallet(chains),
+  getReadOnly(chains),
 ];
 
 export const getIcon = (connectorId: string, walletName: string) => {
@@ -65,4 +75,8 @@ export const getIcon = (connectorId: string, walletName: string) => {
       return null;
     }
   }
+};
+
+export const isReadOnly = (connector: Connector) => {
+  return !connector || connector.id === READ_ONLY_CONNECTOR_ID;
 };

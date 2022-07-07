@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
 import { Button } from 'old-components/Guilds/common/Button';
 import { WalletModal } from 'Components';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
 import AddressButton from 'Components/AddressButton/AddressButton';
+import { isReadOnly } from 'provider/wallets';
 
 const WalletButton = () => {
   const { t } = useTranslation();
 
-  const { isConnected, address } = useAccount();
+  const { isConnected, address, connector } = useAccount();
   const { switchNetwork } = useSwitchNetwork();
   const { chain, chains } = useNetwork();
 
@@ -39,7 +39,7 @@ const WalletButton = () => {
       );
     }
 
-    if (isConnected) {
+    if (isConnected && !isReadOnly(connector)) {
       return (
         <AddressButton
           address={address}

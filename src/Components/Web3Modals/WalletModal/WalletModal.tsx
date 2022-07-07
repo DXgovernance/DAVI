@@ -18,10 +18,11 @@ import {
   useSwitchNetwork,
 } from 'wagmi';
 import { Option, Transaction, WalletInfoBox } from '../components';
-import { getIcon } from 'provider/wallets';
+import { getIcon, isReadOnly } from 'provider/wallets';
 import { useTransactions } from 'contexts/Guilds';
 import { Divider } from 'old-components/Guilds/common/Divider';
 import { Button } from 'old-components/Guilds/common/Button';
+import { READ_ONLY_CONNECTOR_ID } from 'provider/ReadOnlyConnector';
 
 const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();
@@ -30,7 +31,6 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { chains, switchNetwork } = useSwitchNetwork();
   const { transactions, clearAllTransactions } = useTransactions();
   const { disconnect } = useDisconnect();
-
   const {
     connector: activeConnector,
     isConnecting,
@@ -39,21 +39,23 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { connectors, connect, error: connectionError } = useConnect();
 
   function getOptions() {
-    return connectors.map(connector => {
-      return (
-        <Option
-          disabled={!connector.ready}
-          key={connector.id}
-          onClick={() =>
-            activeConnector !== connector && connect({ connector })
-          }
-          icon={getIcon(connector.id, connector.name)}
-          header={connector.name}
-          active={activeConnector === connector && isConnected}
-          loading={activeConnector === connector && isConnecting}
-        />
-      );
-    });
+    return connectors
+      .filter(connector => connector.id !== READ_ONLY_CONNECTOR_ID)
+      .map(connector => {
+        return (
+          <Option
+            disabled={!connector.ready}
+            key={connector.id}
+            onClick={() =>
+              activeConnector !== connector && connect({ connector })
+            }
+            icon={getIcon(connector.id, connector.name)}
+            header={connector.name}
+            active={activeConnector === connector && isConnected}
+            loading={activeConnector === connector && isConnecting}
+          />
+        );
+      });
   }
 
   function getModalContent() {
@@ -61,7 +63,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       return <Container>{t('pleaseSwitchNetwork')}</Container>;
     }
 
-    if (!isConnected || isWalletListActive) {
+    if (!isConnected || isWalletListActive || isReadOnly(activeConnector)) {
       return (
         <Container>
           {getOptions()}
@@ -115,7 +117,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       return t('unsupportedNetwork');
     }
 
-    if (isConnected && isWalletListActive) {
+    if (isConnected && isWalletListActive && !isReadOnly(activeConnector)) {
       return (
         <BackIcon
           onClick={() => {
@@ -125,11 +127,14 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       );
     }
 
-    return isConnected ? t('account') : t('connectToAWallet');
+    return isConnected && !isReadOnly(activeConnector)
+      ? t('account')
+      : t('connectToAWallet');
   };
 
   const getPrimaryAction = () => {
-    if (isConnected && isWalletListActive) return () => disconnect();
+    if (isConnected && isWalletListActive && !isReadOnly(activeConnector))
+      return () => disconnect();
 
     if (isConnected && chain.unsupported && switchNetwork) {
       const firstSupported = chains && chains?.length > 0 ? chains[0] : null;
@@ -140,7 +145,8 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   };
 
   const getPrimaryActionLabel = () => {
-    if (isConnected && isWalletListActive) return t('disconnect');
+    if (isConnected && isWalletListActive && !isReadOnly(activeConnector))
+      return t('disconnect');
 
     if (isConnected && chain.unsupported) {
       const firstSupported = chains && chains?.length > 0 ? chains[0] : null;

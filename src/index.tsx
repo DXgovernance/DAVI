@@ -13,6 +13,7 @@ import { createClient, configureChains, WagmiConfig } from 'wagmi';
 import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
 import MultichainProvider from 'contexts/MultichainProvider';
+import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -38,14 +39,6 @@ function getLibrary(provider) {
   return new Web3(provider);
 }
 
-const Application = () => {
-  return (
-    <EtherSWRManager>
-      <App />
-    </EtherSWRManager>
-  );
-};
-
 const Root = () => {
   return (
     <GlobalErrorBoundary>
@@ -53,10 +46,14 @@ const Root = () => {
         <Web3ReactProvider getLibrary={getLibrary}>
           <MultichainProvider>
             <HashRouter>
-              <Application />
+              <EtherSWRManager>
+                <App />
+              </EtherSWRManager>
             </HashRouter>
           </MultichainProvider>
         </Web3ReactProvider>
+
+        <EnsureReadOnlyConnection />
       </WagmiConfig>
     </GlobalErrorBoundary>
   );

@@ -4,6 +4,7 @@ import useNetworkConfig from 'hooks/Guilds/useNetworkConfig';
 
 export const useGuildRegistry = (contractAddress?: string) => {
   const config = useNetworkConfig();
+  console.log('useGuildRegistry', contractAddress, config);
   const address = contractAddress || config?.contracts?.utils.guildRegistry;
   const { data, error } = useEtherSWR(
     address
