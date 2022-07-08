@@ -4,202 +4,203 @@ exports[`TokenPicker Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-jONnzC hUvaRT"
-    />
-    <div
-      class="sc-aemIz fpuFHE"
+      class="sc-jONnzC hUvaRT backdropModal"
     >
       <div
-        class="sc-hlTwrV jZZdht"
+        class="sc-aemIz fpuFHE"
       >
-        
-         
         <div
-          class="sc-eLgNKc GtOyU"
+          class="sc-hlTwrV kXDWEa"
         >
-          <h2
-            class="sc-fFucqa sc-kIeSZW fhzUrS NYJKg"
-          >
-            selectAToken
-          </h2>
-          <svg
-            class="sc-hOqruk cOtmWQ"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-dacGJm logYbD"
-        >
+          
+           
           <div
-            class="sc-dFJtaz bBfQcN"
+            class="sc-eLgNKc GtOyU"
+          >
+            <h2
+              class="sc-fFucqa sc-kIeSZW fhzUrS NYJKg"
+            >
+              selectAToken
+            </h2>
+            <svg
+              class="sc-hOqruk cOtmWQ"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-dacGJm logYbD"
           >
             <div
-              class="sc-bsipwG dACkam"
+              class="sc-dFJtaz bBfQcN"
             >
               <div
-                class="sc-gsTEea jwbCic"
+                class="sc-bsipwG dACkam"
               >
                 <div
-                  class="sc-dlfnuX jRxgXa"
-                >
-                  <svg
-                    fill="none"
-                    height="1em"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    width="1em"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle
-                      cx="11"
-                      cy="11"
-                      r="8"
-                    />
-                    <line
-                      x1="21"
-                      x2="16.65"
-                      y1="21"
-                      y2="16.65"
-                    />
-                  </svg>
-                </div>
-                <input
-                  class="sc-bdfBQB wpJaf"
-                  placeholder="searchToken"
-                  value=""
-                />
-                <div
-                  class="sc-dlfnuX gJuvwh"
-                />
-              </div>
-            </div>
-            <div
-              class="sc-gInthZ iSfbIF"
-            >
-              <div
-                class="sc-GTVdH eWmvTz"
-              >
-                <div
-                  class="sc-gsxoIA csYcEO"
+                  class="sc-gsTEea jwbCic"
                 >
                   <div
-                    class="sc-bXDkGd ZAcVe"
+                    class="sc-dlfnuX jRxgXa"
                   >
-                    <img
-                      alt="Avatar"
-                      class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
-                      data-testid="avatar"
-                      size="28"
-                      src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
-                    />
-                  </div>
-                  <div>
-                    <div
-                      class="sc-eGCaLh gdvMjc"
+                    <svg
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      SWPR
-                    </div>
-                    <div
-                      class="sc-ctaXho bKuKZN"
-                    >
-                      SWAPR Guild
-                    </div>
+                      <circle
+                        cx="11"
+                        cy="11"
+                        r="8"
+                      />
+                      <line
+                        x1="21"
+                        x2="16.65"
+                        y1="21"
+                        y2="16.65"
+                      />
+                    </svg>
                   </div>
-                </div>
-                <div>
-                  10
+                  <input
+                    class="sc-bdfBQB wpJaf"
+                    placeholder="searchToken"
+                    value=""
+                  />
+                  <div
+                    class="sc-dlfnuX gJuvwh"
+                  />
                 </div>
               </div>
               <div
-                class="sc-GTVdH eWmvTz"
+                class="sc-gInthZ iSfbIF"
               >
                 <div
-                  class="sc-gsxoIA csYcEO"
+                  class="sc-GTVdH eWmvTz"
                 >
                   <div
-                    class="sc-bXDkGd ZAcVe"
+                    class="sc-gsxoIA csYcEO"
                   >
-                    <img
-                      alt="Avatar"
-                      class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
-                      data-testid="avatar"
-                      size="28"
-                      src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
-                    />
+                    <div
+                      class="sc-bXDkGd ZAcVe"
+                    >
+                      <img
+                        alt="Avatar"
+                        class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
+                        data-testid="avatar"
+                        size="28"
+                        src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
+                      />
+                    </div>
+                    <div>
+                      <div
+                        class="sc-eGCaLh gdvMjc"
+                      >
+                        SWPR
+                      </div>
+                      <div
+                        class="sc-ctaXho bKuKZN"
+                      >
+                        SWAPR Guild
+                      </div>
+                    </div>
                   </div>
                   <div>
-                    <div
-                      class="sc-eGCaLh gdvMjc"
-                    >
-                      DXD
-                    </div>
-                    <div
-                      class="sc-ctaXho bKuKZN"
-                    >
-                      DXdao on Localhost
-                    </div>
+                    10
                   </div>
                 </div>
-                <div>
-                  0
-                </div>
-              </div>
-              <div
-                class="sc-GTVdH eWmvTz"
-              >
                 <div
-                  class="sc-gsxoIA csYcEO"
+                  class="sc-GTVdH eWmvTz"
                 >
                   <div
-                    class="sc-bXDkGd ZAcVe"
+                    class="sc-gsxoIA csYcEO"
                   >
-                    <img
-                      alt="Avatar"
-                      class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
-                      data-testid="avatar"
-                      size="28"
-                      src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
-                    />
+                    <div
+                      class="sc-bXDkGd ZAcVe"
+                    >
+                      <img
+                        alt="Avatar"
+                        class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
+                        data-testid="avatar"
+                        size="28"
+                        src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
+                      />
+                    </div>
+                    <div>
+                      <div
+                        class="sc-eGCaLh gdvMjc"
+                      >
+                        DXD
+                      </div>
+                      <div
+                        class="sc-ctaXho bKuKZN"
+                      >
+                        DXdao on Localhost
+                      </div>
+                    </div>
                   </div>
                   <div>
-                    <div
-                      class="sc-eGCaLh gdvMjc"
-                    >
-                      RGT
-                    </div>
-                    <div
-                      class="sc-ctaXho bKuKZN"
-                    >
-                      REP Guild Token on Localhost
-                    </div>
+                    0
                   </div>
                 </div>
-                <div>
-                  0
+                <div
+                  class="sc-GTVdH eWmvTz"
+                >
+                  <div
+                    class="sc-gsxoIA csYcEO"
+                  >
+                    <div
+                      class="sc-bXDkGd ZAcVe"
+                    >
+                      <img
+                        alt="Avatar"
+                        class="sc-jSgvzq sc-fubCzh iUxzmp jqAwTz"
+                        data-testid="avatar"
+                        size="28"
+                        src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
+                      />
+                    </div>
+                    <div>
+                      <div
+                        class="sc-eGCaLh gdvMjc"
+                      >
+                        RGT
+                      </div>
+                      <div
+                        class="sc-ctaXho bKuKZN"
+                      >
+                        REP Guild Token on Localhost
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    0
+                  </div>
                 </div>
               </div>
             </div>
