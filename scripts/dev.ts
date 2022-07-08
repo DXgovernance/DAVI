@@ -871,7 +871,9 @@ async function main() {
       },
     },
 
-    // ...utils.generateMultipleRandomProposals(1000),
+    ...utils.createMultipleRandomProposals(2, {
+      data: { guildName: 'DXDGuild' },
+    }),
   ];
 
   const developConfig = {
@@ -955,21 +957,11 @@ async function main() {
         logoURI:
           'https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png',
       },
-      // {
-      //   address: networkContracts.addresses.LTGT,
-      //   name: 'Localhost Test Guild Token',
-      //   decimals: 18,
-      //   symbol: 'LTGT',
-      //   fetchPrice: true,
-      //   logoURI:
-      //     'https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png',
-      // },
     ],
     guilds: [
       networkContracts.addresses.DXDGuild,
       networkContracts.addresses.REPGuild,
       networkContracts.addresses.SWPRGuild,
-      // networkContracts.addresses.LocalhostTestGuild,
     ],
   };
 

@@ -112,25 +112,21 @@ exports[`Filter Should match snapshot 1`] = `
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
                 Erc20 Transfer
-                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
                 Rep Mint
-                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
                 Generic Call
-                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
                 Set Permissions
-                 
               </a>
             </div>
           </div>

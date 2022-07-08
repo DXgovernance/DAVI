@@ -27,6 +27,12 @@ import {
   FilterButton,
 } from './FilterMenu.styled';
 
+const parseActionTypeEnum = (action: string) =>
+  action
+    .split('_')
+    .map(s => s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase())
+    .join(' ');
+
 const FilterMenu = () => {
   const { t } = useTranslation();
   const [showState, setShowState] = useState(false);
@@ -118,12 +124,7 @@ const FilterMenu = () => {
                 key={action}
                 onClick={() => onToggleActionType(action)}
               >
-                {action
-                  .split('_')
-                  .map(
-                    s => s.slice(0, 1).toUpperCase() + s.slice(1).toLowerCase()
-                  )
-                  .join(' ')}{' '}
+                {parseActionTypeEnum(action)}
                 {isActionTypeSelected(action) && <FiCheck />}
               </DropdownMenuItem>
             ))}
@@ -136,7 +137,7 @@ const FilterMenu = () => {
         </DropdownContent>
       </DropdownMenu>
 
-      {tokens.length && (
+      {tokens?.length && (
         <DropdownMenu ref={currencyRef} position={DropdownPosition.BottomRight}>
           <FilterButton
             iconRight
@@ -147,7 +148,7 @@ const FilterMenu = () => {
           <DropdownContent fullScreenMobile={true} show={showCurrency}>
             {isMobile && (
               <DropdownHeader onClick={() => setShowCurrency(false)}>
-                <FiArrowLeft /> <span>{t('currency')}</span>{' '}
+                <FiArrowLeft /> <span>{t('currency')}</span>
                 <FilterResetMobile onClick={onResetCurrency}>
                   {t('reset')}
                 </FilterResetMobile>

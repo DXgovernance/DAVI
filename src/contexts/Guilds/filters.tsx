@@ -27,29 +27,28 @@ export const FilterProvider = ({
     filterCurrency,
   } = filterData;
 
-  const matchTitle = (proposal: Proposal, query) => {
-    if (!query) return true;
+  const regex = new RegExp('w*' + searchQuery + 'w*', 'gi');
+
+  const matchTitle = (proposal: Proposal) => {
+    if (!searchQuery) return true;
     if (proposal?.title) {
-      let reg = new RegExp('w*' + query + 'w*', 'gi');
-      return proposal.title.match(reg)?.length;
+      return proposal.title.match(regex)?.length;
     }
     return false;
   };
 
-  const matchCreatorAddress = (proposal: Proposal, query) => {
-    if (!query) return true;
+  const matchCreatorAddress = (proposal: Proposal) => {
+    if (!searchQuery) return true;
     if (proposal?.creator) {
-      let reg = new RegExp('w*' + query + 'w*', 'gi');
-      return proposal.creator.match(reg)?.length;
+      return proposal.creator.match(regex)?.length;
     }
     return false;
   };
 
-  const matchRecipientAddresses = (proposal: Proposal, query) => {
-    if (!query) return true;
+  const matchRecipientAddresses = (proposal: Proposal) => {
+    if (!searchQuery) return true;
     if (proposal?.to) {
-      let reg = new RegExp('w*' + query + 'w*', 'gi');
-      return proposal.to?.some(address => address.match(reg)?.length);
+      return proposal.to?.some(address => address.match(regex)?.length);
     }
     return false;
   };
@@ -73,7 +72,7 @@ export const FilterProvider = ({
   const matchSearch = (proposal: Proposal) =>
     searchQuery
       ? [matchTitle, matchCreatorAddress, matchRecipientAddresses].some(
-          matcher => matcher(proposal, searchQuery)
+          matcher => matcher(proposal)
         )
       : true;
 
