@@ -4,103 +4,104 @@ exports[`TransactionModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-dtwnrN dbGlES"
-    />
-    <div
-      class="sc-hOqruk hmPtox"
+      class="sc-dtwnrN dbGlES backdropModal"
     >
       <div
-        class="sc-dacGJm gXMaZU"
+        class="sc-hOqruk hmPtox"
       >
-        
-         
         <div
-          class="sc-jUEmfL sc-jQbJRc ijZMct jfMkQk"
+          class="sc-dacGJm gFdQkv"
         >
-          <h2
-            class="sc-hBEYId sc-fvhFOF cvuXJr cwFhQq"
+          
+           
+          <div
+            class="sc-jUEmfL sc-jQbJRc ijZMct jfMkQk"
           >
-            <div
-              class="sc-dlfnuX sc-gInthZ ghjVNo hvTIGi"
+            <h2
+              class="sc-hBEYId sc-fvhFOF cvuXJr cwFhQq"
             >
               <div
-                class="sc-gsTEea fSStiW"
+                class="sc-dlfnuX sc-gInthZ ghjVNo hvTIGi"
               >
-                <svg
-                  fill="currentColor"
-                  height="40"
-                  stroke="currentColor"
-                  stroke-width="0"
-                  viewBox="0 0 1024 1024"
-                  width="40"
-                  xmlns="http://www.w3.org/2000/svg"
+                <div
+                  class="sc-gsTEea fSStiW"
                 >
-                  <path
-                    d="M868 545.5L536.1 163a31.96 31.96 0 0 0-48.3 0L156 545.5a7.97 7.97 0 0 0 6 13.2h81c4.6 0 9-2 12.1-5.5L474 300.9V864c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V300.9l218.9 252.3c3 3.5 7.4 5.5 12.1 5.5h81c6.8 0 10.5-8 6-13.2z"
-                  />
-                </svg>
+                  <svg
+                    fill="currentColor"
+                    height="40"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 1024 1024"
+                    width="40"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M868 545.5L536.1 163a31.96 31.96 0 0 0-48.3 0L156 545.5a7.97 7.97 0 0 0 6 13.2h81c4.6 0 9-2 12.1-5.5L474 300.9V864c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V300.9l218.9 252.3c3 3.5 7.4 5.5 12.1 5.5h81c6.8 0 10.5-8 6-13.2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </h2>
+            <svg
+              class="sc-fbNZge sc-GTVdH kRBck gqYBRN"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-gsxoIA bHlzzY"
+          >
+            <div
+              class="sc-dlfnuX ghjVNo"
+            >
+              <div
+                class="sc-dlfnuX sc-eCstlR ghjVNo ctJTEk"
+              >
+                transactionSubmitted
+              </div>
+              <div
+                class="sc-bsipwG ikMFXE"
+              >
+                <a
+                  class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"
+                  color="grey"
+                  href="https://etherscan.io/tx/0x123456789"
+                  target="_blank"
+                >
+                  viewOnBlockExplorer
+                </a>
               </div>
             </div>
-          </h2>
-          <svg
-            class="sc-fbNZge sc-GTVdH kRBck gqYBRN"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-gsxoIA bHlzzY"
-        >
-          <div
-            class="sc-dlfnuX ghjVNo"
-          >
-            <div
-              class="sc-dlfnuX sc-eCstlR ghjVNo ctJTEk"
-            >
-              transactionSubmitted
-            </div>
-            <div
-              class="sc-bsipwG ikMFXE"
-            >
-              <a
-                class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"
-                color="grey"
-                href="https://etherscan.io/tx/0x123456789"
-                target="_blank"
-              >
-                viewOnBlockExplorer
-              </a>
-            </div>
           </div>
-        </div>
-        <div
-          class="sc-bXDkGd iDtKrI"
-        >
-          <button
-            class="sc-jSgvzq sc-eGCaLh jXQRoF jCacGz"
+          <div
+            class="sc-bXDkGd iDtKrI"
           >
-            close
-          </button>
+            <button
+              class="sc-jSgvzq sc-eGCaLh jXQRoF jCacGz"
+            >
+              close
+            </button>
+          </div>
         </div>
       </div>
     </div>
