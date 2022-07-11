@@ -1,14 +1,18 @@
 import { ethers } from 'ethers';
 
-export const simulateAllTransactions = async options => {
-  const forkId = await getForkId();
+export const simulateAllTransactions = async (
+  options,
+  chainId: number,
+  provider
+) => {
+  const forkId = await getForkId(chainId, provider);
   const forkRPC = `https://rpc.tenderly.co/fork/${forkId}`;
-  const provider = new ethers.providers.JsonRpcProvider(forkRPC);
+  const forkProvider = new ethers.providers.JsonRpcProvider(forkRPC);
 
-  const forkStartingPoint = await provider.send('evm_snapshot', []);
+  const forkStartingPoint = await forkProvider.send('evm_snapshot', []);
 
   for (let i = 0; i < options.length; i++) {
-    await provider.send('evm_revert', [forkStartingPoint]); // Reset fork
+    await forkProvider.send('evm_revert', [forkStartingPoint]); // Reset fork
     let currentOption = options[i];
 
     // Tenderly simulation API requires to execute the simulations
@@ -18,7 +22,7 @@ export const simulateAllTransactions = async options => {
 
       // Fund the wallet with ether
       const params = [currentAction.from, ethers.utils.hexValue(30000000)];
-      await provider.send('tenderly_addBalance', params);
+      await forkProvider.send('tenderly_addBalance', params);
 
       let actionData = {
         from: currentAction.from,
@@ -29,10 +33,10 @@ export const simulateAllTransactions = async options => {
         value: ethers.utils.hexValue(0),
       };
 
-      let transactionHash = await provider.send('eth_sendTransaction', [
+      let transactionHash = await forkProvider.send('eth_sendTransaction', [
         actionData,
       ]);
-      let transactionDetails = await provider.send(
+      let transactionDetails = await forkProvider.send(
         'eth_getTransactionReceipt',
         [transactionHash]
       );
@@ -48,20 +52,22 @@ export const simulateAllTransactions = async options => {
   return options;
 };
 
-const getForkId = async () => {
+const getForkId = async (chainId: number, provider) => {
   const {
     REACT_APP_TENDERLY_USER,
     REACT_APP_TENDERLY_PROJECT,
     REACT_APP_TENDERLY_ACCESS_KEY,
   } = process.env;
 
+  let latestBlock = await provider.getBlockNumber();
+
   const forkUrl = `https://api.tenderly.co/api/v1/account/${REACT_APP_TENDERLY_USER}/project/${REACT_APP_TENDERLY_PROJECT}/fork`;
 
   const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
 
   const bodyData = {
-    network_id: '5',
-    block_number: 7186477,
+    network_id: chainId.toString(),
+    block_number: latestBlock,
   };
 
   try {
@@ -70,7 +76,6 @@ const getForkId = async () => {
       headers,
       body: JSON.stringify(bodyData),
     }).then(response => response.json());
-    console.log(response);
     return response.simulation_fork.id;
   } catch (err) {
     return err;
