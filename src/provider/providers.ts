@@ -14,7 +14,7 @@ const POKT_NETWORK_URLS = {
 
 const pokt = jsonRpcProvider({
   rpc(chain) {
-    return POKT_NETWORK_URLS[chain.id] ?? null;
+    return { http: POKT_NETWORK_URLS[chain.id] } ?? null;
   },
   priority: 1,
 });
