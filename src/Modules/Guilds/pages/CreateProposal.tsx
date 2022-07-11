@@ -199,7 +199,7 @@ const CreateProposalPage: React.FC = () => {
         >
           <StyledButton iconLeft onClick={handleBack}>
             <FiChevronLeft />
-            Change proposal type
+            {t('changeProposalType')}
           </StyledButton>
 
           <StyledButton
@@ -217,7 +217,7 @@ const CreateProposalPage: React.FC = () => {
         <Box margin="0px 0px 24px">
           {editMode ? (
             <>
-              <Label>Title</Label>
+              <Label>{t('title')}</Label>
               <Input
                 data-testid="create-proposal-title"
                 placeholder="Proposal Title"
@@ -232,7 +232,7 @@ const CreateProposalPage: React.FC = () => {
         <Box margin="0px 0px 24px">
           {editMode ? (
             <>
-              <Label>Reference link (optional)</Label>
+              <Label>{`${t('referenceLink')} ${t('optionalField')}`}</Label>
               <InputWrapper>
                 <Input
                   placeholder="https://daotalk.org/..."
@@ -242,14 +242,14 @@ const CreateProposalPage: React.FC = () => {
                   data-testid="create-proposal-link"
                 />
                 <StyledButton variant="secondary" marginLeft={'1rem'}>
-                  Import
+                  {t('import')}
                 </StyledButton>
               </InputWrapper>
             </>
           ) : referenceLink ? (
             <>
               <Label size="16px">{referenceLink}</Label>
-              <StyledButton> Import </StyledButton>
+              <StyledButton> {t('import')} </StyledButton>
             </>
           ) : null}
         </Box>
@@ -274,14 +274,14 @@ const CreateProposalPage: React.FC = () => {
             disabled={!isValid}
             data-testid="create-proposal-action-button"
           >
-            Create Proposal
+            {t('createProposal')}
           </StyledButton>
           <StyledButton
             onClick={handleTransactionSimulation}
             variant="secondary"
             data-testid="create-proposal-action-button"
           >
-            Simulate transactions
+            {t('simulateTransactions')}
           </StyledButton>
         </Box>
       </PageContent>
