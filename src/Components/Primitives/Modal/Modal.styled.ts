@@ -54,10 +54,6 @@ export const StyledModal = styled.div`
     border-radius: 10px;
     border: 3px solid ${({ theme }) => theme.colors.modalBackground};
   }
-  @media only screen and (max-width: 768px) {
-    padding: 0px 20px;
-    height: 100vh;
-  }
 `;
 
 export const Header = styled.div`

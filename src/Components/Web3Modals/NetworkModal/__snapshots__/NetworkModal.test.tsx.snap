@@ -4,55 +4,52 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-kIeSZW jXVHIu"
-    />
-    <div
-      class="sc-bTvSiT SdznJ"
+      class="sc-kIeSZW jXVHIu backdropModal"
     >
       <div
-        class="sc-hOqruk brMWlA"
+        class="sc-bTvSiT SdznJ"
       >
-        
-         
         <div
-          class="sc-dtwnrN bOjCed"
+          class="sc-hOqruk fMASoj"
         >
-          <h2
-            class="sc-kstqJO sc-jUEmfL gWTdRY rnOac"
+          
+           
+          <div
+            class="sc-dtwnrN bOjCed"
           >
-            <div>
-              switchNetwork
-            </div>
-          </h2>
-          <svg
-            class="sc-jQbJRc eldqEA"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-fbNZge bQGdmf"
-        >
+            <h2
+              class="sc-kstqJO sc-jUEmfL gWTdRY rnOac"
+            >
+              <div>
+                switchNetwork
+              </div>
+            </h2>
+            <svg
+              class="sc-jQbJRc eldqEA"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
           <div
             class="sc-bZSRNg gVERDF"
           >

@@ -39,65 +39,80 @@ export const Modal: React.FC<ModalProps> = ({
   leftIcon = true,
   dataTestId,
 }) => {
+  const handleClickOnBackdrop = e => {
+    e.stopPropagation();
+    if (
+      typeof e.target.className === 'string' &&
+      e.target.className.includes(`backdropModal`)
+    ) {
+      onDismiss();
+    }
+  };
+
   const modal = (
     <div data-testid={dataTestId}>
-      <Backdrop onClick={onDismiss} zIndex={zIndex} />
-      <Wrapper maxWidth={maxWidth} zIndex={zIndex + 1}>
-        <StyledModal>
-          {isMobile && (
-            <Header onClick={onDismiss}>
-              {cross ? leftIcon ? <CloseIcon /> : <FiArrowLeft /> : null}
-              <HeaderText>{header}</HeaderText>
-            </Header>
-          )}{' '}
-          {!hideHeader && !isMobile && (
-            <Header>
-              {!backnCross && (
-                <>
-                  <HeaderText>{header}</HeaderText>
-                  <CloseIcon onClick={onDismiss} />
-                </>
-              )}
-              {backnCross && (
-                <>
-                  <LeftArrowContainer>
-                    <BackButton onClick={prevContent} />
+      <Backdrop
+        onClick={e => handleClickOnBackdrop(e)}
+        zIndex={zIndex}
+        className={`backdropModal`}
+      >
+        <Wrapper maxWidth={maxWidth} zIndex={zIndex + 1}>
+          <StyledModal>
+            {isMobile && (
+              <Header onClick={onDismiss}>
+                {cross ? leftIcon ? <CloseIcon /> : <FiArrowLeft /> : null}
+                <HeaderText>{header}</HeaderText>
+              </Header>
+            )}{' '}
+            {!hideHeader && !isMobile && (
+              <Header>
+                {!backnCross && (
+                  <>
                     <HeaderText>{header}</HeaderText>
-                  </LeftArrowContainer>
-                  <CloseIcon onClick={onDismiss} />
-                </>
-              )}
-            </Header>
-          )}
-          {showSecondaryHeader && (
-            <SecondaryHeader>
-              <HeaderText>{contentHeader}</HeaderText>
-              {!isMobile && <SecondaryCloseIcon onClick={onDismiss} />}
-            </SecondaryHeader>
-          )}
-          <Content modal={cross ? true : false}>{children}</Content>
-          {(onCancel || onConfirm) && (
-            <Footer modal={cross ? true : false}>
-              {cancelText && (
-                <ModalButton
-                  variant={cross ? 'secondary' : 'primary'}
-                  onClick={() => {
-                    onCancel();
-                    onDismiss();
-                  }}
-                >
-                  {cancelText}
-                </ModalButton>
-              )}
-              {onConfirm && (
-                <ModalButton variant="secondary" onClick={onConfirm}>
-                  {confirmText}
-                </ModalButton>
-              )}
-            </Footer>
-          )}
-        </StyledModal>
-      </Wrapper>
+                    <CloseIcon onClick={onDismiss} />
+                  </>
+                )}
+                {backnCross && (
+                  <>
+                    <LeftArrowContainer>
+                      <BackButton onClick={prevContent} />
+                      <HeaderText>{header}</HeaderText>
+                    </LeftArrowContainer>
+                    <CloseIcon onClick={onDismiss} />
+                  </>
+                )}
+              </Header>
+            )}
+            {showSecondaryHeader && (
+              <SecondaryHeader>
+                <HeaderText>{contentHeader}</HeaderText>
+                {!isMobile && <SecondaryCloseIcon onClick={onDismiss} />}
+              </SecondaryHeader>
+            )}
+            <Content modal={cross ? true : false}>{children}</Content>
+            {(onCancel || onConfirm) && (
+              <Footer modal={cross ? true : false}>
+                {cancelText && (
+                  <ModalButton
+                    variant={cross ? 'secondary' : 'primary'}
+                    onClick={() => {
+                      onCancel();
+                      onDismiss();
+                    }}
+                  >
+                    {cancelText}
+                  </ModalButton>
+                )}
+                {onConfirm && (
+                  <ModalButton variant="secondary" onClick={onConfirm}>
+                    {confirmText}
+                  </ModalButton>
+                )}
+              </Footer>
+            )}
+          </StyledModal>
+        </Wrapper>
+      </Backdrop>
     </div>
   );
 

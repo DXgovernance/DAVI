@@ -6,96 +6,97 @@ exports[`WalletModal Should match snapshot 1`] = `
     data-testid="wallet-modal"
   >
     <div
-      class="sc-aemIz iegKhJ"
-    />
-    <div
-      class="sc-jHVedQ jaSA-db"
+      class="sc-aemIz iegKhJ backdropModal"
     >
       <div
-        class="sc-jONnzC jFaGea"
+        class="sc-jHVedQ jaSA-db"
       >
-        
-         
         <div
-          class="sc-hlTwrV hTyPNj"
+          class="sc-jONnzC bZnDLt"
         >
-          <h2
-            class="sc-dQoVA sc-bTvSiT fvNDvx iJsJQz"
-          >
-            account
-          </h2>
-          <svg
-            class="sc-kIeSZW ktHRrf"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-dtwnrN gnLHYk"
-        >
+          
+           
           <div
-            class="sc-GTVdH QKZBv"
+            class="sc-hlTwrV hTyPNj"
           >
-            <a
-              href="https://metamask.io/"
+            <h2
+              class="sc-dQoVA sc-bTvSiT fvNDvx iJsJQz"
             >
+              account
+            </h2>
+            <svg
+              class="sc-kIeSZW ktHRrf"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-dtwnrN gnLHYk"
+          >
+            <div
+              class="sc-GTVdH QKZBv"
+            >
+              <a
+                href="https://metamask.io/"
+              >
+                <button
+                  class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
+                  data-testid=""
+                >
+                  <div
+                    class="sc-dOSRxR bvcoLH"
+                  >
+                    installMetamask
+                  </div>
+                  <div
+                    class="sc-bBrNTY dkBKFH"
+                  >
+                    <img
+                      alt="Icon"
+                      src="metamask.png"
+                    />
+                  </div>
+                </button>
+              </a>
               <button
                 class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
-                data-testid=""
+                data-testid="wallet-option-WalletConnect"
               >
                 <div
                   class="sc-dOSRxR bvcoLH"
                 >
-                  installMetamask
+                  WalletConnect
                 </div>
                 <div
                   class="sc-bBrNTY dkBKFH"
                 >
                   <img
                     alt="Icon"
-                    src="metamask.png"
+                    src="walletconnect.png"
                   />
                 </div>
               </button>
-            </a>
-            <button
-              class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
-              data-testid="wallet-option-WalletConnect"
-            >
-              <div
-                class="sc-dOSRxR bvcoLH"
-              >
-                WalletConnect
-              </div>
-              <div
-                class="sc-bBrNTY dkBKFH"
-              >
-                <img
-                  alt="Icon"
-                  src="walletconnect.png"
-                />
-              </div>
-            </button>
+            </div>
           </div>
         </div>
       </div>
