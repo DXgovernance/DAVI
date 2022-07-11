@@ -15,7 +15,11 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
   }),
 }));
 
-describe.skip('ActionsModal', () => {
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ isConnected: true }),
+}));
+
+describe('ActionsModal', () => {
   let props;
   beforeEach(() => {
     props = {

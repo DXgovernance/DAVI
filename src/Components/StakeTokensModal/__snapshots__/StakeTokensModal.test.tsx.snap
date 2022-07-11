@@ -4,26 +4,26 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
 <body>
   <div>
     <div
-      class="sc-jQbJRc eKVfdl backdropModal"
+      class="sc-kEjbQP bzazPo backdropModal"
     >
       <div
-        class="sc-jUEmfL bBKUIe"
+        class="sc-jrAFXE llhtMl"
       >
         <div
-          class="sc-fvhFOF jOmRSS"
+          class="sc-iqHYmW djTBga"
         >
           
            
           <div
-            class="sc-fbNZge jLZtmu"
+            class="sc-crrszt cBSLGO"
           >
             <h2
-              class="sc-kstqJO sc-gsxoIA gWTdRY hdFReu"
+              class="sc-jSgvzq sc-bqyKOL cRjjSL jifZfj"
             >
               Stake Mock Token tokens
             </h2>
             <svg
-              class="sc-bXDkGd hzVbso"
+              class="sc-kstqJO gdCTxS"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -49,7 +49,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
             </svg>
           </div>
           <div
-            class="sc-ctaXho jxgTzA"
+            class="sc-fodVek fovbhg"
           >
             <div
               class="sc-fHuLxr fXhPFW"
@@ -64,7 +64,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                   src="dxdao-icon.svg"
                 />
                 <h2
-                  class="sc-kstqJO sc-XhUvE gWTdRY gTlifZ"
+                  class="sc-jSgvzq sc-XhUvE cRjjSL gTlifZ"
                 >
                   mockGuildName
                 </h2>
@@ -98,15 +98,15 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                   class="sc-biBsmb fiOhMx"
                 >
                   <div
-                    class="sc-dIUeWJ gQcXkl"
+                    class="sc-bZSRNg bTohGJ"
                   >
                     <div
-                      class="sc-hHfuMS bScybG"
+                      class="sc-iUuxjF kfXzoC"
                     />
                     <input
                       autocomplete="off"
                       autocorrect="off"
-                      class="sc-idOiZg jelFGI sc-xyEDr kleKny"
+                      class="sc-jcVcSv fxFyvz sc-xyEDr kleKny"
                       data-testid="stake-amount-input"
                       inputmode="decimal"
                       maxlength="79"
@@ -118,7 +118,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                       value="0.0"
                     />
                     <div
-                      class="sc-hHfuMS jNxMeF"
+                      class="sc-iUuxjF exPtkN"
                     />
                   </div>
                   <button

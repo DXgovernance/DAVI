@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'Components';
+import { Modal } from 'Components/Primitives/Modal';
 import { getChainIcon } from 'utils';
-import { Option } from '../components';
+import { Option } from '../components/Option';
 import {
   Wrapper,
   ContentWrapper,

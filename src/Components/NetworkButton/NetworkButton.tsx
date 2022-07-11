@@ -6,7 +6,7 @@ import {
   ButtonIcon,
   IconButton,
 } from 'old-components/Guilds/common/Button';
-import { NetworkModal } from 'Components';
+import { NetworkModal } from 'Components/Web3Modals/NetworkModal';
 import { useAccount, useNetwork } from 'wagmi';
 
 const NetworkButton = () => {

@@ -14,7 +14,7 @@ import {
   DecodedCall,
   SupportedAction,
 } from 'Components/ActionsBuilder/types';
-import { Modal } from 'Components';
+import { Modal } from 'Components/Primitives/Modal';
 import {
   ContractActionsList,
   ApproveSpendTokens,

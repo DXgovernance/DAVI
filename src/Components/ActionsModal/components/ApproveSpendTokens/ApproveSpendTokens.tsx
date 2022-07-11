@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
-import { TokenPicker } from 'Components';
+import { TokenPicker } from 'Components/TokenPicker';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';

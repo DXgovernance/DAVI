@@ -1,29 +1,14 @@
 import NetworkModal from './NetworkModal';
 import { render } from 'utils/tests';
+import { mockChain } from '../fixtures';
 
-jest.mock('provider/connectors', () => {
-  return {
-    getChains: () => {
-      return [
-        {
-          id: 1,
-          name: 'mainnet',
-          displayName: 'Ethereum Mainnet',
-          defaultRpc: 'https://eth-mainnet.alchemyapi.io/v2/',
-          nativeAsset: {
-            name: 'Ethereum',
-            symbol: 'ETH',
-            decimals: 18,
-          },
-          blockExplorer: 'https://etherscan.io',
-          api: 'https://api.etherscan.io',
-        },
-      ];
-    },
-  };
-});
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ isConnected: true }),
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+  useSwitchNetwork: () => ({ switchNetwork: jest.fn() }),
+}));
 
-describe.skip('NetworkModal', () => {
+describe('NetworkModal', () => {
   it('Should match snapshot', () => {
     console.error = jest.fn();
     const { container } = render(
@@ -41,6 +26,6 @@ describe.skip('NetworkModal', () => {
         container: document.body,
       }
     );
-    expect(getByText('Ethereum Mainnet')).toBeInTheDocument();
+    expect(getByText(mockChain.name)).toBeInTheDocument();
   });
 });

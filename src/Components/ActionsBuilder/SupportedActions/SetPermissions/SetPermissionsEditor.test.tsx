@@ -7,6 +7,7 @@ import ERC20Guild from 'contracts/ERC20Guild.json';
 import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 
 // Mocked hooks
 
@@ -26,9 +27,9 @@ jest.mock('hooks/Guilds/ether-swr/useEtherSWR.ts', () => ({
   }),
 }));
 
-jest.mock('hooks/Guilds/useNetworkConfig.ts', () => ({
-  __esModule: true,
-  default: () => ({}),
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ isConnected: false }),
+  useNetwork: () => ({ chain: mockChain, chains: [] }),
 }));
 
 // Mocked variables
@@ -73,7 +74,7 @@ const completeDecodedCallMock: DecodedCall = {
   },
 };
 
-describe.skip(`Set Permissions editor`, () => {
+describe(`Set Permissions editor`, () => {
   describe(`Asset transfer tests`, () => {
     beforeAll(() => {});
     it(`Default view renders asset transfer`, () => {
