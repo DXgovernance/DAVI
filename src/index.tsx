@@ -14,6 +14,7 @@ import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
 import MultichainProvider from 'contexts/MultichainProvider';
 import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
+import SyncRouterWithWagmi from 'Components/Web3Modals/SyncRouterWithWagmi';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -46,14 +47,15 @@ const Root = () => {
         <Web3ReactProvider getLibrary={getLibrary}>
           <MultichainProvider>
             <HashRouter>
-              <EtherSWRManager>
-                <App />
-              </EtherSWRManager>
+              <SyncRouterWithWagmi>
+                <EtherSWRManager>
+                  <App />
+                  <EnsureReadOnlyConnection />
+                </EtherSWRManager>
+              </SyncRouterWithWagmi>
             </HashRouter>
           </MultichainProvider>
         </Web3ReactProvider>
-
-        <EnsureReadOnlyConnection />
       </WagmiConfig>
     </GlobalErrorBoundary>
   );

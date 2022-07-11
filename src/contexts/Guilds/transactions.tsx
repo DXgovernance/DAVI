@@ -1,5 +1,4 @@
 import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
-import useJsonRpcProvider from '../../hooks/Guilds/web3/useJsonRpcProvider';
 import {
   TransactionOutcome,
   TransactionPending,
@@ -17,7 +16,7 @@ import {
 } from 'react';
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { toast } from 'react-toastify';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount, useNetwork, useProvider } from 'wagmi';
 
 export interface TransactionState {
   [chainId: number]: {
@@ -114,7 +113,7 @@ export const TransactionsProvider = ({ children }) => {
   );
 
   // Mark the transactions as finalized when they are mined
-  const provider = useJsonRpcProvider();
+  const provider = useProvider({ chainId });
   useEffect(() => {
     let isSubscribed = true;
 

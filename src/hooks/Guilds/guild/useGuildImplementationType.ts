@@ -1,8 +1,8 @@
 import { useMemo, useEffect, useState } from 'react';
 import { utils } from 'ethers';
-import useJsonRpcProvider from '../web3/useJsonRpcProvider';
 import { GuildImplementationType } from '../../../types/types.guilds.d';
 import deployedHashedBytecodes from '../../../bytecodes/config.json';
+import { useProvider } from 'wagmi';
 
 const defaultImplementation = deployedHashedBytecodes.find(
   ({ type }) => type === GuildImplementationType.IERC20Guild
@@ -48,7 +48,7 @@ export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
   const [guildBytecode, setGuildBytecode] = useState<string>('');
-  const provider = useJsonRpcProvider();
+  const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
       const btcode = await provider.getCode(guildAddress);
