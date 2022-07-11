@@ -85,6 +85,8 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           {!decodedCall && <UndecodableCallInfoLine />}
         </CardLabel>
         <CardActions>
+          {decodedAction?.success !== undefined &&
+            `Pass: ${decodedAction?.success}`}
           {isEditable && (
             <EditButtonWithMargin
               onClick={() => setIsEditActionModalOpen(true)}

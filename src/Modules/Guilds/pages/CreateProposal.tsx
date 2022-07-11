@@ -22,6 +22,7 @@ import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
+import { simulateAllTransactions } from 'hooks/Guilds/useTenderlyApi';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -53,7 +54,7 @@ const StyledButton = styled(IconButton)<{
 }>`
   margin: 0;
   padding: 0.5rem 0.8rem;
-  margin-left: ${props => props.marginLeft}; || 0
+  margin-left: ${props => props.marginLeft || 0};
 `;
 
 const Label = styled.span<{
@@ -130,6 +131,7 @@ const CreateProposalPage: React.FC = () => {
   const { createTransaction } = useTransactions();
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
+
   const handleCreateProposal = async () => {
     const contentHash = await uploadToIPFS();
 
@@ -168,6 +170,14 @@ const CreateProposalPage: React.FC = () => {
         `0x${contentHash}`
       );
     });
+  };
+
+  const handleTransactionSimulation = async () => {
+    const encodedOptions = bulkEncodeCallsFromOptions(options);
+
+    let optionsSimulationResult = await simulateAllTransactions(encodedOptions);
+    setOptions(optionsSimulationResult);
+    console.log(optionsSimulationResult);
   };
 
   const isValid = useMemo(() => {
@@ -265,6 +275,13 @@ const CreateProposalPage: React.FC = () => {
             data-testid="create-proposal-action-button"
           >
             Create Proposal
+          </StyledButton>
+          <StyledButton
+            onClick={handleTransactionSimulation}
+            variant="secondary"
+            data-testid="create-proposal-action-button"
+          >
+            Simulate transactions
           </StyledButton>
         </Box>
       </PageContent>
