@@ -33,7 +33,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     data: dataArray,
     value: valuesArray,
   } = proposal || {};
-  console.log(proposal);
+
   const totalOptionsNum = totalVotes?.length - 1 || 0;
   const callsPerOption = totalOptionsNum
     ? toArray?.length / totalOptionsNum
