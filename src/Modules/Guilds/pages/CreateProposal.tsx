@@ -100,6 +100,7 @@ const CreateProposalPage: React.FC = () => {
   const [options, setOptions] = useState<Option[]>([]);
   const { chainId } = useWeb3React();
   const provider = useJsonRpcProvider(chainId);
+  const [isLoadingSimulation, setisLoadingSimulation] = useState(false);
 
   const {
     Editor,
@@ -178,6 +179,7 @@ const CreateProposalPage: React.FC = () => {
   };
 
   const handleTransactionSimulation = async () => {
+    setisLoadingSimulation(true);
     const encodedOptions = bulkEncodeCallsFromOptions(options);
 
     let optionsSimulationResult = await simulateAllTransactions(
@@ -186,8 +188,21 @@ const CreateProposalPage: React.FC = () => {
       provider
     );
     setOptions(optionsSimulationResult);
-    console.log(optionsSimulationResult);
+    setisLoadingSimulation(false);
   };
+
+  const isSimulationButtonDisabled = useMemo(() => {
+    let numberOfCalls = options.reduce((sumOfOptions, option) => {
+      if (option.decodedActions) {
+        return (sumOfOptions += option.decodedActions.length);
+      } else {
+        return sumOfOptions;
+      }
+    }, 0);
+
+    if (isLoadingSimulation || numberOfCalls === 0) return true;
+    else return false;
+  }, [options, isLoadingSimulation]);
 
   const isValid = useMemo(() => {
     if (!title) return false;
@@ -284,13 +299,17 @@ const CreateProposalPage: React.FC = () => {
             data-testid="create-proposal-action-button"
           >
             {t('createProposal')}
-          </StyledButton>
+          </StyledButton>{' '}
           <StyledButton
             onClick={handleTransactionSimulation}
             variant="secondary"
             data-testid="create-proposal-action-button"
+            disabled={isSimulationButtonDisabled}
           >
             {t('simulateTransactions')}
+            {isLoadingSimulation && (
+              <Loading loading={true} iconProps={{ size: 10 }}></Loading>
+            )}
           </StyledButton>
         </Box>
       </PageContent>
