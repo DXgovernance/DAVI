@@ -152,9 +152,19 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           )}
 
           {ActionSummary && activeTab === 0 && (
-            <DetailWrapper>
-              <ActionSummary decodedCall={decodedCall} />
-            </DetailWrapper>
+            <div>
+              {cardStatus === CardStatus.simulationFailed && (
+                <DetailWrapper>
+                  <div>Simulation failed</div>
+                  <div>
+                    {decodedAction.simulationResult.transaction.error_message}
+                  </div>
+                </DetailWrapper>
+              )}
+              <DetailWrapper>
+                <ActionSummary decodedCall={decodedCall} />
+              </DetailWrapper>
+            </div>
           )}
 
           {(!ActionSummary || activeTab === 1) && (
