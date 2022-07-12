@@ -22,9 +22,7 @@ import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
-import { simulateAllTransactions } from 'hooks/Guilds/useTenderlyApi';
-import { useWeb3React } from '@web3-react/core';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
+import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -98,9 +96,8 @@ const CreateProposalPage: React.FC = () => {
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
-  const { chainId } = useWeb3React();
-  const provider = useJsonRpcProvider(chainId);
   const [isLoadingSimulation, setisLoadingSimulation] = useState(false);
+  const simulateTransactions = useTransactionSimulation();
 
   const {
     Editor,
@@ -180,14 +177,11 @@ const CreateProposalPage: React.FC = () => {
 
   const handleTransactionSimulation = async () => {
     setisLoadingSimulation(true);
-    const encodedOptions = bulkEncodeCallsFromOptions(options);
 
-    let optionsSimulationResult = await simulateAllTransactions(
-      encodedOptions,
-      chainId,
-      provider
-    );
+    const encodedOptions = bulkEncodeCallsFromOptions(options);
+    let optionsSimulationResult = await simulateTransactions(encodedOptions);
     setOptions(optionsSimulationResult);
+
     setisLoadingSimulation(false);
   };
 
