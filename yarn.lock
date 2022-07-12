@@ -13543,9 +13543,9 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-"dxdao-contracts@https://github.com/DXGovernance/dxdao-contracts.git#64f96542c530c7b2c567c69c1fdca2eb383535ed":
+"dxdao-contracts@https://github.com/DXgovernance/dxdao-contracts.git#develop":
   version "1.0.0"
-  resolved "https://github.com/DXGovernance/dxdao-contracts.git#64f96542c530c7b2c567c69c1fdca2eb383535ed"
+  resolved "https://github.com/DXgovernance/dxdao-contracts.git#67b288e86829a9a9d63f16f8b6953edc2c32895a"
   dependencies:
     "@maticnetwork/eth-decoder" "^0.0.4"
     "@openzeppelin/contracts" "4.4.0"

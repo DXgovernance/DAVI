@@ -23,8 +23,12 @@ export const confirmVoteProposal = ({
   selectedAction,
   userVotingPower,
   createTransaction,
+  cb,
 }: ConfirmVoteProposalProps) => {
-  createTransaction(`Vote on proposal ${proposal?.title}`, async () =>
-    contract.setVote(proposal?.id, selectedAction, userVotingPower)
+  createTransaction(
+    `Vote on proposal ${proposal?.title}`,
+    async () => contract.setVote(proposal?.id, selectedAction, userVotingPower),
+    true,
+    cb
   );
 };

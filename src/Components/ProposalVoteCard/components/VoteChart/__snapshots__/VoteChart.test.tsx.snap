@@ -10,12 +10,12 @@ exports[`VoteChart matches the snapshot 1`] = `
       class="sc-hKgJUU eLJETA"
     >
       <div
-        class="sc-eCstlR jQiPq"
-        color="#295FF4"
-      />
-      <div
         class="sc-eCstlR beWtBW"
         color="#E75C5C"
+      />
+      <div
+        class="sc-eCstlR jQiPq"
+        color="#295FF4"
       />
     </div>
     <div

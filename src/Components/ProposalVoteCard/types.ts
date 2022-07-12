@@ -73,8 +73,11 @@ export interface ConfirmVoteProposalProps {
   userVotingPower: BigNumber;
   createTransaction: (
     summary: string,
-    txFunction: () => Promise<providers.TransactionResponse>
+    txFunction: () => Promise<providers.TransactionResponse>,
+    showModal?: boolean,
+    cb?: () => void
   ) => void;
+  cb?: () => void;
 }
 
 export interface VoteOnProposalProps {

@@ -100,7 +100,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           return {
             id: `option-${index}`,
             label: optionLabel || `Option ${index + 1}`,
-            color: theme?.colors?.votes?.[index],
+            color: theme?.colors?.votes?.[index + 1],
             actions,
             totalVotes: votingResults?.options[index],
           };

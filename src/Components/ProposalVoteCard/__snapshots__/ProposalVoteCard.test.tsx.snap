@@ -39,8 +39,8 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
                 class="sc-gVgoRu ivoywQ"
               >
                 <span
-                  class="sc-httYss fzsMGw"
-                  color="#295FF4"
+                  class="sc-httYss gqziMw"
+                  color="#E75C5C"
                   size="8"
                 />
               </span>
@@ -60,8 +60,8 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
                 class="sc-gVgoRu ivoywQ"
               >
                 <span
-                  class="sc-httYss gqziMw"
-                  color="#E75C5C"
+                  class="sc-httYss fzsMGw"
+                  color="#295FF4"
                   size="8"
                 />
               </span>
@@ -78,12 +78,12 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
               class="sc-dQoVA haSSSn"
             >
               <div
-                class="sc-bqyKOL saMbf"
-                color="#295FF4"
-              />
-              <div
                 class="sc-bqyKOL gTKchv"
                 color="#E75C5C"
+              />
+              <div
+                class="sc-bqyKOL saMbf"
+                color="#295FF4"
               />
             </div>
             <div

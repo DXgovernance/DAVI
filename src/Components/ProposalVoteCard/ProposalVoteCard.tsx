@@ -128,8 +128,8 @@ const ProposalVoteCard = ({
                     );
                   }}
                 >
-                  {proposal?.metadata?.voteOptions?.[optionKey] ||
-                    t('option ', { optionKey: optionKey + 1 })}
+                  {proposal?.metadata?.voteOptions?.[Number(optionKey)] ||
+                    t('option', { optionKey })}
                 </VoteOptionButton>
               );
             })}
@@ -151,15 +151,16 @@ const ProposalVoteCard = ({
       <VoteConfirmationModal
         isOpen={modalOpen}
         onDismiss={() => setModalOpen(false)}
-        onConfirm={() =>
+        onConfirm={() => {
           confirmVoteProposal({
             proposal,
             contract,
             selectedAction,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,
-          })
-        }
+          });
+          setModalOpen(false);
+        }}
         selectedAction={
           proposal?.metadata?.voteOptions?.[selectedAction?.toNumber()] ||
           selectedAction?.toString()

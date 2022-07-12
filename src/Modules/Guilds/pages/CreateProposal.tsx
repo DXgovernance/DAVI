@@ -100,6 +100,7 @@ const CreateProposalPage: React.FC = () => {
     EditorConfig,
     md: proposalBodyMd,
     html: proposalBodyHTML,
+    clear,
   } = useTextEditor(
     `${guildId}/create-proposal`,
     345600000,
@@ -120,7 +121,7 @@ const CreateProposalPage: React.FC = () => {
     const content = {
       description: proposalBodyHTML,
       url: referenceLink,
-      voteOptions: options.map(({ label }) => label),
+      voteOptions: ['ZERO-OPTION', ...options.map(({ label }) => label)],
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
@@ -130,6 +131,7 @@ const CreateProposalPage: React.FC = () => {
   const { createTransaction } = useTransactions();
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
+
   const handleCreateProposal = async () => {
     const contentHash = await uploadToIPFS();
 
@@ -158,16 +160,26 @@ const CreateProposalPage: React.FC = () => {
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
 
-    createTransaction(`Create proposal ${title}`, async () => {
-      return guildContract.createProposal(
-        toArray,
-        dataArray,
-        valueArray,
-        totalActions,
-        title,
-        `0x${contentHash}`
-      );
-    });
+    createTransaction(
+      `Create proposal ${title}`,
+      async () => {
+        return guildContract.createProposal(
+          toArray,
+          dataArray,
+          valueArray,
+          totalActions,
+          title,
+          `0x${contentHash}`
+        );
+      },
+      true,
+      err => {
+        if (!err) {
+          editMode && clear();
+          history.push(`/${chain}/${guildId}`);
+        }
+      }
+    );
   };
 
   const isValid = useMemo(() => {

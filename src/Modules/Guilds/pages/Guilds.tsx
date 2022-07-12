@@ -69,6 +69,7 @@ const GuildsPage: React.FC = () => {
       </SidebarContent>
       <PageContent>
         <Filter />
+
         <ProposalsList data-testid="proposals-list">
           {filteredProposalIds ? (
             filteredProposalIds.map(proposalId => (

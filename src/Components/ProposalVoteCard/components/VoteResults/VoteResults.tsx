@@ -3,6 +3,8 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import Bullet from 'old-components/Guilds/common/Bullet';
 import { Loading } from 'Components/Primitives/Loading';
 import { useTheme } from 'styled-components';
+import { useTranslation } from 'react-i18next';
+
 import {
   ResultRowProps,
   VoteResultsProps,
@@ -20,6 +22,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
   proposalMetadata,
 }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const isReady = optionKey !== undefined;
 
@@ -46,7 +49,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
 
         {isReady ? (
           proposalMetadata?.voteOptions?.[optionKey] ||
-          'Option ' + (optionKey + 1)
+          t('option', { optionKey })
         ) : (
           <Loading loading text />
         )}
@@ -73,10 +76,10 @@ const VoteResults: React.FC<VoteResultsProps> = ({
 }) => {
   return voteData ? (
     <>
-      {Object.entries(voteData.options).map((_, i) => (
+      {Object.entries(voteData.options).map(([key]) => (
         <VoteResultRow
-          key={i}
-          optionKey={i}
+          key={key}
+          optionKey={Number(key)}
           isPercent={isPercent}
           voteData={voteData}
           proposalMetadata={proposalMetadata}
