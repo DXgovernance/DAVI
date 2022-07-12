@@ -44,6 +44,11 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   }),
 }));
 
+const mockChainId = 123456;
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
+}));
+
 console.error = jest.fn();
 
 const Wrapper = () => {
@@ -54,7 +59,7 @@ const Wrapper = () => {
   return <SwaprPicker value={value} onChange={onChange} />;
 };
 
-describe.skip('SwaprPicker', () => {
+describe('SwaprPicker', () => {
   it('should render the options', async () => {
     let result = await waitFor(() => render(<Wrapper />));
 

@@ -1,4 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 import {
   IPFSRichContractData,
   useRichContractRegistry,
@@ -22,7 +23,11 @@ jest.mock('hooks/Guilds/ipfs/useIPFSFile', () => ({
   }),
 }));
 
-describe.skip('useRichContractRegistry', () => {
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: mockChain }),
+}));
+
+describe('useRichContractRegistry', () => {
   it('should return correct contract data', async () => {
     const { result } = renderHook(() => useRichContractRegistry());
 

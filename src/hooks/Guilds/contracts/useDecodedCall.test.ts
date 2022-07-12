@@ -4,6 +4,7 @@ import { SupportedAction } from 'Components/ActionsBuilder/types';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useDecodedCall } from './useDecodedCall';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 
 const contractAddress = '0x0000000000000000000000000000000000000001';
 const erc20TransferData =
@@ -15,7 +16,11 @@ jest.mock('./useRichContractRegistry', () => ({
   }),
 }));
 
-describe.skip('useDecodedCall', () => {
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+}));
+
+describe('useDecodedCall', () => {
   it('should return the decoded call', async () => {
     const { result, waitFor } = renderHook(() =>
       useDecodedCall({

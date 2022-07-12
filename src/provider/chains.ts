@@ -54,5 +54,7 @@ export const getBlockExplorerUrl = (
   address: string,
   type: 'address' | 'tx'
 ) => {
+  if (!chain || !chain?.blockExplorers?.default) return null;
+
   return `${chain.blockExplorers.default.url}/${type}/${address}`;
 };

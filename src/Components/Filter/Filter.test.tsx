@@ -1,6 +1,7 @@
 import Filter from './Filter';
 import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
+import { ZERO_ADDRESS } from 'utils';
 const bn = (value: number) => BigNumber.from(value);
 
 jest.mock('contexts/Guilds/filters', () => ({
@@ -45,8 +46,13 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
   }),
 }));
 
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ address: mockAddress }),
+}));
+
 describe('Filter', () => {
-  it.skip('Should match snapshot', () => {
+  it('Should match snapshot', () => {
     const { container } = render(<Filter />);
     expect(container).toMatchSnapshot();
   });

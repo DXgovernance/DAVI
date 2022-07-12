@@ -4,24 +4,24 @@ exports[`TransactionModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-dtwnrN dbGlES backdropModal"
+      class="sc-jrAFXE eHzIhx backdropModal"
     >
       <div
-        class="sc-hOqruk hmPtox"
+        class="sc-pGacB dPhapg"
       >
         <div
-          class="sc-dacGJm gFdQkv"
+          class="sc-kEjbQP kEDttW"
         >
           
            
           <div
-            class="sc-jUEmfL sc-jQbJRc ijZMct jfMkQk"
+            class="sc-iqHYmW sc-crrszt gVIZiL bAsWEw"
           >
             <h2
-              class="sc-hBEYId sc-fvhFOF cvuXJr cwFhQq"
+              class="sc-fubCzh sc-dQoVA lkMZWw hKuUWY"
             >
               <div
-                class="sc-dlfnuX sc-gInthZ ghjVNo hvTIGi"
+                class="sc-dlfnuX sc-euMpEg ghjVNo inFglf"
               >
                 <div
                   class="sc-gsTEea fSStiW"
@@ -43,7 +43,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
               </div>
             </h2>
             <svg
-              class="sc-fbNZge sc-GTVdH kRBck gqYBRN"
+              class="sc-bqyKOL sc-kstqJO dVjkkk jnbpOY"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -69,7 +69,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-gsxoIA bHlzzY"
+            class="sc-hBEYId fFTFNQ"
           >
             <div
               class="sc-dlfnuX ghjVNo"
@@ -80,12 +80,11 @@ exports[`TransactionModal Should match snapshot 1`] = `
                 transactionSubmitted
               </div>
               <div
-                class="sc-bsipwG ikMFXE"
+                class="sc-gInthZ jzepTi"
               >
                 <a
                   class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"
                   color="grey"
-                  href="https://etherscan.io/tx/0x123456789"
                   target="_blank"
                 >
                   viewOnBlockExplorer
@@ -93,15 +92,11 @@ exports[`TransactionModal Should match snapshot 1`] = `
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="sc-bXDkGd iDtKrI"
-        >
-          <button
-            class="sc-jSgvzq sc-fFucqa heCmEB hpQKPN"
+          <div
+            class="sc-fodVek dzyyQT"
           >
             <button
-              class="sc-jSgvzq sc-eGCaLh jXQRoF jCacGz"
+              class="sc-jSgvzq sc-fFucqa heCmEB hpQKPN"
             >
               close
             </button>

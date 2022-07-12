@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'Components';
+import { Modal } from 'Components/Primitives/Modal';
 import {
   BackIcon,
   ButtonContainer,

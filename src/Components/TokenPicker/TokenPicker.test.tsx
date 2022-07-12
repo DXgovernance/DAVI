@@ -2,14 +2,20 @@ import TokenPicker from './TokenPicker';
 import { render } from 'utils/tests';
 import { useAllERC20Balances } from 'hooks/Guilds/ether-swr/erc20/useAllERC20Balances';
 import { data } from './fixtures';
+import { ZERO_ADDRESS } from 'utils';
 
 jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
   useAllERC20Balances: jest.fn(),
 }));
 
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ address: mockAddress }),
+}));
+
 const mockedERC20Balances = useAllERC20Balances as jest.Mock;
 
-describe.skip('TokenPicker', () => {
+describe('TokenPicker', () => {
   let props;
   beforeEach(() => {
     props = {

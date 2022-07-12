@@ -29,7 +29,7 @@ jest.mock('hooks/Guilds/ether-swr/useEtherSWR.ts', () => ({
 
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: false }),
-  useNetwork: () => ({ chain: mockChain, chains: [] }),
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
 // Mocked variables

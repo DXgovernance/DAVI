@@ -1,29 +1,17 @@
 import TransactionModal from './TransactionModal';
 import { render } from 'utils/tests';
+import { mockChain } from '../fixtures';
 
-jest.mock('provider/connectors', () => {
-  return {
-    getChains: () => {
-      return [
-        {
-          id: 1,
-          name: 'mainnet',
-          displayName: 'Ethereum Mainnet',
-          defaultRpc: 'https://eth-mainnet.alchemyapi.io/v2/',
-          nativeAsset: {
-            name: 'Ethereum',
-            symbol: 'ETH',
-            decimals: 18,
-          },
-          blockExplorer: 'https://etherscan.io',
-          api: 'https://api.etherscan.io',
-        },
-      ];
-    },
-  };
-});
+jest.mock('provider/ReadOnlyConnector', () => ({
+  READ_ONLY_CONNECTOR_ID: 'readOnly',
+}));
 
-describe.skip('TransactionModal', () => {
+jest.mock('wagmi', () => ({
+  chain: {},
+  useNetwork: () => ({ chain: mockChain }),
+}));
+
+describe('TransactionModal', () => {
   it('Should match snapshot', () => {
     console.error = jest.fn();
     const { container } = render(
