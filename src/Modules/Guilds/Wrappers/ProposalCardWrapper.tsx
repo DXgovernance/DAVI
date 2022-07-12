@@ -6,6 +6,7 @@ import useVoteSummary from 'hooks/Guilds/useVoteSummary';
 import { MAINNET_ID } from 'utils/constants';
 import { useProposalSummaryActions } from 'hooks/Guilds/guild/useProposalSummaryActions';
 import useProposalState from 'hooks/Guilds/useProposalState';
+import { useFilter } from 'contexts/Guilds/filters';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -17,11 +18,11 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const { data: proposal } = useProposal(guildId, proposalId);
   const votes = useVoteSummary(guildId, proposalId);
   const summaryActions = useProposalSummaryActions(guildId, proposalId);
-
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);
-
   const status = useProposalState(proposal);
-  return (
+  const { withFilters } = useFilter();
+
+  return withFilters(
     <ProposalCard
       proposal={{ ...proposal, id: proposalId }}
       ensAvatar={ensAvatar}
@@ -36,7 +37,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       }}
       summaryActions={summaryActions}
     />
-  );
+  )(proposal, status, summaryActions);
 };
 
 export default ProposalCardWrapper;

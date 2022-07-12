@@ -1,8 +1,12 @@
-import moment, { Duration, DurationInputArg2 } from 'moment';
 import { useMemo, useState } from 'react';
+import { DURATION_IN_SECONDS } from 'constants/Duration';
 
-export const useDuration = () => {
-  const [duration, setDuration] = useState({
+export const useDuration = (
+  value: number,
+  onChange: (value: number) => void
+) => {
+  const [durationString, setDurationString] = useState('');
+  const [durationObject, setDurationObject] = useState({
     years: 0,
     months: 0,
     days: 0,
@@ -11,49 +15,93 @@ export const useDuration = () => {
     seconds: 0,
   });
 
-  const handleConversion = (value: string) => {
-    if (!value) return 0;
-    return parseInt(value);
-  };
+  useMemo(() => {
+    let durationObjectCopy = { ...durationObject };
+    let durationObjectKeys = Object.keys(durationObjectCopy);
+    let numberOfSeconds = value;
 
-  const increment = (key: string) =>
-    setDuration({ ...duration, [key]: handleConversion(duration[key]) + 1 });
-  const decrement = (key: string) =>
-    setDuration({ ...duration, [key]: handleConversion(duration[key]) - 1 });
+    durationObjectKeys.reduce((remainingSeconds, durationKey) => {
+      let count = Math.floor(
+        remainingSeconds / DURATION_IN_SECONDS[durationKey]
+      );
+      durationObjectCopy[durationKey] = count;
+      remainingSeconds -= count * DURATION_IN_SECONDS[durationKey];
+      return remainingSeconds;
+    }, numberOfSeconds);
 
-  // convert to number form string and then calculate
-  const handleChange = (e: string, value: string) => {
-    let formattedValue: number;
-    if (e === '') formattedValue = 0;
-    else formattedValue = parseInt(e);
+    setDurationObject(durationObjectCopy);
 
-    return setDuration({ ...duration, [value]: formattedValue });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value]);
 
-  const { time } = useMemo(() => {
-    const convertDurationToSeconds = Object.keys(duration).reduce(
-      (acc, curr) => {
-        const result = acc.add(
-          moment.duration(duration[curr], curr as DurationInputArg2)
+  useMemo(() => {
+    let numbersToStringDuration = Object.keys(durationObject).reduce(
+      (durationString, durationKey) => {
+        if (durationObject[durationKey] === 0) return durationString;
+
+        let formattedDurationKey =
+          durationObject[durationKey] === 1
+            ? `${durationKey.slice(0, -1)}`
+            : `${durationKey}`;
+
+        let separator = durationString.length === 0 ? '' : ', ';
+
+        return (
+          durationString +
+          `${separator}${durationObject[durationKey]} ${formattedDurationKey}`
         );
-        return result;
       },
-      moment.duration(0, 'years') as Duration
+      ''
     );
-    return {
-      time: convertDurationToSeconds.asSeconds(),
+
+    const replaceLastCommaWithAnd = (string: string) => {
+      const lastIndex = string.lastIndexOf(',');
+      if (lastIndex === -1) return string;
+
+      const replacedString =
+        string.substring(0, lastIndex) +
+        ' and' +
+        string.substring(lastIndex + 1);
+      return replacedString;
     };
-  }, [duration]);
+
+    numbersToStringDuration = replaceLastCommaWithAnd(numbersToStringDuration);
+
+    setDurationString(numbersToStringDuration);
+  }, [durationObject]);
+
+  const increment = (durationKey: string) => {
+    let newValue = value;
+    newValue += DURATION_IN_SECONDS[durationKey];
+    onChange(newValue);
+  };
+
+  const decrement = (durationKey: string) => {
+    let newValue = value;
+    if (newValue >= DURATION_IN_SECONDS[durationKey]) {
+      newValue -= DURATION_IN_SECONDS[durationKey];
+      onChange(newValue);
+    }
+  };
+
+  const handleInputChange = (e: string, durationKey: string) => {
+    let previousInputValue =
+      durationObject[durationKey] * DURATION_IN_SECONDS[durationKey];
+
+    let currentInputValue: number;
+    if (e === '') currentInputValue = 0;
+    else currentInputValue = parseInt(e) * DURATION_IN_SECONDS[durationKey];
+
+    let finalValue = value - previousInputValue + currentInputValue;
+    onChange(finalValue);
+  };
 
   let result = {
-    data: {
-      duration,
-      setDuration,
-      time,
-      handleChange,
-      increment,
-      decrement,
-    },
+    durationObject,
+    durationString,
+    handleInputChange,
+    increment,
+    decrement,
   };
 
   return result;

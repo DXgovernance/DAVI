@@ -25,7 +25,7 @@ const Filter = () => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
-  const { totalFilters } = useFilter();
+  const { totalFilters, searchQuery, setSearchQuery } = useFilter();
 
   const history = useHistory();
   const location = useLocation();
@@ -46,6 +46,7 @@ const Filter = () => {
     return false;
   }, [votingPower, guildConfig]);
   const [openSearchBar, setOpenSearchBar] = useState(false);
+
   return (
     <FilterContainer>
       <FilterRow>
@@ -80,7 +81,10 @@ const Filter = () => {
       {openSearchBar ? (
         <StyledInputWrapper>
           <Input
-            value={''}
+            value={searchQuery}
+            onChange={e => {
+              setSearchQuery(e.target.value);
+            }}
             icon={<AiOutlineSearch size={24} />}
             placeholder={t('searchTitleEnsAddress')}
           />
