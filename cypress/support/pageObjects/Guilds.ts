@@ -47,7 +47,7 @@ class Guilds {
   goToGuildsPage(address?: string) {
     const baseUrl = Cypress.config('baseUrl');
     const network = Cypress.env('network');
-    cy.visit(`${baseUrl}/guilds/${network}${address ? `/${address}` : ''}`, {
+    cy.visit(`${baseUrl}/${network}${address ? `/${address}` : ''}`, {
       timeout: 120000,
     }).wait(2000);
   }
@@ -95,7 +95,7 @@ class Guilds {
   connectToMetamask = accountName => {
     cy.switchMetamaskAccount(accountName);
     this.clickOpenWalletModalBtn();
-    cy.findByTestId('wallet-option-MetaMask').eq(0).click();
+    cy.findByTestId('wallet-option-injected').eq(0).click();
     cy.wait(2000);
     cy.acceptMetamaskAccess(true);
     clickAnywhereToClose();

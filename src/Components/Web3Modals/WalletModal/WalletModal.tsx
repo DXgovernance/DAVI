@@ -44,6 +44,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
       .map(connector => {
         return (
           <Option
+            dataTestId={`wallet-option-${connector.id}`}
             disabled={!connector.ready}
             key={connector.id}
             onClick={() =>
