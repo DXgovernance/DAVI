@@ -7,7 +7,7 @@ import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
   CardActions,
@@ -29,6 +29,13 @@ interface ActionViewProps {
   isEditable?: boolean;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
+}
+
+export enum CardStatus {
+  dragging,
+  normal,
+  simulationFailed,
+  warning,
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
@@ -68,9 +75,24 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     transition,
   };
 
+  const cardStatus: CardStatus = useMemo(() => {
+    if (isEditable && isDragging) {
+      return CardStatus.dragging;
+    }
+    if (
+      decodedAction?.simulationResult &&
+      decodedAction?.simulationResult.simulation.status === false
+    ) {
+      return CardStatus.simulationFailed;
+    } else {
+      return CardStatus.normal;
+    }
+  }, [decodedAction.simulationResult, isEditable, isDragging]);
+
   return (
     <CardWrapperWithMargin
-      dragging={isEditable && isDragging}
+      dragging={cardStatus === CardStatus.dragging}
+      cardStatus={cardStatus}
       ref={setNodeRef}
       style={dndStyles}
       {...attributes}
@@ -85,8 +107,6 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           {!decodedCall && <UndecodableCallInfoLine />}
         </CardLabel>
         <CardActions>
-          {decodedAction?.simulationResult !== undefined &&
-            `Pass: ${decodedAction?.simulationResult.transaction.status}`}
           {isEditable && (
             <EditButtonWithMargin
               onClick={() => setIsEditActionModalOpen(true)}
