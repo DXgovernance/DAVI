@@ -21,7 +21,11 @@ export const useTransactionSimulation = () => {
 
       for (let j = 0; j < currentOption.actions.length; j++) {
         let currentAction = currentOption.actions[j];
-        let simulationResult = await simulateAction(forkUrl, currentAction);
+        let simulationResult = await simulateAction(
+          forkUrl,
+          currentAction,
+          chainId
+        );
         currentOption.decodedActions[j].simulationResult =
           await simulationResult;
       }
@@ -69,17 +73,23 @@ const getForkData = async (chainId: number, provider) => {
   }
 };
 
-const simulateAction = async (forkUrl: string, action: Call) => {
+const simulateAction = async (
+  forkUrl: string,
+  action: Call,
+  chainId: number
+) => {
   const { REACT_APP_TENDERLY_ACCESS_KEY } = process.env;
   const simulationUrl = `${forkUrl}/simulate`;
+  const network_id = chainId.toString();
+  const { from, to, data: input } = action;
 
   const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
 
   const body = {
-    network_id: '5',
-    from: action.from,
-    to: action.to,
-    input: action.data,
+    network_id,
+    from,
+    to,
+    input,
     gas: 800000,
     gas_price: '0',
     value: 0,
@@ -92,6 +102,8 @@ const simulateAction = async (forkUrl: string, action: Call) => {
     headers,
     body: JSON.stringify(body),
   }).then(response => response.json());
+
+  console.log(simulationResult);
 
   return simulationResult;
 };
