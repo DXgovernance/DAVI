@@ -34,7 +34,7 @@ export interface DecodedAction {
   decodedCall: DecodedCall;
   contract: utils.Interface;
   approval?: ApproveSendTokens;
-  success?: boolean;
+  simulationResult?: any;
 }
 
 export interface Option {
