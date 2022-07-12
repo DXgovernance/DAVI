@@ -26,7 +26,7 @@ import { Box } from 'Components/Primitives/Layout';
 import { OptionRow } from '../Option';
 import { AddButton } from '../common/AddButton';
 import { DecodedAction, Option } from '../types';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   restrictToVerticalAxis,
   restrictToFirstScrollableAncestor,
@@ -35,6 +35,9 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
+import { IconButton } from 'old-components/Guilds/common/Button';
+import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
+import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -297,6 +300,32 @@ export const OptionsList: React.FC<OptionsListProps> = ({
     [activeId, options]
   );
 
+  const [isSimulationLoading, setIsSimulationLoading] = useState(false);
+  const simulateTransactions = useTransactionSimulation();
+
+  const handleTransactionSimulation = async () => {
+    setIsSimulationLoading(true);
+
+    const encodedOptions = bulkEncodeCallsFromOptions(options);
+    let optionsSimulationResult = await simulateTransactions(encodedOptions);
+    onChange(optionsSimulationResult);
+
+    setIsSimulationLoading(false);
+  };
+
+  const isSimulationButtonDisabled = useMemo(() => {
+    let numberOfCalls = options.reduce((sumOfOptions, option) => {
+      if (option.decodedActions) {
+        return (sumOfOptions += option.decodedActions.length);
+      } else {
+        return sumOfOptions;
+      }
+    }, 0);
+
+    if (isSimulationLoading || numberOfCalls === 0) return true;
+    else return false;
+  }, [options, isSimulationLoading]);
+
   return (
     <DndContext
       sensors={sensors}
@@ -355,6 +384,14 @@ export const OptionsList: React.FC<OptionsListProps> = ({
           <Divider />
           <AddOptionWrapper>
             <AddButton label={t('addOption')} onClick={addOption} />
+            <IconButton
+              variant="secondary"
+              data-testId="simulate-transaction-button"
+              onClick={handleTransactionSimulation}
+              disabled={isSimulationButtonDisabled}
+            >
+              {t('simulateTransactions')}
+            </IconButton>
           </AddOptionWrapper>
         </>
       )}

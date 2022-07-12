@@ -22,7 +22,6 @@ import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
-import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -96,8 +95,6 @@ const CreateProposalPage: React.FC = () => {
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([]);
-  const [isLoadingSimulation, setisLoadingSimulation] = useState(false);
-  const simulateTransactions = useTransactionSimulation();
 
   const {
     Editor,
@@ -174,29 +171,6 @@ const CreateProposalPage: React.FC = () => {
       );
     });
   };
-
-  const handleTransactionSimulation = async () => {
-    setisLoadingSimulation(true);
-
-    const encodedOptions = bulkEncodeCallsFromOptions(options);
-    let optionsSimulationResult = await simulateTransactions(encodedOptions);
-    setOptions(optionsSimulationResult);
-
-    setisLoadingSimulation(false);
-  };
-
-  const isSimulationButtonDisabled = useMemo(() => {
-    let numberOfCalls = options.reduce((sumOfOptions, option) => {
-      if (option.decodedActions) {
-        return (sumOfOptions += option.decodedActions.length);
-      } else {
-        return sumOfOptions;
-      }
-    }, 0);
-
-    if (isLoadingSimulation || numberOfCalls === 0) return true;
-    else return false;
-  }, [options, isLoadingSimulation]);
 
   const isValid = useMemo(() => {
     if (!title) return false;
@@ -293,17 +267,6 @@ const CreateProposalPage: React.FC = () => {
             data-testid="create-proposal-action-button"
           >
             {t('createProposal')}
-          </StyledButton>{' '}
-          <StyledButton
-            onClick={handleTransactionSimulation}
-            variant="secondary"
-            data-testid="create-proposal-action-button"
-            disabled={isSimulationButtonDisabled}
-          >
-            {t('simulateTransactions')}
-            {isLoadingSimulation && (
-              <Loading loading={true} iconProps={{ size: 10 }}></Loading>
-            )}
           </StyledButton>
         </Box>
       </PageContent>
