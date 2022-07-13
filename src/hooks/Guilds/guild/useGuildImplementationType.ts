@@ -22,7 +22,6 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
   isSnapshotRepGuild: boolean;
-  isEnforcedBinaryGuild: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
@@ -35,7 +34,6 @@ const parseConfig = (
       config.features.includes('SNAPSHOT') && !config.features.includes('REP'),
     isSnapshotRepGuild:
       config.features.includes('SNAPSHOT') && config.features.includes('REP'),
-    isEnforcedBinaryGuild: config.features.includes('ENFORCED_BINARY'),
   };
 };
 

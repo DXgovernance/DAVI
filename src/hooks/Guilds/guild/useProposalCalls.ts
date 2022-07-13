@@ -11,7 +11,6 @@ import { ZERO_HASH } from 'utils';
 import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
-import useGuildImplementationTypeConfig from './useGuildImplementationType';
 
 const isApprovalCall = (call: Call) =>
   call.data.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -23,7 +22,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const votingResults = useVotingResults(guildId, proposalId);
   const { contracts } = useRichContractRegistry();
   const { chainId } = useWeb3React();
-  const { isEnforcedBinaryGuild } = useGuildImplementationTypeConfig(guildId);
   const { t } = useTranslation();
 
   const theme = useTheme();
@@ -92,8 +90,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             })
           );
 
-          // const isEnforcedBinaryLastOption =
-          //   isEnforcedBinaryGuild && index === totalOptionsNum - 1;
           const optionLabel = optionLabels?.[index]
             ? optionLabels?.[index]
             : index === 0
@@ -125,7 +121,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     splitCalls,
     theme,
     optionLabels,
-    isEnforcedBinaryGuild,
     totalOptionsNum,
   ]);
 
