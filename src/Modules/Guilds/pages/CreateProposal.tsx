@@ -121,7 +121,7 @@ const CreateProposalPage: React.FC = () => {
     const content = {
       description: proposalBodyHTML,
       url: referenceLink,
-      voteOptions: ['ZERO-OPTION', ...options.map(({ label }) => label)],
+      voteOptions: ['', ...options.map(({ label }) => label)],
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);

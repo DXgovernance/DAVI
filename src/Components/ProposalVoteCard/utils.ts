@@ -32,3 +32,12 @@ export const confirmVoteProposal = ({
     cb
   );
 };
+
+export const getOptionLabel = ({ metadata, optionKey, t }) => {
+  const metadataLabel = metadata?.voteOptions?.[optionKey];
+  return metadataLabel
+    ? metadataLabel
+    : Number(optionKey) === 0
+    ? t('against', { defaultValue: 'Against' })
+    : t('option', { optionKey });
+};

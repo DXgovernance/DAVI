@@ -13,12 +13,12 @@ exports[`VoteResults matches the snapshot 1`] = `
         class="sc-jSgvzq bRdqMh"
       >
         <span
-          class="sc-bdfBQB fnYBCU"
-          color="#E75C5C"
+          class="sc-bdfBQB ewSfwU"
+          color="#295FF4"
           size="8"
         />
       </span>
-      Yes
+      No
     </div>
     <span>
       0.0001 DXD
@@ -34,12 +34,12 @@ exports[`VoteResults matches the snapshot 1`] = `
         class="sc-jSgvzq bRdqMh"
       >
         <span
-          class="sc-bdfBQB ewSfwU"
-          color="#295FF4"
+          class="sc-bdfBQB fnYBCU"
+          color="#E75C5C"
           size="8"
         />
       </span>
-      No
+      Yes
     </div>
     <span>
       0.0001 DXD

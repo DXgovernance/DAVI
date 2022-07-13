@@ -38,17 +38,14 @@ export const useVotingResults = (
 
   const voteData = useMemo(() => {
     if (!proposal || !data || !tokenInfo) return undefined;
-    const options = proposal?.totalVotes
-      // .slice(1) // remove the first option -
-      .reduce<Record<string, BigNumber>>((acc, result, i) => {
-        if (i !== 0) {
-          // skip idx 0
-          // acc[i + 1] = result; // i + 1 because we skip the first option and idx should start from 1 and we are using
-          acc[i] = result;
-        }
+    const options = proposal?.totalVotes.reduce<Record<string, BigNumber>>(
+      (acc, result, i) => {
+        acc[i] = result;
         return acc;
-      }, {});
-
+      },
+      {}
+    );
+    console.log(proposal?.totalVotes);
     return {
       options,
       quorum: data?.votingPowerForProposalExecution,

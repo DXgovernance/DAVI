@@ -22,6 +22,7 @@ import { voteOnProposal, confirmVoteProposal } from './utils';
 import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
+import { getOptionLabel } from 'Components/ProposalVoteCard/utils';
 
 const ProposalVoteCard = ({
   voteData,
@@ -114,25 +115,33 @@ const ProposalVoteCard = ({
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 
-            {Object.keys(voteData?.options).map(optionKey => {
-              const bItem = BigNumber.from(optionKey);
+            {[...Object.keys(voteData?.options).slice(1), '0'].map(
+              optionKey => {
+                const bItem = BigNumber.from(optionKey);
+                const label = getOptionLabel({
+                  metadata: proposal?.metadata,
+                  optionKey: optionKey,
+                  t,
+                });
 
-              return (
-                <VoteOptionButton
-                  key={optionKey}
-                  variant="secondary"
-                  active={selectedAction && selectedAction.eq(bItem)}
-                  onClick={() => {
-                    setSelectedAction(
-                      selectedAction && selectedAction.eq(bItem) ? null : bItem
-                    );
-                  }}
-                >
-                  {proposal?.metadata?.voteOptions?.[Number(optionKey)] ||
-                    t('option', { optionKey })}
-                </VoteOptionButton>
-              );
-            })}
+                return (
+                  <VoteOptionButton
+                    key={optionKey}
+                    variant="secondary"
+                    active={selectedAction && selectedAction.eq(bItem)}
+                    onClick={() => {
+                      setSelectedAction(
+                        selectedAction && selectedAction.eq(bItem)
+                          ? null
+                          : bItem
+                      );
+                    }}
+                  >
+                    {label}
+                  </VoteOptionButton>
+                );
+              }
+            )}
 
             <VoteActionButton
               disabled={!selectedAction}
@@ -160,6 +169,7 @@ const ProposalVoteCard = ({
             createTransaction,
           });
           setModalOpen(false);
+          setSelectedAction(null);
         }}
         selectedAction={
           proposal?.metadata?.voteOptions?.[selectedAction?.toNumber()] ||
