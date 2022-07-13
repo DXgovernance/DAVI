@@ -22,6 +22,7 @@ import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'styled-components';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -91,10 +92,18 @@ const CreateProposalPage: React.FC = () => {
 
   const history = useHistory();
   const { t } = useTranslation();
+  const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
-  const [options, setOptions] = useState<Option[]>([]);
+  const [options, setOptions] = useState<Option[]>([
+    {
+      id: `option-1-For`,
+      label: 'For',
+      color: theme?.colors?.votes?.[1],
+      decodedActions: [],
+    },
+  ]);
   const {
     Editor,
     EditorConfig,
