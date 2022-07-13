@@ -76,22 +76,19 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   };
 
   const cardStatus: CardStatus = useMemo(() => {
-    if (isEditable && isDragging) {
-      return CardStatus.dragging;
-    }
-    if (
-      decodedAction?.simulationResult &&
-      decodedAction?.simulationResult.simulation.status === false
-    ) {
+    if (isEditable && isDragging) return CardStatus.dragging;
+
+    if (!decodedAction?.simulationResult) return CardStatus.normal;
+
+    if (decodedAction?.simulationResult.simulation.status === false) {
       return CardStatus.simulationFailed;
-    } else {
-      return CardStatus.normal;
     }
-  }, [decodedAction.simulationResult, isEditable, isDragging]);
+
+    return CardStatus.normal; // default return so ESLint doesn't complain
+  }, [decodedAction?.simulationResult, isEditable, isDragging]);
 
   return (
     <CardWrapperWithMargin
-      dragging={cardStatus === CardStatus.dragging}
       cardStatus={cardStatus}
       ref={setNodeRef}
       style={dndStyles}
