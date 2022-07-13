@@ -1,4 +1,4 @@
-import { Circle, Flex } from 'Components/Primitives/Layout';
+import { Flex } from 'Components/Primitives/Layout';
 import { Modal } from 'Components/Primitives/Modal';
 import PendingCircle from 'old-components/Guilds/common/PendingCircle';
 import { FiX, FiCheck } from 'react-icons/fi';
@@ -102,9 +102,9 @@ const ChainNotSupported = () => {
   const { t } = useTranslation();
   return (
     <>
-      <Circle>
+      <WarningCircle>
         <FiX size={40} />
-      </Circle>
+      </WarningCircle>
       <Message>{t('simulations.chainNotSupported')}</Message>
     </>
   );

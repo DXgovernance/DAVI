@@ -322,12 +322,19 @@ export const OptionsList: React.FC<OptionsListProps> = ({
     setIsSimulationModalOpened(true);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
-    let { options: optionsSimulationResult, failedTransactions } =
-      await simulateTransactions(encodedOptions);
-    onChange(optionsSimulationResult);
-
-    if (failedTransactions > 0) setSimulationStatus(SimulationState.someFailed);
-    else setSimulationStatus(SimulationState.allPassed);
+    let {
+      options: optionsSimulationResult,
+      failedTransactions,
+      error,
+    } = await simulateTransactions(encodedOptions);
+    if (error) {
+      setSimulationStatus(SimulationState.chainNotSupported);
+    } else {
+      onChange(optionsSimulationResult);
+      if (failedTransactions > 0)
+        setSimulationStatus(SimulationState.someFailed);
+      else setSimulationStatus(SimulationState.allPassed);
+    }
 
     setIsSimulationLoading(false);
   };

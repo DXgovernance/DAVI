@@ -8,36 +8,42 @@ export const useTransactionSimulation = () => {
   const provider = useJsonRpcProvider(chainId);
 
   async function simulateTransactions(options: Option[]) {
-    const [forkId, forkUrl] = await getForkData(chainId, provider);
-    const forkRPC = `https://rpc.tenderly.co/fork/${forkId}`;
-    const forkProvider = new ethers.providers.JsonRpcProvider(forkRPC);
-    const forkStartingPoint = await forkProvider.send('evm_snapshot', []);
-    let failedTransactions = 0;
+    try {
+      const [forkId, forkUrl] = await getForkData(chainId, provider);
 
-    // Tenderly simulation API requires to execute the simulations
-    // serialized, that's why I used a for loop
-    for (let i = 0; i < options.length; i++) {
-      await forkProvider.send('evm_revert', [forkStartingPoint]); // Reset fork
-      let currentOption = options[i];
+      const forkRPC = `https://rpc.tenderly.co/fork/${forkId}`;
+      const forkProvider = new ethers.providers.JsonRpcProvider(forkRPC);
+      const forkStartingPoint = await forkProvider.send('evm_snapshot', []);
+      let failedTransactions = 0;
 
-      for (let j = 0; j < currentOption.actions.length; j++) {
-        let currentAction = currentOption.actions[j];
-        let simulationResult = await simulateAction(
-          forkUrl,
-          currentAction,
-          chainId
-        );
-        currentOption.decodedActions[j].simulationResult =
-          await simulationResult;
+      // Tenderly simulation API requires to execute the simulations
+      // serialized, that's why I used a for loop
+      for (let i = 0; i < options.length; i++) {
+        await forkProvider.send('evm_revert', [forkStartingPoint]); // Reset fork
+        let currentOption = options[i];
 
-        if (simulationResult.transaction.status === false) failedTransactions++;
+        for (let j = 0; j < currentOption.actions.length; j++) {
+          let currentAction = currentOption.actions[j];
+          let simulationResult = await simulateAction(
+            forkUrl,
+            currentAction,
+            chainId
+          );
+          currentOption.decodedActions[j].simulationResult =
+            await simulationResult;
+
+          if (simulationResult.transaction.status === false)
+            failedTransactions++;
+        }
       }
+
+      //! Delete before PR
+      deleteFork(forkId);
+
+      return { options, failedTransactions, error: null };
+    } catch (error) {
+      return { options, failedTransactions: 1, error };
     }
-
-    //! Delete before PR
-    deleteFork(forkId);
-
-    return { options, failedTransactions };
   }
 
   return simulateTransactions;
