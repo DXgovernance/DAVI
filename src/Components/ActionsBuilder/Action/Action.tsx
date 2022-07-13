@@ -152,7 +152,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
             <div>
               {cardStatus === CardStatus.simulationFailed && (
                 <DetailWrapper>
-                  <div>Simulation failed</div>
+                  <div>{t('simulationFailed')}</div>
                   <div>
                     {decodedAction.simulationResult.transaction.error_message}
                   </div>

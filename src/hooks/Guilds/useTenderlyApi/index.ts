@@ -108,6 +108,9 @@ const simulateAction = async (
   return simulationResult;
 };
 
+// The deleteFork function is useful while developing
+// to delete forks while manually testing
+
 const deleteFork = async (forkId: string) => {
   const { REACT_APP_TENDERLY_PROJECT, REACT_APP_TENDERLY_ACCESS_KEY } =
     process.env;

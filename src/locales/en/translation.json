@@ -170,5 +170,13 @@
   "title": "Title",
   "referenceLink": "Reference link",
   "optionalField": "(optional)",
-  "simulateTransactions": "Simulate transactions"
+  "simulations": {
+    "simulateTransactions": "Simulate transactions",
+    "simulationFailed": "Simulation failed",
+    "actionsVerified": "Actions verified",
+    "actionsFailed": "Action verifications failed",
+    "verifyingActions": "Verifying actions",
+    "chainNotSupported": "Chain not supported"
+  },
+  "poweredBy": "powered by"
 }

@@ -38,6 +38,7 @@ import { useTranslation } from 'react-i18next';
 import { IconButton } from 'old-components/Guilds/common/Button';
 import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
+import SimulationModal from './SimulationModal';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -301,16 +302,19 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   );
 
   const [isSimulationLoading, setIsSimulationLoading] = useState(false);
+  const [isSimulationModalOpened, setIsSimulationModalOpened] = useState(true); //!
   const simulateTransactions = useTransactionSimulation();
 
   const handleTransactionSimulation = async () => {
     setIsSimulationLoading(true);
+    setIsSimulationModalOpened(true);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     let optionsSimulationResult = await simulateTransactions(encodedOptions);
     onChange(optionsSimulationResult);
 
     setIsSimulationLoading(false);
+    // setIsSimulationModalOpened(false);
   };
 
   const isSimulationButtonDisabled = useMemo(() => {
@@ -390,11 +394,16 @@ export const OptionsList: React.FC<OptionsListProps> = ({
               onClick={handleTransactionSimulation}
               disabled={isSimulationButtonDisabled}
             >
-              {t('simulateTransactions')}
+              {t('simulations.simulateTransactions')}
             </IconButton>
           </AddOptionWrapper>
         </>
       )}
+      <SimulationModal
+        isOpen={isSimulationModalOpened}
+        onDismiss={() => setIsSimulationModalOpened(false)}
+        options={options}
+      />
     </DndContext>
   );
 };
