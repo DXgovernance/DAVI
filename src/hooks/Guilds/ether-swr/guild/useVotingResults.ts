@@ -45,7 +45,7 @@ export const useVotingResults = (
       },
       {}
     );
-    console.log(proposal?.totalVotes);
+
     return {
       options,
       quorum: data?.votingPowerForProposalExecution,
