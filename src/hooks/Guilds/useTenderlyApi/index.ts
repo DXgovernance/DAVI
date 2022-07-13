@@ -12,6 +12,7 @@ export const useTransactionSimulation = () => {
     const forkRPC = `https://rpc.tenderly.co/fork/${forkId}`;
     const forkProvider = new ethers.providers.JsonRpcProvider(forkRPC);
     const forkStartingPoint = await forkProvider.send('evm_snapshot', []);
+    let failedTransactions = 0;
 
     // Tenderly simulation API requires to execute the simulations
     // serialized, that's why I used a for loop
@@ -28,13 +29,15 @@ export const useTransactionSimulation = () => {
         );
         currentOption.decodedActions[j].simulationResult =
           await simulationResult;
+
+        if (simulationResult.transaction.status === false) failedTransactions++;
       }
     }
 
     //! Delete before PR
     deleteFork(forkId);
 
-    return options;
+    return { options, failedTransactions };
   }
 
   return simulateTransactions;
@@ -103,13 +106,12 @@ const simulateAction = async (
     body: JSON.stringify(body),
   }).then(response => response.json());
 
-  console.log(simulationResult);
-
   return simulationResult;
 };
 
 // The deleteFork function is useful while developing
-// to delete forks while manually testing
+// to delete forks while manually testing, to prevent
+// a lot of forks spamming the dashboard
 
 const deleteFork = async (forkId: string) => {
   const { REACT_APP_TENDERLY_PROJECT, REACT_APP_TENDERLY_ACCESS_KEY } =

@@ -1,8 +1,6 @@
 import { Circle, Flex } from 'Components/Primitives/Layout';
 import { Modal } from 'Components/Primitives/Modal';
 import PendingCircle from 'old-components/Guilds/common/PendingCircle';
-import { useMemo } from 'react';
-import { Option } from '../types';
 import { FiX, FiCheck } from 'react-icons/fi';
 import {
   Message,
@@ -15,46 +13,37 @@ import {
 import { Button } from 'old-components/Guilds/common/Button';
 import { useTranslation } from 'react-i18next';
 import tenderlyLogo from 'assets/images/tenderly-dark-mode.svg';
+import { SimulationState } from './OptionsList';
 
 interface SimulationModalProps {
   isOpen: boolean;
   onDismiss: () => void;
-  options: Option[];
-}
-
-enum SimulationState {
-  pending,
-  allPassed,
-  someFailed,
-  chainNotSupported,
+  status: SimulationState;
 }
 
 const SimulationModal: React.FC<SimulationModalProps> = ({
   isOpen,
   onDismiss,
-  options,
+  status,
 }) => {
   const { t } = useTranslation();
-  const simulationState = useMemo(() => {
-    return SimulationState.pending;
-  }, []);
 
   return (
     <Modal
       isOpen={isOpen}
       onDismiss={onDismiss}
       header={t('simulations.verifyingActions')}
+      maxWidth={390}
       zIndex={1000}
-      cancelText="dismiss"
     >
       <Flex padding={`1.5rem`}>
         <StatusWrapper>
           <Flex>
-            {simulationState === SimulationState.pending ? (
+            {status === SimulationState.pending ? (
               <SimulationPending />
-            ) : simulationState === SimulationState.allPassed ? (
+            ) : status === SimulationState.allPassed ? (
               <SimulationPassed />
-            ) : simulationState === SimulationState.someFailed ? (
+            ) : status === SimulationState.someFailed ? (
               <SimulationFailed />
             ) : (
               <ChainNotSupported />
@@ -64,7 +53,7 @@ const SimulationModal: React.FC<SimulationModalProps> = ({
             <Muted>{t('poweredBy')}</Muted> <TenderlyLogo src={tenderlyLogo} />
           </Flex>
         </StatusWrapper>
-        <Button disabled={false} fullWidth onClick={() => console.log('click')}>
+        <Button disabled={false} fullWidth onClick={onDismiss}>
           {t('dismiss')}
         </Button>
       </Flex>

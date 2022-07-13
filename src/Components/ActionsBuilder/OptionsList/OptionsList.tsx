@@ -52,6 +52,14 @@ interface OptionsListProps {
   editOption: (option: Option) => void;
 }
 
+export enum SimulationState {
+  none,
+  pending,
+  allPassed,
+  someFailed,
+  chainNotSupported,
+}
+
 export const OptionsList: React.FC<OptionsListProps> = ({
   isEditable,
   options,
@@ -301,20 +309,27 @@ export const OptionsList: React.FC<OptionsListProps> = ({
     [activeId, options]
   );
 
+  const [simulationStatus, setSimulationStatus] = useState<SimulationState>(
+    SimulationState.none
+  );
   const [isSimulationLoading, setIsSimulationLoading] = useState(false);
-  const [isSimulationModalOpened, setIsSimulationModalOpened] = useState(true); //!
+  const [isSimulationModalOpened, setIsSimulationModalOpened] = useState(false);
   const simulateTransactions = useTransactionSimulation();
 
   const handleTransactionSimulation = async () => {
     setIsSimulationLoading(true);
+    setSimulationStatus(SimulationState.pending);
     setIsSimulationModalOpened(true);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
-    let optionsSimulationResult = await simulateTransactions(encodedOptions);
+    let { options: optionsSimulationResult, failedTransactions } =
+      await simulateTransactions(encodedOptions);
     onChange(optionsSimulationResult);
 
+    if (failedTransactions > 0) setSimulationStatus(SimulationState.someFailed);
+    else setSimulationStatus(SimulationState.allPassed);
+
     setIsSimulationLoading(false);
-    // setIsSimulationModalOpened(false);
   };
 
   const isSimulationButtonDisabled = useMemo(() => {
@@ -402,7 +417,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       <SimulationModal
         isOpen={isSimulationModalOpened}
         onDismiss={() => setIsSimulationModalOpened(false)}
-        options={options}
+        status={simulationStatus}
       />
     </DndContext>
   );
