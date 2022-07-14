@@ -3,36 +3,32 @@
 exports[`CallDetails Should match 1`] = `
 <div>
    
-  <div
-    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
+  <button
+    class="sc-bdfBQB sc-fFucqa cAORUT gipSpV"
   >
-    <button
-      class="sc-bdfBQB sc-fFucqa cAORUT iAOVHw"
-    >
-      transfer
-       (
-      <span>
-        <span
-          class="sc-jrAFXE sc-dQoVA hTcuJV hIxast"
-          color="#9575CD"
-        >
-          address
-        </span>
+    transfer
+     (
+    <span>
+      <span
+        class="sc-jrAFXE sc-dQoVA hTcuJV gJnhaK"
+        color="#fff"
+      >
+        address
       </span>
+    </span>
+    <span>
       <span>
-        <span>
-          , 
-        </span>
-        <span
-          class="sc-jrAFXE sc-dQoVA hTcuJV ivpoYd"
-          color="#F06292"
-        >
-          uint256
-        </span>
+        , 
       </span>
-      )
-    </button>
-  </div>
+      <span
+        class="sc-jrAFXE sc-dQoVA hTcuJV gJnhaK"
+        color="#fff"
+      >
+        uint256
+      </span>
+    </span>
+    )
+  </button>
    
 </div>
 `;
@@ -41,7 +37,7 @@ exports[`CallDetails Should match with empty data 1`] = `
 <div>
    
   <div
-    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dobzXZ"
   >
     <div
       class="sc-hKgJUU dpFBPj"
@@ -65,7 +61,7 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dobzXZ"
   >
     <div
       class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
@@ -117,7 +113,7 @@ exports[`CallDetails Should match with empty data 1`] = `
     </a>
   </div>
   <div
-    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
+    class="sc-hKgJUU sc-hBEYId dpFBPj dobzXZ"
   >
     <div
       class="sc-hKgJUU sc-kEjbQP sc-bqyKOL dpFBPj fUIUMn hKcSVA"
@@ -142,36 +138,32 @@ exports[`CallDetails Should match with empty data 1`] = `
     class="sc-fubCzh dIZEAK"
     style="margin-bottom: 2rem;"
   />
-  <div
-    class="sc-hKgJUU sc-hBEYId dpFBPj dlJrHL"
+  <button
+    class="sc-bdfBQB sc-fFucqa cAORUT gipSpV"
   >
-    <button
-      class="sc-bdfBQB sc-fFucqa cAORUT iAOVHw"
-    >
-      transfer
-       (
-      <span>
-        <span
-          class="sc-jrAFXE sc-dQoVA hTcuJV hIxast"
-          color="#9575CD"
-        >
-          address
-        </span>
+    transfer
+     (
+    <span>
+      <span
+        class="sc-jrAFXE sc-dQoVA hTcuJV gJnhaK"
+        color="#fff"
+      >
+        address
       </span>
+    </span>
+    <span>
       <span>
-        <span>
-          , 
-        </span>
-        <span
-          class="sc-jrAFXE sc-dQoVA hTcuJV ivpoYd"
-          color="#F06292"
-        >
-          uint256
-        </span>
+        , 
       </span>
-      )
-    </button>
-  </div>
+      <span
+        class="sc-jrAFXE sc-dQoVA hTcuJV gJnhaK"
+        color="#fff"
+      >
+        uint256
+      </span>
+    </span>
+    )
+  </button>
    
 </div>
 `;

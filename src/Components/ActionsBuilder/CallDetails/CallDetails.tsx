@@ -92,24 +92,29 @@ export const CallDetails: React.FC<ActionViewProps> = ({
         </>
       )}
 
-      <ActionParamRow>
-        <DetailsButton
-          onClick={() => setIsExpanded(!isExpanded)}
-          isExpanded={isExpanded}
-          variant={'secondary'}
-        >
-          {decodedCall?.function?.name} (
-          {decodedCall?.function?.inputs.map((param, index, params) => (
-            <span key={index}>
-              {index > 0 && <span>, </span>}
-              <ParamTag key={index} color={theme?.colors?.params?.[index]}>
-                {param?.type}
-              </ParamTag>
-            </span>
-          ))}
-          )
-        </DetailsButton>
-      </ActionParamRow>
+      <DetailsButton
+        onClick={() => setIsExpanded(!isExpanded)}
+        isExpanded={isExpanded}
+        variant={'secondary'}
+      >
+        {decodedCall?.function?.name} (
+        {decodedCall?.function?.inputs.map((param, index, params) => (
+          <span key={index}>
+            {index > 0 && <span>, </span>}
+            <ParamTag
+              key={index}
+              color={
+                isExpanded
+                  ? theme?.colors?.params?.[index]
+                  : theme?.colors?.text
+              }
+            >
+              {param?.type}
+            </ParamTag>
+          </span>
+        ))}
+        )
+      </DetailsButton>
 
       {isExpanded &&
         decodedCall?.function?.inputs?.map((param, index) => (

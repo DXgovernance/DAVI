@@ -22,7 +22,7 @@ export const ParamTitleTag = styled(MetadataTag)`
 `;
 
 export const ActionParamRow = styled(Box)`
-  margin-bottom: 1.5rem;
+  margin-top: 20px;
 `;
 
 export const ParamDetail = styled(Box)`
@@ -31,6 +31,9 @@ export const ParamDetail = styled(Box)`
 `;
 
 export const DetailsButton = styled(Button)<{ isExpanded: boolean }>`
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  padding: 4px 8px;
   ${({ isExpanded }) =>
     isExpanded &&
     css`
