@@ -308,7 +308,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       {options && (
         <SortableContext items={options} strategy={verticalListSortingStrategy}>
           {options?.map((option, idx) => (
-            <>
+            <div key={idx}>
               <OptionRow
                 key={idx}
                 option={option}
@@ -317,7 +317,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
                 editOption={editOption}
               />
               {idx !== options.length - 1 && <Divider />}
-            </>
+            </div>
           ))}
         </SortableContext>
       )}
