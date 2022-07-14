@@ -176,7 +176,7 @@
     "actionsVerified": "Actions verified",
     "actionsFailed": "Action verifications failed",
     "verifyingActions": "Verifying actions",
-    "chainNotSupported": "Chain not supported"
+    "error": "Error while simulating transactions"
   },
   "poweredBy": "powered by"
 }

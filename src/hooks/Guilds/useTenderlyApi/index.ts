@@ -37,11 +37,12 @@ export const useTransactionSimulation = () => {
         }
       }
 
-      //! Delete before PR
-      deleteFork(forkId);
+      // Uncomment to delete fork after simulation
+      // deleteFork(forkId);
 
       return { options, failedTransactions, error: null };
     } catch (error) {
+      console.log(error);
       return { options, failedTransactions: 1, error };
     }
   }
@@ -119,15 +120,15 @@ const simulateAction = async (
 // to delete forks while manually testing, to prevent
 // a lot of forks spamming the dashboard
 
-const deleteFork = async (forkId: string) => {
-  const { REACT_APP_TENDERLY_PROJECT, REACT_APP_TENDERLY_ACCESS_KEY } =
-    process.env;
+// const deleteFork = async (forkId: string) => {
+//   const { REACT_APP_TENDERLY_PROJECT, REACT_APP_TENDERLY_ACCESS_KEY } =
+//     process.env;
 
-  const forkUrl = `https://api.tenderly.co/api/v2/project/${REACT_APP_TENDERLY_PROJECT}/forks/${forkId}`;
-  const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
+//   const forkUrl = `https://api.tenderly.co/api/v2/project/${REACT_APP_TENDERLY_PROJECT}/forks/${forkId}`;
+//   const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
 
-  await fetch(forkUrl, {
-    method: 'DELETE',
-    headers,
-  });
-};
+//   await fetch(forkUrl, {
+//     method: 'DELETE',
+//     headers,
+//   });
+// };

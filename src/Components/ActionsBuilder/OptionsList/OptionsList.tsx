@@ -1,4 +1,4 @@
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import {
   closestCenter,
   CollisionDetection,
@@ -22,7 +22,6 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Divider } from 'old-components/Guilds/common/Divider';
-import { Box } from 'Components/Primitives/Layout';
 import { OptionRow } from '../Option';
 import { AddButton } from '../common/AddButton';
 import { DecodedAction, Option } from '../types';
@@ -37,28 +36,9 @@ import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
-import SimulationModal from './SimulationModal';
-import { SimulationButton } from './OptionsList.styled';
-
-const AddOptionWrapper = styled(Box)`
-  padding: 1rem;
-`;
-
-interface OptionsListProps {
-  isEditable: boolean;
-  options: Option[];
-  onChange: (options: Option[]) => void;
-  addOption: () => void;
-  editOption: (option: Option) => void;
-}
-
-export enum SimulationState {
-  none,
-  pending,
-  allPassed,
-  someFailed,
-  chainNotSupported,
-}
+import { AddOptionWrapper, SimulationButton } from './OptionsList.styled';
+import { SimulationModal } from './SimulationModal';
+import { OptionsListProps, SimulationState } from './types';
 
 export const OptionsList: React.FC<OptionsListProps> = ({
   isEditable,
@@ -314,12 +294,10 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const [simulationStatus, setSimulationStatus] = useState<SimulationState>(
     SimulationState.none
   );
-  const [isSimulationLoading, setIsSimulationLoading] = useState(false);
   const [isSimulationModalOpened, setIsSimulationModalOpened] = useState(false);
   const simulateTransactions = useTransactionSimulation();
 
   const handleTransactionSimulation = async () => {
-    setIsSimulationLoading(true);
     setSimulationStatus(SimulationState.pending);
     setIsSimulationModalOpened(true);
 
@@ -330,15 +308,13 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       error,
     } = await simulateTransactions(encodedOptions);
     if (error) {
-      setSimulationStatus(SimulationState.chainNotSupported);
+      setSimulationStatus(SimulationState.error);
     } else {
       onChange(optionsSimulationResult);
       if (failedTransactions > 0)
         setSimulationStatus(SimulationState.someFailed);
       else setSimulationStatus(SimulationState.allPassed);
     }
-
-    setIsSimulationLoading(false);
   };
 
   const isSimulationButtonDisabled = useMemo(() => {
@@ -350,9 +326,10 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       }
     }, 0);
 
-    if (isSimulationLoading || numberOfCalls === 0) return true;
+    if (simulationStatus === SimulationState.pending || numberOfCalls === 0)
+      return true;
     else return false;
-  }, [options, isSimulationLoading]);
+  }, [options, simulationStatus]);
 
   return (
     <DndContext
@@ -414,7 +391,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
             <AddButton label={t('addOption')} onClick={addOption} />
             <SimulationButton
               variant="secondary"
-              data-testId="simulate-transaction-button"
+              data-testid="simulate-transaction-button"
               onClick={handleTransactionSimulation}
               disabled={isSimulationButtonDisabled}
             >
