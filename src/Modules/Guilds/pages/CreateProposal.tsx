@@ -144,7 +144,15 @@ const CreateProposalPage: React.FC = () => {
   const guildContract = useERC20Guild(guildAddress);
 
   const handleCreateProposal = async () => {
-    const contentHash = await uploadToIPFS();
+    let contentHash;
+    try {
+      contentHash = await uploadToIPFS();
+    } catch (e) {
+      toast.error(
+        'Failed to upload to IPFS, please refresh the page and try again'
+      );
+      return;
+    }
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     const totalActions = encodedOptions.length;
