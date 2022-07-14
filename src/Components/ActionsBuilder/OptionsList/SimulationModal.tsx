@@ -53,7 +53,11 @@ const SimulationModal: React.FC<SimulationModalProps> = ({
             <Muted>{t('poweredBy')}</Muted> <TenderlyLogo src={tenderlyLogo} />
           </Flex>
         </StatusWrapper>
-        <Button disabled={false} fullWidth onClick={onDismiss}>
+        <Button
+          disabled={status === SimulationState.pending}
+          fullWidth
+          onClick={onDismiss}
+        >
           {t('dismiss')}
         </Button>
       </Flex>
@@ -68,7 +72,7 @@ const SimulationPending = () => {
 
   return (
     <>
-      <PendingCircle height="86px" width="86px" />
+      <PendingCircle height="86px" width="86px" color={'white'} />
       <Message>{t('simulations.verifyingActions')}</Message>
     </>
   );
