@@ -35,10 +35,10 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
-import { IconButton } from 'old-components/Guilds/common/Button';
 import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import SimulationModal from './SimulationModal';
+import { SimulationButton } from './OptionsList.styled';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -309,6 +309,8 @@ export const OptionsList: React.FC<OptionsListProps> = ({
     [activeId, options]
   );
 
+  // Simulation logic
+
   const [simulationStatus, setSimulationStatus] = useState<SimulationState>(
     SimulationState.none
   );
@@ -410,14 +412,14 @@ export const OptionsList: React.FC<OptionsListProps> = ({
           <Divider />
           <AddOptionWrapper>
             <AddButton label={t('addOption')} onClick={addOption} />
-            <IconButton
+            <SimulationButton
               variant="secondary"
               data-testId="simulate-transaction-button"
               onClick={handleTransactionSimulation}
               disabled={isSimulationButtonDisabled}
             >
               {t('simulations.simulateTransactions')}
-            </IconButton>
+            </SimulationButton>
           </AddOptionWrapper>
         </>
       )}
