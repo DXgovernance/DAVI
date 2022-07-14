@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import {
   closestCenter,
   CollisionDetection,
@@ -32,6 +32,7 @@ import {
   restrictToFirstScrollableAncestor,
 } from '@dnd-kit/modifiers';
 import { useTranslation } from 'react-i18next';
+import { BigNumber } from 'ethers';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -57,6 +58,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const lastOverId = useRef<UniqueIdentifier | null>(null);
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
   const recentlyMovedToNewContainer = useRef(false);
+  const theme = useTheme();
 
   useEffect(() => {
     requestAnimationFrame(() => {
@@ -318,6 +320,26 @@ export const OptionsList: React.FC<OptionsListProps> = ({
             </>
           ))}
         </SortableContext>
+      )}
+      {isEditable && (
+        // Display only ui Against option to make clear that this option will be created by default for all guilds
+        <>
+          <Divider />
+          <OptionRow
+            key={options.length}
+            option={{
+              id: 'option-Against',
+              color: theme.colors.votes[0],
+              label: t('against', { defaultValue: 'Against' }),
+              actions: [],
+              decodedActions: [],
+              totalVotes: BigNumber.from(0),
+            }}
+            isEditable={false}
+            onChange={() => {}}
+            editOption={() => {}}
+          />
+        </>
       )}
 
       {isEditable && (
