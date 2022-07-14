@@ -92,3 +92,11 @@ export const CardActions = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const SectionHeader = styled(Box)`
+  margin-bottom: 0.5rem;
+`;
+
+export const SectionBody = styled(Box)`
+  color: ${({ theme }) => theme.colors.proposalText.grey};
+`;

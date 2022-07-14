@@ -18,6 +18,8 @@ import {
   DetailWrapper,
   EditButtonWithMargin,
   GripWithMargin,
+  SectionBody,
+  SectionHeader,
   TabButton,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
@@ -152,10 +154,12 @@ export const ActionRow: React.FC<ActionViewProps> = ({
             <div>
               {cardStatus === CardStatus.simulationFailed && (
                 <DetailWrapper>
-                  <div>{t('simulationFailed')}</div>
-                  <div>
+                  <SectionHeader>
+                    {t('simulations.simulationFailed')}
+                  </SectionHeader>
+                  <SectionBody>
                     {decodedAction.simulationResult.transaction.error_message}
-                  </div>
+                  </SectionBody>
                 </DetailWrapper>
               )}
               <DetailWrapper>
