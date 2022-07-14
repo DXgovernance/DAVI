@@ -109,6 +109,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       return bulkDecodeCallsFromOptions(encodedOptions, contracts, chainId);
     }
     decodeOptions().then(options =>
+      // Return options putting default against-call last
       setOptions([...options.slice(1), options[0]])
     );
 

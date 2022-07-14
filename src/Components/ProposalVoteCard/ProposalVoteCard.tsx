@@ -115,6 +115,7 @@ const ProposalVoteCard = ({
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 
+            {/* Getting the full option keys list but displaying default 0 index option at the bottom */}
             {[...Object.keys(voteData?.options).slice(1), '0'].map(
               optionKey => {
                 const bItem = BigNumber.from(optionKey);

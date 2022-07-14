@@ -310,7 +310,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
           {options?.map((option, idx) => (
             <div key={idx}>
               <OptionRow
-                key={idx}
                 option={option}
                 onChange={updatedOption => updateOption(idx, updatedOption)}
                 isEditable={isEditable}
