@@ -18,7 +18,6 @@ import {
   DetailWrapper,
   EditButtonWithMargin,
   GripWithMargin,
-  TabButton,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'Components/ActionsModal';
@@ -53,7 +52,6 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const approval = action.approval || decodedAction?.approval;
 
   const [expanded, setExpanded] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
     useState(false);
 
@@ -111,42 +109,17 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
       {expanded && (
         <>
-          {ActionSummary && (
-            <DetailWrapper>
-              <TabButton
-                variant="secondary"
-                active={activeTab === 0}
-                onClick={() => setActiveTab(0)}
-              >
-                {t('default')}
-              </TabButton>
-              <TabButton
-                active={activeTab === 1}
-                onClick={() => setActiveTab(1)}
-              >
-                {t('functionCalls')}
-              </TabButton>
-            </DetailWrapper>
-          )}
-
-          {ActionSummary && activeTab === 0 && (
-            <DetailWrapper>
-              <ActionSummary decodedCall={decodedCall} />
-            </DetailWrapper>
-          )}
-
-          {(!ActionSummary || activeTab === 1) && (
-            <DetailWrapper>
-              {decodedCall ? (
-                <CallDetails
-                  decodedCall={decodedCall}
-                  approveSpendTokens={approval}
-                />
-              ) : (
-                <UndecodableCallDetails call={call} />
-              )}
-            </DetailWrapper>
-          )}
+          <DetailWrapper>
+            <ActionSummary decodedCall={decodedCall} />
+            {decodedCall ? (
+              <CallDetails
+                decodedCall={decodedCall}
+                approveSpendTokens={approval}
+              />
+            ) : (
+              <UndecodableCallDetails call={call} />
+            )}
+          </DetailWrapper>
         </>
       )}
       <ConfirmRemoveActionModal

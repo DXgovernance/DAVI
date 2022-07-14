@@ -1,12 +1,14 @@
 import { MetadataTag } from '../SupportedActions/common/infoLine';
 import { DetailRow } from '../SupportedActions/common/summary';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
+import { Button } from 'old-components/Guilds/common/Button';
 
 export const ParamTag = styled(MetadataTag)`
-  border-radius: ${({ theme }) => theme.radii.pill};
-  margin: 0 0.25rem;
+  margin: 0;
+  padding: 0;
   color: ${({ color }) => color};
+  background-color: transparent;
 `;
 
 export const ParamTitleRow = styled(DetailRow)`
@@ -26,4 +28,12 @@ export const ActionParamRow = styled(Box)`
 export const ParamDetail = styled(Box)`
   color: ${({ theme }) => theme.colors.proposalText.grey};
   overflow-wrap: break-word;
+`;
+
+export const DetailsButton = styled(Button)<{ isExpanded: boolean }>`
+  ${({ isExpanded }) =>
+    isExpanded &&
+    css`
+      border-color: ${({ theme }) => theme.colors.border.hover};
+    `}
 `;
