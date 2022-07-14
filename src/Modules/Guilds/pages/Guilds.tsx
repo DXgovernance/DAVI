@@ -40,6 +40,7 @@ const GuildsPage: React.FC = () => {
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
+
   const filteredProposalIds = useMemo(() => {
     if (!proposalIds) return null;
 
