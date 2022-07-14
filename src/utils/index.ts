@@ -16,3 +16,4 @@ export * from './array';
 export * from './votes';
 export * from './ipfs';
 export * from './img';
+export * from './validations';

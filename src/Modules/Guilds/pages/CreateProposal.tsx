@@ -23,6 +23,8 @@ import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
+import { toast } from 'react-toastify';
+import { isValidProposal } from 'utils';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -99,7 +101,7 @@ const CreateProposalPage: React.FC = () => {
   const [options, setOptions] = useState<Option[]>([
     {
       id: `option-1-For`,
-      label: 'For',
+      label: t('for', { defaultValue: 'For' }),
       color: theme?.colors?.votes?.[1],
       decodedActions: [],
     },
@@ -169,26 +171,38 @@ const CreateProposalPage: React.FC = () => {
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
 
-    createTransaction(
-      `Create proposal ${title}`,
-      async () => {
-        return guildContract.createProposal(
-          toArray,
-          dataArray,
-          valueArray,
-          totalActions,
-          title,
-          `0x${contentHash}`
-        );
-      },
-      true,
-      err => {
-        if (!err) {
-          editMode && clear();
-          history.push(`/${chain}/${guildId}`);
+    const { isValid, error } = isValidProposal({
+      toArray,
+      dataArray,
+      valueArray,
+      totalActions,
+      title,
+    });
+
+    if (!isValid) {
+      toast.error(error);
+    } else {
+      createTransaction(
+        `Create proposal ${title}`,
+        async () => {
+          return guildContract.createProposal(
+            toArray,
+            dataArray,
+            valueArray,
+            totalActions,
+            title,
+            `0x${contentHash}`
+          );
+        },
+        true,
+        err => {
+          if (!err) {
+            editMode && clear();
+            history.push(`/${chain}/${guildId}`);
+          }
         }
-      }
-    );
+      );
+    }
   };
 
   const isValid = useMemo(() => {

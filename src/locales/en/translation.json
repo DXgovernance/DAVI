@@ -165,5 +165,6 @@
   "theRemovalCannotBeReverted": "The removal cannot be reverted",
   "removeAction": "Remove Action",
   "remove": "Remove",
-  "against": "Against"
+  "against": "Against",
+  "for": "For"
 }
