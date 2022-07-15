@@ -19,7 +19,7 @@ export const CardWrapperWithMargin = styled(CardWrapper)<{
 `;
 
 export const CardHeader = styled(Header)`
-  padding: 0.875rem 1.25rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -54,7 +54,7 @@ export const ChevronIcon = styled.span<{ active?: boolean }>`
 `;
 
 export const DetailWrapper = styled(Box)`
-  padding: 1.25rem;
+  padding: 1.25rem 1.5rem;
   border-top: 1px solid ${({ theme }) => theme.colors.border.initial};
 `;
 

@@ -53,7 +53,7 @@ const StyledButton = styled(IconButton)<{
 }>`
   margin: 0;
   padding: 0.5rem 0.8rem;
-  margin-left: ${props => props.marginLeft}; || 0
+  margin-left: ${props => props.marginLeft || 0};
 `;
 
 const Label = styled.span<{
@@ -105,6 +105,8 @@ const CreateProposalPage: React.FC = () => {
     345600000,
     t('enterProposalDescription')
   );
+
+  console.log(options);
 
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
