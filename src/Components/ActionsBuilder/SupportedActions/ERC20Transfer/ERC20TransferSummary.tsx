@@ -1,13 +1,11 @@
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
-import { DetailCell, DetailHeader, DetailRow } from '../common/summary';
+import { DetailBody, DetailHeader, DetailRow } from '../common/summary';
 import { BigNumber } from 'ethers';
-import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
-import { MAINNET_ID, shortenAddress } from 'utils';
+import { MAINNET_ID } from 'utils';
 import { useTranslation } from 'react-i18next';
 
 const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
@@ -24,12 +22,6 @@ const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
     };
   }, [decodedCall]);
 
-  const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
-  const roundedBalance = useBigNumberToNumber(
-    parsedData?.amount,
-    tokenInfo?.decimals,
-    4
-  );
   const { ensName, imageUrl } = useENSAvatar(
     parsedData?.destination,
     MAINNET_ID
@@ -37,13 +29,10 @@ const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
 
   return (
     <>
-      <DetailHeader>
-        <DetailCell>{t('receiver')}</DetailCell>
-        <DetailCell>{t('amount')}</DetailCell>
-      </DetailHeader>
+      <DetailHeader>{t('interactWith')}:</DetailHeader>
 
       <DetailRow>
-        <DetailCell>
+        <DetailBody>
           <Segment>
             <Avatar
               defaultSeed={parsedData?.destination}
@@ -51,13 +40,8 @@ const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
               size={24}
             />
           </Segment>
-          <Segment>
-            {ensName || shortenAddress(parsedData?.destination)}
-          </Segment>
-        </DetailCell>
-        <DetailCell>
-          {roundedBalance} {tokenInfo?.symbol}
-        </DetailCell>
+          <Segment>{ensName || parsedData?.destination}</Segment>
+        </DetailBody>
       </DetailRow>
     </>
   );

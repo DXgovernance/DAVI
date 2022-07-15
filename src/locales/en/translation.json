@@ -37,7 +37,7 @@
   "ethereumAddress": "Ethereum Address",
   "token": "Token",
   "transfer": "Transfer",
-  "receiver": "Receiver",
+  "interactWith": "Interact with",
   "repMint": {
     "recipient": "Recipient",
     "recipientTooltip": "The address that will receive the REP minted.",
