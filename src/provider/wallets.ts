@@ -12,6 +12,7 @@ const getInjected = (chains: Chain[]) =>
   new InjectedConnector({
     chains,
     options: {
+      shimChainChangedDisconnect: true,
       name(detectedName) {
         return detectedName
           ? typeof detectedName === 'string'

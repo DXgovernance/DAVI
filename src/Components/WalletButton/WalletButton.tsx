@@ -3,9 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'old-components/Guilds/common/Button';
 import { WalletModal } from 'Components/Web3Modals/WalletModal';
 import { useTransactions } from 'contexts/Guilds';
-import { useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
+import { useAccount, useNetwork } from 'wagmi';
 import AddressButton from 'Components/AddressButton/AddressButton';
 import { isReadOnly } from 'provider/wallets';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 const WalletButton = () => {
   const { t } = useTranslation();

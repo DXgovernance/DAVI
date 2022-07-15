@@ -8,7 +8,8 @@ import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';
 import { getNetworkById, getChainIcon } from 'utils';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useNetwork, useSwitchNetwork } from 'wagmi';
+import { useNetwork } from 'wagmi';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 interface ContractAvailability {
   [chainId: number]: boolean;

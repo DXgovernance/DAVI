@@ -10,19 +10,14 @@ import {
   TransactionsListHeading,
 } from './WalletModal.styled';
 import { WalletModalProps } from './types';
-import {
-  useAccount,
-  useConnect,
-  useDisconnect,
-  useNetwork,
-  useSwitchNetwork,
-} from 'wagmi';
+import { useAccount, useConnect, useDisconnect, useNetwork } from 'wagmi';
 import { Option, Transaction, WalletInfoBox } from '../components';
 import { getIcon, isReadOnly } from 'provider/wallets';
 import { useTransactions } from 'contexts/Guilds';
 import { Divider } from 'old-components/Guilds/common/Divider';
 import { Button } from 'old-components/Guilds/common/Button';
 import { READ_ONLY_CONNECTOR_ID } from 'provider/ReadOnlyConnector';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
   const { t } = useTranslation();

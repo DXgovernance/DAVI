@@ -1,7 +1,8 @@
 import useHash from 'hooks/Guilds/useHash';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 import { isReadOnly } from 'provider/wallets';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useAccount, useConnect, useNetwork, useSwitchNetwork } from 'wagmi';
+import { useAccount, useConnect, useNetwork } from 'wagmi';
 
 interface SyncRouterWithWagmiProps {
   children: React.ReactElement;
@@ -29,7 +30,7 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
 
     if (connector) {
       // Connector initialized.
-      if (!urlChain || urlChain.id === chain.id) {
+      if (!urlChain || urlChain?.id === chain?.id) {
         // No chain name in the URL. Nothing to do here.
         setIsInitialLoadDone(true);
         return;
@@ -64,7 +65,7 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
   useEffect(() => {
     if (!isInitialLoadDone) return;
 
-    if (!urlChain || urlChain.id !== chain.id) {
+    if (chain && (!urlChain || urlChain?.id !== chain?.id)) {
       const url = `/${chain.network}`;
       setHash(url);
     }
