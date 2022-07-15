@@ -828,7 +828,7 @@ async function main() {
             )
             .encodeABI(),
         ],
-        value: ['0x96'],
+        value: ['0x6A94D74F430000'],
         totalActions: '1',
         title: 'Proposal with value',
         description: 'Proposal with value > 1',
