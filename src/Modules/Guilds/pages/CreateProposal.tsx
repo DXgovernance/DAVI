@@ -144,7 +144,7 @@ const CreateProposalPage: React.FC = () => {
   const guildContract = useERC20Guild(guildAddress);
 
   const handleCreateProposal = async () => {
-    let contentHash;
+    let contentHash: Promise<string>;
     try {
       contentHash = await uploadToIPFS();
     } catch (e) {

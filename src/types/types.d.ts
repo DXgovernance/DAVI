@@ -3,12 +3,14 @@ import {
   WalletSchemeProposalState,
   VotingMachineProposalState,
 } from './utils';
+import * as IPFS from 'ipfs-core';
 
 declare global {
   // Window ethereum type
 
   interface Window {
     ethereum?: EthereumProvider;
+    ipfs?: IPFS.IPFS;
   }
 
   // DaoStore types
