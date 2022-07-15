@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const DetailRow = styled(Box)`
   display: flex;
   margin-top: 0.5rem;
-  justify-content: space-between;
   align-items: center;
 `;
 
