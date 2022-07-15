@@ -10,6 +10,7 @@ import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import { useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
+  ActionSummaryWrapper,
   CardActions,
   CardHeader,
   CardLabel,
@@ -110,7 +111,11 @@ export const ActionRow: React.FC<ActionViewProps> = ({
       {expanded && (
         <>
           <DetailWrapper>
-            <ActionSummary decodedCall={decodedCall} />
+            {ActionSummary && (
+              <ActionSummaryWrapper>
+                <ActionSummary decodedCall={decodedCall} />
+              </ActionSummaryWrapper>
+            )}
             {decodedCall ? (
               <CallDetails
                 decodedCall={decodedCall}

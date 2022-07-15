@@ -82,3 +82,7 @@ export const CardActions = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const ActionSummaryWrapper = styled.div`
+  margin-bottom: 10px;
+`;

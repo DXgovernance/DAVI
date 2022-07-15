@@ -32,7 +32,7 @@ export const ParamDetail = styled(Box)`
 
 export const DetailsButton = styled(Button)<{ isExpanded: boolean }>`
   font-size: 12px;
-  margin: 10px 0 0 0;
+  margin: 0;
   padding: 4px 8px;
   ${({ isExpanded }) =>
     isExpanded &&
