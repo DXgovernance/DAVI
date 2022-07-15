@@ -47,8 +47,6 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
           chainId: urlChain.id,
         });
       }
-
-      setIsInitialLoadDone(true);
     }
   }, [
     isInitialLoadDone,

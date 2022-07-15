@@ -33,7 +33,7 @@ const useSwitchNetwork = ({
       window.location.reload();
     }
 
-    onSuccess(chain, variables, context);
+    onSuccess && onSuccess(chain, variables, context);
   }
 
   return switchNetworkResult;
