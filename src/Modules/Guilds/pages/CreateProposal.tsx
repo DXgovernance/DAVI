@@ -106,8 +106,6 @@ const CreateProposalPage: React.FC = () => {
     t('enterProposalDescription')
   );
 
-  console.log(options);
-
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;

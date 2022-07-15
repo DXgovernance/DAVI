@@ -811,6 +811,29 @@ async function main() {
         proposal: 0,
       },
     },
+    {
+      type: 'guild-createProposal',
+      from: accounts[0],
+      data: {
+        guildName: 'DXDGuild',
+        to: ['DXDGuild'],
+        callData: [
+          new web3.eth.Contract(ERC20Guild.abi).methods
+            .setPermission(
+              [ZERO_ADDRESS],
+              [ANY_ADDRESS],
+              [ANY_FUNC_SIGNATURE],
+              [web3.utils.toWei('5').toString()],
+              [true]
+            )
+            .encodeABI(),
+        ],
+        value: ['0x96'],
+        totalActions: '1',
+        title: 'Proposal with value',
+        description: 'Proposal with value > 1',
+      },
+    },
 
     {
       type: 'approve',
