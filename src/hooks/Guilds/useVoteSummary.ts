@@ -22,7 +22,6 @@ export default function useVoteSummary(
   const votes = useMemo(() => {
     if (totalVotes && totalLocked) {
       const newVotes = [];
-      // Skipping the first and showing results from 2nd item (idx 1) onwards. Same case as useVotingResults. TODO: investigate why?
       for (var i = 0; i <= totalVotes?.length - 1; i++) {
         if (totalVotes[i]?.gt(0)) {
           newVotes.push(getBigNumberPercentage(totalVotes[i], totalLocked, 2));
