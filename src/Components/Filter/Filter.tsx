@@ -20,6 +20,7 @@ import {
   StyledInputWrapper,
   FilterBadge,
 } from './Filter.styled';
+import { navigateUrl } from 'utils';
 
 const Filter = () => {
   const { t } = useTranslation();
@@ -69,7 +70,9 @@ const Filter = () => {
           {isProposalCreationAllowed && (
             <Button
               variant="secondary"
-              onClick={() => history.push(location.pathname + '/proposalType')}
+              onClick={() =>
+                history.push(navigateUrl(location, 'proposalType'))
+              }
               data-testid="create-proposal-button"
             >
               {t('createProposal')}
