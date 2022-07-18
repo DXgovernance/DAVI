@@ -4,7 +4,12 @@ import Avatar from 'old-components/Guilds/Avatar';
 import { useTranslation } from 'react-i18next';
 import { MAINNET_ID } from 'utils';
 import { Segment } from './infoLine';
-import { DetailBody, DetailHeader, DetailRow } from './Summary.styled';
+import {
+  DetailBody,
+  DetailHeader,
+  DetailRow,
+  RedHighlight,
+} from './Summary.styled';
 
 const Summary = ({ decodedCall, address }) => {
   const { t } = useTranslation();
@@ -16,7 +21,7 @@ const Summary = ({ decodedCall, address }) => {
       <DetailHeader>
         {t('interactWith')}
         {parsedValueToString !== '0.0' && (
-          <span> {parsedValueToString} ETH </span>
+          <RedHighlight> {parsedValueToString} ETH</RedHighlight>
         )}
         :
       </DetailHeader>
