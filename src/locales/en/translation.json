@@ -164,5 +164,7 @@
   "areYuoSureYouWantToRemoveAction": "Are you sure you want to remove this action?",
   "theRemovalCannotBeReverted": "The removal cannot be reverted",
   "removeAction": "Remove Action",
-  "remove": "Remove"
+  "remove": "Remove",
+  "against": "Against",
+  "for": "For"
 }

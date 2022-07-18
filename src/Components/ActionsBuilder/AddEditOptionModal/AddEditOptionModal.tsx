@@ -39,7 +39,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
       {
         id: `option-${options.length}-${label}`,
         label,
-        color: theme?.colors?.votes?.[options.length],
+        color: theme?.colors?.votes?.[options.length + 1],
         decodedActions: [],
       },
     ];
@@ -79,7 +79,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
           <Input
             value={label}
             placeholder={t('optionLabel')}
-            icon={<Dot color={theme?.colors?.votes?.[options.length]} />}
+            icon={<Dot color={theme?.colors?.votes?.[options.length + 1]} />}
             onChange={e => setLabel(e.target.value)}
           />
         </Box>

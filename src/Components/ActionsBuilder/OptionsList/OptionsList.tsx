@@ -31,10 +31,8 @@ import {
   restrictToVerticalAxis,
   restrictToFirstScrollableAncestor,
 } from '@dnd-kit/modifiers';
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
-import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
+import { BigNumber } from 'ethers';
 
 const AddOptionWrapper = styled(Box)`
   padding: 1rem;
@@ -60,11 +58,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const lastOverId = useRef<UniqueIdentifier | null>(null);
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
   const recentlyMovedToNewContainer = useRef(false);
-
-  const { guildId: guildAddress } = useTypedParams();
-  const { isEnforcedBinaryGuild } =
-    useGuildImplementationTypeConfig(guildAddress);
-
   const theme = useTheme();
 
   useEffect(() => {
@@ -315,30 +308,28 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       {options && (
         <SortableContext items={options} strategy={verticalListSortingStrategy}>
           {options?.map((option, idx) => (
-            <>
+            <div key={idx}>
               <OptionRow
-                key={idx}
                 option={option}
                 onChange={updatedOption => updateOption(idx, updatedOption)}
                 isEditable={isEditable}
                 editOption={editOption}
               />
               {idx !== options.length - 1 && <Divider />}
-            </>
+            </div>
           ))}
         </SortableContext>
       )}
-
-      {/* Show a placeholder No option when editing EnforcedBinaryGuilds */}
-      {isEnforcedBinaryGuild && isEditable && (
+      {isEditable && (
+        // Display only ui Against option to make clear that this option will be created by default for all guilds
         <>
           <Divider />
           <OptionRow
             key={options.length}
             option={{
               id: 'option-Against',
-              color: theme.colors.red,
-              label: 'Against',
+              color: theme.colors.votes[0],
+              label: t('against', { defaultValue: 'Against' }),
               actions: [],
               decodedActions: [],
               totalVotes: BigNumber.from(0),

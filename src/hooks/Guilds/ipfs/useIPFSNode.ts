@@ -10,18 +10,29 @@ export default function useIPFSNode() {
   useEffect(() => {
     async function start() {
       setIsReady(false);
-      try {
-        setIpfs(await IPFS.create());
-        console.debug('[useIPFSNode] Initialized IPFS instance.');
-        setIsReady(true);
-      } catch (e) {
-        console.error('[useIPFSNode] Error initializing IPFS instance.', e);
-        setHasError(true);
+      if (!ipfs) {
+        // Check existing ipfs instance
+        if (window.ipfs) {
+          setIpfs(window.ipfs);
+          setIsReady(true);
+        } else {
+          // Create new ipfs instance
+          try {
+            const newNode = await IPFS.create();
+            setIpfs(newNode);
+            window.ipfs = newNode;
+            console.debug('[useIPFSNode] Initialized IPFS instance.');
+            setIsReady(true);
+          } catch (e) {
+            console.error('[useIPFSNode] Error initializing IPFS instance.', e);
+            setHasError(true);
+          }
+        }
       }
     }
 
     start();
-  }, []);
+  }, []); //eslint-disable-line
 
   async function add(content: string) {
     if (!isReady) return null;

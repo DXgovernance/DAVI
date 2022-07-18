@@ -22,6 +22,9 @@ import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'styled-components';
+import { toast } from 'react-toastify';
+import { isValidProposal } from 'utils';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -91,15 +94,24 @@ const CreateProposalPage: React.FC = () => {
 
   const history = useHistory();
   const { t } = useTranslation();
+  const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
   const [referenceLink, setReferenceLink] = useState('');
-  const [options, setOptions] = useState<Option[]>([]);
+  const [options, setOptions] = useState<Option[]>([
+    {
+      id: `option-1-For`,
+      label: t('for', { defaultValue: 'For' }),
+      color: theme?.colors?.votes?.[1],
+      decodedActions: [],
+    },
+  ]);
   const {
     Editor,
     EditorConfig,
     md: proposalBodyMd,
     html: proposalBodyHTML,
+    clear,
   } = useTextEditor(
     `${guildId}/create-proposal`,
     345600000,
@@ -120,7 +132,7 @@ const CreateProposalPage: React.FC = () => {
     const content = {
       description: proposalBodyHTML,
       url: referenceLink,
-      voteOptions: options.map(({ label }) => label),
+      voteOptions: ['', ...options.map(({ label }) => label)],
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
@@ -130,8 +142,17 @@ const CreateProposalPage: React.FC = () => {
   const { createTransaction } = useTransactions();
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
+
   const handleCreateProposal = async () => {
-    const contentHash = await uploadToIPFS();
+    let contentHash: Promise<string>;
+    try {
+      contentHash = await uploadToIPFS();
+    } catch (e) {
+      toast.error(
+        'Failed to upload to IPFS, please refresh the page and try again'
+      );
+      return;
+    }
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     const totalActions = encodedOptions.length;
@@ -158,16 +179,38 @@ const CreateProposalPage: React.FC = () => {
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
 
-    createTransaction(`Create proposal ${title}`, async () => {
-      return guildContract.createProposal(
-        toArray,
-        dataArray,
-        valueArray,
-        totalActions,
-        title,
-        `0x${contentHash}`
-      );
+    const { isValid, error } = isValidProposal({
+      toArray,
+      dataArray,
+      valueArray,
+      totalActions,
+      title,
     });
+
+    if (!isValid) {
+      toast.error(error);
+    } else {
+      createTransaction(
+        `Create proposal ${title}`,
+        async () => {
+          return guildContract.createProposal(
+            toArray,
+            dataArray,
+            valueArray,
+            totalActions,
+            title,
+            `0x${contentHash}`
+          );
+        },
+        true,
+        err => {
+          if (!err) {
+            editMode && clear();
+            history.push(`/${chain}/${guildId}`);
+          }
+        }
+      );
+    }
   };
 
   const isValid = useMemo(() => {

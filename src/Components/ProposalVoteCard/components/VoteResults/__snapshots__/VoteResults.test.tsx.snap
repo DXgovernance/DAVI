@@ -18,7 +18,7 @@ exports[`VoteResults matches the snapshot 1`] = `
           size="8"
         />
       </span>
-      Yes
+      No
     </div>
     <span>
       0.0001 DXD
@@ -39,7 +39,7 @@ exports[`VoteResults matches the snapshot 1`] = `
           size="8"
         />
       </span>
-      No
+      Yes
     </div>
     <span>
       0.0001 DXD
