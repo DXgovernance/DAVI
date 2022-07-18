@@ -85,7 +85,8 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
       class="sc-bqyKOL jpIhKt"
     >
        
-       ETH
+       
+      ETH
     </span>
     :
   </div>

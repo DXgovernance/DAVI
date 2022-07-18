@@ -26,6 +26,10 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
   }),
 }));
 
+jest.mock('utils', () => ({
+  getNetworkById: () => ({ nativeAsset: { symbol: 'ETH' } }),
+}));
+
 describe('ERC20TransferSummary', () => {
   it('Should match snapshot', () => {
     const { container } = render(
