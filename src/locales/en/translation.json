@@ -178,5 +178,7 @@
     "verifyingActions": "Verifying actions",
     "error": "Error while simulating transactions"
   },
-  "poweredBy": "powered by"
+  "poweredBy": "powered by",
+  "against": "Against",
+  "for": "For"
 }

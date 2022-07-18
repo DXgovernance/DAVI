@@ -35,7 +35,9 @@ interface TransactionsContextInterface {
   pendingTransaction: PendingTransaction;
   createTransaction: (
     summary: string,
-    txFunction: () => Promise<providers.TransactionResponse>
+    txFunction: () => Promise<providers.TransactionResponse>,
+    showModal?: boolean,
+    cb?: (error?: any, txtHash?: any) => void
   ) => void;
   clearAllTransactions: () => void;
 }
@@ -170,7 +172,8 @@ export const TransactionsProvider = ({ children }) => {
   const createTransaction = async (
     summary: string,
     txFunction: () => Promise<providers.TransactionResponse>,
-    showModal: boolean = true
+    showModal: boolean = true,
+    cb: (error?: any, txtHash?: any) => void = null
   ) => {
     setPendingTransaction({
       summary,
@@ -192,12 +195,14 @@ export const TransactionsProvider = ({ children }) => {
         autoClose: false,
         isLoading: true,
       });
+      if (cb && typeof cb === 'function') cb(null, transactionHash);
     } catch (e) {
       console.error('Transaction execution failed', e);
       setPendingTransaction(pendingTransaction => ({
         ...pendingTransaction,
         cancelled: true,
       }));
+      if (cb && typeof cb === 'function') cb(e, null);
     }
   };
 
