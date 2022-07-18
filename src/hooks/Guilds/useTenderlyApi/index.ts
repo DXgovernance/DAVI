@@ -3,6 +3,12 @@ import { useWeb3React } from '@web3-react/core';
 import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import { Call, Option } from 'Components/ActionsBuilder/types';
 
+// Variables are hardcoded because they didn't work
+// with GitHub. It might change later
+const TENDERLY_USER = 'dxdao';
+const TENDERLY_PROJECT = 'dxdao-proposal-simulation';
+const TENDERLY_ACCESS_KEY = 'fbzJG0PD3R8sX5i2vCCqh4r3YyrELtIO';
+
 export const useTransactionSimulation = () => {
   const { chainId } = useWeb3React();
   const provider = useJsonRpcProvider(chainId);
@@ -51,17 +57,11 @@ export const useTransactionSimulation = () => {
 };
 
 const getForkData = async (chainId: number, provider) => {
-  const {
-    REACT_APP_TENDERLY_USER,
-    REACT_APP_TENDERLY_PROJECT,
-    REACT_APP_TENDERLY_ACCESS_KEY,
-  } = process.env;
-
   let latestBlock = await provider.getBlockNumber();
 
-  const createForkUrl = `https://api.tenderly.co/api/v1/account/${REACT_APP_TENDERLY_USER}/project/${REACT_APP_TENDERLY_PROJECT}/fork`;
+  const createForkUrl = `https://api.tenderly.co/api/v1/account/${TENDERLY_USER}/project/${TENDERLY_PROJECT}/fork`;
 
-  const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
+  const headers = { 'X-Access-Key': TENDERLY_ACCESS_KEY };
 
   const bodyData = {
     network_id: chainId.toString(),
@@ -88,12 +88,11 @@ const simulateAction = async (
   action: Call,
   chainId: number
 ) => {
-  const { REACT_APP_TENDERLY_ACCESS_KEY } = process.env;
   const simulationUrl = `${forkUrl}/simulate`;
   const network_id = chainId.toString();
   const { from, to, data: input } = action;
 
-  const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
+  const headers = { 'X-Access-Key': TENDERLY_ACCESS_KEY };
 
   const body = {
     network_id,
@@ -121,11 +120,9 @@ const simulateAction = async (
 // a lot of forks spamming the dashboard
 
 // const deleteFork = async (forkId: string) => {
-//   const { REACT_APP_TENDERLY_PROJECT, REACT_APP_TENDERLY_ACCESS_KEY } =
-//     process.env;
 
-//   const forkUrl = `https://api.tenderly.co/api/v2/project/${REACT_APP_TENDERLY_PROJECT}/forks/${forkId}`;
-//   const headers = { 'X-Access-Key': REACT_APP_TENDERLY_ACCESS_KEY };
+//   const forkUrl = `https://api.tenderly.co/api/v2/project/${TENDERLY_PROJECT}/forks/${forkId}`;
+//   const headers = { 'X-Access-Key': TENDERLY_ACCESS_KEY };
 
 //   await fetch(forkUrl, {
 //     method: 'DELETE',
