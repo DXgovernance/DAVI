@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { createClient, configureChains, WagmiConfig } from 'wagmi';
 import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
-import MultichainProvider from 'contexts/MultichainProvider';
+// import MultichainProvider from 'contexts/MultichainProvider';
 import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
 import SyncRouterWithWagmi from 'Components/Web3Modals/SyncRouterWithWagmi';
 
@@ -38,16 +38,14 @@ const Root = () => {
   return (
     <GlobalErrorBoundary>
       <WagmiConfig client={client}>
-        <MultichainProvider>
-          <HashRouter>
-            <SyncRouterWithWagmi>
-              <EtherSWRManager>
-                <App />
-                <EnsureReadOnlyConnection />
-              </EtherSWRManager>
-            </SyncRouterWithWagmi>
-          </HashRouter>
-        </MultichainProvider>
+        <HashRouter>
+          <SyncRouterWithWagmi>
+            <EtherSWRManager>
+              <App />
+              <EnsureReadOnlyConnection />
+            </EtherSWRManager>
+          </SyncRouterWithWagmi>
+        </HashRouter>
       </WagmiConfig>
     </GlobalErrorBoundary>
   );

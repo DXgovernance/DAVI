@@ -33,7 +33,8 @@ const NetworkIconButton = styled(IconButton)`
 export const GuildAvailabilityContext =
   createContext<GuildAvailabilityContextInterface>({});
 
-// TODO: Refactor
+// TODO: Refactor this to not use the MultichainContext.
+// We should remove the MultichainContext as we no longer need it.
 const GuildAvailabilityProvider = ({ children }) => {
   const { guildId } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);

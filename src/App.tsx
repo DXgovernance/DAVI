@@ -7,7 +7,6 @@ import ProposalPage from './Modules/Guilds/pages/Proposal';
 import GlobalStyle from './theme/GlobalTheme';
 import { ProposalTypesConfig } from 'configs/proposalTypes';
 import { GuildsContextProvider, TransactionsProvider } from 'contexts/Guilds';
-import GuildAvailabilityProvider from 'contexts/Guilds/guildAvailability';
 import { ProposalTypes } from 'Components/ProposalTypes';
 import CreateProposalPage from 'Modules/Guilds/pages/CreateProposal';
 import LandingPage from 'Modules/Guilds/pages/LandingPage';
@@ -22,8 +21,7 @@ const App = () => {
   const { chains } = useNetwork();
   const defaultChain = useMemo(() => {
     const first = chains[0].network;
-    const isDev = process.env.NODE_ENV === 'development';
-    return isDev ? 'localhost' : first;
+    return first;
   }, [chains]);
 
   return (
@@ -34,31 +32,29 @@ const App = () => {
             <GlobalStyle />
             <Header />
             <Container>
-              <GuildAvailabilityProvider>
-                <Switch>
-                  <Route exact path="/">
-                    <Redirect to={`/${defaultChain}`} />
-                  </Route>
-                  <Route exact path="/:chainName">
-                    <LandingPage />
-                  </Route>
-                  <Route exact path="/:chainName/:guildId">
-                    <GuildsPage />
-                  </Route>
-                  <Route path="/:chainName/:guildId/proposalType">
-                    <ProposalTypes data={ProposalTypesConfig} />
-                  </Route>
-                  <Route path="/:chainName/:guildId/proposal/:proposalId">
-                    <ProposalPage />
-                  </Route>
-                  <Route path="/:chainName/:guildId/create/:proposalType">
-                    <CreateProposalPage />
-                  </Route>
-                  <Route>
-                    <NotFound />
-                  </Route>
-                </Switch>
-              </GuildAvailabilityProvider>
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to={`/${defaultChain}`} />
+                </Route>
+                <Route exact path="/:chainName">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/:chainName/:guildId">
+                  <GuildsPage />
+                </Route>
+                <Route path="/:chainName/:guildId/proposalType">
+                  <ProposalTypes data={ProposalTypesConfig} />
+                </Route>
+                <Route path="/:chainName/:guildId/proposal/:proposalId">
+                  <ProposalPage />
+                </Route>
+                <Route path="/:chainName/:guildId/create/:proposalType">
+                  <CreateProposalPage />
+                </Route>
+                <Route>
+                  <NotFound />
+                </Route>
+              </Switch>
             </Container>
           </GuildsContextProvider>
         </TransactionsProvider>
