@@ -63,9 +63,17 @@ export const ChevronIcon = styled.span<{ active?: boolean }>`
     `}
 `;
 
-export const DetailWrapper = styled(Box)`
+export const DetailWrapper = styled(Box)<{ cardStatus?: CardStatus }>`
   padding: 1.25rem 1.5rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border-top: 1px solid;
+  border-color: ${({ cardStatus, theme }) =>
+    cardStatus === CardStatus.dragging
+      ? theme.colors.text
+      : cardStatus === CardStatus.warning
+      ? theme.colors.red
+      : cardStatus === CardStatus.simulationFailed
+      ? theme.colors.orange
+      : theme.colors.muted};
 `;
 
 export const TabButton = styled(Button)<{ active?: boolean }>`

@@ -24,6 +24,7 @@ import {
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'Components/ActionsModal';
+import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 
 interface ActionViewProps {
   call?: Call;
@@ -67,6 +68,8 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   const [isEditActionModalOpen, setIsEditActionModalOpen] = useState(false);
 
+  const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
+
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
   const ActionSummary = getSummaryView(decodedCall?.callType);
@@ -79,6 +82,8 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
 
+    if (parsedValueToString !== '0.0') return CardStatus.warning;
+
     if (!decodedAction?.simulationResult) return CardStatus.normal;
 
     if (decodedAction?.simulationResult.simulation.status === false) {
@@ -86,7 +91,12 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     }
 
     return CardStatus.normal; // default return so ESLint doesn't complain
-  }, [decodedAction?.simulationResult, isEditable, isDragging]);
+  }, [
+    decodedAction?.simulationResult,
+    isEditable,
+    isDragging,
+    parsedValueToString,
+  ]);
 
   return (
     <CardWrapperWithMargin
@@ -131,23 +141,19 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
       {expanded && (
         <>
-          <DetailWrapper>
+          {cardStatus === CardStatus.simulationFailed && (
+            <DetailWrapper cardStatus={cardStatus}>
+              <SectionHeader>{t('simulations.simulationFailed')}</SectionHeader>
+              <SectionBody>
+                {decodedAction.simulationResult.transaction.error_message}
+              </SectionBody>
+            </DetailWrapper>
+          )}
+          <DetailWrapper cardStatus={cardStatus}>
             {ActionSummary && (
-              <div>
-                {cardStatus === CardStatus.simulationFailed && (
-                  <DetailWrapper>
-                    <SectionHeader>
-                      {t('simulations.simulationFailed')}
-                    </SectionHeader>
-                    <SectionBody>
-                      {decodedAction.simulationResult.transaction.error_message}
-                    </SectionBody>
-                  </DetailWrapper>
-                )}
-                <ActionSummaryWrapper>
-                  <ActionSummary decodedCall={decodedCall} />
-                </ActionSummaryWrapper>
-              </div>
+              <ActionSummaryWrapper>
+                <ActionSummary decodedCall={decodedCall} />
+              </ActionSummaryWrapper>
             )}
             {decodedCall ? (
               <CallDetails

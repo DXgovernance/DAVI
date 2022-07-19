@@ -4,8 +4,6 @@ import { useMemo } from 'react';
 import Summary from '../common/Summary';
 
 const ERC20TransferSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
-  console.log(decodedCall);
-
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
