@@ -4,18 +4,18 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 <div>
    
   <a
-    class="sc-dkmKIT eZXvkL"
+    class="sc-gIRjGK AMLdN"
     data-testid="proposal-card"
     href="/testUrl"
   >
     <div
-      class="sc-iqHYmW sc-flMpop fkFZia cbiNNm"
+      class="sc-iqHYmW sc-eWVLlQ fkFZia fkAeCf"
     >
       <div
-        class="sc-iqHYmW sc-eWVLlQ fkFZia fKXacY"
+        class="sc-iqHYmW sc-iGculD fkFZia jyznox"
       >
         <div
-          class="sc-iqHYmW sc-kUbgcP fkFZia bTUfMg"
+          class="sc-iqHYmW sc-dwcupg fkFZia cBzFiK"
         >
           <div
             class="paper"
@@ -71,19 +71,19 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             </svg>
           </div>
           <div
-            class="sc-iqHYmW sc-dwcupg fkFZia kWyqIM"
+            class="sc-iqHYmW sc-jtHLbV fkFZia cqqMhg"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="sc-gsBqHK cUHEhI"
+          class="sc-aKXVD dIlXaA"
         >
           <div
-            class="sc-aKXVD esWbBH"
+            class="sc-kmATbt hEnJCO"
           >
             <div
-              class="sc-iqHYmW sc-cvJIAo fkFZia elhAwV"
+              class="sc-iqHYmW sc-dkmKIT fkFZia dIuAwZ"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
@@ -92,7 +92,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </span>
             </div>
             <div
-              class="sc-iqHYmW sc-kmATbt fkFZia jIfEqs"
+              class="sc-iqHYmW sc-cvJIAo fkFZia fMddxZ"
             >
                
               Active
@@ -101,10 +101,10 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </div>
       </div>
       <div
-        class="sc-iqHYmW sc-iGculD fkFZia dwdZKR"
+        class="sc-iqHYmW sc-irlQje fkFZia eUEImI"
       >
         <h2
-          class="sc-kstqJO sc-eWvPqa ezOHft gHjKrC"
+          class="sc-kstqJO sc-kUbgcP ezOHft bdPkMe"
           size="2"
         >
           <strong>
@@ -113,25 +113,25 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </h2>
       </div>
       <div
-        class="sc-iqHYmW sc-irlQje fkFZia jGFgqL"
+        class="sc-iqHYmW sc-eWvPqa fkFZia hJckuy"
       >
         <div
-          class="sc-iqHYmW sc-jtHLbV fkFZia fyOCLY"
+          class="sc-iqHYmW sc-eltbHq fkFZia jxTOfA"
         />
         <div
-          class="sc-iqHYmW sc-iIEXtl fkFZia hvckDF"
+          class="sc-iqHYmW sc-gsBqHK fkFZia dUmSms"
         >
           <div
-            class="sc-iqHYmW sc-kUbgcP sc-eltbHq fkFZia bTUfMg cKtwLc"
+            class="sc-iqHYmW sc-dwcupg sc-kiYsuf fkFZia cBzFiK iDpqQZ"
           >
             <div
-              class="sc-iqHYmW sc-dwcupg fkFZia kWyqIM"
+              class="sc-iqHYmW sc-jtHLbV fkFZia cqqMhg"
             >
               20
               %
             </div>
             <div
-              class="sc-cKZGGw GGvKv"
+              class="sc-iIEXtl ivNzDH"
             >
               <svg
                 fill="none"
@@ -152,7 +152,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </div>
             <div
-              class="sc-iqHYmW sc-dwcupg fkFZia kWyqIM"
+              class="sc-iqHYmW sc-jtHLbV fkFZia cqqMhg"
             >
               10
               %
@@ -170,19 +170,19 @@ exports[`ProposalCard ProposalCard loading 1`] = `
 <div>
    
   <a
-    class="sc-dkmKIT eZXvkL"
+    class="sc-gIRjGK AMLdN"
     data-testid="proposal-card"
     href="/"
   >
     <div
-      class="sc-iqHYmW sc-flMpop fkFZia jtJLDV"
+      class="sc-iqHYmW sc-eWVLlQ fkFZia lgqquU"
       disabled=""
     >
       <div
-        class="sc-iqHYmW sc-eWVLlQ fkFZia fKXacY"
+        class="sc-iqHYmW sc-iGculD fkFZia jyznox"
       >
         <div
-          class="sc-iqHYmW sc-kUbgcP fkFZia bTUfMg"
+          class="sc-iqHYmW sc-dwcupg fkFZia cBzFiK"
         >
           <div
             class="sc-bdfBQB"
@@ -201,7 +201,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
             </span>
           </div>
           <div
-            class="sc-iqHYmW sc-dwcupg fkFZia kWyqIM"
+            class="sc-iqHYmW sc-jtHLbV fkFZia cqqMhg"
           >
             <div
               class="sc-bdfBQB"
@@ -223,13 +223,13 @@ exports[`ProposalCard ProposalCard loading 1`] = `
           </div>
         </div>
         <div
-          class="sc-gsBqHK cUHEhI"
+          class="sc-aKXVD dIlXaA"
         >
           <div
-            class="sc-aKXVD esWbBH"
+            class="sc-kmATbt hEnJCO"
           >
             <div
-              class="sc-iqHYmW sc-cvJIAo fkFZia elhAwV"
+              class="sc-iqHYmW sc-dkmKIT fkFZia dIuAwZ"
             >
               <div
                 class="sc-bdfBQB"
@@ -268,10 +268,10 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </div>
       </div>
       <div
-        class="sc-iqHYmW sc-iGculD fkFZia dwdZKR"
+        class="sc-iqHYmW sc-irlQje fkFZia eUEImI"
       >
         <h2
-          class="sc-kstqJO sc-eWvPqa ezOHft gHjKrC"
+          class="sc-kstqJO sc-kUbgcP ezOHft bdPkMe"
           size="2"
         >
           <strong>
@@ -296,10 +296,10 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </h2>
       </div>
       <div
-        class="sc-iqHYmW sc-irlQje fkFZia jGFgqL"
+        class="sc-iqHYmW sc-eWvPqa fkFZia hJckuy"
       >
         <div
-          class="sc-iqHYmW sc-jtHLbV fkFZia fyOCLY"
+          class="sc-iqHYmW sc-eltbHq fkFZia jxTOfA"
         />
         <div
           class="sc-bdfBQB"

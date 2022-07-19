@@ -4,28 +4,28 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-kIeSZW jXVHIu backdropModal"
+      class="sc-hOqruk jqKJSp backdropModal"
     >
       <div
-        class="sc-bTvSiT SdznJ"
+        class="sc-kIeSZW fdmAWG"
       >
         <div
-          class="sc-hOqruk fMASoj"
+          class="sc-dtwnrN irmMds"
         >
           
            
           <div
-            class="sc-dtwnrN bOjCed"
+            class="sc-dacGJm iZKOaG"
           >
             <h2
-              class="sc-kstqJO sc-jUEmfL gWTdRY rnOac"
+              class="sc-kstqJO sc-jQbJRc gWTdRY knzTlX"
             >
               <div>
                 switchNetwork
               </div>
             </h2>
             <svg
-              class="sc-jQbJRc eldqEA"
+              class="sc-fvhFOF dbHrBB"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -51,31 +51,31 @@ exports[`NetworkModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-fbNZge bQGdmf"
+            class="sc-GTVdH uKnvk"
           >
             <div
-              class="sc-ctaXho gHfmlU"
+              class="sc-dFJtaz cYqhCe"
             >
               <div
-                class="sc-bsipwG hWdyDz"
+                class="sc-gInthZ frcSrV"
               >
                 <div
-                  class="sc-dFJtaz lnjXvD"
+                  class="sc-bsipwG iqQHXQ"
                 >
                   <div
-                    class="sc-gInthZ iSfbIF"
+                    class="sc-euMpEg eYfnGU"
                   >
                     <button
-                      class="sc-bdfBQB sc-jgHCSr cAORUT bZvjtI"
+                      class="sc-bdfBQB sc-gTgzoy cAORUT ctmkZv"
                       data-testid=""
                     >
                       <div
-                        class="sc-gTgzoy bydeuT"
+                        class="sc-laRQdt vJBRp"
                       >
                         Ethereum Mainnet
                       </div>
                       <div
-                        class="sc-laRQdt TJqlg"
+                        class="sc-iNqMzA cGmYLy"
                       >
                         <img
                           alt="Icon"
