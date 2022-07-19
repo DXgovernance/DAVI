@@ -21,6 +21,7 @@ import {
   GripWithMargin,
   SectionBody,
   SectionHeader,
+  Separator,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'Components/ActionsModal';
@@ -141,15 +142,21 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
       {expanded && (
         <>
+          <Separator cardStatus={cardStatus} />
           {cardStatus === CardStatus.simulationFailed && (
-            <DetailWrapper cardStatus={cardStatus}>
-              <SectionHeader>{t('simulations.simulationFailed')}</SectionHeader>
-              <SectionBody>
-                {decodedAction.simulationResult.transaction.error_message}
-              </SectionBody>
-            </DetailWrapper>
+            <>
+              <DetailWrapper>
+                <SectionHeader>
+                  {t('simulations.simulationFailed')}
+                </SectionHeader>
+                <SectionBody>
+                  {decodedAction.simulationResult.transaction.error_message}
+                </SectionBody>
+              </DetailWrapper>
+              <Separator />
+            </>
           )}
-          <DetailWrapper cardStatus={cardStatus}>
+          <DetailWrapper>
             {ActionSummary && (
               <ActionSummaryWrapper>
                 <ActionSummary decodedCall={decodedCall} />

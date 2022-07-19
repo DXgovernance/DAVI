@@ -1,5 +1,4 @@
 import { EditButton, Grip } from '../common';
-import { Button } from 'old-components/Guilds/common/Button';
 import { CardWrapper, Header } from 'old-components/Guilds/common/Card';
 import { Box } from 'Components/Primitives/Layout';
 import styled, { css } from 'styled-components';
@@ -63,8 +62,11 @@ export const ChevronIcon = styled.span<{ active?: boolean }>`
     `}
 `;
 
-export const DetailWrapper = styled(Box)<{ cardStatus?: CardStatus }>`
+export const DetailWrapper = styled(Box)`
   padding: 1.25rem 1.5rem;
+`;
+
+export const Separator = styled(Box)<{ cardStatus?: CardStatus }>`
   border-top: 1px solid;
   border-color: ${({ cardStatus, theme }) =>
     cardStatus === CardStatus.dragging
@@ -74,17 +76,6 @@ export const DetailWrapper = styled(Box)<{ cardStatus?: CardStatus }>`
       : cardStatus === CardStatus.simulationFailed
       ? theme.colors.orange
       : theme.colors.muted};
-`;
-
-export const TabButton = styled(Button)<{ active?: boolean }>`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.text};
-
-  ${({ active }) =>
-    active &&
-    css`
-      border: 2px solid ${({ theme }) => theme.colors.text};
-    `}
 `;
 
 export const GripWithMargin = styled(Grip)`
