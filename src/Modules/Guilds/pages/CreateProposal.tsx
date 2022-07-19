@@ -56,7 +56,7 @@ const StyledButton = styled(IconButton)<{
 }>`
   margin: 0;
   padding: 0.5rem 0.8rem;
-  margin-left: ${props => props.marginLeft}; || 0
+  margin-left: ${props => props.marginLeft || 0};
 `;
 
 const Label = styled.span<{
@@ -232,7 +232,7 @@ const CreateProposalPage: React.FC = () => {
         >
           <StyledButton iconLeft onClick={handleBack}>
             <FiChevronLeft />
-            Change proposal type
+            {t('changeProposalType')}
           </StyledButton>
 
           <StyledButton
@@ -250,7 +250,7 @@ const CreateProposalPage: React.FC = () => {
         <Box margin="0px 0px 24px">
           {editMode ? (
             <>
-              <Label>Title</Label>
+              <Label>{t('title')}</Label>
               <Input
                 data-testid="create-proposal-title"
                 placeholder="Proposal Title"
@@ -265,7 +265,7 @@ const CreateProposalPage: React.FC = () => {
         <Box margin="0px 0px 24px">
           {editMode ? (
             <>
-              <Label>Reference link (optional)</Label>
+              <Label>{`${t('referenceLink')} ${t('optionalField')}`}</Label>
               <InputWrapper>
                 <Input
                   placeholder="https://daotalk.org/..."
@@ -275,14 +275,14 @@ const CreateProposalPage: React.FC = () => {
                   data-testid="create-proposal-link"
                 />
                 <StyledButton variant="secondary" marginLeft={'1rem'}>
-                  Import
+                  {t('import')}
                 </StyledButton>
               </InputWrapper>
             </>
           ) : referenceLink ? (
             <>
               <Label size="16px">{referenceLink}</Label>
-              <StyledButton> Import </StyledButton>
+              <StyledButton> {t('import')} </StyledButton>
             </>
           ) : null}
         </Box>
@@ -307,7 +307,7 @@ const CreateProposalPage: React.FC = () => {
             disabled={!isValid}
             data-testid="create-proposal-action-button"
           >
-            Create Proposal
+            {t('createProposal')}
           </StyledButton>
         </Box>
       </PageContent>

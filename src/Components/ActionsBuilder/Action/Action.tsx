@@ -7,7 +7,7 @@ import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
   CardActions,
@@ -18,6 +18,8 @@ import {
   DetailWrapper,
   EditButtonWithMargin,
   GripWithMargin,
+  SectionBody,
+  SectionHeader,
   TabButton,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
@@ -29,6 +31,13 @@ interface ActionViewProps {
   isEditable?: boolean;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
+}
+
+export enum CardStatus {
+  dragging,
+  normal,
+  simulationFailed,
+  warning,
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
@@ -68,9 +77,21 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     transition,
   };
 
+  const cardStatus: CardStatus = useMemo(() => {
+    if (isEditable && isDragging) return CardStatus.dragging;
+
+    if (!decodedAction?.simulationResult) return CardStatus.normal;
+
+    if (decodedAction?.simulationResult.simulation.status === false) {
+      return CardStatus.simulationFailed;
+    }
+
+    return CardStatus.normal; // default return so ESLint doesn't complain
+  }, [decodedAction?.simulationResult, isEditable, isDragging]);
+
   return (
     <CardWrapperWithMargin
-      dragging={isEditable && isDragging}
+      cardStatus={cardStatus}
       ref={setNodeRef}
       style={dndStyles}
       {...attributes}
@@ -130,9 +151,21 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           )}
 
           {ActionSummary && activeTab === 0 && (
-            <DetailWrapper>
-              <ActionSummary decodedCall={decodedCall} />
-            </DetailWrapper>
+            <div>
+              {cardStatus === CardStatus.simulationFailed && (
+                <DetailWrapper>
+                  <SectionHeader>
+                    {t('simulations.simulationFailed')}
+                  </SectionHeader>
+                  <SectionBody>
+                    {decodedAction.simulationResult.transaction.error_message}
+                  </SectionBody>
+                </DetailWrapper>
+              )}
+              <DetailWrapper>
+                <ActionSummary decodedCall={decodedCall} />
+              </DetailWrapper>
+            </div>
           )}
 
           {(!ActionSummary || activeTab === 1) && (

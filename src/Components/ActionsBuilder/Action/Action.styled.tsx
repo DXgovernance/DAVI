@@ -3,19 +3,29 @@ import { Button } from 'old-components/Guilds/common/Button';
 import { CardWrapper, Header } from 'old-components/Guilds/common/Card';
 import { Box } from 'Components/Primitives/Layout';
 import styled, { css } from 'styled-components';
+import { CardStatus } from './Action';
 
 export const CardWrapperWithMargin = styled(CardWrapper)<{
-  dragging?: boolean;
+  cardStatus?: CardStatus;
 }>`
   position: relative;
   background-color: ${({ theme }) => theme.colors.background};
   margin-top: 0.8rem;
   border: 1px solid;
-  border-color: ${({ dragging, theme }) =>
-    dragging ? theme.colors.text : theme.colors.muted};
-  z-index: ${({ dragging }) => (dragging ? 999 : 'initial')};
-  box-shadow: ${({ dragging }) =>
-    dragging ? '0px 4px 8px 0px rgba(0, 0, 0, 0.2)' : 'none'};
+  border-color: ${({ cardStatus, theme }) =>
+    cardStatus === CardStatus.dragging
+      ? theme.colors.text
+      : cardStatus === CardStatus.warning
+      ? theme.colors.red
+      : cardStatus === CardStatus.simulationFailed
+      ? theme.colors.orange
+      : theme.colors.muted};
+  z-index: ${({ cardStatus }) =>
+    cardStatus === CardStatus.dragging ? 999 : 'initial'};
+  box-shadow: ${({ cardStatus }) =>
+    cardStatus === CardStatus.dragging
+      ? '0px 4px 8px 0px rgba(0, 0, 0, 0.2)'
+      : 'none'};
 `;
 
 export const CardHeader = styled(Header)`
@@ -81,4 +91,12 @@ export const CardActions = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const SectionHeader = styled(Box)`
+  margin-bottom: 0.5rem;
+`;
+
+export const SectionBody = styled(Box)`
+  color: ${({ theme }) => theme.colors.proposalText.grey};
 `;
