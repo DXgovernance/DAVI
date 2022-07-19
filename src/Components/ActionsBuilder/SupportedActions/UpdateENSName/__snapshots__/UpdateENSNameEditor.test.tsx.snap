@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateENSNameEditor Should match snapshot 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+  >
+    <div
+      class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+    >
+      ENS Name
+      <div
+        class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+      >
+        <svg>
+          info.svg
+        </svg>
+      </div>
+      <div
+        class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+      >
+        tip
+      </div>
+    </div>
+    <div
+      class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+    >
+      <div
+        class="sc-kEjbQP cxqUdi"
+      >
+        <div
+          class="sc-iqHYmW jULlzM"
+        />
+        <input
+          class="sc-jrAFXE ernRCg"
+          value=""
+        />
+        <div
+          class="sc-iqHYmW jWCbMP"
+        />
+      </div>
+      <p>
+        .eth
+      </p>
+    </div>
+  </div>
+  <div
+    class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+  >
+    <div
+      class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+    >
+      <div
+        class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+      >
+        CID/IPFS Hash
+        <div
+          class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+        >
+          <svg>
+            info.svg
+          </svg>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+        >
+          tips
+        </div>
+      </div>
+      <div
+        class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+      >
+        <div
+          class="sc-kEjbQP cxqUdi"
+        >
+          <div
+            class="sc-iqHYmW jULlzM"
+          />
+          <input
+            class="sc-jrAFXE ernRCg"
+            value=""
+          />
+          <div
+            class="sc-iqHYmW jWCbMP"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
