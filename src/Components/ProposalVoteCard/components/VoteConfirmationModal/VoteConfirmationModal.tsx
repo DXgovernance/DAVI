@@ -39,7 +39,7 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
 
         <Widget>
           <InfoRow>
-            <InfoLabel>{t('option')}</InfoLabel>
+            <InfoLabel>{t('option', { optionKey: '' })}</InfoLabel>
             <InfoValue>{selectedAction}</InfoValue>
           </InfoRow>
           <InfoRow>

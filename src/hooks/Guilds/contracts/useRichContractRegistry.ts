@@ -48,6 +48,51 @@ export const useRichContractRegistry = (chainId?: number) => {
 
   const registryContracts: RichContractData[] = useMemo(() => {
     if (error || !data) return null;
+    if (activeChain?.id === 1337) {
+      // Add runtime determined localhost addresses
+      const localhost = require('../../../configs/localhost/config.json');
+      // Update vesting factory address
+      data.find(
+        contract => contract.title === 'Vesting contract for DXD token'
+      ).networks[1337] = localhost.contracts.utils.dxdVestingFactory;
+      // Add NFT factory
+      data[data.length - 1] = {
+        title: 'NFT Factory',
+        tags: ['NFT', 'DXdao', 'factory'],
+        networks: {
+          '1337': localhost.contracts.utils.dxDaoNFT,
+        },
+        functions: [
+          {
+            title: 'Mint NFT',
+            functionName: 'mint',
+            params: [
+              {
+                type: 'address',
+                component: 'address',
+                name: 'recipient',
+                defaultValue: '',
+                description: 'Address of the recipient',
+              },
+              {
+                type: 'string',
+                component: 'string',
+                name: 'tokenURI',
+                defaultValue: '',
+                description: 'IPFS hash of metadata',
+              },
+            ],
+            templateLiteral:
+              // eslint-disable-next-line no-template-curly-in-string
+              'Mint NFT to ${recipient} with tokenURI ${tokenURI}',
+            shortDescription: 'Creates NFTs minted by DXdao',
+            longDescription:
+              'Creates NFTs minted by DXdao and transfers them to the recipient',
+            spendsTokens: false,
+          },
+        ],
+      };
+    }
 
     return data
       .filter(contract => !!contract.networks[chainId || activeChain?.id])

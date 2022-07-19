@@ -1,5 +1,5 @@
 import { useHistory, useLocation } from 'react-router-dom';
-import { MAX_UINT } from 'utils';
+import { MAX_UINT, navigateUrl } from 'utils';
 import { formatUnits } from 'ethers/lib/utils';
 import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
 import { Loading } from 'Components/Primitives/Loading';
@@ -65,7 +65,7 @@ const StakeTokensButton = ({
         )
       ) : (
         <ActionButton
-          onClick={() => history.push(location.pathname + '/proposalType')}
+          onClick={() => history.push(navigateUrl(location, 'proposalType'))}
         >
           {t('mintRep')}
         </ActionButton>

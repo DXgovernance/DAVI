@@ -158,10 +158,26 @@
   "copiedAddress": "Copied Address",
   "copyAddress": "Copy Address",
   "changeConnection": "Change Connection",
+  "changeProposalType": "Change proposalType",
   "pickSwaprPair": "Pick Swapr pair",
   "confirmRemoval": "Confirm Removal",
   "areYuoSureYouWantToRemoveAction": "Are you sure you want to remove this action?",
   "theRemovalCannotBeReverted": "The removal cannot be reverted",
   "removeAction": "Remove Action",
-  "remove": "Remove"
+  "remove": "Remove",
+  "import": "Import",
+  "title": "Title",
+  "referenceLink": "Reference link",
+  "optionalField": "(optional)",
+  "simulations": {
+    "simulateTransactions": "Simulate transactions",
+    "simulationFailed": "Simulation failed",
+    "actionsVerified": "Actions verified",
+    "actionsFailed": "Action verifications failed",
+    "verifyingActions": "Verifying actions",
+    "error": "Error while simulating transactions"
+  },
+  "poweredBy": "powered by",
+  "against": "Against",
+  "for": "For"
 }
