@@ -13,6 +13,7 @@ export interface GuildsTheme extends ThemeBase {
     primary: string;
     secondary: string;
     red: string;
+    orange: string;
     proposalText: {
       grey: string;
       lightGrey: string;

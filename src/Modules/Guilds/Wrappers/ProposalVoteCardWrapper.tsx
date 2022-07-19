@@ -15,7 +15,6 @@ const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: proposalMetadata } = useProposalMetadata(guildId, proposalId);
-
   const voteData = useVotingResults();
 
   const timestamp = useTimedRerender(10000);

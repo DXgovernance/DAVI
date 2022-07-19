@@ -44,7 +44,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
                   size="8"
                 />
               </span>
-              Yes
+              No
             </div>
             <span>
               0.0001 DXD
@@ -65,7 +65,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
                   size="8"
                 />
               </span>
-              No
+              Yes
             </div>
             <span>
               0.0001 DXD
@@ -78,12 +78,12 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
               class="sc-dQoVA haSSSn"
             >
               <div
-                class="sc-bqyKOL saMbf"
-                color="#295FF4"
-              />
-              <div
                 class="sc-bqyKOL gTKchv"
                 color="#E75C5C"
+              />
+              <div
+                class="sc-bqyKOL saMbf"
+                color="#295FF4"
               />
             </div>
             <div
@@ -130,12 +130,12 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
           <button
             class="sc-bkzYnD sc-flMpop sc-eWVLlQ hkwzGu fRhKxu dCmehy"
           >
-            Yes
+            No
           </button>
           <button
             class="sc-bkzYnD sc-flMpop sc-eWVLlQ hkwzGu fRhKxu dCmehy"
           >
-            No
+            Yes
           </button>
           <button
             class="sc-bkzYnD sc-flMpop gLdLhY fRhKxu"
