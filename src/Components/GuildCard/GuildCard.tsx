@@ -5,6 +5,7 @@ import GuildCardContent from './GuildCardContent';
 import { cardWrapperStyles } from './styles';
 import { GuildCardProps } from './types';
 import { Flex } from 'Components/Primitives/Layout';
+import { navigateUrl } from 'utils';
 
 const GuildCard: React.FC<GuildCardProps> = ({
   isLoading,
@@ -18,7 +19,7 @@ const GuildCard: React.FC<GuildCardProps> = ({
   return (
     <UnstyledLink
       data-testid="guildCard"
-      to={location => `${location.pathname}/${guildAddress}`}
+      to={location => navigateUrl(location, guildAddress)}
     >
       <Flex>
         <Card customStyles={cardWrapperStyles}>
