@@ -46,6 +46,10 @@
     "repAmount": "Reputation Amount",
     "repAmountTooltip": "The amount of REP that will be minted."
   },
+  "ensName": {
+    "nameTooltip": "The name of the ENS name that will be registered.",
+    "ipfsHash": "IPFS Hash"
+  },
   "mint": "Mint",
   "toAddress": "To Address",
   "anyAddress": "Any Address",

@@ -25,7 +25,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
   updateCall,
 }) => {
   const { t } = useTranslation();
-
   // parse transfer state from calls
   const [repPercent, setRepPercent] = useState<string>('0');
   const [repAmount, setRepAmount] = useState<string>('0');

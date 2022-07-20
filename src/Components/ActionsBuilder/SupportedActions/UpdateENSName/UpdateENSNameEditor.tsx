@@ -1,23 +1,49 @@
 import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
-import React, { useState } from 'react';
+import React from 'react';
 import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
+import { useSetContentHash } from 'hooks/Guilds/guild/useSetContentHash';
+import { convertToContentHash, convertToNameHash } from './utils';
+// import { convertToContentHash, convertToNameHash } from './utils';
 
-const UpdateENSNameEditor = ({ decodedCall }) => {
-  const [ensName, setENSName] = useState<string>('');
-  const [IPFSHash, setIPFSHash] = useState<string>('');
+const UpdateENSNameEditor = ({ decodedCall, updateCall }) => {
   console.log({ decodedCall });
-  const handleENSNameChange = (e: string) => {
-    if (e) {
-      setENSName(e);
-    }
+  console.log({ updateCall });
+
+  const { parsedData } = useSetContentHash({ decodedCall });
+  console.log(parsedData);
+
+  // Ensname --> nameHash
+  // Get the resolver
+  // Set the resolver to "to" in the decoded call
+  // Make sure the resolver is set to the correct address
+
+  // useDebounce will make sure we're not spamming the resolver
+
+  const setCallDataNameHash = (name: string) => {
+    const nameHash = convertToNameHash(name);
+    // findResolver(nameHash)
+    updateCall({
+      ...decodedCall,
+      args: {
+        ...decodedCall.args,
+        nameHash,
+      },
+    });
   };
-  const handleIPFSHashChange = (e: string) => {
-    if (e) {
-      setIPFSHash(e);
-    }
+
+  const setCallDataContentHash = (ipfsHash: string) => {
+    const contentHash = convertToContentHash(ipfsHash);
+    updateCall({
+      ...decodedCall,
+      args: {
+        ...decodedCall.args,
+        contentHash,
+      },
+    });
   };
+
   return (
     <React.Fragment>
       <Control>
@@ -28,8 +54,8 @@ const UpdateENSNameEditor = ({ decodedCall }) => {
         </ControlLabel>
         <ControlRow>
           <Input
-            value={ensName}
-            onChange={e => handleENSNameChange(e.target.value)}
+            value={''}
+            onChange={e => setCallDataNameHash(e.target.value)}
           />
           <p>.eth</p>
         </ControlRow>
@@ -43,8 +69,8 @@ const UpdateENSNameEditor = ({ decodedCall }) => {
           </ControlLabel>
           <ControlRow>
             <Input
-              value={IPFSHash}
-              onChange={e => handleIPFSHashChange(e.target.value)}
+              value={''}
+              onChange={e => setCallDataContentHash(e.target.value)}
             />
           </ControlRow>
         </Control>

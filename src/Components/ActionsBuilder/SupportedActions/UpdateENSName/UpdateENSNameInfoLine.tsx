@@ -4,11 +4,14 @@ import { FiArrowRight, FiNavigation } from 'react-icons/fi';
 import Avatar from 'old-components/Guilds/Avatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 
-const UpdateENSNameInfoLine = () => {
+const UpdateENSNameInfoLine = ({ decodedCall }) => {
   const parsedData = {
     to: ['0x0000000000000000000000000000000000000000'],
   };
   const { ensName, imageUrl } = useENSAvatar(parsedData?.to[0], MAINNET_ID);
+
+  // Get nameHash from decodedCall
+  // Use hook to call Public Resolver method to get canonical name
 
   return (
     <>

@@ -7,6 +7,7 @@ import {
   SupportedAction,
   ApproveSendTokens,
 } from '../types';
+import ENSPublicResolver from 'abis/ENSPublicResolver.json';
 import ERC20ABI from 'abis/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
@@ -82,6 +83,8 @@ export const supportedActions: Record<
 const ERC20Contract = new utils.Interface(ERC20ABI);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
+const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
+
 export const defaultValues: Record<
   SupportedAction,
   DeepPartial<DecodedAction>
@@ -128,8 +131,16 @@ export const defaultValues: Record<
     },
   },
   [SupportedAction.UPDATE_ENS_NAME]: {
-    contract: ERC20Contract,
-    decodedCall: {},
+    contract: ENSPublicResolverContract,
+    decodedCall: {
+      function: ENSPublicResolverContract.getFunction('setContenthash'),
+      to: '',
+      value: BigNumber.from(0),
+      args: {
+        node: '',
+        hash: '',
+      },
+    },
   },
 };
 

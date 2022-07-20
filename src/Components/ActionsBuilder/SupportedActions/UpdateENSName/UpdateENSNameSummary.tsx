@@ -4,10 +4,14 @@ import Avatar from 'old-components/Guilds/Avatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 
-const UpdateENSNameSummary = () => {
+const UpdateENSNameSummary = ({ decodedCall }) => {
   const parsedData = {
     to: ['0x0000000000000000000000000000000000000000'],
   };
+
+  // Get nameHash from decodedCall
+  // Use hook to call Public Resolver method to get canonical name
+
   const { ensName, imageUrl } = useENSAvatar(parsedData?.to[0], MAINNET_ID);
 
   return (
