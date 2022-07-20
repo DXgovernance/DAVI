@@ -19,6 +19,14 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
 
   const [isInitialLoadDone, setIsInitialLoadDone] = useState(false);
 
+  const defaultChain = useMemo(() => {
+    if (chains?.length === 0) return null;
+
+    // Localhost is only available on development environments.
+    const localhost = chains.find(chain => chain.id === 1337);
+    return localhost || chains[0];
+  }, [chains]);
+
   const urlChain = useMemo(() => {
     const urlChain = chains.find(chain => hash.includes(chain.network));
     return urlChain;
@@ -30,7 +38,14 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
 
     if (connector) {
       // Connector initialized.
-      if (!urlChain || urlChain?.id === chain?.id) {
+      if (!urlChain) {
+        // No chain name in the URL. Switch to default chain.
+        if (defaultChain) {
+          switchNetwork(defaultChain?.id);
+          setIsInitialLoadDone(true);
+          return;
+        }
+      } else if (urlChain?.id === chain?.id) {
         // No chain name in the URL. Nothing to do here.
         setIsInitialLoadDone(true);
         return;
@@ -57,6 +72,7 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
     chains,
     chain,
     connectors,
+    defaultChain,
   ]);
 
   // Keep the URL in sync with the connected chain after initial load

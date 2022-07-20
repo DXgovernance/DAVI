@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { createClient, configureChains, WagmiConfig } from 'wagmi';
 import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
-// import MultichainProvider from 'contexts/MultichainProvider';
 import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
 import SyncRouterWithWagmi from 'Components/Web3Modals/SyncRouterWithWagmi';
 

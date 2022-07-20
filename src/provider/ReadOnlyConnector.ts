@@ -95,7 +95,6 @@ export class ReadOnlyConnector extends Connector<
   }
 
   async switchChain(chainId: number) {
-    console.log('switchChain', chainId);
     await this.getProvider({ chainId, create: true });
     this.onChainChanged(chainId);
     return this.chains.find(x => x.id === chainId);

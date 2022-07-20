@@ -11,19 +11,11 @@ import { ProposalTypes } from 'Components/ProposalTypes';
 import CreateProposalPage from 'Modules/Guilds/pages/CreateProposal';
 import LandingPage from 'Modules/Guilds/pages/LandingPage';
 import NotFound from 'Modules/Guilds/pages/NotFound';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'Components/theme';
-import { useMemo } from 'react';
-import { useNetwork } from 'wagmi';
 
 const App = () => {
-  const { chains } = useNetwork();
-  const defaultChain = useMemo(() => {
-    const first = chains[0].network;
-    return first;
-  }, [chains]);
-
   return (
     <ThemeProvider theme={GuildsDarkTheme}>
       <GlobalErrorBoundary>
@@ -33,9 +25,6 @@ const App = () => {
             <Header />
             <Container>
               <Switch>
-                <Route exact path="/">
-                  <Redirect to={`/${defaultChain}`} />
-                </Route>
                 <Route exact path="/:chainName">
                   <LandingPage />
                 </Route>
