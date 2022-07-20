@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button, IconButton } from 'old-components/Guilds/common/Button';
+import { Button } from 'old-components/Guilds/common/Button';
 
 export const Wrapper = styled.div`
   padding: 1rem;
@@ -15,10 +15,12 @@ export const Row = styled.div`
 
 export const ConnectionStatusText = styled(Row)`
   font-size: 0.9rem;
+  color: ${({ theme }) => theme.colors.proposalText.grey};
 `;
 
 export const ConnectionStatusRow = styled(Row)`
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const WalletAddressRow = styled(Row)`
@@ -31,13 +33,19 @@ export const ExternalLink = styled.a`
   text-decoration: none;
 `;
 
-export const ConnectionActionButton = styled(IconButton)`
-  color: ${({ theme }) => theme.colors.text};
+export const ConnectionActionButton = styled.a`
+  color: ${({ theme }) => theme.colors.proposalText.grey};
   background-color: ${({ theme }) => theme.colors.modalBackground};
   display: flex;
-  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   padding: 0;
   padding-right: 1rem;
+  gap: 0.25rem;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.text};
+  }
 `;
 
 export const AddressText = styled.span`

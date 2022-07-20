@@ -4,19 +4,34 @@ exports[`Header Should match snapshot 1`] = `
 <div>
    
   <header
-    class="sc-ctaXho egtxxt"
+    class="sc-iNqMzA flApLs"
   >
     <div
-      class="sc-hHfuMS sc-fKFxtB sc-dFJtaz ciJKZs gTePnO gSPzVo"
+      class="sc-eCstlR sc-iBPTik sc-jeGTLq hzVZsK fcperG bGfQfO"
     >
       <h2
-        class="sc-dwfUuu sc-gInthZ lkogRd eiqHSj"
+        class="sc-hKgJUU sc-nFqVA edWXhv xtCBL"
         size="2"
       >
         <strong>
           guilds.guilds
         </strong>
       </h2>
+      <div
+        class="sc-eCstlR sc-eJMPIT hzVZsK kymUFi"
+      >
+        <button
+          class="sc-bdfBQB cnzpap"
+        >
+          notConnected
+        </button>
+        <button
+          class="sc-bdfBQB cnzpap"
+          data-testid="connectWalletBtn"
+        >
+          connectWallet
+        </button>
+      </div>
     </div>
   </header>
    

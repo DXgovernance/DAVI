@@ -5,7 +5,6 @@ import { BigNumber } from 'ethers';
 jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
   useGuildConfig: () => jest.fn(),
 }));
-jest.mock('contexts/index', () => jest.fn());
 
 describe('SidebarInfoCard', () => {
   const mockProposalTime = BigNumber.from(2);

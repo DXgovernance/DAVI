@@ -2,7 +2,6 @@ import React from 'react';
 import ActionsModal from './ActionsModal';
 import { render } from 'utils/tests';
 
-jest.mock('contexts/index', () => jest.fn());
 jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
   __esModule: true,
   default: () => ({
@@ -14,6 +13,10 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     isSnapshotGuild: false,
     isSnapshotRepGuild: false,
   }),
+}));
+
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ isConnected: true }),
 }));
 
 describe('ActionsModal', () => {

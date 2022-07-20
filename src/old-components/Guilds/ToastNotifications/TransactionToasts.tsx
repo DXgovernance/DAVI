@@ -1,6 +1,6 @@
+import { chains } from 'provider';
 import React from 'react';
 import { NotificationDetail, NotificationHeading } from '.';
-import { getChains } from '../../../provider/connectors';
 import { getBlockchainLink } from '../../../utils';
 
 export const TransactionPending: React.FC<{ summary: string }> = ({
@@ -14,7 +14,7 @@ export const TransactionOutcome: React.FC<{
   transactionHash: string;
   chainId: number;
 }> = ({ summary, chainId, transactionHash }) => {
-  const networkName = getChains().find(chain => chain.id === chainId).name;
+  const networkName = chains.find(chain => chain.id === chainId).name;
   return (
     <div>
       <NotificationHeading>{summary}</NotificationHeading>

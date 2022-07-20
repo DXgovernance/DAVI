@@ -2,15 +2,15 @@ import useEtherSWR from '../useEtherSWR';
 import ERC20ABI from '../../../../abis/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
-import { useWeb3React } from '@web3-react/core';
 import { TokenInfo } from '@uniswap/token-lists';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
+import { useNetwork } from 'wagmi';
 
 export type TokenWithBalance = TokenInfo & { balance?: BigNumber };
 
 export const useAllERC20Balances = (walletAddress: string) => {
-  const { chainId } = useWeb3React();
-  const { tokens } = useTokenList(chainId);
+  const { chain } = useNetwork();
+  const { tokens } = useTokenList(chain?.id);
   const { data, ...rest } = useEtherSWR(
     tokens && tokens?.length > 0 && walletAddress
       ? tokens.map(token => [token.address, 'balanceOf', walletAddress])

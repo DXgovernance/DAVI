@@ -1,9 +1,6 @@
-import { getChains } from 'provider/connectors';
-import { getBlockchainLink } from 'utils';
 import { Circle, Flex } from 'Components/Primitives/Layout';
 import { ContainerText } from 'Components/Primitives/Layout/Text';
 import { Modal } from 'Components';
-import { useWeb3React } from '@web3-react/core';
 import PendingCircle from 'old-components/Guilds/common/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
@@ -12,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 
 import { TransactionModalView, TransactionModalProps } from './types';
 import { Container, Header } from './TransactionModal.styled';
+import { getBlockExplorerUrl } from 'provider';
+import { useNetwork } from 'wagmi';
 
 const TransactionModal: React.FC<TransactionModalProps> = ({
   message,
@@ -20,7 +19,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
   onCancel,
 }) => {
   const { t } = useTranslation();
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
   const modalView = useMemo<TransactionModalView>(() => {
     if (txCancelled) {
       return TransactionModalView.Reject;
@@ -64,9 +63,6 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           </Header>
         );
 
-        const networkName = getChains().find(
-          chain => chain.id === chainId
-        )?.name;
         children = (
           <Flex>
             <ContainerText variant="bold">
@@ -77,7 +73,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
                 as="a"
                 variant="regular"
                 color="grey"
-                href={getBlockchainLink(transactionHash, networkName)}
+                href={getBlockExplorerUrl(chain, transactionHash, 'tx')}
                 target="_blank"
               >
                 {t('viewOnBlockExplorer')}
@@ -107,7 +103,7 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
     }
 
     return [header, children, footerText];
-  }, [modalView, chainId, message, transactionHash, t]);
+  }, [modalView, chain, message, transactionHash, t]);
 
   return (
     <Modal

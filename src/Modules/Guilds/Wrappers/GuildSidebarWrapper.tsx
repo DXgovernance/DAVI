@@ -1,13 +1,10 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useWeb3React } from '@web3-react/core';
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { GuildSidebar } from 'Components/GuildSidebar';
 import { MemberActions } from 'Components/GuildSidebar/MemberActions';
 import { GuestActions } from 'Components/GuildSidebar/GuestActions';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { MAINNET_ID } from 'utils';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useVoterLockTimestamp } from 'hooks/Guilds/ether-swr/guild/useVoterLockTimestamp';
 import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
@@ -19,6 +16,8 @@ import { useState } from 'react';
 import { WalletModal } from 'Components/Web3Modals';
 import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import StakeTokensModalWrapper from './StakeTokensModalWrapper';
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
+import { isReadOnly } from 'provider/wallets';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -30,8 +29,9 @@ const GuildSidebarWrapper = () => {
   const { data: guildToken } = useERC20Info(guildConfig?.token);
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
 
-  const { account: userAddress } = useWeb3React();
-  const userEnsAvatar = useENSAvatar(userAddress, MAINNET_ID);
+  const { address: userAddress, connector } = useAccount();
+  const { data: ensName } = useEnsName({ address: userAddress });
+  const { data: ensAvatar } = useEnsAvatar({ addressOrName: userAddress });
   const { data: unlockedAt } = useVoterLockTimestamp(guildAddress, userAddress);
   const { data: userVotingPower } = useVotingPowerOf({
     contractAddress: guildAddress,
@@ -66,7 +66,7 @@ const GuildSidebarWrapper = () => {
               guildToken={guildToken}
               isRepGuild={isRepGuild}
               userWalletAddress={userAddress}
-              userEnsAvatar={userEnsAvatar}
+              userEnsAvatar={{ ensName, imageUrl: ensAvatar }}
               userVotingPower={userVotingPower}
               userVotingPowerPercent={votingPowerPercent}
               unlockedAt={unlockedAt}
@@ -75,7 +75,7 @@ const GuildSidebarWrapper = () => {
             />
           ) : (
             <GuestActions
-              userWalletAddress={userAddress}
+              userWalletAddress={isReadOnly(connector) ? null : userAddress}
               onShowStakeModal={() => setIsStakeModalOpen(true)}
               onShowWalletModal={() => setIsWalletModalOpen(true)}
             />

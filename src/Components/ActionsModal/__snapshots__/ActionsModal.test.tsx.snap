@@ -11,24 +11,24 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 <body>
   <div>
     <div
-      class="sc-jUEmfL dqHmtS backdropModal"
+      class="sc-bqyKOL cnIYwF backdropModal"
     >
       <div
-        class="sc-dacGJm cfBEgF"
+        class="sc-dQoVA bkdpim"
       >
         <div
-          class="sc-jQbJRc joteHf"
+          class="sc-kstqJO jOjezp"
         >
           
            
           <div
-            class="sc-fvhFOF cENDtL"
+            class="sc-hBEYId dkzBtr"
           >
             <div
-              class="sc-dQoVA sc-bsipwG fyXNmk jcnqAR"
+              class="sc-iqHYmW sc-kfzBvY diLVBO jNfFWb"
             >
               <svg
-                class="sc-gInthZ eiqHSj"
+                class="sc-fKFxtB fJBpCk"
                 fill="currentColor"
                 height="1em"
                 stroke="currentColor"
@@ -42,13 +42,13 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
                 />
               </svg>
               <h2
-                class="sc-kstqJO sc-GTVdH gWTdRY hEIpzs"
+                class="sc-pGacB sc-fFucqa bAEHKr cnmiDv"
               >
                 Generic Call
               </h2>
             </div>
             <svg
-              class="sc-gsxoIA crhTvN"
+              class="sc-bkzYnD bgAaOW"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -74,17 +74,17 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
             </svg>
           </div>
           <div
-            class="sc-eGCaLh fVNRqd"
+            class="sc-dIUeWJ kenTrt"
           >
             <div
-              class="sc-flMpop eMAFtE"
+              class="sc-fbkiRW kIfYRL"
               data-testid="actions-modal-editor"
             >
               <div>
                 Generic Call Editor
               </div>
               <button
-                class="sc-dlfnuX sc-eWVLlQ dEJhZx fqQIkz"
+                class="sc-dlfnuX sc-GqePz dEJhZx hDLofP"
               >
                 saveAction
               </button>

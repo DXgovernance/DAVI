@@ -1,12 +1,7 @@
-import { useWeb3React } from '@web3-react/core';
 import { useTranslation } from 'react-i18next';
-
-import { useRpcUrls } from 'provider/providerHooks';
-import { getChains } from 'provider/connectors';
-import { Modal } from 'Components';
-import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
+import { Modal } from 'Components/Primitives/Modal';
 import { getChainIcon } from 'utils';
-import { Option } from '../components';
+import { Option } from 'Components/Web3Modals/components/Option';
 import {
   Wrapper,
   ContentWrapper,
@@ -14,12 +9,21 @@ import {
   OptionGrid,
 } from './NetworkModal.styled';
 import { NetworkModalProps } from './types';
+import { useAccount, useNetwork } from 'wagmi';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
-  const { chainId } = useWeb3React();
-  const rpcUrls = useRpcUrls();
-  const { trySwitching } = useNetworkSwitching();
+  const { isConnected } = useAccount();
+  const { chains, chain: activeChain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
   const { t } = useTranslation();
+
+  function handleNetworkSwitch(chainId: number) {
+    if (!switchNetwork) return;
+
+    switchNetwork(chainId);
+    onClose();
+  }
 
   return (
     <Modal
@@ -31,19 +35,17 @@ const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
       <Wrapper>
         <UpperSection>
           <ContentWrapper>
-            {rpcUrls && (
-              <OptionGrid>
-                {getChains(rpcUrls).map(chain => (
-                  <Option
-                    onClick={() => trySwitching(chain).then(onClose)}
-                    key={chain.name}
-                    icon={getChainIcon(chain.id)}
-                    active={chain.id === chainId}
-                    header={chain.displayName}
-                  />
-                ))}
-              </OptionGrid>
-            )}
+            <OptionGrid>
+              {chains.map(chain => (
+                <Option
+                  onClick={() => handleNetworkSwitch(chain.id)}
+                  key={chain.name}
+                  icon={getChainIcon(chain.id)}
+                  active={isConnected && chain.id === activeChain.id}
+                  header={chain.name}
+                />
+              ))}
+            </OptionGrid>
           </ContentWrapper>
         </UpperSection>
       </Wrapper>

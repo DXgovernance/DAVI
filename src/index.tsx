@@ -1,20 +1,26 @@
 import App from './App';
-import { useContext } from './contexts';
-import MultichainProvider from './contexts/MultichainProvider';
-import useJsonRpcProvider from './hooks/Guilds/web3/useJsonRpcProvider';
 import initializeI18Next from './i18n';
 import GlobalErrorBoundary from './old-components/ErrorBoundary/GlobalErrorBoundary';
 import * as serviceWorker from './serviceWorker';
-import ThemeProvider from './theme';
-import { MAINNET_ID } from './utils';
-import { Web3ReactProvider } from '@web3-react/core';
 import moment from 'moment';
 import EtherSWRManager from 'old-components/Guilds/EtherSWRManager';
-import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import Web3 from 'web3';
+import { createClient, configureChains, WagmiConfig } from 'wagmi';
+import { chains, providers } from 'provider';
+import { getConnectors } from 'provider/wallets';
+import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
+import SyncRouterWithWagmi from 'Components/Web3Modals/SyncRouterWithWagmi';
+
+const { provider, webSocketProvider } = configureChains(chains, providers);
+
+const client = createClient({
+  autoConnect: true,
+  connectors: getConnectors(chains),
+  provider,
+  webSocketProvider,
+});
 
 initializeI18Next();
 
@@ -27,39 +33,19 @@ moment.updateLocale('en', {
   },
 });
 
-function getLibrary(provider) {
-  return new Web3(provider);
-}
-
-const Application = () => {
-  const {
-    context: { ensService },
-  } = useContext();
-  const mainnetProvider = useJsonRpcProvider(MAINNET_ID);
-
-  useEffect(() => {
-    ensService.setWeb3Provider(mainnetProvider);
-  }, [mainnetProvider, ensService]);
-
-  return (
-    <EtherSWRManager>
-      <App />
-    </EtherSWRManager>
-  );
-};
-
 const Root = () => {
   return (
     <GlobalErrorBoundary>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        <MultichainProvider>
-          <ThemeProvider>
-            <HashRouter>
-              <Application />
-            </HashRouter>
-          </ThemeProvider>
-        </MultichainProvider>
-      </Web3ReactProvider>
+      <WagmiConfig client={client}>
+        <HashRouter>
+          <SyncRouterWithWagmi>
+            <EtherSWRManager>
+              <App />
+              <EnsureReadOnlyConnection />
+            </EtherSWRManager>
+          </SyncRouterWithWagmi>
+        </HashRouter>
+      </WagmiConfig>
     </GlobalErrorBoundary>
   );
 };

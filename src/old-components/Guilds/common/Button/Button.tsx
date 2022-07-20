@@ -42,7 +42,7 @@ const variantStyles = (variant = 'primary') =>
       selected?: boolean;
     }>`
       border: 1px solid ${({ theme }) => theme.colors.border.initial};
-      background-color: ${({ theme }) => theme.colors.background};
+      background-color: transparent;
       color: ${({ theme }) => theme.colors.text};
       border-radius: ${({ theme }) => theme.radii.pill};
       padding: ${({ padding }) => (padding ? padding : ' 0.5rem 0.8rem')};

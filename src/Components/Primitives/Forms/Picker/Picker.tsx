@@ -1,4 +1,4 @@
-import { Modal } from 'Components';
+import { Modal } from 'Components/Primitives/Modal';
 import { OptionWithId, PickerProps } from './types';
 import { MainWrapper, OptionList, SearchWrapper } from './Picker.styled';
 import { OptionListItem } from './OptionListItem';
