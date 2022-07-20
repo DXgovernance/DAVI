@@ -6,7 +6,7 @@ exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1
   <a
     class="sc-bdfBQB hcWJCy"
     data-testid="guildCard"
-    href="//0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
+    href="/0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
   >
     <div
       class="sc-hKgJUU dUEGLL"
@@ -80,7 +80,7 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
   <a
     class="sc-bdfBQB hcWJCy"
     data-testid="guildCard"
-    href="//null"
+    href="/null"
   >
     <div
       class="sc-hKgJUU dUEGLL"
@@ -188,7 +188,7 @@ exports[`GuildCard Should render with full parameters 1`] = `
   <a
     class="sc-bdfBQB hcWJCy"
     data-testid="guildCard"
-    href="//0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
+    href="/0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
   >
     <div
       class="sc-hKgJUU dUEGLL"

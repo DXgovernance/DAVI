@@ -1,6 +1,4 @@
-import { useWeb3React } from '@web3-react/core';
 import { useTranslation } from 'react-i18next';
-
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
@@ -20,6 +18,7 @@ import {
   RichContractData,
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
+import { useNetwork } from 'wagmi';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;
@@ -31,8 +30,8 @@ const ContractsList: React.FC<ContractsListProps> = ({
   onSupportedActionSelect,
 }) => {
   const { t } = useTranslation();
-  const { chainId } = useWeb3React();
-  const { contracts } = useRichContractRegistry(chainId);
+  const { chain } = useNetwork();
+  const { contracts } = useRichContractRegistry(chain?.id);
   const { guildId: guildAddress } = useTypedParams();
   const { isRepGuild } = useGuildImplementationTypeConfig(guildAddress);
   return (

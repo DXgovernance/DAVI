@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useTheme } from 'styled-components';
-import { useWeb3React } from '@web3-react/core';
+import { useTranslation } from 'react-i18next';
 import { bulkDecodeCallsFromOptions } from '../contracts/useDecodedCall';
 import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import { useProposal } from '../ether-swr/guild/useProposal';
@@ -10,7 +10,7 @@ import { ZERO_HASH } from 'utils';
 import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
-import useGuildImplementationTypeConfig from './useGuildImplementationType';
+import { useNetwork } from 'wagmi';
 
 const isApprovalCall = (call: Call) =>
   call.data.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -21,8 +21,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
   const votingResults = useVotingResults(guildId, proposalId);
   const { contracts } = useRichContractRegistry();
-  const { chainId } = useWeb3React();
-  const { isEnforcedBinaryGuild } = useGuildImplementationTypeConfig(guildId);
+  const { chain } = useNetwork();
+  const { t } = useTranslation();
 
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
@@ -34,7 +34,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     value: valuesArray,
   } = proposal || {};
 
-  const totalOptionsNum = totalVotes?.length - 1 || 0;
+  const totalOptionsNum = totalVotes?.length || 0;
   const callsPerOption = totalOptionsNum
     ? toArray?.length / totalOptionsNum
     : 0;
@@ -79,7 +79,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
                 const { decodedCall } = await decodeCall(
                   call,
                   contracts,
-                  chainId
+                  chain?.id
                 );
                 allCalls[index + 1].approval = {
                   amount: decodedCall?.args?._value,
@@ -90,16 +90,15 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             })
           );
 
-          const isEnforcedBinaryLastOption =
-            isEnforcedBinaryGuild && index === totalOptionsNum - 1;
-          const optionLabel =
-            optionLabels?.[index] || isEnforcedBinaryLastOption
-              ? 'Against'
-              : null;
+          const optionLabel = optionLabels?.[index]
+            ? optionLabels?.[index]
+            : index === 0
+            ? t('against', { defaultValue: 'Against' })
+            : null;
 
           return {
             id: `option-${index}`,
-            label: optionLabel || `Option ${index + 1}`,
+            label: optionLabel || `Option ${index}`,
             color: theme?.colors?.votes?.[index],
             actions,
             totalVotes: votingResults?.options[index],
@@ -107,19 +106,22 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
         })
       );
 
-      return bulkDecodeCallsFromOptions(encodedOptions, contracts, chainId);
+      return bulkDecodeCallsFromOptions(encodedOptions, contracts, chain?.id);
     }
-    decodeOptions().then(options => setOptions(options));
+    decodeOptions().then(options =>
+      // Return options putting default against-call last
+      setOptions([...options.slice(1), options[0]])
+    );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     guildId,
     proposalId,
     contracts,
-    chainId,
+    chain,
     splitCalls,
     theme,
     optionLabels,
-    isEnforcedBinaryGuild,
     totalOptionsNum,
   ]);
 

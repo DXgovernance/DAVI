@@ -9,11 +9,11 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
     <div
       class="sc-bdfBQB sc-fubCzh bmhbKs kmMbor"
     >
-      <h3
+      <div
         class="sc-pGacB iUhNQX"
       >
         information
-      </h3>
+      </div>
     </div>
     <div
       class="sc-bdfBQB bmhbKs"
@@ -129,11 +129,11 @@ exports[`ProposalInfoCard Should render will full parameters 1`] = `
     <div
       class="sc-bdfBQB sc-fubCzh bmhbKs kmMbor"
     >
-      <h3
+      <div
         class="sc-pGacB iUhNQX"
       >
         information
-      </h3>
+      </div>
     </div>
     <div
       class="sc-bdfBQB bmhbKs"

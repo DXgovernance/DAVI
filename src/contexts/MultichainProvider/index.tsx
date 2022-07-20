@@ -1,6 +1,6 @@
 import { JsonRpcProvider } from '@ethersproject/providers';
 import { createContext, useMemo } from 'react';
-import { useRpcUrls } from '../../provider/providerHooks';
+import { useNetwork } from 'wagmi';
 
 interface MultichainContextInterface {
   providers: Record<number, JsonRpcProvider>;
@@ -10,25 +10,17 @@ export const MultichainContext =
   createContext<MultichainContextInterface>(null);
 
 const MultichainProvider = ({ children }) => {
-  const rpcUrls = useRpcUrls();
+  const { chains } = useNetwork();
 
   const providers = useMemo(() => {
-    if (!rpcUrls) return null;
-
-    return Object.entries(rpcUrls).reduce((acc, [networkId, rpcUrl]) => {
-      acc[Number.parseInt(networkId)] = new JsonRpcProvider(rpcUrl);
+    return chains.reduce((acc, chain) => {
+      acc[chain.id] = new JsonRpcProvider(chain.rpcUrls.default);
       return acc;
     }, {} as Record<number, JsonRpcProvider>);
-  }, [rpcUrls]);
-
-  if (!providers) return null;
+  }, [chains]);
 
   return (
-    <MultichainContext.Provider
-      value={{
-        providers,
-      }}
-    >
+    <MultichainContext.Provider value={{ providers }}>
       {children}
     </MultichainContext.Provider>
   );

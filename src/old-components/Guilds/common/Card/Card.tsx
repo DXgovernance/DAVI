@@ -15,7 +15,7 @@ const CardHeader = styled(Box)`
   border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
   padding: 8px 16px;
 `;
-export const Header = styled.h3<{ headerStyles?: any }>`
+export const Header = styled.div<{ headerStyles?: any }>`
   font-family: Inter;
   font-style: normal;
   font-weight: 600;

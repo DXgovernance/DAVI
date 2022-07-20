@@ -1,4 +1,4 @@
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import {
   closestCenter,
   CollisionDetection,
@@ -22,31 +22,21 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { Divider } from 'old-components/Guilds/common/Divider';
-import { Box } from 'Components/Primitives/Layout';
 import { OptionRow } from '../Option';
 import { AddButton } from '../common/AddButton';
 import { DecodedAction, Option } from '../types';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   restrictToVerticalAxis,
   restrictToFirstScrollableAncestor,
 } from '@dnd-kit/modifiers';
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
-import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
-
-const AddOptionWrapper = styled(Box)`
-  padding: 1rem;
-`;
-
-interface OptionsListProps {
-  isEditable: boolean;
-  options: Option[];
-  onChange: (options: Option[]) => void;
-  addOption: () => void;
-  editOption: (option: Option) => void;
-}
+import { useTransactionSimulation } from 'hooks/Guilds/useTenderlyApi';
+import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
+import { AddOptionWrapper, SimulationButton } from './OptionsList.styled';
+import { SimulationModal } from './SimulationModal';
+import { OptionsListProps, SimulationState } from './types';
+import { BigNumber } from 'ethers';
 
 export const OptionsList: React.FC<OptionsListProps> = ({
   isEditable,
@@ -60,11 +50,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const lastOverId = useRef<UniqueIdentifier | null>(null);
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
   const recentlyMovedToNewContainer = useRef(false);
-
-  const { guildId: guildAddress } = useTypedParams();
-  const { isEnforcedBinaryGuild } =
-    useGuildImplementationTypeConfig(guildAddress);
-
   const theme = useTheme();
 
   useEffect(() => {
@@ -297,6 +282,48 @@ export const OptionsList: React.FC<OptionsListProps> = ({
     [activeId, options]
   );
 
+  // Simulation logic
+
+  const [simulationStatus, setSimulationStatus] = useState<SimulationState>(
+    SimulationState.none
+  );
+  const [isSimulationModalOpened, setIsSimulationModalOpened] = useState(false);
+  const simulateTransactions = useTransactionSimulation();
+
+  const handleTransactionSimulation = async () => {
+    setSimulationStatus(SimulationState.pending);
+    setIsSimulationModalOpened(true);
+
+    const encodedOptions = bulkEncodeCallsFromOptions(options);
+    let {
+      options: optionsSimulationResult,
+      failedTransactions,
+      error,
+    } = await simulateTransactions(encodedOptions);
+    if (error) {
+      setSimulationStatus(SimulationState.error);
+    } else {
+      onChange(optionsSimulationResult);
+      if (failedTransactions > 0)
+        setSimulationStatus(SimulationState.someFailed);
+      else setSimulationStatus(SimulationState.allPassed);
+    }
+  };
+
+  const isSimulationButtonDisabled = useMemo(() => {
+    let numberOfCalls = options.reduce((sumOfOptions, option) => {
+      if (option.decodedActions) {
+        return (sumOfOptions += option.decodedActions.length);
+      } else {
+        return sumOfOptions;
+      }
+    }, 0);
+
+    if (simulationStatus === SimulationState.pending || numberOfCalls === 0)
+      return true;
+    else return false;
+  }, [options, simulationStatus]);
+
   return (
     <DndContext
       sensors={sensors}
@@ -315,30 +342,28 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       {options && (
         <SortableContext items={options} strategy={verticalListSortingStrategy}>
           {options?.map((option, idx) => (
-            <>
+            <div key={idx}>
               <OptionRow
-                key={idx}
                 option={option}
                 onChange={updatedOption => updateOption(idx, updatedOption)}
                 isEditable={isEditable}
                 editOption={editOption}
               />
               {idx !== options.length - 1 && <Divider />}
-            </>
+            </div>
           ))}
         </SortableContext>
       )}
-
-      {/* Show a placeholder No option when editing EnforcedBinaryGuilds */}
-      {isEnforcedBinaryGuild && isEditable && (
+      {isEditable && (
+        // Display only ui Against option to make clear that this option will be created by default for all guilds
         <>
           <Divider />
           <OptionRow
             key={options.length}
             option={{
               id: 'option-Against',
-              color: theme.colors.red,
-              label: 'Against',
+              color: theme.colors.votes[0],
+              label: t('against', { defaultValue: 'Against' }),
               actions: [],
               decodedActions: [],
               totalVotes: BigNumber.from(0),
@@ -355,9 +380,22 @@ export const OptionsList: React.FC<OptionsListProps> = ({
           <Divider />
           <AddOptionWrapper>
             <AddButton label={t('addOption')} onClick={addOption} />
+            <SimulationButton
+              variant="secondary"
+              data-testid="simulate-transaction-button"
+              onClick={handleTransactionSimulation}
+              disabled={isSimulationButtonDisabled}
+            >
+              {t('simulations.simulateTransactions')}
+            </SimulationButton>
           </AddOptionWrapper>
         </>
       )}
+      <SimulationModal
+        isOpen={isSimulationModalOpened}
+        onDismiss={() => setIsSimulationModalOpened(false)}
+        status={simulationStatus}
+      />
     </DndContext>
   );
 };

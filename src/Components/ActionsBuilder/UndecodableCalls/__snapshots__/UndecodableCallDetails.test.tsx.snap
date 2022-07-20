@@ -4,24 +4,24 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm iauAsN"
+        class="sc-gsTEea sc-iqHYmW eFmXVm kAucQt"
         color="#9575CD"
       >
         from
       </span>
     </div>
     <a
-      class="sc-pGacB fgXijQ"
+      class="sc-jrAFXE dujLvx"
       href="/"
     >
       <div
-        class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+        class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
       >
         0x0000000000000000000000000000000000000000
          
@@ -53,13 +53,13 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
     </a>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm gdybBt"
+        class="sc-gsTEea sc-iqHYmW eFmXVm eTAJLx"
         color="#F06292"
       >
         to
@@ -67,39 +67,39 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm OLwHS"
+        class="sc-gsTEea sc-iqHYmW eFmXVm jTvYme"
         color="#4DB6AC"
       >
         data
       </span>
     </div>
     <div
-      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
     >
       0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
     </div>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm kfLCCt"
+        class="sc-gsTEea sc-iqHYmW eFmXVm dyLnGh"
         color="#64B5F6"
       >
         value
       </span>
     </div>
     <div
-      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
     >
       1000000000000000000
     </div>
@@ -112,24 +112,24 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm iauAsN"
+        class="sc-gsTEea sc-iqHYmW eFmXVm kAucQt"
         color="#9575CD"
       >
         from
       </span>
     </div>
     <a
-      class="sc-pGacB fgXijQ"
+      class="sc-jrAFXE dujLvx"
       href="/"
     >
       <div
-        class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+        class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
       >
         0x0000000000000000000000000000000000000000
          
@@ -161,13 +161,13 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
     </a>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm gdybBt"
+        class="sc-gsTEea sc-iqHYmW eFmXVm eTAJLx"
         color="#F06292"
       >
         to
@@ -175,39 +175,39 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
     </div>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm OLwHS"
+        class="sc-gsTEea sc-iqHYmW eFmXVm jTvYme"
         color="#4DB6AC"
       >
         data
       </span>
     </div>
     <div
-      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
     >
       0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
     </div>
   </div>
   <div
-    class="sc-dlfnuX sc-iqHYmW jmIxJI bPcFbD"
+    class="sc-dlfnuX sc-crrszt jmIxJI gKZqfO"
   >
     <div
-      class="sc-dlfnuX sc-gKseQn sc-jrAFXE jmIxJI kmtxUF byXeKw"
+      class="sc-dlfnuX sc-gKseQn sc-kEjbQP jmIxJI dcoXms kikMqd"
     >
       <span
-        class="sc-gsTEea sc-kEjbQP eFmXVm kfLCCt"
+        class="sc-gsTEea sc-iqHYmW eFmXVm dyLnGh"
         color="#64B5F6"
       >
         value
       </span>
     </div>
     <div
-      class="sc-dlfnuX sc-crrszt jmIxJI cqOmqA"
+      class="sc-dlfnuX sc-dQoVA jmIxJI bOmGCz"
     >
       1000000000000000000
     </div>

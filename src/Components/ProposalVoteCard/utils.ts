@@ -23,8 +23,21 @@ export const confirmVoteProposal = ({
   selectedAction,
   userVotingPower,
   createTransaction,
+  cb,
 }: ConfirmVoteProposalProps) => {
-  createTransaction(`Vote on proposal ${proposal?.title}`, async () =>
-    contract.setVote(proposal?.id, selectedAction, userVotingPower)
+  createTransaction(
+    `Vote on proposal ${proposal?.title}`,
+    async () => contract.setVote(proposal?.id, selectedAction, userVotingPower),
+    true,
+    cb
   );
+};
+
+export const getOptionLabel = ({ metadata, optionKey, t }) => {
+  const metadataLabel = metadata?.voteOptions?.[optionKey];
+  return metadataLabel
+    ? metadataLabel
+    : Number(optionKey) === 0
+    ? t('against', { defaultValue: 'Against' })
+    : t('option', { optionKey });
 };

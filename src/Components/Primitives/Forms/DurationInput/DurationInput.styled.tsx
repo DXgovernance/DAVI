@@ -37,10 +37,6 @@ export const ColumnButton = styled(Button).attrs({
   }
 `;
 
-export const WarningRow = styled(Flex)`
-  margin: 1rem;
-`;
-
 export const StyledButton = styled(Button)`
   width: 150px;
 `;

@@ -2,8 +2,6 @@ import AddressButton from './AddressButton';
 import { render } from '../../utils/tests';
 import { fullProps, partialProps } from './fixtures';
 
-jest.mock('contexts/index', () => jest.fn());
-
 jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({

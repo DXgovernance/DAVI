@@ -1,5 +1,5 @@
 import { Loading } from 'Components/Primitives/Loading';
-import { Modal } from 'Components';
+import { Modal } from 'Components/Primitives/Modal';
 import { StakeTokensModalProps } from './types';
 
 const StakeTokensModal: React.FC<StakeTokensModalProps> = ({

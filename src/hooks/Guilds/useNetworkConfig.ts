@@ -1,5 +1,5 @@
-import { useWeb3React } from '@web3-react/core';
 import { getNetworkById } from 'utils';
+import { useNetwork } from 'wagmi';
 
 const configs = {
   arbitrum: require('configs/arbitrum/config.json'),
@@ -10,10 +10,10 @@ const configs = {
   localhost: require('configs/localhost/config.json'),
 };
 
-const useNetworkConfig = (chain?: number): NetworkConfig => {
-  const { chainId } = useWeb3React();
+const useNetworkConfig = (chainId?: number): NetworkConfig => {
+  const { chain } = useNetwork();
 
-  return configs[getNetworkById(chain || chainId)?.name ?? 'mainnet'];
+  return configs[getNetworkById(chainId || chain?.id)?.name ?? 'mainnet'];
 };
 
 export default useNetworkConfig;

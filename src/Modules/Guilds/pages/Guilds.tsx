@@ -40,6 +40,7 @@ const GuildsPage: React.FC = () => {
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
+
   const filteredProposalIds = useMemo(() => {
     if (!proposalIds) return null;
 
@@ -69,6 +70,7 @@ const GuildsPage: React.FC = () => {
       </SidebarContent>
       <PageContent>
         <Filter />
+
         <ProposalsList data-testid="proposals-list">
           {filteredProposalIds ? (
             filteredProposalIds.map(proposalId => (

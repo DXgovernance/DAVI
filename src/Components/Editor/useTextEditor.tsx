@@ -24,6 +24,11 @@ export const useTextEditor = (
     null,
     ttlMs
   );
+  const clear = () => {
+    EditorConfig.commands.clearContent();
+    onMdChange('');
+    onHTMLChange('');
+  };
 
   const EditorConfig = useEditor({
     content: html ? html : {},
@@ -50,5 +55,5 @@ export const useTextEditor = (
     },
   });
 
-  return { Editor, EditorConfig, html, md };
+  return { Editor, EditorConfig, html, md, clear };
 };

@@ -1,9 +1,10 @@
 import Filter from './Filter';
 import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
+import { ZERO_ADDRESS } from 'utils';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 const bn = (value: number) => BigNumber.from(value);
 
-jest.mock('contexts/index', () => jest.fn());
 jest.mock('contexts/Guilds/filters', () => ({
   useFilter: () => {
     return {
@@ -12,10 +13,10 @@ jest.mock('contexts/Guilds/filters', () => ({
       onResetState: jest.fn(),
       isStateSelected: jest.fn(),
       countStateSelected: jest.fn(),
-      onToggleType: jest.fn(),
-      onResetType: jest.fn(),
-      isTypeSelected: jest.fn(),
-      countTypeSelected: jest.fn(),
+      onToggleActionType: jest.fn(),
+      onResetActionType: jest.fn(),
+      isActionTypeSelected: jest.fn(),
+      countActionTypeSelected: jest.fn(),
       onToggleCurrency: jest.fn(),
       onResetCurrency: jest.fn(),
       isCurrencySelected: jest.fn(),
@@ -44,6 +45,12 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
       totalLocked: bn(200),
     },
   }),
+}));
+
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ address: mockAddress }),
+  useNetwork: () => ({ chain: mockChain }),
 }));
 
 describe('Filter', () => {

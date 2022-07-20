@@ -17,24 +17,24 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-ctaXho cAORUT hqMJhH jgXNbk"
+    class="sc-bdfBQB sc-gsTEea sc-Azgjq igQAuX hqMJhH evuLsq"
     type="submit"
   >
     <span
-      class="sc-eGCaLh ledizJ"
+      class="sc-cOajNj fDGYOW"
     >
       <img
         alt="Avatar"
-        class="sc-dlfnuX sc-hBEYId hZGubn cLydgE"
+        class="sc-dlfnuX sc-cTkxnA hZGubn hvITmw"
         data-testid="avatar"
         size="24"
         src="test"
       />
     </span>
     <span
-      class="sc-dFJtaz dhqYkG"
+      class="sc-khAkCZ hUHrIN"
     >
-      0xaAaA...aaAa
+      0x0000...0000
     </span>
   </button>
    

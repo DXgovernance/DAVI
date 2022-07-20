@@ -1,12 +1,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
-import { useWeb3React } from '@web3-react/core';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
-import { TokenPicker } from 'Components';
+import { TokenPicker } from 'Components/TokenPicker';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -23,6 +22,7 @@ import {
   ControlLabel,
   Spacer,
 } from './ApproveSpendTokens.styled';
+import { useNetwork } from 'wagmi';
 
 export interface TokenSpendApproval {
   amount: BigNumber;
@@ -39,13 +39,13 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
   onConfirm,
 }) => {
   const { t } = useTranslation();
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
   const [amount, setAmount] = useState<BigNumber>(null);
   const [token, setToken] = useState<string>(null);
 
-  const { tokens } = useTokenList(chainId);
+  const { tokens } = useTokenList(chain?.id);
   const selectedToken = useMemo(() => {
     if (!token || !tokens) return null;
 

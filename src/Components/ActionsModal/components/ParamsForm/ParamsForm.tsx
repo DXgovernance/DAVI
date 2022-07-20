@@ -30,7 +30,6 @@ const ParamsForm: React.FC<ParamsFormProps> = ({
   defaultValues,
   onSubmit,
 }) => {
-  console.log({ fn });
   const { control, handleSubmit } = useForm();
 
   return (

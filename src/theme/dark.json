@@ -4,6 +4,7 @@
     "primary": "#295FF4",
     "secondary": "#181B1B",
     "red": "#E75C5C",
+    "orange": "#D17A06",
     "proposalText": {
       "grey": "#A1A6B0",
       "lightGrey": "#BDC0C7"
@@ -25,9 +26,10 @@
       "hover": "#fff"
     },
     "votes": {
-      "0": "#295FF4",
-      "1": "#E75C5C",
-      "2": "#ccc"
+      "0": "#E75C5C",
+      "1": "#295FF4",
+      "2": "#BDC0C7",
+      "3": "#ccc"
     },
     "params": {
       "0": "#9575CD",

@@ -1,9 +1,9 @@
 import { EtherSWRConfig } from 'ether-swr';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import loggerMiddleware from 'hooks/Guilds/ether-swr/middleware/logger';
+import { useProvider } from 'wagmi';
 
 const EtherSWRManager: React.FC = ({ children }) => {
-  const provider = useJsonRpcProvider();
+  const provider = useProvider();
 
   return (
     <EtherSWRConfig

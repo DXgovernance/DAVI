@@ -47,20 +47,32 @@ exports[`Filter Should match snapshot 1`] = `
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 1 
+                Active
+                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 2 
+                Executable
+                 
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                state
-                 3 
+                Executed
+                 
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
+                Rejected
+                 
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
+                Failed
+                 
               </a>
             </div>
           </div>
@@ -71,7 +83,7 @@ exports[`Filter Should match snapshot 1`] = `
           <button
             class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD cnzpap ciMKAF kWpazI"
           >
-            type
+            actions_one
              
             <svg
               fill="none"
@@ -99,94 +111,38 @@ exports[`Filter Should match snapshot 1`] = `
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                type
-                 a 
+                Erc20 Transfer
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                type
-                 b 
+                Rep Mint
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                type
-                 c 
+                Generic Call
               </a>
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
-                type
-                 d 
+                Set Permissions
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
+                Update Ens Name
               </a>
             </div>
           </div>
         </div>
-        <div
-          class="sc-gKseQn sc-crrszt bA-duWg fwTZRV"
-        >
-          <button
-            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD cnzpap ciMKAF kWpazI"
-          >
-            currency
-             
-            <svg
-              fill="none"
-              height="1em"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <polyline
-                points="6 9 12 15 18 9"
-              />
-            </svg>
-          </button>
-          <div
-            class="sc-gKseQn sc-iqHYmW bA-duWg hQhrAr"
-          >
-            
-            <div
-              class="sc-gKseQn sc-dQoVA bA-duWg edjpWO"
-            >
-              <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
-              >
-                currency
-                 a 
-              </a>
-              <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
-              >
-                currency
-                 b 
-              </a>
-              <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
-              >
-                currency
-                 c 
-              </a>
-              <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
-              >
-                currency
-                 d 
-              </a>
-            </div>
-          </div>
-        </div>
+        0
       </div>
       <div
         class="sc-fubCzh sc-dmlqKv ilRGTJ gMUfUu"
       >
         <button
-          class="sc-bdfBQB sc-gsTEea sc-kfzBvY jpLShC elsKne bTCShG"
+          class="sc-bdfBQB sc-gsTEea sc-kfzBvY gxcwpW elsKne bTCShG"
         >
           <svg
             fill="currentColor"

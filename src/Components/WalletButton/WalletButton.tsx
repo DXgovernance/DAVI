@@ -1,73 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { getChains, injected } from 'provider/connectors';
-import { useRpcUrls } from 'provider/providerHooks';
 import { Button } from 'old-components/Guilds/common/Button';
-import { useWeb3React } from '@web3-react/core';
-import { WalletModal } from 'Components';
-import AddressButton from 'Components/AddressButton/AddressButton';
+import { WalletModal } from 'Components/Web3Modals/WalletModal';
 import { useTransactions } from 'contexts/Guilds';
+import { useAccount, useNetwork } from 'wagmi';
+import AddressButton from 'Components/AddressButton/AddressButton';
+import { isReadOnly } from 'provider/wallets';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 const WalletButton = () => {
   const { t } = useTranslation();
-  const { account, chainId } = useWeb3React();
+
+  const { isConnected, address, connector } = useAccount();
+  const { switchNetwork } = useSwitchNetwork();
+  const { chain, chains } = useNetwork();
+
   const { transactions } = useTransactions();
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
-
-  const [injectedWalletAuthorized, setInjectedWalletAuthorized] =
-    useState(false);
-  const rpcUrls = useRpcUrls();
-
-  useEffect(() => {
-    injected.isAuthorized().then(isAuthorized => {
-      setInjectedWalletAuthorized(isAuthorized);
-    });
-  }, []);
 
   const toggleWalletModal = () => {
     setIsWalletModalOpen(!isWalletModalOpen);
   };
 
-  const switchNetwork = async chain => {
-    const chainIdHex = `0x${chain.id.toString(16)}`;
-    try {
-      await window.ethereum?.send('wallet_switchEthereumChain', [
-        { chainId: chainIdHex },
-      ]);
-    } catch (e: any) {
-      if (e?.code === 4902) {
-        window.ethereum?.send('wallet_addEthereumChain', [
-          {
-            chainId: chainIdHex,
-            chainName: chain.displayName,
-            nativeCurrency: chain.nativeAsset,
-            rpcUrls: [chain.rpcUrl, chain.defaultRpc],
-            blockExplorerUrls: [chain.blockExplorer],
-          },
-        ]);
-      }
-    }
-  };
-
   function getWalletStatus() {
-    if (injectedWalletAuthorized && !account) {
-      const chains = getChains(rpcUrls);
-      const activeChain =
-        chains.find(chain => chain.id === chainId) || chains[0];
-
-      const isMetamask = window.ethereum && window.ethereum.isMetaMask;
+    if (isConnected && chain.unsupported) {
+      const firstSupported = chains && chains?.length > 0 ? chains[0] : null;
 
       return (
-        <Button variant="secondary" onClick={() => switchNetwork(activeChain)}>
-          {t('switch')} {isMetamask ? 'MetaMask' : t('wallet')} {t('to')}{' '}
-          {activeChain.displayName}
+        <Button
+          variant="primary"
+          onClick={() =>
+            switchNetwork ? switchNetwork(firstSupported?.id) : null
+          }
+        >
+          {switchNetwork
+            ? t('switchWalletTo', { chainName: firstSupported?.name })
+            : t('unsupportedNetwork')}
         </Button>
       );
-    } else if (account) {
+    }
+
+    if (isConnected && !isReadOnly(connector)) {
       return (
         <AddressButton
-          address={account}
+          address={address}
           transactionsCounter={
             transactions?.filter(transaction => !transaction.receipt)?.length ??
             0

@@ -3,6 +3,9 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import Bullet from 'old-components/Guilds/common/Bullet';
 import { Loading } from 'Components/Primitives/Loading';
 import { useTheme } from 'styled-components';
+import { useTranslation } from 'react-i18next';
+
+import { getOptionLabel } from 'Components/ProposalVoteCard/utils';
 import {
   ResultRowProps,
   VoteResultsProps,
@@ -20,6 +23,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
   proposalMetadata,
 }) => {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const isReady = optionKey !== undefined;
 
@@ -29,6 +33,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
     2
   );
 
+  const label = getOptionLabel({ metadata: proposalMetadata, optionKey, t });
   return (
     <VotesRowWrapper>
       <VoteOption>
@@ -43,13 +48,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
             />
           )}
         </OptionBullet>
-
-        {isReady ? (
-          proposalMetadata?.voteOptions?.[optionKey] ||
-          'Option ' + (optionKey + 1)
-        ) : (
-          <Loading loading text />
-        )}
+        {isReady ? label : <Loading loading text />}
       </VoteOption>
       {isReady && voteData ? (
         <span>
@@ -71,12 +70,17 @@ const VoteResults: React.FC<VoteResultsProps> = ({
   voteData,
   proposalMetadata,
 }) => {
-  return voteData ? (
+  const orderedOptions = voteData?.options && [
+    ...Object.keys(voteData.options).slice(1),
+    '0',
+  ];
+
+  return orderedOptions ? (
     <>
-      {Object.entries(voteData.options).map((_, i) => (
+      {orderedOptions.map(key => (
         <VoteResultRow
-          key={i}
-          optionKey={i}
+          key={key}
+          optionKey={Number(key)}
           isPercent={isPercent}
           voteData={voteData}
           proposalMetadata={proposalMetadata}

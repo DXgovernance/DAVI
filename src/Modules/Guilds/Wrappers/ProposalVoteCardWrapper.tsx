@@ -6,21 +6,20 @@ import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf'
 import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
-import { useWeb3React } from '@web3-react/core';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { ProposalVoteCard } from 'Components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
+import { useAccount } from 'wagmi';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: proposalMetadata } = useProposalMetadata(guildId, proposalId);
-
   const voteData = useVotingResults();
 
   const timestamp = useTimedRerender(10000);
 
-  const { account: userAddress } = useWeb3React();
+  const { address: userAddress } = useAccount();
   const { data: userVotingPower } = useVotingPowerOf({
     contractAddress: guildId,
     userAddress,

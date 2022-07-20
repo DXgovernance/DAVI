@@ -7,9 +7,10 @@ import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
+  ActionSummaryWrapper,
   CardActions,
   CardHeader,
   CardLabel,
@@ -18,10 +19,13 @@ import {
   DetailWrapper,
   EditButtonWithMargin,
   GripWithMargin,
-  TabButton,
+  SectionBody,
+  SectionHeader,
+  Separator,
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'Components/ActionsModal';
+import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 
 interface ActionViewProps {
   call?: Call;
@@ -29,6 +33,13 @@ interface ActionViewProps {
   isEditable?: boolean;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
+}
+
+export enum CardStatus {
+  dragging,
+  normal,
+  simulationFailed,
+  warning,
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
@@ -53,11 +64,12 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const approval = action.approval || decodedAction?.approval;
 
   const [expanded, setExpanded] = useState(false);
-  const [activeTab, setActiveTab] = useState(0);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
     useState(false);
 
   const [isEditActionModalOpen, setIsEditActionModalOpen] = useState(false);
+
+  const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
 
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
@@ -68,9 +80,28 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     transition,
   };
 
+  const cardStatus: CardStatus = useMemo(() => {
+    if (isEditable && isDragging) return CardStatus.dragging;
+
+    if (parsedValueToString !== '0.0') return CardStatus.warning;
+
+    if (!decodedAction?.simulationResult) return CardStatus.normal;
+
+    if (decodedAction?.simulationResult.simulation.status === false) {
+      return CardStatus.simulationFailed;
+    }
+
+    return CardStatus.normal; // default return so ESLint doesn't complain
+  }, [
+    decodedAction?.simulationResult,
+    isEditable,
+    isDragging,
+    parsedValueToString,
+  ]);
+
   return (
     <CardWrapperWithMargin
-      dragging={isEditable && isDragging}
+      cardStatus={cardStatus}
       ref={setNodeRef}
       style={dndStyles}
       {...attributes}
@@ -111,42 +142,35 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
       {expanded && (
         <>
-          {ActionSummary && (
-            <DetailWrapper>
-              <TabButton
-                variant="secondary"
-                active={activeTab === 0}
-                onClick={() => setActiveTab(0)}
-              >
-                {t('default')}
-              </TabButton>
-              <TabButton
-                active={activeTab === 1}
-                onClick={() => setActiveTab(1)}
-              >
-                {t('functionCalls')}
-              </TabButton>
-            </DetailWrapper>
+          <Separator cardStatus={cardStatus} />
+          {cardStatus === CardStatus.simulationFailed && (
+            <>
+              <DetailWrapper>
+                <SectionHeader>
+                  {t('simulations.simulationFailed')}
+                </SectionHeader>
+                <SectionBody>
+                  {decodedAction.simulationResult.transaction.error_message}
+                </SectionBody>
+              </DetailWrapper>
+              <Separator />
+            </>
           )}
-
-          {ActionSummary && activeTab === 0 && (
-            <DetailWrapper>
-              <ActionSummary decodedCall={decodedCall} />
-            </DetailWrapper>
-          )}
-
-          {(!ActionSummary || activeTab === 1) && (
-            <DetailWrapper>
-              {decodedCall ? (
-                <CallDetails
-                  decodedCall={decodedCall}
-                  approveSpendTokens={approval}
-                />
-              ) : (
-                <UndecodableCallDetails call={call} />
-              )}
-            </DetailWrapper>
-          )}
+          <DetailWrapper>
+            {ActionSummary && (
+              <ActionSummaryWrapper>
+                <ActionSummary decodedCall={decodedCall} />
+              </ActionSummaryWrapper>
+            )}
+            {decodedCall ? (
+              <CallDetails
+                decodedCall={decodedCall}
+                approveSpendTokens={approval}
+              />
+            ) : (
+              <UndecodableCallDetails call={call} />
+            )}
+          </DetailWrapper>
         </>
       )}
       <ConfirmRemoveActionModal

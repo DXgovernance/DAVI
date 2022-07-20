@@ -10,6 +10,7 @@ import {
 require('dotenv').config();
 const hre = require('hardhat');
 const moment = require('moment');
+const utils = require('./utils');
 
 async function main() {
   const web3 = hre.web3;
@@ -19,6 +20,7 @@ async function main() {
   const ERC20SnapshotRep = await hre.artifacts.require('ERC20SnapshotRep');
 
   const accounts = await web3.eth.getAccounts();
+  utils.init(accounts);
 
   const deployconfig = {
     dao: {
@@ -187,11 +189,6 @@ async function main() {
             address: accounts[2],
             amount: web3.utils.toWei('10'),
           },
-          // TODO: Give to acc3
-          // {
-          //   address: accounts[3],
-          //   amount: 100,
-          // },
         ],
       },
       {
@@ -252,7 +249,7 @@ async function main() {
         votingPowerForProposalCreation: '1',
         voteGas: '0',
         maxGasPrice: '0',
-        maxActiveProposals: '2',
+        maxActiveProposals: '9999',
         lockTime: moment.duration(10, 'minutes').asSeconds(),
       },
       {
@@ -814,6 +811,29 @@ async function main() {
         proposal: 0,
       },
     },
+    {
+      type: 'guild-createProposal',
+      from: accounts[0],
+      data: {
+        guildName: 'DXDGuild',
+        to: ['DXDGuild'],
+        callData: [
+          new web3.eth.Contract(ERC20Guild.abi).methods
+            .setPermission(
+              [ZERO_ADDRESS],
+              [ANY_ADDRESS],
+              [ANY_FUNC_SIGNATURE],
+              [web3.utils.toWei('5').toString()],
+              [true]
+            )
+            .encodeABI(),
+        ],
+        value: ['0x6A94D74F430000'],
+        totalActions: '1',
+        title: 'Proposal with value',
+        description: 'Proposal with value > 1',
+      },
+    },
 
     {
       type: 'approve',
@@ -873,6 +893,10 @@ async function main() {
         scheme: 'QuickWalletScheme',
       },
     },
+
+    ...utils.createMultipleRandomProposals(2, {
+      data: { guildName: 'DXDGuild' },
+    }),
   ];
 
   const developConfig = {

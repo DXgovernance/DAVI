@@ -6,96 +6,56 @@ exports[`WalletModal Should match snapshot 1`] = `
     data-testid="wallet-modal"
   >
     <div
-      class="sc-aemIz iegKhJ"
-    />
-    <div
-      class="sc-jHVedQ jaSA-db"
+      class="sc-pGacB doHKro backdropModal"
     >
       <div
-        class="sc-jONnzC jFaGea"
+        class="sc-fubCzh iwGmfp"
       >
-        
-         
         <div
-          class="sc-hlTwrV hTyPNj"
+          class="sc-jrAFXE jZmJyP"
         >
-          <h2
-            class="sc-dQoVA sc-bTvSiT fvNDvx iJsJQz"
-          >
-            account
-          </h2>
-          <svg
-            class="sc-kIeSZW ktHRrf"
-            fill="none"
-            height="1em"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <line
-              x1="18"
-              x2="6"
-              y1="6"
-              y2="18"
-            />
-            <line
-              x1="6"
-              x2="18"
-              y1="6"
-              y2="18"
-            />
-          </svg>
-        </div>
-        <div
-          class="sc-dtwnrN gnLHYk"
-        >
+          
+           
           <div
-            class="sc-GTVdH QKZBv"
+            class="sc-kEjbQP UrNhf"
           >
-            <a
-              href="https://metamask.io/"
+            <h2
+              class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
             >
-              <button
-                class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
-                data-testid=""
-              >
-                <div
-                  class="sc-dOSRxR bvcoLH"
-                >
-                  installMetamask
-                </div>
-                <div
-                  class="sc-bBrNTY dkBKFH"
-                >
-                  <img
-                    alt="Icon"
-                    src="metamask.png"
-                  />
-                </div>
-              </button>
-            </a>
-            <button
-              class="sc-bdfBQB sc-jNMcJZ cAORUT jctxDF"
-              data-testid="wallet-option-WalletConnect"
+              connectToAWallet
+            </h2>
+            <svg
+              class="sc-dQoVA faTCxr"
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <div
-                class="sc-dOSRxR bvcoLH"
-              >
-                WalletConnect
-              </div>
-              <div
-                class="sc-bBrNTY dkBKFH"
-              >
-                <img
-                  alt="Icon"
-                  src="walletconnect.png"
-                />
-              </div>
-            </button>
+              <line
+                x1="18"
+                x2="6"
+                y1="6"
+                y2="18"
+              />
+              <line
+                x1="6"
+                x2="18"
+                y1="6"
+                y2="18"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-kstqJO glfmLR"
+          >
+            <div
+              class="sc-idOiZg eWdUSo"
+            />
           </div>
         </div>
       </div>

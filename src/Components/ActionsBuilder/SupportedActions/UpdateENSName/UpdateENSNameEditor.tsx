@@ -8,8 +8,8 @@ import { convertToContentHash, convertToNameHash, useDebounce } from './utils';
 import useENSRegistry from 'hooks/Guilds/ether-swr/ens/useENSRegistry';
 import { isEnsName, isIPFSHash } from './validation';
 import { useTranslation } from 'react-i18next';
-import { useWeb3React } from '@web3-react/core';
 import { LOCALHOST_ID, MAINNET_ID } from 'utils';
+import { useNetwork } from 'wagmi';
 
 const UpdateENSNameEditor = ({ decodedCall, updateCall }) => {
   const { t } = useTranslation();
@@ -20,13 +20,13 @@ const UpdateENSNameEditor = ({ decodedCall, updateCall }) => {
   // useDebounce will make sure we're not spamming the resolver
   const debouncedEnsName = useDebounce(ensName, 500);
   const debouncedIpfsHash = useDebounce(ipfsHash, 500);
-  let { chainId } = useWeb3React();
+  let { chain } = useNetwork();
 
   //QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
-  if (!chainId || chainId === LOCALHOST_ID) {
-    chainId = MAINNET_ID;
+  if (!chain.id || chain.id === LOCALHOST_ID) {
+    chain.id = MAINNET_ID;
   }
-  const ensRegistry = useENSRegistry(debouncedEnsName, chainId);
+  const ensRegistry = useENSRegistry(debouncedEnsName, chain.id);
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
       const nameHash = convertToNameHash(debouncedEnsName);
