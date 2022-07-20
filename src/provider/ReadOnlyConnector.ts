@@ -21,13 +21,19 @@ export class ReadOnlyConnector extends Connector<
   #provider?: JsonRpcProvider;
 
   async connect({ chainId }: { chainId?: number } = {}) {
+    console.log('Connecting to read-only mode', { chainId });
     try {
       let targetChainId = chainId;
       if (!targetChainId) {
-        const lastUsedChainId = await this.getChainId();
-        if (lastUsedChainId && !this.isChainUnsupported(lastUsedChainId))
-          targetChainId = lastUsedChainId;
+        try {
+          const lastUsedChainId = await this.getChainId();
+          if (lastUsedChainId && !this.isChainUnsupported(lastUsedChainId))
+            targetChainId = lastUsedChainId;
+        } catch (e) {
+          console.error('Cannot get last used chain id');
+        }
       }
+      if (!targetChainId) return null;
 
       const provider = await this.getProvider({
         chainId: targetChainId,

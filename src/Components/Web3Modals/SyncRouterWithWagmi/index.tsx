@@ -12,8 +12,8 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
   children,
 }) => {
   const { connector } = useAccount();
-  const { connect, connectors } = useConnect();
-  const { switchNetwork } = useSwitchNetwork();
+  const { connectAsync, connectors } = useConnect();
+  const { switchNetworkAsync } = useSwitchNetwork();
   const { chain, chains } = useNetwork();
   const [hash, setHash] = useHash();
 
@@ -38,37 +38,34 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
 
     if (connector) {
       // Connector initialized.
-      if (!urlChain) {
-        // No chain name in the URL. Switch to default chain.
-        if (defaultChain) {
-          switchNetwork(defaultChain?.id);
-          setIsInitialLoadDone(true);
-          return;
-        }
-      } else if (urlChain?.id === chain?.id) {
+
+      if (urlChain && urlChain?.id === chain?.id) {
         // No chain name in the URL. Nothing to do here.
         setIsInitialLoadDone(true);
         return;
       }
 
+      const chainToConnect = urlChain || defaultChain;
       if (isReadOnly(connector)) {
-        // We're connected to the network connector. Switch to the chain in the URL.
-        switchNetwork(urlChain.id);
+        // We're connected to the network connector. Switch to the correct chain.
+        switchNetworkAsync(chainToConnect.id).then(() =>
+          setIsInitialLoadDone(true)
+        );
       } else {
-        // We're connected to a connector on a different chain. Disconnect and switch to the chain in the URL.
+        // We're connected to a connector on a different chain. Disconnect and switch to the correct chain.
         const readOnlyConnector = connectors.find(isReadOnly);
-        connect({
+        connectAsync({
           connector: readOnlyConnector,
-          chainId: urlChain.id,
-        });
+          chainId: chainToConnect.id,
+        }).then(() => setIsInitialLoadDone(true));
       }
     }
   }, [
     isInitialLoadDone,
     connector,
     urlChain,
-    switchNetwork,
-    connect,
+    switchNetworkAsync,
+    connectAsync,
     chains,
     chain,
     connectors,
