@@ -24,6 +24,8 @@ import validateERC20Transfer from './validateERC20Transfer';
 
 const Error = styled(Box)`
   color: ${({ theme }) => theme.colors.red};
+  font-size: ${({ theme }) => theme.fontSizes.label};
+  margin-top: 0.5rem;
 `;
 
 const Spacer = styled(Box)`
