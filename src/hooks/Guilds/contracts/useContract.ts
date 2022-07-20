@@ -1,12 +1,11 @@
 import { Contract } from 'ethers';
-import { useMemo } from 'react';
-import { getContract } from '../../../utils/contracts';
 import ERC20Guild_ABI from '../../../contracts/ERC20Guild.json';
 import { ERC20Guild } from '../../../types/contracts/ERC20Guild';
 import ERC20_ABI from '../../../contracts/ERC20.json';
 import { ERC20 } from '../../../types/contracts/ERC20';
-import useJsonRpcProvider from '../web3/useJsonRpcProvider';
-import { useWeb3React } from '@web3-react/core';
+import { useProvider, useSigner } from 'wagmi';
+import { useMemo } from 'react';
+import { getContract } from '@wagmi/core';
 
 export default function useContract<T extends Contract>(
   contractId: string,
@@ -14,20 +13,18 @@ export default function useContract<T extends Contract>(
   chainId?: number,
   withSignerIfPossible = true
 ): T | null {
-  const provider = useJsonRpcProvider(chainId);
-  const { chainId: walletChainId, account } = useWeb3React();
+  const { data: signer, isSuccess } = useSigner();
+  const provider = useProvider();
 
   return useMemo(() => {
     if (!provider || !contractId || !abi) return null;
     try {
-      const signingAccount =
-        !chainId || walletChainId === chainId ? account : null;
-      const contract = getContract(
-        contractId,
-        abi,
-        provider,
-        withSignerIfPossible && signingAccount ? signingAccount : undefined
-      );
+      const contract = getContract({
+        addressOrName: contractId,
+        contractInterface: abi,
+        signerOrProvider: withSignerIfPossible && isSuccess ? signer : provider,
+      });
+
       return contract;
     } catch (e) {
       console.error(e);
@@ -37,10 +34,9 @@ export default function useContract<T extends Contract>(
     contractId,
     abi,
     provider,
-    account,
-    chainId,
-    walletChainId,
     withSignerIfPossible,
+    isSuccess,
+    signer,
   ]) as unknown as T;
 }
 

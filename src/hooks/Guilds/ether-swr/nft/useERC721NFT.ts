@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { resolveUri } from '../../../../utils/url';
 import ERC721abi from '../../../../abis/ERC721.json';
 import useEtherSWR from '../useEtherSWR';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import useSWR from 'swr';
+import { useProvider } from 'wagmi';
 
 type ERC721Data = {
   ownerOf: string;
@@ -15,7 +15,7 @@ export default function useERC721NFT(
   tokenId: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider(chainId);
+  const provider = useProvider();
   const { data: result } = useEtherSWR(
     contractId
       ? [

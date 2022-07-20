@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { render } from 'utils/tests';
 import SwaprPicker from './SwaprPicker';
 
-jest.mock('contexts/index', () => jest.fn());
-
 let fullResponse = [
   [
     {
@@ -44,6 +42,11 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
     imageUrl: 'test',
     ensName: 'test.eth',
   }),
+}));
+
+const mockChainId = 123456;
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
 }));
 
 console.error = jest.fn();

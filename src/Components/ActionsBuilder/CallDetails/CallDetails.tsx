@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'old-components/Guilds/common/Button';
@@ -8,6 +9,7 @@ import { useTheme } from 'styled-components';
 import { Divider } from 'old-components/Guilds/common/Divider';
 import {
   ActionParamRow,
+  DetailsButton,
   ParamDetail,
   ParamTag,
   ParamTitleRow,
@@ -21,6 +23,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
 }) => {
   const theme = useTheme();
   const { t } = useTranslation();
+  const [isExpanded, setIsExpanded] = useState(false);
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -88,35 +91,46 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           <Divider style={{ marginBottom: '2rem' }} />
         </>
       )}
-      <ActionParamRow>
-        <Box>
-          {decodedCall?.function?.name} (
-          {decodedCall?.function?.inputs.map((param, index, params) => (
-            <span key={index}>
-              <ParamTag color={theme?.colors?.params?.[index]}>
-                {param?.type}
-              </ParamTag>
-              {index < params.length - 1 && <span> , </span>}
-            </span>
-          ))}
-          )
-        </Box>
-      </ActionParamRow>
 
-      {decodedCall?.function?.inputs?.map((param, index) => (
-        <ActionParamRow key={index}>
-          <ParamTitleRow>
-            <ParamTitleTag color={theme?.colors?.params?.[index]}>
-              {param.name} <em>({param.type})</em>
-            </ParamTitleTag>
-            {param.type === 'bytes' && (
-              <Button variant="secondary">{t('decode')}</Button>
-            )}
-          </ParamTitleRow>
+      <DetailsButton
+        onClick={() => setIsExpanded(!isExpanded)}
+        isExpanded={isExpanded}
+        variant={'secondary'}
+      >
+        {decodedCall?.function?.name} (
+        {decodedCall?.function?.inputs.map((param, index, params) => (
+          <span key={index}>
+            {index > 0 && <span>, </span>}
+            <ParamTag
+              key={index}
+              color={
+                isExpanded
+                  ? theme?.colors?.params?.[index]
+                  : theme?.colors?.text
+              }
+            >
+              {param?.type}
+            </ParamTag>
+          </span>
+        ))}
+        )
+      </DetailsButton>
 
-          {renderByParamType(param.type, decodedCall?.args?.[param.name])}
-        </ActionParamRow>
-      ))}
+      {isExpanded &&
+        decodedCall?.function?.inputs?.map((param, index) => (
+          <ActionParamRow key={index}>
+            <ParamTitleRow>
+              <ParamTitleTag color={theme?.colors?.params?.[index]}>
+                {param.name} <em>({param.type})</em>
+              </ParamTitleTag>
+              {param.type === 'bytes' && (
+                <Button variant="secondary">{t('decode')}</Button>
+              )}
+            </ParamTitleRow>
+
+            {renderByParamType(param.type, decodedCall?.args?.[param.name])}
+          </ActionParamRow>
+        ))}
     </>
   );
 };

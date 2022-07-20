@@ -14,7 +14,6 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', (address?: string) => {
     }),
   };
 });
-jest.mock('contexts/index', () => jest.fn());
 
 describe('ENSAvatar', () => {
   it('Should render avatar when address is given', () => {

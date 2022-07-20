@@ -5,7 +5,6 @@ import {
 } from './useRichContractRegistry';
 import ERC20ABI from 'abis/ERC20.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
-import { useWeb3React } from '@web3-react/core';
 import {
   Call,
   DecodedCall,
@@ -16,6 +15,7 @@ import { ERC20_APPROVE_SIGNATURE, ERC20_TRANSFER_SIGNATURE } from 'utils';
 import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 import Web3 from 'web3';
+import { useNetwork } from 'wagmi';
 const web3 = new Web3();
 const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature({
   inputs: [
@@ -192,12 +192,12 @@ export const bulkDecodeCallsFromOptions = (
 export const useDecodedCall = (call: Call) => {
   const [decodedCall, setDecodedCall] = useState<any>(null);
   const isCancelled = useRef(false);
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
   const { contracts } = useRichContractRegistry();
 
   useEffect(() => {
     if (call && !isCancelled.current) {
-      decodeCall(call, contracts, chainId).then(decodedData =>
+      decodeCall(call, contracts, chain?.id).then(decodedData =>
         setDecodedCall(decodedData)
       );
     } else if (!call) {
@@ -206,7 +206,7 @@ export const useDecodedCall = (call: Call) => {
     return () => {
       isCancelled.current = true;
     };
-  }, [call, contracts, chainId]);
+  }, [call, contracts, chain]);
 
   return decodedCall || { decodedCall: null, contract: null, approval: null };
 };

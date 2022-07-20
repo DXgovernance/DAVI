@@ -1,5 +1,5 @@
 import { MetadataTag } from '../SupportedActions/common/infoLine';
-import { DetailRow } from '../SupportedActions/common/summary';
+import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import { Call } from '../types';
 import { BigNumber } from 'ethers';
 import { Box } from 'Components/Primitives/Layout';

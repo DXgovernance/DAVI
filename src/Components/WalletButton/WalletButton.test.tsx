@@ -1,7 +1,8 @@
 import WalletButton from './WalletButton';
 import { render } from 'utils/tests';
-import { useWeb3React } from '@web3-react/core';
-import { ANY_ADDRESS, shortenAddress } from 'utils';
+import { shortenAddress, ZERO_ADDRESS } from 'utils';
+import { mockChain } from 'Components/Web3Modals/fixtures';
+import wagmi from 'wagmi';
 
 jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   __esModule: true,
@@ -12,7 +13,6 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   }),
 }));
 
-jest.mock('contexts/index', () => jest.fn());
 jest.mock('contexts/Guilds', () => {
   return {
     useTransactions: () => {
@@ -21,39 +21,42 @@ jest.mock('contexts/Guilds', () => {
   };
 });
 
-jest.mock('provider/providerHooks', () => {
-  return {
-    useRpcUrls: () => {
-      return {
-        '1': 'https://mainnet.infura.io/v3/dummy',
-      };
-    },
-  };
-});
-
-jest.mock('@web3-react/core', () => ({
-  useWeb3React: jest.fn(),
+jest.mock('provider/ReadOnlyConnector', () => ({
+  READ_ONLY_CONNECTOR_ID: 'readOnly',
 }));
 
-const mockedUseWeb3React = useWeb3React as jest.Mock;
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  chain: {},
+  useAccount: () => jest.fn(),
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+  useSwitchNetwork: () => ({ switchNetwork: jest.fn() }),
+  useConnect: () => ({ connect: jest.fn(), connectors: [] }),
+  useDisconnect: () => ({ disconnect: jest.fn() }),
+}));
 
 describe('WalletButton', () => {
   it('Should match snapshot and display connect wallet', () => {
-    mockedUseWeb3React.mockImplementation(() => ({
-      account: null,
-      chainId: null,
-    }));
+    jest
+      .spyOn(wagmi, 'useAccount')
+      .mockImplementation(() => ({ isConnected: false } as any));
+
     const { container, getByText } = render(<WalletButton />);
     expect(container).toMatchSnapshot();
     expect(getByText('connectWallet')).toBeInTheDocument();
   });
   it('Should match snapshot and display connected address', () => {
-    mockedUseWeb3React.mockImplementation(() => ({
-      account: ANY_ADDRESS,
-      chainId: 1,
-    }));
+    jest.spyOn(wagmi, 'useAccount').mockImplementation(
+      () =>
+        ({
+          isConnected: true,
+          address: mockAddress,
+          connector: { id: 'notReadOnly' },
+        } as any)
+    );
+
     const { container, getByText } = render(<WalletButton />);
     expect(container).toMatchSnapshot();
-    expect(getByText(shortenAddress(ANY_ADDRESS))).toBeInTheDocument();
+    expect(getByText(shortenAddress(mockAddress))).toBeInTheDocument();
   });
 });

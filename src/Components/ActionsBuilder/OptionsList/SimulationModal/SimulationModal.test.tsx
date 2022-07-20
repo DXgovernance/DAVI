@@ -2,8 +2,6 @@ import { render } from 'utils/tests';
 import { SimulationState } from '../types';
 import { SimulationModal } from './SimulationModal';
 
-jest.mock('contexts/index', () => jest.fn());
-
 describe('Simulation modal', () => {
   it(`Should match 'pending' status snapshot`, () => {
     const { container } = render(

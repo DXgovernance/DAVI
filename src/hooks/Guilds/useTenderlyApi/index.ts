@@ -1,7 +1,6 @@
 import { ethers } from 'ethers';
-import { useWeb3React } from '@web3-react/core';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import { Call, Option } from 'Components/ActionsBuilder/types';
+import { useNetwork, useProvider } from 'wagmi';
 
 // Variables are hardcoded because they didn't work
 // with GitHub. It might change later
@@ -10,12 +9,12 @@ const TENDERLY_PROJECT = 'dxdao-proposal-simulation';
 const TENDERLY_ACCESS_KEY = 'fbzJG0PD3R8sX5i2vCCqh4r3YyrELtIO';
 
 export const useTransactionSimulation = () => {
-  const { chainId } = useWeb3React();
-  const provider = useJsonRpcProvider(chainId);
+  const { chain } = useNetwork();
+  const provider = useProvider();
 
   async function simulateTransactions(options: Option[]) {
     try {
-      const [forkId, forkUrl] = await getForkData(chainId, provider);
+      const [forkId, forkUrl] = await getForkData(chain?.id, provider);
 
       const forkRPC = `https://rpc.tenderly.co/fork/${forkId}`;
       const forkProvider = new ethers.providers.JsonRpcProvider(forkRPC);
@@ -33,7 +32,7 @@ export const useTransactionSimulation = () => {
           let simulationResult = await simulateAction(
             forkUrl,
             currentAction,
-            chainId
+            chain?.id
           );
           currentOption.decodedActions[j].simulationResult =
             await simulationResult;

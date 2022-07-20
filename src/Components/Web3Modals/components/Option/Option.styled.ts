@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 import { Button } from 'old-components/Guilds/common/Button';
 
-interface OptionButtonProps {
-  active: boolean;
-}
-
-export const OptionButton = styled(Button)<OptionButtonProps>`
+export const OptionButton = styled(Button)`
   width: 100%;
 
   padding: 0.6rem 1.5rem;
@@ -19,20 +15,19 @@ export const OptionButton = styled(Button)<OptionButtonProps>`
   &:hover {
     background-color: ${({ theme }) => theme.colors.background} !important;
     color: ${({ theme }) => theme.colors.text} !important;
-    outline: 2px solid #ccc;
+    outline: 1px solid #ccc;
   }
 
   &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.text};
+    border: 1px solid ${({ theme }) => theme.colors.text};
   }
-
-  ${props => props.active && `border: 2px solid #fff;`};
 `;
 
 export const OptionButtonText = styled.div`
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.colors.text};
+  gap: 0.5rem;
 `;
 
 export const IconWrapper = styled.div<{ size?: number }>`

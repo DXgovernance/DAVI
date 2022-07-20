@@ -6,26 +6,26 @@ exports[`WalletModal Should match snapshot 1`] = `
     data-testid="wallet-modal"
   >
     <div
-      class="sc-jONnzC hUvaRT backdropModal"
+      class="sc-pGacB doHKro backdropModal"
     >
       <div
-        class="sc-aemIz bbeUWJ"
+        class="sc-fubCzh iwGmfp"
       >
         <div
-          class="sc-hlTwrV kXDWEa"
+          class="sc-jrAFXE jZmJyP"
         >
           
            
           <div
-            class="sc-eLgNKc GtOyU"
+            class="sc-kEjbQP UrNhf"
           >
             <h2
-              class="sc-dQoVA sc-kIeSZW fvNDvx NYJKg"
+              class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
             >
-              account
+              connectToAWallet
             </h2>
             <svg
-              class="sc-hOqruk cOtmWQ"
+              class="sc-dQoVA faTCxr"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -51,52 +51,11 @@ exports[`WalletModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-dacGJm logYbD"
+            class="sc-kstqJO glfmLR"
           >
             <div
-              class="sc-gsxoIA cHgdxN"
-            >
-              <a
-                href="https://metamask.io/"
-              >
-                <button
-                  class="sc-bdfBQB sc-dOSRxR cAORUT jizgdT"
-                  data-testid=""
-                >
-                  <div
-                    class="sc-bBrNTY dSjwsm"
-                  >
-                    installMetamask
-                  </div>
-                  <div
-                    class="sc-cOajNj lmffFJ"
-                  >
-                    <img
-                      alt="Icon"
-                      src="metamask.png"
-                    />
-                  </div>
-                </button>
-              </a>
-              <button
-                class="sc-bdfBQB sc-dOSRxR cAORUT jizgdT"
-                data-testid="wallet-option-WalletConnect"
-              >
-                <div
-                  class="sc-bBrNTY dSjwsm"
-                >
-                  WalletConnect
-                </div>
-                <div
-                  class="sc-cOajNj lmffFJ"
-                >
-                  <img
-                    alt="Icon"
-                    src="walletconnect.png"
-                  />
-                </div>
-              </button>
-            </div>
+              class="sc-idOiZg eWdUSo"
+            />
           </div>
         </div>
       </div>

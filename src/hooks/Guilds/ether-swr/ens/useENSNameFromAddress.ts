@@ -1,11 +1,11 @@
+import { useProvider } from 'wagmi';
 import useEtherSWR from '../useEtherSWR';
-import useJsonRpcProvider from '../../web3/useJsonRpcProvider';
 
 export default function useENSNameFromAddress(
   ensAddress?: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider(chainId);
+  const provider = useProvider();
   const { data: ensName } = useEtherSWR<string>(
     ensAddress ? ['lookupAddress', ensAddress] : [],
     {

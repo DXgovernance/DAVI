@@ -2,7 +2,6 @@ import { useState, useRef } from 'react';
 import { isMobile, isDesktop } from 'react-device-detect';
 import { FiChevronDown, FiCheck, FiArrowLeft } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
-import { useWeb3React } from '@web3-react/core';
 
 import { ProposalState } from 'types/types.guilds.d';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
@@ -26,6 +25,7 @@ import {
   FilterResetDesktop,
   FilterButton,
 } from './FilterMenu.styled';
+import { useNetwork } from 'wagmi';
 
 const parseActionTypeEnum = (action: string) =>
   action
@@ -38,8 +38,8 @@ const FilterMenu = () => {
   const [showState, setShowState] = useState(false);
   const [showType, setShowType] = useState(false);
   const [showCurrency, setShowCurrency] = useState(false);
-  const { chainId } = useWeb3React();
-  const { tokens } = useTokenList(chainId);
+  const { chain } = useNetwork();
+  const { tokens } = useTokenList(chain?.id);
 
   const {
     onToggleState,

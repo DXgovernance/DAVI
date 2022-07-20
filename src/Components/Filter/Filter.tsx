@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useWeb3React } from '@web3-react/core';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'old-components/Guilds/common/Button';
@@ -20,6 +19,8 @@ import {
   StyledInputWrapper,
   FilterBadge,
 } from './Filter.styled';
+import { navigateUrl } from 'utils';
+import { useAccount } from 'wagmi';
 
 const Filter = () => {
   const { t } = useTranslation();
@@ -30,10 +31,10 @@ const Filter = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const { account } = useWeb3React();
+  const { address } = useAccount();
   const { data: votingPower } = useVotingPowerOf({
     contractAddress: guildId,
-    userAddress: account,
+    userAddress: address,
   });
   const { data: guildConfig } = useGuildConfig(guildId);
   const isProposalCreationAllowed = useMemo(() => {
@@ -69,7 +70,9 @@ const Filter = () => {
           {isProposalCreationAllowed && (
             <Button
               variant="secondary"
-              onClick={() => history.push(location.pathname + '/proposalType')}
+              onClick={() =>
+                history.push(navigateUrl(location, 'proposalType'))
+              }
               data-testid="create-proposal-button"
             >
               {t('createProposal')}

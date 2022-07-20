@@ -9,9 +9,8 @@ exports[`NetworkButton Should match snapshot and display network 1`] = `
     <img
       alt="Icon"
       class="sc-dlfnuX hZGubn"
-      src="ethereum.svg"
     />
-    Ethereum Mainnet
+    Random Chain
   </button>
    
 </div>

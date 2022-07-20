@@ -15,7 +15,6 @@ jest.mock('hooks/Guilds/guild/useProposalSummaryActions', () => {
     useProposalSummaryActions: jest.fn(),
   };
 });
-jest.mock('contexts/index', () => jest.fn());
 
 const validProps: ProposalCardProps = {
   proposal: proposalMock,

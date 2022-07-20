@@ -4,26 +4,26 @@ exports[`TokenPicker Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-jONnzC hUvaRT backdropModal"
+      class="sc-pGacB doHKro backdropModal"
     >
       <div
-        class="sc-aemIz fpuFHE"
+        class="sc-fubCzh ctYRTK"
       >
         <div
-          class="sc-hlTwrV kXDWEa"
+          class="sc-jrAFXE jZmJyP"
         >
           
            
           <div
-            class="sc-eLgNKc GtOyU"
+            class="sc-kEjbQP UrNhf"
           >
             <h2
-              class="sc-kstqJO sc-kIeSZW gWTdRY NYJKg"
+              class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
             >
               selectAToken
             </h2>
             <svg
-              class="sc-hOqruk cOtmWQ"
+              class="sc-dQoVA faTCxr"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -49,19 +49,19 @@ exports[`TokenPicker Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-dacGJm logYbD"
+            class="sc-kstqJO glfmLR"
           >
             <div
-              class="sc-GTVdH QKZBv"
+              class="sc-idOiZg eWdUSo"
             >
               <div
-                class="sc-bXDkGd gfqTeI"
+                class="sc-hHfuMS juFZTf"
               >
                 <div
-                  class="sc-dIUeWJ gQcXkl"
+                  class="sc-iJuVqt jEaLyw"
                 >
                   <div
-                    class="sc-hHfuMS bScybG"
+                    class="sc-giImIA cSqVBV"
                   >
                     <svg
                       fill="none"
@@ -88,31 +88,31 @@ exports[`TokenPicker Should match snapshot 1`] = `
                     </svg>
                   </div>
                   <input
-                    class="sc-idOiZg jelFGI"
+                    class="sc-lmoMya lwNxd"
                     placeholder="search"
                     value=""
                   />
                   <div
-                    class="sc-hHfuMS jNxMeF"
+                    class="sc-giImIA hSmAqa"
                   />
                 </div>
               </div>
               <div
-                class="sc-gsxoIA iUpGhU"
+                class="sc-dIUeWJ fkXUVf"
               >
                 <div
                   aria-label="Option item SWPR"
-                  class="sc-eGCaLh kFypMy"
+                  class="sc-dmlqKv fciZmT"
                 >
                   <div
-                    class="sc-ctaXho codKjU"
+                    class="sc-kfzBvY hKwTyb"
                   >
                     <div
-                      class="sc-dFJtaz dHLhrD"
+                      class="sc-fKFxtB dXgjuJ"
                     >
                       <img
                         alt="Avatar"
-                        class="sc-dlfnuX sc-jSgvzq hZGubn fuxTiU"
+                        class="sc-dlfnuX sc-kLgnNl hZGubn jEcvbT"
                         data-testid="avatar"
                         size="28"
                         src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
@@ -120,36 +120,36 @@ exports[`TokenPicker Should match snapshot 1`] = `
                     </div>
                     <div>
                       <div
-                        class="sc-bsipwG kfKrHM"
+                        class="sc-bBXrwG mpfPK"
                       >
                         SWPR
                       </div>
                       <div
-                        class="sc-gInthZ jmpnqC"
+                        class="sc-iwyWTf gmwEAG"
                       >
                         SWAPR Guild
                       </div>
                     </div>
                   </div>
                   <div
-                    class="sc-euMpEg ectvAq"
+                    class="sc-cxFLGX kjgnL"
                   >
                     10
                   </div>
                 </div>
                 <div
                   aria-label="Option item DXD"
-                  class="sc-eGCaLh kFypMy"
+                  class="sc-dmlqKv fciZmT"
                 >
                   <div
-                    class="sc-ctaXho codKjU"
+                    class="sc-kfzBvY hKwTyb"
                   >
                     <div
-                      class="sc-dFJtaz dHLhrD"
+                      class="sc-fKFxtB dXgjuJ"
                     >
                       <img
                         alt="Avatar"
-                        class="sc-dlfnuX sc-jSgvzq hZGubn fuxTiU"
+                        class="sc-dlfnuX sc-kLgnNl hZGubn jEcvbT"
                         data-testid="avatar"
                         size="28"
                         src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
@@ -157,36 +157,36 @@ exports[`TokenPicker Should match snapshot 1`] = `
                     </div>
                     <div>
                       <div
-                        class="sc-bsipwG kfKrHM"
+                        class="sc-bBXrwG mpfPK"
                       >
                         DXD
                       </div>
                       <div
-                        class="sc-gInthZ jmpnqC"
+                        class="sc-iwyWTf gmwEAG"
                       >
                         DXdao on Localhost
                       </div>
                     </div>
                   </div>
                   <div
-                    class="sc-euMpEg ectvAq"
+                    class="sc-cxFLGX kjgnL"
                   >
                     0
                   </div>
                 </div>
                 <div
                   aria-label="Option item RGT"
-                  class="sc-eGCaLh kFypMy"
+                  class="sc-dmlqKv fciZmT"
                 >
                   <div
-                    class="sc-ctaXho codKjU"
+                    class="sc-kfzBvY hKwTyb"
                   >
                     <div
-                      class="sc-dFJtaz dHLhrD"
+                      class="sc-fKFxtB dXgjuJ"
                     >
                       <img
                         alt="Avatar"
-                        class="sc-dlfnuX sc-jSgvzq hZGubn fuxTiU"
+                        class="sc-dlfnuX sc-kLgnNl hZGubn jEcvbT"
                         data-testid="avatar"
                         size="28"
                         src="https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png"
@@ -194,19 +194,19 @@ exports[`TokenPicker Should match snapshot 1`] = `
                     </div>
                     <div>
                       <div
-                        class="sc-bsipwG kfKrHM"
+                        class="sc-bBXrwG mpfPK"
                       >
                         RGT
                       </div>
                       <div
-                        class="sc-gInthZ jmpnqC"
+                        class="sc-iwyWTf gmwEAG"
                       >
                         REP Guild Token on Localhost
                       </div>
                     </div>
                   </div>
                   <div
-                    class="sc-euMpEg ectvAq"
+                    class="sc-cxFLGX kjgnL"
                   >
                     0
                   </div>

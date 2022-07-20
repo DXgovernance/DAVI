@@ -1,41 +1,31 @@
 import NetworkButton from './NetworkButton';
 import { render } from 'utils/tests';
-import { useWeb3React } from '@web3-react/core';
+import wagmi from 'wagmi';
+import { mockAccount, mockChain } from 'Components/Web3Modals/fixtures';
 
-jest.mock('contexts/index', () => jest.fn());
-jest.mock('provider/providerHooks', () => {
-  return {
-    useRpcUrls: () => {
-      return {
-        '1': 'https://mainnet.infura.io/v3/dummy',
-      };
-    },
-  };
-});
-
-jest.mock('@web3-react/core', () => ({
-  useWeb3React: jest.fn(),
+jest.mock('wagmi', () => ({
+  useAccount: () => ({ isConnected: false }),
+  useNetwork: () => ({ chain: {}, chains: [] }),
+  useSwitchNetwork: () => ({ switchNetwork: jest.fn() }),
 }));
-
-const mockedUseWeb3React = useWeb3React as jest.Mock;
 
 describe('NetworkButton', () => {
   it('Should match snapshot and display not connected status', () => {
-    mockedUseWeb3React.mockImplementation(() => ({
-      active: false,
-      chainId: null,
-    }));
     const { container, getByText } = render(<NetworkButton />);
     expect(container).toMatchSnapshot();
     expect(getByText('notConnected')).toBeInTheDocument();
   });
+
   it('Should match snapshot and display network', () => {
-    mockedUseWeb3React.mockImplementation(() => ({
-      active: true,
-      chainId: 1,
-    }));
+    jest
+      .spyOn(wagmi, 'useAccount')
+      .mockImplementation(() => ({ ...mockAccount, isConnected: true } as any));
+    jest
+      .spyOn(wagmi, 'useNetwork')
+      .mockImplementation(() => ({ chain: mockChain, chains: [mockChain] }));
+
     const { container, getByText } = render(<NetworkButton />);
     expect(container).toMatchSnapshot();
-    expect(getByText('Ethereum Mainnet')).toBeInTheDocument();
+    expect(getByText(mockChain.name)).toBeInTheDocument();
   });
 });

@@ -4,46 +4,33 @@ exports[`ERC20TransferSummary Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
   >
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-      receiver
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-      amount
-    </div>
+    interactWith
+    :
   </div>
   <div
-    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
   >
     <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
     >
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         <img
           alt="Avatar"
-          class="sc-crrszt sc-dQoVA dbCIdw hJUgGW"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
           data-testid="avatar"
           size="24"
           src="test"
         />
       </span>
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         test.eth
       </span>
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-       
     </div>
   </div>
    
@@ -54,46 +41,33 @@ exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
   >
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-      receiver
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-      amount
-    </div>
+    interactWith
+    :
   </div>
   <div
-    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
   >
     <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
     >
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         <img
           alt="Avatar"
-          class="sc-crrszt sc-dQoVA dbCIdw hJUgGW"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
           data-testid="avatar"
           size="24"
           src="test"
         />
       </span>
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         test.eth
       </span>
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-       
     </div>
   </div>
    
@@ -104,46 +78,40 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-gKseQn sc-fubCzh jmIxJI kmtxUF gBPzSJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
   >
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+    interactWith
+    <span
+      class="sc-bqyKOL jpIhKt"
     >
-      receiver
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-      amount
-    </div>
+       
+       
+      ETH
+    </span>
+    :
   </div>
   <div
-    class="sc-dlfnuX sc-gKseQn jmIxJI kmtxUF"
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
   >
     <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
     >
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         <img
           alt="Avatar"
-          class="sc-crrszt sc-dQoVA dbCIdw hJUgGW"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
           data-testid="avatar"
           size="24"
           src="test"
         />
       </span>
       <span
-        class="sc-bdfBQB enldmJ"
+        class="sc-gKseQn lnpFdR"
       >
         test.eth
       </span>
-    </div>
-    <div
-      class="sc-dlfnuX sc-iBPTik jmIxJI dTFEyy"
-    >
-       
     </div>
   </div>
    

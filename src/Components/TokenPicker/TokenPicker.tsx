@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { useTranslation } from 'react-i18next';
 import {
   TokenWithBalance,
@@ -10,6 +9,7 @@ import { Picker } from 'Components/Primitives/Forms/Picker';
 import { ethers } from 'ethers';
 import { resolveUri } from 'utils/url';
 import Avatar from 'old-components/Guilds/Avatar';
+import { useAccount } from 'wagmi';
 
 const TokenPicker: React.FC<TokenPickerProps> = ({
   walletAddress,
@@ -18,8 +18,8 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
   onClose,
 }) => {
   const { t } = useTranslation();
-  const { account } = useWeb3React();
-  const { data } = useAllERC20Balances(walletAddress || account);
+  const { address } = useAccount();
+  const { data } = useAllERC20Balances(walletAddress || address);
 
   const handleSelect = (option: TokenWithBalance) => {
     onSelect(option.address);

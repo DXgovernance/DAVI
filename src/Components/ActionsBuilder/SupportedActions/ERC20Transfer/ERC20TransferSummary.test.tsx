@@ -1,4 +1,5 @@
 import { BigNumber } from 'ethers';
+import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
 import ERC20TransferSummary from './ERC20TransferSummary';
 import {
@@ -24,6 +25,17 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
     decimals: 18,
     totalSupply: mockBigNumber,
   }),
+}));
+
+jest.mock('utils', () => ({
+  getNetworkById: () => ({ nativeAsset: { symbol: 'ETH' } }),
+}));
+
+const mockChainId = 123456;
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
+  useAccount: () => ({ address: mockAddress }),
 }));
 
 describe('ERC20TransferSummary', () => {

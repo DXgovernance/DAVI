@@ -4,28 +4,28 @@ exports[`NetworkModal Should match snapshot 1`] = `
 <body>
   <div>
     <div
-      class="sc-hOqruk jqKJSp backdropModal"
+      class="sc-pGacB doHKro backdropModal"
     >
       <div
-        class="sc-kIeSZW fdmAWG"
+        class="sc-fubCzh jCETGP"
       >
         <div
-          class="sc-dtwnrN irmMds"
+          class="sc-jrAFXE jZmJyP"
         >
           
            
           <div
-            class="sc-dacGJm iZKOaG"
+            class="sc-kEjbQP UrNhf"
           >
             <h2
-              class="sc-kstqJO sc-jQbJRc gWTdRY knzTlX"
+              class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
             >
               <div>
                 switchNetwork
               </div>
             </h2>
             <svg
-              class="sc-fvhFOF dbHrBB"
+              class="sc-dQoVA faTCxr"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -51,37 +51,35 @@ exports[`NetworkModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-GTVdH uKnvk"
+            class="sc-kstqJO glfmLR"
           >
             <div
-              class="sc-dFJtaz cYqhCe"
+              class="sc-bBXrwG kFKYkX"
             >
               <div
-                class="sc-gInthZ frcSrV"
+                class="sc-cxFLGX dwWZCR"
               >
                 <div
-                  class="sc-bsipwG iqQHXQ"
+                  class="sc-iwyWTf gbnIyu"
                 >
                   <div
-                    class="sc-euMpEg eYfnGU"
+                    class="sc-lmoMya jNRJIs"
                   >
                     <button
-                      class="sc-bdfBQB sc-gTgzoy cAORUT ctmkZv"
+                      class="sc-bdfBQB sc-dmlqKv igQAuX eLvDHF"
                       data-testid=""
                     >
                       <div
-                        class="sc-laRQdt vJBRp"
+                        class="sc-kfzBvY VQpPp"
                       >
-                        Ethereum Mainnet
+                        <span
+                          class="sc-hHfuMS jokvNa"
+                        />
+                        Random Chain
                       </div>
                       <div
-                        class="sc-iNqMzA cGmYLy"
-                      >
-                        <img
-                          alt="Icon"
-                          src="ethereum.svg"
-                        />
-                      </div>
+                        class="sc-fKFxtB gJFluz"
+                      />
                     </button>
                   </div>
                 </div>
