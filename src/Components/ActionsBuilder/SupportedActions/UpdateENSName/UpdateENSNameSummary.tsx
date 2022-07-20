@@ -1,37 +1,47 @@
-import { DetailCell, DetailHeader, DetailRow } from '../common/summary';
+import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
 import { Segment } from '../common/infoLine';
-import Avatar from 'old-components/Guilds/Avatar';
-import { MAINNET_ID, shortenAddress } from 'utils';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import Summary from '../common/Summary';
 
 const UpdateENSNameSummary = ({ decodedCall }) => {
   const parsedData = {
-    to: ['0x0000000000000000000000000000000000000000'],
+    to: '0x0000000000000000000000000000000000000000',
   };
 
   // Get nameHash from decodedCall
   // Use hook to call Public Resolver method to get canonical name
-
-  const { ensName, imageUrl } = useENSAvatar(parsedData?.to[0], MAINNET_ID);
-
+  // Do we need to show the value in the summary in case you could get a malicious user that would try and interact?
   return (
     <>
-      <DetailHeader>
-        <DetailCell>{'Receiver'}</DetailCell>
-        <DetailCell>{'ENS Name'}</DetailCell>
-      </DetailHeader>
+      <DetailHeader>{'ENS Name:'}</DetailHeader>
 
       <DetailRow>
-        <DetailCell>
-          <Segment>
-            <Avatar defaultSeed={parsedData?.to[0]} src={imageUrl} size={24} />
-          </Segment>
-          <Segment>{ensName || shortenAddress(parsedData?.to[0])}</Segment>
-        </DetailCell>
-        <DetailCell>{'kenny.eth'}</DetailCell>
+        <DetailBody>
+          <Segment>{'kenny.eth' || ''}</Segment>
+        </DetailBody>
       </DetailRow>
+
+      <DetailHeader>{'IPFS Hash:'}</DetailHeader>
+
+      <DetailRow>
+        <DetailBody>
+          <Segment>{parsedData.to || ''}</Segment>
+        </DetailBody>
+      </DetailRow>
+      <Summary decodedCall={decodedCall} address={parsedData?.to} />
     </>
   );
 };
 
 export default UpdateENSNameSummary;
+
+// kenny.eth --> 0x0000000000000000000000000000000000000000
+
+// nameHash/node --> kenny.eth
+
+// address --> ANY_ADDRESS
+
+// resolverAdress --> ANY_OTHER_ADDRESS
+
+// contentHash --> ANY_HASH
+
+// QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
