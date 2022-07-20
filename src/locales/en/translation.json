@@ -48,7 +48,7 @@
   },
   "ensName": {
     "nameTooltip": "The name of the ENS name that will be registered.",
-    "ipfsHash": "IPFS Hash"
+    "ipfsHashToolTip": "The IPFS hash that will be set"
   },
   "mint": "Mint",
   "toAddress": "To Address",

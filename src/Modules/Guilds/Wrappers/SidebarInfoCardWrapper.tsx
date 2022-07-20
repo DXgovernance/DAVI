@@ -7,16 +7,16 @@ import { SidebarInfoCard } from 'Components/SidebarInfoCard';
 const SidebarInfoCardWrapper = () => {
   const { guildId } = useTypedParams();
   const {
-    data: { proposalTime, votingPowerForProposalExecution },
+    data
   } = useGuildConfig(guildId);
 
   const { data: totalLocked } = useTotalLocked(guildId);
 
   const quorum = useVotingPowerPercent(
-    votingPowerForProposalExecution,
+    data?.votingPowerForProposalExecution,
     totalLocked
   );
-  return <SidebarInfoCard proposalTime={proposalTime} quorum={quorum} />;
+  return <SidebarInfoCard proposalTime={data?.proposalTime} quorum={quorum} />;
 };
 
 export default SidebarInfoCardWrapper;
