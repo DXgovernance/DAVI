@@ -1,5 +1,4 @@
 import { EditButton, Grip } from '../common';
-import { Button } from 'old-components/Guilds/common/Button';
 import { CardWrapper, Header } from 'old-components/Guilds/common/Card';
 import { Box } from 'Components/Primitives/Layout';
 import styled, { css } from 'styled-components';
@@ -29,7 +28,7 @@ export const CardWrapperWithMargin = styled(CardWrapper)<{
 `;
 
 export const CardHeader = styled(Header)`
-  padding: 0.875rem 1.25rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,19 +63,19 @@ export const ChevronIcon = styled.span<{ active?: boolean }>`
 `;
 
 export const DetailWrapper = styled(Box)`
-  padding: 1.25rem;
-  border-top: 1px solid ${({ theme }) => theme.colors.border.initial};
+  padding: 1.25rem 1.5rem;
 `;
 
-export const TabButton = styled(Button)<{ active?: boolean }>`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.text};
-
-  ${({ active }) =>
-    active &&
-    css`
-      border: 2px solid ${({ theme }) => theme.colors.text};
-    `}
+export const Separator = styled(Box)<{ cardStatus?: CardStatus }>`
+  border-top: 1px solid;
+  border-color: ${({ cardStatus, theme }) =>
+    cardStatus === CardStatus.dragging
+      ? theme.colors.text
+      : cardStatus === CardStatus.warning
+      ? theme.colors.red
+      : cardStatus === CardStatus.simulationFailed
+      ? theme.colors.orange
+      : theme.colors.muted};
 `;
 
 export const GripWithMargin = styled(Grip)`
@@ -91,6 +90,10 @@ export const CardActions = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const ActionSummaryWrapper = styled.div`
+  margin-bottom: 10px;
 `;
 
 export const SectionHeader = styled(Box)`
