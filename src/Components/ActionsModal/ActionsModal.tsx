@@ -52,6 +52,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
   const [payableFnData, setPayableFnData] =
     React.useState<TokenSpendApproval>(null);
 
+  const [disableSaveAction, setDisableSaveAction] = React.useState(false);
+
   useEffect(() => {
     if (!action?.decodedCall) return;
 
@@ -142,10 +144,18 @@ const ActionModal: React.FC<ActionModalProps> = ({
 
     if (selectedAction) {
       const Editor = getEditor(selectedAction);
+
       return (
         <EditorWrapper data-testid="actions-modal-editor">
-          <Editor decodedCall={data} updateCall={setData} />
-          <BlockButton onClick={saveSupportedAction}>
+          <Editor
+            decodedCall={data}
+            updateCall={setData}
+            toggleDisableSaveBtn={setDisableSaveAction}
+          />
+          <BlockButton
+            onClick={saveSupportedAction}
+            disabled={disableSaveAction}
+          >
             {t('saveAction')}
           </BlockButton>
         </EditorWrapper>

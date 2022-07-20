@@ -40,7 +40,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
             class="sc-fubCzh jfgyYA"
           >
             <div
-              class="sc-jrAFXE sc-gWHigU jLAWlL bLLnbO"
+              class="sc-jrAFXE sc-cBNeex jLAWlL eoRvqi"
             >
               <svg
                 fill="none"
@@ -111,7 +111,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-hiSbEG jLAWlL dboWfq"
+        class="sc-jrAFXE sc-gWHigU jLAWlL guDiYD"
       />
       <div
         class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
@@ -294,7 +294,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-hiSbEG jLAWlL dboWfq"
+        class="sc-jrAFXE sc-gWHigU jLAWlL guDiYD"
       />
       <div
         class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"

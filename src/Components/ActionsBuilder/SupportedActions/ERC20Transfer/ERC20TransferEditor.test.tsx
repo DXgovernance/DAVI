@@ -57,6 +57,7 @@ describe('ERC20TransferEditor', () => {
       <ERC20TransferEditor
         decodedCall={erc20TransferDecodedCallMock}
         updateCall={jest.fn()}
+        toggleDisableSaveBtn={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();
@@ -66,6 +67,7 @@ describe('ERC20TransferEditor', () => {
       <ERC20TransferEditor
         decodedCall={erc20TransferEmptyDecodedCallMock}
         updateCall={jest.fn()}
+        toggleDisableSaveBtn={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();

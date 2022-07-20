@@ -1,5 +1,5 @@
 import { ActionEditorProps } from '..';
-import { BigNumber, utils } from 'ethers';
+import { BigNumber } from 'ethers';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -8,7 +8,7 @@ import { TokenPicker } from 'Components/TokenPicker';
 import Input from 'old-components/Guilds/common/Form/Input';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
 import { Box } from 'Components/Primitives/Layout';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FiChevronDown, FiX } from 'react-icons/fi';
 import styled from 'styled-components';
 import { MAINNET_ID } from 'utils';
@@ -20,6 +20,11 @@ import {
 } from 'Components/Primitives/Forms/Control';
 import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
+import validateERC20Transfer from './validateERC20Transfer';
+
+const Error = styled(Box)`
+  color: ${({ theme }) => theme.colors.red};
+`;
 
 const Spacer = styled(Box)`
   margin-right: 1rem;
@@ -35,16 +40,24 @@ interface TransferState {
   source: string;
   tokenAddress: string;
   amount: BigNumber;
-  destination: string;
+  recipientAddress: string;
 }
 
 const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
+  toggleDisableSaveBtn,
 }) => {
   const { t } = useTranslation();
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
+
   const { chain } = useNetwork();
+
+  const [touched, setTouched] = useState({
+    tokenAddress: false,
+    amount: false,
+    recipientAddress: false,
+  });
 
   // parse transfer state from calls
   const parsedData = useMemo<TransferState>(() => {
@@ -53,17 +66,16 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
       source: decodedCall.from,
       tokenAddress: decodedCall.to,
       amount: decodedCall.args._value,
-      destination: decodedCall.args._to,
+      recipientAddress: decodedCall.args._to,
     };
   }, [decodedCall]);
 
-  const validations = useMemo(() => {
-    return {
-      tokenAddress: utils.isAddress(parsedData?.tokenAddress),
-      amount: BigNumber.isBigNumber(parsedData?.amount),
-      destination: utils.isAddress(parsedData?.destination),
-    };
-  }, [parsedData]);
+  const validations = validateERC20Transfer({ ...parsedData });
+
+  useEffect(() => {
+    if (validations.isValid) return toggleDisableSaveBtn(false);
+    return toggleDisableSaveBtn(true);
+  }, [validations]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Get token details from the token address
   const { tokens } = useTokenList(chain?.id);
@@ -75,21 +87,24 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 
   const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
   const { imageUrl: destinationAvatarUrl } = useENSAvatar(
-    parsedData?.destination,
+    parsedData?.recipientAddress,
     MAINNET_ID
   );
 
-  const setTransferAddress = (walletAddress: string) => {
+  const setTransferAddress = (recipientAddress: string) => {
+    if (!touched.recipientAddress)
+      setTouched(t => ({ ...t, recipientAddress: true }));
     updateCall({
       ...decodedCall,
       args: {
         ...decodedCall.args,
-        _to: walletAddress,
+        _to: recipientAddress,
       },
     });
   };
 
   const setToken = (tokenAddress: string) => {
+    if (!touched.tokenAddress) setTouched(t => ({ ...t, tokenAddress: true }));
     updateCall({
       ...decodedCall,
       to: tokenAddress,
@@ -97,6 +112,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   };
 
   const setAmount = (value: BigNumber) => {
+    if (!touched.amount) setTouched(t => ({ ...t, amount: true }));
     updateCall({
       ...decodedCall,
       args: {
@@ -112,20 +128,20 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
         <ControlLabel>{t('recipient')}</ControlLabel>
         <ControlRow>
           <Input
-            value={parsedData.destination || ''}
+            value={parsedData.recipientAddress || ''}
             icon={
               <div>
-                {validations.destination && (
+                {validations.recipientAddress.isValid && (
                   <Avatar
                     src={destinationAvatarUrl}
-                    defaultSeed={parsedData.destination}
+                    defaultSeed={parsedData.recipientAddress}
                     size={24}
                   />
                 )}
               </div>
             }
             iconRight={
-              parsedData?.destination ? (
+              parsedData?.recipientAddress ? (
                 <ClickableIcon onClick={() => setTransferAddress('')}>
                   <FiX size={18} />
                 </ClickableIcon>
@@ -135,6 +151,10 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
             onChange={e => setTransferAddress(e.target.value)}
           />
         </ControlRow>
+        {touched.recipientAddress &&
+          !validations?.recipientAddress?.isValid && (
+            <Error>{validations?.recipientAddress?.msg}</Error>
+          )}
       </Control>
 
       <ControlRow>
@@ -147,6 +167,9 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
               onChange={setAmount}
             />
           </ControlRow>
+          {touched.amount && !validations?.amount?.isValid && (
+            <Error>{validations?.amount?.msg}</Error>
+          )}
         </Control>
 
         <Spacer />
@@ -172,6 +195,9 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
               readOnly
             />
           </ControlRow>
+          {touched.tokenAddress && !validations?.tokenAddress?.isValid && (
+            <Error>{validations?.tokenAddress?.msg}</Error>
+          )}
         </Control>
       </ControlRow>
 

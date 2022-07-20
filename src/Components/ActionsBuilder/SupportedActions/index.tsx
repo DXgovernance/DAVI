@@ -32,6 +32,7 @@ export interface ActionViewProps {
 
 export interface ActionEditorProps extends ActionViewProps {
   updateCall: (updatedCall: DecodedCall) => void;
+  toggleDisableSaveBtn?: (disabled: boolean) => void;
 }
 
 type SupportedActionViews = {
