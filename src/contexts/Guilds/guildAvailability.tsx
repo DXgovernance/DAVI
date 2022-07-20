@@ -1,15 +1,15 @@
-import { useWeb3React } from '@web3-react/core';
 import { MultichainContext } from 'contexts/MultichainProvider';
-import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
 import { ButtonIcon, IconButton } from 'old-components/Guilds/common/Button';
 import { Box } from 'Components/Primitives/Layout';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
-import { useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import { getNetworkById, getChainIcon } from 'utils';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { useNetwork } from 'wagmi';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
 interface ContractAvailability {
   [chainId: number]: boolean;
@@ -33,15 +33,16 @@ const NetworkIconButton = styled(IconButton)`
 export const GuildAvailabilityContext =
   createContext<GuildAvailabilityContextInterface>({});
 
+// TODO: Refactor this to not use the MultichainContext.
+// We should remove the MultichainContext as we no longer need it.
 const GuildAvailabilityProvider = ({ children }) => {
-  const routeMatch = useRouteMatch<{ guildId?: string }>(
-    '/:chain_name/:guildId'
-  );
-  const guildId = routeMatch?.params?.guildId;
+  const { guildId } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);
   const [availability, setAvailability] = useState<ContractAvailability>({});
-  const { chainId: currentChainId } = useWeb3React();
-  const { trySwitching } = useNetworkSwitching();
+  const { chain: currentChain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+
+  const currentChainId = useMemo(() => currentChain?.id, [currentChain]);
 
   useEffect(() => {
     if (!guildId || !multichainProviders) {
@@ -101,7 +102,9 @@ const GuildAvailabilityProvider = ({ children }) => {
                     <div key={chainConfig?.id}>
                       <NetworkIconButton
                         iconLeft
-                        onClick={() => trySwitching(chainConfig)}
+                        onClick={() =>
+                          switchNetwork ? switchNetwork(chainConfig?.id) : null
+                        }
                       >
                         <ButtonIcon
                           src={getChainIcon(chainConfig?.id)}

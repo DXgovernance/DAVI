@@ -1,22 +1,10 @@
-import { useWeb3React } from '@web3-react/core';
 import { FiCheckCircle, FiCopy, FiExternalLink } from 'react-icons/fi';
 import { isMobile, isDesktop } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
-
-import {
-  getBlockchainLink,
-  NETWORK_NAMES,
-  shortenAddress,
-  MAINNET_ID,
-} from 'utils';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import { shortenAddress } from 'utils';
 import useClipboard from 'hooks/Guilds/useClipboard';
-import { findWalletType } from 'provider/connectors';
-
 import { LiveIndicator } from '../LiveIndicator';
 import { Button } from 'old-components/Guilds/common/Button';
-import Avatar from 'old-components/Guilds/Avatar';
-
 import {
   Wrapper,
   Row,
@@ -29,55 +17,55 @@ import {
   IconHolder,
   CenteredButton,
 } from './WalletInfoBox.styled';
+import { useAccount, useEnsName, useNetwork } from 'wagmi';
+import ENSAvatar from 'old-components/Guilds/Avatar/ENSAvatar';
+import { getBlockExplorerUrl } from 'provider';
 
 interface WalletInfoBoxProps {
   openOptions: () => void;
 }
 
 export const WalletInfoBox = ({ openOptions }: WalletInfoBoxProps) => {
-  const { account, connector, chainId } = useWeb3React();
-  const { ensName, imageUrl } = useENSAvatar(account, MAINNET_ID);
-  const [isCopied, copyAddress] = useClipboard(account, 3000);
+  const { address, connector } = useAccount();
+  const { chain } = useNetwork();
+  const { data: ensName } = useEnsName({ address, chainId: 1 });
+  const [isCopied, copyAddress] = useClipboard(address, 3000);
   const { t } = useTranslation();
-
-  const networkName = NETWORK_NAMES[chainId];
 
   return (
     <Wrapper>
       <ConnectionStatusRow>
         <ConnectionStatusText>
           <LiveIndicator />
-          {t('connectedTo')} {findWalletType(connector)}
+          {t('connectedTo', { walletName: connector.name })}
         </ConnectionStatusText>
         {isDesktop && (
           <div>
-            <Button onClick={openOptions}>{t('change')}</Button>
+            <Button variant="secondary" onClick={openOptions}>
+              {t('change')}
+            </Button>
           </div>
         )}
       </ConnectionStatusRow>
 
       <WalletAddressRow>
         <IconHolder>
-          <Avatar src={imageUrl} defaultSeed={account} size={24} />
+          <ENSAvatar address={address} size={24} />
         </IconHolder>
-        <AddressText>{ensName || shortenAddress(account)}</AddressText>
+        <AddressText>{ensName || shortenAddress(address)}</AddressText>
       </WalletAddressRow>
 
       <Row>
-        <ConnectionActionButton
-          variant="minimal"
-          onClick={copyAddress}
-          iconLeft
-        >
+        <ConnectionActionButton onClick={copyAddress}>
           {isCopied ? <FiCheckCircle /> : <FiCopy />}
           {isCopied ? t('copiedAddress') : t('copyAddress')}
         </ConnectionActionButton>
 
         <ExternalLink
-          href={getBlockchainLink(account, networkName, 'address')}
+          href={getBlockExplorerUrl(chain, address, 'address')}
           target="_blank"
         >
-          <ConnectionActionButton variant="minimal" iconLeft>
+          <ConnectionActionButton>
             <FiExternalLink />
             {t('viewOnBlockExplorer')}
           </ConnectionActionButton>

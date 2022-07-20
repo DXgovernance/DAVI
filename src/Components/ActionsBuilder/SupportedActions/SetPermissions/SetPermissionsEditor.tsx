@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
 import { ActionEditorProps } from '..';
@@ -13,6 +12,7 @@ import { Box } from 'Components/Primitives/Layout';
 import { MAX_UINT, ANY_ADDRESS } from 'utils';
 import { ParsedDataInterface, ValidationsInterface } from './types';
 import { useTranslation } from 'react-i18next';
+import { useNetwork } from 'wagmi';
 
 const Web3 = require('web3');
 const web3 = new Web3();
@@ -49,7 +49,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
 
   const [activeTab, setActiveTab] = useState(0);
 
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
 
   // parse transfer state from calls
   const parsedData = useMemo<ParsedDataInterface>(() => {
@@ -90,7 +90,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
   const [pickedAsset, setPickedAsset] = useState(parsedData?.asset[0]);
 
   // Get token details from the token address
-  const { tokens } = useTokenList(chainId);
+  const { tokens } = useTokenList(chain?.id);
   const token = useMemo(() => {
     if (!pickedAsset || !tokens) return null;
 

@@ -1,6 +1,6 @@
-import { useWeb3React } from '@web3-react/core';
 import { utils } from 'ethers';
 import { useMemo } from 'react';
+import { useNetwork } from 'wagmi';
 import useIPFSFile from '../ipfs/useIPFSFile';
 
 // TODO: Get the actual token registry hash
@@ -40,7 +40,7 @@ export type IPFSRichContractData = Omit<
 >;
 
 export const useRichContractRegistry = (chainId?: number) => {
-  const { chainId: activeChainId } = useWeb3React();
+  const { chain: activeChain } = useNetwork();
 
   const { data, error } = useIPFSFile<IPFSRichContractData[]>(
     RICH_CONTRACT_DATA_REGISTRY
@@ -48,7 +48,7 @@ export const useRichContractRegistry = (chainId?: number) => {
 
   const registryContracts: RichContractData[] = useMemo(() => {
     if (error || !data) return null;
-    if (activeChainId === 1337) {
+    if (activeChain?.id === 1337) {
       // Add runtime determined localhost addresses
       const localhost = require('../../../configs/localhost/config.json');
       // Update vesting factory address
@@ -83,6 +83,7 @@ export const useRichContractRegistry = (chainId?: number) => {
               },
             ],
             templateLiteral:
+              // eslint-disable-next-line no-template-curly-in-string
               'Mint NFT to ${recipient} with tokenURI ${tokenURI}',
             shortDescription: 'Creates NFTs minted by DXdao',
             longDescription:
@@ -94,7 +95,7 @@ export const useRichContractRegistry = (chainId?: number) => {
     }
 
     return data
-      .filter(contract => !!contract.networks[chainId || activeChainId])
+      .filter(contract => !!contract.networks[chainId || activeChain?.id])
       .map(contract => {
         // Construct the Ethers Contract interface from registry data
         const contractInterface = new utils.Interface(
@@ -114,11 +115,11 @@ export const useRichContractRegistry = (chainId?: number) => {
 
         return {
           ...contract,
-          contractAddress: contract.networks[chainId || activeChainId],
+          contractAddress: contract.networks[chainId || activeChain?.id],
           contractInterface,
         };
       });
-  }, [chainId, activeChainId, data, error]);
+  }, [chainId, activeChain, data, error]);
 
   return {
     contracts: registryContracts,

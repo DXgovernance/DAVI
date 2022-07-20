@@ -16,8 +16,6 @@ const invalidProps: ProposalStatusProps = {
   endTime: null,
 };
 
-jest.mock('contexts/index', () => jest.fn());
-
 test('ProposalStatus votes', async () => {
   const { container } = render(<ProposalStatus {...validProps} />);
 

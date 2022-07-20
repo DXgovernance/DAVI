@@ -27,6 +27,8 @@ import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import { ActionsBuilder } from 'Components/ActionsBuilder';
+import { useAccount } from 'wagmi';
+import { isReadOnly } from 'provider/wallets';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -84,6 +86,7 @@ const HeaderTopRow = styled(Box)`
 `;
 
 const ProposalPage: React.FC = () => {
+  const { connector } = useAccount();
   const { chainName, guildId, proposalId } = useTypedParams();
 
   const { isLoading: isGuildAvailabilityLoading } = useContext(
@@ -161,7 +164,7 @@ const ProposalPage: React.FC = () => {
               status={status}
               endTime={proposal?.endTime}
             />
-            {status === ProposalState.Executable && (
+            {status === ProposalState.Executable && !isReadOnly(connector) && (
               <ExecuteButton executeProposal={executeProposal} />
             )}
           </HeaderTopRow>

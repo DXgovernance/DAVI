@@ -2,8 +2,6 @@ import ProposalTypes from './ProposalTypes';
 import { render } from 'utils/tests';
 import { testProps } from './fixtures';
 
-jest.mock('contexts/index', () => jest.fn());
-
 describe('ProposalTypes', () => {
   const props = testProps;
 

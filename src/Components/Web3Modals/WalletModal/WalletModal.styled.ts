@@ -6,11 +6,9 @@ export const Container = styled.div`
   margin: 2rem;
 `;
 
-export const ErrorHeading = styled(Heading)`
-  line-height: 0;
-  margin: 0;
-  margin-bottom: 1.5rem;
-  padding: 0;
+export const ConnectionError = styled.div`
+  text-align: center;
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export const BackIcon = styled(FiArrowLeft)`
@@ -38,4 +36,5 @@ export const TransactionsListHeading = styled(Heading)`
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   font-size: ${({ theme }) => theme.fontSizes.body};
+  color: ${({ theme }) => theme.colors.proposalText.grey};
 `;

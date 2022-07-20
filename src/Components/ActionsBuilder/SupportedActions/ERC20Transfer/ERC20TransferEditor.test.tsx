@@ -4,6 +4,7 @@
 // which uses the IPFSService making this test fail.
 
 import { BigNumber } from 'ethers';
+import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
 import ERC20TransferEditor from './ERC20TransferEditor';
 import {
@@ -32,10 +33,10 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
 }));
 
 const mockChainId = 123456;
-jest.mock('@web3-react/core', () => ({
-  useWeb3React: () => ({
-    chainId: mockChainId,
-  }),
+const mockAddress = ZERO_ADDRESS;
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
+  useAccount: () => ({ address: mockAddress }),
 }));
 
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
@@ -50,7 +51,7 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
   }),
 }));
 
-describe.skip('ERC20TransferEditor', () => {
+describe('ERC20TransferEditor', () => {
   it('Should match snapshot', () => {
     const { container } = render(
       <ERC20TransferEditor

@@ -9,7 +9,6 @@ jest.mock('hooks/Guilds/guild/useProposalSummaryActions', () => {
     useProposalSummaryActions: jest.fn(),
   };
 });
-jest.mock('contexts/index', () => jest.fn());
 
 describe('ProposalCardActionSummary', () => {
   it('Should match snapshot without proposal', async () => {

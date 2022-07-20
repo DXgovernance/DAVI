@@ -5,8 +5,6 @@ import { fireEvent } from '@testing-library/react';
 import Avatar from 'old-components/Guilds/Avatar';
 import dxdaoIcon from 'assets/images/dxdao-icon.svg';
 
-jest.mock('contexts/index', () => jest.fn());
-
 const mockOnSelect = jest.fn();
 fullProps.onSelect = mockOnSelect;
 
