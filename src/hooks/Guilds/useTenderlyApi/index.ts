@@ -1,7 +1,6 @@
 import { ethers } from 'ethers';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import { Call, Option } from 'Components/ActionsBuilder/types';
-import { useNetwork } from 'wagmi';
+import { useNetwork, useProvider } from 'wagmi';
 
 // Variables are hardcoded because they didn't work
 // with GitHub. It might change later
@@ -11,7 +10,7 @@ const TENDERLY_ACCESS_KEY = 'fbzJG0PD3R8sX5i2vCCqh4r3YyrELtIO';
 
 export const useTransactionSimulation = () => {
   const { chain } = useNetwork();
-  const provider = useJsonRpcProvider();
+  const provider = useProvider();
 
   async function simulateTransactions(options: Option[]) {
     try {

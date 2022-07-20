@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { resolveUri } from '../../../../utils/url';
 import ERC1155abi from '../../../../abis/ERC1155.json';
-import useJsonRpcProvider from 'hooks/Guilds/web3/useJsonRpcProvider';
 import useEtherSWR from '../useEtherSWR';
 import { BigNumber } from 'ethers';
 import useSWR from 'swr';
+import { useProvider } from 'wagmi';
 
 type ERC1155Data = {
   balanceOf: BigNumber;
@@ -17,7 +17,7 @@ export default function useERC1155NFT(
   ownerAddress?: string,
   chainId?: number
 ) {
-  const provider = useJsonRpcProvider();
+  const provider = useProvider();
   const { data: result } = useEtherSWR(
     contractId
       ? [

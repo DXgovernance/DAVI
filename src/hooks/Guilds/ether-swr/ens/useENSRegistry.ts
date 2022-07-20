@@ -1,16 +1,16 @@
 import { utils } from 'ethers';
 import { useMemo } from 'react';
+import { useProvider } from 'wagmi';
 import ensRegistrarABI from '../../../../abis/ENSRegistrar.json';
 import { ENS_REGISTRAR_ADDRESS } from '../../../../constants/addresses';
 import useEtherSWR from '../../ether-swr/useEtherSWR';
-import useJsonRpcProvider from '../../web3/useJsonRpcProvider';
 
 type ENSRegistryData = {
   resolverAddress?: string;
 };
 
 export default function useENSRegistry(ensName: string, chainId?: number) {
-  const provider = useJsonRpcProvider();
+  const provider = useProvider();
   const { data } = useEtherSWR(
     ensName
       ? [[ENS_REGISTRAR_ADDRESS, 'resolver', utils.namehash(ensName)]]
