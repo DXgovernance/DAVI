@@ -99,7 +99,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           name="recipientAddress"
           control={control}
           render={({ field: { ref, ...field }, fieldState }) => {
-            const { isTouched, invalid, error } = fieldState;
+            const { invalid, error } = fieldState;
 
             return (
               <Control>
@@ -108,11 +108,11 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                   <Input
                     {...field}
                     placeholder={t('ethereumAddress')}
-                    isInvalid={isTouched && invalid && !!error}
+                    isInvalid={invalid && !!error}
                     onChange={e => field.onChange(e.target.value)}
                     icon={
                       <div>
-                        {isTouched && !invalid && !error && (
+                        {!invalid && !error && (
                           <Avatar
                             src={destinationAvatarUrl}
                             defaultSeed={field.value}
@@ -130,7 +130,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     }
                   />
                 </ControlRow>
-                {isTouched && invalid && !!error && <Error>{error}</Error>}
+                {invalid && !!error && <Error>{error}</Error>}
               </Control>
             );
           }}
@@ -141,7 +141,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
             name="amount"
             control={control}
             render={({ field: { ref, ...field }, fieldState }) => {
-              const { isTouched, invalid, error } = fieldState;
+              const { invalid, error } = fieldState;
 
               return (
                 <Control>
@@ -150,11 +150,11 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     <TokenAmountInput
                       {...field}
                       decimals={tokenInfo?.decimals}
-                      isInvalid={isTouched && invalid && !!error}
+                      isInvalid={invalid && !!error}
                     />
                   </ControlRow>
 
-                  {isTouched && invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error}</Error>}
                 </Control>
               );
             }}
@@ -211,7 +211,9 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           />
         </ControlRow>
 
-        <BlockButton type="submit">{t('saveAction')}</BlockButton>
+        <BlockButton data-testid="submit-erc20transfer" type="submit">
+          {t('saveAction')}
+        </BlockButton>
       </form>
     </div>
   );

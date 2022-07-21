@@ -22,7 +22,15 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
             <div
               class="sc-dmlqKv gKcicO"
             >
-              <div />
+              <div>
+                <img
+                  alt="Avatar"
+                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
+              </div>
             </div>
             <input
               class="sc-dIUeWJ jJPCe"
@@ -130,6 +138,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
       </div>
       <button
         class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        data-testid="submit-erc20transfer"
         type="submit"
       >
         saveAction
@@ -162,7 +171,15 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
             <div
               class="sc-dmlqKv gKcicO"
             >
-              <div />
+              <div>
+                <img
+                  alt="Avatar"
+                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
+              </div>
             </div>
             <input
               class="sc-dIUeWJ jJPCe"
@@ -270,6 +287,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
       </div>
       <button
         class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        data-testid="submit-erc20transfer"
         type="submit"
       >
         saveAction
