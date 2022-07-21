@@ -9,7 +9,7 @@ import { Picker } from 'Components/Primitives/Forms/Picker';
 import { ethers } from 'ethers';
 import { resolveUri } from 'utils/url';
 import Avatar from 'old-components/Guilds/Avatar';
-import { useAccount } from 'wagmi';
+import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { ZERO_ADDRESS } from 'utils';
 
 const TokenPicker: React.FC<TokenPickerProps> = ({
@@ -20,7 +20,11 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
 }) => {
   const { t } = useTranslation();
   const { address } = useAccount();
+  const { chain } = useNetwork();
   const { data } = useAllERC20Balances(walletAddress || address);
+  const { data: nativeTokenData } = useBalance({
+    addressOrName: walletAddress || address,
+  });
 
   const handleSelect = (option: TokenWithBalance) => {
     onSelect(option.address);
@@ -28,12 +32,12 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
 
   const tokens = useMemo(() => {
     let nativeToken = {
-      native: true,
-      chainId: 1,
       address: ZERO_ADDRESS,
-      name: 'Native token',
-      decimals: 18,
-      symbol: 'NTT',
+      balance: nativeTokenData?.value,
+      chainId: chain?.id,
+      decimals: nativeTokenData?.decimals,
+      name: nativeTokenData?.symbol,
+      symbol: nativeTokenData?.symbol,
     };
 
     data.unshift(nativeToken);
@@ -53,7 +57,6 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
         subtitle: token?.name,
         value: token?.address,
         rightData: formattedBalance,
-        native: false,
         icon: (
           <Avatar
             src={resolveUri(token?.logoURI)}
@@ -65,7 +68,7 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
     });
 
     return formattedTokenData;
-  }, [data]);
+  }, [data, nativeTokenData, chain]);
 
   return (
     <Picker

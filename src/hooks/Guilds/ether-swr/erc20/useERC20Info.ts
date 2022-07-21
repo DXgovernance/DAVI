@@ -2,7 +2,6 @@ import useEtherSWR from '../useEtherSWR';
 import ERC20ABI from '../../../../abis/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
-import { ZERO_ADDRESS } from 'utils';
 
 export type ERC20Info = {
   name: string;
@@ -27,15 +26,6 @@ export const useERC20Info = (contractAddress: string) => {
   );
 
   const transformedData: ERC20Info = useMemo(() => {
-    if (contractAddress === ZERO_ADDRESS) {
-      return {
-        name: 'Ether',
-        symbol: 'ETH',
-        decimals: 18,
-        totalSupply: BigNumber.from('150'),
-      };
-    }
-
     if (!data) return undefined;
 
     return {
@@ -44,7 +34,7 @@ export const useERC20Info = (contractAddress: string) => {
       decimals: data[2],
       totalSupply: data[3],
     };
-  }, [data, contractAddress]);
+  }, [data]);
 
   return { data: transformedData, ...rest };
 };

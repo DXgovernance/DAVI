@@ -11,7 +11,7 @@ import { Box } from 'Components/Primitives/Layout';
 import { useEffect, useMemo, useState } from 'react';
 import { FiChevronDown, FiX } from 'react-icons/fi';
 import styled from 'styled-components';
-import { MAINNET_ID, ZERO_ADDRESS } from 'utils';
+import { getNetworkById, MAINNET_ID, ZERO_ADDRESS } from 'utils';
 import { resolveUri } from 'utils/url';
 import {
   Control,
@@ -123,7 +123,19 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     return tokens.find(({ address }) => address === parsedData.tokenAddress);
   }, [tokens, parsedData]);
 
-  const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
+  const { data: erc20TokenInfo } = useERC20Info(parsedData?.tokenAddress);
+  const { nativeAsset } = getNetworkById(chain?.id);
+
+  let tokenSymbol = useMemo(() => {
+    if (erc20TokenInfo !== undefined) {
+      return erc20TokenInfo.symbol;
+    } else if (tokenAddress === ZERO_ADDRESS) {
+      return nativeAsset.symbol;
+    } else {
+      return '';
+    }
+  }, [erc20TokenInfo, nativeAsset, tokenAddress]);
+
   const { imageUrl: destinationAvatarUrl } = useENSAvatar(
     parsedData?.destination,
     MAINNET_ID
@@ -165,7 +177,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           <ControlLabel>{t('amount')}</ControlLabel>
           <ControlRow>
             <TokenAmountInput
-              decimals={tokenInfo?.decimals}
+              decimals={erc20TokenInfo?.decimals || nativeAsset?.decimals}
               value={tokenAmount}
               onChange={setTokenAmount}
             />
@@ -178,7 +190,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           <ControlLabel>{t('asset')}</ControlLabel>
           <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
             <Input
-              value={tokenInfo?.symbol || ''}
+              value={tokenSymbol}
               placeholder={t('token')}
               icon={
                 <div>
