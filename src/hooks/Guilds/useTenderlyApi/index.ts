@@ -89,7 +89,7 @@ const simulateAction = async (
 ) => {
   const simulationUrl = `${forkUrl}/simulate`;
   const network_id = chainId.toString();
-  const { from, to, data: input } = action;
+  const { from, to, data: input, value } = action;
 
   const headers = { 'X-Access-Key': TENDERLY_ACCESS_KEY };
 
@@ -100,7 +100,7 @@ const simulateAction = async (
     input,
     gas: 800000,
     gas_price: '0',
-    value: 0,
+    value: value.toString(),
     save_if_fails: true,
     save: true,
   };
