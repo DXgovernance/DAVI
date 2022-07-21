@@ -8,6 +8,7 @@ import {
   defaultValues,
   getEditor,
   supportedActions,
+  displaySubmit,
 } from 'Components/ActionsBuilder/SupportedActions';
 import {
   DecodedAction,
@@ -51,8 +52,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
     React.useState(false);
   const [payableFnData, setPayableFnData] =
     React.useState<TokenSpendApproval>(null);
-
-  const [disableSaveAction, setDisableSaveAction] = React.useState(false);
 
   useEffect(() => {
     if (!action?.decodedCall) return;
@@ -150,14 +149,13 @@ const ActionModal: React.FC<ActionModalProps> = ({
           <Editor
             decodedCall={data}
             updateCall={setData}
-            toggleDisableSaveBtn={setDisableSaveAction}
+            onSubmit={saveSupportedAction}
           />
-          <BlockButton
-            onClick={saveSupportedAction}
-            disabled={disableSaveAction}
-          >
-            {t('saveAction')}
-          </BlockButton>
+          {displaySubmit(selectedAction) && (
+            <BlockButton onClick={() => saveSupportedAction()}>
+              {t('saveAction')}
+            </BlockButton>
+          )}
         </EditorWrapper>
       );
     }
@@ -200,12 +198,13 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedActionContract(defaultDecodedAction.contract);
   }
 
-  function saveSupportedAction() {
-    if (!selectedAction || !data || !setSelectedActionContract) return;
+  function saveSupportedAction(call?: DecodedCall) {
+    const decodedCall = call ?? data;
+    if (!selectedAction || !decodedCall || !setSelectedActionContract) return;
 
     const decodedAction: DecodedAction = {
       id: `action-${Math.random()}`,
-      decodedCall: data,
+      decodedCall,
       contract: selectedActionContract,
     };
 

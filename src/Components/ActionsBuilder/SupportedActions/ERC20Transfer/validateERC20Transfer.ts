@@ -1,60 +1,49 @@
 import { BigNumber, utils } from 'ethers';
 
-interface ValidField {
-  isValid: boolean;
-  msg: string;
-}
-interface validateERC20TransferProps {
+interface validateERC20TransferValues {
   recipientAddress: string;
-  amount: BigNumber;
+  amount: any;
   tokenAddress: string;
 }
 
-interface validateERC20TransferReturn {
-  isValid: boolean;
-  recipientAddress: ValidField;
-  amount: ValidField;
-  tokenAddress: ValidField;
-}
-
-const validateERC20Transfer = ({
-  recipientAddress,
-  amount,
-  tokenAddress,
-}: validateERC20TransferProps): validateERC20TransferReturn => {
-  const result = {
-    recipientAddress: { isValid: true, msg: '' },
-    amount: { isValid: true, msg: '' },
-    tokenAddress: { isValid: true, msg: '' },
+const validateERC20Transfer = (values: validateERC20TransferValues) => {
+  const { recipientAddress, amount, tokenAddress } = values;
+  let errors = {
+    recipientAddress: null,
+    amount: null,
+    tokenAddress: null,
   };
+
   if (!recipientAddress) {
-    result.recipientAddress.isValid = false;
-    result.recipientAddress.msg = 'Recipient address is required';
+    errors.recipientAddress = 'Recipient address is required';
   }
   if (!amount) {
-    result.amount.isValid = false;
-    result.amount.msg = 'Amount is required';
+    errors.amount = 'Amount is required';
   }
   if (!tokenAddress) {
-    result.tokenAddress.isValid = false;
-    result.tokenAddress.msg = 'Token address is required';
+    errors.tokenAddress = 'Token address is required';
   }
   if (!utils.isAddress(tokenAddress)) {
-    result.tokenAddress.isValid = false;
-    result.tokenAddress.msg = 'Invalid token address';
+    errors.tokenAddress = 'Invalid token address';
   }
   if (!BigNumber.isBigNumber(amount)) {
-    result.amount.isValid = false;
-    result.amount.msg = 'Invalid amount';
+    errors.amount = 'Invalid amount format';
+  }
+  if (BigNumber.isBigNumber(amount) && amount.lte(0)) {
+    errors.amount = 'Amount cannot be zero';
   }
   if (!utils.isAddress(recipientAddress)) {
-    result.recipientAddress.isValid = false;
-    result.recipientAddress.msg = 'Invalid recipient address';
+    errors.recipientAddress = 'Invalid recipient address';
   }
 
   return {
-    ...result,
-    isValid: Object.values(result).every(field => field.isValid),
+    errors: Object.entries(errors).reduce((acc, [key, value]) => {
+      return {
+        ...acc,
+        ...(!!value && { [key]: value }), // remove keys that has no error value
+      };
+    }, {}),
+    values,
   };
 };
 
