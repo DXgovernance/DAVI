@@ -6,6 +6,16 @@ export const encodeCall = (
   decodedCall: DecodedCall,
   contractInterface: utils.Interface
 ) => {
+  // Special case for native token transfer
+  if (
+    decodedCall.callType === 'ERC20_TRANSFER' &&
+    decodedCall.args._to === '' &&
+    decodedCall.args._value === '' &&
+    decodedCall.value._hex !== '0x00'
+  ) {
+    return '';
+  }
+
   const args = contractInterface
     .getFunction(decodedCall.function.name)
     .inputs.map(input => decodedCall.args[input.name]);
