@@ -56,8 +56,7 @@ describe('ERC20TransferEditor', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferDecodedCallMock}
-        updateCall={jest.fn()}
-        toggleDisableSaveBtn={jest.fn()}
+        onSubmit={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();
@@ -66,8 +65,7 @@ describe('ERC20TransferEditor', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferEmptyDecodedCallMock}
-        updateCall={jest.fn()}
-        toggleDisableSaveBtn={jest.fn()}
+        onSubmit={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();

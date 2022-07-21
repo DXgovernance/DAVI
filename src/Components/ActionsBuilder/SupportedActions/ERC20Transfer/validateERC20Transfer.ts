@@ -1,12 +1,20 @@
 import { BigNumber, utils } from 'ethers';
+import { TFunction } from 'react-i18next';
 
-interface validateERC20TransferValues {
+interface ValidateERC20TransferValues {
   recipientAddress: string;
   amount: any;
   tokenAddress: string;
 }
 
-const validateERC20Transfer = (values: validateERC20TransferValues) => {
+interface Context {
+  t: TFunction;
+}
+
+const validateERC20Transfer = (
+  values: ValidateERC20TransferValues,
+  { t }: Context
+) => {
   const { recipientAddress, amount, tokenAddress } = values;
   let errors = {
     recipientAddress: null,
@@ -14,26 +22,26 @@ const validateERC20Transfer = (values: validateERC20TransferValues) => {
     tokenAddress: null,
   };
 
-  if (!recipientAddress) {
-    errors.recipientAddress = 'Recipient address is required';
-  }
-  if (!amount) {
-    errors.amount = 'Amount is required';
-  }
-  if (!tokenAddress) {
-    errors.tokenAddress = 'Token address is required';
-  }
   if (!utils.isAddress(tokenAddress)) {
-    errors.tokenAddress = 'Invalid token address';
+    errors.tokenAddress = t('invalidTokenAddress');
   }
   if (!BigNumber.isBigNumber(amount)) {
-    errors.amount = 'Invalid amount format';
+    errors.amount = t('invalidAmount');
   }
   if (BigNumber.isBigNumber(amount) && amount.lte(0)) {
-    errors.amount = 'Amount cannot be zero';
+    errors.amount = t('amountCannotBeZero');
   }
   if (!utils.isAddress(recipientAddress)) {
-    errors.recipientAddress = 'Invalid recipient address';
+    errors.recipientAddress = t('invalidRecipientAddress');
+  }
+  if (!recipientAddress) {
+    errors.recipientAddress = t('recipientAddressIsRequired');
+  }
+  if (!amount) {
+    errors.amount = t('amountIsRequired');
+  }
+  if (!tokenAddress) {
+    errors.tokenAddress = t('tokenAddressIsRequired');
   }
 
   return {

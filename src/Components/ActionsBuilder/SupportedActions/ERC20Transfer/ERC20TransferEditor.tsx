@@ -52,6 +52,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   const { t } = useTranslation();
   const { control, handleSubmit, getValues } = useForm({
     resolver: validateERC20Transfer,
+    context: { t },
   });
 
   const { tokenAddress, recipientAddress } = getValues();
