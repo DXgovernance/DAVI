@@ -101,7 +101,7 @@ exports[`TokenPicker Should match snapshot 1`] = `
                 class="sc-dIUeWJ fkXUVf"
               >
                 <div
-                  aria-label="Option item NTT"
+                  aria-label="Option item ETH"
                   class="sc-dmlqKv fciZmT"
                 >
                   <div
@@ -168,18 +168,20 @@ exports[`TokenPicker Should match snapshot 1`] = `
                       <div
                         class="sc-bBXrwG mpfPK"
                       >
-                        NTT
+                        ETH
                       </div>
                       <div
                         class="sc-iwyWTf gmwEAG"
                       >
-                        Native token
+                        ETH
                       </div>
                     </div>
                   </div>
                   <div
                     class="sc-cxFLGX kjgnL"
-                  />
+                  >
+                    0
+                  </div>
                 </div>
                 <div
                   aria-label="Option item SWPR"

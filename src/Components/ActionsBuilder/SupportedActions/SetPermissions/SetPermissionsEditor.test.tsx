@@ -30,6 +30,17 @@ jest.mock('hooks/Guilds/ether-swr/useEtherSWR.ts', () => ({
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: false }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+  useBalance: () => ({
+    data: {
+      decimals: 18,
+      formatted: 'ETH',
+      symbol: 'ETH',
+      value: {
+        type: 'BigNumber',
+        hex: '0x8ac7230489e80000',
+      },
+    },
+  }),
 }));
 
 // Mocked variables
