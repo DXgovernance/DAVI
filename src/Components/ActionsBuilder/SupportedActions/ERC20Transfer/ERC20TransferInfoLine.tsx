@@ -7,7 +7,7 @@ import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
 import { FiArrowRight, FiNavigation } from 'react-icons/fi';
-import { MAINNET_ID, shortenAddress } from 'utils';
+import { MAINNET_ID, shortenAddress, ZERO_ADDRESS } from 'utils';
 import { useTranslation } from 'react-i18next';
 
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
@@ -19,12 +19,26 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
-    return {
-      tokenAddress: decodedCall.to,
-      amount: BigNumber.from(decodedCall.args._value),
-      source: decodedCall.from,
-      destination: decodedCall.args._to as string,
-    };
+    const isNativeToken =
+      decodedCall.value !== null && decodedCall.value._hex !== '0x00'
+        ? true
+        : false;
+
+    if (isNativeToken) {
+      return {
+        tokenAddress: ZERO_ADDRESS,
+        amount: BigNumber.from(decodedCall.value),
+        source: decodedCall.from,
+        destination: decodedCall.to as string,
+      };
+    } else {
+      return {
+        tokenAddress: decodedCall.to,
+        amount: BigNumber.from(decodedCall.args._value),
+        source: decodedCall.from,
+        destination: decodedCall.args._to as string,
+      };
+    }
   }, [decodedCall]);
 
   const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);

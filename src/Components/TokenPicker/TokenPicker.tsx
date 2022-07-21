@@ -10,6 +10,7 @@ import { ethers } from 'ethers';
 import { resolveUri } from 'utils/url';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useAccount } from 'wagmi';
+import { ZERO_ADDRESS } from 'utils';
 
 const TokenPicker: React.FC<TokenPickerProps> = ({
   walletAddress,
@@ -25,9 +26,20 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
     onSelect(option.address);
   };
 
-  // "Translate" token data to fields needed in the Picker component
   const tokens = useMemo(() => {
-    return data.map(token => {
+    let nativeToken = {
+      native: true,
+      chainId: 1,
+      address: ZERO_ADDRESS,
+      name: 'Native token',
+      decimals: 18,
+      symbol: 'NTT',
+    };
+
+    data.unshift(nativeToken);
+
+    // "Translate" token data to fields needed in the Picker component
+    let formattedTokenData = data.map(token => {
       let formattedBalance = (
         token.balance !== undefined
           ? ethers.utils.formatUnits(token?.balance, token?.decimals)
@@ -41,6 +53,7 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
         subtitle: token?.name,
         value: token?.address,
         rightData: formattedBalance,
+        native: false,
         icon: (
           <Avatar
             src={resolveUri(token?.logoURI)}
@@ -50,6 +63,8 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
         ),
       };
     });
+
+    return formattedTokenData;
   }, [data]);
 
   return (

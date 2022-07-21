@@ -101,6 +101,87 @@ exports[`TokenPicker Should match snapshot 1`] = `
                 class="sc-dIUeWJ fkXUVf"
               >
                 <div
+                  aria-label="Option item NTT"
+                  class="sc-dmlqKv fciZmT"
+                >
+                  <div
+                    class="sc-kfzBvY hKwTyb"
+                  >
+                    <div
+                      class="sc-fKFxtB dXgjuJ"
+                    >
+                      <div
+                        class="paper"
+                        style="border-radius: 50px; display: inline-block; margin: 0px; overflow: hidden; padding: 0px; background-color: rgb(24, 151, 242); height: 28px; width: 28px;"
+                      >
+                        <svg
+                          height="28"
+                          width="28"
+                          x="0"
+                          xmlns="http://www.w3.org/2000/svg"
+                          y="0"
+                        >
+                          <rect
+                            fill="#2362E1"
+                            height="28"
+                            rx="0"
+                            ry="0"
+                            transform="translate(3.140663911693453 -4.667521795329333) rotate(458.4 14 14)"
+                            width="28"
+                            x="0"
+                            y="0"
+                          />
+                          <rect
+                            fill="#F94301"
+                            height="28"
+                            rx="0"
+                            ry="0"
+                            transform="translate(-13.443026878443934 6.993307681050803) rotate(268.8 14 14)"
+                            width="28"
+                            x="0"
+                            y="0"
+                          />
+                          <rect
+                            fill="#FA7900"
+                            height="28"
+                            rx="0"
+                            ry="0"
+                            transform="translate(-7.941722319388745 25.795013895597954) rotate(117.3 14 14)"
+                            width="28"
+                            x="0"
+                            y="0"
+                          />
+                          <rect
+                            fill="#C8144A"
+                            height="28"
+                            rx="0"
+                            ry="0"
+                            transform="translate(-24.135907199304953 21.702378471795864) rotate(280.5 14 14)"
+                            width="28"
+                            x="0"
+                            y="0"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        class="sc-bBXrwG mpfPK"
+                      >
+                        NTT
+                      </div>
+                      <div
+                        class="sc-iwyWTf gmwEAG"
+                      >
+                        Native token
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="sc-cxFLGX kjgnL"
+                  />
+                </div>
+                <div
                   aria-label="Option item SWPR"
                   class="sc-dmlqKv fciZmT"
                 >
