@@ -45,7 +45,11 @@
   },
   "ensName": {
     "nameTooltip": "The name of the ENS name that will be registered.",
-    "ipfsHashToolTip": "The IPFS hash that will be set"
+    "ipfsHashToolTip": "The IPFS hash that will be set",
+    "domain": "Domain",
+    "currentContent": "Current content",
+    "newContent": "New content",
+    "updateContent": "ENS: Update Content"
   },
   "mint": "Mint",
   "toAddress": "To Address",

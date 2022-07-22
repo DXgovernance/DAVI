@@ -1,6 +1,6 @@
 import namehash from 'eth-ens-namehash';
 import contenthash from 'content-hash';
-import { useState, useEffect } from 'react';
+import { MAINNET_ID, LOCALHOST_ID } from 'utils';
 
 export const convertToNameHash = (name: string) => namehash.hash(name);
 
@@ -12,18 +12,10 @@ export const convertToIPFSHash = (contentHash: string) => {
   return contenthash.decode(contentHash);
 };
 
-export const useDebounce = (value: string, delay: number) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-};
+export const isValidChainId = (chainId: number) => {
+  if (!chainId || chainId === LOCALHOST_ID) {
+    return MAINNET_ID
+  } else {
+    return chainId
+  }
+}

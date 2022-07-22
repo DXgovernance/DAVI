@@ -1,30 +1,42 @@
 import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
 import { Segment } from '../common/infoLine';
 import Summary from '../common/Summary';
+import { useUpdateEnsName } from 'hooks/Guilds/guild/useUpdateEnsName';
+import { useNetwork } from 'wagmi';
+import { isValidChainId } from './utils';
+import useENSNameFromAddress from 'hooks/Guilds/ether-swr/ens/useENSNameFromAddress';
+import { convertToIPFSHash } from './utils';
+import { useTranslation } from 'react-i18next';
+import { ActionViewProps } from '..';
 
-const UpdateENSNameSummary = ({ decodedCall }) => {
-  const parsedData = {
-    to: '0x0000000000000000000000000000000000000000',
-  };
+const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
+  const { t } = useTranslation();
+  const { parsedData } = useUpdateEnsName({ decodedCall });
 
-  // Get nameHash from decodedCall
-  // Use hook to call Public Resolver method to get canonical name
-  // Do we need to show the value in the summary in case you could get a malicious user that would try and interact?
+  const { chain } = useNetwork();
+  const chainId = isValidChainId(chain.id);
+  const ensName = useENSNameFromAddress(parsedData?.from, chainId);
+  const ipfsHash = convertToIPFSHash(parsedData?.contentHash);
+  const ipfsRoot = 'ipfs://';
+
   return (
     <>
-      <DetailHeader>{'ENS Name:'}</DetailHeader>
-
+      <DetailHeader>{t('ensName.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <Segment>{'kenny.eth' || ''}</Segment>
+          <Segment>{ensName || parsedData?.from}</Segment>
         </DetailBody>
       </DetailRow>
-
-      <DetailHeader>{'IPFS Hash:'}</DetailHeader>
-
+      <DetailHeader>{t('ensName.currentContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <Segment>{parsedData.to || ''}</Segment>
+          <Segment>{`${ipfsRoot}${ipfsHash}` || ''}</Segment>
+        </DetailBody>
+      </DetailRow>
+      <DetailHeader>{t('ensName.newContent')}</DetailHeader>
+      <DetailRow>
+        <DetailBody>
+          <Segment>{`${ipfsRoot}${ipfsHash}` || ''}</Segment>
         </DetailBody>
       </DetailRow>
       <Summary decodedCall={decodedCall} address={parsedData?.to} />

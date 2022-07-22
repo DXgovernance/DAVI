@@ -34,3 +34,8 @@ export const StyledInfoIcon = styled(StyledIcon)`
     color: ${({ theme }) => theme.colors.text};
   }
 `;
+
+export const StyledENSIcon = styled(StyledIcon)`
+  width: 1.4rem;
+  height: 1.4rem;
+`;

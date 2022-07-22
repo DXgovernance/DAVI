@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import { ReactComponent as Vector } from 'assets/images/vector.svg';
+import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import {
@@ -75,7 +76,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
           }
         >
           <ButtonLabel>
-            <StyledIcon src={Vector} />
+            <StyledIcon src={ENSIcon} />
             {t('updateENSName')}
           </ButtonLabel>
         </ActionsButton>

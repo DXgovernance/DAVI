@@ -4,31 +4,27 @@ import React, { useState, useEffect } from 'react';
 import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
-import { useDebounce, convertToContentHash, convertToNameHash } from './utils';
+import { convertToContentHash, convertToNameHash, isValidChainId } from './utils';
+import { useDebounce } from 'hooks/Guilds/useDebounce';
 import useENSRegistry from 'hooks/Guilds/ether-swr/ens/useENSRegistry';
 import { isEnsName, isIPFSHash } from './validation';
 import { useTranslation } from 'react-i18next';
-import { LOCALHOST_ID, MAINNET_ID } from 'utils';
 import { useNetwork } from 'wagmi';
+import { ActionEditorProps } from '..';
 
-const UpdateENSNameEditor = ({ decodedCall, updateCall }) => {
+const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({ decodedCall, updateCall }) => {
   const { t } = useTranslation();
 
   const [ensName, setEnsName] = useState('');
   const [ipfsHash, setIpfsHash] = useState('');
 
   // useDebounce will make sure we're not spamming the resolver
-  const debouncedEnsName = useDebounce(ensName, 500);
-  const debouncedIpfsHash = useDebounce(ipfsHash, 500);
+  const debouncedEnsName = useDebounce(ensName, 200);
+  const debouncedIpfsHash = useDebounce(ipfsHash, 200);
 
   const { chain } = useNetwork();
-  let registryChainId = null;
-
-  //QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
-  if (!chain.id || chain.id === LOCALHOST_ID) {
-    registryChainId = MAINNET_ID;
-  }
-  const ensRegistry = useENSRegistry(debouncedEnsName, registryChainId);
+  const chainId = isValidChainId(chain.id);
+  const ensRegistry = useENSRegistry(debouncedEnsName, chainId);
 
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
@@ -56,7 +52,7 @@ const UpdateENSNameEditor = ({ decodedCall, updateCall }) => {
       });
     }
   }, [debouncedIpfsHash]);
-
+  console.log({decodedCall})
   return (
     <React.Fragment>
       <Control>
