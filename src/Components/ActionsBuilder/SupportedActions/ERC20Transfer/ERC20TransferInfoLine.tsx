@@ -7,14 +7,21 @@ import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
 import { FiArrowRight, FiNavigation } from 'react-icons/fi';
-import { MAINNET_ID, shortenAddress, ZERO_ADDRESS } from 'utils';
+import {
+  getNetworkById,
+  MAINNET_ID,
+  shortenAddress,
+  ZERO_ADDRESS,
+} from 'utils';
 import { useTranslation } from 'react-i18next';
+import { useNetwork } from 'wagmi';
 
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
 }) => {
   const { t } = useTranslation();
+  const { chain } = useNetwork();
 
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
@@ -41,10 +48,20 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
     }
   }, [decodedCall]);
 
-  const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
+  const { data: erc20TokenInfo } = useERC20Info(parsedData?.tokenAddress);
+  const { nativeAsset } = getNetworkById(chain?.id);
+
+  let [tokenSymbol, tokenDecimals] = useMemo(() => {
+    if (erc20TokenInfo !== undefined) {
+      return [erc20TokenInfo.symbol, erc20TokenInfo.decimals];
+    } else {
+      return [nativeAsset.symbol, nativeAsset.decimals];
+    }
+  }, [erc20TokenInfo, nativeAsset]);
+
   const roundedBalance = useBigNumberToNumber(
     parsedData?.amount,
-    tokenInfo?.decimals,
+    tokenDecimals,
     4
   );
   const { ensName, imageUrl } = useENSAvatar(
@@ -58,7 +75,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
         <FiNavigation size={16} />
       </Segment>
       <Segment>
-        {!compact ? t('transfer') : ''} {roundedBalance} {tokenInfo?.symbol}
+        {!compact ? t('transfer') : ''} {roundedBalance} {tokenSymbol}
       </Segment>
       <Segment>
         <FiArrowRight />

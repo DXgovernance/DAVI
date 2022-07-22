@@ -28,6 +28,7 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
     transfer
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"
@@ -102,6 +103,7 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
     
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"
@@ -176,6 +178,7 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
     transfer
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"
@@ -250,6 +253,7 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
     
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"
@@ -324,6 +328,7 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
     transfer
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"
@@ -398,6 +403,7 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
     
      
      
+    ETH
   </span>
   <span
     class="sc-bdfBQB enldmJ"

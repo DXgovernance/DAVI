@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'old-components/Guilds/common/Button';
@@ -16,6 +16,7 @@ import {
   ParamTitleTag,
 } from './CallDetails.styled';
 import { useTranslation } from 'react-i18next';
+import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 
 export const CallDetails: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -24,6 +25,19 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const theme = useTheme();
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
+
+  let isTransferingNativeTokens = useMemo(() => {
+    if (
+      parsedValueToString !== '0.0' &&
+      decodedCall.args._to === '' &&
+      decodedCall.args._value === ''
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [parsedValueToString, decodedCall]);
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -91,30 +105,31 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           <Divider style={{ marginBottom: '2rem' }} />
         </>
       )}
-
-      <DetailsButton
-        onClick={() => setIsExpanded(!isExpanded)}
-        isExpanded={isExpanded}
-        variant={'secondary'}
-      >
-        {decodedCall?.function?.name} (
-        {decodedCall?.function?.inputs.map((param, index, params) => (
-          <span key={index}>
-            {index > 0 && <span>, </span>}
-            <ParamTag
-              key={index}
-              color={
-                isExpanded
-                  ? theme?.colors?.params?.[index]
-                  : theme?.colors?.text
-              }
-            >
-              {param?.type}
-            </ParamTag>
-          </span>
-        ))}
-        )
-      </DetailsButton>
+      {!isTransferingNativeTokens && (
+        <DetailsButton
+          onClick={() => setIsExpanded(!isExpanded)}
+          isExpanded={isExpanded}
+          variant={'secondary'}
+        >
+          {decodedCall?.function?.name} (
+          {decodedCall?.function?.inputs.map((param, index, params) => (
+            <span key={index}>
+              {index > 0 && <span>, </span>}
+              <ParamTag
+                key={index}
+                color={
+                  isExpanded
+                    ? theme?.colors?.params?.[index]
+                    : theme?.colors?.text
+                }
+              >
+                {param?.type}
+              </ParamTag>
+            </span>
+          ))}
+          )
+        </DetailsButton>
+      )}
 
       {isExpanded &&
         decodedCall?.function?.inputs?.map((param, index) => (

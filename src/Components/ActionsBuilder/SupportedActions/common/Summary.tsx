@@ -10,7 +10,7 @@ import {
   DetailBody,
   DetailHeader,
   DetailRow,
-  RedHighlight,
+  Highlight,
 } from './Summary.styled';
 
 const Summary = ({ decodedCall, address }) => {
@@ -19,6 +19,18 @@ const Summary = ({ decodedCall, address }) => {
   const { ensName, imageUrl } = useENSAvatar(address, MAINNET_ID);
   const { chain } = useNetwork();
 
+  const isTransactionDangerous = useMemo(() => {
+    if (
+      parsedValueToString !== '0.0' &&
+      decodedCall?.args._to !== '' &&
+      decodedCall?.args._value !== ''
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }, [parsedValueToString, decodedCall]);
+
   const nativeTokenSymbol = useMemo(() => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
@@ -26,12 +38,14 @@ const Summary = ({ decodedCall, address }) => {
   return (
     <>
       <DetailHeader>
-        {t('interactWith')}
+        {parsedValueToString !== '0.0' && !isTransactionDangerous
+          ? t('transfer')
+          : t('interactWith')}
         {parsedValueToString !== '0.0' && (
-          <RedHighlight>
+          <Highlight isTransactionDangerous={isTransactionDangerous}>
             {' '}
             {parsedValueToString} {nativeTokenSymbol}
-          </RedHighlight>
+          </Highlight>
         )}
         :
       </DetailHeader>

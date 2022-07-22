@@ -83,7 +83,12 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
 
-    if (parsedValueToString !== '0.0') return CardStatus.warning;
+    if (
+      parsedValueToString !== '0.0' &&
+      decodedCall?.args._to !== '' &&
+      decodedCall?.args._value !== ''
+    )
+      return CardStatus.warning;
 
     if (!decodedAction?.simulationResult) return CardStatus.normal;
 
@@ -97,6 +102,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isEditable,
     isDragging,
     parsedValueToString,
+    decodedCall,
   ]);
 
   return (

@@ -1,5 +1,5 @@
 import { Box } from 'Components/Primitives/Layout';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const DetailRow = styled(Box)`
   display: flex;
@@ -18,6 +18,10 @@ export const DetailBody = styled(DetailRow)`
   margin-top: 0;
 `;
 
-export const RedHighlight = styled.span`
-  color: ${({ theme }) => theme.colors.red};
+export const Highlight = styled.span<{ isTransactionDangerous: boolean }>`
+  ${({ isTransactionDangerous }) =>
+    isTransactionDangerous &&
+    css`
+      color: ${({ theme }) => theme.colors.red};
+    `}
 `;
