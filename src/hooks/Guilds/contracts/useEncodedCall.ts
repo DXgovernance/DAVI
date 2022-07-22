@@ -13,7 +13,7 @@ export const encodeCall = (
     decodedCall.args._value === '' &&
     decodedCall.value._hex !== '0x00'
   ) {
-    return '';
+    return '0x0000000000000000000000000000000000000000000000000000000000000000';
   }
 
   const args = contractInterface
