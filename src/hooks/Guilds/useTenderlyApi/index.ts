@@ -111,6 +111,19 @@ const simulateAction = async (
     body: JSON.stringify(body),
   }).then(response => response.json());
 
+  if (simulationResult.error) {
+    let response = {
+      simulation: {
+        status: false,
+      },
+      transaction: {
+        error_message: simulationResult.error.message,
+        status: false,
+      },
+    };
+    return response;
+  }
+
   return simulationResult;
 };
 
