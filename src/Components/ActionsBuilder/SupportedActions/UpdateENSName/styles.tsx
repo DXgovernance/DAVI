@@ -39,3 +39,16 @@ export const StyledENSIcon = styled(StyledIcon)`
   width: 1.4rem;
   height: 1.4rem;
 `;
+
+export const StyledSegmentLink = styled.a`
+  color: ${({ theme }) => theme.colors.proposalText.grey};
+  margin-right: 0.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.text};
+  }
+`;

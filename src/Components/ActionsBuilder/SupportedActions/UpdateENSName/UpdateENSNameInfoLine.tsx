@@ -10,7 +10,10 @@ import { shortenAddress } from 'utils';
 import { ActionViewProps } from '..';
 import { useTranslation } from 'react-i18next';
 
-const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({ decodedCall, compact }) => {
+const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({
+  decodedCall,
+  compact,
+}) => {
   const { parsedData } = useUpdateEnsName({ decodedCall });
   const { ensName, imageUrl } = useENSAvatar(parsedData?.from, MAINNET_ID);
   const { t } = useTranslation();
@@ -25,7 +28,7 @@ const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({ decodedCall, compact
         <MdArrowRightAlt />
       </Segment>
       <Segment>
-      <Avatar
+        <Avatar
           defaultSeed={parsedData?.from}
           src={imageUrl}
           size={compact ? 14 : 24}

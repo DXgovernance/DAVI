@@ -1,5 +1,5 @@
 import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
-import { Segment } from '../common/infoLine';
+import { StyledSegmentLink } from './styles';
 import Summary from '../common/Summary';
 import { useUpdateEnsName } from 'hooks/Guilds/guild/useUpdateEnsName';
 import { useEnsName, useNetwork } from 'wagmi';
@@ -7,6 +7,7 @@ import { convertToIPFSHash, getIpfsUrl, isValidChainId } from './utils';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
 import useENSContentHash from 'hooks/Guilds/ens/useENSContentHash';
+import { BiLinkExternal } from 'react-icons/bi';
 
 const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { t } = useTranslation();
@@ -27,19 +28,40 @@ const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
       <DetailHeader>{t('ensName.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <Segment>{ensName || parsedData?.from}</Segment>
+          <StyledSegmentLink
+            href="https://github.com/styled-components/styled-components"
+            target="_blank"
+            rel="noopener"
+          >
+            {ensName || parsedData?.from}
+            <BiLinkExternal />
+          </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
       <DetailHeader>{t('ensName.currentContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <Segment>{currentIpfsUrl || ''}</Segment>
+          <StyledSegmentLink
+            href={currentIpfsUrl || ''}
+            target="_blank"
+            rel="noopener"
+          >
+            {currentIpfsUrl || ''}
+            <BiLinkExternal />
+          </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
       <DetailHeader>{t('ensName.newContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <Segment>{newIpfsUrl || ''}</Segment>
+          <StyledSegmentLink
+            href={newIpfsUrl || ''}
+            target="_blank"
+            rel="noopener"
+          >
+            {newIpfsUrl || ''}
+            <BiLinkExternal />
+          </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
       <Summary decodedCall={decodedCall} address={parsedData?.to} />
