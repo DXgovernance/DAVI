@@ -1,6 +1,7 @@
 import { Call, DecodedCall, Option } from 'Components/ActionsBuilder/types';
 import ERC20ABI from 'abis/ERC20.json';
 import { utils, BigNumber } from 'ethers';
+import { ZERO_HASH } from 'utils';
 
 export const encodeCall = (
   decodedCall: DecodedCall,
@@ -13,7 +14,7 @@ export const encodeCall = (
     decodedCall.args._value === '' &&
     decodedCall.value._hex !== '0x00'
   ) {
-    return '0x0000000000000000000000000000000000000000000000000000000000000000';
+    return ZERO_HASH;
   }
 
   const args = contractInterface
