@@ -78,7 +78,6 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     parsedData?.destination,
     MAINNET_ID
   );
-  console.log({ destinationAvatarUrl})
 
   const setTransferAddress = (walletAddress: string) => {
     updateCall({

@@ -4,15 +4,21 @@ import React, { useState, useEffect } from 'react';
 import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
-import { convertToContentHash, convertToNameHash, isValidChainId } from './utils';
+import {
+  convertToContentHash,
+  convertToNameHash,
+  isValidChainId,
+} from './utils';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
-import useENSRegistry from 'hooks/Guilds/ether-swr/ens/useENSRegistry';
 import { isEnsName, isIPFSHash } from './validation';
 import { useTranslation } from 'react-i18next';
-import { useNetwork } from 'wagmi';
+import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
 
-const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({ decodedCall, updateCall }) => {
+const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
+  decodedCall,
+  updateCall,
+}) => {
   const { t } = useTranslation();
 
   const [ensName, setEnsName] = useState('');
@@ -21,17 +27,21 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({ decodedCall, updateC
   // useDebounce will make sure we're not spamming the resolver
   const debouncedEnsName = useDebounce(ensName, 200);
   const debouncedIpfsHash = useDebounce(ipfsHash, 200);
+  const fullEnsName = `${debouncedEnsName}.eth`;
 
   const { chain } = useNetwork();
   const chainId = isValidChainId(chain.id);
-  const ensRegistry = useENSRegistry(debouncedEnsName, chainId);
+  const { data: resolver } = useEnsResolver({
+    name: `${debouncedEnsName}.eth`,
+    chainId,
+  });
 
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
-      const nameHash = convertToNameHash(debouncedEnsName);
+      const nameHash = convertToNameHash(fullEnsName);
       updateCall({
         ...decodedCall,
-        to: ensRegistry.resolverAddress,
+        to: resolver?.address,
         args: {
           ...decodedCall.args,
           node: nameHash,
@@ -44,7 +54,7 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({ decodedCall, updateC
       const contentHash = convertToContentHash(debouncedIpfsHash);
       updateCall({
         ...decodedCall,
-        to: ensRegistry.resolverAddress,
+        to: resolver?.address,
         args: {
           ...decodedCall.args,
           hash: contentHash,
@@ -52,7 +62,7 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({ decodedCall, updateC
       });
     }
   }, [debouncedIpfsHash]);
-  console.log({decodedCall})
+  console.log({ decodedCall });
   return (
     <React.Fragment>
       <Control>

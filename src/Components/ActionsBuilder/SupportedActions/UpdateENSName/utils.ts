@@ -12,10 +12,15 @@ export const convertToIPFSHash = (contentHash: string) => {
   return contenthash.decode(contentHash);
 };
 
+export const getIpfsUrl = (ipfsHash: string) => {
+  const ipfsRoot = 'ipfs://';
+  return `${ipfsRoot}${ipfsHash}`;
+};
+
 export const isValidChainId = (chainId: number) => {
   if (!chainId || chainId === LOCALHOST_ID) {
-    return MAINNET_ID
+    return MAINNET_ID;
   } else {
-    return chainId
+    return chainId;
   }
-}
+};

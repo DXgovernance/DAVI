@@ -4,16 +4,16 @@ exports[`ERC20TransferSummary Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -41,16 +41,16 @@ exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -78,7 +78,7 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     <span
@@ -91,10 +91,10 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
