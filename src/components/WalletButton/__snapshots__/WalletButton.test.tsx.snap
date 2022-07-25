@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WalletButton Should match snapshot and display connect wallet 1`] = `
+<div>
+   
+  <button
+    class="sc-bdfBQB cnzpap"
+    data-testid="connectWalletBtn"
+  >
+    connectWallet
+  </button>
+   
+</div>
+`;
+
+exports[`WalletButton Should match snapshot and display connected address 1`] = `
+<div>
+   
+  <button
+    class="sc-bdfBQB sc-gsTEea sc-Azgjq igQAuX hqMJhH evuLsq"
+    type="submit"
+  >
+    <span
+      class="sc-cOajNj fDGYOW"
+    >
+      <img
+        alt="Avatar"
+        class="sc-dlfnuX sc-cTkxnA hZGubn hvITmw"
+        data-testid="avatar"
+        size="24"
+        src="test"
+      />
+    </span>
+    <span
+      class="sc-khAkCZ hUHrIN"
+    >
+      0x0000...0000
+    </span>
+  </button>
+   
+</div>
+`;

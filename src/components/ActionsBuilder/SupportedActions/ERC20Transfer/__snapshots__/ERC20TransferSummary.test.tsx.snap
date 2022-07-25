@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ERC20TransferSummary Should match snapshot 1`] = `
+<div>
+   
+  <div
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+  >
+    interactWith
+    :
+  </div>
+  <div
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+  >
+    <div
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+    >
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        <img
+          alt="Avatar"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        test.eth
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
+<div>
+   
+  <div
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+  >
+    interactWith
+    :
+  </div>
+  <div
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+  >
+    <div
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+    >
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        <img
+          alt="Avatar"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        test.eth
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
+<div>
+   
+  <div
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+  >
+    interactWith
+    <span
+      class="sc-bqyKOL jpIhKt"
+    >
+       
+       
+      ETH
+    </span>
+    :
+  </div>
+  <div
+    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+  >
+    <div
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+    >
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        <img
+          alt="Avatar"
+          class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+          data-testid="avatar"
+          size="24"
+          src="test"
+        />
+      </span>
+      <span
+        class="sc-gKseQn lnpFdR"
+      >
+        test.eth
+      </span>
+    </div>
+  </div>
+   
+</div>
+`;

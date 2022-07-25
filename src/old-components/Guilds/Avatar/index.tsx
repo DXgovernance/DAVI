@@ -1,4 +1,4 @@
-import { Loading } from 'Components/Primitives/Loading';
+import { Loading } from 'components/Primitives/Loading';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
 import { ButtonIcon } from '../common/Button';

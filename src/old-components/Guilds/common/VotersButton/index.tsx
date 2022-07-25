@@ -1,5 +1,5 @@
 import { Button } from '../Button';
-import { Voter } from 'Components/ProposalVoteCard/types';
+import { Voter } from 'components/ProposalVoteCard/types';
 import styled from 'styled-components';
 
 // TODO: interface Voter is coming form ProposalVotes, may be there is a better place for reuse.

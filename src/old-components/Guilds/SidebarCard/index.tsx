@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Card, CardProps } from '../common/Card';
 import { Heading } from '../common/Typography';
-import { Box } from '../../../Components/Primitives/Layout';
+import { Box } from 'components/Primitives/Layout';
 
 const cardWrapperStyles = css`
   margin-bottom: 1rem;

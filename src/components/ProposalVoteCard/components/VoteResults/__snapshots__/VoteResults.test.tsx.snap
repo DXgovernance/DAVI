@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VoteResults matches the snapshot 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU gzopFx"
+  >
+    <div
+      class="sc-eCstlR docZJE"
+    >
+      <span
+        class="sc-jSgvzq bRdqMh"
+      >
+        <span
+          class="sc-bdfBQB ewSfwU"
+          color="#295FF4"
+          size="8"
+        />
+      </span>
+      No
+    </div>
+    <span>
+      0.0001 DXD
+    </span>
+  </div>
+  <div
+    class="sc-hKgJUU gzopFx"
+  >
+    <div
+      class="sc-eCstlR docZJE"
+    >
+      <span
+        class="sc-jSgvzq bRdqMh"
+      >
+        <span
+          class="sc-bdfBQB fnYBCU"
+          color="#E75C5C"
+          size="8"
+        />
+      </span>
+      Yes
+    </div>
+    <span>
+      0.0001 DXD
+    </span>
+  </div>
+   
+</div>
+`;

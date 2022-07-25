@@ -1,9 +1,9 @@
-import { useProposal } from '../../../../hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import SidebarCard, {
   SidebarCardContent,
   SidebarCardHeader,
 } from '../../SidebarCard';
-import { Box } from '../../../../Components/Primitives/Layout';
+import { Box } from 'components/Primitives/Layout';
 import InfoItem from './InfoItem';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
@@ -11,7 +11,7 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
 import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
 import moment, { duration } from 'moment';
-import { Loading } from 'Components/Primitives/Loading';
+import { Loading } from 'components/Primitives/Loading';
 import React, { useMemo, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import styled, { css } from 'styled-components';

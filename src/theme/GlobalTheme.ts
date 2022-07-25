@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { GuildsTheme } from 'Components/theme';
+import { GuildsTheme } from 'components/theme';
 
 const GlobalStyle = createGlobalStyle<{ theme: GuildsTheme }>`
   body {
