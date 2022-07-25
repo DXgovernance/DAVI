@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { FormElementProps } from './common';
 
-const UnstyledInput = styled.input`
+const UnstyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   border: none;
   background: none;
   background-color: transparent;
