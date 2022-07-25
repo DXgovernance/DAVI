@@ -1,4 +1,4 @@
-import { GuildsTheme } from 'Components/theme';
+import { GuildsTheme } from 'components/theme';
 import { createElement } from 'react';
 import {
   FiAlertTriangle,
@@ -7,7 +7,7 @@ import {
   FiXOctagon,
 } from 'react-icons/fi';
 import styled, { useTheme } from 'styled-components';
-import { Box } from '../../../../Components/Primitives/Layout';
+import { Box } from 'components/Primitives/Layout';
 import { Heading } from '../Typography';
 
 export enum ResultState {

@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { mockChain } from 'Components/Web3Modals/fixtures';
+import { mockChain } from 'components/Web3Modals/fixtures';
 import {
   IPFSRichContractData,
   useRichContractRegistry,

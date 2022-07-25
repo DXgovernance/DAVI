@@ -1,5 +1,5 @@
 import { useTypedParams } from '../Hooks/useTypedParams';
-import ProposalCard from 'Components/ProposalCard/ProposalCard';
+import ProposalCard from 'components/ProposalCard/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
 import useVoteSummary from 'hooks/Guilds/useVoteSummary';

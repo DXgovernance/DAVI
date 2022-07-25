@@ -4,10 +4,10 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
-import GuildCard from 'Components/GuildCard/GuildCard';
+import GuildCard from 'components/GuildCard/GuildCard';
 import { Button } from 'old-components/Guilds/common/Button';
 import Input from 'old-components/Guilds/common/Form/Input';
-import { Flex } from 'Components/Primitives/Layout';
+import { Flex } from 'components/Primitives/Layout';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';

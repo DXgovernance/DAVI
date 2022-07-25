@@ -1,0 +1,403 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepMintInfoLine Should match snapshot 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    mint
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintInfoLine Should match snapshot with default values 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    mint
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintInfoLine Should match snapshot with default values in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintInfoLine Should match snapshot without data 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    mint
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
+
+exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] = `
+<div>
+   
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <div
+      class="sc-fubCzh eiZfvn sc-pGacB hUsRQV"
+    >
+      <svg>
+        mint.svg
+      </svg>
+    </div>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    
+     
+    NaN
+     %
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    <img
+      alt="Avatar"
+      class="sc-eCstlR sc-jSgvzq ebJAYl UoyFY"
+      data-testid="avatar"
+      size="14"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-gKseQn lnpFdR"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;

@@ -7,7 +7,7 @@ import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults'
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { ProposalVoteCard } from 'Components/ProposalVoteCard';
+import { ProposalVoteCard } from 'components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 

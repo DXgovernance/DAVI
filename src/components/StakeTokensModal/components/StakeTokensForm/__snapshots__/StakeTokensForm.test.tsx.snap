@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
+<div>
+   
+  <div
+    class="sc-pGacB fMzOOg"
+    data-testid="stake-tokens-modal"
+  >
+    <div
+      class="sc-jrAFXE iOZqsn"
+    >
+      <img
+        alt="DXdao Logo"
+        class="sc-kEjbQP gWbxpV"
+        src="dxdao-icon.svg"
+      />
+      <h2
+        class="sc-dlfnuX sc-iqHYmW bvZvxV dbvXAA"
+      >
+        mockGuildName
+      </h2>
+    </div>
+    <div
+      class="sc-crrszt cGMjRh"
+    >
+      a few seconds staking period
+    </div>
+    <div
+      class="sc-dQoVA bHndUh"
+    >
+      <div
+        class="sc-bqyKOL bFgWEW"
+      >
+        <span
+          class="sc-kstqJO eCKOSo"
+        >
+          balance
+          :
+        </span>
+        <span
+          class="sc-hBEYId jtmCId"
+        >
+          0
+           
+          REP
+        </span>
+      </div>
+      <div
+        class="sc-bqyKOL bFgWEW"
+      >
+        <div
+          class="sc-eCstlR cTttQe"
+        >
+          <div
+            class="sc-jSgvzq vMswc"
+          />
+          <input
+            autocomplete="off"
+            autocorrect="off"
+            class="sc-hKgJUU dzFfYs sc-fFucqa cMBanK"
+            data-testid="stake-amount-input"
+            inputmode="decimal"
+            maxlength="79"
+            minlength="1"
+            pattern="^[0-9]*[.,]?[0-9]*$"
+            placeholder="0.0"
+            spellcheck="false"
+            type="text"
+            value="0.0"
+          />
+          <div
+            class="sc-jSgvzq iDoZOX"
+          />
+        </div>
+        <button
+          class="sc-gKseQn cJydjh"
+          data-testid="stake-amount-max-button"
+        >
+          max
+        </button>
+      </div>
+    </div>
+    <div
+      class="sc-bqyKOL bFgWEW"
+    >
+      <span
+        class="sc-kstqJO eCKOSo"
+      >
+        balance
+      </span>
+      <span
+        class="sc-hBEYId jtmCId"
+      >
+        0
+         
+        REP
+      </span>
+    </div>
+    <div
+      class="sc-bqyKOL bFgWEW"
+    >
+      <span
+        class="sc-kstqJO eCKOSo"
+      >
+        yourVotingPower
+      </span>
+      <span
+        class="sc-hBEYId jtmCId"
+      >
+        -
+      </span>
+    </div>
+    <div
+      class="sc-bqyKOL bFgWEW"
+    >
+      <span
+        class="sc-kstqJO eCKOSo"
+      >
+        unlockDate
+      </span>
+      <span
+        class="sc-hBEYId jtmCId"
+      >
+        -
+      </span>
+    </div>
+    <button
+      class="sc-gKseQn sc-bkzYnD cJydjh brvGTX"
+      data-testid="lock-token-spending"
+      disabled=""
+    >
+      Lock
+       
+      REP
+    </button>
+  </div>
+   
+</div>
+`;

@@ -1,0 +1,315 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    data-testid="member-actions-button"
+  >
+    <button>
+      Open
+    </button>
+    <div
+      class="sc-hKgJUU sc-pGacB dpFBPj cPwgnj"
+    >
+      
+      <div
+        class="sc-crrszt xObId"
+      >
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          votingPower
+           
+          <span>
+            50%
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          locked
+           
+          <span>
+            0 GT
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          unlockedIn
+           
+          <span>
+            a day
+          </span>
+        </div>
+        <button
+          class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    data-testid="member-actions-button"
+  >
+    <button>
+      Open
+    </button>
+    <div
+      class="sc-hKgJUU sc-pGacB dpFBPj cPwgnj"
+    >
+      
+      <div
+        class="sc-crrszt xObId"
+      >
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          votingPower
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          locked
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          unlockedIn
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <button
+          class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    data-testid="member-actions-button"
+  >
+    <button>
+      Open
+    </button>
+    <div
+      class="sc-hKgJUU sc-pGacB dpFBPj dvcJvz"
+    >
+      
+      <div
+        class="sc-crrszt xObId"
+      >
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          votingPower
+           
+          <span>
+            50%
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          locked
+           
+          <span>
+            0 GT
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          unlockedIn
+           
+          <span>
+            a day
+          </span>
+        </div>
+        <button
+          class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    data-testid="member-actions-button"
+  >
+    <button>
+      Open
+    </button>
+    <div
+      class="sc-hKgJUU sc-pGacB dpFBPj dvcJvz"
+    >
+      
+      <div
+        class="sc-crrszt xObId"
+      >
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          votingPower
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          locked
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <div
+          class="sc-dQoVA cvHUTm"
+        >
+          unlockedIn
+           
+          <span>
+            <div
+              class="sc-kEjbQP"
+            >
+              <span
+                aria-busy="true"
+                aria-live="polite"
+              >
+                <span
+                  class="react-loading-skeleton"
+                  style="width: 40px; --base-color: #333; --highlight-color: #555;"
+                >
+                  ‌
+                </span>
+                <br />
+              </span>
+            </div>
+          </span>
+        </div>
+        <button
+          class="sc-bdfBQB sc-bqyKOL cnzpap hcxqeg"
+        >
+          increaseVotingPower
+        </button>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;

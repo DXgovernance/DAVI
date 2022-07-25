@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Simulation modal Should match 'allPassed' status snapshot 1`] = `
+<div>
+   
+   
+</div>
+`;
+
+exports[`Simulation modal Should match 'error' status snapshot 1`] = `
+<div>
+   
+   
+</div>
+`;
+
+exports[`Simulation modal Should match 'pending' status snapshot 1`] = `
+<div>
+   
+   
+</div>
+`;
+
+exports[`Simulation modal Should match 'someFailed' status snapshot 1`] = `
+<div>
+   
+   
+</div>
+`;

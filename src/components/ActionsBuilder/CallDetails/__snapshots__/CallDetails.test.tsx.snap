@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallDetails Should match 1`] = `
+<div>
+   
+  <button
+    class="sc-bdfBQB sc-bkzYnD igQAuX iGMQQS"
+  >
+    transfer
+     (
+    <span>
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV lpdrkd"
+        color="#fff"
+      >
+        address
+      </span>
+    </span>
+    <span>
+      <span>
+        , 
+      </span>
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV lpdrkd"
+        color="#fff"
+      >
+        uint256
+      </span>
+    </span>
+    )
+  </button>
+   
+</div>
+`;
+
+exports[`CallDetails Should match with empty data 1`] = `
+<div>
+   
+  <div
+    class="sc-hKgJUU sc-fodVek dpFBPj fxuXJn"
+  >
+    <div
+      class="sc-hKgJUU dpFBPj"
+    >
+      approve (
+       
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV iVUQCe"
+        color="#9575CD"
+      >
+        address
+      </span>
+      , 
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV flHKAC"
+        color="#F06292"
+      >
+        uint256
+      </span>
+       )
+    </div>
+  </div>
+  <div
+    class="sc-hKgJUU sc-fodVek dpFBPj fxuXJn"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj jZfnnC hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV gvGmHF"
+        color="#9575CD"
+      >
+        spender 
+        <em>
+          (address)
+        </em>
+      </span>
+    </div>
+    <a
+      class="sc-iBPTik cMdTkS"
+      href="/"
+    >
+      <div
+        class="sc-hKgJUU sc-fFucqa dpFBPj gzJfIk"
+      >
+        0x0000000000000000000000000000000000000000
+         
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
+    </a>
+  </div>
+  <div
+    class="sc-hKgJUU sc-fodVek dpFBPj fxuXJn"
+  >
+    <div
+      class="sc-hKgJUU sc-kEjbQP sc-kstqJO dpFBPj jZfnnC hZygGC"
+    >
+      <span
+        class="sc-jrAFXE sc-hBEYId hTcuJV iwJLYR"
+        color="#F06292"
+      >
+        amount 
+        <em>
+          (uint256)
+        </em>
+      </span>
+    </div>
+    <div
+      class="sc-hKgJUU sc-fFucqa dpFBPj gzJfIk"
+    >
+      1000
+    </div>
+  </div>
+  <div
+    class="sc-fubCzh dIZEAK"
+    style="margin-bottom: 2rem;"
+  />
+  <button
+    class="sc-bdfBQB sc-bkzYnD igQAuX iGMQQS"
+  >
+    transfer
+     (
+    <span>
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV lpdrkd"
+        color="#fff"
+      >
+        address
+      </span>
+    </span>
+    <span>
+      <span>
+        , 
+      </span>
+      <span
+        class="sc-jrAFXE sc-bqyKOL hTcuJV lpdrkd"
+        color="#fff"
+      >
+        uint256
+      </span>
+    </span>
+    )
+  </button>
+   
+</div>
+`;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { IconButton } from 'old-components/Guilds/common/Button/index';
-import { Box } from '../../../../Components/Primitives/Layout';
+import { Box } from 'components/Primitives/Layout';
 
 interface DropdownProps {
   position?: DropdownPosition;
