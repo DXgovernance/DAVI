@@ -186,5 +186,7 @@
   "tokenAddressIsRequired": "Token address is required",
   "amountCannotBeZero": "Amount cannot be zero",
   "invalidAmount": "Invalid amount",
-  "invalidTokenAddress": "Invalid token address"
+  "invalidTokenAddress": "Invalid token address",
+  "reputationPercentageTooHigh": "Reputation percentage too high",
+  "reputationPercentIsRequired": "Reputation percentage is required"
 }

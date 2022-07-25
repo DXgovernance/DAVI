@@ -3,9 +3,8 @@ import Input from 'old-components/Guilds/common/Form/Input';
 import { BlockButton } from 'Components/ActionsModal/ActionsModal.styled';
 import { Controller, useForm } from 'react-hook-form';
 import Avatar from 'old-components/Guilds/Avatar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
-import { ethers, BigNumber } from 'ethers';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { Box } from 'Components/Primitives/Layout';
 import { shortenAddress, MAINNET_ID } from 'utils';
@@ -17,7 +16,7 @@ import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
 import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
 import { useTranslation } from 'react-i18next';
-// import { BigNumber } from 'ethers';
+import { ethers } from 'ethers';
 import validateRepMint from './validateRepMint';
 
 const Error = styled(Box)`
@@ -63,61 +62,57 @@ const StyledInfoIcon = styled(StyledIcon)`
     color: ${({ theme }) => theme.colors.text};
   }
 `;
-
+interface RepMintFormValues {
+  repPercent: string;
+}
 export const Mint: React.FC<ActionEditorProps> = ({
   decodedCall,
   onSubmit,
 }) => {
   const { t } = useTranslation();
-  const { control, handleSubmit } = useForm({
+  const [repAmount, setRepAmount] = useState<string>('0');
+  const { parsedData } = useTotalSupply({ decodedCall });
+  const { tokenData } = useTokenData();
+  const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
+  const { imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
+
+  const { control, handleSubmit, setValue } = useForm<RepMintFormValues>({
     resolver: validateRepMint,
     context: { t },
   });
 
-  // parse transfer state from calls
-  // const [repPercent, setRepPercent] = useState<string>('0');
-  const [repAmount, setRepAmount] = useState<BigNumber>(BigNumber.from(0));
-  const { parsedData } = useTotalSupply({ decodedCall });
-  const { tokenData } = useTokenData();
-
-  const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
-
-  const { imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
+  useEffect(() => {
+    // get initial data in case of edit
+    const initialRepAmount = ethers.utils.formatEther(
+      parsedData?.amount?.toString()
+    );
+    if (initialRepAmount) {
+      setRepAmount(initialRepAmount);
+      setValue(
+        'repPercent',
+        String((Number(initialRepAmount) * 100) / totalSupply)
+      );
+    }
+  }, []); //eslint-disable-line
 
   const updateRepAmount = (value: string) => {
     if (!value) {
-      setRepAmount(BigNumber.from(0));
-      console.log('no value');
+      setRepAmount('0');
     } else {
-      const amount = ethers.utils.parseUnits(
-        String((Number(value) / 100) * totalSupply)
-      );
-      console.log('amount', amount);
+      const amount = String((Number(value) / 100) * totalSupply);
       setRepAmount(amount);
     }
   };
 
   const submitAction = (values: any) => {
-    console.log('submitAction', {
-      ...values,
-      repAmount: repAmount.toString(),
-      totalSupply,
+    onSubmit({
+      ...decodedCall,
+      args: {
+        ...decodedCall.args,
+        amount: ethers.utils.parseUnits(repAmount.toString()),
+      },
     });
-
-    // onSubmit({
-    //   ...decodedCall,
-    //   args: {
-    //     ...decodedCall.args,
-    //     amount: repAmount,
-    //   },
-    // });
   };
-
-  // const handleRepChange = (e: string) => {
-  //   if (e) {
-  //     setRepPercent(e);
-  //   }
-  // };
 
   return (
     <React.Fragment>
@@ -160,10 +155,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
                   </ControlLabel>
                   <ControlRow>
                     <RepMintInput
-                      type="number"
                       {...field}
-                      // value={repPercent}
-                      // onChange={handleRepChange}
                       onChange={value => {
                         field.onChange(value);
                         updateRepAmount(value);
