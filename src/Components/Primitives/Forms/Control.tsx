@@ -15,5 +15,4 @@ export const ControlLabel = styled(Box)`
 export const ControlRow = styled(Box)`
   display: flex;
   align-items: stretch;
-  height: 100%;
 `;

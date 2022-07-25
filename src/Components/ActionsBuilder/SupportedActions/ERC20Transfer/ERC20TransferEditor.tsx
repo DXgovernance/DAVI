@@ -188,7 +188,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                             )}
                           </div>
                         }
-                        iconRight={<FiChevronDown size={24} />}
+                        iconRight={<FiChevronDown size={20} />}
                         readOnly
                       />
                     </ControlRow>

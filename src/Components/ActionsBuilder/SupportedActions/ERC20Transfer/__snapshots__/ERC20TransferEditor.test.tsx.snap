@@ -14,7 +14,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
           recipient
         </div>
         <div
-          class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
         >
           <div
             class="sc-hHfuMS giecRs"
@@ -45,7 +45,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
       >
         <div
           class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
@@ -56,7 +56,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
             amount
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
           >
             <div
               class="sc-hHfuMS giecRs"
@@ -96,7 +96,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
             asset
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
           >
             <div
               class="sc-hHfuMS giecRs"
@@ -118,13 +118,13 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               >
                 <svg
                   fill="none"
-                  height="24"
+                  height="20"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
                   viewBox="0 0 24 24"
-                  width="24"
+                  width="20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <polyline
@@ -163,7 +163,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
           recipient
         </div>
         <div
-          class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
         >
           <div
             class="sc-hHfuMS giecRs"
@@ -194,7 +194,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
         </div>
       </div>
       <div
-        class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
       >
         <div
           class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
@@ -205,7 +205,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
             amount
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
           >
             <div
               class="sc-hHfuMS giecRs"
@@ -245,7 +245,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
             asset
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj hQntdf"
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
           >
             <div
               class="sc-hHfuMS giecRs"
@@ -267,13 +267,13 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
               >
                 <svg
                   fill="none"
-                  height="24"
+                  height="20"
                   stroke="currentColor"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
                   viewBox="0 0 24 24"
-                  width="24"
+                  width="20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <polyline
