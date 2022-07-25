@@ -6,6 +6,7 @@
 import { BigNumber } from 'ethers';
 import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
+import { fireEvent } from '@testing-library/react';
 import ERC20TransferEditor from './ERC20TransferEditor';
 import {
   erc20TransferDecodedCallMock,
@@ -56,7 +57,7 @@ describe('ERC20TransferEditor', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferDecodedCallMock}
-        updateCall={jest.fn()}
+        onSubmit={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();
@@ -65,9 +66,23 @@ describe('ERC20TransferEditor', () => {
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferEmptyDecodedCallMock}
-        updateCall={jest.fn()}
+        onSubmit={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();
+  });
+
+  it('Should not call onSubmit with bad inputs', async () => {
+    const onSubmit = jest.fn();
+    const { findByTestId } = render(
+      <ERC20TransferEditor
+        decodedCall={erc20TransferEmptyDecodedCallMock}
+        onSubmit={onSubmit}
+      />
+    );
+    const submitButton = await findByTestId('submit-erc20transfer');
+
+    fireEvent.click(submitButton);
+    expect(onSubmit).toHaveBeenCalledTimes(0);
   });
 });

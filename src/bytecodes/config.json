@@ -1,12 +1,12 @@
 [
   {
     "type": "ERC20Guild",
-    "bytecode_hash": "0xd29ed48a838ad96f28c866b98983b58b5e0d0952f068701058b5f6b55edf2f1f",
+    "bytecode_hash": "0xc9948fa7fd3ae05d6d681b045feb9a6cafe66ca4186202b25a9f62701d26eccf",
     "features": []
   },
   {
     "type": "SnapshotRepERC20Guild",
-    "bytecode_hash": "0xccffdbd231a220e4c8999c5725b73dc43448799830af936e1e45a762e5348ca7",
+    "bytecode_hash": "0x14c63de3bf4a24cdec9a4a589ce4a380a08fb031c924b3106b1b5eb7ea3eab47",
     "features": [
       "REP",
       "SNAPSHOT"
@@ -14,14 +14,14 @@
   },
   {
     "type": "SnapshotERC20Guild",
-    "bytecode_hash": "0x8f98f6ff8bd58d9c9d7750c4f78c9400cf6eecbf630b94f5e481b3c7ec10ccac",
+    "bytecode_hash": "0x834ede4fd376694a12592b6b98a2107fba843941a3ec03a5870a25248fcec1b9",
     "features": [
       "SNAPSHOT"
     ]
   },
   {
     "type": "DXDGuild",
-    "bytecode_hash": "0x2c06b793e7443a1633932d68ba8a295139b56967ae3945181d49d9556c7d2628",
+    "bytecode_hash": "0x37c5f91f15e336a3e0981827f5858dc8a387fa1a5bb51f4aac7f8cfeb1c9628c",
     "features": []
   }
 ]

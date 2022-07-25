@@ -1,5 +1,7 @@
 import { ActionEditorProps } from '..';
-import { BigNumber, utils } from 'ethers';
+import { BigNumber } from 'ethers';
+import { Controller, useForm } from 'react-hook-form';
+import { BlockButton } from 'Components/ActionsModal/ActionsModal.styled';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -20,6 +22,13 @@ import {
 } from 'Components/Primitives/Forms/Control';
 import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
+import validateERC20Transfer from './validateERC20Transfer';
+
+const Error = styled(Box)`
+  color: ${({ theme }) => theme.colors.red};
+  font-size: ${({ theme }) => theme.fontSizes.label};
+  margin-top: 0.5rem;
+`;
 
 const Spacer = styled(Box)`
   margin-right: 1rem;
@@ -30,160 +39,182 @@ const ClickableIcon = styled(Box)`
   align-items: center;
   cursor: pointer;
 `;
-
-interface TransferState {
-  source: string;
+interface TransferValues {
   tokenAddress: string;
   amount: BigNumber;
-  destination: string;
+  recipientAddress: string;
 }
 
 const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
-  updateCall,
+  onSubmit,
 }) => {
   const { t } = useTranslation();
+  const { control, handleSubmit, getValues } = useForm({
+    resolver: validateERC20Transfer,
+    context: { t },
+  });
+
+  const { tokenAddress, recipientAddress } = getValues();
+
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
+
   const { chain } = useNetwork();
 
-  // parse transfer state from calls
-  const parsedData = useMemo<TransferState>(() => {
+  const source = useMemo<string>(() => {
     if (!decodedCall) return null;
-    return {
-      source: decodedCall.from,
-      tokenAddress: decodedCall.to,
-      amount: decodedCall.args._value,
-      destination: decodedCall.args._to,
-    };
+    return decodedCall.from;
   }, [decodedCall]);
-
-  const validations = useMemo(() => {
-    return {
-      tokenAddress: utils.isAddress(parsedData?.tokenAddress),
-      amount: BigNumber.isBigNumber(parsedData?.amount),
-      destination: utils.isAddress(parsedData?.destination),
-    };
-  }, [parsedData]);
 
   // Get token details from the token address
   const { tokens } = useTokenList(chain?.id);
   const token = useMemo(() => {
-    if (!parsedData?.tokenAddress || !tokens) return null;
+    if (!tokenAddress || !tokens) return null;
 
-    return tokens.find(({ address }) => address === parsedData.tokenAddress);
-  }, [tokens, parsedData]);
+    return tokens.find(({ address }) => address === tokenAddress);
+  }, [tokens, tokenAddress]);
 
-  const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
+  const { data: tokenInfo } = useERC20Info(tokenAddress);
   const { imageUrl: destinationAvatarUrl } = useENSAvatar(
-    parsedData?.destination,
+    recipientAddress,
     MAINNET_ID
   );
 
-  const setTransferAddress = (walletAddress: string) => {
-    updateCall({
+  const submitAction = (values: TransferValues) => {
+    onSubmit({
       ...decodedCall,
+      to: values.tokenAddress,
       args: {
         ...decodedCall.args,
-        _to: walletAddress,
-      },
-    });
-  };
-
-  const setToken = (tokenAddress: string) => {
-    updateCall({
-      ...decodedCall,
-      to: tokenAddress,
-    });
-  };
-
-  const setAmount = (value: BigNumber) => {
-    updateCall({
-      ...decodedCall,
-      args: {
-        ...decodedCall.args,
-        _value: value,
+        _value: values.amount,
+        _to: values.recipientAddress,
       },
     });
   };
 
   return (
     <div>
-      <Control>
-        <ControlLabel>{t('recipient')}</ControlLabel>
-        <ControlRow>
-          <Input
-            value={parsedData.destination || ''}
-            icon={
-              <div>
-                {validations.destination && (
-                  <Avatar
-                    src={destinationAvatarUrl}
-                    defaultSeed={parsedData.destination}
-                    size={24}
+      <form onSubmit={handleSubmit(submitAction, console.error)}>
+        <Controller
+          name="recipientAddress"
+          control={control}
+          render={({ field: { ref, ...field }, fieldState }) => {
+            const { invalid, error } = fieldState;
+
+            return (
+              <Control>
+                <ControlLabel>{t('recipient')}</ControlLabel>
+                <ControlRow>
+                  <Input
+                    {...field}
+                    placeholder={t('ethereumAddress')}
+                    isInvalid={invalid && !!error}
+                    onChange={e => field.onChange(e.target.value)}
+                    icon={
+                      <div>
+                        {!invalid && !error && (
+                          <Avatar
+                            src={destinationAvatarUrl}
+                            defaultSeed={field.value}
+                            size={24}
+                          />
+                        )}
+                      </div>
+                    }
+                    iconRight={
+                      field.value ? (
+                        <ClickableIcon onClick={() => field.onChange('')}>
+                          <FiX size={18} />
+                        </ClickableIcon>
+                      ) : null
+                    }
                   />
-                )}
-              </div>
-            }
-            iconRight={
-              parsedData?.destination ? (
-                <ClickableIcon onClick={() => setTransferAddress('')}>
-                  <FiX size={18} />
-                </ClickableIcon>
-              ) : null
-            }
-            placeholder={t('ethereumAddress')}
-            onChange={e => setTransferAddress(e.target.value)}
+                </ControlRow>
+                {invalid && !!error && <Error>{error}</Error>}
+              </Control>
+            );
+          }}
+        />
+
+        <ControlRow>
+          <Controller
+            name="amount"
+            control={control}
+            render={({ field: { ref, ...field }, fieldState }) => {
+              const { invalid, error } = fieldState;
+
+              return (
+                <Control>
+                  <ControlLabel>{t('amount')}</ControlLabel>
+                  <ControlRow>
+                    <TokenAmountInput
+                      {...field}
+                      decimals={tokenInfo?.decimals}
+                      isInvalid={invalid && !!error}
+                    />
+                  </ControlRow>
+
+                  {invalid && !!error && <Error>{error}</Error>}
+                </Control>
+              );
+            }}
+          />
+
+          <Spacer />
+
+          <Controller
+            name="tokenAddress"
+            control={control}
+            render={({ field: { ref, ...field }, fieldState }) => {
+              const { invalid, error } = fieldState;
+              return (
+                <>
+                  <Control>
+                    <ControlLabel>{t('asset')}</ControlLabel>
+                    <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
+                      <Input
+                        {...field}
+                        value={tokenInfo?.symbol}
+                        placeholder={t('token')}
+                        isInvalid={invalid && !!error}
+                        icon={
+                          <div>
+                            {field.value && (
+                              <Avatar
+                                src={resolveUri(token?.logoURI)}
+                                defaultSeed={field.value}
+                                size={18}
+                              />
+                            )}
+                          </div>
+                        }
+                        iconRight={<FiChevronDown size={20} />}
+                        readOnly
+                      />
+                    </ControlRow>
+                    {invalid && !!error && <Error>{error}</Error>}
+                  </Control>
+
+                  <TokenPicker
+                    {...field}
+                    walletAddress={source || ''}
+                    isOpen={isTokenPickerOpen}
+                    onClose={() => setIsTokenPickerOpen(false)}
+                    onSelect={tokenAddress => {
+                      field.onChange(tokenAddress);
+                      setIsTokenPickerOpen(false);
+                    }}
+                  />
+                </>
+              );
+            }}
           />
         </ControlRow>
-      </Control>
 
-      <ControlRow>
-        <Control>
-          <ControlLabel>{t('amount')}</ControlLabel>
-          <ControlRow>
-            <TokenAmountInput
-              decimals={tokenInfo?.decimals}
-              value={parsedData?.amount}
-              onChange={setAmount}
-            />
-          </ControlRow>
-        </Control>
-
-        <Spacer />
-
-        <Control>
-          <ControlLabel>{t('asset')}</ControlLabel>
-          <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
-            <Input
-              value={tokenInfo?.symbol || ''}
-              placeholder={t('token')}
-              icon={
-                <div>
-                  {parsedData?.tokenAddress && (
-                    <Avatar
-                      src={resolveUri(token?.logoURI)}
-                      defaultSeed={parsedData?.tokenAddress}
-                      size={18}
-                    />
-                  )}
-                </div>
-              }
-              iconRight={<FiChevronDown size={24} />}
-              readOnly
-            />
-          </ControlRow>
-        </Control>
-      </ControlRow>
-
-      <TokenPicker
-        walletAddress={parsedData?.source || ''}
-        isOpen={isTokenPickerOpen}
-        onClose={() => setIsTokenPickerOpen(false)}
-        onSelect={tokenAddress => {
-          setToken(tokenAddress);
-          setIsTokenPickerOpen(false);
-        }}
-      />
+        <BlockButton data-testid="submit-erc20transfer" type="submit">
+          {t('saveAction')}
+        </BlockButton>
+      </form>
     </div>
   );
 };

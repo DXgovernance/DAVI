@@ -8,6 +8,7 @@ import {
   defaultValues,
   getEditor,
   supportedActions,
+  displaySubmit,
 } from 'Components/ActionsBuilder/SupportedActions';
 import {
   DecodedAction,
@@ -142,12 +143,19 @@ const ActionModal: React.FC<ActionModalProps> = ({
 
     if (selectedAction) {
       const Editor = getEditor(selectedAction);
+
       return (
         <EditorWrapper data-testid="actions-modal-editor">
-          <Editor decodedCall={data} updateCall={setData} />
-          <BlockButton onClick={saveSupportedAction}>
-            {t('saveAction')}
-          </BlockButton>
+          <Editor
+            decodedCall={data}
+            updateCall={setData}
+            onSubmit={saveSupportedAction}
+          />
+          {displaySubmit(selectedAction) && (
+            <BlockButton onClick={() => saveSupportedAction()}>
+              {t('saveAction')}
+            </BlockButton>
+          )}
         </EditorWrapper>
       );
     }
@@ -190,12 +198,13 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedActionContract(defaultDecodedAction.contract);
   }
 
-  function saveSupportedAction() {
-    if (!selectedAction || !data || !setSelectedActionContract) return;
+  function saveSupportedAction(call?: DecodedCall) {
+    const decodedCall = call ?? data;
+    if (!selectedAction || !decodedCall || !setSelectedActionContract) return;
 
     const decodedAction: DecodedAction = {
       id: `action-${Math.random()}`,
-      decodedCall: data,
+      decodedCall,
       contract: selectedActionContract,
     };
 

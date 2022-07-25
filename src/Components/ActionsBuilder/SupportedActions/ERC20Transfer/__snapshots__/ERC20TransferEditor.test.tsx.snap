@@ -4,217 +4,146 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
 <div>
    
   <div>
-    <div
-      class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-    >
+    <form>
       <div
-        class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-      >
-        recipient
-      </div>
-      <div
-        class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
+        class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
       >
         <div
-          class="sc-iBPTik jFEHgg"
+          class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
         >
-          <div
-            class="sc-fubCzh fldzaP"
-          >
-            <div>
-              <img
-                alt="Avatar"
-                class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
-                data-testid="avatar"
-                size="24"
-                src="test"
-              />
-            </div>
-          </div>
-          <input
-            class="sc-gKseQn MqBDT"
-            placeholder="ethereumAddress"
-            value="0x0000000000000000000000000000000000000000"
-          />
-          <div
-            class="sc-fubCzh jfgyYA"
-          >
-            <div
-              class="sc-jrAFXE sc-gWHigU jLAWlL bLLnbO"
-            >
-              <svg
-                fill="none"
-                height="18"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="18"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <line
-                  x1="18"
-                  x2="6"
-                  y1="6"
-                  y2="18"
-                />
-                <line
-                  x1="6"
-                  x2="18"
-                  y1="6"
-                  y2="18"
-                />
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
-    >
-      <div
-        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-      >
-        <div
-          class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-        >
-          amount
+          recipient
         </div>
         <div
-          class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
+          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
         >
           <div
-            class="sc-iBPTik jFEHgg"
+            class="sc-hHfuMS giecRs"
           >
             <div
-              class="sc-fubCzh fldzaP"
-            />
-            <input
-              autocomplete="off"
-              autocorrect="off"
-              class="sc-gKseQn MqBDT"
-              inputmode="decimal"
-              maxlength="79"
-              minlength="1"
-              pattern="^[0-9]*[.,]?[0-9]*$"
-              placeholder="0.0"
-              spellcheck="false"
-              type="text"
-              value="0.000000000000001"
-            />
-            <div
-              class="sc-fubCzh jfgyYA"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="sc-jrAFXE sc-hiSbEG jLAWlL dboWfq"
-      />
-      <div
-        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-      >
-        <div
-          class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-        >
-          asset
-        </div>
-        <div
-          class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
-        >
-          <div
-            class="sc-iBPTik jFEHgg"
-          >
-            <div
-              class="sc-fubCzh fldzaP"
+              class="sc-dmlqKv gKcicO"
             >
               <div>
-                <div
-                  class="paper"
-                  style="border-radius: 50px; display: inline-block; margin: 0px; overflow: hidden; padding: 0px; background-color: rgb(251, 24, 100); height: 18px; width: 18px;"
-                >
-                  <svg
-                    height="18"
-                    width="18"
-                    x="0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    y="0"
-                  >
-                    <rect
-                      fill="#FA7000"
-                      height="18"
-                      rx="0"
-                      ry="0"
-                      transform="translate(1.19304227067144 3.6438425621638535) rotate(77.5 9 9)"
-                      width="18"
-                      x="0"
-                      y="0"
-                    />
-                    <rect
-                      fill="#F29A02"
-                      height="18"
-                      rx="0"
-                      ry="0"
-                      transform="translate(3.398389101398975 5.360570256518489) rotate(155.6 9 9)"
-                      width="18"
-                      x="0"
-                      y="0"
-                    />
-                    <rect
-                      fill="#2369E1"
-                      height="18"
-                      rx="0"
-                      ry="0"
-                      transform="translate(7.9313028257673155 14.3095335117194) rotate(136.4 9 9)"
-                      width="18"
-                      x="0"
-                      y="0"
-                    />
-                    <rect
-                      fill="#03525E"
-                      height="18"
-                      rx="0"
-                      ry="0"
-                      transform="translate(10.76809137545322 17.45609928939305) rotate(167.4 9 9)"
-                      width="18"
-                      x="0"
-                      y="0"
-                    />
-                  </svg>
-                </div>
+                <img
+                  alt="Avatar"
+                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
               </div>
             </div>
             <input
-              class="sc-gKseQn MqBDT"
-              placeholder="token"
-              readonly=""
+              class="sc-dIUeWJ jJPCe"
+              name="recipientAddress"
+              placeholder="ethereumAddress"
               value=""
             />
             <div
-              class="sc-fubCzh jfgyYA"
+              class="sc-dmlqKv lmzxkt"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+      >
+        <div
+          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        >
+          <div
+            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          >
+            amount
+          </div>
+          <div
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          >
+            <div
+              class="sc-hHfuMS giecRs"
             >
-              <svg
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="sc-dmlqKv gKcicO"
+              />
+              <input
+                autocomplete="off"
+                autocorrect="off"
+                class="sc-dIUeWJ jJPCe"
+                inputmode="decimal"
+                maxlength="79"
+                minlength="1"
+                name="amount"
+                pattern="^[0-9]*[.,]?[0-9]*$"
+                placeholder="0.0"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+              <div
+                class="sc-dmlqKv lmzxkt"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-hKgJUU sc-cOajNj dpFBPj kjbwET"
+        />
+        <div
+          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        >
+          <div
+            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          >
+            asset
+          </div>
+          <div
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          >
+            <div
+              class="sc-hHfuMS giecRs"
+            >
+              <div
+                class="sc-dmlqKv gKcicO"
               >
-                <polyline
-                  points="6 9 12 15 18 9"
-                />
-              </svg>
+                <div />
+              </div>
+              <input
+                class="sc-dIUeWJ jJPCe"
+                name="tokenAddress"
+                placeholder="token"
+                readonly=""
+                value=""
+              />
+              <div
+                class="sc-dmlqKv lmzxkt"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <button
+        class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        data-testid="submit-erc20transfer"
+        type="submit"
+      >
+        saveAction
+      </button>
+    </form>
   </div>
    
 </div>
@@ -224,126 +153,146 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
 <div>
    
   <div>
-    <div
-      class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-    >
+    <form>
       <div
-        class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-      >
-        recipient
-      </div>
-      <div
-        class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
+        class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
       >
         <div
-          class="sc-iBPTik jFEHgg"
+          class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
         >
-          <div
-            class="sc-fubCzh fldzaP"
-          >
-            <div />
-          </div>
-          <input
-            class="sc-gKseQn MqBDT"
-            placeholder="ethereumAddress"
-            value=""
-          />
-          <div
-            class="sc-fubCzh jfgyYA"
-          />
-        </div>
-      </div>
-    </div>
-    <div
-      class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
-    >
-      <div
-        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-      >
-        <div
-          class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-        >
-          amount
+          recipient
         </div>
         <div
-          class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
+          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
         >
           <div
-            class="sc-iBPTik jFEHgg"
+            class="sc-hHfuMS giecRs"
           >
             <div
-              class="sc-fubCzh fldzaP"
-            />
-            <input
-              autocomplete="off"
-              autocorrect="off"
-              class="sc-gKseQn MqBDT"
-              inputmode="decimal"
-              maxlength="79"
-              minlength="1"
-              pattern="^[0-9]*[.,]?[0-9]*$"
-              placeholder="0.0"
-              spellcheck="false"
-              type="text"
-              value="0.0"
-            />
-            <div
-              class="sc-fubCzh jfgyYA"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="sc-jrAFXE sc-hiSbEG jLAWlL dboWfq"
-      />
-      <div
-        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
-      >
-        <div
-          class="sc-jrAFXE sc-iktFfs jLAWlL jlZbtv"
-        >
-          asset
-        </div>
-        <div
-          class="sc-jrAFXE sc-jJEKmz jLAWlL foaCaO"
-        >
-          <div
-            class="sc-iBPTik jFEHgg"
-          >
-            <div
-              class="sc-fubCzh fldzaP"
+              class="sc-dmlqKv gKcicO"
             >
-              <div />
+              <div>
+                <img
+                  alt="Avatar"
+                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
+              </div>
             </div>
             <input
-              class="sc-gKseQn MqBDT"
-              placeholder="token"
-              readonly=""
+              class="sc-dIUeWJ jJPCe"
+              name="recipientAddress"
+              placeholder="ethereumAddress"
               value=""
             />
             <div
-              class="sc-fubCzh jfgyYA"
+              class="sc-dmlqKv lmzxkt"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+      >
+        <div
+          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        >
+          <div
+            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          >
+            amount
+          </div>
+          <div
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          >
+            <div
+              class="sc-hHfuMS giecRs"
             >
-              <svg
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
+              <div
+                class="sc-dmlqKv gKcicO"
+              />
+              <input
+                autocomplete="off"
+                autocorrect="off"
+                class="sc-dIUeWJ jJPCe"
+                inputmode="decimal"
+                maxlength="79"
+                minlength="1"
+                name="amount"
+                pattern="^[0-9]*[.,]?[0-9]*$"
+                placeholder="0.0"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+              <div
+                class="sc-dmlqKv lmzxkt"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="sc-hKgJUU sc-cOajNj dpFBPj kjbwET"
+        />
+        <div
+          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        >
+          <div
+            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          >
+            asset
+          </div>
+          <div
+            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          >
+            <div
+              class="sc-hHfuMS giecRs"
+            >
+              <div
+                class="sc-dmlqKv gKcicO"
               >
-                <polyline
-                  points="6 9 12 15 18 9"
-                />
-              </svg>
+                <div />
+              </div>
+              <input
+                class="sc-dIUeWJ jJPCe"
+                name="tokenAddress"
+                placeholder="token"
+                readonly=""
+                value=""
+              />
+              <div
+                class="sc-dmlqKv lmzxkt"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      <button
+        class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        data-testid="submit-erc20transfer"
+        type="submit"
+      >
+        saveAction
+      </button>
+    </form>
   </div>
    
 </div>
