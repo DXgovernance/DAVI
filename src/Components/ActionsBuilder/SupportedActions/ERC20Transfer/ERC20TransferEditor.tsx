@@ -51,7 +51,8 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  let parsedData = useMemo(() => {
+  const parsedData = useMemo(() => {
+
     if (!decodedCall) return null;
 
     return {
