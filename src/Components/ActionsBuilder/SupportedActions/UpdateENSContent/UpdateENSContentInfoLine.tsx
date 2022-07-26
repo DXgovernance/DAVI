@@ -15,10 +15,7 @@ const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
   compact,
 }) => {
   const { parsedData } = useUpdateEnsContent({ decodedCall });
-  const { ensName, imageUrl } = useENSAvatar(
-    '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
-    MAINNET_ID
-  );
+  const { ensName, imageUrl } = useENSAvatar(parsedData?.from, MAINNET_ID);
   const { t } = useTranslation();
 
   return (

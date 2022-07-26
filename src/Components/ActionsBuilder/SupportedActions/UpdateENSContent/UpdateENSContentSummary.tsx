@@ -22,17 +22,14 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
   const { chain } = useNetwork();
   const chainId = isValidChainId(chain.id);
   const { data: ensName } = useEnsName({
-    address: '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
+    address: parsedData?.from,
     chainId,
   });
   const { ipfsHash: currentIpfsHash } = useENSContentHash(ensName, chainId);
   const currentIpfsUrl = getIpfsUrl(currentIpfsHash);
   const newIpfsHash = convertToIpfsHash(parsedData?.contentHash);
   const newIpfsUrl = getIpfsUrl(newIpfsHash);
-  const blockchainUrl = getBlockChainUrl(
-    chainId,
-    '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f'
-  );
+  const blockchainUrl = getBlockChainUrl(chainId, parsedData?.from);
 
   return (
     <>

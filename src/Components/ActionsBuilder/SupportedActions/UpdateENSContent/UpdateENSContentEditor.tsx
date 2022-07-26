@@ -62,7 +62,6 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       });
     }
   }, [debouncedIpfsHash]);
-  console.log({ decodedCall });
   return (
     <React.Fragment>
       <Control>
