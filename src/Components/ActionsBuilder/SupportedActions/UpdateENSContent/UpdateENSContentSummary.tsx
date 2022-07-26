@@ -1,17 +1,24 @@
 import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
 import { StyledSegmentLink } from './styles';
 import Summary from '../common/Summary';
-import { useUpdateEnsName } from 'hooks/Guilds/guild/useUpdateEnsName';
+import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { useEnsName, useNetwork } from 'wagmi';
-import { convertToIPFSHash, getIpfsUrl, isValidChainId } from './utils';
+import {
+  convertToIpfsHash,
+  getBlockChainUrl,
+  getIpfsUrl,
+  isValidChainId,
+} from './utils';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
 import useENSContentHash from 'hooks/Guilds/ens/useENSContentHash';
 import { BiLinkExternal } from 'react-icons/bi';
 
-const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
+const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
+  decodedCall,
+}) => {
   const { t } = useTranslation();
-  const { parsedData } = useUpdateEnsName({ decodedCall });
+  const { parsedData } = useUpdateEnsContent({ decodedCall });
   const { chain } = useNetwork();
   const chainId = isValidChainId(chain.id);
   const { data: ensName } = useEnsName({
@@ -20,16 +27,20 @@ const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
   });
   const { ipfsHash: currentIpfsHash } = useENSContentHash(ensName, chainId);
   const currentIpfsUrl = getIpfsUrl(currentIpfsHash);
-  const newIpfsHash = convertToIPFSHash(parsedData?.contentHash);
+  const newIpfsHash = convertToIpfsHash(parsedData?.contentHash);
   const newIpfsUrl = getIpfsUrl(newIpfsHash);
+  const blockchainUrl = getBlockChainUrl(
+    chainId,
+    '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f'
+  );
 
   return (
     <>
-      <DetailHeader>{t('ensName.domain')}</DetailHeader>
+      <DetailHeader>{t('ens.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
           <StyledSegmentLink
-            href="https://github.com/styled-components/styled-components"
+            href={blockchainUrl}
             target="_blank"
             rel="noopener"
           >
@@ -38,7 +49,7 @@ const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
           </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
-      <DetailHeader>{t('ensName.currentContent')}</DetailHeader>
+      <DetailHeader>{t('ens.currentContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
           <StyledSegmentLink
@@ -51,7 +62,7 @@ const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
           </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
-      <DetailHeader>{t('ensName.newContent')}</DetailHeader>
+      <DetailHeader>{t('ens.newContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
           <StyledSegmentLink
@@ -69,4 +80,4 @@ const UpdateENSNameSummary: React.FC<ActionViewProps> = ({ decodedCall }) => {
   );
 };
 
-export default UpdateENSNameSummary;
+export default UpdateENSContentSummary;

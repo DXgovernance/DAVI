@@ -1,9 +1,9 @@
 import { useContractRead, useEnsResolver } from 'wagmi';
 import ensResolverABI from 'abis/ENSPublicResolver.json';
 import {
-  convertToIPFSHash,
+  convertToIpfsHash,
   convertToNameHash,
-} from 'Components/ActionsBuilder/SupportedActions/UpdateENSName/utils';
+} from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 
 interface ENSContentHashData {
   ipfsHash?: string;
@@ -14,17 +14,17 @@ export default function useENSContentHash(
   chainId?: number
 ): ENSContentHashData {
   const { data: resolver } = useEnsResolver({ name: ensName, chainId });
+
   const { data } = useContractRead({
     addressOrName: resolver?.address,
     contractInterface: ensResolverABI,
     functionName: 'contenthash',
     args: convertToNameHash(ensName),
-    enabled: !!ensName && !!resolver,
     select(data) {
-      return convertToIPFSHash(data.toString());
+      return convertToIpfsHash(data.toString());
     },
   });
   return {
-    ipfsHash: data.toString(),
+    ipfsHash: data?.toString(),
   };
 }

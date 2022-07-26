@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UpdateENSNameEditor Should match snapshot 1`] = `
+exports[`UpdateENSContentEditor Should match snapshot 1`] = `
 <div>
    
   <div
@@ -20,24 +20,24 @@ exports[`UpdateENSNameEditor Should match snapshot 1`] = `
       <div
         class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
       >
-        tip
+        ens.nameTooltip
       </div>
     </div>
     <div
       class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
     >
       <div
-        class="sc-kEjbQP cxqUdi"
+        class="sc-crrszt fxDfFb"
       >
         <div
-          class="sc-iqHYmW jULlzM"
+          class="sc-dQoVA gHpToS"
         />
         <input
-          class="sc-jrAFXE ernRCg"
+          class="sc-iqHYmW csdOlB"
           value=""
         />
         <div
-          class="sc-iqHYmW jWCbMP"
+          class="sc-dQoVA jIDnsx"
         />
       </div>
       <p>
@@ -65,24 +65,24 @@ exports[`UpdateENSNameEditor Should match snapshot 1`] = `
         <div
           class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
         >
-          tips
+          ens.ipfsHashToolTip
         </div>
       </div>
       <div
         class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
       >
         <div
-          class="sc-kEjbQP cxqUdi"
+          class="sc-crrszt fxDfFb"
         >
           <div
-            class="sc-iqHYmW jULlzM"
+            class="sc-dQoVA gHpToS"
           />
           <input
-            class="sc-jrAFXE ernRCg"
+            class="sc-iqHYmW csdOlB"
             value=""
           />
           <div
-            class="sc-iqHYmW jWCbMP"
+            class="sc-dQoVA jIDnsx"
           />
         </div>
       </div>

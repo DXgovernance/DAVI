@@ -7,7 +7,7 @@ export enum SupportedAction {
   REP_MINT = 'REP_MINT',
   GENERIC_CALL = 'GENERIC_CALL',
   SET_PERMISSIONS = 'SET_PERMISSIONS',
-  UPDATE_ENS_NAME = 'UPDATE_ENS_NAME',
+  ENS_UPDATE_CONTENT = 'ENS_UPDATE_CONTENT',
 }
 
 export interface Call {

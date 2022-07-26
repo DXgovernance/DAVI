@@ -72,12 +72,12 @@ const ContractsList: React.FC<ContractsListProps> = ({
         ) : null}
         <ActionsButton
           onClick={() =>
-            onSupportedActionSelect(SupportedAction.UPDATE_ENS_NAME)
+            onSupportedActionSelect(SupportedAction.ENS_UPDATE_CONTENT)
           }
         >
           <ButtonLabel>
             <StyledIcon src={ENSIcon} />
-            {t('updateENSName')}
+            {t('ens.updateContentCoreAction')}
           </ButtonLabel>
         </ActionsButton>
       </SectionWrapper>

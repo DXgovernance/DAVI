@@ -1,5 +1,6 @@
 import { render } from 'utils/tests';
-import UpdateENSNameSummary from './UpdateENSNameSummary';
+import UpdateENSContentInfoLine from './UpdateENSContentInfoLine';
+import { mockDecodedCallUpdateENSContent } from './fixtures';
 
 jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
   __esModule: true,
@@ -9,9 +10,12 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
     ensName: 'test.eth',
   }),
 }));
-describe.skip('UpdateENSNameSummary', () => {
+
+describe('UpdateENSInfoLine', () => {
   it('Should match snapshot', () => {
-    const { container } = render(<UpdateENSNameSummary />);
+    const { container } = render(
+      <UpdateENSContentInfoLine decodedCall={mockDecodedCallUpdateENSContent} />
+    );
     expect(container).toMatchSnapshot();
   });
 });

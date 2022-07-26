@@ -10,12 +10,12 @@ import {
   isValidChainId,
 } from './utils';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
-import { isEnsName, isIPFSHash } from './validation';
+import { isEnsName, isIpfsHash } from './validation';
 import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
 
-const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
+const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
 }) => {
@@ -50,7 +50,7 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
     }
   }, [debouncedEnsName]);
   useEffect(() => {
-    if (debouncedIpfsHash && isIPFSHash(debouncedIpfsHash)) {
+    if (debouncedIpfsHash && isIpfsHash(debouncedIpfsHash)) {
       const contentHash = convertToContentHash(debouncedIpfsHash);
       updateCall({
         ...decodedCall,
@@ -69,7 +69,7 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
         <ControlLabel>
           {'ENS Name'}
           <StyledInfoIcon src={Info} />
-          <StyledToolTip>{t('ensName.nameTooltip')}</StyledToolTip>
+          <StyledToolTip>{t('ens.nameTooltip')}</StyledToolTip>
         </ControlLabel>
         <ControlRow>
           <Input value={ensName} onChange={e => setEnsName(e.target.value)} />
@@ -81,7 +81,7 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
           <ControlLabel>
             {'CID/IPFS Hash'}
             <StyledInfoIcon src={Info} />
-            <StyledToolTip>{t('ensName.ipfsHashToolTip')}</StyledToolTip>
+            <StyledToolTip>{t('ens.ipfsHashToolTip')}</StyledToolTip>
           </ControlLabel>
           <ControlRow>
             <Input
@@ -95,4 +95,4 @@ const UpdateENSNameEditor: React.FC<ActionEditorProps> = ({
   );
 };
 
-export default UpdateENSNameEditor;
+export default UpdateENSContentEditor;

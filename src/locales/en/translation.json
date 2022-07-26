@@ -43,7 +43,8 @@
     "repAmount": "Reputation Amount",
     "repAmountTooltip": "The amount of REP that will be minted."
   },
-  "ensName": {
+  "ens": {
+    "updateContentCoreAction": "Update ENS Content",
     "nameTooltip": "The name of the ENS name that will be registered.",
     "ipfsHashToolTip": "The IPFS hash that will be set",
     "domain": "Domain",
@@ -173,7 +174,6 @@
   "theRemovalCannotBeReverted": "The removal cannot be reverted",
   "removeAction": "Remove Action",
   "remove": "Remove",
-  "updateENSName": "Update ENS Name",
   "import": "Import",
   "title": "Title",
   "referenceLink": "Reference link",

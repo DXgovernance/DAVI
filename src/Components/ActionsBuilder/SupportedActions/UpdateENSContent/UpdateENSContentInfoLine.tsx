@@ -1,7 +1,7 @@
 import { Segment } from '../common/infoLine';
 import { MdArrowRightAlt } from 'react-icons/md';
 import ENSIcon from 'assets/images/ens.svg';
-import { useUpdateEnsName } from 'hooks/Guilds/guild/useUpdateEnsName';
+import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { StyledENSIcon } from './styles';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { MAINNET_ID } from 'utils';
@@ -10,12 +10,15 @@ import { shortenAddress } from 'utils';
 import { ActionViewProps } from '..';
 import { useTranslation } from 'react-i18next';
 
-const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({
+const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
 }) => {
-  const { parsedData } = useUpdateEnsName({ decodedCall });
-  const { ensName, imageUrl } = useENSAvatar(parsedData?.from, MAINNET_ID);
+  const { parsedData } = useUpdateEnsContent({ decodedCall });
+  const { ensName, imageUrl } = useENSAvatar(
+    '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
+    MAINNET_ID
+  );
   const { t } = useTranslation();
 
   return (
@@ -23,7 +26,7 @@ const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <StyledENSIcon src={ENSIcon} />
       </Segment>
-      <Segment>{!compact ? t('ensName.updateContent') : ''}</Segment>
+      <Segment>{!compact ? t('ens.updateContent') : ''}</Segment>
       <Segment>
         <MdArrowRightAlt />
       </Segment>
@@ -35,13 +38,10 @@ const UpdateENSNameInfoLine: React.FC<ActionViewProps> = ({
         />
       </Segment>
       <Segment>
-        {ensName ||
-          (parsedData?.from
-            ? shortenAddress(parsedData?.from, compact ? 2 : 4)
-            : '')}
+        {ensName || shortenAddress(parsedData?.from, compact ? 2 : 4)}
       </Segment>
     </>
   );
 };
 
-export default UpdateENSNameInfoLine;
+export default UpdateENSContentInfoLine;

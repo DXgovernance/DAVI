@@ -21,9 +21,9 @@ import RepMintSummary from './RepMint/RepMintSummary';
 import SetPermissionsEditor from './SetPermissions/SetPermissionsEditor';
 import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
 import SetPermissionsSummary from './SetPermissions/SetPermissionsSummary';
-import UpdateENSNameEditor from './UpdateENSName/UpdateENSNameEditor';
-import UpdateENSNameSummary from './UpdateENSName/UpdateENSNameSummary';
-import UpdateENSNameInfoLine from './UpdateENSName/UpdateENSNameInfoLine';
+import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
+import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
+import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -73,11 +73,11 @@ export const supportedActions: Record<
     summaryView: SetPermissionsSummary,
     editor: SetPermissionsEditor,
   },
-  [SupportedAction.UPDATE_ENS_NAME]: {
-    title: 'Update ENS name',
-    infoLineView: UpdateENSNameInfoLine,
-    summaryView: UpdateENSNameSummary,
-    editor: UpdateENSNameEditor,
+  [SupportedAction.ENS_UPDATE_CONTENT]: {
+    title: 'Update ENS content',
+    infoLineView: UpdateENSContentInfoLine,
+    summaryView: UpdateENSContentSummary,
+    editor: UpdateENSContentEditor,
   },
 };
 const ERC20Contract = new utils.Interface(ERC20ABI);
@@ -130,7 +130,7 @@ export const defaultValues: Record<
       },
     },
   },
-  [SupportedAction.UPDATE_ENS_NAME]: {
+  [SupportedAction.ENS_UPDATE_CONTENT]: {
     contract: ENSPublicResolverContract,
     decodedCall: {
       function: ENSPublicResolverContract.getFunction('setContenthash'),

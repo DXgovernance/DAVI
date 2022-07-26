@@ -1,0 +1,39 @@
+import { render } from 'utils/tests';
+import UpdateENSContentSummary from './UpdateENSContentSummary';
+import { mockDecodedCallUpdateENSContent } from './fixtures';
+
+jest.mock('wagmi', () => ({
+  __esModule: true,
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+    },
+  }),
+  useNetwork: () => ({
+    chain: {
+      id: 1,
+    },
+  }),
+
+  useEnsName: () => ({
+    data: 'name.eth',
+  }),
+
+  useContractRead: () => ({
+    data: 'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be',
+  }),
+
+  useProvider: () => ({
+    getNetwork: jest.fn(),
+  }),
+}));
+
+describe('UpdateENSNameSummary', () => {
+  it('Should match snapshot', () => {
+    const { container } = render(
+      <UpdateENSContentSummary decodedCall={mockDecodedCallUpdateENSContent} />
+    );
+    expect(container).toMatchSnapshot();
+  });
+});

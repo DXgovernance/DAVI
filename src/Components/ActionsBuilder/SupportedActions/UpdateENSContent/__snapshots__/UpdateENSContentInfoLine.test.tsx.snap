@@ -6,49 +6,37 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      viewBox="0 0 24 24"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      class="sc-dlfnuX fjXZjO sc-iqHYmW CgZEx"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <img
+        src="ens.svg"
       />
-    </svg>
+    </div>
   </span>
   <span
     class="sc-bdfBQB enldmJ"
   >
-    ENS Name
+    ens.updateContent
   </span>
   <span
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="1em"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <line
-        x1="5"
-        x2="19"
-        y1="12"
-        y2="12"
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
       />
-      <polyline
-        points="12 5 19 12 12 19"
+      <path
+        d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"
       />
     </svg>
   </span>
@@ -57,7 +45,7 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
+      class="sc-fodVek sc-fFucqa kyFjTL gPqAoJ"
       data-testid="avatar"
       size="24"
       src="test"
@@ -66,7 +54,7 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
   <span
     class="sc-bdfBQB enldmJ"
   >
-    0x0000...0000
+    test.eth
   </span>
    
 </div>
