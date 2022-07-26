@@ -84,6 +84,7 @@ export const supportedActions: Record<
     infoLineView: UpdateENSContentInfoLine,
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
+    displaySubmit: true,
   },
 };
 const ERC20Contract = new utils.Interface(ERC20ABI);
@@ -169,6 +170,7 @@ export const getEditor = (actionType: SupportedAction) => {
 };
 
 export const displaySubmit = (actionType: SupportedAction) => {
+  console.log({ actionType });
   if (actionType == null) return null;
 
   return supportedActions[actionType].displaySubmit;
@@ -184,6 +186,7 @@ const isApprovalCall = (action: DecodedAction) => {
  * 2. spending calls
  * 3. transfers.
  * 4. generic calls
+ *
  */
 export const getActionPoints = (action: DecodedAction): number => {
   const type = action?.decodedCall?.callType;

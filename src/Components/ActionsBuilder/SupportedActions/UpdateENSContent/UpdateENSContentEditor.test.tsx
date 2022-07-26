@@ -23,6 +23,7 @@ describe.only('UpdateENSContentEditor', () => {
       <UpdateENSContentEditor
         decodedCall={mockDecodedCallUpdateENSContent}
         updateCall={jest.fn()}
+        onSubmit={jest.fn()}
       />
     );
     expect(container).toMatchSnapshot();

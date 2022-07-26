@@ -30,7 +30,6 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
   const newIpfsHash = convertToIpfsHash(parsedData?.contentHash);
   const newIpfsUrl = getIpfsUrl(newIpfsHash);
   const blockchainUrl = getBlockChainUrl(chainId, parsedData?.from);
-
   return (
     <>
       <DetailHeader>{t('ens.domain')}</DetailHeader>
