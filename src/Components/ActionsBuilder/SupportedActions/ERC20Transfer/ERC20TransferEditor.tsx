@@ -50,9 +50,22 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   onSubmit,
 }) => {
   const { t } = useTranslation();
+
+  let parsedData = useMemo(() => {
+    if (!decodedCall) return null;
+
+    return {
+      source: decodedCall.from,
+      tokenAddress: decodedCall.to,
+      amount: decodedCall.args._value,
+      recipientAddress: decodedCall.args._to,
+    };
+  }, [decodedCall]);
+
   const { control, handleSubmit, getValues } = useForm({
     resolver: validateERC20Transfer,
     context: { t },
+    defaultValues: parsedData,
   });
 
   const { tokenAddress, recipientAddress } = getValues();
@@ -60,11 +73,6 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
 
   const { chain } = useNetwork();
-
-  const source = useMemo<string>(() => {
-    if (!decodedCall) return null;
-    return decodedCall.from;
-  }, [decodedCall]);
 
   // Get token details from the token address
   const { tokens } = useTokenList(chain?.id);
@@ -197,7 +205,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 
                   <TokenPicker
                     {...field}
-                    walletAddress={source || ''}
+                    walletAddress={parsedData.source || ''}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
                     onSelect={tokenAddress => {
