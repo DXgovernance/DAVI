@@ -21,12 +21,12 @@ exports[`Header Should match snapshot 1`] = `
         class="sc-eCstlR sc-eJMPIT hzVZsK kymUFi"
       >
         <button
-          class="sc-bdfBQB cnzpap"
+          class="sc-bdfBQB ejqmMc"
         >
           notConnected
         </button>
         <button
-          class="sc-bdfBQB cnzpap"
+          class="sc-bdfBQB ejqmMc"
           data-testid="connectWalletBtn"
         >
           connectWallet

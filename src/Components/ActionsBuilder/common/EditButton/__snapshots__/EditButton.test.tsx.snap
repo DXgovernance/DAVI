@@ -4,7 +4,7 @@ exports[`AddButton Should match snapshot 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-hKgJUU igQAuX eGwtPz"
+    class="sc-bdfBQB sc-hKgJUU gFimaK eGwtPz"
   >
     Test
   </button>

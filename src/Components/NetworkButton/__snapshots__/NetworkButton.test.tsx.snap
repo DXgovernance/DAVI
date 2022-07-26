@@ -4,7 +4,7 @@ exports[`NetworkButton Should match snapshot and display network 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea cnzpap hqMJhH"
+    class="sc-bdfBQB sc-gsTEea ejqmMc hqMJhH"
   >
     <img
       alt="Icon"
@@ -20,7 +20,7 @@ exports[`NetworkButton Should match snapshot and display not connected status 1`
 <div>
    
   <button
-    class="sc-bdfBQB cnzpap"
+    class="sc-bdfBQB ejqmMc"
   >
     notConnected
   </button>

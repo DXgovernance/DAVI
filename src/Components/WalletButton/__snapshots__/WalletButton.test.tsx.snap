@@ -4,7 +4,7 @@ exports[`WalletButton Should match snapshot and display connect wallet 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB cnzpap"
+    class="sc-bdfBQB ejqmMc"
     data-testid="connectWalletBtn"
   >
     connectWallet
@@ -17,7 +17,7 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-Azgjq igQAuX hqMJhH evuLsq"
+    class="sc-bdfBQB sc-gsTEea sc-Azgjq gFimaK hqMJhH evuLsq"
     type="submit"
   >
     <span

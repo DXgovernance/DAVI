@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import Input from 'old-components/Guilds/common/Form/Input';
-import { BlockButton } from 'Components/ActionsModal/ActionsModal.styled';
+import { Button } from 'old-components/Guilds/common/Button';
 import { Controller, useForm } from 'react-hook-form';
 import Avatar from 'old-components/Guilds/Avatar';
 import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { Box } from 'Components/Primitives/Layout';
 import { shortenAddress, MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import StyledIcon from 'old-components/Guilds/common/SVG';
@@ -18,33 +17,15 @@ import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
 import { useTranslation } from 'react-i18next';
 import { ethers } from 'ethers';
 import validateRepMint from './validateRepMint';
+import {
+  Control,
+  ControlRow,
+  ControlLabel,
+} from 'Components/Primitives/Forms/Control';
+import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
 
-const Error = styled(Box)`
-  color: ${({ theme }) => theme.colors.red};
-  font-size: ${({ theme }) => theme.fontSizes.label};
+const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;
-`;
-
-const Control = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  margin: 0.75rem 0;
-  width: 100%;
-`;
-
-const ControlLabel = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 0.75rem;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
-  font-size: ${({ theme }) => theme.fontSizes.body};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-`;
-
-const ControlRow = styled(Box)`
-  display: flex;
-  align-items: stretch;
-  height: 100%;
 `;
 
 const RepMintInput = styled(NumericalInput)`
@@ -82,7 +63,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
   });
 
   useEffect(() => {
-    // get initial data in case of edit
     const initialRepAmount = ethers.utils.formatEther(
       parsedData?.amount?.toString()
     );
@@ -134,6 +114,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
                 />
               }
               readOnly
+              disabled
             />
           </ControlRow>
         </Control>
@@ -176,11 +157,13 @@ export const Mint: React.FC<ActionEditorProps> = ({
               <StyledToolTip>{t('repMint.repAmountTooltip')}</StyledToolTip>
             </ControlLabel>
             <ControlRow>
-              <RepMintInput value={repAmount?.toString()} readOnly />
+              <RepMintInput disabled value={repAmount?.toString()} readOnly />
             </ControlRow>
           </Control>
         </ControlRow>
-        <BlockButton type="submit">{t('saveAction')}</BlockButton>
+        <Button m="1rem 0 0" fullWidth type="submit">
+          {t('saveAction')}
+        </Button>
       </form>
     </React.Fragment>
   );

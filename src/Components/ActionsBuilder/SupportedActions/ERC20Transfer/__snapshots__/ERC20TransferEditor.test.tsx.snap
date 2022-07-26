@@ -6,26 +6,26 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
   <div>
     <form>
       <div
-        class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
       >
         <div
-          class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
         >
           recipient
         </div>
         <div
-          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
         >
           <div
-            class="sc-hHfuMS giecRs"
+            class="sc-iBPTik jFEHgg"
           >
             <div
-              class="sc-dmlqKv gKcicO"
+              class="sc-fubCzh fldzaP"
             >
               <div>
                 <img
                   alt="Avatar"
-                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  class="sc-dlfnuX sc-jSgvzq hZGubn bmPvYM"
                   data-testid="avatar"
                   size="24"
                   src="test"
@@ -33,41 +33,41 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               </div>
             </div>
             <input
-              class="sc-dIUeWJ jJPCe"
+              class="sc-gKseQn gSojhS"
               name="recipientAddress"
               placeholder="ethereumAddress"
               value=""
             />
             <div
-              class="sc-dmlqKv lmzxkt"
+              class="sc-fubCzh jfgyYA"
             />
           </div>
         </div>
       </div>
       <div
-        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+        class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
       >
         <div
-          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+          class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
         >
           <div
-            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+            class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
           >
             amount
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+            class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
           >
             <div
-              class="sc-hHfuMS giecRs"
+              class="sc-iBPTik jFEHgg"
             >
               <div
-                class="sc-dmlqKv gKcicO"
+                class="sc-fubCzh fldzaP"
               />
               <input
                 autocomplete="off"
                 autocorrect="off"
-                class="sc-dIUeWJ jJPCe"
+                class="sc-gKseQn gSojhS"
                 inputmode="decimal"
                 maxlength="79"
                 minlength="1"
@@ -79,42 +79,42 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
                 value=""
               />
               <div
-                class="sc-dmlqKv lmzxkt"
+                class="sc-fubCzh jfgyYA"
               />
             </div>
           </div>
         </div>
         <div
-          class="sc-hKgJUU sc-cOajNj dpFBPj kjbwET"
+          class="sc-jrAFXE sc-cBNeex jLAWlL ikLJHn"
         />
         <div
-          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+          class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
         >
           <div
-            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+            class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
           >
             asset
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+            class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
           >
             <div
-              class="sc-hHfuMS giecRs"
+              class="sc-iBPTik jFEHgg"
             >
               <div
-                class="sc-dmlqKv gKcicO"
+                class="sc-fubCzh fldzaP"
               >
                 <div />
               </div>
               <input
-                class="sc-dIUeWJ jJPCe"
+                class="sc-gKseQn gSojhS"
                 name="tokenAddress"
                 placeholder="token"
                 readonly=""
                 value=""
               />
               <div
-                class="sc-dmlqKv lmzxkt"
+                class="sc-fubCzh jfgyYA"
               >
                 <svg
                   fill="none"
@@ -137,7 +137,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
         </div>
       </div>
       <button
-        class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        class="sc-bdfBQB eySZaQ"
         data-testid="submit-erc20transfer"
         type="submit"
       >
@@ -155,26 +155,26 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
   <div>
     <form>
       <div
-        class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+        class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
       >
         <div
-          class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+          class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
         >
           recipient
         </div>
         <div
-          class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+          class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
         >
           <div
-            class="sc-hHfuMS giecRs"
+            class="sc-iBPTik jFEHgg"
           >
             <div
-              class="sc-dmlqKv gKcicO"
+              class="sc-fubCzh fldzaP"
             >
               <div>
                 <img
                   alt="Avatar"
-                  class="sc-dlfnuX sc-idOiZg hZGubn hRteGR"
+                  class="sc-dlfnuX sc-jSgvzq hZGubn bmPvYM"
                   data-testid="avatar"
                   size="24"
                   src="test"
@@ -182,41 +182,41 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
               </div>
             </div>
             <input
-              class="sc-dIUeWJ jJPCe"
+              class="sc-gKseQn gSojhS"
               name="recipientAddress"
               placeholder="ethereumAddress"
               value=""
             />
             <div
-              class="sc-dmlqKv lmzxkt"
+              class="sc-fubCzh jfgyYA"
             />
           </div>
         </div>
       </div>
       <div
-        class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+        class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
       >
         <div
-          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+          class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
         >
           <div
-            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+            class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
           >
             amount
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+            class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
           >
             <div
-              class="sc-hHfuMS giecRs"
+              class="sc-iBPTik jFEHgg"
             >
               <div
-                class="sc-dmlqKv gKcicO"
+                class="sc-fubCzh fldzaP"
               />
               <input
                 autocomplete="off"
                 autocorrect="off"
-                class="sc-dIUeWJ jJPCe"
+                class="sc-gKseQn gSojhS"
                 inputmode="decimal"
                 maxlength="79"
                 minlength="1"
@@ -228,42 +228,42 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
                 value=""
               />
               <div
-                class="sc-dmlqKv lmzxkt"
+                class="sc-fubCzh jfgyYA"
               />
             </div>
           </div>
         </div>
         <div
-          class="sc-hKgJUU sc-cOajNj dpFBPj kjbwET"
+          class="sc-jrAFXE sc-cBNeex jLAWlL ikLJHn"
         />
         <div
-          class="sc-hKgJUU sc-cTkxnA dpFBPj DIJoy"
+          class="sc-jrAFXE sc-kLgnNl jLAWlL cyQrbd"
         >
           <div
-            class="sc-hKgJUU sc-jNMcJZ dpFBPj bAjOIw"
+            class="sc-jrAFXE sc-iktFfs jLAWlL fookKt"
           >
             asset
           </div>
           <div
-            class="sc-hKgJUU sc-dOSRxR dpFBPj ckbaNL"
+            class="sc-jrAFXE sc-jJEKmz jLAWlL kwcuVC"
           >
             <div
-              class="sc-hHfuMS giecRs"
+              class="sc-iBPTik jFEHgg"
             >
               <div
-                class="sc-dmlqKv gKcicO"
+                class="sc-fubCzh fldzaP"
               >
                 <div />
               </div>
               <input
-                class="sc-dIUeWJ jJPCe"
+                class="sc-gKseQn gSojhS"
                 name="tokenAddress"
                 placeholder="token"
                 readonly=""
                 value=""
               />
               <div
-                class="sc-dmlqKv lmzxkt"
+                class="sc-fubCzh jfgyYA"
               >
                 <svg
                   fill="none"
@@ -286,7 +286,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
         </div>
       </div>
       <button
-        class="sc-bdfBQB sc-pGacB cnzpap hjFzAl"
+        class="sc-bdfBQB eySZaQ"
         data-testid="submit-erc20transfer"
         type="submit"
       >

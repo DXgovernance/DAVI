@@ -13,7 +13,7 @@ exports[`ProposalTypes Should match snapshot 1`] = `
         class="sc-pGacB sc-iwyWTf imomAO hRUkCK"
       >
         <button
-          class="sc-bdfBQB igQAuX"
+          class="sc-bdfBQB gFimaK"
         >
           <div
             class="sc-jSgvzq dMuAyB"
@@ -61,12 +61,12 @@ exports[`ProposalTypes Should match snapshot 1`] = `
               chooseProposal
             </div>
             <button
-              class="sc-bdfBQB sc-dmlqKv igQAuX fSVQWC"
+              class="sc-bdfBQB sc-dmlqKv gFimaK fSVQWC"
             >
               Signal Proposal
             </button>
             <button
-              class="sc-bdfBQB sc-dmlqKv igQAuX fSVQWC"
+              class="sc-bdfBQB sc-dmlqKv gFimaK fSVQWC"
             >
               Custom Proposal
             </button>
@@ -107,7 +107,7 @@ exports[`ProposalTypes Should match snapshot 1`] = `
         class="sc-pGacB sc-fKFxtB imomAO dOdDEg"
       >
         <button
-          class="sc-bdfBQB sc-bBXrwG cnzpap iljmeA"
+          class="sc-bdfBQB sc-bBXrwG ejqmMc iljmeA"
           data-testid="proposal-type-continue-button"
         >
           continue

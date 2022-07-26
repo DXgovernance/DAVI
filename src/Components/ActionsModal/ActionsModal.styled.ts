@@ -6,11 +6,6 @@ export const EditorWrapper = styled.div`
   margin: 1.25rem;
 `;
 
-export const BlockButton = styled(Button)`
-  margin-top: 1rem;
-  width: 100%;
-`;
-
 export const Wrapper = styled.div`
   width: 100%;
 `;

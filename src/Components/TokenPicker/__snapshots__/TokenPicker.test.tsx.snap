@@ -88,7 +88,7 @@ exports[`TokenPicker Should match snapshot 1`] = `
                     </svg>
                   </div>
                   <input
-                    class="sc-bdfBQB wpJaf"
+                    class="sc-bdfBQB jMUkHi"
                     placeholder="searchToken"
                     value=""
                   />

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'minimal';
   fullWidth?: boolean;
+  m?: string | number;
 };
 
 const variantStyles = (variant = 'primary') =>
@@ -92,9 +93,10 @@ export const Button = styled.button<ButtonProps>`
   }
 
   ${({ variant }) => variantStyles(variant)}
-  ${({ fullWidth }) =>
+  ${({ fullWidth, m }) =>
     css`
       width: ${fullWidth ? '100%' : 'auto'};
+      margin: ${m ? m : '0'};
     `}
 `;
 
