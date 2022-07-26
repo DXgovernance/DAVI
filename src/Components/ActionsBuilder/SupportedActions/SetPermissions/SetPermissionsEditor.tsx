@@ -6,40 +6,14 @@ import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import AssetTransfer from './AssetTransfer';
 import FunctionCall from './FunctionCall';
-import styled, { css } from 'styled-components';
-import { Button } from 'old-components/Guilds/common/Button';
-import { Box } from 'Components/Primitives/Layout';
 import { MAX_UINT, ANY_ADDRESS } from 'utils';
 import { ParsedDataInterface, ValidationsInterface } from './types';
 import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
+import { DetailWrapper, TabButton } from './styles';
 
 const Web3 = require('web3');
 const web3 = new Web3();
-
-interface TabButtonProps {
-  active: boolean;
-}
-
-const DetailWrapper = styled(Box)`
-  margin: 1.25rem 0rem;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.card.grey}; ;
-`;
-
-const TabButton = styled(Button)<TabButtonProps>`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.text};
-  margin-bottom: -1px;
-  border-radius: 10px 10px 0px 0px;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
-
-  ${({ active }) =>
-    active &&
-    css`
-      border: 2px solid ${({ theme }) => theme.colors.card.grey};
-      color: ${({ theme }) => theme.colors.text};
-    `}
-`;
 
 const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -99,6 +73,26 @@ const Permissions: React.FC<ActionEditorProps> = ({
   }, [tokens, parsedData]);
 
   const { data: tokenInfo } = useERC20Info(pickedAsset);
+  // const { nativeAsset } = getNetworkById(chain?.id);
+
+  // let tokenInfo = useMemo(() => {
+  //   if (erc20TokenInfo !== undefined) {
+  //     return {
+  //       symbol: erc20TokenInfo.symbol,
+  //       decimals: erc20TokenInfo.decimals,
+  //     };
+  //   } else if (pickedAsset === ZERO_ADDRESS) {
+  //     return {
+  //       symbol: nativeAsset.symbol,
+  //       decimals: nativeAsset.decimals,
+  //     };
+  //   } else {
+  //     return {
+  //       symbol: '',
+  //       decimals: 18,
+  //     };
+  //   }
+  // }, [erc20TokenInfo, nativeAsset, pickedAsset]);
 
   //
   // Asset-related functions

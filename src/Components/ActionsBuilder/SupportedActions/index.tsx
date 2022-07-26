@@ -108,6 +108,7 @@ export const defaultValues: Record<
     decodedCall: {
       function: ERC20GuildContract.getFunction('setPermission'),
       to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
+      // to: '0x140d68e4E3f80cdCf7036De007b3bCEC54D38b1f',
       value: BigNumber.from(0),
       functionName: '',
       args: {

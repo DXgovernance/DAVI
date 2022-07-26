@@ -42,3 +42,27 @@ export const ToggleLabel = styled.div<ToggleLabelProps>`
       color: ${({ theme }) => theme.colors.proposalText.grey} !important;
     `}
 `;
+
+export const DetailWrapper = styled(Box)`
+  margin: 1.25rem 0rem;
+  border-bottom: 2px solid ${({ theme }) => theme.colors.card.grey}; ;
+`;
+
+interface TabButtonProps {
+  active: boolean;
+}
+
+export const TabButton = styled(Button)<TabButtonProps>`
+  background-color: transparent;
+  color: ${({ theme }) => theme.colors.text};
+  margin-bottom: -1px;
+  border-radius: 10px 10px 0px 0px;
+  color: ${({ theme }) => theme.colors.proposalText.grey};
+
+  ${({ active }) =>
+    active &&
+    css`
+      border: 2px solid ${({ theme }) => theme.colors.card.grey};
+      color: ${({ theme }) => theme.colors.text};
+    `}
+`;

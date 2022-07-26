@@ -56,7 +56,7 @@ const AssetTransfer: React.FC<AssetTransferProps> = ({
   return (
     <div>
       <Control>
-        <ControlLabel>Asset</ControlLabel>
+        <ControlLabel>{t('asset')}</ControlLabel>
         <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
           <Input
             name="asset"
