@@ -10,15 +10,6 @@ const UnstyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   width: 100%;
   box-sizing: border-box;
   outline: none;
-  ${({ disabled, theme }) => {
-    console.log(disabled);
-    if (disabled) {
-      return `
-      color: ${theme.colors.muted};
-    `;
-    }
-    return '';
-  }}
 `;
 
 const InputWrapper = styled.div<{

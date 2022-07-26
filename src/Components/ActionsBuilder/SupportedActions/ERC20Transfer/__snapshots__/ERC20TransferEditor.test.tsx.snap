@@ -33,7 +33,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               </div>
             </div>
             <input
-              class="sc-gKseQn gSojhS"
+              class="sc-gKseQn MqBDT"
               name="recipientAddress"
               placeholder="ethereumAddress"
               value=""
@@ -67,7 +67,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               <input
                 autocomplete="off"
                 autocorrect="off"
-                class="sc-gKseQn gSojhS"
+                class="sc-gKseQn MqBDT"
                 inputmode="decimal"
                 maxlength="79"
                 minlength="1"
@@ -107,7 +107,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
                 <div />
               </div>
               <input
-                class="sc-gKseQn gSojhS"
+                class="sc-gKseQn MqBDT"
                 name="tokenAddress"
                 placeholder="token"
                 readonly=""
@@ -137,7 +137,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
         </div>
       </div>
       <button
-        class="sc-bdfBQB eySZaQ"
+        class="sc-bdfBQB hzKgpq"
         data-testid="submit-erc20transfer"
         type="submit"
       >
@@ -182,7 +182,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
               </div>
             </div>
             <input
-              class="sc-gKseQn gSojhS"
+              class="sc-gKseQn MqBDT"
               name="recipientAddress"
               placeholder="ethereumAddress"
               value=""
@@ -216,7 +216,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
               <input
                 autocomplete="off"
                 autocorrect="off"
-                class="sc-gKseQn gSojhS"
+                class="sc-gKseQn MqBDT"
                 inputmode="decimal"
                 maxlength="79"
                 minlength="1"
@@ -256,7 +256,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
                 <div />
               </div>
               <input
-                class="sc-gKseQn gSojhS"
+                class="sc-gKseQn MqBDT"
                 name="tokenAddress"
                 placeholder="token"
                 readonly=""
@@ -286,7 +286,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
         </div>
       </div>
       <button
-        class="sc-bdfBQB eySZaQ"
+        class="sc-bdfBQB hzKgpq"
         data-testid="submit-erc20transfer"
         type="submit"
       >

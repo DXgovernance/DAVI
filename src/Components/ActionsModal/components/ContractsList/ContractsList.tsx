@@ -59,7 +59,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
             Set Permissions
           </ButtonLabel>
         </ActionsButton>
-        {isRepGuild || true ? (
+        {isRepGuild ? (
           <ActionsButton
             onClick={() => onSupportedActionSelect(SupportedAction.REP_MINT)}
           >

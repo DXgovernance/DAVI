@@ -14,7 +14,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
       >
         castVote
         <button
-          class="sc-bkzYnD sc-gyUflj jCqMKL fiJUnR"
+          class="sc-bkzYnD sc-gyUflj lhzXlq fiJUnR"
         >
           DXD
         </button>
@@ -128,17 +128,17 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
             options
           </div>
           <button
-            class="sc-bkzYnD sc-eWVLlQ sc-iGculD jCqMKL gbJbEv dTftOX"
+            class="sc-bkzYnD sc-eWVLlQ sc-iGculD lhzXlq gbJbEv dTftOX"
           >
             No
           </button>
           <button
-            class="sc-bkzYnD sc-eWVLlQ sc-iGculD jCqMKL gbJbEv dTftOX"
+            class="sc-bkzYnD sc-eWVLlQ sc-iGculD lhzXlq gbJbEv dTftOX"
           >
             Yes
           </button>
           <button
-            class="sc-bkzYnD sc-eWVLlQ bCBSsJ gbJbEv"
+            class="sc-bkzYnD sc-eWVLlQ RyUSY gbJbEv"
             disabled=""
           >
             vote

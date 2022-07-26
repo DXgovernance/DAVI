@@ -58,7 +58,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           <input
             autocomplete="off"
             autocorrect="off"
-            class="sc-hKgJUU czqcGJ sc-fFucqa cMBanK"
+            class="sc-hKgJUU dzFfYs sc-fFucqa cMBanK"
             data-testid="stake-amount-input"
             inputmode="decimal"
             maxlength="79"
@@ -74,7 +74,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           />
         </div>
         <button
-          class="sc-gKseQn dObHhs"
+          class="sc-gKseQn iXHFbJ"
           data-testid="stake-amount-max-button"
         >
           max
@@ -126,7 +126,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       </span>
     </div>
     <button
-      class="sc-gKseQn sc-bkzYnD dObHhs brvGTX"
+      class="sc-gKseQn sc-bkzYnD iXHFbJ brvGTX"
       data-testid="lock-token-spending"
       disabled=""
     >

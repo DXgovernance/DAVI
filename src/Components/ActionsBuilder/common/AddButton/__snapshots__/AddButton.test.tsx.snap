@@ -4,7 +4,7 @@ exports[`AddButton Should match snapshot 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-gsTEea sc-hKgJUU ejqmMc hqMJhH iaqVcn"
+    class="sc-bdfBQB sc-gsTEea sc-hKgJUU bFQUlx hqMJhH iaqVcn"
   >
     <svg
       fill="currentColor"

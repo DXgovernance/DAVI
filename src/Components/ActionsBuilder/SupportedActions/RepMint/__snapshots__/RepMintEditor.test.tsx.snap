@@ -43,7 +43,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             />
           </div>
           <input
-            class="sc-bdfBQB imZvoJ"
+            class="sc-bdfBQB wpJaf"
             disabled=""
             readonly=""
             value="0x0000...0000"
@@ -89,7 +89,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="sc-bdfBQB jMUkHi sc-bkzYnD EuqiS"
+              class="sc-bdfBQB wpJaf sc-bkzYnD EuqiS"
               inputmode="decimal"
               maxlength="79"
               minlength="1"
@@ -143,7 +143,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="sc-bdfBQB imZvoJ sc-bkzYnD EuqiS"
+              class="sc-bdfBQB wpJaf sc-bkzYnD EuqiS"
               disabled=""
               inputmode="decimal"
               maxlength="79"
@@ -163,7 +163,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
       </div>
     </div>
     <button
-      class="sc-hKgJUU jFsZHH"
+      class="sc-hKgJUU fafTeJ"
       type="submit"
     >
       saveAction

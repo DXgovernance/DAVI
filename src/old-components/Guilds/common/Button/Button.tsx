@@ -96,7 +96,7 @@ export const Button = styled.button<ButtonProps>`
   ${({ fullWidth, m }) =>
     css`
       width: ${fullWidth ? '100%' : 'auto'};
-      margin: ${m ? m : '0'};
+      ${m ? ` margin: ${m};` : ''}};
     `}
 `;
 
