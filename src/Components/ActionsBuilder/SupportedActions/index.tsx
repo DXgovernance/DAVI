@@ -34,7 +34,8 @@ export interface ActionViewProps {
 }
 
 export interface ActionEditorProps extends ActionViewProps {
-  updateCall: (updatedCall: DecodedCall) => void;
+  updateCall?: (updatedCall: DecodedCall) => void;
+  onSubmit: (decodedCall: DecodedCall) => void;
 }
 
 type SupportedActionViews = {
@@ -44,6 +45,7 @@ type SupportedActionViews = {
 
 type SupportedActionEditors = {
   editor: React.FC<ActionEditorProps>;
+  displaySubmit?: boolean;
 };
 
 export const supportedActions: Record<
@@ -55,23 +57,27 @@ export const supportedActions: Record<
     infoLineView: ERC20TransferInfoLine,
     summaryView: ERC20TransferSummary,
     editor: ERC20TransferEditor,
+    displaySubmit: false,
   },
   [SupportedAction.REP_MINT]: {
     title: 'Mint Reputation',
     infoLineView: RepMintInfoLine,
     summaryView: RepMintSummary,
     editor: RepMintEditor,
+    displaySubmit: true,
   },
   [SupportedAction.GENERIC_CALL]: {
     title: 'Generic Call',
     infoLineView: GenericCallInfoLine,
     editor: () => <div>Generic Call Editor</div>,
+    displaySubmit: false,
   },
   [SupportedAction.SET_PERMISSIONS]: {
     title: 'Set permissions',
     infoLineView: SetPermissionsInfoLine,
     summaryView: SetPermissionsSummary,
     editor: SetPermissionsEditor,
+    displaySubmit: true,
   },
   [SupportedAction.ENS_UPDATE_CONTENT]: {
     title: 'Update ENS content',
@@ -160,6 +166,12 @@ export const getEditor = (actionType: SupportedAction) => {
   if (actionType == null) return null;
 
   return supportedActions[actionType].editor;
+};
+
+export const displaySubmit = (actionType: SupportedAction) => {
+  if (actionType == null) return null;
+
+  return supportedActions[actionType].displaySubmit;
 };
 
 const isApprovalCall = (action: DecodedAction) => {
