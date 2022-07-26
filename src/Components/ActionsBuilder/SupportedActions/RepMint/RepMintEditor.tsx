@@ -90,7 +90,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
       setRepAmount(initialRepAmount);
       setValue(
         'repPercent',
-        String((Number(initialRepAmount) * 100) / totalSupply)
+        String((Number(initialRepAmount) * 100) / totalSupply || 0)
       );
     }
   }, []); //eslint-disable-line
@@ -104,7 +104,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
     }
   };
 
-  const submitAction = (values: any) => {
+  const submitAction = () => {
     onSubmit({
       ...decodedCall,
       args: {

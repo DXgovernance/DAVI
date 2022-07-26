@@ -96,7 +96,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               placeholder="0.0"
               spellcheck="false"
               type="text"
-              value="NaN"
+              value="0"
             />
             <div
               class="sc-dlfnuX gJuvwh"
