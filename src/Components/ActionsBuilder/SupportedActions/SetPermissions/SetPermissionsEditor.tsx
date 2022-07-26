@@ -73,26 +73,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
   }, [tokens, parsedData]);
 
   const { data: tokenInfo } = useERC20Info(pickedAsset);
-  // const { nativeAsset } = getNetworkById(chain?.id);
-
-  // let tokenInfo = useMemo(() => {
-  //   if (erc20TokenInfo !== undefined) {
-  //     return {
-  //       symbol: erc20TokenInfo.symbol,
-  //       decimals: erc20TokenInfo.decimals,
-  //     };
-  //   } else if (pickedAsset === ZERO_ADDRESS) {
-  //     return {
-  //       symbol: nativeAsset.symbol,
-  //       decimals: nativeAsset.decimals,
-  //     };
-  //   } else {
-  //     return {
-  //       symbol: '',
-  //       decimals: 18,
-  //     };
-  //   }
-  // }, [erc20TokenInfo, nativeAsset, pickedAsset]);
 
   //
   // Asset-related functions
