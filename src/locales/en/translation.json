@@ -50,7 +50,9 @@
     "domain": "Domain",
     "currentContent": "Current content",
     "newContent": "New content",
-    "updateContent": "ENS: Update Content"
+    "updateContent": "ENS: Update Content",
+    "name": "ENS Name",
+    "ipfsHash": "CID/IPFS Hash"
   },
   "mint": "Mint",
   "toAddress": "To Address",

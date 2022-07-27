@@ -66,7 +66,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
     <React.Fragment>
       <Control>
         <ControlLabel>
-          {'ENS Name'}
+          {t('ens.name')}
           <StyledInfoIcon src={Info} />
           <StyledToolTip>{t('ens.nameTooltip')}</StyledToolTip>
         </ControlLabel>
@@ -78,7 +78,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       <ControlRow>
         <Control>
           <ControlLabel>
-            {'CID/IPFS Hash'}
+            {t('ens.ipfsHash')}
             <StyledInfoIcon src={Info} />
             <StyledToolTip>{t('ens.ipfsHashToolTip')}</StyledToolTip>
           </ControlLabel>

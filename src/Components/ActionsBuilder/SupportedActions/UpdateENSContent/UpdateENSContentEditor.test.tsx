@@ -17,7 +17,7 @@ jest.mock('wagmi', () => ({
   }),
 }));
 
-describe.only('UpdateENSContentEditor', () => {
+describe('UpdateENSContentEditor', () => {
   it('Should match snapshot', () => {
     const { container } = render(
       <UpdateENSContentEditor

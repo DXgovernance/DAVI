@@ -170,7 +170,6 @@ export const getEditor = (actionType: SupportedAction) => {
 };
 
 export const displaySubmit = (actionType: SupportedAction) => {
-  console.log({ actionType });
   if (actionType == null) return null;
 
   return supportedActions[actionType].displaySubmit;
