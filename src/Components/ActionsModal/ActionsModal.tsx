@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BigNumber, utils } from 'ethers';
+import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -39,8 +39,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
   // Supported Actions
   const [selectedAction, setSelectedAction] =
     React.useState<SupportedAction>(null);
-  const [selectedActionContract, setSelectedActionContract] =
-    React.useState<utils.Interface>(null);
 
   // Generic calls
   const [selectedContract, setSelectedContract] =
@@ -176,7 +174,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
       setSelectedContract(null);
     } else if (selectedAction) {
       setSelectedAction(null);
-      setSelectedActionContract(null);
     }
 
     setData(null);
@@ -195,17 +192,21 @@ const ActionModal: React.FC<ActionModalProps> = ({
     }
     setData(defaultDecodedAction.decodedCall);
     setSelectedAction(action);
-    setSelectedActionContract(defaultDecodedAction.contract);
   }
 
   function saveSupportedAction(call?: DecodedCall) {
     const decodedCall = call ?? data;
-    if (!selectedAction || !decodedCall || !setSelectedActionContract) return;
+
+    const defaultDecodedAction = defaultValues[
+      decodedCall.callType
+    ] as DecodedAction;
+
+    if (!selectedAction || !decodedCall) return;
 
     const decodedAction: DecodedAction = {
       id: `action-${Math.random()}`,
       decodedCall,
-      contract: selectedActionContract,
+      contract: defaultDecodedAction.contract,
     };
 
     onAddAction(decodedAction);
@@ -216,7 +217,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedFunction(null);
     setSelectedContract(null);
     setSelectedAction(null);
-    setSelectedActionContract(null);
     setPayableFnData(null);
     setIsOpen(false);
   };
