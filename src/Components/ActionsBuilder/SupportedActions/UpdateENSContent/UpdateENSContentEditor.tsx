@@ -14,15 +14,16 @@ import { isEnsName, isIpfsHash } from './validation';
 import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
+import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
   updateCall,
 }) => {
+  const { parsedData } = useUpdateEnsContent({ decodedCall });
   const { t } = useTranslation();
-
-  const [ensName, setEnsName] = useState('');
-  const [ipfsHash, setIpfsHash] = useState('');
+  const [ensName, setEnsName] = useState(parsedData?.optionalProps?.ensName);
+  const [ipfsHash, setIpfsHash] = useState(parsedData?.optionalProps?.ipfsHash);
 
   // useDebounce will make sure we're not spamming the resolver
   const debouncedEnsName = useDebounce(ensName, 200);
@@ -46,6 +47,10 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
           ...decodedCall.args,
           node: nameHash,
         },
+        optionalProps: {
+          ...decodedCall.optionalProps,
+          ensName: debouncedEnsName,
+        },
       });
     }
   }, [debouncedEnsName]);
@@ -58,6 +63,10 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
         args: {
           ...decodedCall.args,
           hash: contentHash,
+        },
+        optionalProps: {
+          ...decodedCall.optionalProps,
+          ipfsHash: debouncedIpfsHash,
         },
       });
     }

@@ -15,14 +15,12 @@ import {
 } from './Summary.styled';
 import { SummaryProps } from './types';
 import { BiLinkExternal } from 'react-icons/bi';
-import { getBlockExplorerUrl } from 'provider';
 
-const Summary = ({ decodedCall, address }: SummaryProps) => {
+const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
   const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
   const { ensName, imageUrl } = useENSAvatar(address, MAINNET_ID);
   const { chain } = useNetwork();
-  const blockchainUrl = getBlockExplorerUrl(chain, address, 'address');
   const nativeTokenSymbol = useMemo(() => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
@@ -46,7 +44,7 @@ const Summary = ({ decodedCall, address }: SummaryProps) => {
             <Avatar defaultSeed={address} src={imageUrl} size={24} />
           </Segment>
           <StyledSegmentLink
-            href={blockchainUrl}
+            href={blockExplorerUrl}
             target="_blank"
             rel="noopener"
           >

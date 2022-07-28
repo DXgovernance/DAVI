@@ -15,4 +15,8 @@ export const mockDecodedCallUpdateENSContent: DecodedCall = {
     node: '0x0000000000000000000000000000000000000000',
     hash: '0x0000000000000000000000000000000000000000',
   },
+  optionalProps: {
+    ensName: 'test',
+    ipfsHash: 'Qm',
+  },
 };

@@ -6,6 +6,7 @@ import { UpdateENSContentDecodedCall } from 'Components/ActionsBuilder/Supported
   @to ENS resolver address
   @node: Namehash of the ENS name 
   @contentHash: IPFS/CID hash
+  @optionalProps: Props needed to update the ENS frontend content
   */
 
 export const useUpdateEnsContent = ({
@@ -18,6 +19,10 @@ export const useUpdateEnsContent = ({
       to: decodedCall.to,
       node: decodedCall.args.node,
       contentHash: decodedCall.args.hash,
+      optionalProps: {
+        ensName: decodedCall.optionalProps.ensName,
+        ipfsHash: decodedCall.optionalProps.ipfsHash,
+      },
     };
   }, [decodedCall]);
 

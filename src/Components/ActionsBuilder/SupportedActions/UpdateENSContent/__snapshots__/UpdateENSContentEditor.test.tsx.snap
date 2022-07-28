@@ -9,7 +9,7 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
     <div
       class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
     >
-      ENS Name
+      ens.name
       <div
         class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
       >
@@ -27,17 +27,17 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
       class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
     >
       <div
-        class="sc-crrszt fxDfFb"
+        class="sc-iqHYmW jGasVK"
       >
         <div
-          class="sc-dQoVA gHpToS"
+          class="sc-crrszt jWENVR"
         />
         <input
-          class="sc-iqHYmW csdOlB"
-          value=""
+          class="sc-kEjbQP hsweDF"
+          value="test"
         />
         <div
-          class="sc-dQoVA jIDnsx"
+          class="sc-crrszt iYeIOC"
         />
       </div>
       <p>
@@ -54,7 +54,7 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
       <div
         class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
       >
-        CID/IPFS Hash
+        ens.ipfsHash
         <div
           class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
         >
@@ -72,17 +72,17 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
         class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
       >
         <div
-          class="sc-crrszt fxDfFb"
+          class="sc-iqHYmW jGasVK"
         >
           <div
-            class="sc-dQoVA gHpToS"
+            class="sc-crrszt jWENVR"
           />
           <input
-            class="sc-iqHYmW csdOlB"
-            value=""
+            class="sc-kEjbQP hsweDF"
+            value="Qm"
           />
           <div
-            class="sc-dQoVA jIDnsx"
+            class="sc-crrszt iYeIOC"
           />
         </div>
       </div>

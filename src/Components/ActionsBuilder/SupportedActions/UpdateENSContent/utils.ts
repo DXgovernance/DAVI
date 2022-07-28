@@ -2,7 +2,8 @@ import contenthash from 'content-hash';
 import { MAINNET_ID, LOCALHOST_ID, GOERLI_ID } from 'utils';
 import { utils } from 'ethers';
 
-const DEFAULT_NAMEHASH = '0x0000000000000000000000000000000000000000000000000000000000000000';
+const DEFAULT_NAMEHASH =
+  '0x0000000000000000000000000000000000000000000000000000000000000000';
 
 export const convertToNameHash = (name: string) => {
   if (!name) {
@@ -38,9 +39,6 @@ export const isValidChainId = (chainId: number) => {
 
 export const isAvailableOnENS = (chainId: number) => {
   const validChainId = isValidChainId(chainId);
-  const ensNetworks = [
-    MAINNET_ID,
-    GOERLI_ID,
-  ]
+  const ensNetworks = [MAINNET_ID, GOERLI_ID];
   return ensNetworks.includes(validChainId);
-}
+};

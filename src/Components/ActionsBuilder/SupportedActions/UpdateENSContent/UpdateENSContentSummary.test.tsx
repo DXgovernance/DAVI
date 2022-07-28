@@ -13,9 +13,13 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({
     chain: {
       id: 1,
+      blockExplorers: {
+        default: {
+          url: 'https://etherscan.io',
+        },
+      },
     },
   }),
-
   useEnsName: () => ({
     data: 'name.eth',
   }),
@@ -27,6 +31,9 @@ jest.mock('wagmi', () => ({
   useProvider: () => ({
     getNetwork: jest.fn(),
   }),
+  chain: {
+    mainnet: {},
+  },
 }));
 
 describe('UpdateENSNameSummary', () => {

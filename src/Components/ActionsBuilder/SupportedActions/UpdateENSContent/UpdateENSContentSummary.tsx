@@ -1,18 +1,18 @@
-import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
-import { StyledSegmentLink } from './styles';
+import {
+  DetailBody,
+  DetailHeader,
+  DetailRow,
+  StyledSegmentLink,
+} from '../common/Summary.styled';
 import Summary from '../common/Summary';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { useEnsName, useNetwork } from 'wagmi';
-import {
-  convertToIpfsHash,
-  getBlockChainUrl,
-  getIpfsUrl,
-  isValidChainId,
-} from './utils';
+import { convertToIpfsHash, getIpfsUrl, isValidChainId } from './utils';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
 import useENSContentHash from 'hooks/Guilds/ens/useENSContentHash';
 import { BiLinkExternal } from 'react-icons/bi';
+import { getBlockExplorerUrl } from 'provider/chains';
 
 const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -29,14 +29,19 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
   const currentIpfsUrl = getIpfsUrl(currentIpfsHash);
   const newIpfsHash = convertToIpfsHash(parsedData?.contentHash);
   const newIpfsUrl = getIpfsUrl(newIpfsHash);
-  const blockchainUrl = getBlockChainUrl(chainId, parsedData?.from);
+  const blockExplorerUrl = getBlockExplorerUrl(
+    chain,
+    parsedData?.from,
+    'address'
+  );
+
   return (
     <>
       <DetailHeader>{t('ens.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
           <StyledSegmentLink
-            href={blockchainUrl}
+            href={blockExplorerUrl}
             target="_blank"
             rel="noopener"
           >
@@ -71,7 +76,11 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
           </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
-      <Summary decodedCall={decodedCall} address={parsedData?.to} />
+      <Summary
+        decodedCall={decodedCall}
+        address={parsedData?.to}
+        blockExplorerUrl={blockExplorerUrl}
+      />
     </>
   );
 };

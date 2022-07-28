@@ -1,7 +1,4 @@
-import {
-  GOERLI_ID,
-  LOCALHOST_ID,
-} from 'utils';
+import { GOERLI_ID, LOCALHOST_ID } from 'utils';
 import {
   convertToNameHash,
   convertToContentHash,

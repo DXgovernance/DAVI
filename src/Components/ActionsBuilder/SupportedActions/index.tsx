@@ -147,6 +147,10 @@ export const defaultValues: Record<
         node: '',
         hash: '',
       },
+      optionalProps: {
+        ensName: '',
+        ipfsHash: '',
+      },
     },
   },
 };
