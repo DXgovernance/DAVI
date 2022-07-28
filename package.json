@@ -62,7 +62,6 @@
     "copy-to-clipboard": "^3.3.1",
     "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#develop",
     "eslint-plugin-cypress": "^2.12.1",
-    "eth-ens-namehash": "^2.0.8",
     "ether-swr": "^2.0.1",
     "ethers": "^5.5.2",
     "git-revision-webpack-plugin": "^3.0.6",

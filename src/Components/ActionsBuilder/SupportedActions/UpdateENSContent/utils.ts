@@ -1,17 +1,22 @@
-import namehash from 'eth-ens-namehash';
 import contenthash from 'content-hash';
-import {
-  MAINNET_ID,
-  LOCALHOST_ID,
-  GOERLI_ID,
-  ARBITRUM_ID,
-  ARBITRUM_TESTNET_ID,
-} from 'utils';
+import { MAINNET_ID, LOCALHOST_ID, GOERLI_ID } from 'utils';
+import { utils } from 'ethers';
 
-export const convertToNameHash = (name: string) => namehash.hash(name);
+const DEFAULT_NAMEHASH = '0x0000000000000000000000000000000000000000000000000000000000000000';
 
-export const convertToContentHash = (ipfsHash: string) =>
-  contenthash.fromIpfs(ipfsHash);
+export const convertToNameHash = (name: string) => {
+  if (!name) {
+    return DEFAULT_NAMEHASH;
+  }
+  return utils.namehash(name);
+};
+
+export const convertToContentHash = (ipfsHash: string) => {
+  if (!ipfsHash) {
+    return '';
+  }
+  return contenthash.fromIpfs(ipfsHash);
+};
 
 export const convertToIpfsHash = (contentHash: string) => {
   if (!contentHash) return null;
@@ -31,18 +36,11 @@ export const isValidChainId = (chainId: number) => {
   }
 };
 
-export const getBlockChainUrl = (chainId: number, address: string) => {
-  switch (chainId) {
-    case LOCALHOST_ID:
-    case MAINNET_ID:
-      return `https://etherscan.io/address/${address}`;
-    case ARBITRUM_ID:
-      return `https://arbitrum.io/address/${address}`;
-    case ARBITRUM_TESTNET_ID:
-      return `https://arbitrum.io/testnet/address/${address}`;
-    case GOERLI_ID:
-      return `https://goerli.etherscan.io/address/${address}`;
-    default:
-      throw Error(`The chainId or address is not supported`);
-  }
-};
+export const isAvailableOnENS = (chainId: number) => {
+  const validChainId = isValidChainId(chainId);
+  const ensNetworks = [
+    MAINNET_ID,
+    GOERLI_ID,
+  ]
+  return ensNetworks.includes(validChainId);
+}

@@ -20,6 +20,7 @@ import {
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { useNetwork } from 'wagmi';
+import { isAvailableOnENS } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;
@@ -70,16 +71,18 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonLabel>
           </ActionsButton>
         ) : null}
-        <ActionsButton
-          onClick={() =>
-            onSupportedActionSelect(SupportedAction.ENS_UPDATE_CONTENT)
-          }
-        >
-          <ButtonLabel>
-            <StyledIcon src={ENSIcon} />
-            {t('ens.updateContentCoreAction')}
-          </ButtonLabel>
-        </ActionsButton>
+        {isAvailableOnENS(chain.id) ? (
+          <ActionsButton
+            onClick={() =>
+              onSupportedActionSelect(SupportedAction.ENS_UPDATE_CONTENT)
+            }
+          >
+            <ButtonLabel>
+              <StyledIcon src={ENSIcon} />
+              {t('ens.updateContentCoreAction')}
+            </ButtonLabel>
+          </ActionsButton>
+        ) : null}
       </SectionWrapper>
       <SectionWrapper>
         <SectionTitle>{t('externalContracts')}</SectionTitle>

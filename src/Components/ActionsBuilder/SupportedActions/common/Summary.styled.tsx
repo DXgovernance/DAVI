@@ -22,3 +22,16 @@ export const DetailBody = styled(DetailRow)`
 export const RedHighlight = styled.span`
   color: ${({ theme }) => theme.colors.red};
 `;
+
+export const StyledSegmentLink = styled.a`
+  color: ${({ theme }) => theme.colors.proposalText.grey};
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.text};
+  }
+`;

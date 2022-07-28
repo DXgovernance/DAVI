@@ -1,16 +1,12 @@
 import {
-  ARBITRUM_ID,
-  ARBITRUM_TESTNET_ID,
   GOERLI_ID,
   LOCALHOST_ID,
-  MAINNET_ID,
 } from 'utils';
 import {
   convertToNameHash,
   convertToContentHash,
   convertToIpfsHash,
   isValidChainId,
-  getBlockChainUrl,
   getIpfsUrl,
 } from './utils';
 
@@ -51,26 +47,6 @@ describe('utils', () => {
     it('should convert localhost ID to the mainnet ID', () => {
       expect(isValidChainId(LOCALHOST_ID)).toEqual(1);
     });
-  });
-});
-
-describe('getBlockChainUrl', () => {
-  it('should return the correct url', () => {
-    expect(getBlockChainUrl(LOCALHOST_ID, '0x0')).toEqual(
-      'https://etherscan.io/address/0x0'
-    );
-    expect(getBlockChainUrl(MAINNET_ID, '0x0')).toEqual(
-      'https://etherscan.io/address/0x0'
-    );
-    expect(getBlockChainUrl(GOERLI_ID, '0x0')).toEqual(
-      'https://goerli.etherscan.io/address/0x0'
-    );
-    expect(getBlockChainUrl(ARBITRUM_ID, '0x0')).toEqual(
-      'https://arbitrum.io/address/0x0'
-    );
-    expect(getBlockChainUrl(ARBITRUM_TESTNET_ID, '0x0')).toEqual(
-      'https://arbitrum.io/testnet/address/0x0'
-    );
   });
 });
 
