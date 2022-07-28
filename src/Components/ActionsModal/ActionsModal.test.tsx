@@ -17,6 +17,9 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
 
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: true }),
+  chain: {
+    mainnet: {},
+  },
 }));
 
 describe('ActionsModal', () => {

@@ -4,16 +4,16 @@ exports[`ERC20TransferSummary Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -26,11 +26,29 @@ exports[`ERC20TransferSummary Should match snapshot 1`] = `
           src="test"
         />
       </span>
-      <span
-        class="sc-gKseQn lnpFdR"
+      <a
+        class="sc-kstqJO la-djAS"
+        rel="noopener"
+        target="_blank"
       >
         test.eth
-      </span>
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+          />
+          <path
+            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+          />
+        </svg>
+      </a>
     </div>
   </div>
    
@@ -41,16 +59,16 @@ exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -63,11 +81,29 @@ exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
           src="test"
         />
       </span>
-      <span
-        class="sc-gKseQn lnpFdR"
+      <a
+        class="sc-kstqJO la-djAS"
+        rel="noopener"
+        target="_blank"
       >
         test.eth
-      </span>
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+          />
+          <path
+            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+          />
+        </svg>
+      </a>
     </div>
   </div>
    
@@ -78,7 +114,7 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
 <div>
    
   <div
-    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl iUdSoS lolBCJ"
+    class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
     <span
@@ -91,10 +127,10 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
     :
   </div>
   <div
-    class="sc-fubCzh sc-iqHYmW iYPEgl iUdSoS"
+    class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl iUdSoS btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -107,11 +143,29 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
           src="test"
         />
       </span>
-      <span
-        class="sc-gKseQn lnpFdR"
+      <a
+        class="sc-kstqJO la-djAS"
+        rel="noopener"
+        target="_blank"
       >
         test.eth
-      </span>
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+          />
+          <path
+            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+          />
+        </svg>
+      </a>
     </div>
   </div>
    

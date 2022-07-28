@@ -21,6 +21,9 @@ export const DISCOURSE_URL_ROOT = 'https://daotalk.org';
 
 export const MAINNET_ID = 1;
 export const LOCALHOST_ID = 1337;
+export const GOERLI_ID = 5;
+export const ARBITRUM_ID = 42161;
+export const ARBITRUM_TESTNET_ID = 421611;
 
 export const DEFAULT_CHAIN_ID =
   process.env.NODE_ENV === 'development' ? LOCALHOST_ID : MAINNET_ID;

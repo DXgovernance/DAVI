@@ -4,27 +4,27 @@ exports[`RepMintEditor Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-pGacB sc-bqyKOL kELkBy dqBrEb"
+    class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
   >
     <div
-      class="sc-pGacB sc-kstqJO kELkBy gEhjcM"
+      class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
     >
       repMint.recipient
       <div
-        class="sc-crrszt fmyKRd sc-fFucqa hZkuzu"
+        class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
       >
         <svg>
           info.svg
         </svg>
       </div>
       <div
-        class="sc-pGacB sc-dQoVA kELkBy kLILfu"
+        class="sc-pGacB sc-crrszt kELkBy bhdAjh"
       >
         repMint.recipientTooltip
       </div>
     </div>
     <div
-      class="sc-pGacB sc-hBEYId kELkBy cYvrZE"
+      class="sc-pGacB sc-fodVek kELkBy czNgLG"
     >
       <div
         class="sc-gsTEea jwbCic"
@@ -52,30 +52,30 @@ exports[`RepMintEditor Should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-pGacB sc-hBEYId kELkBy cYvrZE"
+    class="sc-pGacB sc-fodVek kELkBy czNgLG"
   >
     <div
-      class="sc-pGacB sc-bqyKOL kELkBy dqBrEb"
+      class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
     >
       <div
-        class="sc-pGacB sc-kstqJO kELkBy gEhjcM"
+        class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
       >
         repMint.repPercent
         <div
-          class="sc-crrszt fmyKRd sc-fFucqa hZkuzu"
+          class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
         >
           <svg>
             info.svg
           </svg>
         </div>
         <div
-          class="sc-pGacB sc-dQoVA kELkBy kLILfu"
+          class="sc-pGacB sc-crrszt kELkBy bhdAjh"
         >
           repMint.repPercentTooltip
         </div>
       </div>
       <div
-        class="sc-pGacB sc-hBEYId kELkBy cYvrZE"
+        class="sc-pGacB sc-fodVek kELkBy czNgLG"
       >
         <div
           class="sc-gsTEea jwbCic"
@@ -86,7 +86,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           <input
             autocomplete="off"
             autocorrect="off"
-            class="sc-bdfBQB wpJaf sc-fodVek bAEOZD"
+            class="sc-bdfBQB wpJaf sc-fFucqa iqSzjg"
             inputmode="decimal"
             maxlength="79"
             minlength="1"
@@ -104,30 +104,30 @@ exports[`RepMintEditor Should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-pGacB sc-hBEYId kELkBy cYvrZE"
+    class="sc-pGacB sc-fodVek kELkBy czNgLG"
   >
     <div
-      class="sc-pGacB sc-bqyKOL kELkBy dqBrEb"
+      class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
     >
       <div
-        class="sc-pGacB sc-kstqJO kELkBy gEhjcM"
+        class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
       >
         repMint.repAmount
         <div
-          class="sc-crrszt fmyKRd sc-fFucqa hZkuzu"
+          class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
         >
           <svg>
             info.svg
           </svg>
         </div>
         <div
-          class="sc-pGacB sc-dQoVA kELkBy kLILfu"
+          class="sc-pGacB sc-crrszt kELkBy bhdAjh"
         >
           repMint.repAmountTooltip
         </div>
       </div>
       <div
-        class="sc-pGacB sc-hBEYId kELkBy cYvrZE"
+        class="sc-pGacB sc-fodVek kELkBy czNgLG"
       >
         <div
           class="sc-gsTEea jwbCic"
@@ -138,7 +138,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           <input
             autocomplete="off"
             autocorrect="off"
-            class="sc-bdfBQB wpJaf sc-fodVek bAEOZD"
+            class="sc-bdfBQB wpJaf sc-fFucqa iqSzjg"
             inputmode="decimal"
             maxlength="79"
             minlength="1"

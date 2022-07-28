@@ -5,16 +5,11 @@ import { MAINNET_ID, shortenAddress } from 'utils';
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
-import StyledIcon from 'old-components/Guilds/common/SVG';
-import styled from 'styled-components';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
 import { useTranslation } from 'react-i18next';
-
-const StyledMintIcon = styled(StyledIcon)`
-  margin: 0;
-`;
+import { StyledMintIcon } from './styles';
 
 const RepMintInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { t } = useTranslation();

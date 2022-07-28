@@ -5,7 +5,7 @@ export default function useAddressFromENSName(
   ensName: string,
   chainId?: number
 ) {
-  const provider = useProvider();
+  const provider = useProvider({ chainId });
   const { data: ensAddress } = useEtherSWR<string>(
     ensName ? ['resolveName', ensName] : [],
     {

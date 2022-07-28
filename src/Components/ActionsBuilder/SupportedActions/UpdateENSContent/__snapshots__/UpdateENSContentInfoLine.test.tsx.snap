@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateENSInfoLine Should match snapshot 1`] = `
+<div>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <div
+      class="sc-dlfnuX fjXZjO sc-iqHYmW bvpGtQ"
+    >
+      <img
+        src="ens.svg"
+      />
+    </div>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    ens.updateContent
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      stroke-width="0"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+      <path
+        d="M16.01 11H4v2h12.01v3L20 12l-3.99-4z"
+      />
+    </svg>
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <img
+      alt="Avatar"
+      class="sc-hBEYId sc-fodVek dbVGbJ kaXmNC"
+      data-testid="avatar"
+      size="24"
+      src="test"
+    />
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    test.eth
+  </span>
+   
+</div>
+`;
