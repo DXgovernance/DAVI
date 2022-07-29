@@ -2,6 +2,7 @@ import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';
 import { ChildrenNode, Matcher, MatchResponse, Node } from 'interweave';
 import moment from 'moment';
+import { shortenAddress } from 'utils';
 import ENSAvatar from 'old-components/Guilds/Avatar/ENSAvatar';
 import { FunctionParamWithValue } from './GenericCallInfoLine';
 
@@ -19,7 +20,12 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
 
     switch (param.component) {
       case 'address':
-        return <ENSAvatar address={param.value} size={16} />;
+        return (
+          <>
+            <ENSAvatar address={param.value} size={16} />{' '}
+            {shortenAddress(param.value)}
+          </>
+        );
       case 'integer':
       case 'decimal':
         const bn = BigNumber.from(param.value);
@@ -27,7 +33,8 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
       case 'date':
         return moment.unix(Number(param.value)).format('YYYY-MM-DD');
       case 'duration':
-        return `${param.value}`;
+      case 'time':
+        return moment.duration(Number(param.value), 'seconds').humanize();
       case 'boolean':
         return `${param.value}`;
       case 'tokenAmount':

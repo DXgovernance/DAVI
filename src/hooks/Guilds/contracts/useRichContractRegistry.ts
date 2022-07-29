@@ -2,10 +2,7 @@ import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useNetwork } from 'wagmi';
 import useIPFSFile from '../ipfs/useIPFSFile';
-
-// TODO: Get the actual token registry hash
-const RICH_CONTRACT_DATA_REGISTRY =
-  'QmXzDJU14QbYREbaNaornE4QUJA5ANxmTg3zh9fCghmJFQ';
+import { RICH_CONTRACT_DATA_REGISTRY } from 'configs';
 
 export interface RichContractFunctionParam {
   type: string;

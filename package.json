@@ -139,6 +139,7 @@
     "cypress-wait-until": "^1.7.2",
     "hardhat-ethernal": "^1.0.0",
     "husky": "^6.0.0",
+    "ipfs-mini": "^1.1.5",
     "lint-staged": "^12.4.3",
     "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0",

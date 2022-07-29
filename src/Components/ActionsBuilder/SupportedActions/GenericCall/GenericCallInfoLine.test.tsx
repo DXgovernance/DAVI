@@ -59,6 +59,7 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
     decimals: 18,
     totalSupply: mockBigNumber,
   }),
+  getTokenInfoParsedParams: () => [],
 }));
 
 describe('GenericCallInfoLine', () => {
