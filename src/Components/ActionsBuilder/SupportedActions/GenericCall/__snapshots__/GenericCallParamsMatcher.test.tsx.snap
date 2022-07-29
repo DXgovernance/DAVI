@@ -15,6 +15,8 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
     />
   </span>
    
+  0x3f94...4351
+   
 </div>
 `;
 
@@ -45,7 +47,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 5`] = `
 <div>
    
-  1653848238
+  52 years
    
 </div>
 `;
@@ -99,6 +101,8 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
         src="test"
       />
     </span>
+     
+    0x3f94...4351
   </span>
    
 </div>
@@ -146,7 +150,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 5`] = `
   <span
     matchedparam="timeParam"
   >
-    1653848238
+    52 years
   </span>
    
 </div>
