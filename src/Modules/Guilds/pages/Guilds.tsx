@@ -5,10 +5,10 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import React, { useContext, useMemo } from 'react';
-import InView from 'react-intersection-observer';
+import React, { useContext, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import GuildSidebarWrapper from 'Modules/Guilds/Wrappers/GuildSidebarWrapper';
+import { Virtuoso } from 'react-virtuoso';
 
 const PageContainer = styled(Box)`
   display: grid;
@@ -36,22 +36,33 @@ const ProposalsList = styled(Box)`
   margin-top: 1rem;
 `;
 
+const ProposalListWrapper = styled.div`
+  height: 75vh;
+`;
+
 const GuildsPage: React.FC = () => {
   const { guildId } = useTypedParams();
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { isLoading } = useContext(GuildAvailabilityContext);
 
   const filteredProposalIds = useMemo(() => {
+    // TODO: Implement filtering
     if (!proposalIds) return null;
 
     // clone array as the original proposalIds array from Ethers is immutable
     const clone = [...proposalIds];
 
-    // TODO: Implement filtering
-
     // Show latest proposals first
     return clone.reverse();
   }, [proposalIds]);
+
+  const [numberOfProposalsShown, setNumberOfProposalsShown] = useState(10);
+
+  const shownProposals = useMemo(() => {
+    if (!filteredProposalIds) return null;
+
+    return filteredProposalIds.slice(0, numberOfProposalsShown);
+  }, [filteredProposalIds, numberOfProposalsShown]);
 
   if (!isLoading && !proposalIds && error) {
     return (
@@ -73,17 +84,20 @@ const GuildsPage: React.FC = () => {
 
         <ProposalsList data-testid="proposals-list">
           {filteredProposalIds ? (
-            filteredProposalIds.map(proposalId => (
-              <InView key={proposalId}>
-                {({ inView, ref }) => (
-                  <div ref={ref}>
-                    <ProposalCardWrapper
-                      proposalId={inView ? proposalId : null}
-                    />
-                  </div>
+            <ProposalListWrapper>
+              <Virtuoso
+                style={{ height: '100%' }}
+                data={shownProposals}
+                totalCount={shownProposals.length}
+                itemContent={index => (
+                  <ProposalCardWrapper proposalId={shownProposals[index]} />
                 )}
-              </InView>
-            ))
+                endReached={() => {
+                  let previous = numberOfProposalsShown;
+                  setNumberOfProposalsShown(previous + 10);
+                }}
+              />
+            </ProposalListWrapper>
           ) : (
             <>
               <ProposalCardWrapper />
