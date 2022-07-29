@@ -37,7 +37,10 @@ const ProposalsList = styled(Box)`
 `;
 
 const ProposalListWrapper = styled.div`
-  height: 75vh;
+  height: 50vh;
+  @media only screen and (min-width: 768px) {
+    height: 75vh;
+  }
 `;
 
 const GuildsPage: React.FC = () => {
@@ -56,13 +59,18 @@ const GuildsPage: React.FC = () => {
     return clone.reverse();
   }, [proposalIds]);
 
-  const [numberOfProposalsShown, setNumberOfProposalsShown] = useState(10);
+  const PROPOSALS_TO_LOAD = 10;
+  const [numberOfProposalsToShow, setNumberOfProposalsToShow] =
+    useState(PROPOSALS_TO_LOAD);
 
   const shownProposals = useMemo(() => {
     if (!filteredProposalIds) return null;
+    return filteredProposalIds.slice(0, numberOfProposalsToShow);
+  }, [filteredProposalIds, numberOfProposalsToShow]);
 
-    return filteredProposalIds.slice(0, numberOfProposalsShown);
-  }, [filteredProposalIds, numberOfProposalsShown]);
+  const loadMoreProposals = () => {
+    setNumberOfProposalsToShow(numberOfProposalsToShow + PROPOSALS_TO_LOAD);
+  };
 
   if (!isLoading && !proposalIds && error) {
     return (
@@ -92,10 +100,7 @@ const GuildsPage: React.FC = () => {
                 itemContent={index => (
                   <ProposalCardWrapper proposalId={shownProposals[index]} />
                 )}
-                endReached={() => {
-                  let previous = numberOfProposalsShown;
-                  setNumberOfProposalsShown(previous + 10);
-                }}
+                endReached={loadMoreProposals}
               />
             </ProposalListWrapper>
           ) : (
