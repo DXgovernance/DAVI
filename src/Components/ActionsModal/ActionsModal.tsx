@@ -180,7 +180,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   }
 
   function setSupportedAction(action: SupportedAction) {
-    const defaultDecodedAction = defaultValues[action] as DecodedAction;
+    const defaultDecodedAction = defaultValues[action];
     if (!defaultDecodedAction) return null;
 
     defaultDecodedAction.decodedCall.from = guildId;
@@ -197,9 +197,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   function saveSupportedAction(call?: DecodedCall) {
     const decodedCall = call ?? data;
 
-    const defaultDecodedAction = defaultValues[
-      decodedCall.callType
-    ] as DecodedAction;
+    const defaultDecodedAction = defaultValues[decodedCall.callType];
 
     if (!selectedAction || !decodedCall) return;
 
