@@ -172,10 +172,11 @@ const ProposalVoteCard = ({
           setModalOpen(false);
           setSelectedAction(null);
         }}
-        selectedAction={
-          proposal?.metadata?.voteOptions?.[selectedAction?.toNumber()] ||
-          selectedAction?.toString()
-        }
+        selectedAction={getOptionLabel({
+          metadata: proposal?.metadata,
+          optionKey: selectedAction?.toNumber(),
+          t,
+        })}
         votingPower={votingPower?.percent}
         totalLocked={currentLockedPercent}
       />
