@@ -36,11 +36,40 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               class="sc-dIUeWJ jJPCe"
               name="recipientAddress"
               placeholder="ethereumAddress"
-              value=""
+              value="0xaF8eB8C3A5d9d900AA0B98e3Df0bcC17d3C5F698"
             />
             <div
               class="sc-dmlqKv lmzxkt"
-            />
+            >
+              <div
+                class="sc-hKgJUU sc-Azgjq dpFBPj bMBBIq"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -76,7 +105,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
                 placeholder="0.0"
                 spellcheck="false"
                 type="text"
-                value=""
+                value="5.0"
               />
               <div
                 class="sc-dmlqKv lmzxkt"
@@ -104,7 +133,61 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               <div
                 class="sc-dmlqKv gKcicO"
               >
-                <div />
+                <div>
+                  <div
+                    class="paper"
+                    style="border-radius: 50px; display: inline-block; margin: 0px; overflow: hidden; padding: 0px; background-color: rgb(245, 163, 0); height: 18px; width: 18px;"
+                  >
+                    <svg
+                      height="18"
+                      width="18"
+                      x="0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      y="0"
+                    >
+                      <rect
+                        fill="#18B7F2"
+                        height="18"
+                        rx="0"
+                        ry="0"
+                        transform="translate(-2.7317216189782725 2.947715645481027) rotate(292.6 9 9)"
+                        width="18"
+                        x="0"
+                        y="0"
+                      />
+                      <rect
+                        fill="#F27E02"
+                        height="18"
+                        rx="0"
+                        ry="0"
+                        transform="translate(-7.9400753497776515 8.081014408888752) rotate(149.2 9 9)"
+                        width="18"
+                        x="0"
+                        y="0"
+                      />
+                      <rect
+                        fill="#FA5300"
+                        height="18"
+                        rx="0"
+                        ry="0"
+                        transform="translate(-12.859872164514073 2.5544074726957) rotate(176.4 9 9)"
+                        width="18"
+                        x="0"
+                        y="0"
+                      />
+                      <rect
+                        fill="#018E80"
+                        height="18"
+                        rx="0"
+                        ry="0"
+                        transform="translate(-18.067320307770373 7.581776256342216) rotate(161.5 9 9)"
+                        width="18"
+                        x="0"
+                        y="0"
+                      />
+                    </svg>
+                  </div>
+                </div>
               </div>
               <input
                 class="sc-dIUeWJ jJPCe"
@@ -225,7 +308,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
                 placeholder="0.0"
                 spellcheck="false"
                 type="text"
-                value=""
+                value="0.0"
               />
               <div
                 class="sc-dmlqKv lmzxkt"

@@ -85,4 +85,19 @@ describe('ERC20TransferEditor', () => {
     fireEvent.click(submitButton);
     expect(onSubmit).toHaveBeenCalledTimes(0);
   });
+
+  it('Parses decodedCall data', async () => {
+    const { findByDisplayValue } = render(
+      <ERC20TransferEditor
+        decodedCall={erc20TransferDecodedCallMock}
+        onSubmit={jest.fn()}
+      />
+    );
+
+    const tokenAddress = await findByDisplayValue(
+      erc20TransferDecodedCallMock.args._to
+    );
+
+    expect(tokenAddress).toBeInTheDocument();
+  });
 });
