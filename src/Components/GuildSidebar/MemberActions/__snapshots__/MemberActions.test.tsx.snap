@@ -8,7 +8,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
     data-testid="member-actions-button"
   >
     <button
-      class="sc-dlfnuX sc-hKgJUU sc-gKseQn dEJhZx eRtASc eHKpXr"
+      class="sc-dlfnuX sc-hKgJUU sc-gKseQn bcIZht eRtASc eHKpXr"
     >
       <div>
         <span
@@ -67,7 +67,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
           </span>
         </div>
         <button
-          class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
+          class="sc-dlfnuX sc-fFucqa bcIZht hyGtHU"
         >
           increaseVotingPower
         </button>
@@ -86,7 +86,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
     data-testid="member-actions-button"
   >
     <button
-      class="sc-dlfnuX sc-hKgJUU sc-gKseQn dEJhZx eRtASc eHKpXr"
+      class="sc-dlfnuX sc-hKgJUU sc-gKseQn bcIZht eRtASc eHKpXr"
     >
       <div>
         <span
@@ -229,7 +229,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
           </span>
         </div>
         <button
-          class="sc-dlfnuX sc-fFucqa dEJhZx hyGtHU"
+          class="sc-dlfnuX sc-fFucqa bcIZht hyGtHU"
         >
           increaseVotingPower
         </button>
