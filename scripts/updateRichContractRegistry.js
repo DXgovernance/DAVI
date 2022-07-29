@@ -31,4 +31,3 @@ const REGISTRY_DATA_PATH = 'schema/rich-contracts-registry.json';
   console.debug('Done!');
   process.exit(1);
 })();
-
