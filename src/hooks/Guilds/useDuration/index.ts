@@ -71,6 +71,7 @@ export const useDuration = (
   }, [durationObject]);
 
   const increment = (durationKey: string) => {
+    if (typeof value === 'string' && value === '') value = 0;
     let newValue = value;
     newValue += DURATION_IN_SECONDS[durationKey];
     onChange(newValue);
