@@ -136,6 +136,17 @@ describe('Duration Input', () => {
         expect(minutesInput).toHaveDisplayValue('9');
         expect(secondsInput).toHaveDisplayValue('59');
       });
+
+      it('can handle multiple clicks on a button correctly', () => {
+        const increaseButton = getByLabelText('Increase years');
+        fireEvent.click(increaseButton);
+        fireEvent.click(increaseButton);
+        fireEvent.click(increaseButton);
+        fireEvent.click(increaseButton);
+
+        const numericalInput = getByLabelText('Numerical input for years');
+        expect(numericalInput).toHaveDisplayValue('4');
+      });
     });
 
     describe('Input field interactions', () => {
