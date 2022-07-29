@@ -16,7 +16,7 @@ import { useTextEditor } from 'Components/Editor';
 import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
-import { MdOutlinePreview, MdOutlineModeEdit, MdLink } from 'react-icons/md';
+import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useHistory } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import styled from 'styled-components';
@@ -73,12 +73,6 @@ const Label = styled.span<{
   margin: 12px 0px;
 `;
 
-const InputWrapper = styled(Flex)`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 const EMPTY_CALL: Call = {
   data: ZERO_HASH,
   from: ZERO_ADDRESS,
@@ -97,7 +91,6 @@ const CreateProposalPage: React.FC = () => {
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
-  const [referenceLink, setReferenceLink] = useState('');
   const [options, setOptions] = useState<Option[]>([
     {
       id: `option-1-For`,
@@ -131,7 +124,6 @@ const CreateProposalPage: React.FC = () => {
   const uploadToIPFS = async () => {
     const content = {
       description: proposalBodyHTML,
-      url: referenceLink,
       voteOptions: ['', ...options.map(({ label }) => label)],
     };
     const cid = await ipfs.add(JSON.stringify(content));
@@ -261,30 +253,6 @@ const CreateProposalPage: React.FC = () => {
           ) : (
             <Label size="24px"> {title}</Label>
           )}
-        </Box>
-        <Box margin="0px 0px 24px">
-          {editMode ? (
-            <>
-              <Label>{`${t('referenceLink')} ${t('optionalField')}`}</Label>
-              <InputWrapper>
-                <Input
-                  placeholder="https://daotalk.org/..."
-                  value={referenceLink}
-                  onChange={e => setReferenceLink(e.target.value)}
-                  icon={<MdLink size={18} />}
-                  data-testid="create-proposal-link"
-                />
-                <StyledButton variant="secondary" marginLeft={'1rem'}>
-                  {t('import')}
-                </StyledButton>
-              </InputWrapper>
-            </>
-          ) : referenceLink ? (
-            <>
-              <Label size="16px">{referenceLink}</Label>
-              <StyledButton> {t('import')} </StyledButton>
-            </>
-          ) : null}
         </Box>
         {editMode ? (
           <Editor EditorConfig={EditorConfig} />
