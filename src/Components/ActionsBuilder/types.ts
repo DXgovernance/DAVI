@@ -7,6 +7,7 @@ export enum SupportedAction {
   REP_MINT = 'REP_MINT',
   GENERIC_CALL = 'GENERIC_CALL',
   SET_PERMISSIONS = 'SET_PERMISSIONS',
+  ENS_UPDATE_CONTENT = 'ENS_UPDATE_CONTENT',
 }
 
 export interface Call {
@@ -27,6 +28,7 @@ export interface DecodedCall {
   args: Record<string, any>;
   richData?: RichContractData;
   functionName?: string;
+  optionalProps?: Record<string, string>;
 }
 
 export interface DecodedAction {

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import { ReactComponent as Vector } from 'assets/images/vector.svg';
+import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import {
@@ -19,6 +20,7 @@ import {
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { useNetwork } from 'wagmi';
+import { isAvailableOnENS } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;
@@ -59,13 +61,25 @@ const ContractsList: React.FC<ContractsListProps> = ({
             Set Permissions
           </ButtonLabel>
         </ActionsButton>
-        {isRepGuild ? (
+        {!isRepGuild ? (
           <ActionsButton
             onClick={() => onSupportedActionSelect(SupportedAction.REP_MINT)}
           >
             <ButtonLabel>
               <StyledIcon src={Mint} />
               {t('mintRep')}
+            </ButtonLabel>
+          </ActionsButton>
+        ) : null}
+        {isAvailableOnENS(chain.id) ? (
+          <ActionsButton
+            onClick={() =>
+              onSupportedActionSelect(SupportedAction.ENS_UPDATE_CONTENT)
+            }
+          >
+            <ButtonLabel>
+              <StyledIcon src={ENSIcon} />
+              {t('ens.updateContentCoreAction')}
             </ButtonLabel>
           </ActionsButton>
         ) : null}

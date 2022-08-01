@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { Button } from 'old-components/Guilds/common/Button';
 import { Controller, useForm } from 'react-hook-form';
@@ -8,9 +7,7 @@ import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { shortenAddress, MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
-import StyledIcon from 'old-components/Guilds/common/SVG';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
-import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
 import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
@@ -22,27 +19,8 @@ import {
   ControlRow,
   ControlLabel,
 } from 'Components/Primitives/Forms/Control';
-import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
+import { Error, StyledInfoIcon, RepMintInput } from './styles';
 
-const Error = styled(ErrorLabel)`
-  margin-top: 0.5rem;
-`;
-
-const RepMintInput = styled(NumericalInput)`
-  display: flex;
-  align-items: center;
-  width: 100%;
-`;
-
-const StyledInfoIcon = styled(StyledIcon)`
-  &:hover + ${StyledToolTip} {
-    visibility: visible;
-  }
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
-  }
-`;
 interface RepMintFormValues {
   repPercent: string;
 }
