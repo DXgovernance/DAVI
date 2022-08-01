@@ -43,6 +43,17 @@
     "repAmount": "Reputation Amount",
     "repAmountTooltip": "The amount of REP that will be minted."
   },
+  "ens": {
+    "updateContentCoreAction": "Update ENS Content",
+    "nameTooltip": "The name of the ENS name that will be registered.",
+    "ipfsHashToolTip": "The IPFS hash that will be set",
+    "domain": "Domain",
+    "currentContent": "Current content",
+    "newContent": "New content",
+    "updateContent": "ENS: Update Content",
+    "name": "ENS Name",
+    "ipfsHash": "CID/IPFS Hash"
+  },
   "mint": "Mint",
   "toAddress": "To Address",
   "anyAddress": "Any Address",

@@ -7,6 +7,7 @@ import {
   SupportedAction,
   ApproveSendTokens,
 } from '../types';
+import ENSPublicResolver from 'abis/ENSPublicResolver.json';
 import ERC20ABI from 'abis/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
@@ -20,7 +21,9 @@ import RepMintSummary from './RepMint/RepMintSummary';
 import SetPermissionsEditor from './SetPermissions/SetPermissionsEditor';
 import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
 import SetPermissionsSummary from './SetPermissions/SetPermissionsSummary';
-
+import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
+import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
+import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -76,10 +79,19 @@ export const supportedActions: Record<
     editor: SetPermissionsEditor,
     displaySubmit: true,
   },
+  [SupportedAction.ENS_UPDATE_CONTENT]: {
+    title: 'Update ENS content',
+    infoLineView: UpdateENSContentInfoLine,
+    summaryView: UpdateENSContentSummary,
+    editor: UpdateENSContentEditor,
+    displaySubmit: true,
+  },
 };
 const ERC20Contract = new utils.Interface(ERC20ABI);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
+const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
+
 export const defaultValues: Record<
   SupportedAction,
   DeepPartial<DecodedAction>
@@ -125,6 +137,22 @@ export const defaultValues: Record<
       },
     },
   },
+  [SupportedAction.ENS_UPDATE_CONTENT]: {
+    contract: ENSPublicResolverContract,
+    decodedCall: {
+      function: ENSPublicResolverContract.getFunction('setContenthash'),
+      to: '',
+      value: BigNumber.from(0),
+      args: {
+        node: '',
+        hash: '',
+      },
+      optionalProps: {
+        ensName: '',
+        ipfsHash: '',
+      },
+    },
+  },
 };
 
 export const getInfoLineView = (actionType: SupportedAction) => {
@@ -161,6 +189,7 @@ const isApprovalCall = (action: DecodedAction) => {
  * 2. spending calls
  * 3. transfers.
  * 4. generic calls
+ *
  */
 export const getActionPoints = (action: DecodedAction): number => {
   const type = action?.decodedCall?.callType;

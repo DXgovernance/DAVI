@@ -13,8 +13,10 @@ interface useExecutableReturns {
 }
 
 function useExecutable(): useExecutableReturns {
-  const { guildId, proposalId } =
-    useParams<{ guildId?: string; proposalId?: string }>();
+  const { guildId, proposalId } = useParams<{
+    guildId?: string;
+    proposalId?: string;
+  }>();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { createTransaction } = useTransactions();
   const guildContract = useERC20Guild(guildId);
