@@ -13,7 +13,7 @@ import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
 
 const isApprovalCall = (call: Call) =>
-  call.data.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
+  call?.data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
 const useProposalCalls = (guildId: string, proposalId: string) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -35,7 +35,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
 
   const totalOptionsNum = totalVotes?.length || 0;
   const callsPerOption = totalOptionsNum
-    ? toArray?.length / totalOptionsNum
+    ? toArray?.length / (totalOptionsNum - 1)
     : 0;
   const optionLabels = metadata?.voteOptions;
 
@@ -49,11 +49,10 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   }, [guildId, dataArray, valuesArray, toArray]);
   const splitCalls = useMemo(() => {
     if (!calls) return null;
-
     const splitCalls: Call[][] = [];
     for (let i = 0; i < totalOptionsNum; i++) {
       splitCalls.push(
-        calls.slice(i * callsPerOption, (i + 1) * callsPerOption)
+        i === 0 ? [] : calls.slice((i - 1) * callsPerOption, i * callsPerOption)
       );
     }
     return splitCalls;
@@ -70,26 +69,30 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           const filteredActions = calls.filter(
             call => call.data !== ZERO_HASH || !call.value?.isZero()
           );
-
-          const actions = await Promise.all(
-            filteredActions.map(async (call, index, allCalls) => {
-              if (isApprovalCall(call)) {
-                const { decodedCall } = await decodeCall(
-                  call,
-                  contracts,
-                  chain?.id
-                );
-                allCalls[index + 1] = {
-                  ...allCalls[index + 1],
-                  approval: {
-                    amount: decodedCall?.args?._value,
-                    token: call.to,
-                  },
-                };
-              }
-              return call;
-            })
-          );
+          const actions = [];
+          for (const callIndex in filteredActions) {
+            const idx = Number(callIndex);
+            const call = filteredActions[idx];
+            if (isApprovalCall(call)) {
+              const { decodedCall } = await decodeCall(
+                call,
+                contracts,
+                chain?.id
+              );
+              actions[idx + 1] = {
+                ...actions[idx + 1],
+                approval: {
+                  amount: decodedCall?.args?._value,
+                  token: call.to,
+                },
+              };
+            } else {
+              actions[idx] = {
+                ...call,
+                ...actions[idx],
+              };
+            }
+          }
           const optionLabel = optionLabels?.[index]
             ? optionLabels?.[index]
             : index === 0
