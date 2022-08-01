@@ -7,7 +7,7 @@ exports[`RepMintSummary Should match snapshot 1`] = `
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg
@@ -74,7 +74,7 @@ exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg
@@ -141,7 +141,7 @@ exports[`RepMintSummary Should match snapshot with default values 1`] = `
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg
@@ -208,7 +208,7 @@ exports[`RepMintSummary Should match snapshot with default values in compact mod
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg
@@ -275,7 +275,7 @@ exports[`RepMintSummary Should match snapshot without data 1`] = `
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg
@@ -342,7 +342,7 @@ exports[`RepMintSummary Should match snapshot without data in compact mode 1`] =
     class="sc-gKseQn lnpFdR"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-hBEYId euWReR"
+      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
     >
       <svg>
         mint.svg

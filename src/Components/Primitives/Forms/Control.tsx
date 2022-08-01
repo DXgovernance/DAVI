@@ -10,6 +10,11 @@ export const Control = styled(Box)`
 
 export const ControlLabel = styled(Box)`
   margin-bottom: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  color: ${({ theme }) => theme.colors.proposalText.grey};
+  font-size: ${({ theme }) => theme.fontSizes.body};
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
 `;
 
 export const ControlRow = styled(Box)`

@@ -4,7 +4,7 @@ exports[`CallDetails Should match 1`] = `
 <div>
    
   <button
-    class="sc-bdfBQB sc-idOiZg igQAuX lmXhWs"
+    class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
   >
     transfer
      (
@@ -139,7 +139,7 @@ exports[`CallDetails Should match with empty data 1`] = `
     style="margin-bottom: 2rem;"
   />
   <button
-    class="sc-bdfBQB sc-idOiZg igQAuX lmXhWs"
+    class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
   >
     transfer
      (

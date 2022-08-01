@@ -17,7 +17,7 @@ exports[`Filter Should match snapshot 1`] = `
           class="sc-gKseQn sc-crrszt bA-duWg fwTZRV"
         >
           <button
-            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD cnzpap ciMKAF kWpazI"
+            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD bFQUlx ciMKAF kWpazI"
           >
             state
              
@@ -81,7 +81,7 @@ exports[`Filter Should match snapshot 1`] = `
           class="sc-gKseQn sc-crrszt bA-duWg fwTZRV"
         >
           <button
-            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD cnzpap ciMKAF kWpazI"
+            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD bFQUlx ciMKAF kWpazI"
           >
             actions_one
              
@@ -142,7 +142,7 @@ exports[`Filter Should match snapshot 1`] = `
         class="sc-fubCzh sc-dmlqKv ilRGTJ gMUfUu"
       >
         <button
-          class="sc-bdfBQB sc-gsTEea sc-kfzBvY gxcwpW elsKne bTCShG"
+          class="sc-bdfBQB sc-gsTEea sc-kfzBvY ixlwBu elsKne bTCShG"
         >
           <svg
             fill="currentColor"

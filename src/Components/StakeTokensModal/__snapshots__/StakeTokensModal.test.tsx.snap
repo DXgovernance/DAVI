@@ -122,7 +122,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                     />
                   </div>
                   <button
-                    class="sc-dlfnuX dEJhZx"
+                    class="sc-dlfnuX bcIZht"
                     data-testid="stake-amount-max-button"
                   >
                     max
@@ -174,7 +174,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
                 </span>
               </div>
               <button
-                class="sc-dlfnuX sc-jJEKmz dEJhZx igikKC"
+                class="sc-dlfnuX sc-jJEKmz bcIZht igikKC"
                 data-testid="lock-token-spending"
                 disabled=""
               >

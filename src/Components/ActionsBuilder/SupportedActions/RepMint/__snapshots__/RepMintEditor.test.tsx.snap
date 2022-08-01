@@ -3,66 +3,16 @@
 exports[`RepMintEditor Should match snapshot 1`] = `
 <div>
    
-  <div
-    class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
-  >
+  <form>
     <div
-      class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
-    >
-      repMint.recipient
-      <div
-        class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
-      >
-        <svg>
-          info.svg
-        </svg>
-      </div>
-      <div
-        class="sc-pGacB sc-crrszt kELkBy bhdAjh"
-      >
-        repMint.recipientTooltip
-      </div>
-    </div>
-    <div
-      class="sc-pGacB sc-fodVek kELkBy czNgLG"
+      class="sc-pGacB sc-dQoVA kELkBy fFSPTY"
     >
       <div
-        class="sc-gsTEea jwbCic"
+        class="sc-pGacB sc-bqyKOL kELkBy kfFRFi"
       >
+        repMint.recipient
         <div
-          class="sc-dlfnuX jRxgXa"
-        >
-          <img
-            alt="Avatar"
-            class="sc-iBPTik sc-fubCzh uQseX jLxagf"
-            data-testid="avatar"
-            size="18"
-            src="test"
-          />
-        </div>
-        <input
-          class="sc-bdfBQB wpJaf"
-          readonly=""
-          value="0x0000...0000"
-        />
-        <div
-          class="sc-dlfnuX gJuvwh"
-        />
-      </div>
-    </div>
-  </div>
-  <div
-    class="sc-pGacB sc-fodVek kELkBy czNgLG"
-  >
-    <div
-      class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
-    >
-      <div
-        class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
-      >
-        repMint.repPercent
-        <div
-          class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
+          class="sc-hBEYId dfxfcc sc-dmlqKv fGoRkC"
         >
           <svg>
             info.svg
@@ -71,83 +21,32 @@ exports[`RepMintEditor Should match snapshot 1`] = `
         <div
           class="sc-pGacB sc-crrszt kELkBy bhdAjh"
         >
-          repMint.repPercentTooltip
+          repMint.recipientTooltip
         </div>
       </div>
       <div
-        class="sc-pGacB sc-fodVek kELkBy czNgLG"
+        class="sc-pGacB sc-kstqJO kELkBy ctnKTL"
       >
         <div
-          class="sc-gsTEea jwbCic"
+          class="sc-gsTEea fCnInT"
+          disabled=""
         >
           <div
             class="sc-dlfnuX jRxgXa"
-          />
+          >
+            <img
+              alt="Avatar"
+              class="sc-jSgvzq sc-fubCzh iUxzmp jLxagf"
+              data-testid="avatar"
+              size="18"
+              src="test"
+            />
+          </div>
           <input
-            autocomplete="off"
-            autocorrect="off"
-            class="sc-bdfBQB wpJaf sc-fFucqa iqSzjg"
-            inputmode="decimal"
-            maxlength="79"
-            minlength="1"
-            pattern="^[0-9]*[.,]?[0-9]*$"
-            placeholder="0.0"
-            spellcheck="false"
-            type="text"
-            value="0"
-          />
-          <div
-            class="sc-dlfnuX gJuvwh"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="sc-pGacB sc-fodVek kELkBy czNgLG"
-  >
-    <div
-      class="sc-pGacB sc-kstqJO kELkBy kfOGxh"
-    >
-      <div
-        class="sc-pGacB sc-hBEYId kELkBy gSoIsv"
-      >
-        repMint.repAmount
-        <div
-          class="sc-dQoVA dKjYcK sc-bkzYnD knyUVX"
-        >
-          <svg>
-            info.svg
-          </svg>
-        </div>
-        <div
-          class="sc-pGacB sc-crrszt kELkBy bhdAjh"
-        >
-          repMint.repAmountTooltip
-        </div>
-      </div>
-      <div
-        class="sc-pGacB sc-fodVek kELkBy czNgLG"
-      >
-        <div
-          class="sc-gsTEea jwbCic"
-        >
-          <div
-            class="sc-dlfnuX jRxgXa"
-          />
-          <input
-            autocomplete="off"
-            autocorrect="off"
-            class="sc-bdfBQB wpJaf sc-fFucqa iqSzjg"
-            inputmode="decimal"
-            maxlength="79"
-            minlength="1"
-            pattern="^[0-9]*[.,]?[0-9]*$"
-            placeholder="0.0"
+            class="sc-bdfBQB wpJaf"
+            disabled=""
             readonly=""
-            spellcheck="false"
-            type="text"
-            value="0"
+            value="0x0000...0000"
           />
           <div
             class="sc-dlfnuX gJuvwh"
@@ -155,7 +54,121 @@ exports[`RepMintEditor Should match snapshot 1`] = `
         </div>
       </div>
     </div>
-  </div>
+    <div
+      class="sc-pGacB sc-kstqJO kELkBy ctnKTL"
+    >
+      <div
+        class="sc-pGacB sc-dQoVA kELkBy fFSPTY"
+      >
+        <div
+          class="sc-pGacB sc-bqyKOL kELkBy kfFRFi"
+        >
+          repMint.repPercent
+          <div
+            class="sc-hBEYId dfxfcc sc-dmlqKv fGoRkC"
+          >
+            <svg>
+              info.svg
+            </svg>
+          </div>
+          <div
+            class="sc-pGacB sc-crrszt kELkBy bhdAjh"
+          >
+            repMint.repPercentTooltip
+          </div>
+        </div>
+        <div
+          class="sc-pGacB sc-kstqJO kELkBy ctnKTL"
+        >
+          <div
+            class="sc-gsTEea jwbCic"
+          >
+            <div
+              class="sc-dlfnuX jRxgXa"
+            />
+            <input
+              autocomplete="off"
+              autocorrect="off"
+              class="sc-bdfBQB wpJaf sc-hHfuMS TKfbD"
+              inputmode="decimal"
+              maxlength="79"
+              minlength="1"
+              name="repPercent"
+              pattern="^[0-9]*[.,]?[0-9]*$"
+              placeholder="0.0"
+              spellcheck="false"
+              type="text"
+              value="0"
+            />
+            <div
+              class="sc-dlfnuX gJuvwh"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="sc-pGacB sc-kstqJO kELkBy ctnKTL"
+    >
+      <div
+        class="sc-pGacB sc-dQoVA kELkBy fFSPTY"
+      >
+        <div
+          class="sc-pGacB sc-bqyKOL kELkBy kfFRFi"
+        >
+          repMint.repAmount
+          <div
+            class="sc-hBEYId dfxfcc sc-dmlqKv fGoRkC"
+          >
+            <svg>
+              info.svg
+            </svg>
+          </div>
+          <div
+            class="sc-pGacB sc-crrszt kELkBy bhdAjh"
+          >
+            repMint.repAmountTooltip
+          </div>
+        </div>
+        <div
+          class="sc-pGacB sc-kstqJO kELkBy ctnKTL"
+        >
+          <div
+            class="sc-gsTEea fCnInT"
+            disabled=""
+          >
+            <div
+              class="sc-dlfnuX jRxgXa"
+            />
+            <input
+              autocomplete="off"
+              autocorrect="off"
+              class="sc-bdfBQB wpJaf sc-hHfuMS TKfbD"
+              disabled=""
+              inputmode="decimal"
+              maxlength="79"
+              minlength="1"
+              pattern="^[0-9]*[.,]?[0-9]*$"
+              placeholder="0.0"
+              readonly=""
+              spellcheck="false"
+              type="text"
+              value="0.0"
+            />
+            <div
+              class="sc-dlfnuX gJuvwh"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="sc-hKgJUU fafTeJ"
+      type="submit"
+    >
+      saveAction
+    </button>
+  </form>
    
 </div>
 `;

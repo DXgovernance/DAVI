@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { FormElementProps } from './common';
 
-const UnstyledInput = styled.input`
+const UnstyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   border: none;
   background: none;
   background-color: transparent;
@@ -16,6 +16,7 @@ const InputWrapper = styled.div<{
   isInvalid?: boolean;
   textAlign?: string;
   muted?: boolean;
+  disabled?: boolean;
 }>`
   display: flex;
   align-items: center;
@@ -30,12 +31,12 @@ const InputWrapper = styled.div<{
   background-color: transparent;
 
   input {
-    color: ${({ theme, isInvalid, muted }) =>
-      isInvalid
-        ? theme.colors.red
-        : muted
-        ? theme.colors.muted
-        : theme.colors.text};
+    color: ${({ theme, isInvalid, muted, disabled }) => {
+      if (isInvalid) return theme.colors.red;
+      if (muted) return theme.colors.muted;
+      if (disabled) return theme.colors.grey;
+      return theme.colors.text;
+    }};
     font-family: ${({ theme }) => theme.fonts.body};
     font-size: ${({ theme }) => theme.fontSizes.body};
     font-weight: ${({ theme }) => theme.fontWeights.regular};
@@ -48,8 +49,12 @@ const InputWrapper = styled.div<{
 
   :hover {
     outline: 1px solid
-      ${({ theme, isInvalid }) =>
-        isInvalid ? theme.colors.red : theme.colors.text};
+      ${({ theme, isInvalid, disabled }) =>
+        isInvalid
+          ? theme.colors.red
+          : disabled
+          ? 'inherit'
+          : theme.colors.text};
   }
 
   :focus {
@@ -79,12 +84,18 @@ const Input: React.FC<InputProps<any>> = ({
   isInvalid,
   textAlign,
   muted,
+  disabled,
   ...rest
 }) => {
   return (
-    <InputWrapper textAlign={textAlign} isInvalid={isInvalid} muted={muted}>
+    <InputWrapper
+      disabled={disabled}
+      textAlign={textAlign}
+      isInvalid={isInvalid}
+      muted={muted}
+    >
       <IconContainer>{icon}</IconContainer>
-      <UnstyledInput {...rest} />
+      <UnstyledInput disabled={disabled} {...rest} />
       <IconContainer right>{iconRight}</IconContainer>
     </InputWrapper>
   );
