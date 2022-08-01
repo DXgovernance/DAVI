@@ -1,7 +1,7 @@
 import { ActionEditorProps } from '..';
 import { BigNumber } from 'ethers';
+import { Button } from 'old-components/Guilds/common/Button';
 import { Controller, useForm } from 'react-hook-form';
-import { BlockButton } from 'Components/ActionsModal/ActionsModal.styled';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -23,10 +23,9 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
+import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
 
-const Error = styled(Box)`
-  color: ${({ theme }) => theme.colors.red};
-  font-size: ${({ theme }) => theme.fontSizes.label};
+const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;
 `;
 
@@ -219,9 +218,14 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           />
         </ControlRow>
 
-        <BlockButton data-testid="submit-erc20transfer" type="submit">
+        <Button
+          m="1rem 0 0"
+          fullWidth
+          data-testid="submit-erc20transfer"
+          type="submit"
+        >
           {t('saveAction')}
-        </BlockButton>
+        </Button>
       </form>
     </div>
   );

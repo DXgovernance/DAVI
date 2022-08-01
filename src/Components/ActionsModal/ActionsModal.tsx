@@ -10,6 +10,8 @@ import {
   supportedActions,
   displaySubmit,
 } from 'Components/ActionsBuilder/SupportedActions';
+import { Button } from 'old-components/Guilds/common/Button';
+
 import {
   DecodedAction,
   DecodedCall,
@@ -22,7 +24,7 @@ import {
   ContractsList,
   ParamsForm,
 } from './components';
-import { EditorWrapper, BlockButton } from './ActionsModal.styled';
+import { EditorWrapper } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
 import { useAccount } from 'wagmi';
@@ -150,9 +152,13 @@ const ActionModal: React.FC<ActionModalProps> = ({
             onSubmit={saveSupportedAction}
           />
           {displaySubmit(selectedAction) && (
-            <BlockButton onClick={() => saveSupportedAction()}>
+            <Button
+              m="1rem 0 0"
+              fullWidth
+              onClick={() => saveSupportedAction()}
+            >
               {t('saveAction')}
-            </BlockButton>
+            </Button>
           )}
         </EditorWrapper>
       );

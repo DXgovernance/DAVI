@@ -60,7 +60,7 @@ export const supportedActions: Record<
     infoLineView: RepMintInfoLine,
     summaryView: RepMintSummary,
     editor: RepMintEditor,
-    displaySubmit: true,
+    displaySubmit: false,
   },
   [SupportedAction.GENERIC_CALL]: {
     title: 'Generic Call',
