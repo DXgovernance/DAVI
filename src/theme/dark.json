@@ -36,12 +36,25 @@
       "1": "#F06292",
       "2": "#4DB6AC",
       "3": "#64B5F6"
+    },
+    "syntax": {
+      "key": "#69F0AE",
+      "value": "#00B0FF",
+      "expBlue": "#1E2F4C",
+      "expHover": "#1F3962",
+      "expLight": "#1C2635",
+      "add": "#1B463D",
+      "addLight": "#1B312E",
+      "addText": "#1c5246",
+      "remove": "#491C26",
+      "removeLight": "#321C23",
+      "removeText": "#841A30"
     }
   },
   "fonts": {
     "body": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     "heading": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    "monospace": "'Azeret Mono', Menlo, Monaco, Consolas, 'Courier New', monospace"
+    "monospace": "'Inter', Menlo, Monaco, Consolas, 'Courier New', monospace"
   },
   "fontSizes": {
     "label": "12px",
