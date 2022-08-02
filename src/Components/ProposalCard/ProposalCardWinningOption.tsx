@@ -40,7 +40,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
           <InfoLine
             decodedCall={option?.decodedActions[0]?.decodedCall}
             approveSpendTokens={option?.decodedActions[0]?.approval}
-            compact
+            noAvatar
           />
         ) : (
           <UndecodableCallInfoLine />

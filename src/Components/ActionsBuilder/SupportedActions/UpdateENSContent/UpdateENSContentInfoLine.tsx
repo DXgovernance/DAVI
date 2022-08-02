@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
+  noAvatar,
 }) => {
   const { parsedData } = useUpdateEnsContent({ decodedCall });
   const { ensName, imageUrl } = useENSAvatar(parsedData?.from, MAINNET_ID);
@@ -27,13 +28,15 @@ const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <MdArrowRightAlt />
       </Segment>
-      <Segment>
-        <Avatar
-          defaultSeed={parsedData?.from}
-          src={imageUrl}
-          size={compact ? 14 : 24}
-        />
-      </Segment>
+      {noAvatar ? null : (
+        <Segment>
+          <Avatar
+            defaultSeed={parsedData?.from}
+            src={imageUrl}
+            size={compact ? 14 : 24}
+          />
+        </Segment>
+      )}
       <Segment>
         {ensName || shortenAddress(parsedData?.from, compact ? 2 : 4)}
       </Segment>

@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next';
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
+  noAvatar,
 }) => {
   const { t } = useTranslation();
 
@@ -49,13 +50,15 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <FiArrowRight />
       </Segment>
-      <Segment>
-        <Avatar
-          defaultSeed={parsedData?.destination}
-          src={imageUrl}
-          size={compact ? 14 : 24}
-        />
-      </Segment>
+      {noAvatar ? null : (
+        <Segment>
+          <Avatar
+            defaultSeed={parsedData?.destination}
+            src={imageUrl}
+            size={compact ? 14 : 24}
+          />
+        </Segment>
+      )}
       <Segment>
         {ensName ||
           (parsedData?.destination
