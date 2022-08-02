@@ -11,14 +11,16 @@ import {
   DetailHeader,
   DetailRow,
   RedHighlight,
+  StyledSegmentLink,
 } from './Summary.styled';
+import { SummaryProps } from './types';
+import { BiLinkExternal } from 'react-icons/bi';
 
-const Summary = ({ decodedCall, address }) => {
+const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
   const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
   const { ensName, imageUrl } = useENSAvatar(address, MAINNET_ID);
   const { chain } = useNetwork();
-
   const nativeTokenSymbol = useMemo(() => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
@@ -41,7 +43,14 @@ const Summary = ({ decodedCall, address }) => {
           <Segment>
             <Avatar defaultSeed={address} src={imageUrl} size={24} />
           </Segment>
-          <Segment>{ensName || address}</Segment>
+          <StyledSegmentLink
+            href={blockExplorerUrl}
+            target="_blank"
+            rel="noopener"
+          >
+            {ensName || address}
+            <BiLinkExternal />
+          </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
     </>

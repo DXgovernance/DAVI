@@ -10,7 +10,7 @@ type ENSRegistryData = {
 };
 
 export default function useENSRegistry(ensName: string, chainId?: number) {
-  const provider = useProvider();
+  const provider = useProvider({ chainId });
   const { data } = useEtherSWR(
     ensName
       ? [[ENS_REGISTRAR_ADDRESS, 'resolver', utils.namehash(ensName)]]

@@ -3,6 +3,7 @@ import { FiChevronDown } from 'react-icons/fi';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
+import { Button } from 'old-components/Guilds/common/Button';
 import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
@@ -14,7 +15,6 @@ import {
   SectionTitle,
   SectionWrapper,
   Wrapper,
-  BlockButton,
 } from '../../ActionsModal.styled';
 import {
   ControlRow,
@@ -119,13 +119,14 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
           }}
         />
 
-        <BlockButton
-          variant="primary"
+        <Button
+          m="1rem 0 0"
+          fullWidth
           onClick={confirm}
           disabled={!amount || !token}
         >
           {t('approve')}
-        </BlockButton>
+        </Button>
       </SectionWrapper>
     </Wrapper>
   );

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpdateENSContentEditor Should match snapshot 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+  >
+    <div
+      class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+    >
+      ens.name
+      <div
+        class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+      >
+        <svg>
+          info.svg
+        </svg>
+      </div>
+      <div
+        class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+      >
+        ens.nameTooltip
+      </div>
+    </div>
+    <div
+      class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+    >
+      <div
+        class="sc-iqHYmW jGasVK"
+      >
+        <div
+          class="sc-crrszt jWENVR"
+        />
+        <input
+          class="sc-kEjbQP hsweDF"
+          value="test"
+        />
+        <div
+          class="sc-crrszt iYeIOC"
+        />
+      </div>
+      <p>
+        .eth
+      </p>
+    </div>
+  </div>
+  <div
+    class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+  >
+    <div
+      class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+    >
+      <div
+        class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+      >
+        ens.ipfsHash
+        <div
+          class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+        >
+          <svg>
+            info.svg
+          </svg>
+        </div>
+        <div
+          class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+        >
+          ens.ipfsHashToolTip
+        </div>
+      </div>
+      <div
+        class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+      >
+        <div
+          class="sc-iqHYmW jGasVK"
+        >
+          <div
+            class="sc-crrszt jWENVR"
+          />
+          <input
+            class="sc-kEjbQP hsweDF"
+            value="Qm"
+          />
+          <div
+            class="sc-crrszt iYeIOC"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
