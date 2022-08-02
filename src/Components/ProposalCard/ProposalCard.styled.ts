@@ -96,9 +96,21 @@ export const ActionsWrapper = styled(Box)`
   }
 `;
 
-export const BorderedIconDetailWrapper = styled(IconDetailWrapper)`
+export const WinningOptionWrapper = styled(IconDetailWrapper)``;
+
+export const OptionVotesAndLabelWrapper = styled(IconDetailWrapper)`
   border: 1px solid ${({ theme }) => theme.colors.border.initial};
-  border-radius: 1rem;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  padding: 0.25rem 0.8rem;
+  flex: none;
+  display: flex;
+  width: fit-content;
+`;
+
+export const ActionDetailsWrapper = styled(IconDetailWrapper)`
+  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border-radius: 0rem 1rem 1rem 0rem;
   padding: 0.25rem 0.8rem;
   flex: none;
   display: flex;

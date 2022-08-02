@@ -46,6 +46,7 @@ export interface Option {
   actions?: Call[];
   decodedActions?: DecodedAction[];
   totalVotes?: BigNumber;
+  votePercentage?: number;
 }
 
 export interface ApproveSendTokens {

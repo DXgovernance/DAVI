@@ -18,16 +18,13 @@ jest.mock('hooks/Guilds/guild/useProposalSummaryActions', () => {
 
 const validProps: ProposalCardProps = {
   proposal: proposalMock,
-  votes: [10, 20],
   ensAvatar: ensAvatarMock,
   href: 'testUrl',
   statusProps: proposalStatusPropsMock,
-  summaryActions: [],
 };
 
 const invalidProps: ProposalCardProps = {
   proposal: null,
-  votes: [],
   ensAvatar: null,
   href: null,
   statusProps: {
@@ -35,7 +32,7 @@ const invalidProps: ProposalCardProps = {
     status: null,
     endTime: null,
   },
-  summaryActions: [],
+  options: null,
 };
 describe('ProposalCard', () => {
   it('ProposalCard Renders properly with data', () => {
