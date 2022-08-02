@@ -24,7 +24,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const theme = useTheme();
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isAprovalExpanded, setIsAprovalExpanded] = useState(false);
+  const [isApprovalExpanded, setIsApprovalExpanded] = useState(false);
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -66,14 +66,14 @@ export const CallDetails: React.FC<ActionViewProps> = ({
       {!!approveSpendTokens && (
         <Box margin="0 0 0.5rem">
           <DetailsButton
-            onClick={() => setIsAprovalExpanded(!isAprovalExpanded)}
-            isExpanded={isAprovalExpanded}
+            onClick={() => setIsApprovalExpanded(!isApprovalExpanded)}
+            isExpanded={isApprovalExpanded}
             variant={'secondary'}
           >
             approve ({' '}
             <ParamTag
               color={
-                isAprovalExpanded
+                isApprovalExpanded
                   ? theme?.colors?.params?.[0]
                   : theme?.colors?.text
               }
@@ -83,7 +83,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             {', '}
             <ParamTag
               color={
-                isAprovalExpanded
+                isApprovalExpanded
                   ? theme?.colors?.params?.[1]
                   : theme?.colors?.text
               }
@@ -92,7 +92,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             </ParamTag>{' '}
             )
           </DetailsButton>
-          {isAprovalExpanded && (
+          {isApprovalExpanded && (
             <>
               <ActionParamRow>
                 <Box>

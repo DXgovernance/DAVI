@@ -79,6 +79,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     for (let i = 0; i < totalOptionsNum; i++) {
       const start = (i - 1) * callsPerOption;
       const end = i * callsPerOption;
+      // skipping index 0 since is the "Against" option and doesn't have any call
       splitCalls.push(i === 0 ? [] : calls.slice(start, end));
     }
     return splitCalls;
