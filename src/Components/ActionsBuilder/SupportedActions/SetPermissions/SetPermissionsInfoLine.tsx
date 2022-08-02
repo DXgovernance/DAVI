@@ -2,7 +2,8 @@ import { useMemo } from 'react';
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
 import Avatar from 'old-components/Guilds/Avatar';
-import { FiArrowRight, FiNavigation } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
+import { BiCheckShield } from 'react-icons/bi';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { ParsedDataInterface } from './types';
@@ -38,9 +39,9 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   return (
     <>
       <Segment>
-        <FiNavigation size={16} />
+        <BiCheckShield size={16} />
       </Segment>
-      <Segment>{t('permission')}</Segment>
+      <Segment>{!compact ? t('permission') : ''}</Segment>
       <Segment>
         <FiArrowRight />
       </Segment>

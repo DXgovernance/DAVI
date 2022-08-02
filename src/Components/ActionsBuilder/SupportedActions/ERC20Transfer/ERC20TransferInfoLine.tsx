@@ -6,7 +6,8 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
-import { FiArrowRight, FiNavigation } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
+import { BiSend } from 'react-icons/bi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { useTranslation } from 'react-i18next';
 
@@ -42,7 +43,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   return (
     <>
       <Segment>
-        <FiNavigation size={16} />
+        <BiSend size={16} />
       </Segment>
       <Segment>
         {!compact ? t('transfer') : ''} {roundedBalance} {tokenInfo?.symbol}
