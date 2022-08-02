@@ -11,9 +11,13 @@ import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
+// import { cornersOfRectangle } from '@dnd-kit/core/dist/utilities/algorithms/helpers';
 
-const isApprovalCall = (call: Call) =>
-  call?.data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
+const isApprovalData = (data: string) =>
+  data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
+const isApprovalCall = (call: Call) => isApprovalData(call?.data);
+const isZeroHash = (data: string) => data === ZERO_HASH;
+
 const useProposalCalls = (guildId: string, proposalId: string) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -34,26 +38,49 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   } = proposal || {};
 
   const totalOptionsNum = totalVotes?.length || 0;
+  const displayableOptionsNum = totalOptionsNum - 1;
+  const nonApprovalOrEmptyCalls = useMemo(
+    () => dataArray?.filter(data => !isApprovalData(data) && !isZeroHash(data)),
+    [dataArray]
+  );
+
   const callsPerOption = totalOptionsNum
-    ? toArray?.length / (totalOptionsNum - 1)
+    ? nonApprovalOrEmptyCalls.length / displayableOptionsNum
     : 0;
   const optionLabels = metadata?.voteOptions;
 
   const calls: Call[] = useMemo(() => {
-    return toArray?.map((to, index) => ({
+    const buildCall = idx => ({
       from: guildId,
-      to: to,
-      data: dataArray[index],
-      value: valuesArray[index],
-    }));
-  }, [guildId, dataArray, valuesArray, toArray]);
+      to: toArray[idx],
+      data: dataArray[idx],
+      value: valuesArray[idx],
+    });
+    return dataArray
+      ?.map((_value, index) => {
+        const call = buildCall(index);
+        if (isApprovalData(dataArray[index - 1])) {
+          return {
+            ...call,
+            // We asume that if previous call was an approval, then current one is the one that is being approved
+            // So passing nested approval call and remove it from the calls array
+            approvalCall: buildCall(index - 1),
+          };
+        }
+
+        if (isApprovalCall(call) || _value === ZERO_HASH) return null;
+        return call;
+      })
+      .filter(Boolean);
+  }, [guildId, toArray, dataArray, valuesArray]); //eslint-disable-line
+
   const splitCalls = useMemo(() => {
     if (!calls) return null;
     const splitCalls: Call[][] = [];
     for (let i = 0; i < totalOptionsNum; i++) {
-      splitCalls.push(
-        i === 0 ? [] : calls.slice((i - 1) * callsPerOption, i * callsPerOption)
-      );
+      const start = (i - 1) * callsPerOption;
+      const end = i * callsPerOption;
+      splitCalls.push(i === 0 ? [] : calls.slice(start, end));
     }
     return splitCalls;
   }, [calls, callsPerOption, totalOptionsNum]);
@@ -69,30 +96,25 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           const filteredActions = calls.filter(
             call => call.data !== ZERO_HASH || !call.value?.isZero()
           );
-          const actions = [];
-          for (const callIndex in filteredActions) {
-            const idx = Number(callIndex);
-            const call = filteredActions[idx];
-            if (isApprovalCall(call)) {
-              const { decodedCall } = await decodeCall(
-                call,
-                contracts,
-                chain?.id
-              );
-              actions[idx + 1] = {
-                ...actions[idx + 1],
-                approval: {
-                  amount: decodedCall?.args?._value,
-                  token: call.to,
-                },
-              };
-            } else {
-              actions[idx] = {
-                ...call,
-                ...actions[idx],
-              };
-            }
-          }
+          const actions = await Promise.all(
+            filteredActions.map(async call => {
+              if (!!call?.approvalCall) {
+                const { decodedCall } = await decodeCall(
+                  call?.approvalCall,
+                  contracts,
+                  chain?.id
+                );
+                return {
+                  ...call,
+                  approval: {
+                    amount: decodedCall?.args?._value,
+                    token: call.to,
+                  },
+                };
+              }
+              return call;
+            })
+          );
           const optionLabel = optionLabels?.[index]
             ? optionLabels?.[index]
             : index === 0
