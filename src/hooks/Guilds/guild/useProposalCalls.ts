@@ -11,7 +11,6 @@ import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
-// import { cornersOfRectangle } from '@dnd-kit/core/dist/utilities/algorithms/helpers';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -57,7 +56,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       value: valuesArray[idx],
     });
     return dataArray
-      ?.map((_value, index) => {
+      ?.map((dataValue, index) => {
         const call = buildCall(index);
         if (isApprovalData(dataArray[index - 1])) {
           return {
@@ -68,11 +67,11 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           };
         }
 
-        if (isApprovalCall(call) || _value === ZERO_HASH) return null;
+        if (isApprovalCall(call) || dataValue === ZERO_HASH) return null;
         return call;
       })
       .filter(Boolean);
-  }, [guildId, toArray, dataArray, valuesArray]); //eslint-disable-line
+  }, [guildId, toArray, dataArray, valuesArray]);
 
   const splitCalls = useMemo(() => {
     if (!calls) return null;
