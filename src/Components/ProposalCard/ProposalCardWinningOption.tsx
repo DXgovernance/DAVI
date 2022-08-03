@@ -48,7 +48,18 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   return (
     <WinningOptionWrapper>
       <OptionVotesAndLabelWrapper>
-        {option.votePercentage}% - {option.label}
+        {option.votePercentage !== null ? (
+          <>
+            {option.votePercentage}% - {option.label}
+          </>
+        ) : (
+          <Loading
+            style={{ margin: 0 }}
+            loading
+            text
+            skeletonProps={{ width: '70px' }}
+          />
+        )}
       </OptionVotesAndLabelWrapper>
 
       <ActionDetailsWrapper

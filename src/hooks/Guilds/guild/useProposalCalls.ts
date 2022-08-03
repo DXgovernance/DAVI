@@ -11,8 +11,6 @@ import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
-import useSnapshotId from '../ether-swr/guild/useSnapshotId';
-import useTotalLocked from '../ether-swr/guild/useTotalLocked';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 
 const isApprovalCall = (call: Call) =>
@@ -26,12 +24,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
-
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId,
-  });
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
 
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
@@ -113,7 +105,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             totalVotes: votingResults?.options[index],
             votePercentage: getBigNumberPercentage(
               votingResults?.options[index],
-              totalLocked,
+              votingResults?.totalLocked,
               2
             ),
           };
