@@ -1,7 +1,6 @@
 import useSWRImmutable from 'swr';
 
 async function ipfsFileMetadataFetcher(hash: string) {
-  console.log({ hash });
   async function fetcher(url: string) {
     const res = await fetch(url, { method: 'HEAD', redirect: 'manual' });
     if (!res.ok) throw new Error("Couldn't get file size");
