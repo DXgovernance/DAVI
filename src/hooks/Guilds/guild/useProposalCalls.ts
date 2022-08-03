@@ -49,7 +49,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const optionLabels = metadata?.voteOptions;
 
   const calls: Call[] = useMemo(() => {
-    const buildCall = idx => ({
+    const buildCall = (idx: number): Call => ({
       from: guildId,
       to: toArray[idx],
       data: dataArray[idx],
@@ -61,13 +61,13 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
         if (isApprovalData(dataArray[index - 1])) {
           return {
             ...call,
-            // We asume that if previous call was an approval, then current one is the one that is being approved
+            // We assume that if previous call was an approval, then current one is the one that is being approved
             // So passing nested approval call and remove it from the calls array
             approvalCall: buildCall(index - 1),
           };
         }
 
-        if (isApprovalCall(call) || dataValue === ZERO_HASH) return null;
+        if (isApprovalCall(call) || isZeroHash(dataValue)) return null;
         return call;
       })
       .filter(Boolean);
