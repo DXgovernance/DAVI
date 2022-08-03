@@ -36,8 +36,6 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
     }
   }, [options]);
 
-  console.log(sortedOptionsByWinningVotes);
-
   return withFilters(
     <ProposalCard
       proposal={{ ...proposal, id: proposalId }}

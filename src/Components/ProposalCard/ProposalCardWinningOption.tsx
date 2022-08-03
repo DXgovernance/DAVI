@@ -1,12 +1,17 @@
 import { Option } from 'Components/ActionsBuilder/types';
 import { Loading } from 'Components/Primitives/Loading';
 import {
+  ActionCount,
+  ActionCountWrapper,
   ActionDetailsWrapper,
   OptionVotesAndLabelWrapper,
   WinningOptionWrapper,
 } from './ProposalCard.styled';
 import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
 import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
+import { useState } from 'react';
+import ExpandedActionsList from './ExpandedActionsList';
+import { useTranslation } from 'react-i18next';
 
 interface ProposalCardWinningOptionProps {
   option: Option;
@@ -15,6 +20,9 @@ interface ProposalCardWinningOptionProps {
 const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   option,
 }) => {
+  const [expandedActionsVisible, setExpandedActionsVisible] = useState(false);
+  const { t } = useTranslation();
+
   if (!option) {
     return (
       <Loading
@@ -26,26 +34,45 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
     );
   }
 
-  const InfoLine = getInfoLineView(
-    option?.decodedActions[0]?.decodedCall?.callType
-  );
+  const firstAction = option?.decodedActions[0];
+  const allActions = option?.decodedActions;
+  const numberOfActions = allActions?.length;
+
+  const handleExpandActions = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setExpandedActionsVisible(!expandedActionsVisible);
+  };
+
+  const InfoLine = getInfoLineView(firstAction?.decodedCall?.callType);
 
   return (
     <WinningOptionWrapper>
       <OptionVotesAndLabelWrapper>
         {option.votePercentage}% - {option.label}
       </OptionVotesAndLabelWrapper>
-      <ActionDetailsWrapper>
-        {!!InfoLine ? (
-          <InfoLine
-            decodedCall={option?.decodedActions[0]?.decodedCall}
-            approveSpendTokens={option?.decodedActions[0]?.approval}
-            compact
-            noAvatar
-          />
+
+      <ActionDetailsWrapper
+        onClick={handleExpandActions}
+        isClickable={numberOfActions > 1}
+      >
+        {numberOfActions === 1 ? (
+          !!InfoLine ? (
+            <InfoLine
+              decodedCall={firstAction?.decodedCall}
+              approveSpendTokens={firstAction?.approval}
+              compact
+              noAvatar
+            />
+          ) : (
+            <UndecodableCallInfoLine />
+          )
         ) : (
-          <UndecodableCallInfoLine />
+          <ActionCountWrapper>
+            <ActionCount>{numberOfActions}</ActionCount> {t('actions_other')}
+          </ActionCountWrapper>
         )}
+
+        {expandedActionsVisible && <ExpandedActionsList actions={allActions} />}
       </ActionDetailsWrapper>
     </WinningOptionWrapper>
   );
