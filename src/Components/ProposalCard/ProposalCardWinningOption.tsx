@@ -40,7 +40,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
 
   const handleExpandActions = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setExpandedActionsVisible(!expandedActionsVisible);
+    if (numberOfActions > 1) setExpandedActionsVisible(!expandedActionsVisible);
   };
 
   const InfoLine = getInfoLineView(firstAction?.decodedCall?.callType);
