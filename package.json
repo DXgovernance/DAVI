@@ -61,7 +61,7 @@
     "content-hash": "^2.5.2",
     "copy-to-clipboard": "^3.3.1",
     "diff": "^5.1.0",
-    "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#67b288e86829a9a9d63f16f8b6953edc2c32895a",
+    "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#develop",
     "eslint-plugin-cypress": "^2.12.1",
     "ether-swr": "^2.0.1",
     "ethers": "^5.5.2",

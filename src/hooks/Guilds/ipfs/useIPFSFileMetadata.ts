@@ -2,7 +2,7 @@ import useSWRImmutable from 'swr';
 
 async function ipfsFileMetadataFetcher(hash: string) {
   async function fetcher(url: string) {
-    const res = await fetch(url, { method: 'HEAD', redirect: 'manual' });
+    const res = await fetch(url, { method: 'HEAD' });
     if (!res.ok) throw new Error("Couldn't get file size");
 
     const contentLength =
@@ -20,9 +20,7 @@ async function ipfsFileMetadataFetcher(hash: string) {
     fetcher('https://gateway.pinata.cloud/ipfs/' + hash),
     fetcher('https://dweb.link/ipfs/' + hash),
     fetcher('https://infura-ipfs.io/ipfs/' + hash),
-
-    // CF-IPFS doesn't seem to return file metadata.
-    // fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
+    fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
   ]);
 
   return response;
