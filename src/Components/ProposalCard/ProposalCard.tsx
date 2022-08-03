@@ -13,8 +13,8 @@ import {
   CardContent,
   CardTitle,
   CardFooter,
-} from 'Components/ProposalCard/ProposalCard.styled';
-import ProposalCardWinningOption from './ProposalCardWinningOption';
+} from 'Components/ProposalCard/styles';
+import ProposalCardWinningOption from './ProposalCardWinningOption/ProposalCardWinningOption';
 
 const ProposalCard: React.FC<ProposalCardProps> = ({
   proposal,

@@ -116,20 +116,20 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
       >
         <div
-          class="sc-gKseQn sc-idOiZg sc-dmlqKv bA-duWg iWoCcO"
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
         >
           <div
-            class="sc-gKseQn sc-idOiZg sc-kfzBvY bA-duWg iWoCcO hmSRVn"
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
           >
             50
             % - 
             For
           </div>
           <button
-            class="sc-dlfnuX sc-fKFxtB bcIZht gqBETU"
+            class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
           >
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               <svg
                 fill="currentColor"
@@ -146,14 +146,14 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               
                
                
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               <svg
                 fill="none"
@@ -178,7 +178,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               test.eth
             </span>
@@ -307,20 +307,20 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
         class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
       >
         <div
-          class="sc-gKseQn sc-idOiZg sc-dmlqKv bA-duWg iWoCcO"
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
         >
           <div
-            class="sc-gKseQn sc-idOiZg sc-kfzBvY bA-duWg iWoCcO hmSRVn"
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
           >
             50
             % - 
             For
           </div>
           <button
-            class="sc-dlfnuX sc-fKFxtB bcIZht gqBETU"
+            class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
           >
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               <svg
                 fill="currentColor"
@@ -337,14 +337,14 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
               </svg>
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               
                
                
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               <svg
                 fill="none"
@@ -369,7 +369,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
               </svg>
             </span>
             <span
-              class="sc-fbkiRW EtqDn"
+              class="sc-ehSDrC kQgJdT"
             >
               test.eth
             </span>
@@ -498,23 +498,23 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
         class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
       >
         <div
-          class="sc-gKseQn sc-idOiZg sc-dmlqKv bA-duWg iWoCcO"
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
         >
           <div
-            class="sc-gKseQn sc-idOiZg sc-kfzBvY bA-duWg iWoCcO hmSRVn"
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
           >
             50
             % - 
             For
           </div>
           <button
-            class="sc-dlfnuX sc-fKFxtB bcIZht bgsZKi"
+            class="sc-dlfnuX sc-cxFLGX bcIZht gSAJsl"
           >
             <div
-              class="sc-iJuVqt kUodZN"
+              class="sc-lmoMya forqjz"
             >
               <div
-                class="sc-giImIA huqXvp"
+                class="sc-iJuVqt gvxcKu"
               >
                 2
               </div>

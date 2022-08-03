@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
 import { Heading } from 'old-components/Guilds/common/Typography';
-import { Button } from 'old-components/Guilds/common/Button';
 
 // TODO: base these components on a generic Card component
 export const CardWrapper = styled(Box)<{ disabled?: boolean }>`
@@ -97,104 +96,11 @@ export const ActionsWrapper = styled(Box)`
   }
 `;
 
-export const WinningOptionWrapper = styled(IconDetailWrapper)``;
-
-export const OptionVotesAndLabelWrapper = styled(IconDetailWrapper)`
-  display: flex;
-  flex: none;
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
-  border-radius: 1rem 0rem 0rem 1rem;
-  border-right: none;
-  font-weight: 600;
-  width: fit-content;
-  height: 30px;
-  padding: 0 12px;
-`;
-
-export const ActionDetailsWrapper = styled(Button)<{ isClickable: boolean }>`
-  display: flex;
-  justify-content: flex-start;
-  flex: none;
-  background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
-  border-radius: 0rem 1rem 1rem 0rem;
-  height: 32px;
-  width: fit-content;
-  margin: 0;
-  padding: 0 12px;
-  color: ${({ theme }) => theme.colors.grey};
-
-  :hover {
-    color: ${({ theme }) => theme.colors.text};
-    ${({ isClickable }) =>
-      isClickable
-        ? `cursor: pointer;`
-        : `cursor: default;
-          `}
-  }
-`;
-
 export const NotFoundActionWrapper = styled.div`
   display: flex;
   padding: 4px;
   border: ${({ theme }) => `1px solid ${theme.colors.red}`};
   border-radius: 30px;
-`;
-
-export const ActionsTooltipWrapper = styled.div`
-  margin-left: -11px;
-  margin-top: 2.5rem;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: flex-start;
-  border-radius: ${({ theme }) => theme.radii.curved};
-  border: 1px solid ${({ theme }) => theme.colors.muted};
-  padding: 16px 20px;
-  background-color: ${({ theme }) => theme.colors.modalBackground};
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
-`;
-
-export const ActionWrapper = styled.div`
-  display: flex;
-`;
-
-export const ActionNumber = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 1.5rem;
-  width: 1.5rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
-  border: 1px solid;
-  border-radius: 50%;
-  font-weight: 600;
-  margin-right: 12px;
-`;
-
-export const ActionCountWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-`;
-
-export const ActionCount = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.muted};
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
-  margin-right: 8px;
-`;
-
-export const SpacerLine = styled.div`
-  height: 20px;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
-  border-right: 1px solid;
-  margin-left: 13px;
 `;
 
 export const Icon = styled.img<{

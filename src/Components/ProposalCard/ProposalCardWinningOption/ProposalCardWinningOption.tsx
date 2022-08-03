@@ -6,12 +6,12 @@ import {
   ActionDetailsWrapper,
   OptionVotesAndLabelWrapper,
   WinningOptionWrapper,
-} from './ProposalCard.styled';
+} from './ProposalCardWinningOption.styled';
 import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
 import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
 import { useState } from 'react';
-import ExpandedActionsList from './ExpandedActionsList';
 import { useTranslation } from 'react-i18next';
+import { ExpandedActionsList } from '../ExpandedActionsList';
 
 interface ProposalCardWinningOptionProps {
   option: Option;

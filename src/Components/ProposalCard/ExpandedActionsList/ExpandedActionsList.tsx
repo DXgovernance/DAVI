@@ -5,7 +5,7 @@ import {
   ActionsTooltipWrapper,
   ActionWrapper,
   SpacerLine,
-} from './ProposalCard.styled';
+} from './ExpandedActionsList.styled';
 
 const ExpandedActionsList = ({ actions }) => {
   return (
