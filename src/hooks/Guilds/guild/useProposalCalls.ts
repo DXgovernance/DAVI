@@ -15,7 +15,6 @@ import { getBigNumberPercentage } from 'utils/bnPercentage';
 
 const isApprovalCall = (call: Call) =>
   call.data.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
-
 const useProposalCalls = (guildId: string, proposalId: string) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -49,7 +48,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       value: valuesArray[index],
     }));
   }, [guildId, dataArray, valuesArray, toArray]);
-
   const splitCalls = useMemo(() => {
     if (!calls) return null;
 
@@ -82,15 +80,17 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
                   contracts,
                   chain?.id
                 );
-                allCalls[index + 1].approval = {
-                  amount: decodedCall?.args?._value,
-                  token: call.to,
+                allCalls[index + 1] = {
+                  ...allCalls[index + 1],
+                  approval: {
+                    amount: decodedCall?.args?._value,
+                    token: call.to,
+                  },
                 };
               }
               return call;
             })
           );
-
           const optionLabel = optionLabels?.[index]
             ? optionLabels?.[index]
             : index === 0
