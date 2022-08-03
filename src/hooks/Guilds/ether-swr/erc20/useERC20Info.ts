@@ -38,3 +38,41 @@ export const useERC20Info = (contractAddress: string) => {
 
   return { data: transformedData, ...rest };
 };
+
+export const getTokenInfoParsedParams = (tokenInfo: ERC20Info) =>
+  tokenInfo
+    ? [
+        {
+          component: 'integer',
+          type: 'uint256',
+          defaultValue: '',
+          description: 'Token Decimals',
+          name: 'approvalTokenDecimals',
+          value: tokenInfo?.decimals,
+        },
+        {
+          component: 'string',
+          type: 'string',
+          defaultValue: '',
+          description: 'Token Name',
+          name: 'approvalTokenName',
+          value: tokenInfo?.name,
+        },
+        {
+          component: 'string',
+          type: 'string',
+          defaultValue: '',
+          description: 'Token Symbol',
+          name: 'approvalTokenSymbol',
+          value: tokenInfo?.symbol,
+        },
+        {
+          component: 'tokenAmount',
+          type: 'uint256',
+          defaultValue: '',
+          description: 'Token Total Supply',
+          name: 'approvalTokenTotalSupply',
+          value: tokenInfo?.totalSupply,
+        },
+      ]
+    : [];

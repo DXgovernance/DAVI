@@ -2,12 +2,15 @@ import { BigNumber } from 'ethers';
 import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { Interweave } from 'interweave';
+import {
+  useERC20Info,
+  getTokenInfoParsedParams,
+} from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { Segment } from '../common/infoLine';
 import { useMemo } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { ActionViewProps } from '..';
-import { Segment } from '../common/infoLine';
 import GenericCallParamsMatcher from './GenericCallParamsMatcher';
 
 export interface FunctionParamWithValue extends RichContractFunctionParam {
@@ -38,11 +41,14 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
 
   const params: FunctionParamWithValue[] = useMemo(() => {
     if (!decodedCall || !functionData) return null;
-    return functionData.params.map(param => ({
-      ...param,
-      value: getStringForParam(param.type, decodedCall.args[param.name]),
-    }));
-  }, [functionData, decodedCall]);
+    return functionData.params
+      .map(param => ({
+        ...param,
+        value: getStringForParam(param.type, decodedCall.args[param.name]),
+      }))
+      .concat(getTokenInfoParsedParams(tokenInfo));
+  }, [functionData, decodedCall, tokenInfo]);
+
   return (
     <>
       <Segment>
