@@ -7,7 +7,7 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
     class="sc-bdfBQB enldmJ"
   >
     <div
-      class="sc-dlfnuX fjXZjO sc-iqHYmW bvpGtQ"
+      class="sc-dlfnuX fjXZjO sc-hBEYId birRwg"
     >
       <img
         src="ens.svg"
@@ -45,7 +45,7 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
   >
     <img
       alt="Avatar"
-      class="sc-hBEYId sc-fodVek dbVGbJ kaXmNC"
+      class="sc-kfzBvY sc-fKFxtB jHHzZQ jSbcei"
       data-testid="avatar"
       size="24"
       src="test"

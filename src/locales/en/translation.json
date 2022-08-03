@@ -199,5 +199,7 @@
   "invalidAmount": "Invalid amount",
   "invalidTokenAddress": "Invalid token address",
   "reputationPercentageTooHigh": "Reputation percentage too high",
-  "reputationPercentIsRequired": "Reputation percentage is required"
+  "reputationPercentIsRequired": "Reputation percentage is required",
+  "none": "None",
+  "expandLinesOfCode": "Expand {{numLines}} lines of code"
 }

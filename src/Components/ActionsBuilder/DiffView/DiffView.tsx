@@ -4,6 +4,7 @@ import json from 'highlight.js/lib/languages/json';
 import { useTheme } from 'styled-components';
 import { DiffCode, DiffViewCodeFoldMessage } from './DiffView.styled';
 import './syntax.css';
+import { useTranslation } from 'react-i18next';
 
 hljs.registerLanguage('json', json);
 
@@ -13,6 +14,7 @@ export interface DiffViewProps {
 }
 
 export const DiffView: React.FC<DiffViewProps> = ({ oldCode, newCode }) => {
+  const { t } = useTranslation();
   const theme = useTheme();
 
   const highlightSyntax = (str: string) => (
@@ -56,7 +58,7 @@ export const DiffView: React.FC<DiffViewProps> = ({ oldCode, newCode }) => {
       }}
       codeFoldMessageRenderer={totalFoldedLines => (
         <DiffViewCodeFoldMessage>
-          Expand {totalFoldedLines} lines of code
+          {t('expandLinesOfCode', { numLines: totalFoldedLines })}
         </DiffViewCodeFoldMessage>
       )}
       renderContent={highlightSyntax}
