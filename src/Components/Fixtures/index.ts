@@ -4,6 +4,13 @@ import moment from 'moment';
 import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
 import { ENSAvatar } from '../Types';
 import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import {
+  Call,
+  DecodedAction,
+  DecodedCall,
+  Option,
+  SupportedAction,
+} from 'Components/ActionsBuilder/types';
 
 export const proposalMock: Proposal = {
   id: '0x1234567890123456789012345678901234567890',
@@ -43,4 +50,50 @@ export const guildConfigMock: GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber.from(3000000000000000),
   tokenVault: '0xEE945a0fa35b2B9046D244e465861221c766069F',
   lockTime: BigNumber.from(300),
+};
+
+export const actionMock: Call = {
+  from: '0x0000000000000000000000000000000000000000',
+  to: '',
+  data: '0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800',
+  value: BigNumber.from('1000000000000000000'),
+};
+
+export const decodedCallMock: DecodedCall = {
+  from: '0x140d68e4E3f80cdCf7036De007b3bCEC54D38b1f',
+  callType: SupportedAction.ERC20_TRANSFER,
+  function: null,
+  to: '0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351',
+  value: BigNumber.from(0),
+  args: {
+    _to: '0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa',
+    _value: BigNumber.from(150),
+  },
+};
+
+export const decodedActionMock: DecodedAction = {
+  id: 'action-0.3476768528404657',
+  decodedCall: decodedCallMock,
+  contract: null,
+  approval: null,
+};
+
+export const optionsMock: Option = {
+  id: 'option-1',
+  label: 'For',
+  color: '#295FF4',
+  actions: [actionMock],
+  decodedActions: [decodedActionMock],
+  totalVotes: BigNumber.from(3),
+  votePercentage: 50,
+};
+
+export const optionsWithSeveralActionsMock: Option = {
+  id: 'option-1',
+  label: 'For',
+  color: '#295FF4',
+  actions: [actionMock, actionMock],
+  decodedActions: [decodedActionMock, decodedActionMock],
+  totalVotes: BigNumber.from(3),
+  votePercentage: 50,
 };
