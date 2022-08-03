@@ -1,4 +1,5 @@
 import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
+import { DecodedAction } from 'Components/ActionsBuilder/types';
 import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
 import {
   ActionNumber,
@@ -7,7 +8,13 @@ import {
   SpacerLine,
 } from './ExpandedActionsList.styled';
 
-const ExpandedActionsList = ({ actions }) => {
+interface ExpandedActionsListProps {
+  actions: DecodedAction[];
+}
+
+const ExpandedActionsList: React.FC<ExpandedActionsListProps> = ({
+  actions,
+}) => {
   return (
     <ActionsTooltipWrapper>
       {actions.map((action, index) => {
