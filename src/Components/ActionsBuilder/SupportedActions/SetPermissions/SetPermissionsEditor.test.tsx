@@ -82,6 +82,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 
@@ -109,6 +110,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
@@ -135,6 +137,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 
@@ -159,6 +162,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={completeDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 
@@ -179,6 +183,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 
@@ -198,6 +203,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 
@@ -229,6 +235,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
       const functionsCallTab = screen.getByTestId(`functions-call-tab`);
@@ -266,6 +273,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={completeDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
       const functionsCallTab = screen.getByTestId(`functions-call-tab`);
@@ -291,6 +299,7 @@ describe(`Set Permissions editor`, () => {
         <Permissions
           decodedCall={emptyDecodedCallMock}
           updateCall={jest.fn()}
+          onSubmit={jest.fn()}
         />
       );
 

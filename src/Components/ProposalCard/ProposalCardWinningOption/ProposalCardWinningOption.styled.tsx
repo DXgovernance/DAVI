@@ -16,7 +16,7 @@ export const OptionVotesAndLabelWrapper = styled(IconDetailWrapper)`
   padding: 0 12px;
 `;
 
-export const ActionDetailsWrapper = styled(Button)<{ isClickable: boolean }>`
+export const ActionDetailsButton = styled(Button)<{ isClickable: boolean }>`
   display: flex;
   justify-content: flex-start;
   flex: none;

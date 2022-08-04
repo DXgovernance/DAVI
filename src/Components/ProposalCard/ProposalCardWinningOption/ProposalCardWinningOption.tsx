@@ -1,9 +1,8 @@
-import { Option } from 'Components/ActionsBuilder/types';
 import { Loading } from 'Components/Primitives/Loading';
 import {
   ActionCount,
   ActionCountWrapper,
-  ActionDetailsWrapper,
+  ActionDetailsButton,
   OptionVotesAndLabelWrapper,
   WinningOptionWrapper,
 } from './ProposalCardWinningOption.styled';
@@ -12,10 +11,7 @@ import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExpandedActionsList } from '../ExpandedActionsList';
-
-interface ProposalCardWinningOptionProps {
-  option: Option;
-}
+import { ProposalCardWinningOptionProps } from './types';
 
 const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   option,
@@ -62,9 +58,10 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
         )}
       </OptionVotesAndLabelWrapper>
 
-      <ActionDetailsWrapper
+      <ActionDetailsButton
         onClick={handleExpandActions}
         isClickable={numberOfActions > 1}
+        aria-label={'action details button'}
       >
         {numberOfActions === 1 ? (
           !!InfoLine ? (
@@ -84,7 +81,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
         )}
 
         {expandedActionsVisible && <ExpandedActionsList actions={allActions} />}
-      </ActionDetailsWrapper>
+      </ActionDetailsButton>
     </WinningOptionWrapper>
   );
 };

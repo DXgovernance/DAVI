@@ -126,6 +126,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             For
           </div>
           <button
+            aria-label="action details button"
             class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
           >
             <span
@@ -317,6 +318,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
             For
           </div>
           <button
+            aria-label="action details button"
             class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
           >
             <span
@@ -508,6 +510,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
             For
           </div>
           <button
+            aria-label="action details button"
             class="sc-dlfnuX sc-cxFLGX bcIZht gSAJsl"
           >
             <div

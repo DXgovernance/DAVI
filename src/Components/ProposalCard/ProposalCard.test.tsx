@@ -7,7 +7,7 @@ import {
   optionsWithSeveralActionsMock,
   proposalMock,
   proposalStatusPropsMock,
-} from '../Fixtures';
+} from 'Components/Fixtures';
 import { BigNumber } from 'ethers';
 
 jest.mock('ipfs', () => jest.fn());

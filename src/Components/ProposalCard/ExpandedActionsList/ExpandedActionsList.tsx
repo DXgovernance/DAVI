@@ -1,27 +1,24 @@
 import { getInfoLineView } from 'Components/ActionsBuilder/SupportedActions';
-import { DecodedAction } from 'Components/ActionsBuilder/types';
 import UndecodableCallInfoLine from 'Components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
+import { Fragment } from 'react';
 import {
   ActionNumber,
   ActionsTooltipWrapper,
   ActionWrapper,
   SpacerLine,
 } from './ExpandedActionsList.styled';
-
-interface ExpandedActionsListProps {
-  actions: DecodedAction[];
-}
+import { ExpandedActionsListProps } from './types';
 
 const ExpandedActionsList: React.FC<ExpandedActionsListProps> = ({
   actions,
 }) => {
   return (
-    <ActionsTooltipWrapper>
+    <ActionsTooltipWrapper aria-label={'expanded actions list tooltip'}>
       {actions.map((action, index) => {
         const InfoLine = getInfoLineView(action?.decodedCall?.callType);
 
         return (
-          <>
+          <Fragment key={action.id}>
             <ActionWrapper>
               <ActionNumber>{index + 1}</ActionNumber>
               {!!InfoLine ? (
@@ -29,13 +26,14 @@ const ExpandedActionsList: React.FC<ExpandedActionsListProps> = ({
                   decodedCall={action?.decodedCall}
                   approveSpendTokens={action?.approval}
                   noAvatar
+                  compact
                 />
               ) : (
                 <UndecodableCallInfoLine />
               )}
             </ActionWrapper>
             {index !== actions.length - 1 && <SpacerLine />}
-          </>
+          </Fragment>
         );
       })}
     </ActionsTooltipWrapper>
