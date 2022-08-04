@@ -1,10 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -23,14 +50,14 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     transfer
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -55,18 +82,18 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
+      class="c1 c2"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>
@@ -75,10 +102,37 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
 `;
 
 exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -97,14 +151,14 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -129,18 +183,18 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
+      class="c1 c2"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>
@@ -149,10 +203,37 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
 `;
 
 exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -171,14 +252,14 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     transfer
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -203,18 +284,18 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
+      class="c1 c2"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>
@@ -223,10 +304,37 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
 `;
 
 exports[`ERC20TransferInfoLine Should match snapshot with default values in compact mode 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -245,14 +353,14 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -277,18 +385,18 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
+      class="c1 c2"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>
@@ -297,10 +405,37 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
 `;
 
 exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -319,14 +454,14 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     transfer
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -351,18 +486,18 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT kIpdaa"
+      class="c1 c2"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>
@@ -371,10 +506,37 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
 `;
 
 exports[`ERC20TransferInfoLine Should match snapshot without data in compact mode 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 14px;
+  width: 14px;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -393,14 +555,14 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     
      
      
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -425,18 +587,18 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-gKseQn sc-iBPTik lGPNT iRVGHC"
+      class="c1 c2"
       data-testid="avatar"
       size="14"
       src="test"
     />
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     test.eth
   </span>

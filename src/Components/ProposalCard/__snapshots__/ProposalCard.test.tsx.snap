@@ -1,21 +1,293 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
+.c11 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #BDC0C7;
+}
+
+.c2:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c10 {
+  margin: 1rem 0;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c12 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.c14::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,transparent 89%,#1B1D1F 100%);
+}
+
+.c14 > div {
+  margin: 4px 2px;
+}
+
+.c16 {
+  border: 1px solid #303338;
+  border-radius: 1rem;
+  padding: 0.25rem 0.8rem;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.c17 {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.c15 {
+  min-width: unset;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c7 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c9 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #1DE9B6;
+  background-color: #1B1D1F;
+  color: #1DE9B6;
+  padding: 0.25rem 0.4rem;
+}
+
+.c8 {
+  padding: 0 0.2rem;
+}
+
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+@media only screen and (max-width:524px) {
+  .c13 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c12 {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width:524px) {
+  .c14 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #303338;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .c14 > div:nth-child(n + 3) {
+    display: none;
+  }
+
+  .c14::before {
+    content: none;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c8 {
+    padding-right: 0.5rem;
+  }
+}
+
 <div>
    
   <a
-    class="sc-dFJtaz fFoHHk"
+    class="c0"
     data-testid="proposal-card"
     href="/testUrl"
   >
     <div
-      class="sc-jrAFXE sc-hlTwrV jLAWlL bVggWJ"
+      class="c1 c2"
     >
       <div
-        class="sc-jrAFXE sc-eLgNKc jLAWlL bqVRuN"
+        class="c1 c3"
       >
         <div
-          class="sc-jrAFXE sc-dtwnrN jLAWlL dJZqwB"
+          class="c1 c4"
         >
           <div
             class="paper"
@@ -71,19 +343,19 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             </svg>
           </div>
           <div
-            class="sc-jrAFXE sc-dacGJm jLAWlL ccPWgI"
+            class="c1 c5"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="sc-gsxoIA dAYRVf"
+          class="c6"
         >
           <div
-            class="sc-bXDkGd cfJWwd"
+            class="c7"
           >
             <div
-              class="sc-jrAFXE sc-ctaXho jLAWlL hdLAHI"
+              class="c1 c8"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
@@ -92,7 +364,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </span>
             </div>
             <div
-              class="sc-jrAFXE sc-eGCaLh jLAWlL iaPJkB"
+              class="c1 c9"
             >
                
               Active
@@ -101,10 +373,10 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-bTvSiT jLAWlL jlvPXX"
+        class="c1 c10"
       >
         <h2
-          class="sc-pGacB sc-hOqruk eGiNre cnUhjQ"
+          class="c11 c12"
           size="2"
         >
           <strong>
@@ -113,25 +385,25 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </h2>
       </div>
       <div
-        class="sc-jrAFXE sc-kIeSZW jLAWlL hLIIVP"
+        class="c1 c13"
       >
         <div
-          class="sc-jrAFXE sc-jUEmfL jLAWlL cXsDRz"
+          class="c1 c14"
         />
         <div
-          class="sc-jrAFXE sc-GTVdH jLAWlL jVUmJZ"
+          class="c1 c15"
         >
           <div
-            class="sc-jrAFXE sc-dtwnrN sc-jQbJRc jLAWlL dJZqwB iLleXo"
+            class="c1 c4 c16"
           >
             <div
-              class="sc-jrAFXE sc-dacGJm jLAWlL ccPWgI"
+              class="c1 c5"
             >
               20
               %
             </div>
             <div
-              class="sc-fbNZge gJdeNw"
+              class="c17"
             >
               <svg
                 fill="none"
@@ -152,7 +424,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </div>
             <div
-              class="sc-jrAFXE sc-dacGJm jLAWlL ccPWgI"
+              class="c1 c5"
             >
               10
               %
@@ -167,25 +439,236 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 `;
 
 exports[`ProposalCard ProposalCard loading 1`] = `
+.c10 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  color: #BDC0C7;
+}
+
+.c2:hover {
+  cursor: default;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c9 {
+  margin: 1rem 0;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: flex-end;
+  -webkit-box-align: flex-end;
+  -ms-flex-align: flex-end;
+  align-items: flex-end;
+}
+
+.c11 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c5 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  margin-right: 24px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.c13::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,transparent 89%,#1B1D1F 100%);
+}
+
+.c13 > div {
+  margin: 4px 2px;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c7 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  padding: 0 0.2rem;
+}
+
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+@media only screen and (max-width:524px) {
+  .c12 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: flex-start;
+    -webkit-box-align: flex-start;
+    -ms-flex-align: flex-start;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c11 {
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (max-width:524px) {
+  .c13 {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #303338;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .c13 > div:nth-child(n + 3) {
+    display: none;
+  }
+
+  .c13::before {
+    content: none;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c8 {
+    padding-right: 0.5rem;
+  }
+}
+
 <div>
    
   <a
-    class="sc-dFJtaz fFoHHk"
+    class="c0"
     data-testid="proposal-card"
     href="/"
   >
     <div
-      class="sc-jrAFXE sc-hlTwrV jLAWlL fvxWru"
+      class="c1 c2"
       disabled=""
     >
       <div
-        class="sc-jrAFXE sc-eLgNKc jLAWlL bqVRuN"
+        class="c1 c3"
       >
         <div
-          class="sc-jrAFXE sc-dtwnrN jLAWlL dJZqwB"
+          class="c1 c4"
         >
           <div
-            class="sc-bdfBQB"
+            class=""
           >
             <span
               aria-busy="true"
@@ -201,10 +684,10 @@ exports[`ProposalCard ProposalCard loading 1`] = `
             </span>
           </div>
           <div
-            class="sc-jrAFXE sc-dacGJm jLAWlL ccPWgI"
+            class="c1 c5"
           >
             <div
-              class="sc-bdfBQB"
+              class=""
               style="margin: 0px;"
             >
               <span
@@ -223,16 +706,16 @@ exports[`ProposalCard ProposalCard loading 1`] = `
           </div>
         </div>
         <div
-          class="sc-gsxoIA dAYRVf"
+          class="c6"
         >
           <div
-            class="sc-bXDkGd cfJWwd"
+            class="c7"
           >
             <div
-              class="sc-jrAFXE sc-ctaXho jLAWlL hdLAHI"
+              class="c1 c8"
             >
               <div
-                class="sc-bdfBQB"
+                class=""
               >
                 <span
                   aria-busy="true"
@@ -249,7 +732,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
               </div>
             </div>
             <div
-              class="sc-bdfBQB"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -268,15 +751,15 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-bTvSiT jLAWlL jlvPXX"
+        class="c1 c9"
       >
         <h2
-          class="sc-pGacB sc-hOqruk eGiNre cnUhjQ"
+          class="c10 c11"
           size="2"
         >
           <strong>
             <div
-              class="sc-bdfBQB"
+              class=""
               style="margin: 0px;"
             >
               <span
@@ -296,13 +779,13 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </h2>
       </div>
       <div
-        class="sc-jrAFXE sc-kIeSZW jLAWlL hLIIVP"
+        class="c1 c12"
       >
         <div
-          class="sc-jrAFXE sc-jUEmfL jLAWlL cXsDRz"
+          class="c1 c13"
         />
         <div
-          class="sc-bdfBQB"
+          class=""
           style="margin: 0px;"
         >
           <span

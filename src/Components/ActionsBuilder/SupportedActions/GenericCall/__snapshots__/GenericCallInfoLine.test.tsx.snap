@@ -1,10 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GenericCallInfoLine Should match snapshot 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -26,7 +42,7 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <span>
       Test template 
@@ -54,10 +70,26 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
 `;
 
 exports[`GenericCallInfoLine Should match snapshot in compact mode 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -83,10 +115,26 @@ exports[`GenericCallInfoLine Should match snapshot in compact mode 1`] = `
 `;
 
 exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       fill="none"
@@ -108,7 +156,7 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <span>
       Test template 
