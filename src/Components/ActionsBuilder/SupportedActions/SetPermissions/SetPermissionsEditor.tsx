@@ -181,10 +181,9 @@ const Permissions: React.FC<ActionEditorProps> = ({
     setValue('functionSignature', parsedData.functionSignature);
     setTempToAddress(parsedData.to[0]);
     setTempAmount(BigNumber.from(parsedData?.valueAllowed[0] || 0));
-
-    // reset states
     setMaxValueToggled(false);
     setAnyAddressToggled(parsedData?.to[0] === ANY_ADDRESS);
+
     // change tab id
     setActiveTab(id);
   };
@@ -213,7 +212,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
               const { invalid, error } = fieldState;
               return (
                 <Control>
-                  <ControlLabel>Asset</ControlLabel>
+                  <ControlLabel>{t('asset')}</ControlLabel>
                   <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
                     <Input
                       {...field}
