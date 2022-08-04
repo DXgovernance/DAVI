@@ -59,7 +59,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
 
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState(
-    !!parsedData?.functionName && parsedData?.asset[0] === ZERO_ADDRESS
+    parsedData?.asset[0] === ZERO_ADDRESS
       ? TABS.FUNCTION_CALL
       : TABS.ASSET_TRANSFER
   );
