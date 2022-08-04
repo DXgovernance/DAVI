@@ -158,6 +158,12 @@ exports[`Filter Should match snapshot 1`] = `
             />
           </svg>
         </button>
+        <button
+          class="sc-bdfBQB fuUPpr"
+          data-testid="create-proposal-button"
+        >
+          Create Discussion
+        </button>
       </div>
     </div>
     

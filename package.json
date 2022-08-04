@@ -41,6 +41,7 @@
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-truffle5": "^2.0.5",
     "@nomiclabs/hardhat-web3": "^2.0.0",
+    "@orbisclub/orbis-sdk": "^0.2.66",
     "@tiptap/extension-focus": "^2.0.0-beta.39",
     "@tiptap/extension-highlight": "^2.0.0-beta.32",
     "@tiptap/extension-placeholder": "^2.0.0-beta.48",

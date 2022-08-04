@@ -78,6 +78,13 @@ const Filter = () => {
               {t('createProposal')}
             </Button>
           )}
+          <Button
+            variant="secondary"
+            onClick={() => history.push(navigateUrl(location, 'discussion'))}
+            data-testid="create-proposal-button"
+          >
+            {'Create Discussion'}
+          </Button>
         </ButtonContainer>
       </FilterRow>
       {isMobile && viewFilter && <FilterMenu />}
