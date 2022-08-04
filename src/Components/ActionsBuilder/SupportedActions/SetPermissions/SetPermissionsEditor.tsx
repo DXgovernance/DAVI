@@ -4,16 +4,13 @@ import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
 import { Controller, useForm } from 'react-hook-form';
 import { FiChevronDown } from 'react-icons/fi';
-import styled, { css } from 'styled-components';
 
-import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
+import { ParsedDataInterface } from './types';
+import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS, MAX_UINT, ANY_ADDRESS } from 'utils';
+import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
-import { Button } from 'old-components/Guilds/common/Button';
-import { Box } from 'Components/Primitives/Layout';
-import { MAX_UINT, ANY_ADDRESS } from 'utils';
-import { ParsedDataInterface } from './types';
-import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
+import validateSetPermissions from './validateSetPermissions';
 import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
 import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import {
@@ -21,12 +18,17 @@ import {
   ControlLabel,
   ControlRow,
 } from 'Components/Primitives/Forms/Control';
+import {
+  Error,
+  FunctionSignatureWrapper,
+  DetailWrapper,
+  TabButton,
+} from './SetPermissionsEditor.styled';
+import { Button } from 'old-components/Guilds/common/Button';
+import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
 import Input from 'old-components/Guilds/common/Form/Input';
-import { resolveUri } from 'utils/url';
 import Avatar from 'old-components/Guilds/Avatar';
-import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
 import { TokenPicker } from 'Components/TokenPicker';
-import validateSetPermissions from './validateSetPermissions';
 
 const Web3 = require('web3');
 const web3 = new Web3();
@@ -34,40 +36,6 @@ const TABS = {
   ASSET_TRANSFER: 0,
   FUNCTION_CALL: 1,
 };
-
-interface TabButtonProps {
-  active: boolean;
-}
-
-const Error = styled(ErrorLabel)`
-  margin-top: 0.5rem;
-`;
-
-const FunctionSignatureWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
-  margin-left: 1.5rem;
-  margin-top: 0.5rem;
-`;
-
-const DetailWrapper = styled(Box)`
-  margin: 1.25rem 0rem;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.card.grey};
-`;
-
-const TabButton = styled(Button)<TabButtonProps>`
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.text};
-  margin-bottom: -1px;
-  border-radius: 10px 10px 0px 0px;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
-
-  ${({ active }) =>
-    active &&
-    css`
-      border: 2px solid ${({ theme }) => theme.colors.card.grey};
-      color: ${({ theme }) => theme.colors.text};
-    `}
-`;
 
 const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -99,12 +67,16 @@ const Permissions: React.FC<ActionEditorProps> = ({
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
   const [maxValueToggled, setMaxValueToggled] = useState(false);
   const { chain } = useNetwork();
-
   const [anyAddressToggled, setAnyAddressToggled] = useState(
     parsedData?.to[0] === ANY_ADDRESS
   );
 
-  const { control, handleSubmit, getValues, setValue } = useForm({
+  const [tempToAddress, setTempToAddress] = useState(parsedData?.to[0]);
+  const [tempAmount, setTempAmount] = useState<BigNumber>(
+    BigNumber.from(parsedData?.valueAllowed[0] || 0)
+  );
+
+  const { control, handleSubmit, getValues, setValue, ...rest } = useForm({
     resolver: validateSetPermissions,
     context: { t, anyAddressToggled, activeTab },
     defaultValues: {
@@ -124,8 +96,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
     if (!tokenAddress || !tokens) return null;
 
     return tokens.find(({ address }) => address === tokenAddress);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tokens, parsedData]);
+  }, [tokens, tokenAddress]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 
   // function signature
   const updateFunctionSignature = (value: string) => {
@@ -151,14 +123,21 @@ const Permissions: React.FC<ActionEditorProps> = ({
     // toggle on
     if (!maxValueToggled) setValue('amount', bigNumberMaxUINT);
     // toggle off
-    if (maxValueToggled) setValue('amount', BigNumber.from(0));
+    if (maxValueToggled) setValue('amount', BigNumber.from(tempAmount));
     setMaxValueToggled(!maxValueToggled);
   };
 
   const handleToggleAnyAddressChange = () => {
-    if (!anyAddressToggled) setValue('toAddress', ANY_ADDRESS);
-    else setValue('toAddress', '');
+    // toggle on
+    if (!anyAddressToggled) {
+      setValue('toAddress', ANY_ADDRESS);
+    }
+    // toggle off
+    else {
+      setValue('toAddress', tempToAddress);
+    }
     setAnyAddressToggled(!anyAddressToggled);
+    rest.trigger('toAddress');
   };
 
   const submitAction = values => {
@@ -166,15 +145,15 @@ const Permissions: React.FC<ActionEditorProps> = ({
       ...decodedCall,
       ...(activeTab === TABS.FUNCTION_CALL && {
         functionName: values.functionName,
-      }), // tokenAddress: "0xfFb1cd0F95368DDd06D556161c5D3d9f0f4Fe6d2"
+      }), // Spread only if is functionCall tab
       args: {
         ...decodedCall.args,
         ...(activeTab === TABS.ASSET_TRANSFER && {
           asset: [values.tokenAddress],
-        }), // tokenAddress: "0xfFb1cd0F95368DDd06D556161c5D3d9f0f4Fe6d2"
+        }), // Spread only if is assetTransfer tab
         ...(activeTab === TABS.FUNCTION_CALL && {
           functionSignature: [values.functionSignature],
-        }), // tokenAddress: "0xfFb1cd0F95368DDd06D556161c5D3d9f0f4Fe6d2"
+        }), // Spread only if is functionCall tab
         valueAllowed: [values.amount],
         to: [values.toAddress],
       },
@@ -200,6 +179,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
     setValue('functionName', parsedData.functionName);
     setValue('tokenAddress', parsedData.asset[0]);
     setValue('functionSignature', parsedData.functionSignature);
+    setTempToAddress(parsedData.to[0]);
+    setTempAmount(BigNumber.from(parsedData?.valueAllowed[0] || 0));
 
     // reset states
     setMaxValueToggled(false);
@@ -238,6 +219,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       {...field}
                       value={token?.symbol}
                       placeholder={t('token')}
+                      aria-label="asset picker"
                       isInvalid={invalid && !!error}
                       icon={
                         <div>
@@ -282,6 +264,10 @@ const Permissions: React.FC<ActionEditorProps> = ({
                   <ControlRow>
                     <AddressInput
                       {...field}
+                      onChange={value => {
+                        field.onChange(value);
+                        value !== ANY_ADDRESS && setTempToAddress(value); // Avoid changing input value when toggle has been clicked
+                      }}
                       isInvalid={invalid && !!error}
                       name="to-address"
                       aria-label="to address input"
@@ -354,6 +340,12 @@ const Permissions: React.FC<ActionEditorProps> = ({
                   <ControlRow>
                     <StyledTokenAmount
                       {...field}
+                      onChange={value => {
+                        const newValue = BigNumber.from(value || '0');
+                        field.onChange(newValue);
+                        !newValue.eq(bigNumberMaxUINT) &&
+                          setTempAmount(newValue); // Avoid setting max value when toggleMaxamount is on.
+                      }}
                       aria-label="amount input"
                       decimals={token?.decimals}
                       value={BigNumber.from(field.value || 0)}

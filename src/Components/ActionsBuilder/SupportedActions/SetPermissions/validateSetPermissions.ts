@@ -28,6 +28,7 @@ const validateAssetTransferPermission = (
     amount: null,
     functionName: null,
   };
+  const allowedAmount = BigNumber.from(amount);
   if (activeTab === 0) {
     if (!tokenAddress || tokenAddress === ZERO_ADDRESS) {
       errors.tokenAddress = 'Token is required';
@@ -51,14 +52,19 @@ const validateAssetTransferPermission = (
     }
   }
 
+  if (!utils.isAddress(toAddress)) {
+    errors.toAddress = 'Invalid Address';
+  }
   if (!toAddress) {
     errors.toAddress = 'Address is required';
   }
-  console.log(amount);
-  if (!BigNumber.isBigNumber(amount) && !amount) {
-    errors.amount = t('amountCannotBeZero');
-  } else if (BigNumber.isBigNumber(amount) && amount?.lte(0)) {
-    errors.amount = t('amountCannotBeZero');
+
+  if (!amount || !BigNumber.isBigNumber(amount)) {
+    errors.amount = 'Amount is required';
+  } else {
+    if (allowedAmount && allowedAmount?.lte(0)) {
+      errors.amount = t('amountCannotBeZero');
+    }
   }
 
   return {
