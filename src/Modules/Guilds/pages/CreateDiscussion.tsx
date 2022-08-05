@@ -19,19 +19,19 @@ import {
   SidebarContent,
   Label,
 } from '../styles';
-// import { Orbis } from '@orbisclub/orbis-sdk';
+import { Orbis } from '@orbisclub/orbis-sdk';
 
 const CreateDiscussionPage: React.FC = () => {
-  //   let orbis = new Orbis();
-  //   async function connect() {
-  //     let res = await orbis.connect();
-  //     if (res.status === 200) {
-  //       console.log('Connected to Ceramic with: ', res.did);
-  //       return res.did;
-  //     } else {
-  //       console.error('Error connecting to Ceramic: ', res.error);
-  //     }
-  //   }
+  let orbis = new Orbis();
+  async function connect() {
+    let res = await orbis.connect();
+    if (res.status === 200) {
+      console.log('Connected to Ceramic with: ', res.did);
+      return res.did;
+    } else {
+      console.error('Error connecting to Ceramic: ', res.error);
+    }
+  }
 
   useEffect(() => {}, []);
   const { guildId, chainName: chain } = useTypedParams();
@@ -44,7 +44,7 @@ const CreateDiscussionPage: React.FC = () => {
   const [editMode, setEditMode] = useState(true);
   const [title, setTitle] = useState('');
 
-  //   console.log(connect);
+  console.log(connect);
   const {
     Editor,
     EditorConfig,
