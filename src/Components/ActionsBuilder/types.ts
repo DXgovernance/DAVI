@@ -17,6 +17,7 @@ export interface Call {
   value: BigNumber;
   approval?: ApproveSendTokens;
   functionName?: string;
+  approvalCall?: Call;
 }
 
 export interface DecodedCall {
