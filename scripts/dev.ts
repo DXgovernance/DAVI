@@ -1,10 +1,9 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import path from 'path';
 import {
-  ANY_FUNC_SIGNATURE,
   ZERO_ADDRESS,
-  ANY_ADDRESS,
   MAX_UINT,
+  NULL_SIGNATURE,
 } from '../src/utils/constants';
 
 require('dotenv').config();
@@ -16,7 +15,6 @@ async function main() {
   const web3 = hre.web3;
   const PermissionRegistry = await hre.artifacts.require('PermissionRegistry');
   const GuildRegistry = await hre.artifacts.require('GuildRegistry');
-  const ERC20Guild = await hre.artifacts.require('ERC20Guild');
   const ERC20SnapshotRep = await hre.artifacts.require('ERC20SnapshotRep');
 
   const accounts = await web3.eth.getAccounts();
@@ -387,30 +385,38 @@ async function main() {
       type: 'proposal',
       from: accounts[2],
       data: {
-        to: ['PermissionRegistry', 'PermissionRegistry'],
+        to: ['PermissionRegistry', 'PermissionRegistry', 'PermissionRegistry'],
         callData: [
           new web3.eth.Contract(PermissionRegistry.abi).methods
-            .setPermission(
-              ZERO_ADDRESS,
+            .setETHPermission(
               networkContracts.addresses['Avatar'],
               networkContracts.addresses['QuickWalletScheme'],
-              ANY_FUNC_SIGNATURE,
+
+              NULL_SIGNATURE,
               web3.utils.toWei('10'),
               true
             )
             .encodeABI(),
-          new web3.eth.Contract(PermissionRegistry.abi).methods
-            .setPermission(
-              ZERO_ADDRESS,
+            new web3.eth.Contract(PermissionRegistry.abi).methods
+            .setETHPermission(
               networkContracts.addresses['Avatar'],
               '0xEb579C2E9bd3AC6Fd17de7bB55ab344f83735356',
-              ANY_FUNC_SIGNATURE,
+              NULL_SIGNATURE,
               web3.utils.toWei('10'),
               true
             )
             .encodeABI(),
+            new web3.eth.Contract(PermissionRegistry.abi).methods
+            .setETHPermission(
+              networkContracts.addresses['Avatar'],
+              networkContracts.addresses['GuildRegistry'],
+              web3.eth.abi.encodeFunctionSignature('addGuild(address)'),
+              web3.utils.toWei('0'),
+              true
+            )
+            .encodeABI()
         ],
-        value: ['0', '0'],
+        value: ['0', '0', '0'],
         title: '#0 Set Permissions Proposal',
         description: 'Allow sending up to 10 ETH to QuickWalletScheme',
         tags: ['dxvote'],
@@ -590,17 +596,17 @@ async function main() {
       from: accounts[0],
       data: {
         guildName: 'REPGuild',
-        to: ['REPGuild'],
+        to: ['PermissionRegistry'],
         callData: [
-          new web3.eth.Contract(ERC20Guild.abi).methods
-            .setPermission(
-              [ZERO_ADDRESS],
-              [ANY_ADDRESS],
-              [ANY_FUNC_SIGNATURE],
-              [MAX_UINT],
-              [true]
-            )
-            .encodeABI(),
+          new web3.eth.Contract(PermissionRegistry.abi).methods
+          .setETHPermission(
+            networkContracts.addresses.REPGuild,
+            ZERO_ADDRESS,
+            NULL_SIGNATURE,
+            web3.utils.toWei('5').toString(),
+            true
+          )
+          .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
@@ -773,17 +779,17 @@ async function main() {
       from: accounts[0],
       data: {
         guildName: 'DXDGuild',
-        to: ['DXDGuild'],
+        to: ['PermissionRegistry'],
         callData: [
-          new web3.eth.Contract(ERC20Guild.abi).methods
-            .setPermission(
-              [ZERO_ADDRESS],
-              [ANY_ADDRESS],
-              [ANY_FUNC_SIGNATURE],
-              [web3.utils.toWei('5').toString()],
-              [true]
-            )
-            .encodeABI(),
+          new web3.eth.Contract(PermissionRegistry.abi).methods
+          .setETHPermission(
+            networkContracts.addresses.DXDGuild,
+            ZERO_ADDRESS,
+            NULL_SIGNATURE,
+            web3.utils.toWei('5').toString(),
+            true
+          )
+          .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
@@ -816,17 +822,17 @@ async function main() {
       from: accounts[0],
       data: {
         guildName: 'DXDGuild',
-        to: ['DXDGuild'],
+        to: ['PermissionRegistry'],
         callData: [
-          new web3.eth.Contract(ERC20Guild.abi).methods
-            .setPermission(
-              [ZERO_ADDRESS],
-              [ANY_ADDRESS],
-              [ANY_FUNC_SIGNATURE],
-              [web3.utils.toWei('5').toString()],
-              [true]
-            )
-            .encodeABI(),
+          new web3.eth.Contract(PermissionRegistry.abi).methods
+          .setETHPermission(
+            networkContracts.addresses.DXDGuild,
+            ZERO_ADDRESS,
+            NULL_SIGNATURE,
+            web3.utils.toWei('5').toString(),
+            true
+          )
+          .encodeABI(),
         ],
         value: ['0x6A94D74F430000'],
         totalActions: '1',
@@ -858,17 +864,17 @@ async function main() {
       from: accounts[2],
       data: {
         guildName: 'SWPRGuild',
-        to: ['SWPRGuild'],
+        to: ['PermissionRegistry'],
         callData: [
-          new web3.eth.Contract(ERC20Guild.abi).methods
-            .setPermission(
-              [ZERO_ADDRESS],
-              [ANY_ADDRESS],
-              [ANY_FUNC_SIGNATURE],
-              [web3.utils.toWei('5').toString()],
-              [true]
-            )
-            .encodeABI(),
+          new web3.eth.Contract(PermissionRegistry.abi).methods
+          .setETHPermission(
+            networkContracts.addresses.SWPRGuild,
+            ZERO_ADDRESS,
+            NULL_SIGNATURE,
+            web3.utils.toWei('5').toString(),
+            true
+          )
+          .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
