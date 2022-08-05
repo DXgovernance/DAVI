@@ -1,10 +1,6 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import path from 'path';
-import {
-  ZERO_ADDRESS,
-  MAX_UINT,
-  NULL_SIGNATURE,
-} from '../src/utils/constants';
+import { ZERO_ADDRESS, MAX_UINT, NULL_SIGNATURE } from '../src/utils/constants';
 
 require('dotenv').config();
 const hre = require('hardhat');
@@ -397,7 +393,7 @@ async function main() {
               true
             )
             .encodeABI(),
-            new web3.eth.Contract(PermissionRegistry.abi).methods
+          new web3.eth.Contract(PermissionRegistry.abi).methods
             .setETHPermission(
               networkContracts.addresses['Avatar'],
               '0xEb579C2E9bd3AC6Fd17de7bB55ab344f83735356',
@@ -406,7 +402,7 @@ async function main() {
               true
             )
             .encodeABI(),
-            new web3.eth.Contract(PermissionRegistry.abi).methods
+          new web3.eth.Contract(PermissionRegistry.abi).methods
             .setETHPermission(
               networkContracts.addresses['Avatar'],
               networkContracts.addresses['GuildRegistry'],
@@ -414,7 +410,7 @@ async function main() {
               web3.utils.toWei('0'),
               true
             )
-            .encodeABI()
+            .encodeABI(),
         ],
         value: ['0', '0', '0'],
         title: '#0 Set Permissions Proposal',
@@ -599,14 +595,14 @@ async function main() {
         to: ['PermissionRegistry'],
         callData: [
           new web3.eth.Contract(PermissionRegistry.abi).methods
-          .setETHPermission(
-            networkContracts.addresses.REPGuild,
-            ZERO_ADDRESS,
-            NULL_SIGNATURE,
-            web3.utils.toWei('5').toString(),
-            true
-          )
-          .encodeABI(),
+            .setETHPermission(
+              networkContracts.addresses.REPGuild,
+              ZERO_ADDRESS,
+              NULL_SIGNATURE,
+              web3.utils.toWei('5').toString(),
+              true
+            )
+            .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
@@ -782,14 +778,14 @@ async function main() {
         to: ['PermissionRegistry'],
         callData: [
           new web3.eth.Contract(PermissionRegistry.abi).methods
-          .setETHPermission(
-            networkContracts.addresses.DXDGuild,
-            ZERO_ADDRESS,
-            NULL_SIGNATURE,
-            web3.utils.toWei('5').toString(),
-            true
-          )
-          .encodeABI(),
+            .setETHPermission(
+              networkContracts.addresses.DXDGuild,
+              ZERO_ADDRESS,
+              NULL_SIGNATURE,
+              web3.utils.toWei('5').toString(),
+              true
+            )
+            .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
@@ -825,14 +821,14 @@ async function main() {
         to: ['PermissionRegistry'],
         callData: [
           new web3.eth.Contract(PermissionRegistry.abi).methods
-          .setETHPermission(
-            networkContracts.addresses.DXDGuild,
-            ZERO_ADDRESS,
-            NULL_SIGNATURE,
-            web3.utils.toWei('5').toString(),
-            true
-          )
-          .encodeABI(),
+            .setETHPermission(
+              networkContracts.addresses.DXDGuild,
+              ZERO_ADDRESS,
+              NULL_SIGNATURE,
+              web3.utils.toWei('5').toString(),
+              true
+            )
+            .encodeABI(),
         ],
         value: ['0x6A94D74F430000'],
         totalActions: '1',
@@ -867,14 +863,14 @@ async function main() {
         to: ['PermissionRegistry'],
         callData: [
           new web3.eth.Contract(PermissionRegistry.abi).methods
-          .setETHPermission(
-            networkContracts.addresses.SWPRGuild,
-            ZERO_ADDRESS,
-            NULL_SIGNATURE,
-            web3.utils.toWei('5').toString(),
-            true
-          )
-          .encodeABI(),
+            .setETHPermission(
+              networkContracts.addresses.SWPRGuild,
+              ZERO_ADDRESS,
+              NULL_SIGNATURE,
+              web3.utils.toWei('5').toString(),
+              true
+            )
+            .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
