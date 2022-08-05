@@ -3,9 +3,10 @@ import { SimulationState } from '../types';
 import { SimulationModal } from './SimulationModal';
 
 describe('Simulation modal', () => {
-  // Comented because there's a conflict between the animation code in
+  // There's a conflict between the animation code in
   // styled components and jest-styled-components library
   // Since this test isn't critical, I commented it.
+
   // it(`Should match 'pending' status snapshot`, () => {
   //   const { container } = render(
   //     <SimulationModal
