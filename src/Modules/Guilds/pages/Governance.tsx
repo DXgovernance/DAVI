@@ -6,6 +6,10 @@ import styled from 'styled-components';
 import ProposalCardWrapper from '../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
+import { Heading } from 'old-components/Guilds/common/Typography';
+import Input from 'old-components/Guilds/common/Form/Input';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 
 const ProposalsList = styled(Box)`
   margin-top: 1rem;
@@ -18,9 +22,15 @@ const ProposalListWrapper = styled.div`
   }
 `;
 
+const StyledHeading = styled(Heading)`
+  margin-top: 32px;
+  margin-bottom: 20px;
+`;
+
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
+  const { t } = useTranslation();
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -28,10 +38,17 @@ const Governance = ({ guildId }) => {
   filters applied in that view will impact here
   */
 
-  const { onResetState, onResetActionType, onResetCurrency, onToggleState } =
-    useFilter();
+  const {
+    onResetState,
+    onResetActionType,
+    onResetCurrency,
+    onToggleState,
+    searchQuery,
+    setSearchQuery,
+  } = useFilter();
   // Reset filters when page loads
   useEffect(() => {
+    setSearchQuery('');
     onResetActionType();
     onResetCurrency();
     onResetState();
@@ -58,23 +75,35 @@ const Governance = ({ guildId }) => {
   }
 
   return (
-    <ProposalsList data-testid="proposals-list">
-      {proposalIds ? (
-        <ProposalListWrapper>
-          {revertedProposals.map(proposal => (
-            <ProposalCardWrapper proposalId={proposal} />
-          ))}
-        </ProposalListWrapper>
-      ) : (
-        <>
-          <ProposalCardWrapper />
-          <ProposalCardWrapper />
-          <ProposalCardWrapper />
-          <ProposalCardWrapper />
-          <ProposalCardWrapper />
-        </>
-      )}
-    </ProposalsList>
+    <>
+      <Input
+        value={searchQuery}
+        onChange={e => {
+          setSearchQuery(e.target.value);
+        }}
+        icon={<AiOutlineSearch size={24} />}
+        placeholder={t('searchTitleEnsAddress')}
+      />
+      <ProposalsList data-testid="proposals-list">
+        <StyledHeading size={2}>{t('proposals')}</StyledHeading>
+
+        {proposalIds ? (
+          <ProposalListWrapper>
+            {revertedProposals.map(proposal => (
+              <ProposalCardWrapper proposalId={proposal} />
+            ))}
+          </ProposalListWrapper>
+        ) : (
+          <>
+            <ProposalCardWrapper />
+            <ProposalCardWrapper />
+            <ProposalCardWrapper />
+            <ProposalCardWrapper />
+            <ProposalCardWrapper />
+          </>
+        )}
+      </ProposalsList>
+    </>
   );
 };
 

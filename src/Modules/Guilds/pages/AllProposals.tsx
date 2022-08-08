@@ -31,9 +31,11 @@ const AllProposals = ({ guildId }) => {
   "Currency" filters to be consistant.
   */
 
-  const { onResetState, onResetActionType, onResetCurrency } = useFilter();
+  const { onResetState, onResetActionType, onResetCurrency, setSearchQuery } =
+    useFilter();
   // Reset filters when page loads
   useEffect(() => {
+    setSearchQuery('');
     onResetActionType();
     onResetCurrency();
     onResetState();
