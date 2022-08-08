@@ -10,6 +10,7 @@ export const ANY_FUNC_SIGNATURE = '0xaaaaaaaa';
 export const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
 export const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
 export const DEFAULT_TOKEN_DECIMALS = 18;
+export const NULL_SIGNATURE = '0x00000000';
 
 export const MAX_BLOCKS_PER_EVENTS_FETCH: number = 1000000;
 

@@ -68,8 +68,10 @@ const GuildsPage: React.FC = () => {
     return filteredProposalIds.slice(0, numberOfProposalsToShow);
   }, [filteredProposalIds, numberOfProposalsToShow]);
 
-  const loadMoreProposals = () => {
-    setNumberOfProposalsToShow(numberOfProposalsToShow + PROPOSALS_TO_LOAD);
+  const loadMoreProposals = (atBottom: boolean) => {
+    if (atBottom && numberOfProposalsToShow < filteredProposalIds.length) {
+      setNumberOfProposalsToShow(numberOfProposalsToShow + PROPOSALS_TO_LOAD);
+    }
   };
 
   if (!isLoading && !proposalIds && error) {
@@ -100,7 +102,7 @@ const GuildsPage: React.FC = () => {
                 itemContent={index => (
                   <ProposalCardWrapper proposalId={shownProposals[index]} />
                 )}
-                endReached={loadMoreProposals}
+                atBottomStateChange={loadMoreProposals}
               />
             </ProposalListWrapper>
           ) : (
