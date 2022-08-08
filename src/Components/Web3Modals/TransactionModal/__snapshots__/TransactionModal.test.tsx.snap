@@ -21,7 +21,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
               class="sc-fubCzh sc-dQoVA lkMZWw hKuUWY"
             >
               <div
-                class="sc-dlfnuX sc-euMpEg ghjVNo inFglf"
+                class="sc-dlfnuX sc-fHuLxr ghjVNo cscZgl"
               >
                 <div
                   class="sc-gsTEea fSStiW"
@@ -80,7 +80,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
                 transactionSubmitted
               </div>
               <div
-                class="sc-gInthZ jzepTi"
+                class="sc-euMpEg gxJqf"
               >
                 <a
                   class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"

@@ -43,7 +43,6 @@ const GuildsPage: React.FC<GuildsPageProps> = ({
       </SidebarContent>
       <PageContent>
         {pageContent === 'governance' && <Governance guildId={guildId} />}
-
         {pageContent === 'allProposals' && <AllProposals guildId={guildId} />}
       </PageContent>
     </PageContainer>

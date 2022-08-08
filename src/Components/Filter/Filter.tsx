@@ -1,9 +1,7 @@
 import { useMemo, useState } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useHistory, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import { Button } from 'old-components/Guilds/common/Button';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { FilterMenu, FilterButton } from './components';
@@ -19,17 +17,14 @@ import {
   StyledInputWrapper,
   FilterBadge,
 } from './Filter.styled';
-import { navigateUrl } from 'utils';
 import { useAccount } from 'wagmi';
+import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 
 const Filter = () => {
   const { t } = useTranslation();
-  const { guildId } = useTypedParams();
+  const { chainName, guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
   const { totalFilters, searchQuery, setSearchQuery } = useFilter();
-
-  const history = useHistory();
-  const location = useLocation();
 
   const { address } = useAccount();
   const { data: votingPower } = useVotingPowerOf({
@@ -68,15 +63,11 @@ const Filter = () => {
             <AiOutlineSearch size={20} />
           </StyledIconButton>
           {isProposalCreationAllowed && (
-            <Button
-              variant="secondary"
-              onClick={() =>
-                history.push(navigateUrl(location, 'proposalType'))
-              }
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </Button>
+            <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
+              <Button variant="secondary" data-testid="create-proposal-button">
+                {t('createProposal')}
+              </Button>
+            </UnstyledLink>
           )}
         </ButtonContainer>
       </FilterRow>

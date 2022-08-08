@@ -1,9 +1,8 @@
 import dxIcon from 'assets/images/dxdao-icon.svg';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { Loading } from 'Components/Primitives/Loading';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
-import { navigateUrl } from 'utils';
 import {
   DaoBrand,
   DaoIcon,
@@ -28,10 +27,7 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
   actions,
 }) => {
   const { t } = useTranslation();
-  let { chainName, guildId } = useParams<{
-    chainName: string;
-    guildId: string;
-  }>();
+  let { chainName, guildId } = useTypedParams();
 
   return (
     <SidebarWrapper data-testid="sidebar">
@@ -60,7 +56,7 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
         <UnstyledLink to={`/${chainName}/${guildId}`}>
           <SidebarMenuItem>{t('governance')}</SidebarMenuItem>
         </UnstyledLink>
-        <UnstyledLink to={location => navigateUrl(location, 'allproposals')}>
+        <UnstyledLink to={`/${chainName}/${guildId}/allproposals`}>
           <SidebarMenuItem href="#">{t('proposals_all')}</SidebarMenuItem>
         </UnstyledLink>
         <SidebarMenuItem href="#">{t('settings')}</SidebarMenuItem>

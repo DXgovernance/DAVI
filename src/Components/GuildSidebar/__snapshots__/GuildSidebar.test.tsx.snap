@@ -40,7 +40,7 @@ exports[`GuildSidebar Should render with data 1`] = `
     >
       <a
         class="sc-bdfBQB hcWJCy"
-        href="/undefined/undefined"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <a
           class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
@@ -50,7 +50,7 @@ exports[`GuildSidebar Should render with data 1`] = `
       </a>
       <a
         class="sc-bdfBQB hcWJCy"
-        href="/allproposals"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allproposals"
       >
         <a
           class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
@@ -140,7 +140,7 @@ exports[`GuildSidebar Should render without data 1`] = `
     >
       <a
         class="sc-bdfBQB hcWJCy"
-        href="/undefined/undefined"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <a
           class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
@@ -150,7 +150,7 @@ exports[`GuildSidebar Should render without data 1`] = `
       </a>
       <a
         class="sc-bdfBQB hcWJCy"
-        href="/allproposals"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allproposals"
       >
         <a
           class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
