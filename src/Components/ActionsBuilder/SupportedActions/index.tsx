@@ -1,6 +1,5 @@
 import { BigNumber, utils } from 'ethers';
 import { ANY_ADDRESS, ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
-import { DeepPartial } from 'utils/types';
 import {
   DecodedAction,
   DecodedCall,
@@ -77,7 +76,7 @@ export const supportedActions: Record<
     infoLineView: SetPermissionsInfoLine,
     summaryView: SetPermissionsSummary,
     editor: SetPermissionsEditor,
-    displaySubmit: true,
+    displaySubmit: false,
   },
   [SupportedAction.ENS_UPDATE_CONTENT]: {
     title: 'Update ENS content',
@@ -92,13 +91,13 @@ const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
 
-export const defaultValues: Record<
-  SupportedAction,
-  DeepPartial<DecodedAction>
-> = {
+export const defaultValues: Record<SupportedAction, DecodedAction> = {
   [SupportedAction.ERC20_TRANSFER]: {
+    id: '',
     contract: ERC20Contract,
     decodedCall: {
+      from: '',
+      callType: SupportedAction.ERC20_TRANSFER,
       function: ERC20Contract.getFunction('transfer'),
       to: '',
       value: BigNumber.from(0),
@@ -109,8 +108,11 @@ export const defaultValues: Record<
     },
   },
   [SupportedAction.REP_MINT]: {
+    id: '',
     contract: ERC20SnapshotRepContract,
     decodedCall: {
+      from: '',
+      callType: SupportedAction.REP_MINT,
       function: ERC20SnapshotRepContract.getFunction('mint'),
       to: '',
       value: BigNumber.from(0),
@@ -120,10 +122,24 @@ export const defaultValues: Record<
       },
     },
   },
-  [SupportedAction.GENERIC_CALL]: {},
+  [SupportedAction.GENERIC_CALL]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.GENERIC_CALL,
+      function: null,
+      to: '',
+      args: {},
+      value: BigNumber.from(0),
+    },
+  },
   [SupportedAction.SET_PERMISSIONS]: {
+    id: '',
     contract: ERC20GuildContract,
     decodedCall: {
+      from: '',
+      callType: SupportedAction.SET_PERMISSIONS,
       function: ERC20GuildContract.getFunction('setPermission'),
       to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
       value: BigNumber.from(0),
@@ -138,8 +154,11 @@ export const defaultValues: Record<
     },
   },
   [SupportedAction.ENS_UPDATE_CONTENT]: {
+    id: '',
     contract: ENSPublicResolverContract,
     decodedCall: {
+      from: '',
+      callType: SupportedAction.ENS_UPDATE_CONTENT,
       function: ENSPublicResolverContract.getFunction('setContenthash'),
       to: '',
       value: BigNumber.from(0),
