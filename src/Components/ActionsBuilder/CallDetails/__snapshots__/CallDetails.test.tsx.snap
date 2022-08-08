@@ -3,32 +3,36 @@
 exports[`CallDetails Should match 1`] = `
 <div>
    
-  <button
-    class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+  <div
+    class="sc-hKgJUU dpFBPj"
   >
-    transfer
-     (
-    <span>
-      <span
-        class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
-        color="#fff"
-      >
-        address
-      </span>
-    </span>
-    <span>
+    <button
+      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+    >
+      transfer
+       (
       <span>
-        , 
+        <span
+          class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
+          color="#fff"
+        >
+          address
+        </span>
       </span>
-      <span
-        class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
-        color="#fff"
-      >
-        uint256
+      <span>
+        <span>
+          , 
+        </span>
+        <span
+          class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
+          color="#fff"
+        >
+          uint256
+        </span>
       </span>
-    </span>
-    )
-  </button>
+      )
+    </button>
+  </div>
    
 </div>
 `;
@@ -37,133 +41,60 @@ exports[`CallDetails Should match with empty data 1`] = `
 <div>
    
   <div
-    class="sc-hKgJUU sc-fFucqa dpFBPj kQeyUY"
+    class="sc-hKgJUU kHAvEK"
   >
-    <div
-      class="sc-hKgJUU dpFBPj"
+    <button
+      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
     >
       approve (
        
       <span
-        class="sc-jrAFXE sc-kstqJO hTcuJV iIrkDk"
-        color="#9575CD"
+        class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
+        color="#fff"
       >
         address
       </span>
       , 
       <span
-        class="sc-jrAFXE sc-kstqJO hTcuJV binMZc"
-        color="#F06292"
-      >
-        uint256
-      </span>
-       )
-    </div>
-  </div>
-  <div
-    class="sc-hKgJUU sc-fFucqa dpFBPj kQeyUY"
-  >
-    <div
-      class="sc-hKgJUU sc-kEjbQP sc-hBEYId dpFBPj eLxHhA eeEbSF"
-    >
-      <span
-        class="sc-jrAFXE sc-fodVek hTcuJV dnltEv"
-        color="#9575CD"
-      >
-        spender 
-        <em>
-          (address)
-        </em>
-      </span>
-    </div>
-    <a
-      class="sc-iBPTik cMdTkS"
-      href="/"
-    >
-      <div
-        class="sc-hKgJUU sc-bkzYnD dpFBPj jbcgoS"
-      >
-        0x0000000000000000000000000000000000000000
-         
-        <svg
-          fill="none"
-          height="16"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-          />
-          <polyline
-            points="15 3 21 3 21 9"
-          />
-          <line
-            x1="10"
-            x2="21"
-            y1="14"
-            y2="3"
-          />
-        </svg>
-      </div>
-    </a>
-  </div>
-  <div
-    class="sc-hKgJUU sc-fFucqa dpFBPj kQeyUY"
-  >
-    <div
-      class="sc-hKgJUU sc-kEjbQP sc-hBEYId dpFBPj eLxHhA eeEbSF"
-    >
-      <span
-        class="sc-jrAFXE sc-fodVek hTcuJV ewqpNr"
-        color="#F06292"
-      >
-        amount 
-        <em>
-          (uint256)
-        </em>
-      </span>
-    </div>
-    <div
-      class="sc-hKgJUU sc-bkzYnD dpFBPj jbcgoS"
-    >
-      1000
-    </div>
-  </div>
-  <div
-    class="sc-fubCzh dIZEAK"
-    style="margin-bottom: 2rem;"
-  />
-  <button
-    class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
-  >
-    transfer
-     (
-    <span>
-      <span
         class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
         color="#fff"
       >
-        address
+        uint256
       </span>
-    </span>
-    <span>
+       
+      )
+    </button>
+  </div>
+  <div
+    class="sc-hKgJUU dpFBPj"
+  >
+    <button
+      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+    >
+      transfer
+       (
       <span>
-        , 
+        <span
+          class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
+          color="#fff"
+        >
+          address
+        </span>
       </span>
-      <span
-        class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
-        color="#fff"
-      >
-        uint256
+      <span>
+        <span>
+          , 
+        </span>
+        <span
+          class="sc-jrAFXE sc-kstqJO hTcuJV enoxhL"
+          color="#fff"
+        >
+          uint256
+        </span>
       </span>
-    </span>
-    )
-  </button>
+      )
+    </button>
+  </div>
    
 </div>
 `;
