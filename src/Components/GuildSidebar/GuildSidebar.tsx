@@ -3,6 +3,7 @@ import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { Loading } from 'Components/Primitives/Loading';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import {
   DaoBrand,
   DaoIcon,
@@ -28,6 +29,12 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
 }) => {
   const { t } = useTranslation();
   let { chainName, guildId } = useTypedParams();
+  const { pathname } = useLocation();
+
+  const LOCATIONS = {
+    governance: `/${chainName}/${guildId}`,
+    allProposals: `/${chainName}/${guildId}/allproposals`,
+  };
 
   return (
     <SidebarWrapper data-testid="sidebar">
@@ -53,13 +60,17 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
         {actions}
       </DaoInfoPanel>
       <SidebarMenu>
-        <UnstyledLink to={`/${chainName}/${guildId}`}>
-          <SidebarMenuItem>{t('governance')}</SidebarMenuItem>
+        <UnstyledLink to={LOCATIONS.governance}>
+          <SidebarMenuItem current={pathname === LOCATIONS.governance}>
+            {t('governance')}
+          </SidebarMenuItem>
         </UnstyledLink>
-        <UnstyledLink to={`/${chainName}/${guildId}/allproposals`}>
-          <SidebarMenuItem href="#">{t('proposals_all')}</SidebarMenuItem>
+        <UnstyledLink to={LOCATIONS.allProposals}>
+          <SidebarMenuItem current={pathname === LOCATIONS.allProposals}>
+            {t('proposals_all')}
+          </SidebarMenuItem>
         </UnstyledLink>
-        <SidebarMenuItem href="#">{t('settings')}</SidebarMenuItem>
+        <SidebarMenuItem>{t('settings')}</SidebarMenuItem>
       </SidebarMenu>
     </SidebarWrapper>
   );

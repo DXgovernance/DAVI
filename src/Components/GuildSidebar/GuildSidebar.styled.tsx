@@ -63,18 +63,23 @@ export const SidebarMenu = styled(Menu)`
   }
 `;
 
-export const SidebarMenuItem = styled(MenuItem)`
+export const SidebarMenuItem = styled(MenuItem)<{ current?: boolean }>`
   padding: 0.8rem 1rem;
+  color: ${({ current, theme }) =>
+    current ? theme.colors.text : theme.colors.proposalText.grey};
 
   @media only screen and (min-width: 768px) {
-    border-left: 2px solid transparent;
+    border-left: 2px solid
+      ${({ current, theme }) => (current ? theme.colors.text : 'transparent')};
   }
 
   &:hover {
     border-bottom: 2px solid ${({ theme }) => theme.colors.muted};
 
     @media only screen and (min-width: 768px) {
-      border-left: 2px solid ${({ theme }) => theme.colors.muted};
+      border-left: 2px solid
+        ${({ current, theme }) =>
+          current ? theme.colors.text : theme.colors.muted};
       border-bottom: initial;
     }
   }
@@ -83,7 +88,7 @@ export const SidebarMenuItem = styled(MenuItem)`
     border-bottom: 2px solid ${({ theme }) => theme.colors.muted};
 
     @media only screen and (min-width: 768px) {
-      border-left: 2px solid ${({ theme }) => theme.colors.muted};
+      border-left: 2px solid ${({ theme }) => theme.colors.text};
       border-bottom: initial;
     }
   }

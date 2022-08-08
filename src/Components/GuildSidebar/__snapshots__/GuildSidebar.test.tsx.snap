@@ -43,7 +43,7 @@ exports[`GuildSidebar Should render with data 1`] = `
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <a
-          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+          class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
         >
           governance
         </a>
@@ -53,15 +53,13 @@ exports[`GuildSidebar Should render with data 1`] = `
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allproposals"
       >
         <a
-          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
-          href="#"
+          class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
         >
           proposals_all
         </a>
       </a>
       <a
-        class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
-        href="#"
+        class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
       >
         settings
       </a>
@@ -143,7 +141,7 @@ exports[`GuildSidebar Should render without data 1`] = `
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <a
-          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+          class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
         >
           governance
         </a>
@@ -153,15 +151,13 @@ exports[`GuildSidebar Should render without data 1`] = `
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allproposals"
       >
         <a
-          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
-          href="#"
+          class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
         >
           proposals_all
         </a>
       </a>
       <a
-        class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
-        href="#"
+        class="sc-fubCzh sc-fodVek jNJQkj kRTejM"
       >
         settings
       </a>
