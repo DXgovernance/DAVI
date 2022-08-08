@@ -4,18 +4,18 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 <div>
    
   <a
-    class="sc-bsipwG gxOdyH"
+    class="sc-dQoVA iaJyOe"
     data-testid="proposal-card"
     href="/testUrl"
   >
     <div
-      class="sc-jrAFXE sc-eLgNKc jLAWlL kMcZQq"
+      class="sc-gKseQn sc-kstqJO bA-duWg jRwsoa"
     >
       <div
-        class="sc-jrAFXE sc-bTvSiT jLAWlL kZFSbT"
+        class="sc-gKseQn sc-hBEYId bA-duWg kTtzgS"
       >
         <div
-          class="sc-jrAFXE sc-dacGJm jLAWlL losjWq"
+          class="sc-gKseQn sc-idOiZg bA-duWg iWoCcO"
         >
           <div
             class="paper"
@@ -71,19 +71,19 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             </svg>
           </div>
           <div
-            class="sc-jrAFXE sc-jUEmfL jLAWlL yVRYP"
+            class="sc-gKseQn sc-dIUeWJ bA-duWg mkoem"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="sc-bXDkGd ccdnIe"
+          class="sc-jrAFXE kdAvKO"
         >
           <div
-            class="sc-eGCaLh kgoqZT"
+            class="sc-kEjbQP fiRCOk"
           >
             <div
-              class="sc-jrAFXE sc-dFJtaz jLAWlL djIRru"
+              class="sc-gKseQn sc-crrszt bA-duWg hHAEfD"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
@@ -92,7 +92,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </span>
             </div>
             <div
-              class="sc-jrAFXE sc-ctaXho jLAWlL bPYVts"
+              class="sc-gKseQn sc-iqHYmW bA-duWg jkRETa"
             >
                
               Active
@@ -101,10 +101,10 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-kIeSZW jLAWlL hqxzIQ"
+        class="sc-gKseQn sc-fodVek bA-duWg jnlYOU"
       >
         <h2
-          class="sc-pGacB sc-dtwnrN eGiNre iFysCX"
+          class="sc-bqyKOL sc-bkzYnD fHLOYv fRjroS"
           size="2"
         >
           <strong>
@@ -113,25 +113,48 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </h2>
       </div>
       <div
-        class="sc-jrAFXE sc-hOqruk jLAWlL eDMcug"
+        class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
       >
         <div
-          class="sc-jrAFXE sc-jQbJRc jLAWlL zkGPM"
-        />
-        <div
-          class="sc-jrAFXE sc-gsxoIA jLAWlL ccBcNb"
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
         >
           <div
-            class="sc-jrAFXE sc-dacGJm sc-fvhFOF jLAWlL losjWq fqiUDZ"
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
           >
-            <div
-              class="sc-jrAFXE sc-jUEmfL jLAWlL yVRYP"
+            50
+            % - 
+            For
+          </div>
+          <button
+            aria-label="action details button"
+            class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
+          >
+            <span
+              class="sc-ehSDrC kQgJdT"
             >
-              20
-              %
-            </div>
-            <div
-              class="sc-GTVdH hgaHor"
+              <svg
+                fill="currentColor"
+                height="16"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+                />
+              </svg>
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              
+               
+               
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
             >
               <svg
                 fill="none"
@@ -144,20 +167,364 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
                 width="1em"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
+                <line
+                  x1="5"
+                  x2="19"
+                  y1="12"
+                  y2="12"
+                />
+                <polyline
+                  points="12 5 19 12 12 19"
                 />
               </svg>
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              test.eth
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </a>
+   
+</div>
+`;
+
+exports[`ProposalCard ProposalCard Renders properly with more than one option  1`] = `
+<div>
+   
+  <a
+    class="sc-dQoVA iaJyOe"
+    data-testid="proposal-card"
+    href="/testUrl"
+  >
+    <div
+      class="sc-gKseQn sc-kstqJO bA-duWg jRwsoa"
+    >
+      <div
+        class="sc-gKseQn sc-hBEYId bA-duWg kTtzgS"
+      >
+        <div
+          class="sc-gKseQn sc-idOiZg bA-duWg iWoCcO"
+        >
+          <div
+            class="paper"
+            style="border-radius: 50px; display: inline-block; margin: 0px; overflow: hidden; padding: 0px; background-color: rgb(245, 228, 0); height: 24px; width: 24px;"
+          >
+            <svg
+              height="24"
+              width="24"
+              x="0"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0"
+            >
+              <rect
+                fill="#F2BE02"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(4.11204385070503 -3.89652025148055) rotate(387.1 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#01778E"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(-1.9540919563657109 12.528454691642345) rotate(227.4 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#C81435"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(13.477268130678231 -9.444486788922836) rotate(422.3 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#FA9600"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(14.838094142329384 -25.57490104209306) rotate(308.5 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-gKseQn sc-dIUeWJ bA-duWg mkoem"
+          >
+            venky0x.eth
+          </div>
+        </div>
+        <div
+          class="sc-jrAFXE kdAvKO"
+        >
+          <div
+            class="sc-kEjbQP fiRCOk"
+          >
+            <div
+              class="sc-gKseQn sc-crrszt bA-duWg hHAEfD"
+            >
+              <span
+                title="May 9th, 2022 - 8:00 am"
+              >
+                Time
+              </span>
             </div>
             <div
-              class="sc-jrAFXE sc-jUEmfL jLAWlL yVRYP"
+              class="sc-gKseQn sc-iqHYmW bA-duWg jkRETa"
             >
-              10
-              %
+               
+              Active
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        class="sc-gKseQn sc-fodVek bA-duWg jnlYOU"
+      >
+        <h2
+          class="sc-bqyKOL sc-bkzYnD fHLOYv fRjroS"
+          size="2"
+        >
+          <strong>
+            SWPR single reward campaign
+          </strong>
+        </h2>
+      </div>
+      <div
+        class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
+      >
+        <div
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
+        >
+          <div
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
+          >
+            50
+            % - 
+            For
+          </div>
+          <button
+            aria-label="action details button"
+            class="sc-dlfnuX sc-cxFLGX bcIZht ciTlSz"
+          >
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              <svg
+                fill="currentColor"
+                height="16"
+                stroke="currentColor"
+                stroke-width="0"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+                />
+              </svg>
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              
+               
+               
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              <svg
+                fill="none"
+                height="1em"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="5"
+                  x2="19"
+                  y1="12"
+                  y2="12"
+                />
+                <polyline
+                  points="12 5 19 12 12 19"
+                />
+              </svg>
+            </span>
+            <span
+              class="sc-ehSDrC kQgJdT"
+            >
+              test.eth
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </a>
+   
+</div>
+`;
+
+exports[`ProposalCard ProposalCard Renders properly with more than one option containing more than one action 1`] = `
+<div>
+   
+  <a
+    class="sc-dQoVA iaJyOe"
+    data-testid="proposal-card"
+    href="/testUrl"
+  >
+    <div
+      class="sc-gKseQn sc-kstqJO bA-duWg jRwsoa"
+    >
+      <div
+        class="sc-gKseQn sc-hBEYId bA-duWg kTtzgS"
+      >
+        <div
+          class="sc-gKseQn sc-idOiZg bA-duWg iWoCcO"
+        >
+          <div
+            class="paper"
+            style="border-radius: 50px; display: inline-block; margin: 0px; overflow: hidden; padding: 0px; background-color: rgb(245, 228, 0); height: 24px; width: 24px;"
+          >
+            <svg
+              height="24"
+              width="24"
+              x="0"
+              xmlns="http://www.w3.org/2000/svg"
+              y="0"
+            >
+              <rect
+                fill="#F2BE02"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(4.11204385070503 -3.89652025148055) rotate(387.1 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#01778E"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(-1.9540919563657109 12.528454691642345) rotate(227.4 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#C81435"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(13.477268130678231 -9.444486788922836) rotate(422.3 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+              <rect
+                fill="#FA9600"
+                height="24"
+                rx="0"
+                ry="0"
+                transform="translate(14.838094142329384 -25.57490104209306) rotate(308.5 12 12)"
+                width="24"
+                x="0"
+                y="0"
+              />
+            </svg>
+          </div>
+          <div
+            class="sc-gKseQn sc-dIUeWJ bA-duWg mkoem"
+          >
+            venky0x.eth
+          </div>
+        </div>
+        <div
+          class="sc-jrAFXE kdAvKO"
+        >
+          <div
+            class="sc-kEjbQP fiRCOk"
+          >
+            <div
+              class="sc-gKseQn sc-crrszt bA-duWg hHAEfD"
+            >
+              <span
+                title="May 9th, 2022 - 8:00 am"
+              >
+                Time
+              </span>
+            </div>
+            <div
+              class="sc-gKseQn sc-iqHYmW bA-duWg jkRETa"
+            >
+               
+              Active
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sc-gKseQn sc-fodVek bA-duWg jnlYOU"
+      >
+        <h2
+          class="sc-bqyKOL sc-bkzYnD fHLOYv fRjroS"
+          size="2"
+        >
+          <strong>
+            SWPR single reward campaign
+          </strong>
+        </h2>
+      </div>
+      <div
+        class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
+      >
+        <div
+          class="sc-gKseQn sc-idOiZg sc-bBXrwG bA-duWg iWoCcO"
+        >
+          <div
+            class="sc-gKseQn sc-idOiZg sc-iwyWTf bA-duWg iWoCcO eXaQeb"
+          >
+            50
+            % - 
+            For
+          </div>
+          <button
+            aria-label="action details button"
+            class="sc-dlfnuX sc-cxFLGX bcIZht gSAJsl"
+          >
+            <div
+              class="sc-lmoMya forqjz"
+            >
+              <div
+                class="sc-iJuVqt gvxcKu"
+              >
+                2
+              </div>
+               
+              actions_other
+            </div>
+          </button>
         </div>
       </div>
     </div>
@@ -170,19 +537,19 @@ exports[`ProposalCard ProposalCard loading 1`] = `
 <div>
    
   <a
-    class="sc-bsipwG gxOdyH"
+    class="sc-dQoVA iaJyOe"
     data-testid="proposal-card"
     href="/"
   >
     <div
-      class="sc-jrAFXE sc-eLgNKc jLAWlL FMPuJ"
+      class="sc-gKseQn sc-kstqJO bA-duWg cjsdyJ"
       disabled=""
     >
       <div
-        class="sc-jrAFXE sc-bTvSiT jLAWlL kZFSbT"
+        class="sc-gKseQn sc-hBEYId bA-duWg kTtzgS"
       >
         <div
-          class="sc-jrAFXE sc-dacGJm jLAWlL losjWq"
+          class="sc-gKseQn sc-idOiZg bA-duWg iWoCcO"
         >
           <div
             class="sc-bdfBQB"
@@ -201,7 +568,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
             </span>
           </div>
           <div
-            class="sc-jrAFXE sc-jUEmfL jLAWlL yVRYP"
+            class="sc-gKseQn sc-dIUeWJ bA-duWg mkoem"
           >
             <div
               class="sc-bdfBQB"
@@ -223,13 +590,13 @@ exports[`ProposalCard ProposalCard loading 1`] = `
           </div>
         </div>
         <div
-          class="sc-bXDkGd ccdnIe"
+          class="sc-jrAFXE kdAvKO"
         >
           <div
-            class="sc-eGCaLh kgoqZT"
+            class="sc-kEjbQP fiRCOk"
           >
             <div
-              class="sc-jrAFXE sc-dFJtaz jLAWlL djIRru"
+              class="sc-gKseQn sc-crrszt bA-duWg hHAEfD"
             >
               <div
                 class="sc-bdfBQB"
@@ -268,10 +635,10 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </div>
       </div>
       <div
-        class="sc-jrAFXE sc-kIeSZW jLAWlL hqxzIQ"
+        class="sc-gKseQn sc-fodVek bA-duWg jnlYOU"
       >
         <h2
-          class="sc-pGacB sc-dtwnrN eGiNre iFysCX"
+          class="sc-bqyKOL sc-bkzYnD fHLOYv fRjroS"
           size="2"
         >
           <strong>
@@ -296,29 +663,8 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </h2>
       </div>
       <div
-        class="sc-jrAFXE sc-hOqruk jLAWlL eDMcug"
-      >
-        <div
-          class="sc-jrAFXE sc-jQbJRc jLAWlL zkGPM"
-        />
-        <div
-          class="sc-bdfBQB"
-          style="margin: 0px;"
-        >
-          <span
-            aria-busy="true"
-            aria-live="polite"
-          >
-            <span
-              class="react-loading-skeleton"
-              style="width: 200px; --base-color: #333; --highlight-color: #555;"
-            >
-              ‌
-            </span>
-            <br />
-          </span>
-        </div>
-      </div>
+        class="sc-gKseQn sc-fFucqa bA-duWg giQhJE"
+      />
     </div>
   </a>
    
