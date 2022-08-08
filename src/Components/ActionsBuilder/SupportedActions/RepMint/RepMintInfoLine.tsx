@@ -14,6 +14,7 @@ import { StyledMintIcon } from './styles';
 const RepMintInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
+  noAvatar,
 }) => {
   const { t } = useTranslation();
 
@@ -38,13 +39,15 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <FiArrowRight />
       </Segment>
-      <Segment>
-        <Avatar
-          defaultSeed={parsedData?.toAddress}
-          src={imageUrl}
-          size={compact ? 14 : 24}
-        />
-      </Segment>
+      {noAvatar ? null : (
+        <Segment>
+          <Avatar
+            defaultSeed={parsedData?.toAddress}
+            src={imageUrl}
+            size={compact ? 14 : 24}
+          />
+        </Segment>
+      )}
       <Segment>
         {ensName || shortenAddress(parsedData?.toAddress, compact ? 2 : 2)}
       </Segment>

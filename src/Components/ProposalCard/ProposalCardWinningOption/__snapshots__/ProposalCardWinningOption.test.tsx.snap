@@ -1,0 +1,472 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProposalCardWinningOption a tooltip shows after clicking in the action idicator when there are more than one action 1`] = `
+<div>
+   
+  <div
+    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+  >
+    <div
+      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+    >
+      50
+      % - 
+      For
+    </div>
+    <button
+      aria-label="action details button"
+      class="sc-dlfnuX sc-hHfuMS bcIZht eGKZYi"
+    >
+      <div
+        class="sc-dmlqKv iEzzCF"
+      >
+        <div
+          class="sc-kfzBvY jHCPbx"
+        >
+          2
+        </div>
+         
+        actions_other
+      </div>
+      <div
+        aria-label="expanded actions list tooltip"
+        class="sc-euMpEg dRdaMb"
+      >
+        <div
+          class="sc-bsipwG kzvZPN"
+        >
+          <div
+            class="sc-gInthZ jVXCCM"
+          >
+            1
+          </div>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            <svg
+              fill="currentColor"
+              height="16"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+              />
+            </svg>
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            
+             
+             
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+              <polyline
+                points="12 5 19 12 12 19"
+              />
+            </svg>
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            test.eth
+          </span>
+        </div>
+        <div
+          class="sc-fHuLxr btRlhQ"
+        />
+        <div
+          class="sc-bsipwG kzvZPN"
+        >
+          <div
+            class="sc-gInthZ jVXCCM"
+          >
+            2
+          </div>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            <svg
+              fill="currentColor"
+              height="16"
+              stroke="currentColor"
+              stroke-width="0"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+              />
+            </svg>
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            
+             
+             
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line
+                x1="5"
+                x2="19"
+                y1="12"
+                y2="12"
+              />
+              <polyline
+                points="12 5 19 12 12 19"
+              />
+            </svg>
+          </span>
+          <span
+            class="sc-iNqMzA ciMXqI"
+          >
+            test.eth
+          </span>
+        </div>
+      </div>
+    </button>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalCardWinningOption if the option has only one action, no tooltip shows after clicking it 1`] = `
+<div>
+   
+  <div
+    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+  >
+    <div
+      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+    >
+      50
+      % - 
+      For
+    </div>
+    <button
+      aria-label="action details button"
+      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+    >
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="currentColor"
+          height="16"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        
+         
+         
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+          <polyline
+            points="12 5 19 12 12 19"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        test.eth
+      </span>
+    </button>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalCardWinningOption renders a loading component when the votes are not fetched yet 1`] = `
+<div>
+   
+  <div
+    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+  >
+    <div
+      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+    >
+      <div
+        class="sc-bdfBQB"
+        style="margin: 0px;"
+      >
+        <span
+          aria-busy="true"
+          aria-live="polite"
+        >
+          <span
+            class="react-loading-skeleton"
+            style="width: 70px; --base-color: #333; --highlight-color: #555;"
+          >
+            ‌
+          </span>
+          <br />
+        </span>
+      </div>
+    </div>
+    <button
+      aria-label="action details button"
+      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+    >
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="currentColor"
+          height="16"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        
+         
+         
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+          <polyline
+            points="12 5 19 12 12 19"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        test.eth
+      </span>
+    </button>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalCardWinningOption renders an indicator of the number of actions if the option has more than one action 1`] = `
+<div>
+   
+  <div
+    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+  >
+    <div
+      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+    >
+      50
+      % - 
+      For
+    </div>
+    <button
+      aria-label="action details button"
+      class="sc-dlfnuX sc-hHfuMS bcIZht eGKZYi"
+    >
+      <div
+        class="sc-dmlqKv iEzzCF"
+      >
+        <div
+          class="sc-kfzBvY jHCPbx"
+        >
+          2
+        </div>
+         
+        actions_other
+      </div>
+    </button>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalCardWinningOption renders loading component when there are no options 1`] = `
+<div>
+   
+  <div
+    class="sc-bdfBQB"
+    style="margin: 0px;"
+  >
+    <span
+      aria-busy="true"
+      aria-live="polite"
+    >
+      <span
+        class="react-loading-skeleton"
+        style="width: 200px; --base-color: #333; --highlight-color: #555;"
+      >
+        ‌
+      </span>
+      <br />
+    </span>
+  </div>
+   
+</div>
+`;
+
+exports[`ProposalCardWinningOption renders properly with one action 1`] = `
+<div>
+   
+  <div
+    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+  >
+    <div
+      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+    >
+      50
+      % - 
+      For
+    </div>
+    <button
+      aria-label="action details button"
+      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+    >
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="currentColor"
+          height="16"
+          stroke="currentColor"
+          stroke-width="0"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        
+         
+         
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="5"
+            x2="19"
+            y1="12"
+            y2="12"
+          />
+          <polyline
+            points="12 5 19 12 12 19"
+          />
+        </svg>
+      </span>
+      <span
+        class="sc-iNqMzA ciMXqI"
+      >
+        test.eth
+      </span>
+    </button>
+  </div>
+   
+</div>
+`;
