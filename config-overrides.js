@@ -5,5 +5,10 @@ module.exports = (config, env) => {
   }
   config.output.filename = `static/js/[name].js`;
   config.output.chunkFilename = `static/js/[name].chunk.js`;
+  config.module.rules.push({
+    test: /\.mjs$/,
+    include: /node_modules/,
+    type: 'javascript/auto',
+  });
   return config;
 };
