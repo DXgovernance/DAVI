@@ -31,6 +31,9 @@ const App = () => {
                 <Route exact path="/:chainName/:guildId">
                   <GuildsPage />
                 </Route>
+                <Route exact path="/:chainName/:guildId/allproposals">
+                  <GuildsPage pageContent={'allProposals'} />
+                </Route>
                 <Route path="/:chainName/:guildId/proposalType">
                   <ProposalTypes data={ProposalTypesConfig} />
                 </Route>

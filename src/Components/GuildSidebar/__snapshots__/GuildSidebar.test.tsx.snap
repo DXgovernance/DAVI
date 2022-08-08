@@ -4,60 +4,63 @@ exports[`GuildSidebar Should render with data 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    class="sc-hKgJUU sc-jrAFXE dpFBPj bpvGuP"
     data-testid="sidebar"
   >
     <div
-      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
+      class="sc-hKgJUU sc-kEjbQP dpFBPj cRRMyT"
     >
       <div
-        class="sc-kEjbQP fycuIK"
+        class="sc-iqHYmW iUGSbK"
       >
         <div
-          class="sc-iqHYmW jrXVBE"
+          class="sc-crrszt dIDZpl"
         >
           <img
             alt="Test Guild"
-            class="sc-crrszt citRkA"
+            class="sc-dQoVA ilMvDn"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
+            class="sc-pGacB sc-bqyKOL eGiNre cNYkRs"
             size="2"
           >
             Test Guild
           </h1>
         </div>
         <div
-          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
+          class="sc-hKgJUU sc-kstqJO dpFBPj bRViTh"
         >
           members
         </div>
       </div>
     </div>
     <div
-      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
+      class="sc-hKgJUU sc-iBPTik sc-hBEYId dpFBPj gNOIKi FxpuI"
     >
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="sc-bdfBQB hcWJCy"
+        href="/undefined/undefined"
       >
-        proposals
+        <a
+          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="sc-bdfBQB hcWJCy"
+        href="/allproposals"
       >
-        members
+        <a
+          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+          href="#"
+        >
+          proposals_all
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
+        class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
         href="#"
       >
         settings
@@ -72,28 +75,28 @@ exports[`GuildSidebar Should render without data 1`] = `
 <div>
    
   <div
-    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    class="sc-hKgJUU sc-jrAFXE dpFBPj bpvGuP"
     data-testid="sidebar"
   >
     <div
-      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
+      class="sc-hKgJUU sc-kEjbQP dpFBPj cRRMyT"
     >
       <div
-        class="sc-kEjbQP fycuIK"
+        class="sc-iqHYmW iUGSbK"
       >
         <div
-          class="sc-iqHYmW jrXVBE"
+          class="sc-crrszt dIDZpl"
         >
           <img
-            class="sc-crrszt citRkA"
+            class="sc-dQoVA ilMvDn"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
+            class="sc-pGacB sc-bqyKOL eGiNre cNYkRs"
             size="2"
           >
             <div
-              class="sc-bdfBQB"
+              class="sc-gsTEea"
             >
               <span
                 aria-busy="true"
@@ -111,10 +114,10 @@ exports[`GuildSidebar Should render without data 1`] = `
           </h1>
         </div>
         <div
-          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
+          class="sc-hKgJUU sc-kstqJO dpFBPj bRViTh"
         >
           <div
-            class="sc-bdfBQB"
+            class="sc-gsTEea"
           >
             <span
               aria-busy="true"
@@ -133,28 +136,31 @@ exports[`GuildSidebar Should render without data 1`] = `
       </div>
     </div>
     <div
-      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
+      class="sc-hKgJUU sc-iBPTik sc-hBEYId dpFBPj gNOIKi FxpuI"
     >
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="sc-bdfBQB hcWJCy"
+        href="/undefined/undefined"
       >
-        proposals
+        <a
+          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="sc-bdfBQB hcWJCy"
+        href="/allproposals"
       >
-        members
+        <a
+          class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
+          href="#"
+        >
+          proposals_all
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
+        class="sc-fubCzh sc-fodVek jNJQkj jOCCIN"
         href="#"
       >
         settings
