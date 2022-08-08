@@ -76,7 +76,7 @@ export const supportedActions: Record<
     infoLineView: SetPermissionsInfoLine,
     summaryView: SetPermissionsSummary,
     editor: SetPermissionsEditor,
-    displaySubmit: true,
+    displaySubmit: false,
   },
   [SupportedAction.ENS_UPDATE_CONTENT]: {
     title: 'Update ENS content',

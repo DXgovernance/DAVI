@@ -24,6 +24,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const theme = useTheme();
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isApprovalExpanded, setIsApprovalExpanded] = useState(false);
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -63,74 +64,112 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   return (
     <>
       {!!approveSpendTokens && (
-        <>
-          <ActionParamRow>
-            <Box>
-              approve ({' '}
-              <ParamTag color={theme?.colors?.params?.[0]}>address</ParamTag>
-              {', '}
-              <ParamTag color={theme?.colors?.params?.[1]}>uint256</ParamTag> )
-            </Box>
-          </ActionParamRow>
-          <ActionParamRow>
-            <ParamTitleRow>
-              <ParamTitleTag color={theme?.colors?.params?.[0]}>
-                spender <em>(address)</em>
-              </ParamTitleTag>
-            </ParamTitleRow>
-            {renderByParamType('address', decodedCall.from)}
-          </ActionParamRow>
-          <ActionParamRow>
-            <ParamTitleRow>
-              <ParamTitleTag color={theme?.colors?.params?.[1]}>
-                amount <em>(uint256)</em>
-              </ParamTitleTag>
-            </ParamTitleRow>
-            {renderByParamType('uint256', approveSpendTokens?.amount)}
-          </ActionParamRow>
-          <Divider style={{ marginBottom: '2rem' }} />
-        </>
-      )}
-
-      <DetailsButton
-        onClick={() => setIsExpanded(!isExpanded)}
-        isExpanded={isExpanded}
-        variant={'secondary'}
-      >
-        {decodedCall?.function?.name} (
-        {decodedCall?.function?.inputs.map((param, index, params) => (
-          <span key={index}>
-            {index > 0 && <span>, </span>}
+        <Box margin="0 0 0.5rem">
+          <DetailsButton
+            onClick={() => setIsApprovalExpanded(!isApprovalExpanded)}
+            isExpanded={isApprovalExpanded}
+            variant={'secondary'}
+          >
+            approve ({' '}
             <ParamTag
-              key={index}
               color={
-                isExpanded
-                  ? theme?.colors?.params?.[index]
+                isApprovalExpanded
+                  ? theme?.colors?.params?.[0]
                   : theme?.colors?.text
               }
             >
-              {param?.type}
+              address
             </ParamTag>
-          </span>
-        ))}
-        )
-      </DetailsButton>
+            {', '}
+            <ParamTag
+              color={
+                isApprovalExpanded
+                  ? theme?.colors?.params?.[1]
+                  : theme?.colors?.text
+              }
+            >
+              uint256
+            </ParamTag>{' '}
+            )
+          </DetailsButton>
+          {isApprovalExpanded && (
+            <>
+              <ActionParamRow>
+                <Box>
+                  approve ({' '}
+                  <ParamTag color={theme?.colors?.params?.[0]}>
+                    address
+                  </ParamTag>
+                  {', '}
+                  <ParamTag color={theme?.colors?.params?.[1]}>
+                    uint256
+                  </ParamTag>{' '}
+                  )
+                </Box>
+              </ActionParamRow>
+              <ActionParamRow>
+                <ParamTitleRow>
+                  <ParamTitleTag color={theme?.colors?.params?.[0]}>
+                    spender <em>(address)</em>
+                  </ParamTitleTag>
+                </ParamTitleRow>
+                {renderByParamType('address', decodedCall.from)}
+              </ActionParamRow>
+              <ActionParamRow>
+                <ParamTitleRow>
+                  <ParamTitleTag color={theme?.colors?.params?.[1]}>
+                    amount <em>(uint256)</em>
+                  </ParamTitleTag>
+                </ParamTitleRow>
+                {renderByParamType('uint256', approveSpendTokens?.amount)}
+              </ActionParamRow>
+              <Divider style={{ marginBottom: '2rem' }} />
+            </>
+          )}
+        </Box>
+      )}
 
-      {isExpanded &&
-        decodedCall?.function?.inputs?.map((param, index) => (
-          <ActionParamRow key={index}>
-            <ParamTitleRow>
-              <ParamTitleTag color={theme?.colors?.params?.[index]}>
-                {param.name} <em>({param.type})</em>
-              </ParamTitleTag>
-              {param.type === 'bytes' && (
-                <Button variant="secondary">{t('decode')}</Button>
-              )}
-            </ParamTitleRow>
+      <Box>
+        <DetailsButton
+          onClick={() => setIsExpanded(!isExpanded)}
+          isExpanded={isExpanded}
+          variant={'secondary'}
+        >
+          {decodedCall?.function?.name} (
+          {decodedCall?.function?.inputs.map((param, index, params) => (
+            <span key={index}>
+              {index > 0 && <span>, </span>}
+              <ParamTag
+                key={index}
+                color={
+                  isExpanded
+                    ? theme?.colors?.params?.[index]
+                    : theme?.colors?.text
+                }
+              >
+                {param?.type}
+              </ParamTag>
+            </span>
+          ))}
+          )
+        </DetailsButton>
 
-            {renderByParamType(param.type, decodedCall?.args?.[param.name])}
-          </ActionParamRow>
-        ))}
+        {isExpanded &&
+          decodedCall?.function?.inputs?.map((param, index) => (
+            <ActionParamRow key={index}>
+              <ParamTitleRow>
+                <ParamTitleTag color={theme?.colors?.params?.[index]}>
+                  {param.name} <em>({param.type})</em>
+                </ParamTitleTag>
+                {param.type === 'bytes' && (
+                  <Button variant="secondary">{t('decode')}</Button>
+                )}
+              </ParamTitleRow>
+
+              {renderByParamType(param.type, decodedCall?.args?.[param.name])}
+            </ActionParamRow>
+          ))}
+      </Box>
     </>
   );
 };
