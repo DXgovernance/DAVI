@@ -159,6 +159,12 @@ export const decodeCall = async (
 
   if (decodedCall && matchedRichContractData) {
     decodedCall.richData = matchedRichContractData;
+    // TODO better match function signature to include type checks
+    decodedCall.richFunctionData = matchedRichContractData.functions.find(
+      option =>
+        option.functionName === decodedCall.function.name &&
+        option.params.length === decodedCall.function.inputs.length
+    );
   }
 
   return {
