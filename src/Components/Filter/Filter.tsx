@@ -20,7 +20,12 @@ import {
 import { useAccount } from 'wagmi';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 
-const Filter = () => {
+interface FilterProps {
+  openSearchBar: boolean;
+  setOpenSearchBar: (openSearchBar: boolean) => void;
+}
+
+const Filter: React.FC<FilterProps> = ({ openSearchBar, setOpenSearchBar }) => {
   const { t } = useTranslation();
   const { chainName, guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
@@ -41,7 +46,6 @@ const Filter = () => {
     }
     return false;
   }, [votingPower, guildConfig]);
-  const [openSearchBar, setOpenSearchBar] = useState(false);
 
   return (
     <FilterContainer>

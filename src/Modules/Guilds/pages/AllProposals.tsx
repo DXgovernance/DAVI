@@ -13,16 +13,18 @@ const ProposalsList = styled(Box)`
   margin-top: 1rem;
 `;
 
-const ProposalListWrapper = styled.div`
-  height: 50vh;
+const ProposalListWrapper = styled.div<{ isSearchOpened: boolean }>`
+  height: ${({ isSearchOpened }) => (isSearchOpened ? '43vh' : '50vh')};
   @media only screen and (min-width: 768px) {
-    height: 75vh;
+    height: ${({ isSearchOpened }) => (isSearchOpened ? '69vh' : '75vh')};
   }
 `;
 
 const AllProposals = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
+
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
   /*
   In "Governance" view, we reset all filters and apply one to show
@@ -77,10 +79,13 @@ const AllProposals = ({ guildId }) => {
 
   return (
     <>
-      <Filter />
+      <Filter
+        openSearchBar={openSearchBar}
+        setOpenSearchBar={setOpenSearchBar}
+      />
       <ProposalsList data-testid="proposals-list">
         {revertedProposals ? (
-          <ProposalListWrapper>
+          <ProposalListWrapper isSearchOpened={openSearchBar}>
             <Virtuoso
               style={{ height: '100%' }}
               data={shownProposals}
