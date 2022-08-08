@@ -5,7 +5,7 @@ import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import { BigNumber, utils } from 'ethers';
-import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
+import { ANY_FUNC_SIGNATURE, ANY_ADDRESS, MAX_UINT } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
 import { mockChain } from 'Components/Web3Modals/fixtures';
 
@@ -79,11 +79,7 @@ describe(`Set Permissions editor`, () => {
     beforeAll(() => {});
     it(`Default view renders asset transfer`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
 
       expect(
@@ -107,11 +103,7 @@ describe(`Set Permissions editor`, () => {
 
     it(`Can fill 'To address' and 'custom amount'`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
         name: /to address input/i,
@@ -134,11 +126,7 @@ describe(`Set Permissions editor`, () => {
 
     it(`Clicking the X clears the to address`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
 
       const addressToggle = screen.getByRole('switch', {
@@ -161,7 +149,6 @@ describe(`Set Permissions editor`, () => {
       render(
         <Permissions
           decodedCall={completeDecodedCallMock}
-          updateCall={jest.fn()}
           onSubmit={jest.fn()}
         />
       );
@@ -180,11 +167,7 @@ describe(`Set Permissions editor`, () => {
 
     it(`Toggling max amount disables the 'amount' input`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
 
       const amountInput: HTMLInputElement = screen.getByRole('textbox', {
@@ -198,13 +181,9 @@ describe(`Set Permissions editor`, () => {
       expect(amountInput).toBeDisabled();
     });
 
-    it(`Toggling max amount doesn't modifies the amount input`, () => {
+    it(`Amount input should preserve its temporary value after toggle is off/on`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
 
       const customAmountElement: HTMLInputElement = screen.getByRole(
@@ -223,7 +202,12 @@ describe(`Set Permissions editor`, () => {
 
       // Asserts value is maintaned when disabled and enabled again
       fireEvent.click(toggleMaxValueElement);
-      expect(customAmountElement.value).toBe('111.0');
+      const stringAmount = BigNumber.from(MAX_UINT).toString();
+      const expectedMaxValue = stringAmount.replace(
+        new RegExp('.{' + (stringAmount.length - 18) + '}'),
+        `$&.`
+      ); // adds trailing nums after decimal point
+      expect(customAmountElement.value).toBe(expectedMaxValue);
       fireEvent.click(toggleMaxValueElement);
       expect(customAmountElement.value).toBe('111.0');
     });
@@ -232,11 +216,7 @@ describe(`Set Permissions editor`, () => {
   describe(`Function calls tests`, () => {
     it(`Can fill the 'to address', 'function signature' and amount`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
       const functionsCallTab = screen.getByTestId(`functions-call-tab`);
       fireEvent.click(functionsCallTab);
@@ -272,7 +252,6 @@ describe(`Set Permissions editor`, () => {
       render(
         <Permissions
           decodedCall={completeDecodedCallMock}
-          updateCall={jest.fn()}
           onSubmit={jest.fn()}
         />
       );
@@ -296,11 +275,7 @@ describe(`Set Permissions editor`, () => {
   describe(`Tab interaction`, () => {
     it(`Changing tabs to function calls shows its elements`, () => {
       render(
-        <Permissions
-          decodedCall={emptyDecodedCallMock}
-          updateCall={jest.fn()}
-          onSubmit={jest.fn()}
-        />
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
 
       const functionsCallTab = screen.getByTestId(`functions-call-tab`);

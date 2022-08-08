@@ -13,8 +13,11 @@ import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 
-const isApprovalCall = (call: Call) =>
-  call.data.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
+const isApprovalData = (data: string) =>
+  data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
+const isApprovalCall = (call: Call) => isApprovalData(call?.data);
+const isZeroHash = (data: string) => data === ZERO_HASH;
+
 const useProposalCalls = (guildId: string, proposalId: string) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -35,27 +38,50 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   } = proposal || {};
 
   const totalOptionsNum = totalVotes?.length || 0;
+  const displayableOptionsNum = totalOptionsNum - 1;
+  const nonApprovalOrEmptyCalls = useMemo(
+    () => dataArray?.filter(data => !isApprovalData(data) && !isZeroHash(data)),
+    [dataArray]
+  );
+
   const callsPerOption = totalOptionsNum
-    ? toArray?.length / totalOptionsNum
+    ? nonApprovalOrEmptyCalls.length / displayableOptionsNum
     : 0;
   const optionLabels = metadata?.voteOptions;
 
   const calls: Call[] = useMemo(() => {
-    return toArray?.map((to, index) => ({
+    const buildCall = (idx: number): Call => ({
       from: guildId,
-      to: to,
-      data: dataArray[index],
-      value: valuesArray[index],
-    }));
-  }, [guildId, dataArray, valuesArray, toArray]);
+      to: toArray[idx],
+      data: dataArray[idx],
+      value: valuesArray[idx],
+    });
+    return dataArray
+      ?.map((dataValue, index) => {
+        const call = buildCall(index);
+        if (isApprovalData(dataArray[index - 1])) {
+          return {
+            ...call,
+            // We assume that if previous call was an approval, then current one is the one that is being approved
+            // So passing nested approval call and remove it from the calls array
+            approvalCall: buildCall(index - 1),
+          };
+        }
+
+        if (isApprovalCall(call) || isZeroHash(dataValue)) return null;
+        return call;
+      })
+      .filter(Boolean);
+  }, [guildId, toArray, dataArray, valuesArray]);
+
   const splitCalls = useMemo(() => {
     if (!calls) return null;
-
     const splitCalls: Call[][] = [];
     for (let i = 0; i < totalOptionsNum; i++) {
-      splitCalls.push(
-        calls.slice(i * callsPerOption, (i + 1) * callsPerOption)
-      );
+      const start = (i - 1) * callsPerOption;
+      const end = i * callsPerOption;
+      // skipping index 0 since is the "Against" option and doesn't have any call
+      splitCalls.push(i === 0 ? [] : calls.slice(start, end));
     }
     return splitCalls;
   }, [calls, callsPerOption, totalOptionsNum]);
@@ -71,17 +97,16 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           const filteredActions = calls.filter(
             call => call.data !== ZERO_HASH || !call.value?.isZero()
           );
-
           const actions = await Promise.all(
-            filteredActions.map(async (call, index, allCalls) => {
-              if (isApprovalCall(call)) {
+            filteredActions.map(async call => {
+              if (!!call?.approvalCall) {
                 const { decodedCall } = await decodeCall(
-                  call,
+                  call?.approvalCall,
                   contracts,
                   chain?.id
                 );
-                allCalls[index + 1] = {
-                  ...allCalls[index + 1],
+                return {
+                  ...call,
                   approval: {
                     amount: decodedCall?.args?._value,
                     token: call.to,

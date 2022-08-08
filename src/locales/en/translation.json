@@ -201,5 +201,9 @@
   "invalidAmount": "Invalid amount",
   "invalidTokenAddress": "Invalid token address",
   "reputationPercentageTooHigh": "Reputation percentage too high",
-  "reputationPercentIsRequired": "Reputation percentage is required"
+  "reputationPercentIsRequired": "Reputation percentage is required",
+  "invalidFunctionName": "Invalid function name",
+  "encodedSignatureIsInvalid": "Encoded signature is invalid",
+  "invalidAddress": "Invalid Address",
+  "addressIsRequired": "Address is required"
 }
