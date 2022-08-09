@@ -205,5 +205,7 @@
   "invalidFunctionName": "Invalid function name",
   "encodedSignatureIsInvalid": "Encoded signature is invalid",
   "invalidAddress": "Invalid Address",
-  "addressIsRequired": "Address is required"
+  "addressIsRequired": "Address is required",
+  "none": "None",
+  "expandLinesOfCode": "Expand {{numLines}} lines of code"
 }

@@ -26,7 +26,7 @@ export const convertToIpfsHash = (contentHash: string) => {
 
 export const getIpfsUrl = (ipfsHash: string) => {
   const ipfsRoot = 'ipfs://';
-  return `${ipfsRoot}${ipfsHash}`;
+  return ipfsHash ? `${ipfsRoot}${ipfsHash}` : null;
 };
 
 export const isValidChainId = (chainId: number) => {
