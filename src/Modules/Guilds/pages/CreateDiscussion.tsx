@@ -19,7 +19,12 @@ import {
   Label,
 } from '../styles';
 import { Orbis } from '@orbisclub/orbis-sdk';
-import { connect, isConnected, createPost, postTemplate } from 'Components/Forum';
+import {
+  connect,
+  isConnected,
+  createPost,
+  postTemplate,
+} from 'Components/Forum';
 import { Post } from 'Components/Forum/types';
 
 const CreateDiscussionPage: React.FC = () => {

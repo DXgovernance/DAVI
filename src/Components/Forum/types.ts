@@ -7,12 +7,12 @@
  * @data Custom data for the post we want to send
  */
 
- export interface Post {
-    body: string;
-    title: string;
-    context?: string;
-    master?: string;
-    replyTo?: string;
-    mentions?: string[];
-    data?: Record<string, string>;
+export interface Post {
+  body: string;
+  title: string;
+  context?: string;
+  master?: string;
+  replyTo?: string;
+  mentions?: string[];
+  data?: Record<string, string>;
 }

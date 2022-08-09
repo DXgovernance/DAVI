@@ -3,7 +3,7 @@ import type { Orbis as OrbisType } from '@orbisclub/orbis-sdk';
 
 export const postTemplate = (post: Post): Post => {
   if (!post.title || !post.body) {
-    throw Error('Missing post title or body')
+    throw Error('Missing post title or body');
   }
   return {
     title: post.title,
@@ -25,4 +25,3 @@ export async function createPost(orbis: OrbisType, content: Post) {
     console.error('Error creating post: ', res.error);
   }
 }
-
