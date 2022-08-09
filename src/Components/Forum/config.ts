@@ -1,9 +1,7 @@
-import { Orbis } from '@orbisclub/orbis-sdk';
 import type { Orbis as OrbisType } from '@orbisclub/orbis-sdk';
 
-let orbis: OrbisType = new Orbis();
 
-export async function connect() {
+export async function connect(orbis: OrbisType) {
   let res = await orbis.connect();
   if (res.status === 200) {
     console.log('Connected to Ceramic with: ', res.did);
