@@ -76,11 +76,7 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
           </StyledSegmentLink>
         </DetailBody>
       </DetailRow>
-      <Summary
-        decodedCall={decodedCall}
-        address={parsedData?.to}
-        blockExplorerUrl={blockExplorerUrl}
-      />
+      <Summary decodedCall={decodedCall} blockExplorerUrl={blockExplorerUrl} />
     </>
   );
 };

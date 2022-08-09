@@ -25,6 +25,7 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
       />
     </svg>
   </span>
+   
   <span
     class="sc-bdfBQB enldmJ"
   >
@@ -109,6 +110,37 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
       />
       <polyline
         points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+   
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    Unknown token
+  </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
       />
     </svg>
   </span>

@@ -12,17 +12,15 @@ import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
 import ERC20TransferInfoLine from './ERC20Transfer/ERC20TransferInfoLine';
-import ERC20TransferSummary from './ERC20Transfer/ERC20TransferSummary';
 import GenericCallInfoLine from './GenericCall/GenericCallInfoLine';
 import RepMintEditor from './RepMint/RepMintEditor';
 import RepMintInfoLine from './RepMint/RepMintInfoLine';
-import RepMintSummary from './RepMint/RepMintSummary';
 import SetPermissionsEditor from './SetPermissions/SetPermissionsEditor';
 import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
-import SetPermissionsSummary from './SetPermissions/SetPermissionsSummary';
 import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
 import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
 import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
+import Summary from './common/Summary';
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -55,27 +53,28 @@ export const supportedActions: Record<
   [SupportedAction.ERC20_TRANSFER]: {
     title: 'Transfers & Mint',
     infoLineView: ERC20TransferInfoLine,
-    summaryView: ERC20TransferSummary,
+    summaryView: Summary,
     editor: ERC20TransferEditor,
     displaySubmit: false,
   },
   [SupportedAction.REP_MINT]: {
     title: 'Mint Reputation',
     infoLineView: RepMintInfoLine,
-    summaryView: RepMintSummary,
+    summaryView: Summary,
     editor: RepMintEditor,
     displaySubmit: false,
   },
   [SupportedAction.GENERIC_CALL]: {
     title: 'Generic Call',
     infoLineView: GenericCallInfoLine,
+    summaryView: Summary,
     editor: () => <div>Generic Call Editor</div>,
     displaySubmit: false,
   },
   [SupportedAction.SET_PERMISSIONS]: {
     title: 'Set permissions',
     infoLineView: SetPermissionsInfoLine,
-    summaryView: SetPermissionsSummary,
+    summaryView: Summary,
     editor: SetPermissionsEditor,
     displaySubmit: false,
   },
