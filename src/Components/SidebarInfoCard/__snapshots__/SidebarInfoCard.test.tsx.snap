@@ -3,65 +3,152 @@
 exports[`SidebarInfoCard matches information card snapshot 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": .c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c3 strong,
+.c3 b {
+  font-weight: 600;
+}
+
+.c4 {
+  font-weight: 600;
+  margin: 0.5rem;
+  color: #fff;
+}
+
+.c5 {
+  padding: 1rem;
+  color: #fff;
+}
+
+.c7 {
+  margin-bottom: 0.8rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7:last-child {
+  margin-bottom: 0;
+}
+
+.c8 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.c9 {
+  color: #BDC0C7;
+}
+
+<body>
     <div>
        
       <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs chDmvy"
+        class="c0 c1"
       >
         <div
-          class="sc-bdfBQB sc-jSgvzq bmhbKs iPIXsc"
+          class="c0 c2"
         >
           <h2
-            class="sc-iBPTik sc-fubCzh cBZYjx gMMEXo"
+            class="c3 c4"
           >
             information
           </h2>
         </div>
         <div
-          class="sc-bdfBQB bmhbKs"
+          class="c0"
         >
           <div
-            class="sc-bdfBQB sc-jrAFXE bmhbKs ldFlnI"
+            class="c0 c5"
           >
             <div
-              class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+              class="c6 c7"
             >
               <span
-                class="sc-dQoVA dZpTnI"
+                class="c8"
               >
                 consensusSystem
               </span>
               <span
-                class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+                class="c8 c9"
               >
                 guilds.guild
               </span>
             </div>
             <div
-              class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+              class="c6 c7"
             >
               <span
-                class="sc-dQoVA dZpTnI"
+                class="c8"
               >
                 proposalDuration
               </span>
               <span
-                class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+                class="c8 c9"
               >
                 a few seconds
               </span>
             </div>
             <div
-              class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+              class="c6 c7"
             >
               <span
-                class="sc-dQoVA dZpTnI"
+                class="c8"
               >
                 quorum
               </span>
               <span
-                class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+                class="c8 c9"
               >
                 1%
               </span>
@@ -72,64 +159,151 @@ Object {
        
     </div>
   </body>,
-  "container": <div>
+  "container": .c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c3 strong,
+.c3 b {
+  font-weight: 600;
+}
+
+.c4 {
+  font-weight: 600;
+  margin: 0.5rem;
+  color: #fff;
+}
+
+.c5 {
+  padding: 1rem;
+  color: #fff;
+}
+
+.c7 {
+  margin-bottom: 0.8rem;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c7:last-child {
+  margin-bottom: 0;
+}
+
+.c8 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  line-height: 1.25;
+  color: #fff;
+}
+
+.c9 {
+  color: #BDC0C7;
+}
+
+<div>
      
     <div
-      class="sc-bdfBQB sc-eCstlR bmhbKs chDmvy"
+      class="c0 c1"
     >
       <div
-        class="sc-bdfBQB sc-jSgvzq bmhbKs iPIXsc"
+        class="c0 c2"
       >
         <h2
-          class="sc-iBPTik sc-fubCzh cBZYjx gMMEXo"
+          class="c3 c4"
         >
           information
         </h2>
       </div>
       <div
-        class="sc-bdfBQB bmhbKs"
+        class="c0"
       >
         <div
-          class="sc-bdfBQB sc-jrAFXE bmhbKs ldFlnI"
+          class="c0 c5"
         >
           <div
-            class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+            class="c6 c7"
           >
             <span
-              class="sc-dQoVA dZpTnI"
+              class="c8"
             >
               consensusSystem
             </span>
             <span
-              class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+              class="c8 c9"
             >
               guilds.guild
             </span>
           </div>
           <div
-            class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+            class="c6 c7"
           >
             <span
-              class="sc-dQoVA dZpTnI"
+              class="c8"
             >
               proposalDuration
             </span>
             <span
-              class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+              class="c8 c9"
             >
               a few seconds
             </span>
           </div>
           <div
-            class="sc-dlfnuX sc-crrszt ghjVNo gDaPjc"
+            class="c6 c7"
           >
             <span
-              class="sc-dQoVA dZpTnI"
+              class="c8"
             >
               quorum
             </span>
             <span
-              class="sc-dQoVA sc-bqyKOL dZpTnI gqFPfm"
+              class="c8 c9"
             >
               1%
             </span>

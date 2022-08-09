@@ -1,5 +1,3 @@
-import ProposalCardActionSummary from 'Components/ProposalCard/ProposalCardActionSummary';
-import ProposalCardVotes from 'Components/ProposalCard/ProposalCardVotes';
 import { ProposalCardProps } from 'Components/ProposalCard/types';
 import Avatar from 'old-components/Guilds/Avatar';
 import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
@@ -15,15 +13,15 @@ import {
   CardContent,
   CardTitle,
   CardFooter,
-} from 'Components/ProposalCard/ProposalCard.styled';
+} from 'Components/ProposalCard/styles';
+import ProposalCardWinningOption from './ProposalCardWinningOption/ProposalCardWinningOption';
 
 const ProposalCard: React.FC<ProposalCardProps> = ({
   proposal,
-  votes,
   ensAvatar,
   href,
   statusProps,
-  summaryActions,
+  options,
 }) => {
   return (
     <UnstyledLink to={href || '#'} data-testid="proposal-card">
@@ -56,8 +54,7 @@ const ProposalCard: React.FC<ProposalCardProps> = ({
           </CardTitle>
         </CardContent>
         <CardFooter>
-          <ProposalCardActionSummary actions={summaryActions} />
-          {votes && <ProposalCardVotes isLoading={!proposal} votes={votes} />}
+          {options && <ProposalCardWinningOption option={options[0]} />}
         </CardFooter>
       </CardWrapper>
     </UnstyledLink>

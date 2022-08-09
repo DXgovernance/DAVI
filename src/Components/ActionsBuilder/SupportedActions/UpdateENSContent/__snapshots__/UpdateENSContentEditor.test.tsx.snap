@@ -1,43 +1,197 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UpdateENSContentEditor Should match snapshot 1`] = `
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  -webkit-transform: translateY(2rem);
+  -ms-transform: translateY(2rem);
+  transform: translateY(2rem);
+  visibility: hidden;
+  position: absolute;
+  color: #fff;
+  background-color: #26282D;
+  border: 1px solid #303338;
+  padding: 8px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.c3 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c3 svg path {
+  fill: currentColor;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.75rem 0;
+  width: 100%;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-bottom: 0.75rem;
+  color: #A1A6B0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  height: 100%;
+}
+
+.c4:hover + .c5 {
+  visibility: visible;
+}
+
+.c4:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c10 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #303338;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c8 input {
+  color: #fff;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c8 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c8 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c8 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c8 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c8:hover {
+  outline: 1px solid #fff;
+}
+
+.c8:focus {
+  outline: 2px solid #fff;
+}
+
+.c9 {
+  margin-right: 0.3rem;
+}
+
+.c11 {
+  margin-left: 0.3rem;
+}
+
+@media only screen and (min-width:768px) {
+  .c6 {
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+    class="c0 c1"
   >
     <div
-      class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+      class="c0 c2"
     >
       ens.name
       <div
-        class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+        class="c3 c4"
       >
         <svg>
           info.svg
         </svg>
       </div>
       <div
-        class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+        class="c5 c0 c6"
       >
         ens.nameTooltip
       </div>
     </div>
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+      class="c0 c7"
     >
       <div
-        class="sc-iqHYmW jGasVK"
+        class="c8"
       >
         <div
-          class="sc-crrszt jWENVR"
+          class="c9"
         />
         <input
-          class="sc-kEjbQP hsweDF"
+          class="c10"
           value="test"
         />
         <div
-          class="sc-crrszt iYeIOC"
+          class="c11"
         />
       </div>
       <p>
@@ -46,43 +200,43 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+    class="c0 c7"
   >
     <div
-      class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+      class="c0 c1"
     >
       <div
-        class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+        class="c0 c2"
       >
         ens.ipfsHash
         <div
-          class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+          class="c3 c4"
         >
           <svg>
             info.svg
           </svg>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs KsLLM"
+          class="c5 c0 c6"
         >
           ens.ipfsHashToolTip
         </div>
       </div>
       <div
-        class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+        class="c0 c7"
       >
         <div
-          class="sc-iqHYmW jGasVK"
+          class="c8"
         >
           <div
-            class="sc-crrszt jWENVR"
+            class="c9"
           />
           <input
-            class="sc-kEjbQP hsweDF"
+            class="c10"
             value="Qm"
           />
           <div
-            class="sc-crrszt iYeIOC"
+            class="c11"
           />
         </div>
       </div>
