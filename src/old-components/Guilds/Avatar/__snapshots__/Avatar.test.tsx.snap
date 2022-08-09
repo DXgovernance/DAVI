@@ -61,11 +61,22 @@ exports[`Avatar Should render Jazzicon when no src is given 1`] = `
 `;
 
 exports[`Avatar Should render image when src is given 1`] = `
+.c0 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c1 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
 <div>
    
   <img
     alt="Avatar"
-    class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+    class="c0 c1"
     data-testid="avatar"
     size="24"
     src="/test/image.png"
@@ -78,7 +89,7 @@ exports[`Avatar Should render loader when no src or seed is given 1`] = `
 <div>
    
   <div
-    class="sc-bdfBQB"
+    class=""
   >
     <span
       aria-busy="true"

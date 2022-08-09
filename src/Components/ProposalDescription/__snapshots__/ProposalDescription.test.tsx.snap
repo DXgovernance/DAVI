@@ -1,10 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalDescription Should render an error 1`] = `
+.c0 {
+  margin: 1.5rem 0;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: justify;
+  color: #BDC0C7;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB kCzFam"
+    class="c0"
   >
     errorMessage.proposalDescriptionError
   </div>
@@ -13,13 +21,21 @@ exports[`ProposalDescription Should render an error 1`] = `
 `;
 
 exports[`ProposalDescription Should render loading if it has no metadata 1`] = `
+.c0 {
+  margin: 1.5rem 0;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: justify;
+  color: #BDC0C7;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB kCzFam"
+    class="c0"
   >
     <div
-      class="sc-gsTEea"
+      class=""
     >
       <span
         aria-busy="true"
@@ -40,10 +56,18 @@ exports[`ProposalDescription Should render loading if it has no metadata 1`] = `
 `;
 
 exports[`ProposalDescription Should render with description 1`] = `
+.c0 {
+  margin: 1.5rem 0;
+  line-height: 1.5;
+  font-size: 16px;
+  text-align: justify;
+  color: #BDC0C7;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB kCzFam"
+    class="c0"
   >
     <span>
       This is the description of the proposal

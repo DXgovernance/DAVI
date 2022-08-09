@@ -1,13 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RepMintSummary Should match snapshot 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -15,7 +56,7 @@ exports[`RepMintSummary Should match snapshot 1`] = `
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -23,7 +64,7 @@ exports[`RepMintSummary Should match snapshot 1`] = `
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -48,18 +89,18 @@ exports[`RepMintSummary Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>
@@ -68,13 +109,54 @@ exports[`RepMintSummary Should match snapshot 1`] = `
 `;
 
 exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -82,7 +164,7 @@ exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -90,7 +172,7 @@ exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -115,18 +197,18 @@ exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>
@@ -135,13 +217,54 @@ exports[`RepMintSummary Should match snapshot in compact mode 1`] = `
 `;
 
 exports[`RepMintSummary Should match snapshot with default values 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -149,7 +272,7 @@ exports[`RepMintSummary Should match snapshot with default values 1`] = `
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -157,7 +280,7 @@ exports[`RepMintSummary Should match snapshot with default values 1`] = `
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -182,18 +305,18 @@ exports[`RepMintSummary Should match snapshot with default values 1`] = `
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>
@@ -202,13 +325,54 @@ exports[`RepMintSummary Should match snapshot with default values 1`] = `
 `;
 
 exports[`RepMintSummary Should match snapshot with default values in compact mode 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -216,7 +380,7 @@ exports[`RepMintSummary Should match snapshot with default values in compact mod
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -224,7 +388,7 @@ exports[`RepMintSummary Should match snapshot with default values in compact mod
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -249,18 +413,18 @@ exports[`RepMintSummary Should match snapshot with default values in compact mod
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>
@@ -269,13 +433,54 @@ exports[`RepMintSummary Should match snapshot with default values in compact mod
 `;
 
 exports[`RepMintSummary Should match snapshot without data 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -283,7 +488,7 @@ exports[`RepMintSummary Should match snapshot without data 1`] = `
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -291,7 +496,7 @@ exports[`RepMintSummary Should match snapshot without data 1`] = `
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -316,18 +521,18 @@ exports[`RepMintSummary Should match snapshot without data 1`] = `
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>
@@ -336,13 +541,54 @@ exports[`RepMintSummary Should match snapshot without data 1`] = `
 `;
 
 exports[`RepMintSummary Should match snapshot without data in compact mode 1`] = `
+.c3 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c4 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  margin: 0 8px;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c1 svg path {
+  fill: currentColor;
+}
+
+.c2 {
+  margin: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <div
-      class="sc-kEjbQP ekqecE sc-fodVek dMXmBP"
+      class="c1 c2"
     >
       <svg>
         mint.svg
@@ -350,7 +596,7 @@ exports[`RepMintSummary Should match snapshot without data in compact mode 1`] =
     </div>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     mint
      
@@ -358,7 +604,7 @@ exports[`RepMintSummary Should match snapshot without data in compact mode 1`] =
      %
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <svg
       fill="none"
@@ -383,18 +629,18 @@ exports[`RepMintSummary Should match snapshot without data in compact mode 1`] =
     </svg>
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl bmPvYM"
+      class="c3 c4"
       data-testid="avatar"
       size="24"
       src="test"
     />
   </span>
   <span
-    class="sc-gKseQn lnpFdR"
+    class="c0"
   >
     test.eth
   </span>

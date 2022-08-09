@@ -1,45 +1,380 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalVoteCard matches the snapshot 1`] = `
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c3 strong,
+.c3 b {
+  font-weight: 600;
+}
+
+.c4 {
+  font-weight: 600;
+  margin: 0.5rem;
+  color: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c8 {
+  padding: 1rem;
+  color: #fff;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 10px 0px 40px 0px;
+  width: 100%;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 0.75rem;
+  border-radius: 32px;
+  background-color: #303338;
+  overflow: hidden;
+}
+
+.c17 {
+  width: 10%;
+  background: #E75C5C;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c18 {
+  width: 10%;
+  background: #295FF4;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c20 {
+  height: 18px;
+  margin-top: 10px;
+  width: 1px;
+  background: #303338;
+}
+
+.c21 {
+  padding: 4px 8px;
+  border: 1px solid #303338;
+  border-radius: 0px 32px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c21 span {
+  margin-left: 2px;
+}
+
+.c19 {
+  width: 65px;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  left: 0%;
+}
+
+.c22 {
+  margin-right: 0.4rem;
+}
+
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c6:disabled {
+  color: #303338;
+}
+
+.c27 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c27:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c27:hover:enabled {
+  border-color: #fff;
+}
+
+.c27:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c13 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #295FF4;
+  border-radius: 50%;
+}
+
+.c14 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #E75C5C;
+  border-radius: 50%;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 5px 0px 5px 0px;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c12 {
+  margin-right: 0.5rem;
+}
+
+.c23 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2.5rem;
+}
+
+.c7 {
+  margin: 0px;
+  padding: 0.1rem 0.4rem;
+  width: 60px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #fff;
+}
+
+.c24 {
+  color: #A1A6B0;
+  margin-bottom: 0.5rem;
+}
+
+.c25 {
+  height: 2.5rem;
+}
+
+.c25:disabled {
+  background-color: transparent;
+  border: 1px solid #303338;
+  color: #A1A6B0;
+  opacity: 1;
+}
+
+.c26 {
+  margin-bottom: 1rem;
+  background-color: #303338;
+}
+
+.c26:active {
+  color: #1B1D1F;
+  background-color: #fff;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB sc-eCstlR bmhbKs chDmvy"
+    class="c0 c1"
   >
     <div
-      class="sc-bdfBQB sc-jSgvzq bmhbKs iPIXsc"
+      class="c0 c2"
     >
       <h2
-        class="sc-iBPTik sc-fubCzh sc-pGacB cBZYjx gMMEXo lhAFpQ"
+        class="c3 c4 c5"
       >
         castVote
         <button
-          class="sc-bkzYnD sc-gkdBiK lhzXlq iXuUxa"
+          class="c6 c7"
         >
           DXD
         </button>
       </h2>
     </div>
     <div
-      class="sc-bdfBQB bmhbKs"
+      class="c0"
     >
       <div
-        class="sc-bdfBQB sc-jrAFXE bmhbKs ldFlnI"
+        class="c0 c8"
       >
         <div
-          class="sc-flMpop gMKFZD"
+          class="c9"
         >
           <div
-            class="sc-gVgoRu hfBvit"
+            class="c10"
           >
             <div
-              class="sc-fWPcWZ dsQQbg"
+              class="c11"
             >
               <span
-                class="sc-fHYyUA hTHcsE"
+                class="c12"
               >
                 <span
-                  class="sc-hjWSTT jIWOoP"
+                  class="c13"
                   color="#295FF4"
                   size="8"
                 />
@@ -51,16 +386,16 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="sc-gVgoRu hfBvit"
+            class="c10"
           >
             <div
-              class="sc-fWPcWZ dsQQbg"
+              class="c11"
             >
               <span
-                class="sc-fHYyUA hTHcsE"
+                class="c12"
               >
                 <span
-                  class="sc-hjWSTT fuZVQb"
+                  class="c14"
                   color="#E75C5C"
                   size="8"
                 />
@@ -72,31 +407,31 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
             </span>
           </div>
           <div
-            class="sc-crrszt gEfDPP"
+            class="c15"
           >
             <div
-              class="sc-dQoVA haSSSn"
+              class="c16"
             >
               <div
-                class="sc-bqyKOL gTKchv"
+                class="c17"
                 color="#E75C5C"
               />
               <div
-                class="sc-bqyKOL saMbf"
+                class="c18"
                 color="#295FF4"
               />
             </div>
             <div
-              class="sc-fodVek cPVZdq"
+              class="c19"
             >
               <div
-                class="sc-kstqJO gmTzOp"
+                class="c20"
               />
               <div
-                class="sc-hBEYId bYImjb"
+                class="c21"
               >
                 <svg
-                  class="sc-fFucqa fFWqdF"
+                  class="c22"
                   fill="currentColor"
                   height="1em"
                   stroke="currentColor"
@@ -120,25 +455,25 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          class="sc-gyUflj fGPIzg"
+          class="c23"
         >
           <div
-            class="sc-eWVLlQ kUBBFj"
+            class="c24"
           >
             options
           </div>
           <button
-            class="sc-bkzYnD sc-iGculD sc-irlQje lhzXlq dvUxIG kUkRgq"
+            class="c6 c25 c26"
           >
             No
           </button>
           <button
-            class="sc-bkzYnD sc-iGculD sc-irlQje lhzXlq dvUxIG kUkRgq"
+            class="c6 c25 c26"
           >
             Yes
           </button>
           <button
-            class="sc-bkzYnD sc-iGculD RyUSY dvUxIG"
+            class="c27 c25"
             disabled=""
           >
             vote
