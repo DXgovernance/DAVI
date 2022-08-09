@@ -78,6 +78,11 @@ exports[`GenericCallInfoLine Should match snapshot in compact mode 1`] = `
       />
     </svg>
   </span>
+  <span
+    class="sc-bdfBQB enldmJ"
+  >
+    increaseAllowance
+  </span>
    
 </div>
 `;
