@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useContext, useEffect, useMemo } from 'react';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
@@ -10,6 +11,9 @@ import { Heading } from 'old-components/Guilds/common/Typography';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
+import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
+import { useTypedParams } from '../Hooks/useTypedParams';
+import { Link } from 'react-router-dom';
 
 const ProposalsList = styled(Box)`
   margin-top: 1rem;
@@ -27,10 +31,16 @@ const StyledHeading = styled(Heading)`
   margin-bottom: 20px;
 `;
 
+const StyledLink = styled(Link)`
+  color: ${({ theme }) => theme.colors.text};
+`;
+
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { t } = useTranslation();
+  const { data: activeProposals } = useActiveProposalsNow(guildId);
+  const { chainName } = useTypedParams();
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -45,16 +55,22 @@ const Governance = ({ guildId }) => {
     onToggleState,
     searchQuery,
     setSearchQuery,
+    isStateSelected,
   } = useFilter();
+
   // Reset filters when page loads
   useEffect(() => {
     setSearchQuery('');
     onResetActionType();
     onResetCurrency();
     onResetState();
-    onToggleState('Active');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Show only 'Active' and 'Executable' proposals
+  useEffect(() => {
+    if (!isStateSelected('Active')) onToggleState('Active');
+    if (!isStateSelected('Executable')) onToggleState('Executable');
+  }, [onToggleState]);
 
   const revertedProposals = useMemo(() => {
     if (!proposalIds) return null;
@@ -62,6 +78,7 @@ const Governance = ({ guildId }) => {
     const clone = [...proposalIds];
     // Show latest proposals first
     return clone.reverse();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [proposalIds]);
 
   if (!isLoading && !proposalIds && error) {
@@ -86,6 +103,15 @@ const Governance = ({ guildId }) => {
       />
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
+
+        {activeProposals && activeProposals._hex === '0x00' && (
+          <div>
+            There are no active proposals.{' '}
+            <StyledLink to={`/${chainName}/${guildId}/allproposals`}>
+              Go to all proposals page.
+            </StyledLink>
+          </div>
+        )}
 
         {proposalIds ? (
           <ProposalListWrapper>
