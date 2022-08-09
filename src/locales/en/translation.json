@@ -205,7 +205,7 @@
   "invalidAddress": "Invalid Address",
   "addressIsRequired": "Address is required",
   "forum": {
-    "createPost": "Create Post",
+    "createDiscussion": "Create Discussion",
     "discussionPlaceholder": "Write discussion content"
   }
 }

@@ -19,7 +19,7 @@ import {
   Label,
 } from '../styles';
 import { Orbis } from '@orbisclub/orbis-sdk';
-import { connect, createPost, postTemplate } from 'Components/Forum';
+import { connect, isConnected, createPost, postTemplate } from 'Components/Forum';
 import { Post } from 'Components/Forum/types';
 
 const CreateDiscussionPage: React.FC = () => {
@@ -37,7 +37,7 @@ const CreateDiscussionPage: React.FC = () => {
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    orbis.current.isConnected().then(res => {
+    isConnected(orbis.current).then(res => {
       if (res) {
         console.log('Already connected with: ', res.did);
       } else {

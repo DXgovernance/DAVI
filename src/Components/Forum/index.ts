@@ -1,2 +1,2 @@
 export { createPost, postTemplate } from './post';
-export { connect } from './config';
+export { connect, isConnected } from './config';
