@@ -57,6 +57,7 @@
   "mint": "Mint",
   "toAddress": "To Address",
   "anyAddress": "Any Address",
+  "anyToken": "any token",
   "maxValue": "Max Value",
   "functionName": "Function Name",
   "functionSignature": "Function Signature",
@@ -64,6 +65,7 @@
   "functionCall": "Function Call",
   "functionCalls": "Function Calls",
   "permission": "Permission",
+  "setPermissionsFor": "Set permissions for",
   "unknownAction": "Unknown Action",
   "default": "Default",
   "edit": "Edit",
@@ -207,5 +209,7 @@
   "forum": {
     "createDiscussion": "Create Discussion",
     "discussionPlaceholder": "Write discussion content"
-  }
+  },
+  "none": "None",
+  "expandLinesOfCode": "Expand {{numLines}} lines of code"
 }

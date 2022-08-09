@@ -1,19 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VoteResults matches the snapshot 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #295FF4;
+  border-radius: 50%;
+}
+
+.c4 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #E75C5C;
+  border-radius: 50%;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 5px 0px 5px 0px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2 {
+  margin-right: 0.5rem;
+}
+
 <div>
    
   <div
-    class="sc-hKgJUU gzopFx"
+    class="c0"
   >
     <div
-      class="sc-eCstlR docZJE"
+      class="c1"
     >
       <span
-        class="sc-jSgvzq bRdqMh"
+        class="c2"
       >
         <span
-          class="sc-bdfBQB ewSfwU"
+          class="c3"
           color="#295FF4"
           size="8"
         />
@@ -25,16 +76,16 @@ exports[`VoteResults matches the snapshot 1`] = `
     </span>
   </div>
   <div
-    class="sc-hKgJUU gzopFx"
+    class="c0"
   >
     <div
-      class="sc-eCstlR docZJE"
+      class="c1"
     >
       <span
-        class="sc-jSgvzq bRdqMh"
+        class="c2"
       >
         <span
-          class="sc-bdfBQB fnYBCU"
+          class="c4"
           color="#E75C5C"
           size="8"
         />

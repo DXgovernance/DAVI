@@ -1,49 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalInfoCard Should render loading state 1`] = `
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.c6 {
+  color: #A1A6B0;
+}
+
+.c7 {
+  cursor: pointer;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid #A1A6B0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7:hover {
+  border-color: #fff;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  margin: 0;
+}
+
+.c4 {
+  padding: 1rem;
+  color: #fff;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB sc-iBPTik bmhbKs kWUlMg"
+    class="c0 c1"
   >
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs kmMbor"
+      class="c0 c2"
     >
       <div
-        class="sc-pGacB iUhNQX"
+        class="c3"
       >
         information
       </div>
     </div>
     <div
-      class="sc-bdfBQB bmhbKs"
+      class="c0"
     >
       <div
-        class="sc-bdfBQB sc-crrszt bmhbKs caXmQI"
+        class="c0 c4"
       >
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.consensusSystem
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             guilds.guild
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.proposalDuration
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             <div
-              class="sc-dQoVA"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -61,16 +138,16 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             quorum
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             <div
-              class="sc-dQoVA"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -88,13 +165,13 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.proposalHistory
           </span>
           <span
-            class="sc-gKseQn hghDMX"
+            class="c7"
           >
             <svg
               fill="none"
@@ -121,70 +198,147 @@ exports[`ProposalInfoCard Should render loading state 1`] = `
 `;
 
 exports[`ProposalInfoCard Should render will full parameters 1`] = `
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.c6 {
+  color: #A1A6B0;
+}
+
+.c7 {
+  cursor: pointer;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid #A1A6B0;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c7:hover {
+  border-color: #fff;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+  margin: 0;
+}
+
+.c4 {
+  padding: 1rem;
+  color: #fff;
+}
+
 <div>
    
   <div
-    class="sc-bdfBQB sc-iBPTik bmhbKs kWUlMg"
+    class="c0 c1"
   >
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs kmMbor"
+      class="c0 c2"
     >
       <div
-        class="sc-pGacB iUhNQX"
+        class="c3"
       >
         information
       </div>
     </div>
     <div
-      class="sc-bdfBQB bmhbKs"
+      class="c0"
     >
       <div
-        class="sc-bdfBQB sc-crrszt bmhbKs caXmQI"
+        class="c0 c4"
       >
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.consensusSystem
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             guilds.guild
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.proposalDuration
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             3 minutes
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             quorum
           </span>
           <span
-            class="sc-jSgvzq bJbUXH"
+            class="c6"
           >
             0.3%%
           </span>
         </div>
         <div
-          class="sc-bdfBQB sc-eCstlR bmhbKs gxtAwP"
+          class="c0 c5"
         >
           <span>
             proposalInfoCard.proposalHistory
           </span>
           <span
-            class="sc-gKseQn hghDMX"
+            class="c7"
           >
             <svg
               fill="none"

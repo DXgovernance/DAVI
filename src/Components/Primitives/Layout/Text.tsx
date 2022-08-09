@@ -30,7 +30,7 @@ export const ContainerText = styled(Flex)<ContainerTextProps>`
   font-family: Inter;
   margin: 4px;
   font-style: normal;
-  color: ${({ color }) => color}; || ${({ theme }) => theme.colors.text};
+  color: ${({ color, theme }) => color || theme.colors.text};
   ${({ variant }) => variantStyles(variant)}
 `;
 

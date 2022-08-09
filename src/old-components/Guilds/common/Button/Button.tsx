@@ -72,7 +72,7 @@ const variantStyles = (variant = 'primary') =>
       background-color: transparent;
       color: ${({ theme }) => theme.colors.text};
 
-      :hover: enabled {
+      :hover:enabled {
         color: ${({ theme }) => theme.colors.muted};
       }
     `,

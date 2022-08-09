@@ -1,23 +1,293 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter Should match snapshot 1`] = `
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c15 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.4rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c15:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c15:hover:enabled {
+  border-color: #fff;
+}
+
+.c15:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c15:disabled {
+  color: #303338;
+}
+
+.c7 svg,
+.c7 img {
+  margin-left: .2rem;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c10 {
+  display: none;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c5 {
+  position: relative;
+  width: 100%;
+}
+
+.c5 .c9 {
+  left: auto;
+  right: 0;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.c12 {
+  display: block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.c12:visited,
+.c12:active,
+.c12:link {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  decoration: none;
+  color: inherit;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  cursor: pointer;
+  color: #fff;
+}
+
+.c13:hover {
+  background-color: #f5f5f5;
+  color: #295FF4;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  color: #fff;
+}
+
+.c4 img,
+.c4 svg {
+  margin-left: 15px;
+}
+
+.c8 {
+  background-color: #1B1D1F;
+  color: #fff;
+  margin-right: 1rem;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c14 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 57%;
+}
+
+.c16 {
+  border-radius: 20px;
+  padding: 0.4rem;
+}
+
+@media only screen and (max-width:768px) {
+  .c10 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: none;
+    border: none;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c3 {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
 <div>
    
   <div
-    class="sc-gKseQn sc-dIUeWJ bA-duWg erOBoh"
+    class="c0 c1"
   >
     <div
-      class="sc-fubCzh sc-hHfuMS ilRGTJ fqMPiB"
+      class="c2 c3"
     >
       
       <div
-        class="sc-hBEYId cwbYiU"
+        class="c4"
       >
         <div
-          class="sc-gKseQn sc-crrszt bA-duWg fwTZRV"
+          class="c0 c5"
         >
           <button
-            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD bFQUlx ciMKAF kWpazI"
+            class="c6 c7 c8"
           >
             state
              
@@ -38,38 +308,38 @@ exports[`Filter Should match snapshot 1`] = `
             </svg>
           </button>
           <div
-            class="sc-gKseQn sc-iqHYmW bA-duWg hQhrAr"
+            class="c9 c0 c10"
           >
             
             <div
-              class="sc-gKseQn sc-dQoVA bA-duWg edjpWO"
+              class="c0 c11"
             >
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Active
                  
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Executable
                  
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Executed
                  
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Rejected
                  
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Failed
                  
@@ -78,10 +348,10 @@ exports[`Filter Should match snapshot 1`] = `
           </div>
         </div>
         <div
-          class="sc-gKseQn sc-crrszt bA-duWg fwTZRV"
+          class="c0 c5"
         >
           <button
-            class="sc-bdfBQB sc-gsTEea sc-jrAFXE sc-bkzYnD bFQUlx ciMKAF kWpazI"
+            class="c6 c7 c8"
           >
             actions_one
              
@@ -102,34 +372,34 @@ exports[`Filter Should match snapshot 1`] = `
             </svg>
           </button>
           <div
-            class="sc-gKseQn sc-iqHYmW bA-duWg hQhrAr"
+            class="c9 c0 c10"
           >
             
             <div
-              class="sc-gKseQn sc-dQoVA bA-duWg edjpWO"
+              class="c0 c11"
             >
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Erc20 Transfer
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Rep Mint
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Generic Call
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Set Permissions
               </a>
               <a
-                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+                class="c12 c13"
               >
                 Ens Update Content
               </a>
@@ -139,10 +409,10 @@ exports[`Filter Should match snapshot 1`] = `
         0
       </div>
       <div
-        class="sc-fubCzh sc-dmlqKv ilRGTJ gMUfUu"
+        class="c2 c14"
       >
         <button
-          class="sc-bdfBQB sc-gsTEea sc-kfzBvY ixlwBu elsKne bTCShG"
+          class="c15 c16"
         >
           <svg
             fill="currentColor"
@@ -157,12 +427,6 @@ exports[`Filter Should match snapshot 1`] = `
               d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"
             />
           </svg>
-        </button>
-        <button
-          class="sc-bdfBQB fuUPpr"
-          data-testid="create-proposal-button"
-        >
-          Create Discussion
         </button>
       </div>
     </div>

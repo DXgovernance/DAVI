@@ -11,6 +11,7 @@ import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
+import { getBigNumberPercentage } from 'utils/bnPercentage';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -127,6 +128,11 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             color: theme?.colors?.votes?.[index],
             actions,
             totalVotes: votingResults?.options[index],
+            votePercentage: getBigNumberPercentage(
+              votingResults?.options[index],
+              votingResults?.totalLocked,
+              2
+            ),
           };
         })
       );

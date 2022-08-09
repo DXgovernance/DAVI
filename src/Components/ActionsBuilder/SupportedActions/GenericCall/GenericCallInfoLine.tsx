@@ -57,7 +57,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
 
       {compact || !params ? (
         <>
-          {!!approveSpendTokens && (
+          {approveSpendTokens && (
             <>
               <Segment>
                 {approvalAmount} {tokenInfo?.symbol ?? ''}
@@ -65,9 +65,12 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
               <Segment>
                 <FiArrowRight />
               </Segment>
-              <Segment>{decodedCall?.function?.name}</Segment>
             </>
           )}
+          <Segment>
+            {decodedCall?.richFunctionData?.title ||
+              decodedCall?.function?.name}
+          </Segment>
         </>
       ) : (
         <>

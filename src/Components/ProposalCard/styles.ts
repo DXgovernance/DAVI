@@ -96,15 +96,6 @@ export const ActionsWrapper = styled(Box)`
   }
 `;
 
-export const BorderedIconDetailWrapper = styled(IconDetailWrapper)`
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
-  border-radius: 1rem;
-  padding: 0.25rem 0.8rem;
-  flex: none;
-  display: flex;
-  width: fit-content;
-`;
-
 export const NotFoundActionWrapper = styled.div`
   display: flex;
   padding: 4px;
