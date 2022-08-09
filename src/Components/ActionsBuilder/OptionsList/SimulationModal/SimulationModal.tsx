@@ -62,7 +62,7 @@ const SimulationStatusWrapper = ({ status }) => {
     case SimulationState.pending:
       return (
         <Flex>
-          <PendingCircle height="86px" width="86px" color={'white'} />
+          <PendingCircle height="86px" width="86px" color="white" />
           <Message>{t('simulations.verifyingActions')}</Message>
         </Flex>
       );

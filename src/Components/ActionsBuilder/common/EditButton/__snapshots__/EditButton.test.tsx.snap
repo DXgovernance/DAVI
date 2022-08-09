@@ -1,10 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddButton Should match snapshot 1`] = `
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c0:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c0:hover:enabled {
+  border-color: #fff;
+}
+
+.c0:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0:disabled {
+  color: #303338;
+}
+
+.c1 {
+  font-weight: 600;
+  font-size: 12px;
+  margin: 0;
+  padding: 0.25rem 0.75rem;
+}
+
 <div>
    
   <button
-    class="sc-bdfBQB sc-hKgJUU fuUPpr eGwtPz"
+    class="c0 c1"
   >
     Test
   </button>

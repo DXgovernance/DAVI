@@ -14,13 +14,6 @@ exports[`Simulation modal Should match 'error' status snapshot 1`] = `
 </div>
 `;
 
-exports[`Simulation modal Should match 'pending' status snapshot 1`] = `
-<div>
-   
-   
-</div>
-`;
-
 exports[`Simulation modal Should match 'someFailed' status snapshot 1`] = `
 <div>
    
