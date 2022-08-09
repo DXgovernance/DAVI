@@ -7,18 +7,16 @@ exports[`ERC20TransferInfoLine Should match snapshot 1`] = `
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>
@@ -81,18 +79,16 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>
@@ -155,18 +151,16 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values 1`] = `
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>
@@ -229,18 +223,16 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>
@@ -303,18 +295,16 @@ exports[`ERC20TransferInfoLine Should match snapshot without data 1`] = `
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>
@@ -377,18 +367,16 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
     class="sc-bdfBQB enldmJ"
   >
     <svg
-      fill="none"
+      fill="currentColor"
       height="16"
       stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      stroke-width="0"
       viewBox="0 0 24 24"
       width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <polygon
-        points="3 11 22 2 13 21 11 13 3 11"
+      <path
+        d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"
       />
     </svg>
   </span>

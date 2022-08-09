@@ -4,14 +4,14 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
 <div>
    
   <div
-    class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+    class="sc-bdfBQB sc-kEjbQP bmhbKs ljWSlq"
   >
     <div
-      class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+      class="sc-bdfBQB sc-iqHYmW bmhbKs bQiUav"
     >
       ens.name
       <div
-        class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+        class="sc-jSgvzq bkjAsA sc-dQoVA egvdBf"
       >
         <svg>
           info.svg
@@ -24,20 +24,20 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+      class="sc-bdfBQB sc-crrszt bmhbKs dNzdAx"
     >
       <div
-        class="sc-iqHYmW jGasVK"
+        class="sc-bkzYnD eJBhqZ"
       >
         <div
-          class="sc-crrszt jWENVR"
+          class="sc-idOiZg gPoEip"
         />
         <input
-          class="sc-kEjbQP hsweDF"
+          class="sc-fFucqa fxXGyc"
           value="test"
         />
         <div
-          class="sc-crrszt iYeIOC"
+          class="sc-idOiZg bTqJsC"
         />
       </div>
       <p>
@@ -46,17 +46,17 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
     </div>
   </div>
   <div
-    class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+    class="sc-bdfBQB sc-crrszt bmhbKs dNzdAx"
   >
     <div
-      class="sc-bdfBQB sc-gKseQn bmhbKs laHPJI"
+      class="sc-bdfBQB sc-kEjbQP bmhbKs ljWSlq"
     >
       <div
-        class="sc-bdfBQB sc-iBPTik bmhbKs imIHfx"
+        class="sc-bdfBQB sc-iqHYmW bmhbKs bQiUav"
       >
         ens.ipfsHash
         <div
-          class="sc-jSgvzq bkjAsA sc-pGacB qUkTN"
+          class="sc-jSgvzq bkjAsA sc-dQoVA egvdBf"
         >
           <svg>
             info.svg
@@ -69,20 +69,20 @@ exports[`UpdateENSContentEditor Should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-bdfBQB sc-fubCzh bmhbKs kJNOkj"
+        class="sc-bdfBQB sc-crrszt bmhbKs dNzdAx"
       >
         <div
-          class="sc-iqHYmW jGasVK"
+          class="sc-bkzYnD eJBhqZ"
         >
           <div
-            class="sc-crrszt jWENVR"
+            class="sc-idOiZg gPoEip"
           />
           <input
-            class="sc-kEjbQP hsweDF"
+            class="sc-fFucqa fxXGyc"
             value="Qm"
           />
           <div
-            class="sc-crrszt iYeIOC"
+            class="sc-idOiZg bTqJsC"
           />
         </div>
       </div>
