@@ -1,5 +1,6 @@
 import { BigNumber, utils } from 'ethers';
-import { ANY_ADDRESS, ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
+// import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS } from 'utils';
+// import { ANY_FUNC_SIGNATURE } from 'utils';
 import {
   DecodedAction,
   DecodedCall,
@@ -9,6 +10,7 @@ import {
 import ENSPublicResolver from 'abis/ENSPublicResolver.json';
 import ERC20ABI from 'abis/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
+// import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
 import ERC20TransferInfoLine from './ERC20Transfer/ERC20TransferInfoLine';
@@ -90,6 +92,7 @@ const ERC20Contract = new utils.Interface(ERC20ABI);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
+// const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 export const defaultValues: Record<SupportedAction, DecodedAction> = {
   [SupportedAction.ERC20_TRANSFER]: {
@@ -136,20 +139,25 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
   },
   [SupportedAction.SET_PERMISSIONS]: {
     id: '',
+    // contract: PermissionRegistryContract,
     contract: ERC20GuildContract,
     decodedCall: {
       from: '',
       callType: SupportedAction.SET_PERMISSIONS,
+      // function: PermissionRegistryContract.getFunction('setETHPermission'),
       function: ERC20GuildContract.getFunction('setPermission'),
       to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
       value: BigNumber.from(0),
-      functionName: '',
       args: {
-        asset: [ZERO_ADDRESS],
-        to: [ANY_ADDRESS],
-        functionSignature: [ANY_FUNC_SIGNATURE],
+        to: [''],
+        functionSignature: [''],
         valueAllowed: [BigNumber.from(0)],
         allowance: ['true'],
+      },
+      optionalProps: {
+        asset: '',
+        functionName: '',
+        tab: 0,
       },
     },
   },

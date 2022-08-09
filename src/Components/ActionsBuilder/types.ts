@@ -29,7 +29,7 @@ export interface DecodedCall {
   args: Record<string, any>;
   richData?: RichContractData;
   functionName?: string;
-  optionalProps?: Record<string, string>;
+  optionalProps?: Record<string, any>;
 }
 
 export interface DecodedAction {

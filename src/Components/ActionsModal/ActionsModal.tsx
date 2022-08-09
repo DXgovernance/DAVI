@@ -195,6 +195,9 @@ const ActionModal: React.FC<ActionModalProps> = ({
       case SupportedAction.REP_MINT:
         defaultDecodedAction.decodedCall.args.to = walletAddress;
         break;
+      case SupportedAction.SET_PERMISSIONS:
+        defaultDecodedAction.decodedCall.args.from = guildId;
+        break;
     }
     setData(defaultDecodedAction.decodedCall);
     setSelectedAction(action);

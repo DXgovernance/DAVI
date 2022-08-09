@@ -34,6 +34,7 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
     onChange(encodedOptions);
     setIsEditable(false);
   };
+  // console.log({ options, bulked: bulkEncodeCallsFromOptions(options) });
 
   return (
     <SidebarCard

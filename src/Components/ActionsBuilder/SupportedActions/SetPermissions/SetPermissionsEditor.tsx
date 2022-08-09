@@ -5,14 +5,17 @@ import { useNetwork } from 'wagmi';
 import { Controller, useForm } from 'react-hook-form';
 import { FiChevronDown } from 'react-icons/fi';
 
-import { ParsedDataInterface } from './types';
-import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS, MAX_UINT, ANY_ADDRESS } from 'utils';
+import { ParsedDataInterface, TABS } from './types';
+// import { ANY_FUNC_SIGNATURE, ZERO_ADDRESS, MAX_UINT, ANY_ADDRESS } from 'utils';
+import { ANY_FUNC_SIGNATURE, MAX_UINT } from 'utils';
+// import { ANY_FUNC_SIGNATURE } from 'utils';
 import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import validateSetPermissions from './validateSetPermissions';
-import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
-import Toggle from 'old-components/Guilds/common/Form/Toggle';
+// import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
+import { StyledTokenAmount } from './styles';
+// import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import {
   Control,
   ControlLabel,
@@ -29,23 +32,28 @@ import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
 import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
+import { DecodedCall } from 'Components/ActionsBuilder/types';
 
 const Web3 = require('web3');
 const web3 = new Web3();
-const TABS = {
-  ASSET_TRANSFER: 0,
-  FUNCTION_CALL: 1,
-};
-
+const TRANSFER_SIGNATURE = web3.eth.abi.encodeFunctionSignature(
+  'transfer(address,uint256)'
+);
+interface FormValues {
+  tokenAddress: string;
+  toAddress: string;
+  amount: BigNumber;
+  functionName: string;
+  functionSignature: string;
+}
 const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
   onSubmit,
 }) => {
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
-    const { functionName } = decodedCall;
-    const { asset, to, functionSignature, valueAllowed, allowance } =
-      decodedCall.args;
+    const { to, functionSignature, valueAllowed, allowance } = decodedCall.args;
+    const { asset, functionName, tab } = decodedCall.optionalProps;
 
     return {
       asset,
@@ -54,41 +62,41 @@ const Permissions: React.FC<ActionEditorProps> = ({
       valueAllowed,
       allowance,
       functionName,
+      tab,
     };
   }, [decodedCall]);
 
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState(
-    parsedData?.asset[0] === ZERO_ADDRESS
-      ? TABS.FUNCTION_CALL
-      : TABS.ASSET_TRANSFER
-  );
+
+  const [activeTab, setActiveTab] = useState(parsedData.tab);
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
-  const [maxValueToggled, setMaxValueToggled] = useState(false);
+  // const [maxValueToggled, setMaxValueToggled] = useState(false);
   const { chain } = useNetwork();
-  const [anyAddressToggled, setAnyAddressToggled] = useState(
-    parsedData?.to[0] === ANY_ADDRESS
-  );
+  // const [anyAddressToggled, setAnyAddressToggled] = useState(
+  //   parsedData?.to[0] === ANY_ADDRESS
+  // );
 
-  const [tempToAddress, setTempToAddress] = useState(parsedData?.to[0]);
-  const [tempAmount, setTempAmount] = useState<BigNumber>(
-    BigNumber.from(parsedData?.valueAllowed[0] || 0)
-  );
+  // const [tempToAddress, setTempToAddress] = useState(parsedData?.to[0]);
+  // const [tempAmount, setTempAmount] = useState<BigNumber>(
+  //   BigNumber.from(parsedData?.valueAllowed[0] || 0)
+  // );
 
-  const { control, handleSubmit, getValues, setValue, ...rest } = useForm({
+  // const { control, handleSubmit, getValues, setValue, trigger } = useForm({
+  const { control, handleSubmit, getValues, setValue } = useForm<FormValues>({
     resolver: validateSetPermissions,
-    context: { t, anyAddressToggled, activeTab },
+    // context: { t, anyAddressToggled, activeTab },
+    context: { t, activeTab },
     defaultValues: {
-      tokenAddress: parsedData.asset[0],
+      tokenAddress: parsedData.asset,
       toAddress: parsedData.to[0],
       amount: parsedData?.valueAllowed[0],
       functionName: parsedData.functionName,
-      functionSignature: parsedData.functionSignature,
+      functionSignature: parsedData.functionSignature[0],
     },
   });
 
-  const { tokenAddress, functionSignature } = getValues();
+  const { tokenAddress } = getValues();
 
   // Get token details from the token address
   const { tokens } = useTokenList(chain?.id);
@@ -102,15 +110,18 @@ const Permissions: React.FC<ActionEditorProps> = ({
   // function signature
   const updateFunctionSignature = (value: string) => {
     if (!value || value === '')
-      return setValue('functionSignature', [ANY_FUNC_SIGNATURE]);
+      // return setValue('functionSignature', [ANY_FUNC_SIGNATURE]);
+      return setValue('functionSignature', ANY_FUNC_SIGNATURE);
 
     // If the value already is encoded
     if (value.substring(0, 2) === '0x')
-      return setValue('functionSignature', [value]);
+      // return setValue('functionSignature', [value]);
+      return setValue('functionSignature', value);
 
     // if the value is the name of the function
     const functionSignature = web3.eth.abi.encodeFunctionSignature(value);
-    return setValue('functionSignature', [functionSignature]);
+    // return setValue('functionSignature', [functionSignature]);
+    return setValue('functionSignature', functionSignature);
   };
 
   const handleFunctionNameChange = (value: string) => {
@@ -118,47 +129,96 @@ const Permissions: React.FC<ActionEditorProps> = ({
     updateFunctionSignature(value);
   };
 
-  const bigNumberMaxUINT = BigNumber.from(MAX_UINT);
-  const handleToggleMaxValueChange = () => {
-    // toggle on
-    if (!maxValueToggled) setValue('amount', bigNumberMaxUINT);
-    // toggle off
-    if (maxValueToggled) setValue('amount', BigNumber.from(tempAmount));
-    setMaxValueToggled(!maxValueToggled);
-  };
+  // const handleToggleMaxValueChange = () => {
+  //   // toggle on
+  //   if (!maxValueToggled) setValue('amount', bigNumberMaxUINT);
+  //   // toggle off
+  //   if (maxValueToggled) setValue('amount', BigNumber.from(tempAmount));
+  //   setMaxValueToggled(!maxValueToggled);
+  // };
 
-  const handleToggleAnyAddressChange = () => {
-    // toggle on
-    if (!anyAddressToggled) {
-      setValue('toAddress', ANY_ADDRESS);
-    }
-    // toggle off
-    else {
-      setValue('toAddress', tempToAddress);
-    }
-    setAnyAddressToggled(!anyAddressToggled);
-    rest.trigger('toAddress');
-  };
+  // const handleToggleAnyAddressChange = () => {
+  //   // toggle on
+  //   if (!anyAddressToggled) {
+  //     setValue('toAddress', ANY_ADDRESS);
+  //   }
+  //   // toggle off
+  //   else {
+  //     setValue('toAddress', tempToAddress);
+  //   }
+  //   setAnyAddressToggled(!anyAddressToggled);
+  //   rest.trigger('toAddress');
+  // };
 
   const submitAction = values => {
-    const newcall = {
-      ...decodedCall,
-      ...(activeTab === TABS.FUNCTION_CALL && {
-        functionName: values.functionName,
-      }), // Spread only if is functionCall tab
-      args: {
-        ...decodedCall.args,
-        ...(activeTab === TABS.ASSET_TRANSFER && {
-          asset: [values.tokenAddress],
-        }), // Spread only if is assetTransfer tab
-        ...(activeTab === TABS.FUNCTION_CALL && {
+    // console.log(values);
+    // return;
+    const bigNumberMaxUINT = BigNumber.from(MAX_UINT);
+    // console.log({ bigNumberMaxUINT });
+    // const newCall = {
+    //   ...decodedCall,
+    //   ...(activeTab === TABS.FUNCTION_CALL && {
+    //     functionName: values.functionName,
+    //   }), // Spread only if is functionCall tab
+
+    //   args: {
+    //     ...decodedCall.args,
+    //     ...(activeTab === TABS.ASSET_TRANSFER && {
+    //       asset: [values.tokenAddress],
+    //     }), // Spread only if is assetTransfer tab
+
+    //     functionSignature: [
+    //       activeTab === TABS.FUNCTION_CALL
+    //         ? values.functionSignature
+    //         : TRANSFER_SIGNATURE,
+    //     ],
+
+    //     // set bigNumberMaxUINT for assetTransfer tab by default
+    //     valueAllowed: [
+    //       activeTab === TABS.ASSET_TRANSFER ? bigNumberMaxUINT : values.amount,
+    //     ],
+    //     to: [
+    //       activeTab === TABS.ASSET_TRANSFER
+    //         ? values.tokenAddress // set "to" field to the token address if is asset transfer
+    //         : values.toAddress,
+    //     ],
+    //   },
+    // };
+
+    let newCall: DecodedCall;
+    if (activeTab === TABS.FUNCTION_CALL) {
+      newCall = {
+        ...decodedCall,
+        args: {
+          ...decodedCall.args,
           functionSignature: [values.functionSignature],
-        }), // Spread only if is functionCall tab
-        valueAllowed: [values.amount],
-        to: [values.toAddress],
-      },
-    };
-    onSubmit(newcall);
+          valueAllowed: [values.amount],
+          to: [values.toAddress],
+          // missing from?
+        },
+        optionalProps: {
+          functionName: values.functionName,
+          tab: TABS.FUNCTION_CALL,
+        },
+      };
+    } else {
+      newCall = {
+        ...decodedCall,
+        args: {
+          ...decodedCall.args,
+          functionSignature: [TRANSFER_SIGNATURE],
+          valueAllowed: [bigNumberMaxUINT],
+          to: [values.tokenAddress],
+          // missing from?
+        },
+        optionalProps: {
+          asset: values.tokenAddress,
+          tab: TABS.ASSET_TRANSFER,
+        },
+      };
+    }
+
+    onSubmit(newCall);
   };
 
   const tabArray = [
@@ -173,19 +233,33 @@ const Permissions: React.FC<ActionEditorProps> = ({
   ];
 
   const handleTabChange = (id: number) => {
+    const initTab = id === Number(parsedData.tab);
     // reset values
-    setValue('toAddress', parsedData.to[0]);
-    setValue('amount', BigNumber.from(parsedData?.valueAllowed[0] || 0));
-    setValue('functionName', parsedData.functionName);
-    setValue('tokenAddress', parsedData.asset[0]);
-    setValue('functionSignature', parsedData.functionSignature);
-    setTempToAddress(parsedData.to[0]);
-    setTempAmount(BigNumber.from(parsedData?.valueAllowed[0] || 0));
-    setMaxValueToggled(false);
-    setAnyAddressToggled(parsedData?.to[0] === ANY_ADDRESS);
+    setValue('toAddress', initTab ? parsedData.to[0] : '');
+    // setValue(
+    //   'amount',
+    //   BigNumber.from(
+    //     id === TABS.FUNCTION_CALL ? 0 : parsedData?.valueAllowed[0] || 0
+    //   )
+    // );
+    setValue(
+      'amount',
+      BigNumber.from(initTab ? parsedData?.valueAllowed[0] : 0)
+    );
+    setValue('functionName', initTab ? parsedData.functionName : '');
+    setValue('tokenAddress', initTab ? parsedData.asset : '');
+    setValue(
+      'functionSignature',
+      initTab ? parsedData.functionSignature[0] : ''
+    );
+    // setTempToAddress(parsedData.to[0]);
+    // setTempAmount(BigNumber.from(parsedData?.valueAllowed[0] || 0));
+    // setMaxValueToggled(false);
+    // setAnyAddressToggled(parsedData?.to[0] === ANY_ADDRESS);
 
     // change tab id
     setActiveTab(id);
+    // trigger('amount');
   };
 
   return (
@@ -250,54 +324,56 @@ const Permissions: React.FC<ActionEditorProps> = ({
             }}
           />
         )}
-        <Controller
-          name="toAddress"
-          control={control}
-          render={({ field: { ref, ...field }, fieldState }) => {
-            const { invalid, error } = fieldState;
+        {activeTab === TABS.FUNCTION_CALL && (
+          <Controller
+            name="toAddress"
+            control={control}
+            render={({ field: { ref, ...field }, fieldState }) => {
+              const { invalid, error } = fieldState;
 
-            return (
-              <>
-                <Control>
-                  <ControlLabel>{t('toAddress')}</ControlLabel>
-                  <ControlRow>
-                    <AddressInput
-                      {...field}
-                      onChange={value => {
-                        field.onChange(value);
-                        value !== ANY_ADDRESS && setTempToAddress(value); // Avoid changing input value when toggle has been clicked
-                      }}
-                      isInvalid={invalid && !!error}
-                      name="to-address"
-                      aria-label="to address input"
-                      disabled={anyAddressToggled}
-                      placeholder={t('ethereumAddress')}
-                    />
-                    <ToggleWrapper>
+              return (
+                <>
+                  <Control>
+                    <ControlLabel>{t('toAddress')}</ControlLabel>
+                    <ControlRow>
+                      <AddressInput
+                        {...field}
+                        onChange={value => {
+                          field.onChange(value);
+                          // value !== ANY_ADDRESS && setTempToAddress(value); // Avoid changing input value when toggle has been clicked
+                        }}
+                        isInvalid={invalid && !!error}
+                        name="to-address"
+                        aria-label="to address input"
+                        // disabled={anyAddressToggled}
+                        placeholder={t('ethereumAddress')}
+                      />
+                      {/* <ToggleWrapper>
                       <Toggle
                         name="toggle-any-address"
                         aria-label="toggle any address"
-                        value={anyAddressToggled}
-                        onChange={handleToggleAnyAddressChange}
+                        // value={anyAddressToggled}
+                        // onChange={handleToggleAnyAddressChange}
                       />
                       <ToggleLabel selected={anyAddressToggled}>
                         {t('anyAddress')}
                       </ToggleLabel>
-                    </ToggleWrapper>
-                  </ControlRow>
-                </Control>
-                {invalid && !!error && <Error>{error}</Error>}
-              </>
-            );
-          }}
-        />
+                    </ToggleWrapper> */}
+                    </ControlRow>
+                  </Control>
+                  {invalid && !!error && <Error>{error}</Error>}
+                </>
+              );
+            }}
+          />
+        )}
         {activeTab === TABS.FUNCTION_CALL && (
           <Controller
             name="functionName"
             control={control}
-            render={({ field: { ref, ...field }, fieldState, ...rest }) => {
+            render={({ field: { ref, ...field }, fieldState }) => {
               const { invalid, error } = fieldState;
-
+              const { functionSignature } = getValues();
               return (
                 <>
                   <Control>
@@ -313,7 +389,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       />
                     </ControlRow>
                     <ControlRow>
-                      {field.value.substring(0, 2) !== '0x' && (
+                      {/* {field?.value?.substring(0, 2) !== '0x' && ( */}
+                      {!!functionSignature && (
                         <FunctionSignatureWrapper>
                           {t('functionSignature')}: {functionSignature}
                         </FunctionSignatureWrapper>
@@ -342,16 +419,18 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       onChange={value => {
                         const newValue = BigNumber.from(value || '0');
                         field.onChange(newValue);
-                        !newValue.eq(bigNumberMaxUINT) &&
-                          setTempAmount(newValue); // Avoid setting max value when toggleMaxamount is on.
+                        // !newValue.eq(bigNumberMaxUINT) &&
+                        //   setTempAmount(newValue); // Avoid setting max value when toggleMaxamount is on.
                       }}
                       aria-label="amount input"
                       decimals={token?.decimals}
-                      value={BigNumber.from(field.value || 0)}
-                      disabled={maxValueToggled}
+                      value={BigNumber.from(
+                        activeTab === TABS.ASSET_TRANSFER ? 0 : field.value || 0
+                      )}
+                      disabled={activeTab === TABS.ASSET_TRANSFER}
                       isInvalid={invalid && !!error}
                     />
-                    <ToggleWrapper>
+                    {/* <ToggleWrapper>
                       <Toggle
                         name="toggle-max-value"
                         aria-label="toggle max value"
@@ -361,7 +440,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       <ToggleLabel selected={maxValueToggled}>
                         {t('maxValue')}
                       </ToggleLabel>
-                    </ToggleWrapper>
+                    </ToggleWrapper> */}
                   </ControlRow>
                 </Control>
                 {invalid && !!error && <Error>{error}</Error>}
@@ -379,3 +458,53 @@ const Permissions: React.FC<ActionEditorProps> = ({
 };
 
 export default Permissions;
+
+/**
+ * 
+ * For assets tab: 
+ * 1.  we should make the default be max amount 
+ * 2. disable the toggle max button for now. 
+ * 3 remove the "to address" input field. 
+ * 4. set "to" value to the token address.
+ * 5. hardcode function signature to "transfer(address,uint256)" (encoded)
+
+For function call: 
+1.  we should remove "Any address" from the "to" input. 
+2. Then the default behaviour for value should be set to 0 and have "Max value" disabled.
+3. si queremos el toAddres pero sin el toggle. por default siempre tienen que escribi el addres. 
+4 queremos poder editar el amount value. sin el toggle
+
+
+
+
+asset: dejarlo
+
+toAddress: 
+- assettransfer: no mostrarlo
+- functioncall: mostrarlo sin el toggle. Siempre tienen que poner a mano
+
+amount: 
+- assettransfer: Siempre es maxValue. No mostrar el toggle y no mostrar innecesariamente el valor. Remover el toggle
+- functioncall: Hay que poder editar el valor. Sin el toggle.
+
+
+
+
+Cambios hechos: 
+- En asset transfer: 
+  - Solo se muestra el token picker y el amount input está deshabilitado. El valor es siempre MAX_AMOUNT
+  - El "to" es addres del token
+  - FunctionSignature es siempre transfer(address,uint256)" encodeada
+
+
+- En function call: 
+  - toAddress hay que setearlo manualmente, sin toggle any addres
+  - Lo mismo con fucntion name
+  - Lo mismo con amount. 
+
+Preguntas: 
+
+
+3. En los default values para las supported actions. Debería cambiar "function: ERC20GuildContract.getFunction('setPermission')," por ('setETHPermission')?
+
+ */
