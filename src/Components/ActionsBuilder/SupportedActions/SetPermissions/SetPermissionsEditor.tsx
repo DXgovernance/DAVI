@@ -124,7 +124,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
         functionSignature: isAssetTransferCall
           ? TRANSFER_SIGNATURE
           : values.functionSignature,
-
         // "from" field set by default previously as guild id
       },
       optionalProps: {
@@ -133,7 +132,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
         tab: activeTab,
       },
     };
-    console.log(newCall);
     onSubmit(newCall);
   };
 
@@ -237,9 +235,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
                     <ControlRow>
                       <AddressInput
                         {...field}
-                        // onChange={value => {
-                        //   field.onChange(value);
-                        // }}
                         isInvalid={invalid && !!error}
                         name="to-address"
                         aria-label="to address input"
@@ -330,53 +325,3 @@ const Permissions: React.FC<ActionEditorProps> = ({
 };
 
 export default Permissions;
-
-/**
- * 
- * For assets tab: 
- * 1.  we should make the default be max amount 
- * 2. disable the toggle max button for now. 
- * 3 remove the "to address" input field. 
- * 4. set "to" value to the token address.
- * 5. hardcode function signature to "transfer(address,uint256)" (encoded)
-
-For function call: 
-1.  we should remove "Any address" from the "to" input. 
-2. Then the default behaviour for value should be set to 0 and have "Max value" disabled.
-3. si queremos el toAddres pero sin el toggle. por default siempre tienen que escribi el addres. 
-4 queremos poder editar el amount value. sin el toggle
-
-
-
-
-asset: dejarlo
-
-toAddress: 
-- assettransfer: no mostrarlo
-- functioncall: mostrarlo sin el toggle. Siempre tienen que poner a mano
-
-amount: 
-- assettransfer: Siempre es maxValue. No mostrar el toggle y no mostrar innecesariamente el valor. Remover el toggle
-- functioncall: Hay que poder editar el valor. Sin el toggle.
-
-
-
-
-Cambios hechos: 
-- En asset transfer: 
-  - Solo se muestra el token picker y el amount input está deshabilitado. El valor es siempre MAX_AMOUNT
-  - El "to" es addres del token
-  - FunctionSignature es siempre transfer(address,uint256)" encodeada
-
-
-- En function call: 
-  - toAddress hay que setearlo manualmente, sin toggle any addres
-  - Lo mismo con fucntion name
-  - Lo mismo con amount. 
-
-Preguntas: 
-
-
-3. En los default values para las supported actions. Debería cambiar "function: ERC20GuildContract.getFunction('setPermission')," por ('setETHPermission')?
-
- */

@@ -4,7 +4,6 @@ import {
   useRichContractRegistry,
 } from './useRichContractRegistry';
 import ERC20ABI from 'abis/ERC20.json';
-// import ERC20Guild from 'contracts/ERC20Guild.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import {
   Call,
