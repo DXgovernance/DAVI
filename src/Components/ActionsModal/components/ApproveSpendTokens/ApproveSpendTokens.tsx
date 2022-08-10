@@ -113,8 +113,8 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
         <TokenPicker
           isOpen={isTokenPickerOpen}
           onClose={() => setIsTokenPickerOpen(false)}
-          onSelect={tokenAddress => {
-            setToken(tokenAddress);
+          onSelect={token => {
+            setToken(token.address);
             setIsTokenPickerOpen(false);
           }}
         />

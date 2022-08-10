@@ -207,8 +207,9 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     walletAddress={parsedData.source || ''}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
-                    onSelect={tokenAddress => {
-                      field.onChange(tokenAddress);
+                    showNativeToken={true}
+                    onSelect={token => {
+                      field.onChange(token.address);
                       setIsTokenPickerOpen(false);
                     }}
                   />
