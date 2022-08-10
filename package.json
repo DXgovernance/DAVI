@@ -125,7 +125,7 @@
     "@storybook/addon-interactions": "^6.4.22",
     "@storybook/addon-links": "^6.4.22",
     "@storybook/node-logger": "^6.4.22",
-    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.4.22",
     "@storybook/testing-library": "^0.0.11",
     "@synthetixio/synpress": "^1.2.0",
