@@ -149,7 +149,7 @@ const CreateDiscussionPage: React.FC = () => {
               handleCreateDiscussion({
                 title,
                 body: discussionBodyMd,
-                context: '',
+                context: guildId,
                 master: '',
                 replyTo: '',
                 mentions: [],
