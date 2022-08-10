@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { FiChevronDown } from 'react-icons/fi';
 
 import { ParsedDataInterface, TABS } from './types';
-import { ANY_FUNC_SIGNATURE, MAX_UINT } from 'utils';
+import { ANY_FUNC_SIGNATURE, MAX_UINT, ERC20_TRANSFER_SIGNATURE } from 'utils';
 import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -32,9 +32,7 @@ import { DecodedCall } from 'Components/ActionsBuilder/types';
 
 const Web3 = require('web3');
 const web3 = new Web3();
-const TRANSFER_SIGNATURE = web3.eth.abi.encodeFunctionSignature(
-  'transfer(address,uint256)'
-);
+
 interface FormValues {
   tokenAddress: string;
   toAddress: string;
@@ -122,7 +120,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
         to: isAssetTransferCall ? values.tokenAddress : values.toAddress,
         valueAllowed: isAssetTransferCall ? bigNumberMaxUINT : values.amount,
         functionSignature: isAssetTransferCall
-          ? TRANSFER_SIGNATURE
+          ? ERC20_TRANSFER_SIGNATURE
           : values.functionSignature,
         // "from" field set by default previously as guild id
       },

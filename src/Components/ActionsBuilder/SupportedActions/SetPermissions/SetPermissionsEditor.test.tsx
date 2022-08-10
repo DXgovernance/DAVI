@@ -5,7 +5,7 @@ import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import { BigNumber, utils } from 'ethers';
-import { ANY_FUNC_SIGNATURE, ANY_ADDRESS, MAX_UINT } from 'utils';
+import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
 import { mockChain } from 'Components/Web3Modals/fixtures';
 
@@ -83,7 +83,7 @@ const completeDecodedCallMock: DecodedCall = {
 describe(`Set Permissions editor`, () => {
   describe(`Asset transfer tests`, () => {
     beforeAll(() => {});
-    it.skip(`Default view renders asset transfer`, () => {
+    it(`Default view renders asset transfer`, () => {
       render(
         <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
       );
@@ -93,23 +93,16 @@ describe(`Set Permissions editor`, () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.getByRole('textbox', { name: /to address input/i })
-      ).toBeInTheDocument();
-
-      expect(screen.getByRole('switch', { name: /toggle any address/i }));
-
-      expect(
         screen.getByRole('textbox', { name: /amount input/i })
-      ).toBeInTheDocument();
-
-      expect(
-        screen.getByRole('switch', { name: /toggle max value/i })
       ).toBeInTheDocument();
     });
 
-    it.skip(`Can fill 'To address' and 'custom amount'`, () => {
+    it(`Can fill 'To address' and 'custom amount'`, () => {
       render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
       );
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
         name: /to address input/i,
@@ -127,19 +120,16 @@ describe(`Set Permissions editor`, () => {
       });
 
       expect(toAddressElement.value).toBe(toAddressMock);
-      expect(customAmountElement.value).toBe('111.0');
+      expect(customAmountElement.value).toBe(String(customAmountMock));
     });
 
-    it.skip(`Clicking the X clears the to address`, () => {
+    it(`Clicking the X clears the to address`, () => {
       render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
       );
-
-      const addressToggle = screen.getByRole('switch', {
-        name: /toggle any address/i,
-      });
-      fireEvent.click(addressToggle);
-
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
         name: /to address input/i,
       });
@@ -169,53 +159,6 @@ describe(`Set Permissions editor`, () => {
 
       expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
       expect(amountInputElement.value).toBe('111.0');
-    });
-
-    it.skip(`Toggling max amount disables the 'amount' input`, () => {
-      render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
-      );
-
-      const amountInput: HTMLInputElement = screen.getByRole('textbox', {
-        name: /amount input/i,
-      });
-      const toggleMaxValueElement = screen.getByRole('switch', {
-        name: /toggle max value/i,
-      });
-
-      fireEvent.click(toggleMaxValueElement);
-      expect(amountInput).toBeDisabled();
-    });
-
-    it.skip(`Amount input should preserve its temporary value after toggle is off/on`, () => {
-      render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
-      );
-
-      const customAmountElement: HTMLInputElement = screen.getByRole(
-        'textbox',
-        {
-          name: /amount input/i,
-        }
-      );
-      fireEvent.change(customAmountElement, {
-        target: { value: customAmountMock },
-      });
-
-      const toggleMaxValueElement = screen.getByRole('switch', {
-        name: /toggle max value/i,
-      });
-
-      // Asserts value is maintaned when disabled and enabled again
-      fireEvent.click(toggleMaxValueElement);
-      const stringAmount = BigNumber.from(MAX_UINT).toString();
-      const expectedMaxValue = stringAmount.replace(
-        new RegExp('.{' + (stringAmount.length - 18) + '}'),
-        `$&.`
-      ); // adds trailing nums after decimal point
-      expect(customAmountElement.value).toBe(expectedMaxValue);
-      fireEvent.click(toggleMaxValueElement);
-      expect(customAmountElement.value).toBe('111.0');
     });
   });
 
