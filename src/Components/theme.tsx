@@ -13,6 +13,7 @@ export interface GuildsTheme extends ThemeBase {
     primary: string;
     secondary: string;
     red: string;
+    green: string;
     orange: string;
     grey: string;
     proposalText: {
@@ -34,6 +35,19 @@ export interface GuildsTheme extends ThemeBase {
     border: {
       initial: string;
       hover: string;
+    };
+    syntax: {
+      key: string;
+      value: string;
+      expBlue: string;
+      expHover: string;
+      expLight: string;
+      add: string;
+      addLight: string;
+      addText: string;
+      remove: string;
+      removeLight: string;
+      removeText: string;
     };
     votes: { [key: number]: string };
     params: { [key: number]: string };

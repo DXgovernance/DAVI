@@ -1,13 +1,233 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalCardWinningOption a tooltip shows after clicking in the action idicator when there are more than one action 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  border: 1px solid #303338;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  background-color: transparent;
+  border: 1px solid #303338;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 32px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 12px;
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #303338;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 1.5rem;
+  width: 1.5rem;
+  color: #BDC0C7;
+  border: 1px solid;
+  border-radius: 50%;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.c7 {
+  margin-left: -11px;
+  margin-top: 2.5rem;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  border-radius: 10px;
+  border: 1px solid #303338;
+  padding: 16px 20px;
+  background-color: #26282D;
+  color: #BDC0C7;
+}
+
+.c11 {
+  height: 20px;
+  color: #BDC0C7;
+  border-right: 1px solid;
+  margin-left: 13px;
+}
+
 <div>
    
   <div
-    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+    class="c0 c1"
   >
     <div
-      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+      class="c0 c1 c2"
     >
       50
       % - 
@@ -15,13 +235,13 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
     </div>
     <button
       aria-label="action details button"
-      class="sc-dlfnuX sc-hHfuMS bcIZht eGKZYi"
+      class="c3 c4"
     >
       <div
-        class="sc-dmlqKv iEzzCF"
+        class="c5"
       >
         <div
-          class="sc-kfzBvY jHCPbx"
+          class="c6"
         >
           2
         </div>
@@ -30,18 +250,18 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
       </div>
       <div
         aria-label="expanded actions list tooltip"
-        class="sc-euMpEg dRdaMb"
+        class="c7"
       >
         <div
-          class="sc-bsipwG kzvZPN"
+          class="c8"
         >
           <div
-            class="sc-gInthZ jVXCCM"
+            class="c9"
           >
             1
           </div>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             <svg
               fill="currentColor"
@@ -58,14 +278,14 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
             </svg>
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             
              
              
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             <svg
               fill="none"
@@ -90,24 +310,24 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
             </svg>
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             test.eth
           </span>
         </div>
         <div
-          class="sc-fHuLxr btRlhQ"
+          class="c11"
         />
         <div
-          class="sc-bsipwG kzvZPN"
+          class="c8"
         >
           <div
-            class="sc-gInthZ jVXCCM"
+            class="c9"
           >
             2
           </div>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             <svg
               fill="currentColor"
@@ -124,14 +344,14 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
             </svg>
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             
              
              
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             <svg
               fill="none"
@@ -156,7 +376,7 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
             </svg>
           </span>
           <span
-            class="sc-iNqMzA ciMXqI"
+            class="c10"
           >
             test.eth
           </span>
@@ -169,13 +389,140 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
 `;
 
 exports[`ProposalCardWinningOption if the option has only one action, no tooltip shows after clicking it 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  border: 1px solid #303338;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  background-color: transparent;
+  border: 1px solid #303338;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 32px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 12px;
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  color: #fff;
+  cursor: default;
+}
+
+.c5 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <div
-    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+    class="c0 c1"
   >
     <div
-      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+      class="c0 c1 c2"
     >
       50
       % - 
@@ -183,10 +530,10 @@ exports[`ProposalCardWinningOption if the option has only one action, no tooltip
     </div>
     <button
       aria-label="action details button"
-      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+      class="c3 c4"
     >
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="currentColor"
@@ -203,14 +550,14 @@ exports[`ProposalCardWinningOption if the option has only one action, no tooltip
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         
          
          
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="none"
@@ -235,7 +582,7 @@ exports[`ProposalCardWinningOption if the option has only one action, no tooltip
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         test.eth
       </span>
@@ -246,16 +593,143 @@ exports[`ProposalCardWinningOption if the option has only one action, no tooltip
 `;
 
 exports[`ProposalCardWinningOption renders a loading component when the votes are not fetched yet 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  border: 1px solid #303338;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  background-color: transparent;
+  border: 1px solid #303338;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 32px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 12px;
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  color: #fff;
+  cursor: default;
+}
+
+.c5 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <div
-    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+    class="c0 c1"
   >
     <div
-      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+      class="c0 c1 c2"
     >
       <div
-        class="sc-bdfBQB"
+        class=""
         style="margin: 0px;"
       >
         <span
@@ -274,10 +748,10 @@ exports[`ProposalCardWinningOption renders a loading component when the votes ar
     </div>
     <button
       aria-label="action details button"
-      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+      class="c3 c4"
     >
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="currentColor"
@@ -294,14 +768,14 @@ exports[`ProposalCardWinningOption renders a loading component when the votes ar
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         
          
          
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="none"
@@ -326,7 +800,7 @@ exports[`ProposalCardWinningOption renders a loading component when the votes ar
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         test.eth
       </span>
@@ -337,13 +811,156 @@ exports[`ProposalCardWinningOption renders a loading component when the votes ar
 `;
 
 exports[`ProposalCardWinningOption renders an indicator of the number of actions if the option has more than one action 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  border: 1px solid #303338;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  background-color: transparent;
+  border: 1px solid #303338;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 32px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 12px;
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  color: #fff;
+  cursor: pointer;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-weight: 600;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #303338;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+
 <div>
    
   <div
-    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+    class="c0 c1"
   >
     <div
-      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+      class="c0 c1 c2"
     >
       50
       % - 
@@ -351,13 +968,13 @@ exports[`ProposalCardWinningOption renders an indicator of the number of actions
     </div>
     <button
       aria-label="action details button"
-      class="sc-dlfnuX sc-hHfuMS bcIZht eGKZYi"
+      class="c3 c4"
     >
       <div
-        class="sc-dmlqKv iEzzCF"
+        class="c5"
       >
         <div
-          class="sc-kfzBvY jHCPbx"
+          class="c6"
         >
           2
         </div>
@@ -374,7 +991,7 @@ exports[`ProposalCardWinningOption renders loading component when there are no o
 <div>
    
   <div
-    class="sc-bdfBQB"
+    class=""
     style="margin: 0px;"
   >
     <span
@@ -395,13 +1012,140 @@ exports[`ProposalCardWinningOption renders loading component when there are no o
 `;
 
 exports[`ProposalCardWinningOption renders properly with one action 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  border: 1px solid #303338;
+  border-radius: 1rem 0rem 0rem 1rem;
+  border-right: none;
+  font-weight: 600;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+  background-color: transparent;
+  border: 1px solid #303338;
+  border-radius: 0rem 1rem 1rem 0rem;
+  height: 32px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0;
+  padding: 0 12px;
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  color: #fff;
+  cursor: default;
+}
+
+.c5 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 <div>
    
   <div
-    class="sc-jSgvzq sc-bqyKOL sc-idOiZg csvJoy bKnVUC"
+    class="c0 c1"
   >
     <div
-      class="sc-jSgvzq sc-bqyKOL sc-dIUeWJ csvJoy bKnVUC ibLcOZ"
+      class="c0 c1 c2"
     >
       50
       % - 
@@ -409,10 +1153,10 @@ exports[`ProposalCardWinningOption renders properly with one action 1`] = `
     </div>
     <button
       aria-label="action details button"
-      class="sc-dlfnuX sc-hHfuMS bcIZht biIHnM"
+      class="c3 c4"
     >
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="currentColor"
@@ -429,14 +1173,14 @@ exports[`ProposalCardWinningOption renders properly with one action 1`] = `
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         
          
          
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         <svg
           fill="none"
@@ -461,7 +1205,7 @@ exports[`ProposalCardWinningOption renders properly with one action 1`] = `
         </svg>
       </span>
       <span
-        class="sc-iNqMzA ciMXqI"
+        class="c5"
       >
         test.eth
       </span>

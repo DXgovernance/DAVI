@@ -1,34 +1,129 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VoteChart matches the snapshot 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 10px 0px 40px 0px;
+  width: 100%;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 0.75rem;
+  border-radius: 32px;
+  background-color: #303338;
+  overflow: hidden;
+}
+
+.c2 {
+  width: 10%;
+  background: #E75C5C;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c3 {
+  width: 10%;
+  background: #295FF4;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c5 {
+  height: 18px;
+  margin-top: 10px;
+  width: 1px;
+  background: #303338;
+}
+
+.c6 {
+  padding: 4px 8px;
+  border: 1px solid #303338;
+  border-radius: 0px 32px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c6 span {
+  margin-left: 2px;
+}
+
+.c4 {
+  width: 65px;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  left: 0%;
+}
+
+.c7 {
+  margin-right: 0.4rem;
+}
+
 <div>
    
   <div
-    class="sc-dlfnuX CsJiU"
+    class="c0"
   >
     <div
-      class="sc-hKgJUU eLJETA"
+      class="c1"
     >
       <div
-        class="sc-eCstlR beWtBW"
+        class="c2"
         color="#E75C5C"
       />
       <div
-        class="sc-eCstlR jQiPq"
+        class="c3"
         color="#295FF4"
       />
     </div>
     <div
-      class="sc-iBPTik Abqom"
+      class="c4"
     >
       <div
-        class="sc-jSgvzq cQagnG"
+        class="c5"
       />
       <div
-        class="sc-gKseQn gqtPhV"
+        class="c6"
       >
         <svg
-          class="sc-fubCzh jRpJmD"
+          class="c7"
           fill="currentColor"
           height="1em"
           stroke="currentColor"

@@ -1,22 +1,318 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalTypes Should match snapshot 1`] = `
+.c3 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c3:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c3:hover:enabled {
+  border-color: #fff;
+}
+
+.c3:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c3:disabled {
+  color: #303338;
+}
+
+.c16 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c16:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c16:hover:enabled {
+  border-color: #fff;
+}
+
+.c16:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c4 {
+  margin: 0 10px 0 0;
+  width: undefinedpx;
+  height: undefinedpx;
+}
+
+.c4 svg path {
+  fill: currentColor;
+}
+
+.c7 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c0 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  max-width: 386px;
+}
+
+.c8 {
+  border: 1px solid #303338;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.c9 {
+  margin: 24px;
+  width: 100%;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  margin: 0px 24px;
+}
+
+.c5 {
+  height: 100%;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+}
+
+.c11 {
+  width: 90%;
+  height: 40px;
+  margin: 6px 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+}
+
+.c11:active,
+.c11:focus {
+  border: 2px solid #fff;
+}
+
+.c10 {
+  width: 90%;
+  -webkit-box-pack: initial;
+  -webkit-justify-content: initial;
+  -ms-flex-pack: initial;
+  justify-content: initial;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin: 6px 0;
+  color: #BDC0C7;
+}
+
+.c15 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: right;
+  -webkit-justify-content: right;
+  -ms-flex-pack: right;
+  justify-content: right;
+  width: 100%;
+}
+
+.c2 {
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.c6 {
+  width: 100%;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.c13 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.c14 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #BDC0C7;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@media only screen and (max-width:768px) {
+  .c1 {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c8 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c15 {
+    border-top: 1px solid black;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 0;
+    padding: 20px;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c17 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c2 {
+    border-radius: 0;
+    border-bottom: 1px solid black;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 20px;
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c6 {
+    width: 90%;
+  }
+}
+
 <div>
    
   <div
-    class="sc-pGacB sc-hBEYId imomAO"
+    class="c0"
   >
     <div
-      class="sc-pGacB sc-fFucqa imomAO eKAtoq"
+      class="c0 c1"
     >
       <div
-        class="sc-pGacB sc-iwyWTf imomAO hRUkCK"
+        class="c0 c2"
       >
         <button
-          class="sc-bdfBQB fuUPpr"
+          class="c3"
         >
           <div
-            class="sc-jSgvzq dMuAyB"
+            class="c4"
           >
             <svg
               fill="currentColor"
@@ -36,65 +332,65 @@ exports[`ProposalTypes Should match snapshot 1`] = `
         </button>
       </div>
       <div
-        class="sc-pGacB sc-hHfuMS imomAO cEEget"
+        class="c0 c5"
       >
         <div
-          class="sc-pGacB sc-lmoMya imomAO beHRpZ"
+          class="c0 c6"
         >
           <h2
-            class="sc-gKseQn fMfHRo"
+            class="c7"
             size="2"
           >
             createProposal
           </h2>
         </div>
         <div
-          class="sc-pGacB sc-bkzYnD imomAO kMMoEw"
+          class="c0 c8"
         >
           <div
-            class="sc-pGacB sc-idOiZg imomAO Uznir"
+            class="c0 c9"
             data-testid="proposal-types-list"
           >
             <div
-              class="sc-pGacB sc-kfzBvY imomAO cYRbeJ"
+              class="c0 c10"
             >
               chooseProposal
             </div>
             <button
-              class="sc-bdfBQB sc-dmlqKv fuUPpr fSVQWC"
+              class="c3 c11"
             >
               Signal Proposal
             </button>
             <button
-              class="sc-bdfBQB sc-dmlqKv fuUPpr fSVQWC"
+              class="c3 c11"
             >
               Custom Proposal
             </button>
           </div>
         </div>
         <div
-          class="sc-pGacB sc-bkzYnD imomAO kMMoEw"
+          class="c0 c8"
         >
           <div
-            class="sc-pGacB sc-idOiZg imomAO Uznir"
+            class="c0 c9"
           >
             <div
-              class="sc-pGacB sc-dIUeWJ imomAO hibDnZ"
+              class="c0 c12"
             >
               <div
-                class="sc-pGacB sc-iJuVqt imomAO ggHXoL"
+                class="c0 c13"
                 color="#fff"
               >
                 Signal Proposal
               </div>
               <div
-                class="sc-pGacB sc-iJuVqt imomAO cfpTdd"
+                class="c0 c14"
                 color="#BDC0C7"
               >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo quam, blandit eu sapien eu, commodo dapibus nisl
               </div>
               <div
-                class="sc-pGacB sc-iJuVqt imomAO cfpTdd"
+                class="c0 c14"
                 color="#BDC0C7"
               >
                 noOnchainAction
@@ -104,10 +400,10 @@ exports[`ProposalTypes Should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="sc-pGacB sc-fKFxtB imomAO dOdDEg"
+        class="c0 c15"
       >
         <button
-          class="sc-bdfBQB sc-bBXrwG bFQUlx iljmeA"
+          class="c16 c17"
           data-testid="proposal-type-continue-button"
         >
           continue

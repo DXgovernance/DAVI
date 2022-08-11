@@ -1,14 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 1`] = `
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 0;
+}
+
 <div>
    
   <span
-    class="sc-gKseQn hvLGCr"
+    class="c0"
   >
     <img
       alt="Avatar"
-      class="sc-eCstlR sc-jSgvzq ebJAYl dLtHAM"
+      class="c1 c2"
       data-testid="avatar"
       size="16"
       src="test"
@@ -85,17 +113,45 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 `;
 
 exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
+.c1 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c2 {
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+}
+
+.c0 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 0;
+}
+
 <div>
    
   <span
     matchedparam="addressParam"
   >
     <span
-      class="sc-gKseQn hvLGCr"
+      class="c0"
     >
       <img
         alt="Avatar"
-        class="sc-eCstlR sc-jSgvzq ebJAYl dLtHAM"
+        class="c1 c2"
         data-testid="avatar"
         size="16"
         src="test"
