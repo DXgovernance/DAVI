@@ -10,8 +10,8 @@ import { useNetwork } from 'wagmi';
 const SWAPR_TOKEN_LIST = 'QmSbyVo6Kz5BuqyAHYcN7UkeCk5cALFp6QmPUN6NtPpDWL';
 
 export enum TokenType {
-  NATIVE,
-  ERC20,
+  NATIVE = 'NATIVE',
+  ERC20 = 'ERC20',
 }
 
 export type TokenInfoWithType = TokenInfo & { type: TokenType };
