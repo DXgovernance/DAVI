@@ -2,7 +2,7 @@
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useContext, useEffect, useMemo } from 'react';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import { Box } from 'Components/Primitives/Layout';
+import { Box, Flex } from 'Components/Primitives/Layout';
 import styled from 'styled-components';
 import ProposalCardWrapper from '../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
@@ -14,6 +14,11 @@ import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { Link } from 'react-router-dom';
+import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
+import { Button } from 'old-components/Guilds/common/Button';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { useAccount } from 'wagmi';
 
 const ProposalsList = styled(Box)`
   margin-top: 1rem;
@@ -35,12 +40,33 @@ const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.text};
 `;
 
+const StyledButton = styled(Button)`
+  white-space: nowrap;
+  height: 45px;
+`;
+
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const { t } = useTranslation();
   const { data: activeProposals } = useActiveProposalsNow(guildId);
   const { chainName } = useTypedParams();
+  const { address } = useAccount();
+  const { data: guildConfig } = useGuildConfig(guildId);
+  const { data: votingPower } = useVotingPowerOf({
+    contractAddress: guildId,
+    userAddress: address,
+  });
+
+  const isProposalCreationAllowed = useMemo(() => {
+    if (!guildConfig || !votingPower) {
+      return false;
+    }
+    if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
+      return true;
+    }
+    return false;
+  }, [votingPower, guildConfig]);
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -93,14 +119,26 @@ const Governance = ({ guildId }) => {
 
   return (
     <>
-      <Input
-        value={searchQuery}
-        onChange={e => {
-          setSearchQuery(e.target.value);
-        }}
-        icon={<AiOutlineSearch size={24} />}
-        placeholder={t('searchTitleEnsAddress')}
-      />
+      <Flex direction="row">
+        <Input
+          value={searchQuery}
+          onChange={e => {
+            setSearchQuery(e.target.value);
+          }}
+          icon={<AiOutlineSearch size={24} />}
+          placeholder={t('searchTitleEnsAddress')}
+        />
+        {isProposalCreationAllowed && (
+          <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
+            <StyledButton
+              variant="secondary"
+              data-testid="create-proposal-button"
+            >
+              {t('createProposal')}
+            </StyledButton>
+          </UnstyledLink>
+        )}
+      </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
 
