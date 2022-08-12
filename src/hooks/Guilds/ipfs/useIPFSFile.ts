@@ -6,6 +6,8 @@ async function ipfsContentFetcher<T>(hash: string) {
       headers: { 'content-type': 'application/json' },
     });
     if (response.ok) {
+      console.log({ url });
+      console.log({ response });
       return response.json() as Promise<T>;
     } else {
       throw new Error('Unable to get content.');
@@ -18,7 +20,7 @@ async function ipfsContentFetcher<T>(hash: string) {
     fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
     fetcher('https://gateway.pinata.cloud/ipfs/' + hash),
     fetcher('https://dweb.link/ipfs/' + hash),
-    fetcher('https://infura-ipfs.io/ipfs/' + hash),
+    fetcher('https://dxgov.mypinata.cloud/ipfs/' + hash),
   ]);
 
   return response;
