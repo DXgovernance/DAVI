@@ -6,8 +6,6 @@ async function ipfsContentFetcher<T>(hash: string) {
       headers: { 'content-type': 'application/json' },
     });
     if (response.ok) {
-      console.log({ url });
-      console.log({ response });
       return response.json() as Promise<T>;
     } else {
       throw new Error('Unable to get content.');
