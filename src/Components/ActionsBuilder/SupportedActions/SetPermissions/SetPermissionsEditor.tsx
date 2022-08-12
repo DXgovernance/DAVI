@@ -6,7 +6,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { FiChevronDown } from 'react-icons/fi';
 
 import { ParsedDataInterface, TABS } from './types';
-import { ANY_FUNC_SIGNATURE, MAX_UINT, ERC20_TRANSFER_SIGNATURE } from 'utils';
+import { ANY_FUNC_SIGNATURE, ERC20_TRANSFER_SIGNATURE } from 'utils';
 import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
@@ -110,7 +110,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
   };
 
   const submitAction = (values: FormValues) => {
-    const bigNumberMaxUINT = BigNumber.from(MAX_UINT);
     const isAssetTransferCall = activeTab === TABS.ASSET_TRANSFER;
 
     const newCall: DecodedCall = {
@@ -118,7 +117,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
       args: {
         ...decodedCall.args,
         to: isAssetTransferCall ? values.tokenAddress : values.toAddress,
-        valueAllowed: isAssetTransferCall ? bigNumberMaxUINT : values.amount,
+        valueAllowed: isAssetTransferCall ? BigNumber.from(0) : values.amount,
         functionSignature: isAssetTransferCall
           ? ERC20_TRANSFER_SIGNATURE
           : values.functionSignature,
