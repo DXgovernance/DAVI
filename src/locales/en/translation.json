@@ -206,6 +206,10 @@
   "encodedSignatureIsInvalid": "Encoded signature is invalid",
   "invalidAddress": "Invalid Address",
   "addressIsRequired": "Address is required",
+  "forum": {
+    "createDiscussion": "Create Discussion",
+    "discussionPlaceholder": "Write discussion content"
+  },
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code"
 }

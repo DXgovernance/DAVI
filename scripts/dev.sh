@@ -72,4 +72,4 @@ if [[ $* == *--no-browser* ]]; then
     export BROWSER=none
 fi
 
-FORCE_COLOR=true yarn react-app-rewired start | cat
+FORCE_COLOR=true GENERATE_SOURCEMAP=false yarn react-app-rewired start | cat

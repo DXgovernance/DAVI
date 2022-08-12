@@ -8,6 +8,7 @@ interface ValidateSetPermissionsValues {
   tokenAddress: string;
   amount: any;
   functionName: string;
+  functionSignature: string;
 }
 
 interface Context {

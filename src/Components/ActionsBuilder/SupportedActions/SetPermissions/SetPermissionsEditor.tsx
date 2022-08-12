@@ -100,7 +100,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
 
     // if the value is the name of the function
     const functionSignature = web3.eth.abi.encodeFunctionSignature(value);
-
     return setValue('functionSignature', functionSignature);
   };
 
