@@ -53,7 +53,7 @@ export const useRichContractRegistry = (chainId?: number) => {
         contract => contract.title === 'Vesting contract for DXD token'
       ).networks[1337] = localhost.contracts.utils.dxdVestingFactory;
       // Add NFT factory
-      data[data.length - 1] = {
+      data[data.length] = {
         title: 'NFT Factory',
         tags: ['NFT', 'DXdao', 'factory'],
         networks: {
