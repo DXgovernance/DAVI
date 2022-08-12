@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers';
 export interface ParsedDataInterface {
   asset: string[];
   to: string[];
-  functionSignature: string[];
+  functionSignature: string;
   valueAllowed: BigNumber[];
   allowance: boolean[];
   functionName: string;

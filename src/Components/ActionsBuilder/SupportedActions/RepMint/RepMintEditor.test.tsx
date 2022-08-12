@@ -37,7 +37,11 @@ jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
 describe('RepMintEditor', () => {
   it('Should match snapshot', () => {
     const { container } = render(
-      <Mint decodedCall={repMintEmptyDecodedCallMock} updateCall={jest.fn()} />
+      <Mint
+        decodedCall={repMintEmptyDecodedCallMock}
+        updateCall={jest.fn()}
+        onSubmit={jest.fn()}
+      />
     );
     expect(container).toMatchSnapshot();
   });

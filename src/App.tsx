@@ -14,6 +14,7 @@ import NotFound from 'Modules/Guilds/pages/NotFound';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'Components/theme';
+import CreateDiscussionPage from 'Modules/Guilds/pages/CreateDiscussion';
 
 const App = () => {
   return (
@@ -39,6 +40,9 @@ const App = () => {
                 </Route>
                 <Route path="/:chainName/:guildId/create/:proposalType">
                   <CreateProposalPage />
+                </Route>
+                <Route path="/:chainName/:guildId/:discussion">
+                  <CreateDiscussionPage />
                 </Route>
                 <Route>
                   <NotFound />
