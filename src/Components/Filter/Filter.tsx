@@ -67,11 +67,25 @@ const Filter: React.FC<FilterProps> = ({ openSearchBar, setOpenSearchBar }) => {
             <AiOutlineSearch size={20} />
           </StyledIconButton>
           {isProposalCreationAllowed && (
-            <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
-              <Button variant="secondary" data-testid="create-proposal-button">
-                {t('createProposal')}
-              </Button>
-            </UnstyledLink>
+            <>
+              <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
+                <Button
+                  variant="secondary"
+                  data-testid="create-proposal-button"
+                >
+                  {t('createProposal')}
+                </Button>
+              </UnstyledLink>
+              /
+              <UnstyledLink to={`/${chainName}/${guildId}/discussion`}>
+                <Button
+                  variant="secondary"
+                  data-testid="create-discussion-button"
+                >
+                  {t('forum.createDiscussion')}
+                </Button>
+              </UnstyledLink>
+            </>
           )}
         </ButtonContainer>
       </FilterRow>

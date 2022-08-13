@@ -1,5 +1,4 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import { IconButton } from 'old-components/Guilds/common/Button';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { Box, Flex } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -19,59 +18,18 @@ import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useHistory } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
-import styled from 'styled-components';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
 import { toast } from 'react-toastify';
 import { isValidProposal } from 'utils';
-
-const PageContainer = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @media only screen and (min-width: 768px) {
-    grid-template-columns: minmax(0, 1fr) 300px;
-  }
-`;
-
-const SidebarContent = styled(Box)`
-  @media only screen and (min-width: 768px) {
-    margin-left: 1rem;
-  }
-  @media only screen and (max-width: 768px) {
-    margin-top: 1rem;
-  }
-`;
-
-const PageContent = styled(Box)`
-  @media only screen and (min-width: 768px) {
-    margin-right: 1rem;
-  }
-`;
-
-const StyledButton = styled(IconButton)<{
-  marginLeft?: string;
-  size?: number | string;
-}>`
-  margin: 0;
-  padding: 0.5rem 0.8rem;
-  margin-left: ${props => props.marginLeft || 0};
-`;
-
-const Label = styled.span<{
-  color?: string;
-  size?: number | string;
-}>`
-  font-family: Inter;
-  font-style: normal;
-  font-weight: 500;
-  font-size: ${({ size }) => (size ? size : `14px`)};
-  line-height: 20px;
-  display: flex;
-  color: ${({ color }) => (color ? color : '#BDC0C7')};
-  margin: 12px 0px;
-`;
+import {
+  PageContainer,
+  PageContent,
+  StyledButton,
+  SidebarContent,
+  Label,
+} from '../styles';
 
 const EMPTY_CALL: Call = {
   data: ZERO_HASH,
