@@ -32,7 +32,7 @@ const App = () => {
                 <Route exact path="/:chainName/:guildId">
                   <GuildsPage />
                 </Route>
-                <Route exact path="/:chainName/:guildId/allproposals">
+                <Route exact path="/:chainName/:guildId/allProposals">
                   <GuildsPage pageContent={'allProposals'} />
                 </Route>
                 <Route path="/:chainName/:guildId/proposalType">

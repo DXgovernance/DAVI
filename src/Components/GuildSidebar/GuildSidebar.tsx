@@ -31,9 +31,9 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
   let { chainName, guildId } = useTypedParams();
   const { pathname } = useLocation();
 
-  const LOCATIONS = {
+  const locations = {
     governance: `/${chainName}/${guildId}`,
-    allProposals: `/${chainName}/${guildId}/allproposals`,
+    allProposals: `/${chainName}/${guildId}/allProposals`,
   };
 
   return (
@@ -60,13 +60,13 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
         {actions}
       </DaoInfoPanel>
       <SidebarMenu>
-        <UnstyledLink to={LOCATIONS.governance}>
-          <SidebarMenuItem current={pathname === LOCATIONS.governance}>
+        <UnstyledLink to={locations.governance}>
+          <SidebarMenuItem current={pathname === locations.governance}>
             {t('governance')}
           </SidebarMenuItem>
         </UnstyledLink>
-        <UnstyledLink to={LOCATIONS.allProposals}>
-          <SidebarMenuItem current={pathname === LOCATIONS.allProposals}>
+        <UnstyledLink to={locations.allProposals}>
+          <SidebarMenuItem current={pathname === locations.allProposals}>
             {t('proposals_all')}
           </SidebarMenuItem>
         </UnstyledLink>
