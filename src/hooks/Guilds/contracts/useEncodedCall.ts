@@ -6,6 +6,9 @@ export const encodeCall = (
   decodedCall: DecodedCall,
   contractInterface: utils.Interface
 ) => {
+  if (!contractInterface || !decodedCall.function || !decodedCall.args)
+    return null;
+
   const args = contractInterface
     .getFunction(decodedCall.function.name)
     .inputs.map(input => decodedCall.args[input.name]);

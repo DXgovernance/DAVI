@@ -111,6 +111,8 @@ const getContractInterfaceFromRichContractData = (
 };
 
 const getContractFromKnownSighashes = (data: string) => {
+  if (!data) return null;
+
   // Get the first 10 characters of Tx data, which is the Function Selector (SigHash).
   const sigHash = data.substring(0, 10);
 
@@ -131,6 +133,24 @@ export const decodeCall = async (
   chainId: number
 ) => {
   let decodedCall: DecodedCall = null;
+
+  // Detect native asset transfer
+  if (!call.data) {
+    decodedCall = {
+      callType: SupportedAction.NATIVE_TRANSFER,
+      from: call.from,
+      to: call.to,
+      value: call.value,
+      function: null,
+      args: null,
+    };
+    return {
+      id: `action-${Math.random()}`,
+      decodedCall,
+      contract: null,
+      approval: call.approval || null,
+    };
+  }
 
   // Detect using the Guild calls registry.
   const matchedRichContractData = contracts?.find(
