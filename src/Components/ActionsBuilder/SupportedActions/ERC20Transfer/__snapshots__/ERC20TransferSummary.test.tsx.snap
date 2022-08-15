@@ -7,13 +7,19 @@ exports[`ERC20TransferSummary Should match snapshot 1`] = `
     class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
+     
+    <span>
+      0.0
+       
+      ETH
+    </span>
     :
   </div>
   <div
     class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI bPyyBI"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -62,13 +68,19 @@ exports[`ERC20TransferSummary Should match snapshot with default values 1`] = `
     class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
+     
+    <span>
+      0.0
+       
+      ETH
+    </span>
     :
   </div>
   <div
     class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI bPyyBI"
     >
       <span
         class="sc-gKseQn lnpFdR"
@@ -117,10 +129,10 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
     class="sc-fubCzh sc-iqHYmW sc-crrszt iYPEgl clDCyI lolBCJ"
   >
     interactWith
+     
     <span
       class="sc-bqyKOL jpIhKt"
     >
-       
        
       ETH
     </span>
@@ -130,7 +142,7 @@ exports[`ERC20TransferSummary Should match snapshot without data 1`] = `
     class="sc-fubCzh sc-iqHYmW iYPEgl clDCyI"
   >
     <div
-      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI btJjUW"
+      class="sc-fubCzh sc-iqHYmW sc-dQoVA iYPEgl clDCyI bPyyBI"
     >
       <span
         class="sc-gKseQn lnpFdR"

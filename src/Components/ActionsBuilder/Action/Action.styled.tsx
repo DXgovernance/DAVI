@@ -92,10 +92,6 @@ export const CardActions = styled.div`
   align-items: center;
 `;
 
-export const ActionSummaryWrapper = styled.div`
-  margin-bottom: 10px;
-`;
-
 export const SectionHeader = styled(Box)`
   margin-bottom: 0.5rem;
 `;

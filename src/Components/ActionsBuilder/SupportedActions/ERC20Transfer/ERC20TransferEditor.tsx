@@ -69,7 +69,14 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
         amount: decodedCall.args._value,
         recipientAddress: decodedCall.args._to,
       };
-      // TODO: Parse Native Token Transfers
+    } else if (decodedCall.callType === SupportedAction.NATIVE_TRANSFER) {
+      const token = tokens.find(token => token.type === TokenType.NATIVE);
+      return {
+        source: decodedCall.from,
+        token,
+        amount: decodedCall.value,
+        recipientAddress: decodedCall.to,
+      };
     } else {
       return null;
     }
@@ -105,7 +112,14 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
         },
       });
     } else {
-      // TODO: Add Native Asset Transfer
+      onSubmit({
+        ...decodedCall,
+        callType: SupportedAction.NATIVE_TRANSFER,
+        to: values.recipientAddress,
+        value: values.amount,
+        function: null,
+        args: null,
+      });
     }
   };
 

@@ -4,10 +4,10 @@ exports[`CallDetails Should match 1`] = `
 <div>
    
   <div
-    class="sc-hKgJUU dpFBPj"
+    class="sc-hKgJUU sc-idOiZg dpFBPj esUezL"
   >
     <button
-      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+      class="sc-bdfBQB sc-dIUeWJ fuUPpr kiGaWu"
     >
       transfer
        (
@@ -41,10 +41,10 @@ exports[`CallDetails Should match with empty data 1`] = `
 <div>
    
   <div
-    class="sc-hKgJUU kHAvEK"
+    class="sc-hKgJUU dpFBPj"
   >
     <button
-      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+      class="sc-bdfBQB sc-dIUeWJ fuUPpr kiGaWu"
     >
       approve (
        
@@ -66,10 +66,10 @@ exports[`CallDetails Should match with empty data 1`] = `
     </button>
   </div>
   <div
-    class="sc-hKgJUU dpFBPj"
+    class="sc-hKgJUU sc-idOiZg dpFBPj esUezL"
   >
     <button
-      class="sc-bdfBQB sc-idOiZg fuUPpr lmXhWs"
+      class="sc-bdfBQB sc-dIUeWJ fuUPpr kiGaWu"
     >
       transfer
        (

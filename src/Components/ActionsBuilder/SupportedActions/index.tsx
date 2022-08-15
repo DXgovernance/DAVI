@@ -51,6 +51,13 @@ export const supportedActions: Record<
   SupportedAction,
   SupportedActionViews & SupportedActionEditors & SupportedActionMetadata
 > = {
+  [SupportedAction.NATIVE_TRANSFER]: {
+    title: 'Transfers & Mint',
+    infoLineView: ERC20TransferInfoLine,
+    summaryView: ERC20TransferSummary,
+    editor: ERC20TransferEditor,
+    displaySubmit: false,
+  },
   [SupportedAction.ERC20_TRANSFER]: {
     title: 'Transfers & Mint',
     infoLineView: ERC20TransferInfoLine,
@@ -92,6 +99,18 @@ const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
 
 export const defaultValues: Record<SupportedAction, DecodedAction> = {
+  [SupportedAction.NATIVE_TRANSFER]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.NATIVE_TRANSFER,
+      function: null,
+      to: '',
+      value: BigNumber.from(0),
+      args: null,
+    },
+  },
   [SupportedAction.ERC20_TRANSFER]: {
     id: '',
     contract: ERC20Contract,

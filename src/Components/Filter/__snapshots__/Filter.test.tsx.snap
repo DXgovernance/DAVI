@@ -111,6 +111,11 @@ exports[`Filter Should match snapshot 1`] = `
               <a
                 class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
               >
+                Native Transfer
+              </a>
+              <a
+                class="sc-bqyKOL sc-kstqJO fJZEAl bAXQXY"
+              >
                 Erc20 Transfer
               </a>
               <a

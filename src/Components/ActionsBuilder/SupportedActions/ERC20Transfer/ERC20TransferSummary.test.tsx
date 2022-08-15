@@ -1,3 +1,4 @@
+import { mockChain } from 'Components/Web3Modals/fixtures';
 import { BigNumber } from 'ethers';
 import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
@@ -31,10 +32,9 @@ jest.mock('utils', () => ({
   getNetworkById: () => ({ nativeAsset: { symbol: 'ETH' } }),
 }));
 
-const mockChainId = 123456;
 const mockAddress = ZERO_ADDRESS;
 jest.mock('wagmi', () => ({
-  useNetwork: () => ({ chain: { id: mockChainId } }),
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useAccount: () => ({ address: mockAddress }),
 }));
 

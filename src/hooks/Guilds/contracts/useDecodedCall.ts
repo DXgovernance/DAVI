@@ -6,6 +6,7 @@ import {
 import ERC20ABI from 'abis/ERC20.json';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import {
+  ApproveSendTokens,
   Call,
   DecodedCall,
   Option,
@@ -189,8 +190,15 @@ export const bulkDecodeCallsFromOptions = (
   );
 };
 
+interface DecodedCallResult {
+  id: string;
+  decodedCall: DecodedCall;
+  contract: utils.Interface;
+  approval: ApproveSendTokens;
+}
+
 export const useDecodedCall = (call: Call) => {
-  const [decodedCall, setDecodedCall] = useState<any>(null);
+  const [decodedCall, setDecodedCall] = useState<DecodedCallResult>(null);
   const isCancelled = useRef(false);
   const { chain } = useNetwork();
   const { contracts } = useRichContractRegistry();
@@ -208,5 +216,12 @@ export const useDecodedCall = (call: Call) => {
     };
   }, [call, contracts, chain]);
 
-  return decodedCall || { decodedCall: null, contract: null, approval: null };
+  return (
+    decodedCall || {
+      id: null,
+      decodedCall: null,
+      contract: null,
+      approval: null,
+    }
+  );
 };

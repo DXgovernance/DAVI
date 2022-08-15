@@ -10,7 +10,6 @@ import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import { useMemo, useState } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
-  ActionSummaryWrapper,
   CardActions,
   CardHeader,
   CardLabel,
@@ -25,7 +24,6 @@ import {
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'Components/ActionsModal';
-import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 
 interface ActionViewProps {
   call?: Call;
@@ -69,8 +67,6 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   const [isEditActionModalOpen, setIsEditActionModalOpen] = useState(false);
 
-  const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
-
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
   const ActionSummary = getSummaryView(decodedCall?.callType);
@@ -83,7 +79,10 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
 
-    if (parsedValueToString !== '0.0') return CardStatus.warning;
+    const hasValueTransferOnContractCall =
+      decodedCall?.args && decodedCall?.value?.gt(0);
+    if (!decodedCall || hasValueTransferOnContractCall)
+      return CardStatus.warning;
 
     if (!decodedAction?.simulationResult) return CardStatus.normal;
 
@@ -92,12 +91,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     }
 
     return CardStatus.normal; // default return so ESLint doesn't complain
-  }, [
-    decodedAction?.simulationResult,
-    isEditable,
-    isDragging,
-    parsedValueToString,
-  ]);
+  }, [decodedCall, decodedAction?.simulationResult, isEditable, isDragging]);
 
   return (
     <CardWrapperWithMargin
@@ -157,11 +151,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
             </>
           )}
           <DetailWrapper>
-            {ActionSummary && (
-              <ActionSummaryWrapper>
-                <ActionSummary decodedCall={decodedCall} />
-              </ActionSummaryWrapper>
-            )}
+            {ActionSummary && <ActionSummary decodedCall={decodedCall} />}
             {decodedCall ? (
               <CallDetails
                 decodedCall={decodedCall}

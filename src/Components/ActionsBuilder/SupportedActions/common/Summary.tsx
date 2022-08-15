@@ -15,6 +15,7 @@ import {
 } from './Summary.styled';
 import { SummaryProps } from './types';
 import { BiLinkExternal } from 'react-icons/bi';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
 
 const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
@@ -28,12 +29,18 @@ const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
   return (
     <>
       <DetailHeader>
-        {t('interactWith')}
-        {parsedValueToString !== '0.0' && (
+        {decodedCall?.callType === SupportedAction?.NATIVE_TRANSFER
+          ? t('transfer')
+          : t('interactWith')}{' '}
+        {decodedCall?.callType !== SupportedAction?.NATIVE_TRANSFER &&
+        parsedValueToString !== '0.0' ? (
           <RedHighlight>
-            {' '}
             {parsedValueToString} {nativeTokenSymbol}
           </RedHighlight>
+        ) : (
+          <span>
+            {parsedValueToString} {nativeTokenSymbol}
+          </span>
         )}
         :
       </DetailHeader>

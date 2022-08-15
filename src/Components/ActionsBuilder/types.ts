@@ -3,6 +3,7 @@ import { utils } from 'ethers';
 import { RichContractData } from 'hooks/Guilds/contracts/useRichContractRegistry';
 
 export enum SupportedAction {
+  NATIVE_TRANSFER = 'NATIVE_TRANSFER',
   ERC20_TRANSFER = 'ERC20_TRANSFER',
   REP_MINT = 'REP_MINT',
   GENERIC_CALL = 'GENERIC_CALL',
