@@ -6,7 +6,6 @@ const GUILD_TYPES = {
   SnapshotRepERC20Guild: 'SnapshotRepERC20Guild',
   SnapshotERC20Guild: 'SnapshotERC20Guild',
   ERC20Guild: 'ERC20Guild',
-  DXDGuild: 'DXDGuild',
 };
 
 const FEATURES = {
@@ -15,14 +14,10 @@ const FEATURES = {
 };
 
 const paths = {
-  [GUILD_TYPES.ERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/ERC20Guild.sol/ERC20Guild.json',
+  [GUILD_TYPES.ERC20Guild]: '../src/contracts/ERC20Guild.json',
   [GUILD_TYPES.SnapshotRepERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol/SnapshotRepERC20Guild.json',
-  [GUILD_TYPES.SnapshotERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
-  [GUILD_TYPES.DXDGuild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
+    '../src/contracts/SnapshotRepERC20Guild.json',
+  [GUILD_TYPES.SnapshotERC20Guild]: '../src/contracts/SnapshotERC20Guild.json',
 };
 
 const getGuildFeatures = guildType => {
@@ -31,7 +26,6 @@ const getGuildFeatures = guildType => {
       return [FEATURES.reputation, FEATURES.snapshot];
     case GUILD_TYPES.SnapshotERC20Guild:
       return [FEATURES.snapshot];
-    case GUILD_TYPES.DXDGuild:
     case GUILD_TYPES.ERC20Guild:
       return [];
     default:
