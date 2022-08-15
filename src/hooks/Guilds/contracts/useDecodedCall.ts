@@ -17,6 +17,7 @@ import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 import Web3 from 'web3';
 import { useNetwork } from 'wagmi';
+
 const web3 = new Web3();
 const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature({
   inputs: [
@@ -135,7 +136,7 @@ export const decodeCall = async (
   let decodedCall: DecodedCall = null;
 
   // Detect native asset transfer
-  if (!call.data) {
+  if (!call.data || utils.hexValue(call.data) === utils.hexValue(0)) {
     decodedCall = {
       callType: SupportedAction.NATIVE_TRANSFER,
       from: call.from,
