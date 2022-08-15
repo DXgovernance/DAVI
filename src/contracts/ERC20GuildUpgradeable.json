@@ -1,4 +1,7 @@
 {
+  "_format": "hh-sol-artifact-1",
+  "contractName": "ERC20GuildUpgradeable",
+  "sourceName": "contracts/erc20guild/ERC20GuildUpgradeable.sol",
   "abi": [
     {
       "anonymous": false,
@@ -89,39 +92,17 @@
       "type": "event"
     },
     {
-      "inputs": [],
-      "name": "ANY_SIGNATURE",
-      "outputs": [
-        {
-          "internalType": "bytes4",
-          "name": "",
-          "type": "bytes4"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
+      "stateMutability": "payable",
+      "type": "fallback"
     },
     {
       "inputs": [],
-      "name": "ERC20_APPROVE_SIGNATURE",
+      "name": "MAX_ACTIONS_PER_PROPOSAL",
       "outputs": [
         {
-          "internalType": "bytes4",
+          "internalType": "uint8",
           "name": "",
-          "type": "bytes4"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "ERC20_TRANSFER_SIGNATURE",
-      "outputs": [
-        {
-          "internalType": "bytes4",
-          "name": "",
-          "type": "bytes4"
+          "type": "uint8"
         }
       ],
       "stateMutability": "view",
@@ -239,6 +220,32 @@
     {
       "inputs": [],
       "name": "getMaxGasPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMinimumMembersForProposalCreation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getMinimumTokensLockedForProposalCreation",
       "outputs": [
         {
           "internalType": "uint256",
@@ -720,6 +727,32 @@
     },
     {
       "inputs": [],
+      "name": "minimumMembersForProposalCreation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "minimumTokensLockedForProposalCreation",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "name",
       "outputs": [
         {
@@ -877,55 +910,19 @@
           "internalType": "uint256",
           "name": "_lockTime",
           "type": "uint256"
-        }
-      ],
-      "name": "setConfig",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "address[]",
-          "name": "asset",
-          "type": "address[]"
         },
-        {
-          "internalType": "address[]",
-          "name": "to",
-          "type": "address[]"
-        },
-        {
-          "internalType": "bytes4[]",
-          "name": "functionSignature",
-          "type": "bytes4[]"
-        },
-        {
-          "internalType": "uint256[]",
-          "name": "valueAllowed",
-          "type": "uint256[]"
-        },
-        {
-          "internalType": "bool[]",
-          "name": "allowance",
-          "type": "bool[]"
-        }
-      ],
-      "name": "setPermission",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [
         {
           "internalType": "uint256",
-          "name": "permissionDelay",
+          "name": "_minimumMembersForProposalCreation",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_minimumTokensLockedForProposalCreation",
           "type": "uint256"
         }
       ],
-      "name": "setPermissionDelay",
+      "name": "setConfig",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -1164,10 +1161,6 @@
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
-    },
-    {
-      "stateMutability": "payable",
-      "type": "receive"
     }
   ]
 }

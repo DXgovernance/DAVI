@@ -44,7 +44,7 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
   onShowStakeModal,
 }) => {
   const { t } = useTranslation();
-
+  console.log({ isRepGuild });
   const memberMenuRef = useRef(null);
   useDetectBlur(memberMenuRef, onClose);
 
