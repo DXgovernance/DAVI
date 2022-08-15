@@ -8,6 +8,6 @@ export const ProposalsList = styled(Box)`
 export const ProposalListWrapper = styled.div<{ isSearchOpened: boolean }>`
   height: ${({ isSearchOpened }) => (isSearchOpened ? '43vh' : '50vh')};
   @media only screen and (min-width: 768px) {
-    height: ${({ isSearchOpened }) => (isSearchOpened ? '69vh' : '75vh')};
+    height: ${({ isSearchOpened }) => (isSearchOpened ? '68vh' : '75vh')};
   }
 `;
