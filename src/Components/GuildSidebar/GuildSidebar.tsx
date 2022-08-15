@@ -67,7 +67,7 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
         </UnstyledLink>
         <UnstyledLink to={locations.allProposals}>
           <SidebarMenuItem current={pathname === locations.allProposals}>
-            {t('proposals_all')}
+            {t('allProposals')}
           </SidebarMenuItem>
         </UnstyledLink>
         <SidebarMenuItem>{t('settings')}</SidebarMenuItem>

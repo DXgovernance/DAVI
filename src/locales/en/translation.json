@@ -8,7 +8,7 @@
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
   "proposals_other": "{{count}} proposals",
-  "proposals_all": "All proposals",
+  "allProposals": "All proposals",
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
@@ -95,7 +95,8 @@
   "onchainAction": "On-chain Action",
   "noOnchainAction": "No on-chain action",
   "errorMessage": {
-    "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again."
+    "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again.",
+    "genericProposalError": "We ran into an error."
   },
   "selectAToken": "Select a token",
   "searchToken": "Search token",

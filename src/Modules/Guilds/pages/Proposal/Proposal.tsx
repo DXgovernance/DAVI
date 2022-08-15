@@ -37,8 +37,10 @@ import {
   SidebarContent,
   StyledIconButton,
 } from './Proposal.styled';
+import { useTranslation } from 'react-i18next';
 
 const ProposalPage: React.FC = () => {
+  const { t } = useTranslation();
   const { connector } = useAccount();
   const { chainName, guildId, proposalId } = useTypedParams();
 
@@ -93,7 +95,7 @@ const ProposalPage: React.FC = () => {
       return (
         <Result
           state={ResultState.ERROR}
-          title="We ran into an error."
+          title={t('genericProposalError')}
           subtitle={error.message}
         />
       );

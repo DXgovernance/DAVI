@@ -247,7 +247,7 @@ exports[`GuildSidebar Should render with data 1`] = `
         <a
           class="c12 c13"
         >
-          proposals_all
+          allProposals
         </a>
       </a>
       <a
@@ -537,7 +537,7 @@ exports[`GuildSidebar Should render without data 1`] = `
         <a
           class="c12 c13"
         >
-          proposals_all
+          allProposals
         </a>
       </a>
       <a

@@ -89,7 +89,7 @@ const Governance = ({ guildId }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title="We ran into an error."
+        title={t('genericProposalError')}
         subtitle={error.message}
       />
     );

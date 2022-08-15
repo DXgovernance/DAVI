@@ -7,8 +7,10 @@ import { useContext, useEffect, useMemo, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 import { useFilter } from 'contexts/Guilds';
 import { ProposalListWrapper, ProposalsList } from './AllProposals.styled';
+import { useTranslation } from 'react-i18next';
 
 const AllProposals = ({ guildId }) => {
+  const { t } = useTranslation();
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
   const [openSearchBar, setOpenSearchBar] = useState(false);
@@ -58,7 +60,7 @@ const AllProposals = ({ guildId }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title="We ran into an error."
+        title={t('genericProposalError')}
         subtitle={error.message}
       />
     );
