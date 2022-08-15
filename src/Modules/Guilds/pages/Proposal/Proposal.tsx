@@ -4,7 +4,6 @@ import { ProposalDescription } from 'Components/ProposalDescription';
 import { ProposalInfoCard } from 'Components/ProposalInfoCard';
 import ProposalStatus from 'Components/ProposalStatus/ProposalStatus';
 import { IconButton } from 'old-components/Guilds/common/Button';
-import { Box } from 'Components/Primitives/Layout';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
@@ -17,7 +16,6 @@ import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import React, { useContext } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
-import styled from 'styled-components';
 import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWrapper';
 import ExecuteButton from 'Components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
@@ -29,61 +27,16 @@ import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import { ActionsBuilder } from 'Components/ActionsBuilder';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
-
-const PageContainer = styled(Box)`
-  display: grid;
-  grid-template-columns: 1fr;
-
-  @media only screen and (min-width: 768px) {
-    grid-template-columns: minmax(0, 1fr) 300px;
-  }
-`;
-
-const SidebarContent = styled(Box)`
-  @media only screen and (min-width: 768px) {
-    margin-left: 1rem;
-  }
-`;
-
-const PageContent = styled(Box)`
-  @media only screen and (min-width: 768px) {
-    margin-right: 1rem;
-  }
-`;
-
-const PageHeader = styled(Box)`
-  margin-bottom: 1rem;
-  color: ${({ theme }) => theme.colors.text};
-`;
-
-const PageTitle = styled.h3`
-  font-size: 20px;
-  font-weight: 600;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 1.4rem;
-    font-weight: 700;
-  }
-
-  margin: 0;
-  margin: 1rem 0;
-`;
-
-const StyledIconButton = styled(IconButton)`
-  padding: 0.6rem 0.8rem;
-  margin-top: 5px;
-`;
-
-const ProposalActionsWrapper = styled(Box)`
-  margin-top: 2rem;
-`;
-
-const HeaderTopRow = styled(Box)`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
+import {
+  HeaderTopRow,
+  PageContainer,
+  PageContent,
+  PageHeader,
+  PageTitle,
+  ProposalActionsWrapper,
+  SidebarContent,
+  StyledIconButton,
+} from './Proposal.styled';
 
 const ProposalPage: React.FC = () => {
   const { connector } = useAccount();

@@ -4,26 +4,13 @@ import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
 import { useContext, useEffect, useMemo, useState } from 'react';
-import styled from 'styled-components';
 import { Virtuoso } from 'react-virtuoso';
-import { Box } from 'Components/Primitives/Layout';
 import { useFilter } from 'contexts/Guilds';
-
-const ProposalsList = styled(Box)`
-  margin-top: 1rem;
-`;
-
-const ProposalListWrapper = styled.div<{ isSearchOpened: boolean }>`
-  height: ${({ isSearchOpened }) => (isSearchOpened ? '43vh' : '50vh')};
-  @media only screen and (min-width: 768px) {
-    height: ${({ isSearchOpened }) => (isSearchOpened ? '69vh' : '75vh')};
-  }
-`;
+import { ProposalListWrapper, ProposalsList } from './AllProposals.styled';
 
 const AllProposals = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
   const { data: proposalIds, error } = useGuildProposalIds(guildId);
-
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
   /*

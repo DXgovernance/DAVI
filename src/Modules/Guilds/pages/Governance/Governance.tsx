@@ -2,48 +2,26 @@
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useContext, useEffect, useMemo } from 'react';
 import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import { Box, Flex } from 'Components/Primitives/Layout';
-import styled from 'styled-components';
-import ProposalCardWrapper from '../Wrappers/ProposalCardWrapper';
+import { Flex } from 'Components/Primitives/Layout';
+import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
-import { Heading } from 'old-components/Guilds/common/Typography';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
-import { useTypedParams } from '../Hooks/useTypedParams';
-import { Link } from 'react-router-dom';
+import { useTypedParams } from '../../Hooks/useTypedParams';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
-import { Button } from 'old-components/Guilds/common/Button';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';
-
-const ProposalsList = styled(Box)`
-  margin-top: 1rem;
-`;
-
-const ProposalListWrapper = styled.div`
-  height: 50vh;
-  @media only screen and (min-width: 768px) {
-    height: 75vh;
-  }
-`;
-
-const StyledHeading = styled(Heading)`
-  margin-top: 32px;
-  margin-bottom: 20px;
-`;
-
-const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.text};
-`;
-
-const StyledButton = styled(Button)`
-  white-space: nowrap;
-  height: 45px;
-`;
+import {
+  ProposalListWrapper,
+  ProposalsList,
+  StyledButton,
+  StyledHeading,
+  StyledLink,
+} from './Governance.styled';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
