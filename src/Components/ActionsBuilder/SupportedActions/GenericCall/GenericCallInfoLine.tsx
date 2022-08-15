@@ -78,7 +78,6 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
         </>
       ) : (
         <>
-          {' '}
           {!!approveSpendTokens && (
             <>
               <Segment>

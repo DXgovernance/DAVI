@@ -41,7 +41,6 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
       />
     </svg>
   </span>
-   
   <span
     class="c0"
   >
@@ -161,7 +160,6 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
       />
     </svg>
   </span>
-   
   <span
     class="c0"
   >
