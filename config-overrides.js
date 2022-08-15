@@ -1,5 +1,26 @@
 // Used to make the build reproducible between different machines (IPFS-related)
+
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const webpack = require('webpack');
+
 module.exports = (config, env) => {
+  config.module.rules.push({
+    test: /\.mjs$/,
+    include: /node_modules/,
+    type: 'javascript/auto',
+    resolve: {
+      fullySpecified: false,
+    }
+  });
+
+  config.plugins = [
+    ...config.plugins,
+    new NodePolyfillPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer'],
+    }),
+  ]
   if (env !== 'production') {
     return config;
   }

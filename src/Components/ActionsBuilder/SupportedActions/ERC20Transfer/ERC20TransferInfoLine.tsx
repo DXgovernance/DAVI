@@ -4,7 +4,8 @@ import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber'
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
-import { FiArrowRight, FiNavigation } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
+import { BiSend } from 'react-icons/bi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { useTranslation } from 'react-i18next';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
@@ -14,6 +15,7 @@ import { useNetwork } from 'wagmi';
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
   compact,
+  noAvatar,
 }) => {
   const { t } = useTranslation();
 
@@ -57,7 +59,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   return (
     <>
       <Segment>
-        <FiNavigation size={16} />
+        <BiSend size={16} />
       </Segment>
       <Segment>
         {!compact ? t('transfer') : ''} {roundedBalance}{' '}
@@ -66,13 +68,15 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <FiArrowRight />
       </Segment>
-      <Segment>
-        <Avatar
-          defaultSeed={parsedData?.recipientAddress}
-          src={imageUrl}
-          size={compact ? 14 : 24}
-        />
-      </Segment>
+      {noAvatar ? null : (
+        <Segment>
+          <Avatar
+            defaultSeed={parsedData?.recipientAddress}
+            src={imageUrl}
+            size={compact ? 14 : 24}
+          />
+        </Segment>
+      )}
       <Segment>
         {ensName ||
           (parsedData?.recipientAddress

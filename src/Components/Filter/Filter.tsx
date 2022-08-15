@@ -68,15 +68,26 @@ const Filter = () => {
             <AiOutlineSearch size={20} />
           </StyledIconButton>
           {isProposalCreationAllowed && (
-            <Button
-              variant="secondary"
-              onClick={() =>
-                history.push(navigateUrl(location, 'proposalType'))
-              }
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </Button>
+            <>
+              <Button
+                variant="secondary"
+                onClick={() =>
+                  history.push(navigateUrl(location, 'proposalType'))
+                }
+                data-testid="create-proposal-button"
+              >
+                {t('createProposal')}
+              </Button>
+              <Button
+                variant="secondary"
+                onClick={() =>
+                  history.push(navigateUrl(location, 'discussion'))
+                }
+                data-testid="create-discussion-button"
+              >
+                {t('forum.createDiscussion')}
+              </Button>
+            </>
           )}
         </ButtonContainer>
       </FilterRow>

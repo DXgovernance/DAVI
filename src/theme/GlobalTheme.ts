@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle<{ theme: GuildsTheme }>`
     font-weight: ${({ theme }) => theme.fontWeights.medium};
   }
 
-  code {
+  code, pre {
     font-family: ${({ theme }) => theme.fonts.monospace};
   }
 

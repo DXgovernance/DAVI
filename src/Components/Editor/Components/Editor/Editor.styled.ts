@@ -4,14 +4,13 @@ import { transparentize } from 'polished';
 import { EditorContent } from '@tiptap/react';
 
 export const EditorWrap = styled.div`
-background-color: ${({ theme }) => theme.colors.background};
-border: 1px solid ${({ theme }) => theme.colors.border.initial};
-border-radius: 10px;
-color: ${({ theme }) => theme.colors.proposalText.lightGrey};
-display: flex;
-flex-direction: column;
-max-height: 26rem;
-}
+  background-color: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border-radius: 10px;
+  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  display: flex;
+  flex-direction: column;
+  max-height: 26rem;
 `;
 
 export const Content = styled(EditorContent)`

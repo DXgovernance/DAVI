@@ -30,6 +30,7 @@ export interface ActionViewProps {
   decodedCall: DecodedCall;
   approveSpendTokens?: ApproveSendTokens;
   compact?: boolean;
+  noAvatar?: boolean;
 }
 
 export interface ActionEditorProps extends ActionViewProps {

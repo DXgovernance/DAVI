@@ -1,6 +1,9 @@
 import { BigNumber } from 'ethers';
 import { utils } from 'ethers';
-import { RichContractData } from 'hooks/Guilds/contracts/useRichContractRegistry';
+import {
+  RichContractData,
+  RichContractFunction,
+} from 'hooks/Guilds/contracts/useRichContractRegistry';
 
 export enum SupportedAction {
   NATIVE_TRANSFER = 'NATIVE_TRANSFER',
@@ -29,6 +32,7 @@ export interface DecodedCall {
   function: utils.FunctionFragment;
   args: Record<string, any>;
   richData?: RichContractData;
+  richFunctionData?: RichContractFunction;
   functionName?: string;
   optionalProps?: Record<string, string>;
 }
@@ -48,6 +52,7 @@ export interface Option {
   actions?: Call[];
   decodedActions?: DecodedAction[];
   totalVotes?: BigNumber;
+  votePercentage?: number;
 }
 
 export interface ApproveSendTokens {

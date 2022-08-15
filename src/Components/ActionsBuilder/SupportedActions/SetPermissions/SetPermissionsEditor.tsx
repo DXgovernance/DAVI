@@ -102,15 +102,15 @@ const Permissions: React.FC<ActionEditorProps> = ({
   // function signature
   const updateFunctionSignature = (value: string) => {
     if (!value || value === '')
-      return setValue('functionSignature', [ANY_FUNC_SIGNATURE]);
+      return setValue('functionSignature', ANY_FUNC_SIGNATURE);
 
     // If the value already is encoded
     if (value.substring(0, 2) === '0x')
-      return setValue('functionSignature', [value]);
+      return setValue('functionSignature', value);
 
     // if the value is the name of the function
     const functionSignature = web3.eth.abi.encodeFunctionSignature(value);
-    return setValue('functionSignature', [functionSignature]);
+    return setValue('functionSignature', functionSignature);
   };
 
   const handleFunctionNameChange = (value: string) => {
