@@ -35,7 +35,6 @@ export const ToggleWrapper = styled.div`
 export const ToggleLabel = styled.div<ToggleLabelProps>`
   white-space: nowrap;
   margin-left: 1rem;
-
   ${({ selected }) =>
     !selected &&
     css`
