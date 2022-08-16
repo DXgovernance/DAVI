@@ -9,6 +9,8 @@ import { useFilter } from 'contexts/Guilds';
 import { ProposalListWrapper, ProposalsList } from './AllProposals.styled';
 import { useTranslation } from 'react-i18next';
 
+const PROPOSALS_TO_LOAD = 10;
+
 const AllProposals = ({ guildId }) => {
   const { t } = useTranslation();
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -41,7 +43,6 @@ const AllProposals = ({ guildId }) => {
     return clone.reverse();
   }, [proposalIds]);
 
-  const PROPOSALS_TO_LOAD = 10;
   const [numberOfProposalsToShow, setNumberOfProposalsToShow] =
     useState(PROPOSALS_TO_LOAD);
 
