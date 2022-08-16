@@ -95,6 +95,10 @@ describe(`Set Permissions editor`, () => {
       expect(
         screen.getByRole('textbox', { name: /amount input/i })
       ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('switch', { name: /toggle max value/i })
+      ).toBeInTheDocument();
     });
 
     it(`Can fill 'To address' and 'custom amount'`, () => {
@@ -242,9 +246,5 @@ describe(`Set Permissions editor`, () => {
         screen.getByRole('textbox', { name: /amount input/i })
       ).toBeInTheDocument();
     });
-
-    it(`'To address' persists when changing tabs`, () => {});
-    it(`'Asset' and 'amount' persists when switching tabs`, () => {});
-    it(`'Toggle max value' persist when switching tabs`, () => {});
   });
 });

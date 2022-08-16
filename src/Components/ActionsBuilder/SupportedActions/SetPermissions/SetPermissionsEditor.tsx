@@ -11,7 +11,8 @@ import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import validateSetPermissions from './validateSetPermissions';
-import { StyledTokenAmount } from './styles';
+import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
+import Toggle from 'old-components/Guilds/common/Form/Toggle';
 import {
   Control,
   ControlLabel,
@@ -116,6 +117,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
       args: {
         ...decodedCall.args,
         to: isAssetTransferCall ? values.tokenAddress : values.toAddress,
+        // native value allowed
         valueAllowed: isAssetTransferCall ? BigNumber.from(0) : values.amount,
         functionSignature: isAssetTransferCall
           ? ERC20_TRANSFER_SIGNATURE
@@ -304,6 +306,20 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       disabled={activeTab === TABS.ASSET_TRANSFER}
                       isInvalid={invalid && !!error}
                     />
+                    {activeTab === TABS.ASSET_TRANSFER && (
+                      <ToggleWrapper>
+                        <Toggle
+                          name="toggle-max-value"
+                          aria-label="toggle max value"
+                          value={true}
+                          onChange={() => true}
+                          disabled
+                        />
+                        <ToggleLabel selected={true}>
+                          {t('maxValue')}
+                        </ToggleLabel>
+                      </ToggleWrapper>
+                    )}
                   </ControlRow>
                 </Control>
                 {invalid && !!error && <Error>{error}</Error>}
