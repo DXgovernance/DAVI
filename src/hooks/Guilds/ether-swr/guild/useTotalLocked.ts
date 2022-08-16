@@ -1,8 +1,8 @@
 import { BigNumber } from 'ethers';
 import useEtherSWR from '../useEtherSWR';
 import useCurrentSnapshotId from './useCurrentSnapshotId';
-import useGuildToken from './useGuildToken';
-import useTotalSupplyAt from './useTotalSupplyAt';
+// import useGuildToken from './useGuildToken';
+// import useTotalSupplyAt from './useTotalSupplyAt';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
@@ -24,7 +24,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   const SNAPSHOT_ID =
     snapshotId ?? _snapshotId?.toString() ?? currentSnapshotId?.toString();
 
-  const { isSnapshotGuild, isRepGuild, isSnapshotRepGuild } =
+  const { isSnapshotGuild, isRepGuild } =
     useGuildImplementationType(guildAddress);
 
   const totalLockedResponse = useEtherSWR<BigNumber>(
@@ -39,16 +39,16 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     snapshotId: SNAPSHOT_ID,
   });
 
-  const { data: guildTokenAddress } = useGuildToken(guildAddress);
+  // const { data: guildTokenAddress } = useGuildToken(guildAddress);
 
-  const totalSupplyAtSnapshotResponse = useTotalSupplyAt({
-    contractAddress: guildTokenAddress,
-    snapshotId: SNAPSHOT_ID,
-  });
+  // const totalSupplyAtSnapshotResponse = useTotalSupplyAt({
+  //   contractAddress: guildTokenAddress,
+  //   snapshotId: SNAPSHOT_ID,
+  // });
 
   // Return response based on implementation type
   if (isSnapshotGuild) return totalLockedAtProposalSnapshotResponse;
-  if (isSnapshotRepGuild) return totalSupplyAtSnapshotResponse;
+  // if (isSnapshotRepGuild) return totalSupplyAtSnapshotResponse;
   if (isRepGuild) return totalLockedResponse;
   return totalLockedResponse;
 };

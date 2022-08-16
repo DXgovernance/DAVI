@@ -11,7 +11,6 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     features: ['SNAPSHOT'],
     isRepGuild: true,
     isSnapshotGuild: false,
-    isSnapshotRepGuild: false,
   }),
 }));
 
