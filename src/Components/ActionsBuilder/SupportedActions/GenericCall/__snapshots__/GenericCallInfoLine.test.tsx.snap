@@ -163,6 +163,36 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
   <span
     class="c0"
   >
+    Unknown token
+  </span>
+  <span
+    class="c0"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="c0"
+  >
     <span>
       Test template 
       <span

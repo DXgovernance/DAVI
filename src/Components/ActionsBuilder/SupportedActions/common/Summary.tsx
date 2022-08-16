@@ -17,10 +17,10 @@ import { SummaryProps } from './types';
 import { BiLinkExternal } from 'react-icons/bi';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
 
-const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
+const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
   const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
-  const { ensName, imageUrl } = useENSAvatar(address, MAINNET_ID);
+  const { ensName, imageUrl } = useENSAvatar(decodedCall.to, MAINNET_ID);
   const { chain } = useNetwork();
   const nativeTokenSymbol = useMemo(() => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
@@ -48,14 +48,14 @@ const Summary = ({ decodedCall, address, blockExplorerUrl }: SummaryProps) => {
       <DetailRow>
         <DetailBody>
           <Segment>
-            <Avatar defaultSeed={address} src={imageUrl} size={24} />
+            <Avatar defaultSeed={decodedCall.to} src={imageUrl} size={24} />
           </Segment>
           <StyledSegmentLink
             href={blockExplorerUrl}
             target="_blank"
             rel="noopener"
           >
-            {ensName || address}
+            {ensName || decodedCall.to}
             <BiLinkExternal />
           </StyledSegmentLink>
         </DetailBody>
