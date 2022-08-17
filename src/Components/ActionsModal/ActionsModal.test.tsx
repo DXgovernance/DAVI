@@ -14,6 +14,13 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     isSnapshotRepGuild: false,
   }),
 }));
+jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+  useGuildConfig: () => ({
+    data: {
+      permissionRegistry: '0x0000000000000000000000000000000000000000',
+    },
+  }),
+}));
 
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: true }),

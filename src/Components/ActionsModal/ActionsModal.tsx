@@ -28,6 +28,7 @@ import { EditorWrapper } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
 import { useAccount } from 'wagmi';
+import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
 const ActionModal: React.FC<ActionModalProps> = ({
   action,
@@ -38,6 +39,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
   const { address: walletAddress } = useAccount();
+  const { data: guildConfig } = useGuildConfig(guildId);
   // Supported Actions
   const [selectedAction, setSelectedAction] =
     React.useState<SupportedAction>(null);
@@ -197,6 +199,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
         break;
       case SupportedAction.SET_PERMISSIONS:
         defaultDecodedAction.decodedCall.args.from = guildId;
+        defaultDecodedAction.decodedCall.to = guildConfig?.permissionRegistry;
         break;
     }
     setData(defaultDecodedAction.decodedCall);
