@@ -140,7 +140,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       from: '',
       callType: SupportedAction.SET_PERMISSIONS,
       function: PermissionRegistryContract.getFunction('setETHPermission'),
-      to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
+      to: '',
       value: BigNumber.from(0),
       args: {
         to: '',
