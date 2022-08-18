@@ -146,7 +146,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
         to: '',
         functionSignature: '',
         valueAllowed: BigNumber.from(0),
-        allowance: 'true',
+        allowed: true,
       },
       optionalProps: {
         asset: '',
