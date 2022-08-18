@@ -213,5 +213,5 @@
   },
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code",
-  "noGuildsDeployed": "No guilds deployed on this network"
+  "noGuildsDeployed": "No guilds registered on this network"
 }
