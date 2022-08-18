@@ -89,7 +89,7 @@ const LandingPage: React.FC = () => {
   const { data: allGuilds, error, isValidating } = useGuildRegistry();
 
   const EmptyGuilds = () => {
-    return <h1>{t('noGuildsDeployed')}</h1>;
+    return <h1>{t('noGuildsRegistered')}</h1>;
   };
 
   if (!allGuilds || allGuilds.length === 0) {
