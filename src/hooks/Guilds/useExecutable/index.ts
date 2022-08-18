@@ -1,7 +1,7 @@
 import { useTransactions } from 'contexts/Guilds/transactions';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useMemo } from 'react';
-import { useParams } from 'react-router-dom';
 import { useProposal } from '../ether-swr/guild/useProposal';
 
 interface useExecutableReturns {
@@ -13,10 +13,7 @@ interface useExecutableReturns {
 }
 
 function useExecutable(): useExecutableReturns {
-  const { guildId, proposalId } = useParams<{
-    guildId?: string;
-    proposalId?: string;
-  }>();
+  const { guildId, proposalId } = useTypedParams();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { createTransaction } = useTransactions();
   const guildContract = useERC20Guild(guildId);
