@@ -212,5 +212,6 @@
     "discussionPlaceholder": "Write discussion content"
   },
   "none": "None",
-  "expandLinesOfCode": "Expand {{numLines}} lines of code"
+  "expandLinesOfCode": "Expand {{numLines}} lines of code",
+  "noGuildsDeployed": "No guilds deployed on this network"
 }

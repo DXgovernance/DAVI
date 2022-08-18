@@ -66,10 +66,6 @@ const GuildCardLoader = () => {
   );
 };
 
-const EmptyGuilds = () => {
-  return <h1>No Guilds deployed on this network</h1>;
-};
-
 const GuildCardWithContent = ({ guildAddress, t }) => {
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
   const { data: numberOfActiveProposals } = useActiveProposalsNow(guildAddress);
@@ -91,6 +87,10 @@ const GuildCardWithContent = ({ guildAddress, t }) => {
 const LandingPage: React.FC = () => {
   const { t } = useTranslation();
   const { data: allGuilds, error, isValidating } = useGuildRegistry();
+
+  const EmptyGuilds = () => {
+    return <h1>{t('noGuildsDeployed')}</h1>;
+  };
 
   if (!allGuilds || allGuilds.length === 0) {
     return <EmptyGuilds />;
