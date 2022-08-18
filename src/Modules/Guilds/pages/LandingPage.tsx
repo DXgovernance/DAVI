@@ -66,6 +66,10 @@ const GuildCardLoader = () => {
   );
 };
 
+const EmptyGuilds = () => {
+  return <h1>No Guilds deployed on this network</h1>;
+};
+
 const GuildCardWithContent = ({ guildAddress, t }) => {
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
   const { data: numberOfActiveProposals } = useActiveProposalsNow(guildAddress);
@@ -86,9 +90,21 @@ const GuildCardWithContent = ({ guildAddress, t }) => {
 
 const LandingPage: React.FC = () => {
   const { t } = useTranslation();
-  const { data: allGuilds, error } = useGuildRegistry();
+  const { data: allGuilds, error, isValidating } = useGuildRegistry();
 
-  const isLoading = !allGuilds && !error;
+  if (!allGuilds || allGuilds.length === 0) {
+    return <EmptyGuilds />;
+  }
+
+  if (isValidating) {
+    return (
+      <CardsContainer>
+        <GuildCardLoader />;
+        <GuildCardLoader />;
+        <GuildCardLoader />;
+      </CardsContainer>
+    );
+  }
 
   return (
     <>
@@ -108,17 +124,7 @@ const LandingPage: React.FC = () => {
       <CardsContainer>
         {error ? (
           <>{/* Render error state */}</>
-        ) : isLoading ? (
-          <>
-            {/* Render loading state */}
-            <GuildCardLoader />
-            <GuildCardLoader />
-            <GuildCardLoader />
-          </>
-        ) : !allGuilds.length ? (
-          <>{/* Render empty state */}</>
         ) : (
-          /* Render success state */
           allGuilds.map(guildAddress => (
             <GuildCardWithContent
               key={guildAddress}

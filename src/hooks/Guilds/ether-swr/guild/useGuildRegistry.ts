@@ -6,7 +6,7 @@ export const useGuildRegistry = (contractAddress?: string) => {
   const config = useNetworkConfig();
 
   const address = contractAddress || config?.contracts?.utils.guildRegistry;
-  const { data, error } = useEtherSWR(
+  const { data, error, isValidating } = useEtherSWR(
     address ? [address, 'getGuildsAddresses'] : [],
     {
       ABIs: new Map([[address, GuildRegistry.abi]]),
@@ -16,6 +16,7 @@ export const useGuildRegistry = (contractAddress?: string) => {
 
   return {
     data,
+    isValidating,
     error,
   };
 };
