@@ -1,6 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuildSidebar Should render with data 1`] = `
+.c11 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c11:focus,
+.c11:hover,
+.c11:visited,
+.c11:link,
+.c11:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c0 {
   box-sizing: 'border-box';
   min-width: 0;
@@ -19,16 +34,16 @@ exports[`GuildSidebar Should render with data 1`] = `
   margin: 0.5rem;
 }
 
-.c11 {
+.c12 {
   display: block;
   -webkit-text-decoration: none;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
 
-.c11:visited,
-.c11:active,
-.c11:link {
+.c12:visited,
+.c12:active,
+.c12:link {
   -webkit-text-decoration: none;
   text-decoration: none;
   decoration: none;
@@ -121,15 +136,16 @@ exports[`GuildSidebar Should render with data 1`] = `
   justify-content: space-between;
 }
 
-.c12 {
+.c13 {
   padding: 0.8rem 1rem;
+  color: #A1A6B0;
 }
 
-.c12:hover {
+.c13:hover {
   border-bottom: 2px solid #303338;
 }
 
-.c12:active {
+.c13:active {
   border-bottom: 2px solid #303338;
 }
 
@@ -158,21 +174,21 @@ exports[`GuildSidebar Should render with data 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c12 {
+  .c13 {
     border-left: 2px solid transparent;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c12:hover {
+  .c13:hover {
     border-left: 2px solid #303338;
     border-bottom: initial;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c12:active {
-    border-left: 2px solid #303338;
+  .c13:active {
+    border-left: 2px solid #fff;
     border-bottom: initial;
   }
 }
@@ -215,26 +231,27 @@ exports[`GuildSidebar Should render with data 1`] = `
       class="c0 c9 c10"
     >
       <a
-        class="c11 c12"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        proposals
+        <a
+          class="c12 c13"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="c11 c12"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        members
+        <a
+          class="c12 c13"
+        >
+          allProposals
+        </a>
       </a>
       <a
-        class="c11 c12"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="c11 c12"
-        href="#"
+        class="c12 c13"
       >
         settings
       </a>
@@ -245,6 +262,21 @@ exports[`GuildSidebar Should render with data 1`] = `
 `;
 
 exports[`GuildSidebar Should render without data 1`] = `
+.c11 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c11:focus,
+.c11:hover,
+.c11:visited,
+.c11:link,
+.c11:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
 .c0 {
   box-sizing: 'border-box';
   min-width: 0;
@@ -263,16 +295,16 @@ exports[`GuildSidebar Should render without data 1`] = `
   margin: 0.5rem;
 }
 
-.c11 {
+.c12 {
   display: block;
   -webkit-text-decoration: none;
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
 
-.c11:visited,
-.c11:active,
-.c11:link {
+.c12:visited,
+.c12:active,
+.c12:link {
   -webkit-text-decoration: none;
   text-decoration: none;
   decoration: none;
@@ -365,15 +397,16 @@ exports[`GuildSidebar Should render without data 1`] = `
   justify-content: space-between;
 }
 
-.c12 {
+.c13 {
   padding: 0.8rem 1rem;
+  color: #A1A6B0;
 }
 
-.c12:hover {
+.c13:hover {
   border-bottom: 2px solid #303338;
 }
 
-.c12:active {
+.c13:active {
   border-bottom: 2px solid #303338;
 }
 
@@ -402,21 +435,21 @@ exports[`GuildSidebar Should render without data 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c12 {
+  .c13 {
     border-left: 2px solid transparent;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c12:hover {
+  .c13:hover {
     border-left: 2px solid #303338;
     border-bottom: initial;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c12:active {
-    border-left: 2px solid #303338;
+  .c13:active {
+    border-left: 2px solid #fff;
     border-bottom: initial;
   }
 }
@@ -488,26 +521,27 @@ exports[`GuildSidebar Should render without data 1`] = `
       class="c0 c9 c10"
     >
       <a
-        class="c11 c12"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        proposals
+        <a
+          class="c12 c13"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="c11 c12"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        members
+        <a
+          class="c12 c13"
+        >
+          allProposals
+        </a>
       </a>
       <a
-        class="c11 c12"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="c11 c12"
-        href="#"
+        class="c12 c13"
       >
         settings
       </a>

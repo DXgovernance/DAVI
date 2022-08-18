@@ -8,6 +8,7 @@
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
   "proposals_other": "{{count}} proposals",
+  "allProposals": "All proposals",
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
@@ -95,7 +96,8 @@
   "onchainAction": "On-chain Action",
   "noOnchainAction": "No on-chain action",
   "errorMessage": {
-    "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again."
+    "proposalDescriptionError": "We ran into an error while trying to load the proposal content. Please refresh the page and try again.",
+    "genericProposalError": "We ran into an error."
   },
   "selectAToken": "Select a token",
   "searchToken": "Search token",
@@ -135,7 +137,7 @@
     "proposalHistory": "Proposal History"
   },
   "filter": "Filter",
-  "searchTitleEnsAddress": "Search title, ENS, address",
+  "searchTitleEnsAddress": "Search proposal, discussion, ENS, address",
   "state": "State",
   "reset": "Reset",
   "type": "Type",
@@ -203,6 +205,7 @@
   "invalidTokenAddress": "Invalid token address",
   "reputationPercentageTooHigh": "Reputation percentage too high",
   "reputationPercentIsRequired": "Reputation percentage is required",
+  "governance": "Governance",
   "invalidFunctionName": "Invalid function name",
   "encodedSignatureIsInvalid": "Encoded signature is invalid",
   "invalidAddress": "Invalid Address",
