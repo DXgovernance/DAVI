@@ -33,13 +33,13 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
         };
         if (!!decodedAction.approval) {
           const approvalCall = {
-            from: decodedAction.decodedCall.from,
-            to: decodedAction.approval?.token,
+            from: decodedAction.decodedCall.from, // Guild address
+            to: decodedAction.approval?.token, // Token address
             data: encodeAprovalCall(
-              decodedAction.decodedCall.from,
-              decodedAction.approval?.amount
+              decodedAction.decodedCall.to, // Spender: Contract we are doing the actual spending call to
+              decodedAction.approval?.amount // Value: Amount of tokens to approve
             ),
-            value: BigNumber.from('0'),
+            value: BigNumber.from('0'), // No native tokens to send on approval call
           };
           return [...acc, approvalCall, actionCall];
         }
