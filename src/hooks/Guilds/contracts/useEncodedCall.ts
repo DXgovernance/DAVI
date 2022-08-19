@@ -12,7 +12,7 @@ export const encodeCall = (
   return contractInterface.encodeFunctionData(decodedCall.function, args);
 };
 
-export const encodeAprovalCall = (
+export const encodeApprovalCall = (
   spender: string,
   amount: BigNumber
 ): string => {
@@ -35,7 +35,7 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
           const approvalCall = {
             from: decodedAction.decodedCall.from, // Guild address
             to: decodedAction.approval?.token, // Token address
-            data: encodeAprovalCall(
+            data: encodeApprovalCall(
               decodedAction.decodedCall.to, // Spender: Contract we are doing the actual spending call to
               decodedAction.approval?.amount // Value: Amount of tokens to approve
             ),
