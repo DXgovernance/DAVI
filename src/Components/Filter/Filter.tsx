@@ -72,7 +72,7 @@ const Filter = () => {
               <Button
                 variant="secondary"
                 onClick={() =>
-                  history.push(navigateUrl(location, 'proposalType'))
+                  history.push(navigateUrl(location, 'createProposal'))
                 }
                 data-testid="create-proposal-button"
               >
@@ -80,9 +80,7 @@ const Filter = () => {
               </Button>
               <Button
                 variant="secondary"
-                onClick={() =>
-                  history.push(navigateUrl(location, 'discussion'))
-                }
+                onClick={() => history.push(navigateUrl(location, 'create'))}
                 data-testid="create-discussion-button"
               >
                 {t('forum.createDiscussion')}

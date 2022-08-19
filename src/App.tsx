@@ -38,10 +38,10 @@ const App = () => {
                 <Route path="/:chainName/:guildId/proposal/:proposalId">
                   <ProposalPage />
                 </Route>
-                <Route path="/:chainName/:guildId/create/:proposalType">
+                <Route path="/:chainName/:guildId/createProposal/">
                   <CreateProposalPage />
                 </Route>
-                <Route path="/:chainName/:guildId/:discussion">
+                <Route path="/:chainName/:guildId/create">
                   <CreateDiscussionPage />
                 </Route>
                 <Route>
