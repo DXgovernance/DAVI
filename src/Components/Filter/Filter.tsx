@@ -1,9 +1,7 @@
 import { useMemo, useState } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { useHistory, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
 import { Button } from 'old-components/Guilds/common/Button';
 import Input from 'old-components/Guilds/common/Form/Input';
 import { FilterMenu, FilterButton } from './components';
@@ -19,17 +17,19 @@ import {
   StyledInputWrapper,
   FilterBadge,
 } from './Filter.styled';
-import { navigateUrl } from 'utils';
 import { useAccount } from 'wagmi';
+import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 
-const Filter = () => {
+interface FilterProps {
+  openSearchBar: boolean;
+  setOpenSearchBar: (openSearchBar: boolean) => void;
+}
+
+const Filter: React.FC<FilterProps> = ({ openSearchBar, setOpenSearchBar }) => {
   const { t } = useTranslation();
-  const { guildId } = useTypedParams();
+  const { chainName, guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
   const { totalFilters, searchQuery, setSearchQuery } = useFilter();
-
-  const history = useHistory();
-  const location = useLocation();
 
   const { address } = useAccount();
   const { data: votingPower } = useVotingPowerOf({
@@ -46,7 +46,6 @@ const Filter = () => {
     }
     return false;
   }, [votingPower, guildConfig]);
-  const [openSearchBar, setOpenSearchBar] = useState(false);
 
   return (
     <FilterContainer>
@@ -69,22 +68,23 @@ const Filter = () => {
           </StyledIconButton>
           {isProposalCreationAllowed && (
             <>
-              <Button
-                variant="secondary"
-                onClick={() =>
-                  history.push(navigateUrl(location, 'createProposal'))
-                }
-                data-testid="create-proposal-button"
-              >
-                {t('createProposal')}
-              </Button>
-              <Button
-                variant="secondary"
-                onClick={() => history.push(navigateUrl(location, 'create'))}
-                data-testid="create-discussion-button"
-              >
-                {t('forum.createDiscussion')}
-              </Button>
+              <UnstyledLink to={`/${chainName}/${guildId}/createProposal`}>
+                <Button
+                  variant="secondary"
+                  data-testid="create-proposal-button"
+                >
+                  {t('createProposal')}
+                </Button>
+              </UnstyledLink>
+              /
+              <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+                <Button
+                  variant="secondary"
+                  data-testid="create-discussion-button"
+                >
+                  {t('forum.createDiscussion')}
+                </Button>
+              </UnstyledLink>
             </>
           )}
         </ButtonContainer>

@@ -76,7 +76,6 @@ const CreateDiscussionPage: React.FC = () => {
     if (postTemplate(post)) {
       const res = await createPost(orbis.current, post);
       handleBack();
-      console.log({ res, post });
       return {
         res,
         postTemplate,

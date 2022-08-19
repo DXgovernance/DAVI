@@ -30,11 +30,14 @@ let mockedData = {
 
 jest.mock('react-router-dom', () => ({
   _esModule: true,
-  useParams: () => ({
-    guildId: 'guild_id',
-    proposalId: 'proposal_id',
-  }),
   useRouteMatch: () => ({ url: '/guild_id/proposal_id/' }),
+}));
+
+jest.mock('Modules/Guilds/Hooks/useTypedParams', () => ({
+  useTypedParams: () => ({
+    chainName: 'localhost',
+    guildId: '0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2',
+  }),
 }));
 
 jest.mock('contexts/Guilds/transactions', () => ({

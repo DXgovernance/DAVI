@@ -2,14 +2,14 @@ import GlobalErrorBoundary from './old-components/Guilds/ErrorBoundary/GlobalErr
 import { Header } from 'Components';
 import ToastNotificationContainer from './old-components/Guilds/ToastNotifications/ToastNotificationContainer';
 import { Container } from './Components/Primitives/Layout';
-import GuildsPage from './Modules/Guilds/pages/Guilds';
-import ProposalPage from './Modules/Guilds/pages/Proposal';
+import { GuildsPage } from './Modules/Guilds/pages/Guilds';
+import { ProposalPage } from './Modules/Guilds/pages/Proposal';
 import GlobalStyle from './theme/GlobalTheme';
 import { ProposalTypesConfig } from 'configs/proposalTypes';
 import { GuildsContextProvider, TransactionsProvider } from 'contexts/Guilds';
 import { ProposalTypes } from 'Components/ProposalTypes';
 import CreateProposalPage from 'Modules/Guilds/pages/CreateProposal';
-import LandingPage from 'Modules/Guilds/pages/LandingPage';
+import { LandingPage } from 'Modules/Guilds/pages/LandingPage';
 import NotFound from 'Modules/Guilds/pages/NotFound';
 import { Route, Switch } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
@@ -31,6 +31,9 @@ const App = () => {
                 </Route>
                 <Route exact path="/:chainName/:guildId">
                   <GuildsPage />
+                </Route>
+                <Route exact path="/:chainName/:guildId/allProposals">
+                  <GuildsPage pageContent={'allProposals'} />
                 </Route>
                 <Route path="/:chainName/:guildId/proposalType">
                   <ProposalTypes data={ProposalTypesConfig} />
