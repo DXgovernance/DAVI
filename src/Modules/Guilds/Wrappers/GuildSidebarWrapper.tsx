@@ -28,7 +28,6 @@ const GuildSidebarWrapper = () => {
   const { isRepGuild } = useGuildImplementationType(guildAddress);
   const { data: guildToken } = useERC20Info(guildConfig?.token);
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
-  console.log({ isRepGuild });
   const { address: userAddress, connector } = useAccount();
   const { data: ensName } = useEnsName({ address: userAddress });
   const { data: ensAvatar } = useEnsAvatar({ addressOrName: userAddress });

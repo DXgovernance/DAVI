@@ -25,7 +25,6 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
 const parseConfig = (
   config: ImplementationTypeConfig
 ): ImplementationTypeConfigReturn => {
-  console.log({ config });
   return {
     ...config,
     isRepGuild: config.features.includes('REP'),
@@ -54,11 +53,11 @@ export default function useGuildImplementationTypeConfig(
 
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
     if (!guildBytecode) return defaultImplementation;
-    console.log({ guildBytecode });
+
     const match = deployedHashedBytecodes.find(
       ({ bytecode_hash }) => guildBytecode === bytecode_hash
     );
-    console.log({ match });
+
     return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode]);
   return parseConfig(implementationTypeConfig);
