@@ -438,7 +438,6 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             <span
               class="c17"
             >
-              
                
                
             </span>
@@ -919,7 +918,6 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
             <span
               class="c17"
             >
-              
                
                
             </span>

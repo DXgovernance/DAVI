@@ -279,7 +279,6 @@ exports[`Filter Should match snapshot 1`] = `
     <div
       class="c2 c3"
     >
-      
       <div
         class="c4"
       >
@@ -310,7 +309,6 @@ exports[`Filter Should match snapshot 1`] = `
           <div
             class="c9 c0 c10"
           >
-            
             <div
               class="c0 c11"
             >
@@ -374,7 +372,6 @@ exports[`Filter Should match snapshot 1`] = `
           <div
             class="c9 c0 c10"
           >
-            
             <div
               class="c0 c11"
             >
@@ -430,7 +427,6 @@ exports[`Filter Should match snapshot 1`] = `
         </button>
       </div>
     </div>
-    
   </div>
    
 </div>

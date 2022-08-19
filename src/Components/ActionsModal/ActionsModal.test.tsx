@@ -22,7 +22,10 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
   }),
 }));
 
+const mockChainId = 123456;
+
 jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ isConnected: true }),
   chain: {
     mainnet: {},
