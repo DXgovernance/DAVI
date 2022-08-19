@@ -137,7 +137,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     }
                   />
                 </ControlRow>
-                {invalid && !!error && <Error>{error}</Error>}
+                {invalid && !!error && <Error>{error.message}</Error>}
               </Control>
             );
           }}
@@ -161,7 +161,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     />
                   </ControlRow>
 
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </Control>
               );
             }}
@@ -199,7 +199,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                         readOnly
                       />
                     </ControlRow>
-                    {invalid && !!error && <Error>{error}</Error>}
+                    {invalid && !!error && <Error>{error.message}</Error>}
                   </Control>
 
                   <TokenPicker
