@@ -64,9 +64,7 @@ const LandingPage: React.FC = () => {
         />
         <StyledButton data-testid="create-guild-button">
           {' '}
-          <StyledLink to={location => `${location.pathname}/createGuild`}>
-            {t('guilds.create')}
-          </StyledLink>
+          <StyledLink to={`createGuild`}>{t('guilds.create')}</StyledLink>
         </StyledButton>
       </InputContainer>
       <CardsContainer>

@@ -16,7 +16,7 @@ import { Loading } from 'Components/Primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
@@ -44,7 +44,7 @@ const CreateProposalPage: React.FC = () => {
     GuildAvailabilityContext
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
@@ -75,7 +75,7 @@ const CreateProposalPage: React.FC = () => {
     setEditMode(v => !v);
   };
 
-  const handleBack = () => history.push(`/${chain}/${guildId}/proposalType`);
+  const handleBack = () => navigate(`/${chain}/${guildId}/proposalType`);
 
   const ipfs = useIPFSNode();
 
@@ -156,7 +156,7 @@ const CreateProposalPage: React.FC = () => {
         err => {
           if (!err) {
             editMode && clear();
-            history.push(`/${chain}/${guildId}`);
+            navigate(`/${chain}/${guildId}`);
           }
         }
       );
