@@ -1,6 +1,7 @@
 import { BigNumber } from 'ethers';
 import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 import useStringToBigNumber from 'hooks/Guilds/conversions/useStringToBigNumber';
+import { useDebounce } from 'hooks/Guilds/useDebounce';
 import { useEffect, useState } from 'react';
 import { InputProps } from './Input';
 import NumericalInput from './NumericalInput';
@@ -15,33 +16,35 @@ const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   decimals = 18,
   ...rest
 }) => {
-  const [amount, setAmount] = useState<string>('');
+  const [localAmount, setLocalAmount] = useState<string>('');
+  const debouncedLocalAmount = useDebounce(localAmount, 350);
+  const localAmountBN = useStringToBigNumber(localAmount, decimals);
 
-  // Set the initial value as the amount
-  const amountFromProps = useBigNumberToString(value, decimals);
+  const valueAsString = useBigNumberToString(value, decimals);
+
   useEffect(() => {
-    if (amountFromProps != null) {
-      setAmount(amountFromProps.toString());
+    if (localAmount !== valueAsString) {
+      setLocalAmount(valueAsString);
     }
-  }, [amountFromProps]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [valueAsString]);
 
   // Call onChange when the amount changes
-  const amountBN = useStringToBigNumber(amount, decimals);
   useEffect(() => {
-    onChange(amountBN);
+    onChange(localAmountBN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amountBN]);
+  }, [debouncedLocalAmount]);
 
   const setAmountEnforceDecimals = (amount: string) => {
     const fraction = amount?.split('.')?.[1];
     if (fraction && fraction?.length > decimals) return;
 
-    setAmount(amount);
+    setLocalAmount(amount);
   };
 
   return (
     <NumericalInput
-      value={amount}
+      value={localAmount}
       onChange={setAmountEnforceDecimals}
       {...rest}
     />
