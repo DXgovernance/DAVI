@@ -29,7 +29,7 @@ export const getIpfsUrl = (ipfsHash: string) => {
   return ipfsHash ? `${ipfsRoot}${ipfsHash}` : null;
 };
 
-export const isValidChainId = (chainId: number) => {
+export const isSupportedChainId = (chainId: number) => {
   if (!chainId || chainId === LOCALHOST_ID) {
     return MAINNET_ID;
   } else {
@@ -38,7 +38,7 @@ export const isValidChainId = (chainId: number) => {
 };
 
 export const isAvailableOnENS = (chainId: number) => {
-  const validChainId = isValidChainId(chainId);
+  const validChainId = isSupportedChainId(chainId);
   const ensNetworks = [MAINNET_ID, GOERLI_ID];
   return ensNetworks.includes(validChainId);
 };

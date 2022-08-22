@@ -1,5 +1,5 @@
 import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';

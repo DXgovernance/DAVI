@@ -2,7 +2,7 @@ import { isDesktop } from 'react-device-detect';
 import styled from 'styled-components';
 import React from 'react';
 import { IconButton } from '../common/Button';
-import useENSAvatar from '../../../hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from '../../../hooks/Guilds/ens/useENSAvatar';
 import Avatar from '../Avatar';
 import { shortenAddress } from '../../../utils';
 import { Badge } from '../common/Badge';

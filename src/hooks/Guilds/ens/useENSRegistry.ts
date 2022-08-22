@@ -1,9 +1,9 @@
 import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useProvider } from 'wagmi';
-import ensRegistrarABI from '../../../../abis/ENSRegistrar.json';
-import { ENS_REGISTRAR_ADDRESS } from '../../../../constants/addresses';
-import useEtherSWR from '../../ether-swr/useEtherSWR';
+import ensRegistrarABI from 'abis/ENSRegistrar.json';
+import { ENS_REGISTRAR_ADDRESS } from 'constants/addresses';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 
 type ENSRegistryData = {
   resolverAddress?: string;

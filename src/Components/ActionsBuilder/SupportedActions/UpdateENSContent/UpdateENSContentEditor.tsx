@@ -7,7 +7,7 @@ import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
   convertToContentHash,
   convertToNameHash,
-  isValidChainId,
+  isSupportedChainId,
 } from './utils';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
 import { isEnsName, isIpfsHash } from './validation';
@@ -31,7 +31,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   const fullEnsName = `${debouncedEnsName}.eth`;
 
   const { chain } = useNetwork();
-  const chainId = isValidChainId(chain.id);
+  const chainId = isSupportedChainId(chain.id);
   const { data: resolver } = useEnsResolver({
     name: `${debouncedEnsName}.eth`,
     chainId,

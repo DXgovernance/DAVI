@@ -1,8 +1,8 @@
 import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useProvider } from 'wagmi';
-import ensResolverABI from '../../../../abis/ENSPublicResolver.json';
-import useEtherSWR from '../useEtherSWR';
+import ensResolverABI from 'abis/ENSPublicResolver.json';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import useENSRegistry from './useENSRegistry';
 
 interface ENSPublicResolverData {
@@ -15,7 +15,6 @@ export default function useENSPublicResolver(
 ) {
   const provider = useProvider({ chainId });
   const { resolverAddress } = useENSRegistry(ensName, chainId);
-
   const { data } = useEtherSWR(
     resolverAddress
       ? [[resolverAddress, 'text', utils.namehash(ensName), 'avatar']]
@@ -25,7 +24,7 @@ export default function useENSPublicResolver(
       web3Provider: provider,
     }
   );
-
+  console.log({ data });
   const result: ENSPublicResolverData = useMemo(() => {
     if (!data) return {};
 

@@ -1,5 +1,5 @@
 import Avatar from 'old-components/Guilds/Avatar';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { FiArrowRight } from 'react-icons/fi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { ActionViewProps } from '..';

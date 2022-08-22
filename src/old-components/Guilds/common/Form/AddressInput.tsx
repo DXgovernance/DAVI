@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Input, { InputProps } from './Input';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import Avatar from 'old-components/Guilds/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
 import { Box } from 'Components/Primitives/Layout';

@@ -11,7 +11,7 @@ import { Flex } from 'Components/Primitives/Layout';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
-import useENSNameFromAddress from 'hooks/Guilds/ether-swr/ens/useENSNameFromAddress';
+import useENSNameFromAddress from 'hooks/Guilds/ens/useENSNameFromAddress';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 
 const InputContainer = styled(Flex)`
@@ -69,7 +69,7 @@ const GuildCardLoader = () => {
 const GuildCardWithContent = ({ guildAddress, t }) => {
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
   const { data: numberOfActiveProposals } = useActiveProposalsNow(guildAddress);
-  const ensName = useENSNameFromAddress(guildAddress)?.split('.')[0];
+  const ensName = useENSNameFromAddress(guildAddress)?.ensName?.split('.')[0];
   const { data } = useGuildConfig(guildAddress);
 
   return (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import useENSAvatar from '../../../hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from '../../../hooks/Guilds/ens/useENSAvatar';
 import Avatar from '.';
 
 const ENSAvatarContainer = styled.span`

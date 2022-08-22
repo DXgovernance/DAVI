@@ -2,7 +2,7 @@ import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
 import { BigNumber } from 'ethers';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'old-components/Guilds/Avatar';
 import { useMemo } from 'react';

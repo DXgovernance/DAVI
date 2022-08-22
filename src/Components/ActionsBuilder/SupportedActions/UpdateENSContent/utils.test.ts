@@ -3,7 +3,7 @@ import {
   convertToNameHash,
   convertToContentHash,
   convertToIpfsHash,
-  isValidChainId,
+  isSupportedChainId,
   getIpfsUrl,
 } from './utils';
 
@@ -37,12 +37,12 @@ describe('utils', () => {
     });
   });
 
-  describe('isValidChainId', () => {
+  describe('isSupportedChainId', () => {
     it('should convert to valid chain ID', () => {
-      expect(isValidChainId(GOERLI_ID)).toEqual(5);
+      expect(isSupportedChainId(GOERLI_ID)).toEqual(5);
     });
     it('should convert localhost ID to the mainnet ID', () => {
-      expect(isValidChainId(LOCALHOST_ID)).toEqual(1);
+      expect(isSupportedChainId(LOCALHOST_ID)).toEqual(1);
     });
   });
 });
