@@ -198,7 +198,7 @@ describe(`Set Permissions editor`, () => {
 
       expect(toAddressElement.value).toBe(toAddressMock);
       expect(functionSignatureElement.value).toBe(functionNameMock);
-      expect(amountElement.value).toBe('111.0');
+      expect(amountElement.value).toBe('111');
     });
 
     it(`Displays decodedCall information properly`, () => {
