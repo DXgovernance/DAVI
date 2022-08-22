@@ -7,7 +7,7 @@ export const encodeCall = (
   contractInterface: utils.Interface
 ) => {
   if (!contractInterface || !decodedCall.function || !decodedCall.args)
-    return utils.hexValue(0);
+    return utils.hexlify([0]);
 
   const args = contractInterface
     .getFunction(decodedCall.function.name)
