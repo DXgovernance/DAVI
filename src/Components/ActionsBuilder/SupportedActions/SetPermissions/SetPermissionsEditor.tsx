@@ -206,7 +206,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       readOnly
                     />
                   </ControlRow>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                   <TokenPicker
                     walletAddress={guildId}
                     isOpen={isTokenPickerOpen}
@@ -242,7 +242,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       />
                     </ControlRow>
                   </Control>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </>
               );
             }}
@@ -277,7 +277,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       )}
                     </ControlRow>
                   </Control>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </>
               );
             }}
@@ -324,7 +324,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                     )}
                   </ControlRow>
                 </Control>
-                {invalid && !!error && <Error>{error}</Error>}
+                {invalid && !!error && <Error>{error.message}</Error>}
               </>
             );
           }}

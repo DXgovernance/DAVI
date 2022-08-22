@@ -149,7 +149,6 @@ exports[`ERC20TransferInfoLine Should match snapshot in compact mode 1`] = `
   <span
     class="c0"
   >
-    
      
      
   </span>
@@ -347,7 +346,6 @@ exports[`ERC20TransferInfoLine Should match snapshot with default values in comp
   <span
     class="c0"
   >
-    
      
      
   </span>
@@ -545,7 +543,6 @@ exports[`ERC20TransferInfoLine Should match snapshot without data in compact mod
   <span
     class="c0"
   >
-    
      
      
   </span>

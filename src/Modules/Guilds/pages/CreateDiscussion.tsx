@@ -8,7 +8,7 @@ import { Loading } from 'Components/Primitives/Loading';
 import { useContext, useMemo, useState, useEffect, useRef } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import { useTranslation } from 'react-i18next';
 import {
@@ -35,7 +35,7 @@ const CreateDiscussionPage: React.FC = () => {
     GuildAvailabilityContext
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [user, setUser] = useState('');
   const [editMode, setEditMode] = useState(true);
@@ -70,7 +70,7 @@ const CreateDiscussionPage: React.FC = () => {
     setEditMode(v => !v);
   };
 
-  const handleBack = () => history.push(`/${chain}/${guildId}/`);
+  const handleBack = () => navigate(`/${chain}/${guildId}/`);
 
   const handleCreateDiscussion = async (post: Post) => {
     if (postTemplate(post)) {

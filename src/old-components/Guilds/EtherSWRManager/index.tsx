@@ -2,7 +2,11 @@ import { EtherSWRConfig } from 'ether-swr';
 import loggerMiddleware from 'hooks/Guilds/ether-swr/middleware/logger';
 import { useProvider } from 'wagmi';
 
-const EtherSWRManager: React.FC = ({ children }) => {
+interface EtherSWRManagerProps {
+  children: JSX.Element;
+}
+
+const EtherSWRManager: React.FC<EtherSWRManagerProps> = ({ children }) => {
   const provider = useProvider();
 
   return (

@@ -11,12 +11,17 @@ import { ProposalTypes } from 'Components/ProposalTypes';
 import CreateProposalPage from 'Modules/Guilds/pages/CreateProposal';
 import { LandingPage } from 'Modules/Guilds/pages/LandingPage';
 import NotFound from 'Modules/Guilds/pages/NotFound';
-import { Route, Switch } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'Components/theme';
 import CreateDiscussionPage from 'Modules/Guilds/pages/CreateDiscussion';
+import { useNetwork } from 'wagmi';
 
 const App = () => {
+  const {
+    chain: { network },
+  } = useNetwork();
+
   return (
     <ThemeProvider theme={GuildsDarkTheme}>
       <GlobalErrorBoundary>
@@ -25,32 +30,32 @@ const App = () => {
             <GlobalStyle />
             <Header />
             <Container>
-              <Switch>
-                <Route exact path="/:chainName">
-                  <LandingPage />
-                </Route>
-                <Route exact path="/:chainName/:guildId">
-                  <GuildsPage />
-                </Route>
-                <Route exact path="/:chainName/:guildId/allProposals">
-                  <GuildsPage pageContent={'allProposals'} />
-                </Route>
-                <Route path="/:chainName/:guildId/proposalType">
-                  <ProposalTypes data={ProposalTypesConfig} />
-                </Route>
-                <Route path="/:chainName/:guildId/proposal/:proposalId">
-                  <ProposalPage />
-                </Route>
-                <Route path="/:chainName/:guildId/create/:proposalType">
-                  <CreateProposalPage />
-                </Route>
-                <Route path="/:chainName/:guildId/:discussion">
-                  <CreateDiscussionPage />
-                </Route>
-                <Route>
-                  <NotFound />
-                </Route>
-              </Switch>
+              <Routes>
+                <Route path="/" element={<Navigate replace to={network} />} />
+                <Route path="/:chainName" element={<LandingPage />} />
+                <Route path="/:chainName/:guildId" element={<GuildsPage />} />
+                <Route
+                  path="/:chainName/:guildId/allProposals"
+                  element={<GuildsPage pageContent={'allProposals'} />}
+                />
+                <Route
+                  path="/:chainName/:guildId/proposalType"
+                  element={<ProposalTypes data={ProposalTypesConfig} />}
+                />
+                <Route
+                  path="/:chainName/:guildId/proposal/:proposalId"
+                  element={<ProposalPage />}
+                />
+                <Route
+                  path="/:chainName/:guildId/create/:proposalType"
+                  element={<CreateProposalPage />}
+                />
+                <Route
+                  path="/:chainName/:guildId/:discussion"
+                  element={<CreateDiscussionPage />}
+                />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
             </Container>
           </GuildsContextProvider>
         </TransactionsProvider>

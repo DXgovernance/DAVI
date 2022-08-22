@@ -319,7 +319,7 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
   <a
     class="c0"
     data-testid="guildCard"
-    href="/null"
+    href="/"
   >
     <div
       class="c1"
