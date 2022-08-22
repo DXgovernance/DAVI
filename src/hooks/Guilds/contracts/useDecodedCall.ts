@@ -3,7 +3,7 @@ import {
   RichContractData,
   useRichContractRegistry,
 } from './useRichContractRegistry';
-import ERC20ABI from 'abis/ERC20.json';
+import ERC20ABI from 'contracts/ERC20.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import {
   Call,
@@ -24,7 +24,7 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
     [ERC20_TRANSFER_SIGNATURE]: {
       callType: SupportedAction.ERC20_TRANSFER,
-      ABI: ERC20ABI,
+      ABI: ERC20ABI.abi,
     },
     [ERC20_APPROVE_SIGNATURE]: {
       callType: SupportedAction.GENERIC_CALL,

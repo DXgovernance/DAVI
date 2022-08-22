@@ -5,8 +5,8 @@ import {
   SupportedAction,
   ApproveSendTokens,
 } from '../types';
-import ENSPublicResolver from 'abis/ENSPublicResolver.json';
-import ERC20ABI from 'abis/ERC20.json';
+import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
+import ERC20 from 'contracts/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
@@ -85,9 +85,9 @@ export const supportedActions: Record<
     displaySubmit: true,
   },
 };
-const ERC20Contract = new utils.Interface(ERC20ABI);
+const ERC20Contract = new utils.Interface(ERC20.abi);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
-const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
+const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver.abi);
 const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 export const defaultValues: Record<SupportedAction, DecodedAction> = {

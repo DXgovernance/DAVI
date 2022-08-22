@@ -1,5 +1,5 @@
 import useEtherSWR from '../useEtherSWR';
-import ERC20ABI from '../../../../abis/ERC20.json';
+import ERC20ABI from 'contracts/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 

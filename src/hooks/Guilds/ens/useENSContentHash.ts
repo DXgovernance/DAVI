@@ -1,5 +1,5 @@
 import { useContractRead, useEnsResolver } from 'wagmi';
-import ensResolverABI from 'abis/ENSPublicResolver.json';
+import ensResolver from 'contracts/ENSPublicResolver.json';
 import {
   convertToIpfsHash,
   convertToNameHash,
@@ -17,7 +17,7 @@ export default function useENSContentHash(
 
   const { data } = useContractRead({
     addressOrName: resolver?.address,
-    contractInterface: ensResolverABI,
+    contractInterface: ensResolver.abi,
     functionName: 'contenthash',
     args: convertToNameHash(ensName),
     select(data) {

@@ -1,9 +1,9 @@
 import { BigNumber, utils } from 'ethers';
 import { DecodedCall } from 'Components/ActionsBuilder/types';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
-import ENSPublicResolver from 'abis/ENSPublicResolver.json';
+import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 
-const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
+const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver.abi);
 
 export const mockDecodedCallUpdateENSContent: DecodedCall = {
   from: '0x0000000000000000000000000000000000000000',
