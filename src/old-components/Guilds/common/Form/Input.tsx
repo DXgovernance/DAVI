@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useRef } from 'react';
 import styled from 'styled-components';
 import { FormElementProps } from './common';
 
@@ -87,15 +87,27 @@ const Input: React.FC<InputProps<any>> = ({
   disabled,
   ...rest
 }) => {
+  const inputRef = useRef(null);
+
+  const handleClick = () => {
+    inputRef.current.focus();
+  };
+
+  const handleDoubleClick = () => {
+    inputRef.current.select();
+  };
+
   return (
     <InputWrapper
       disabled={disabled}
       textAlign={textAlign}
       isInvalid={isInvalid}
       muted={muted}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
     >
       <IconContainer>{icon}</IconContainer>
-      <UnstyledInput disabled={disabled} {...rest} />
+      <UnstyledInput ref={inputRef} disabled={disabled} {...rest} />
       <IconContainer right>{iconRight}</IconContainer>
     </InputWrapper>
   );
