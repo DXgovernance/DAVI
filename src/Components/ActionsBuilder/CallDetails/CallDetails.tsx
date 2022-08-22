@@ -62,7 +62,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
 
     return <ParamDetail>{value}</ParamDetail>;
   }
-
   return (
     <>
       {!!approveSpendTokens && (
@@ -96,26 +95,14 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           </DetailsButton>
           {isApprovalExpanded && (
             <>
-              <ActionParamRow>
-                <Box>
-                  approve ({' '}
-                  <ParamTag color={theme?.colors?.params?.[0]}>
-                    address
-                  </ParamTag>
-                  {', '}
-                  <ParamTag color={theme?.colors?.params?.[1]}>
-                    uint256
-                  </ParamTag>{' '}
-                  )
-                </Box>
-              </ActionParamRow>
+              <ActionParamRow></ActionParamRow>
               <ActionParamRow>
                 <ParamTitleRow>
                   <ParamTitleTag color={theme?.colors?.params?.[0]}>
                     spender <em>(address)</em>
                   </ParamTitleTag>
                 </ParamTitleRow>
-                {renderByParamType('address', decodedCall.from)}
+                {renderByParamType('address', decodedCall.to)}
               </ActionParamRow>
               <ActionParamRow>
                 <ParamTitleRow>

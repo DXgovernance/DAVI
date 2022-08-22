@@ -20,9 +20,8 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
 
-    const { functionName } = decodedCall;
-    const { asset, to, functionSignature, valueAllowed, allowance } =
-      decodedCall.args;
+    const { functionName, asset } = decodedCall?.optionalProps;
+    const { to, functionSignature, valueAllowed, allowance } = decodedCall.args;
     return {
       asset,
       to,
@@ -37,7 +36,7 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   const { tokens } = useTokenList(chain?.id);
 
   let currentToken = useMemo(() => {
-    return tokens.filter(token => token?.address === parsedData?.asset[0])[0];
+    return tokens.filter(token => token?.address === parsedData?.asset)[0];
   }, [tokens, parsedData]);
 
   return (

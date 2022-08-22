@@ -27,6 +27,7 @@ import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
 import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
 import ERC20ABI from 'abis/ERC20.json';
 
@@ -54,6 +55,8 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
   onSubmit,
 }) => {
   const { t } = useTranslation();
+
+  const { guildId } = useTypedParams();
 
   const { chain } = useNetwork();
   const { tokens } = useTokenList(chain?.id, true);
@@ -228,7 +231,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 
                   <TokenPicker
                     {...field}
-                    walletAddress={parsedData.source || ''}
+                    walletAddress={guildId}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
                     showNativeToken={true}

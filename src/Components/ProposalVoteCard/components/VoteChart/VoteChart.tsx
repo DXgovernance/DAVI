@@ -33,7 +33,9 @@ const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
       {voteData?.options ? (
         <VotesChartRow>
           {Object.entries(voteData.options).map(([idx, item]) => {
-            const percentBN = voteData?.totalLocked?.isZero()
+            const percentBN = BigNumber.from(
+              voteData?.totalLocked || 0
+            ).isZero()
               ? BigNumber.from(0)
               : item.mul(100).mul(Math.pow(10, 2)).div(voteData?.totalLocked);
             const percent = Math.round(percentBN.toNumber()) / Math.pow(10, 2);

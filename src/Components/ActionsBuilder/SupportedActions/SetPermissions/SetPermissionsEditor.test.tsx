@@ -5,7 +5,7 @@ import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
 import ERC20Guild from 'contracts/ERC20Guild.json';
 import { BigNumber, utils } from 'ethers';
-import { ANY_FUNC_SIGNATURE, ANY_ADDRESS, MAX_UINT } from 'utils';
+import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
 import { mockChain } from 'Components/Web3Modals/fixtures';
 
@@ -50,13 +50,16 @@ const emptyDecodedCallMock: DecodedCall = {
   function: ERC20GuildContract.getFunction('setPermission'),
   to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
   value: BigNumber.from(0),
-  functionName: '',
   args: {
-    asset: [''],
-    to: [ANY_ADDRESS],
-    functionSignature: [ANY_FUNC_SIGNATURE],
-    valueAllowed: [BigNumber.from(0)],
-    allowance: ['true'],
+    to: ANY_ADDRESS,
+    functionSignature: ANY_FUNC_SIGNATURE,
+    valueAllowed: BigNumber.from(0),
+    allowance: 'true',
+  },
+  optionalProps: {
+    asset: '',
+    functionName: '',
+    tab: 0,
   },
 };
 
@@ -66,13 +69,16 @@ const completeDecodedCallMock: DecodedCall = {
   function: ERC20GuildContract.getFunction('setPermission'),
   to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
   value: BigNumber.from(0),
-  functionName: functionNameMock,
   args: {
-    asset: [tokenAddresMock],
-    to: [toAddressMock],
-    functionSignature: [functionSignatureMock],
-    valueAllowed: [BigNumber.from('111000000000000000000')],
-    allowance: ['true'],
+    to: toAddressMock,
+    functionSignature: functionSignatureMock,
+    valueAllowed: BigNumber.from('111000000000000000000'),
+    allowance: 'true',
+  },
+  optionalProps: {
+    asset: tokenAddresMock,
+    functionName: functionNameMock,
+    tab: 1,
   },
 };
 
@@ -89,12 +95,6 @@ describe(`Set Permissions editor`, () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.getByRole('textbox', { name: /to address input/i })
-      ).toBeInTheDocument();
-
-      expect(screen.getByRole('switch', { name: /toggle any address/i }));
-
-      expect(
         screen.getByRole('textbox', { name: /amount input/i })
       ).toBeInTheDocument();
 
@@ -105,7 +105,10 @@ describe(`Set Permissions editor`, () => {
 
     it(`Can fill 'To address' and 'custom amount'`, () => {
       render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
       );
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
         name: /to address input/i,
@@ -123,19 +126,16 @@ describe(`Set Permissions editor`, () => {
       });
 
       expect(toAddressElement.value).toBe(toAddressMock);
-      expect(customAmountElement.value).toBe('111.0');
+      expect(customAmountElement.value).toBe(String(customAmountMock));
     });
 
     it(`Clicking the X clears the to address`, () => {
       render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
       );
-
-      const addressToggle = screen.getByRole('switch', {
-        name: /toggle any address/i,
-      });
-      fireEvent.click(addressToggle);
-
       const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
         name: /to address input/i,
       });
@@ -163,55 +163,8 @@ describe(`Set Permissions editor`, () => {
         name: /amount input/i,
       });
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to[0]);
+      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
       expect(amountInputElement.value).toBe('111.0');
-    });
-
-    it(`Toggling max amount disables the 'amount' input`, () => {
-      render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
-      );
-
-      const amountInput: HTMLInputElement = screen.getByRole('textbox', {
-        name: /amount input/i,
-      });
-      const toggleMaxValueElement = screen.getByRole('switch', {
-        name: /toggle max value/i,
-      });
-
-      fireEvent.click(toggleMaxValueElement);
-      expect(amountInput).toBeDisabled();
-    });
-
-    it(`Amount input should preserve its temporary value after toggle is off/on`, () => {
-      render(
-        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
-      );
-
-      const customAmountElement: HTMLInputElement = screen.getByRole(
-        'textbox',
-        {
-          name: /amount input/i,
-        }
-      );
-      fireEvent.change(customAmountElement, {
-        target: { value: customAmountMock },
-      });
-
-      const toggleMaxValueElement = screen.getByRole('switch', {
-        name: /toggle max value/i,
-      });
-
-      // Asserts value is maintaned when disabled and enabled again
-      fireEvent.click(toggleMaxValueElement);
-      const stringAmount = BigNumber.from(MAX_UINT).toString();
-      const expectedMaxValue = stringAmount.replace(
-        new RegExp('.{' + (stringAmount.length - 18) + '}'),
-        `$&.`
-      ); // adds trailing nums after decimal point
-      expect(customAmountElement.value).toBe(expectedMaxValue);
-      fireEvent.click(toggleMaxValueElement);
-      expect(customAmountElement.value).toBe('111.0');
     });
   });
 
@@ -269,7 +222,7 @@ describe(`Set Permissions editor`, () => {
         { name: /function signature input/i }
       );
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to[0]);
+      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
       expect(functionNameElement.value).toBe(functionNameMock);
     });
   });
@@ -288,24 +241,12 @@ describe(`Set Permissions editor`, () => {
       ).toBeInTheDocument();
 
       expect(
-        screen.getByRole('switch', { name: /toggle any address/i })
-      ).toBeInTheDocument();
-
-      expect(
         screen.getByRole('textbox', { name: /function signature input/i })
       ).toBeInTheDocument();
 
       expect(
         screen.getByRole('textbox', { name: /amount input/i })
       ).toBeInTheDocument();
-
-      expect(
-        screen.getByRole('switch', { name: /toggle max value/i })
-      ).toBeInTheDocument();
     });
-
-    it(`'To address' persists when changing tabs`, () => {});
-    it(`'Asset' and 'amount' persists when switching tabs`, () => {});
-    it(`'Toggle max value' persist when switching tabs`, () => {});
   });
 });

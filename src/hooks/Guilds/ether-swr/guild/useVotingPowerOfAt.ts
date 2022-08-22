@@ -29,9 +29,9 @@ const useVotingPowerOfAt: useVotingPowerOfAtHook = ({
     ? snapshotId ?? currentSnapshotId?.toString()
     : snapshotId;
   return useEtherSWR(
-    contractAddress && userAddress && SNAPSHOT_ID
+    SNAPSHOT_ID
       ? [contractAddress, 'votingPowerOfAt', userAddress, SNAPSHOT_ID]
-      : [],
+      : [contractAddress, 'votingPowerOf', userAddress],
     {
       ABIs: new Map([[contractAddress, SnapshotERC20Guild.abi]]),
       refreshInterval: 0,
