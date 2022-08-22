@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FiX } from 'react-icons/fi';
 
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { Flex } from 'Components/Primitives/Layout';
 
 export const Backdrop = styled(Flex)``;

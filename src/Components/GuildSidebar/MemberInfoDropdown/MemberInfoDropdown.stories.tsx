@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { useState } from 'react';
 import { closedWithData, closedWithoutData } from './fixtures';
 import {

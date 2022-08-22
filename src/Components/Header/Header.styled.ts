@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Box, Container } from 'Components/Primitives/Layout';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Heading } from 'Components/Primitives/Typography';
 
 export const HeaderWrapper = styled.nav`
   padding: 0.75rem 0;

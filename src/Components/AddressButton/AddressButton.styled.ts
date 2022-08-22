@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IconButton } from 'old-components/Guilds/common/Button';
-import { Badge } from 'old-components/Guilds/common/Badge';
+import { IconButton } from 'Components/Primitives/Button';
+import { Badge } from 'Components/Badge';
 
 export const IconHolder = styled.span`
   display: flex;

@@ -14,8 +14,8 @@ import { useAccount, useConnect, useDisconnect, useNetwork } from 'wagmi';
 import { Option, Transaction, WalletInfoBox } from '../components';
 import { getIcon, isReadOnly } from 'provider/wallets';
 import { useTransactions } from 'contexts/Guilds';
-import { Divider } from 'old-components/Guilds/common/Divider';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Divider } from 'Components/Divider';
+import { Button } from 'Components/Primitives/Button';
 import { READ_ONLY_CONNECTOR_ID } from 'provider/ReadOnlyConnector';
 import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 

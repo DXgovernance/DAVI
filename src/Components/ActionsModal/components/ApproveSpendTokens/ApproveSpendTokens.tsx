@@ -3,11 +3,11 @@ import { FiChevronDown } from 'react-icons/fi';
 import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from 'old-components/Guilds/common/Button';
-import Input from 'old-components/Guilds/common/Form/Input';
-import Avatar from 'old-components/Guilds/Avatar';
+import { Button } from 'Components/Primitives/Button';
+import Input from 'Components/Primitives/Forms/Input';
+import Avatar from 'Components/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
-import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
+import TokenAmountInput from 'Components/Primitives/Forms/TokenAmountInput';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';

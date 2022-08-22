@@ -2,7 +2,7 @@ import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
 import {
   TransactionOutcome,
   TransactionPending,
-} from '../../old-components/Guilds/ToastNotifications/TransactionToasts';
+} from 'Components/ToastNotifications/TransactionToasts';
 import { TransactionModal } from 'Components';
 import { Transaction } from '../../types/types.guilds';
 import { providers } from 'ethers';

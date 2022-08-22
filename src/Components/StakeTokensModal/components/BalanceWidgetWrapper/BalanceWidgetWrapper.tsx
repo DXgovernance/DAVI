@@ -5,7 +5,7 @@ import {
   InfoLabel,
   InfoValue,
 } from '../StakeTokensForm/StakeTokensForm.styled';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { Loading } from 'Components/Primitives/Loading';
 import { BalanceWidgetWrapperProps } from '../../types';
 import { useTranslation } from 'react-i18next';

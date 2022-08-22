@@ -1,5 +1,5 @@
-import { IconButton } from 'old-components/Guilds/common/Button';
-import Result, { ResultState } from 'old-components/Guilds/common/Result';
+import { IconButton } from 'Components/Primitives/Button';
+import Result, { ResultState } from 'Components/Result';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { FiArrowLeft } from 'react-icons/fi';
 

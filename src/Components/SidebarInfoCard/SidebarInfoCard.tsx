@@ -2,7 +2,7 @@ import { duration } from 'moment';
 import SidebarCard, {
   SidebarCardContent,
   SidebarCardHeader,
-} from 'old-components/Guilds/SidebarCard';
+} from 'Components/SidebarCard';
 import { Loading } from 'Components/Primitives/Loading';
 import { Row, Label, ColoredLabel } from './SidebarInfoCard.styled';
 import { SidebarInfoCardProps } from './types';

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Flex } from 'Components/Primitives/Layout';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 
 export const InputContainer = styled(Flex)`
   flex-direction: row;

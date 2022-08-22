@@ -1,6 +1,6 @@
 import { formatUnits } from 'ethers/lib/utils';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
-import Bullet from 'old-components/Guilds/common/Bullet';
+import Bullet from 'Components/Primitives/Bullet';
 import { Loading } from 'Components/Primitives/Loading';
 import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';

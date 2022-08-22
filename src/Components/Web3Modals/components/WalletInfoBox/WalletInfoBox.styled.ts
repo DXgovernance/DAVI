@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 
 export const Wrapper = styled.div`
   padding: 1rem;

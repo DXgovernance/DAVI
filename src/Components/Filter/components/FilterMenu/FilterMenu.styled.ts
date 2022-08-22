@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { MenuItem } from 'old-components/Guilds/common/Menu';
+import { MenuItem } from 'Components/Menu';
 
-import { DropdownButton } from 'old-components/Guilds/common/DropdownMenu';
+import { DropdownButton } from 'Components/Primitives/DropdownMenu';
 
 export const DropdownMenuItem = styled(MenuItem)`
   display: flex;

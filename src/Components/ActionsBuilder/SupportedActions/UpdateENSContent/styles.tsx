@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import StyledIcon from 'old-components/Guilds/common/SVG';
+import StyledIcon from 'Components/Primitives/SVG';
 import { Box } from 'Components/Primitives/Layout';
-import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
+import { StyledToolTip } from 'Components/ToolTip';
 import { DetailBody } from '../common/Summary.styled';
 
 export const Control = styled(Box)`

@@ -5,15 +5,13 @@ import { RegisterOptions } from 'react-hook-form';
 
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
-import AddressInput from 'old-components/Guilds/common/Form/AddressInput';
-import { FormElementProps } from 'old-components/Guilds/common/Form/common';
-import DateInput, {
-  InputType,
-} from 'old-components/Guilds/common/Form/DateInput';
-import Input from 'old-components/Guilds/common/Form/Input';
-import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
-import Toggle from 'old-components/Guilds/common/Form/Toggle';
-import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
+import AddressInput from 'Components/Primitives/Forms/AddressInput';
+import { FormElementProps } from 'Components/Primitives/Forms/types';
+import DateInput, { InputType } from 'Components/Primitives/Forms/DateInput';
+import Input from 'Components/Primitives/Forms/Input';
+import NumericalInput from 'Components/Primitives/Forms/NumericalInput';
+import Toggle from 'Components/Primitives/Forms/Toggle';
+import TokenAmountInput from 'Components/Primitives/Forms/TokenAmountInput';
 import { DurationInput } from 'Components/Primitives/Forms/DurationInput';
 import { SwaprPicker } from 'Components/SwaprPicker';
 

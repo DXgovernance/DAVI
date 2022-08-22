@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
-import Avatar from 'old-components/Guilds/Avatar';
+import Avatar from 'Components/Avatar';
 import { BiCheckShield } from 'react-icons/bi';
 import { ParsedDataInterface } from './types';
 import { useTranslation } from 'react-i18next';

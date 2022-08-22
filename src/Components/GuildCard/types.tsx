@@ -1,4 +1,4 @@
-import { CardProps } from 'old-components/Guilds/common/Card/index';
+import { CardProps } from 'Components/Card';
 
 export interface GuildCardProps extends CardProps {
   isLoading?: boolean;

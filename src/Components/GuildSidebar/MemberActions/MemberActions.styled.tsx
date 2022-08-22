@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconButton } from 'old-components/Guilds/common/Button';
+import { IconButton } from 'Components/Primitives/Button';
 
 export const UserActionButton = styled(IconButton)`
   border-radius: 50px;

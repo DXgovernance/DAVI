@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout/Box';
 import { Modal } from 'Components';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { Option } from '../types';
-import Input from 'old-components/Guilds/common/Form/Input';
+import Input from 'Components/Primitives/Forms/Input';
 import { DeleteButton, Dot } from './AddEditOptionModal.styled';
 
 interface AddEditOptionModalProps {

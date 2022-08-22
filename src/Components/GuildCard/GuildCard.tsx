@@ -1,5 +1,5 @@
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
-import { Card } from 'old-components/Guilds/common/Card/index';
+import { Card } from 'Components/Card';
 import GuildCardHeader from './GuildCardHeader';
 import GuildCardContent from './GuildCardContent';
 import { cardWrapperStyles } from './styles';

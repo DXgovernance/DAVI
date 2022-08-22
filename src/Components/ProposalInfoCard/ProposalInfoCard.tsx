@@ -4,9 +4,7 @@ import {
   InfoDetailMuted,
   ProposalHistoryIcon,
 } from './ProposalInfoCard.styled';
-import SidebarCard, {
-  SidebarCardContent,
-} from 'old-components/Guilds/SidebarCard';
+import SidebarCard, { SidebarCardContent } from 'Components/SidebarCard';
 import { Loading } from 'Components/Primitives/Loading';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import { duration } from 'moment';

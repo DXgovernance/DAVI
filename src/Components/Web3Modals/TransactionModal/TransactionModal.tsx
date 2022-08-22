@@ -1,7 +1,7 @@
 import { Circle, Flex } from 'Components/Primitives/Layout';
 import { ContainerText } from 'Components/Primitives/Layout/Text';
 import { Modal } from 'Components';
-import PendingCircle from 'old-components/Guilds/common/PendingCircle';
+import PendingCircle from 'Components/Primitives/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';

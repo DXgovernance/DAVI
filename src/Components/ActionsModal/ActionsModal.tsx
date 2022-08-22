@@ -10,7 +10,7 @@ import {
   supportedActions,
   displaySubmit,
 } from 'Components/ActionsBuilder/SupportedActions';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 
 import {
   DecodedAction,

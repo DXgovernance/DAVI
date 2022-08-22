@@ -1,7 +1,7 @@
 import { Loading } from 'Components/Primitives/Loading';
 import moment from 'moment';
-import { Divider } from 'old-components/Guilds/common/Divider';
-import { SidebarCardContent } from 'old-components/Guilds/SidebarCard';
+import { Divider } from 'Components/Divider';
+import { SidebarCardContent } from 'Components/SidebarCard';
 
 import { useMemo } from 'react';
 import { InfoItem } from '../InfoItem';

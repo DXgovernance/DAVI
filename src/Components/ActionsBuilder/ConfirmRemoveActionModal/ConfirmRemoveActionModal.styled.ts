@@ -1,5 +1,5 @@
-import { Button as CommonButton } from 'old-components/Guilds/common/Button';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Button as CommonButton } from 'Components/Primitives/Button';
+import { Heading } from 'Components/Primitives/Typography';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`

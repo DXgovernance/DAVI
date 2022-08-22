@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { IconButton } from 'old-components/Guilds/common/Button';
+import { IconButton } from 'Components/Primitives/Button';
 import { Flex, Box } from 'Components/Primitives/Layout/Box';
-import { Badge } from 'old-components/Guilds/common/Badge';
+import { Badge } from 'Components/Badge';
 
 export const FilterContainer = styled(Box)`
   display: flex;

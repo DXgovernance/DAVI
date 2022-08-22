@@ -1,4 +1,4 @@
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import styled, { css } from 'styled-components';
 
 export const ButtonsContainer = styled.div`

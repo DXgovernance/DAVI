@@ -1,9 +1,9 @@
 import App from './App';
 import initializeI18Next from './i18n';
-import GlobalErrorBoundary from './old-components/ErrorBoundary/GlobalErrorBoundary';
+import GlobalErrorBoundary from './Components/ErrorBoundary/GlobalErrorBoundary';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
-import EtherSWRManager from 'old-components/Guilds/EtherSWRManager';
+import EtherSWRManager from 'Components/EtherSWRManager';
 import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';

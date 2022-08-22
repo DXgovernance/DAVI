@@ -4,7 +4,7 @@ import { MainWrapper, OptionList, SearchWrapper } from './Picker.styled';
 import { OptionListItem } from './OptionListItem';
 import { useEffect, useMemo, useState } from 'react';
 import useMiniSearch from 'hooks/useMiniSearch';
-import Input from 'old-components/Guilds/common/Form/Input';
+import Input from 'Components/Primitives/Forms/Input';
 import { FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 

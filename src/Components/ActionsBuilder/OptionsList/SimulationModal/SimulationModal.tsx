@@ -1,6 +1,6 @@
 import { Flex } from 'Components/Primitives/Layout';
 import { Modal } from 'Components/Primitives/Modal';
-import PendingCircle from 'old-components/Guilds/common/PendingCircle';
+import PendingCircle from 'Components/Primitives/PendingCircle';
 import { FiX, FiCheck } from 'react-icons/fi';
 import {
   Message,
@@ -10,7 +10,7 @@ import {
   TenderlyLogo,
   WarningCircle,
 } from './SimulationModal.styled';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { useTranslation } from 'react-i18next';
 import tenderlyLogo from 'assets/images/tenderly-dark-mode.svg';
 import { SimulationState } from '../types';

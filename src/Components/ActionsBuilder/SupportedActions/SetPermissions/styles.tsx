@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
-import { Button } from 'old-components/Guilds/common/Button';
-import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
+import { Button } from 'Components/Primitives/Button';
+import TokenAmountInput from 'Components/Primitives/Forms/TokenAmountInput';
 
 interface ToggleLabelProps {
   selected: boolean;

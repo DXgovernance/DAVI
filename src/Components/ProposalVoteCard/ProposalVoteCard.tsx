@@ -1,7 +1,7 @@
 import SidebarCard, {
   SidebarCardContent,
   SidebarCardHeaderSpaced,
-} from 'old-components/Guilds/SidebarCard';
+} from 'Components/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
 import VoteResults from './components/VoteResults/VoteResults';

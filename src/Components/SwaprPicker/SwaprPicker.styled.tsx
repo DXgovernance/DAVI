@@ -1,4 +1,4 @@
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import styled from 'styled-components';
 
 export const TransparentButton = styled(Button)`

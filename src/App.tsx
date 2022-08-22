@@ -1,6 +1,5 @@
-import GlobalErrorBoundary from './old-components/Guilds/ErrorBoundary/GlobalErrorBoundary';
 import { Header } from 'Components';
-import ToastNotificationContainer from './old-components/Guilds/ToastNotifications/ToastNotificationContainer';
+import ToastNotificationContainer from 'Components/ToastNotifications/ToastNotificationContainer';
 import { Container } from './Components/Primitives/Layout';
 import { GuildsPage } from './Modules/Guilds/pages/Guilds';
 import { ProposalPage } from './Modules/Guilds/pages/Proposal';
@@ -24,42 +23,40 @@ const App = () => {
 
   return (
     <ThemeProvider theme={GuildsDarkTheme}>
-      <GlobalErrorBoundary>
-        <TransactionsProvider>
-          <GuildsContextProvider>
-            <GlobalStyle />
-            <Header />
-            <Container>
-              <Routes>
-                <Route path="/" element={<Navigate replace to={network} />} />
-                <Route path="/:chainName" element={<LandingPage />} />
-                <Route path="/:chainName/:guildId" element={<GuildsPage />} />
-                <Route
-                  path="/:chainName/:guildId/allProposals"
-                  element={<GuildsPage pageContent={'allProposals'} />}
-                />
-                <Route
-                  path="/:chainName/:guildId/proposalType"
-                  element={<ProposalTypes data={ProposalTypesConfig} />}
-                />
-                <Route
-                  path="/:chainName/:guildId/proposal/:proposalId"
-                  element={<ProposalPage />}
-                />
-                <Route
-                  path="/:chainName/:guildId/create/:proposalType"
-                  element={<CreateProposalPage />}
-                />
-                <Route
-                  path="/:chainName/:guildId/:discussion"
-                  element={<CreateDiscussionPage />}
-                />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Container>
-          </GuildsContextProvider>
-        </TransactionsProvider>
-      </GlobalErrorBoundary>
+      <TransactionsProvider>
+        <GuildsContextProvider>
+          <GlobalStyle />
+          <Header />
+          <Container>
+            <Routes>
+              <Route path="/" element={<Navigate replace to={network} />} />
+              <Route path="/:chainName" element={<LandingPage />} />
+              <Route path="/:chainName/:guildId" element={<GuildsPage />} />
+              <Route
+                path="/:chainName/:guildId/allProposals"
+                element={<GuildsPage pageContent={'allProposals'} />}
+              />
+              <Route
+                path="/:chainName/:guildId/proposalType"
+                element={<ProposalTypes data={ProposalTypesConfig} />}
+              />
+              <Route
+                path="/:chainName/:guildId/proposal/:proposalId"
+                element={<ProposalPage />}
+              />
+              <Route
+                path="/:chainName/:guildId/create/:proposalType"
+                element={<CreateProposalPage />}
+              />
+              <Route
+                path="/:chainName/:guildId/:discussion"
+                element={<CreateDiscussionPage />}
+              />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Container>
+        </GuildsContextProvider>
+      </TransactionsProvider>
 
       <ToastNotificationContainer autoClose={10000} limit={4} />
     </ThemeProvider>

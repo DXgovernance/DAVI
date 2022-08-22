@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { shortenAddress } from 'utils';
 import useClipboard from 'hooks/Guilds/useClipboard';
 import { LiveIndicator } from '../LiveIndicator';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import {
   Wrapper,
   Row,
@@ -18,7 +18,7 @@ import {
   CenteredButton,
 } from './WalletInfoBox.styled';
 import { useAccount, useEnsName, useNetwork } from 'wagmi';
-import ENSAvatar from 'old-components/Guilds/Avatar/ENSAvatar';
+import ENSAvatar from 'Components/Avatar/ENSAvatar';
 import { getBlockExplorerUrl } from 'provider';
 
 interface WalletInfoBoxProps {

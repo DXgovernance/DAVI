@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
+import { StyledToolTip } from 'Components/ToolTip';
 import React, { useState, useEffect } from 'react';
 import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
-import Input from 'old-components/Guilds/common/Form/Input';
+import Input from 'Components/Primitives/Forms/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
   convertToContentHash,

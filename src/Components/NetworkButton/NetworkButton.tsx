@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getChainIcon } from 'utils';
-import {
-  Button,
-  ButtonIcon,
-  IconButton,
-} from 'old-components/Guilds/common/Button';
+import { Button, ButtonIcon, IconButton } from 'Components/Primitives/Button';
 import { NetworkModal } from 'Components/Web3Modals/NetworkModal';
 import { useAccount, useNetwork } from 'wagmi';
 

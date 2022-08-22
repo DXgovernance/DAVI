@@ -3,7 +3,7 @@ import { resolveUri } from 'utils/url';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 
 import { Loading } from 'Components/Primitives/Loading';
-import Avatar from 'old-components/Guilds/Avatar';
+import Avatar from 'Components/Avatar';
 
 import { TokenProps } from './types';
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Heading } from 'Components/Primitives/Typography';
 import { Link } from 'react-router-dom';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { Box } from 'Components/Primitives/Layout';
 
 export const ProposalsList = styled(Box)`

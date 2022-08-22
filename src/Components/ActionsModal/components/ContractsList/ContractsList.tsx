@@ -3,7 +3,7 @@ import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'Components/ActionsBuilder/types';
-import StyledIcon from 'old-components/Guilds/common/SVG';
+import StyledIcon from 'Components/Primitives/SVG';
 import {
   ActionsButton,
   ButtonDetail,

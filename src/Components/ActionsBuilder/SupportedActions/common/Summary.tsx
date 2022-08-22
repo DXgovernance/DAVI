@@ -1,6 +1,6 @@
 import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from 'old-components/Guilds/Avatar';
+import Avatar from 'Components/Avatar';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getNetworkById, MAINNET_ID } from 'utils';

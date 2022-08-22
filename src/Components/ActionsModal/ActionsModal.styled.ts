@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { ContainerText } from 'Components/Primitives/Layout/Text';
 
 export const EditorWrapper = styled.div`

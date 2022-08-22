@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Box } from '../Primitives/Layout';
-import { Menu, MenuItem } from 'old-components/Guilds/common/Menu';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Menu, MenuItem } from 'Components/Menu';
+import { Heading } from 'Components/Primitives/Typography';
 
 export const SidebarWrapper = styled(Box)`
   color: ${({ theme }) => theme.colors.text};

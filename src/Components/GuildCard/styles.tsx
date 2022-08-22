@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Flex, Box } from 'Components/Primitives/Layout/index';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Heading } from 'Components/Primitives/Typography';
 
 export const cardWrapperStyles = css`
   margin-bottom: 1rem;

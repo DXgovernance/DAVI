@@ -14,9 +14,9 @@ import {
   DropdownHeader,
   DropdownMenu,
   DropdownPosition,
-} from 'old-components/Guilds/common/DropdownMenu';
+} from 'Components/Primitives/DropdownMenu';
 
-import { Menu } from 'old-components/Guilds/common/Menu';
+import { Menu } from 'Components/Menu';
 
 import {
   DropdownMenuItem,

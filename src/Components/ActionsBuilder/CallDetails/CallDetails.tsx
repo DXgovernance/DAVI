@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { Box } from 'Components/Primitives/Layout';
 import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
 import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
-import { Divider } from 'old-components/Guilds/common/Divider';
+import { Divider } from 'Components/Divider';
 import {
   ActionParamRow,
   DetailsButton,

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import { FiX } from 'react-icons/fi';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Heading } from 'Components/Primitives/Typography';
 import { Flex } from 'Components/Primitives/Layout';
 
 export const Wrapper = styled.div<{ zIndex: number; maxWidth: number }>`

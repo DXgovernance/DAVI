@@ -1,4 +1,4 @@
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 

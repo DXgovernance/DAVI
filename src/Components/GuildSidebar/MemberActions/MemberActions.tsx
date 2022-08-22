@@ -1,6 +1,6 @@
 import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { shortenAddress } from 'utils';
-import Avatar from 'old-components/Guilds/Avatar';
+import Avatar from 'Components/Avatar';
 import { Loading } from '../../Primitives/Loading';
 import { Moment } from 'moment';
 import { useState } from 'react';

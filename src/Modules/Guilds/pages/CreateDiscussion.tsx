@@ -1,5 +1,5 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import Input from 'old-components/Guilds/common/Form/Input';
+import Input from 'Components/Primitives/Forms/Input';
 import { Box, Flex } from 'Components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';

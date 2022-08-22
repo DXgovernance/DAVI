@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/go';
 import { useDuration } from 'hooks/Guilds/useDuration';
 import { Modal } from 'Components/Primitives/Modal';
-import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
+import NumericalInput from 'Components/Primitives/Forms/NumericalInput';
 import {
   MainWrapper,
   Column,

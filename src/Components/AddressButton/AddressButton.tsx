@@ -1,9 +1,9 @@
 import { isDesktop } from 'react-device-detect';
 import React from 'react';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from 'old-components/Guilds/Avatar';
+import Avatar from 'Components/Avatar';
 import { shortenAddress } from 'utils';
-import { Badge } from 'old-components/Guilds/common/Badge';
+import { Badge } from 'Components/Badge';
 import { Loading } from 'Components/Primitives/Loading';
 import { AddressButtonProps } from 'Components/AddressButton/types';
 import {

@@ -1,7 +1,7 @@
 import { Box } from 'Components/Primitives/Layout';
 import styled, { css } from 'styled-components';
 import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 
 export const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;

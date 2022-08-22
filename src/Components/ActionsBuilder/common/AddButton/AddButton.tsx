@@ -1,4 +1,4 @@
-import { IconButton } from 'old-components/Guilds/common/Button';
+import { IconButton } from 'Components/Primitives/Button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import styled from 'styled-components';
 

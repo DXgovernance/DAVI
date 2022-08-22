@@ -2,7 +2,7 @@ import { MetadataTag } from '../SupportedActions/common/infoLine';
 import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import styled, { css } from 'styled-components';
 import { Box } from 'Components/Primitives/Layout';
-import { Button } from 'old-components/Guilds/common/Button';
+import { Button } from 'Components/Primitives/Button';
 
 export const ParamTag = styled(MetadataTag)`
   margin: 0;

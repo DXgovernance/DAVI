@@ -1,5 +1,5 @@
 import { EditButton, Grip } from '../common';
-import { CardWrapper, Header } from 'old-components/Guilds/common/Card';
+import { CardWrapper, Header } from 'Components/Card';
 import { Box } from 'Components/Primitives/Layout';
 import styled, { css } from 'styled-components';
 import { CardStatus } from './Action';

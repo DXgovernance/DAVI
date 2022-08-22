@@ -4,7 +4,7 @@ import {
   DropdownMenu,
   DropdownContent,
   DropdownHeader,
-} from 'old-components/Guilds/common/DropdownMenu';
+} from 'Components/Primitives/DropdownMenu';
 import { Loading } from '../../Primitives/Loading';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
 import { isMobile } from 'react-device-detect';
