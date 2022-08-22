@@ -22,6 +22,7 @@ export const useERC20Info = (contractAddress: string) => {
       : [],
     {
       ABIs: new Map([[contractAddress, ERC20.abi]]),
+      refreshInterval: 0,
     }
   );
 
