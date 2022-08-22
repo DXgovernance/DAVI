@@ -3,7 +3,7 @@ import { DiffView } from './DiffView';
 import { mockCodeOriginal, mockCodeUpdated } from './fixtures';
 
 export default {
-  title: 'Components/DiffView',
+  title: 'components/DiffView',
   component: DiffView,
 } as ComponentMeta<typeof DiffView>;
 

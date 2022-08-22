@@ -3,7 +3,7 @@ import { Editor } from './Components/';
 import { useTextEditor } from './useTextEditor';
 
 export default {
-  title: 'Components/Editor',
+  title: 'components/Editor',
   component: Editor,
   argTypes: {
     href: {

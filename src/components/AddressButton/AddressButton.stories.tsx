@@ -3,7 +3,7 @@ import AddressButton from 'components/AddressButton/AddressButton';
 import { fullProps, partialProps, showFullAddress } from './fixtures';
 
 export default {
-  title: 'Components/AddressButton',
+  title: 'components/AddressButton',
   component: AddressButton,
   argTypes: {
     address: {

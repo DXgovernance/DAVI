@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import ProposalTypes from 'components/ProposalTypes/ProposalTypes';
+import ProposalTypes from './ProposalTypes';
 import { testProps } from './fixtures';
 
 export default {
