@@ -1,5 +1,5 @@
 import { Call, DecodedCall, Option } from 'components/ActionsBuilder/types';
-import ERC20ABI from 'contracts/ERC20.json';
+import ERC20 from 'contracts/ERC20.json';
 import { utils, BigNumber } from 'ethers';
 
 export const encodeCall = (
@@ -16,7 +16,7 @@ export const encodeApprovalCall = (
   spender: string,
   amount: BigNumber
 ): string => {
-  const ERC20Contract = new utils.Interface(ERC20ABI.abi);
+  const ERC20Contract = new utils.Interface(ERC20.abi);
   return ERC20Contract.encodeFunctionData('approve', [spender, amount]);
 };
 

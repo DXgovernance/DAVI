@@ -13,7 +13,11 @@
     "experimentalDecorators": true,
     "strictNullChecks": false,
     "skipLibCheck": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": false,
@@ -28,7 +32,15 @@
     "useUnknownInCatchVariables": false,
     "noUnusedLocals": true
   },
-  "include": ["src", "scripts"],
-  "exclude": ["node_modules", "build", "cache", "artifacts", "public"]
+  "include": [
+    "src",
+    "scripts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "cache",
+    "artifacts",
+    "public"
+  ]
 }
-

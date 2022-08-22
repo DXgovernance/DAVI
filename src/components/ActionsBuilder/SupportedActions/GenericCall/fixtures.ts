@@ -3,10 +3,10 @@ import {
   DecodedCall,
   SupportedAction,
 } from 'components/ActionsBuilder/types';
-import ERC20ABI from 'contracts/ERC20.json';
+import ERC20 from 'contracts/ERC20.json';
 import { BigNumber, utils } from 'ethers';
 
-const ERC20Contract = new utils.Interface(ERC20ABI.abi);
+const ERC20Contract = new utils.Interface(ERC20.abi);
 
 export const genericDecodedCallMock: DecodedCall = {
   from: '0x0000000000000000000000000000000000000000',

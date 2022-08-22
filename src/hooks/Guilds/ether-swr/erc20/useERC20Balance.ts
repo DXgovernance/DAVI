@@ -1,5 +1,5 @@
 import useEtherSWR from '../useEtherSWR';
-import ERC20ABI from 'contracts/ERC20.json';
+import ERC20 from 'contracts/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 
@@ -12,7 +12,7 @@ export const useERC20Balance = (
       ? [contractAddress, 'balanceOf', walletAddress]
       : [],
     {
-      ABIs: new Map([[contractAddress, ERC20ABI]]),
+      ABIs: new Map([[contractAddress, ERC20.abi]]),
     }
   );
 
