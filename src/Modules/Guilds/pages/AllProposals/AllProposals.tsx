@@ -1,8 +1,8 @@
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import { Filter } from 'Components/Filter';
+import { Filter } from 'components/Filter';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
-import Result, { ResultState } from 'Components/Result';
+import Result, { ResultState } from 'components/Result';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 import { useFilter } from 'contexts/Guilds';

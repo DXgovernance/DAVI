@@ -1,10 +1,10 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import Input from 'Components/Primitives/Forms/Input';
-import { Box, Flex } from 'Components/Primitives/Layout';
+import Input from 'components/Primitives/Forms/Input';
+import { Box, Flex } from 'components/Primitives/Layout/Box';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
-import { useTextEditor } from 'Components/Editor';
-import { Loading } from 'Components/Primitives/Loading';
+import { useTextEditor } from 'components/Editor';
+import { Loading } from 'components/Primitives/Loading';
 import { useContext, useMemo, useState, useEffect, useRef } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
@@ -24,8 +24,8 @@ import {
   isConnected,
   createPost,
   postTemplate,
-} from 'Components/Forum';
-import { Post } from 'Components/Forum/types';
+} from 'components/Forum';
+import { Post } from 'components/Forum/types';
 
 const CreateDiscussionPage: React.FC = () => {
   let orbis = useRef(new Orbis());

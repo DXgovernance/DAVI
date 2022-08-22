@@ -1,6 +1,6 @@
-import { IconButton } from 'Components/Primitives/Button';
-import Result, { ResultState } from 'Components/Result';
-import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
+import { IconButton } from 'components/Primitives/Button';
+import Result, { ResultState } from 'components/Result';
+import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
 import { FiArrowLeft } from 'react-icons/fi';
 
 const NotFound: React.FC = () => {

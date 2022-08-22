@@ -1,17 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useContext, useEffect, useMemo } from 'react';
-import Result, { ResultState } from 'Components/Result';
-import { Flex } from 'Components/Primitives/Layout';
+import Result, { ResultState } from 'components/Result';
+import { Flex } from 'components/Primitives/Layout/Box';
 import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
-import Input from 'Components/Primitives/Forms/Input';
+import Input from 'components/Primitives/Forms/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
-import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
+import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';

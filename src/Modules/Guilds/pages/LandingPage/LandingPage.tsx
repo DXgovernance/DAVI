@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
-import GuildCard from 'Components/GuildCard/GuildCard';
-import Input from 'Components/Primitives/Forms/Input';
+import GuildCard from 'components/GuildCard/GuildCard';
+import Input from 'components/Primitives/Forms/Input';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';

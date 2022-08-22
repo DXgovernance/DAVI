@@ -1,4 +1,4 @@
-import { Call, DecodedCall, Option } from 'Components/ActionsBuilder/types';
+import { Call, DecodedCall, Option } from 'components/ActionsBuilder/types';
 import ERC20ABI from 'contracts/ERC20.json';
 import { utils, BigNumber } from 'ethers';
 

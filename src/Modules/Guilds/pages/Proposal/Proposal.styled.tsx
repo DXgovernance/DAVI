@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Box } from 'Components/Primitives/Layout';
-import { IconButton } from 'Components/Primitives/Button';
+import { Box } from 'components/Primitives/Layout/Box';
+import { IconButton } from 'components/Primitives/Button';
 
 export const PageContainer = styled(Box)`
   display: grid;

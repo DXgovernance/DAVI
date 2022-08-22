@@ -3,7 +3,7 @@ import ensResolver from 'contracts/ENSPublicResolver.json';
 import {
   convertToIpfsHash,
   convertToNameHash,
-} from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+} from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 
 interface ENSContentHashData {
   ipfsHash?: string;

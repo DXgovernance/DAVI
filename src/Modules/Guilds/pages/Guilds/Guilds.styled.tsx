@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box } from 'Components/Primitives/Layout';
+import { Box } from 'components/Primitives/Layout/Box';
 
 export const PageContainer = styled(Box)`
   display: grid;
