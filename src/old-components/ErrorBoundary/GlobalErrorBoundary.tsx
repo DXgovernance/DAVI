@@ -7,7 +7,7 @@ const handledErrorTypes = {
 };
 
 class GlobalErrorBoundary extends React.Component<
-  {},
+  { children: JSX.Element },
   { hasError: boolean; errorMessage: string }
 > {
   constructor(props) {

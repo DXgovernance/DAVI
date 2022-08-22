@@ -121,7 +121,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
                       }}
                     />
                   </ControlRow>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </Control>
               );
             }}

@@ -280,7 +280,6 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
           <span
             class="c10"
           >
-            
              
              
           </span>
@@ -346,7 +345,6 @@ exports[`ProposalCardWinningOption a tooltip shows after clicking in the action 
           <span
             class="c10"
           >
-            
              
              
           </span>
@@ -552,7 +550,6 @@ exports[`ProposalCardWinningOption if the option has only one action, no tooltip
       <span
         class="c5"
       >
-        
          
          
       </span>
@@ -770,7 +767,6 @@ exports[`ProposalCardWinningOption renders a loading component when the votes ar
       <span
         class="c5"
       >
-        
          
          
       </span>
@@ -1175,7 +1171,6 @@ exports[`ProposalCardWinningOption renders properly with one action 1`] = `
       <span
         class="c5"
       >
-        
          
          
       </span>

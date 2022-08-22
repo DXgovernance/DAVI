@@ -11,7 +11,7 @@ export interface VoteConfirmationModalProps {
   selectedAction?: string;
   onConfirm: () => void;
   votingPower?: number;
-  totalLocked?: number;
+  currentVoteAmount?: number;
 }
 
 export interface Voter {
@@ -42,7 +42,6 @@ export interface ProposalVoteCardProps {
   proposal: Proposal;
   timestamp: number;
   votingPower: VotingPower;
-  currentLockedPercent: number;
   contract: ERC20Guild;
   createTransaction: (
     summary: string,

@@ -226,6 +226,9 @@ exports[`GuildSidebar Should render with data 1`] = `
           members
         </div>
       </div>
+      <div>
+        Test
+      </div>
     </div>
     <div
       class="c0 c9 c10"

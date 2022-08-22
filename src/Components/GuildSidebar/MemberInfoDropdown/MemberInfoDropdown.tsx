@@ -20,6 +20,7 @@ import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber'
 import { useTranslation } from 'react-i18next';
 
 export interface MemberInfoDropdownProps {
+  children: JSX.Element;
   isOpen: boolean;
   onClose: () => void;
   isRepGuild?: boolean;

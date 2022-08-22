@@ -214,7 +214,6 @@ exports[`MemberActions Should match snapshot with data 1`] = `
     <div
       class="c9 c0 c10"
     >
-      
       <div
         class="c11"
       >
@@ -499,7 +498,6 @@ exports[`MemberActions Should match snapshot without data 1`] = `
     <div
       class="c7 c0 c8"
     >
-      
       <div
         class="c9"
       >
