@@ -1,10 +1,13 @@
 import { ActionEditorProps } from '..';
-import { BigNumber } from 'ethers';
+import { BigNumber, utils } from 'ethers';
 import { Button } from 'old-components/Guilds/common/Button';
 import { Controller, useForm } from 'react-hook-form';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
-import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
+import {
+  TokenInfoWithType,
+  TokenType,
+  useTokenList,
+} from 'hooks/Guilds/tokens/useTokenList';
 import Avatar from 'old-components/Guilds/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
 import Input from 'old-components/Guilds/common/Form/Input';
@@ -25,6 +28,8 @@ import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
 import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
+import ERC20ABI from 'abis/ERC20.json';
 
 const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;
@@ -40,7 +45,7 @@ const ClickableIcon = styled(Box)`
   cursor: pointer;
 `;
 interface TransferValues {
-  tokenAddress: string;
+  token: TokenInfoWithType;
   amount: BigNumber;
   recipientAddress: string;
 }
@@ -51,16 +56,34 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const { guildId } = useTypedParams();
+
+  const { chain } = useNetwork();
+  const { tokens } = useTokenList(chain?.id, true);
+
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
-    return {
-      source: decodedCall.from,
-      tokenAddress: decodedCall.to,
-      amount: decodedCall.args._value,
-      recipientAddress: decodedCall.args._to,
-    };
-  }, [decodedCall]);
+    if (decodedCall.callType === SupportedAction.ERC20_TRANSFER) {
+      const token = tokens.find(token => token.address === decodedCall.to);
+      return {
+        source: decodedCall.from,
+        token,
+        amount: decodedCall.args._value,
+        recipientAddress: decodedCall.args._to,
+      };
+    } else if (decodedCall.callType === SupportedAction.NATIVE_TRANSFER) {
+      const token = tokens.find(token => token.type === TokenType.NATIVE);
+      return {
+        source: decodedCall.from,
+        token,
+        amount: decodedCall.value,
+        recipientAddress: decodedCall.to,
+      };
+    } else {
+      return null;
+    }
+  }, [decodedCall, tokens]);
 
   const { control, handleSubmit, getValues } = useForm({
     resolver: validateERC20Transfer,
@@ -68,37 +91,39 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     defaultValues: parsedData,
   });
 
-  const { tokenAddress, recipientAddress } = getValues();
-
+  const { recipientAddress } = getValues();
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
 
-  const { guildId } = useTypedParams();
-  const { chain } = useNetwork();
-
-  // Get token details from the token address
-  const { tokens } = useTokenList(chain?.id);
-  const token = useMemo(() => {
-    if (!tokenAddress || !tokens) return null;
-
-    return tokens.find(({ address }) => address === tokenAddress);
-  }, [tokens, tokenAddress]);
-
-  const { data: tokenInfo } = useERC20Info(tokenAddress);
   const { imageUrl: destinationAvatarUrl } = useENSAvatar(
     recipientAddress,
     MAINNET_ID
   );
 
   const submitAction = (values: TransferValues) => {
-    onSubmit({
-      ...decodedCall,
-      to: values.tokenAddress,
-      args: {
-        ...decodedCall.args,
-        _value: values.amount,
-        _to: values.recipientAddress,
-      },
-    });
+    if (values.token.type === TokenType.ERC20) {
+      const ERC20Contract = new utils.Interface(ERC20ABI);
+
+      onSubmit({
+        ...decodedCall,
+        callType: SupportedAction.ERC20_TRANSFER,
+        to: values.token.address,
+        value: BigNumber.from(0),
+        function: ERC20Contract.getFunction('transfer'),
+        args: {
+          _value: values.amount,
+          _to: values.recipientAddress,
+        },
+      });
+    } else {
+      onSubmit({
+        ...decodedCall,
+        callType: SupportedAction.NATIVE_TRANSFER,
+        to: values.recipientAddress,
+        value: values.amount,
+        function: null,
+        args: null,
+      });
+    }
   };
 
   return (
@@ -158,7 +183,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                   <ControlRow>
                     <TokenAmountInput
                       {...field}
-                      decimals={tokenInfo?.decimals}
+                      decimals={field.value?.decimals}
                       isInvalid={invalid && !!error}
                     />
                   </ControlRow>
@@ -172,7 +197,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           <Spacer />
 
           <Controller
-            name="tokenAddress"
+            name="token"
             control={control}
             render={({ field: { ref, ...field }, fieldState }) => {
               const { invalid, error } = fieldState;
@@ -183,15 +208,15 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     <ControlRow onClick={() => setIsTokenPickerOpen(true)}>
                       <Input
                         {...field}
-                        value={tokenInfo?.symbol}
+                        value={field.value?.symbol}
                         placeholder={t('token')}
                         isInvalid={invalid && !!error}
                         icon={
                           <div>
                             {field.value && (
                               <Avatar
-                                src={resolveUri(token?.logoURI)}
-                                defaultSeed={field.value}
+                                src={resolveUri(field.value?.logoURI)}
+                                defaultSeed={field.value?.address}
                                 size={18}
                               />
                             )}
@@ -209,8 +234,9 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     walletAddress={guildId}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
-                    onSelect={tokenAddress => {
-                      field.onChange(tokenAddress);
+                    showNativeToken={true}
+                    onSelect={token => {
+                      field.onChange(token);
                       setIsTokenPickerOpen(false);
                     }}
                   />

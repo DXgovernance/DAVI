@@ -30,6 +30,10 @@ export const ParamDetail = styled(Box)`
   overflow-wrap: break-word;
 `;
 
+export const DetailsSection = styled(Box)`
+  padding-top: 0.75rem;
+`;
+
 export const DetailsButton = styled(Button)<{ isExpanded: boolean }>`
   font-size: 12px;
   margin: 0;

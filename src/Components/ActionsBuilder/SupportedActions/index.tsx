@@ -49,6 +49,13 @@ export const supportedActions: Record<
   SupportedAction,
   SupportedActionViews & SupportedActionEditors & SupportedActionMetadata
 > = {
+  [SupportedAction.NATIVE_TRANSFER]: {
+    title: 'Transfers & Mint',
+    infoLineView: ERC20TransferInfoLine,
+    summaryView: Summary,
+    editor: ERC20TransferEditor,
+    displaySubmit: false,
+  },
   [SupportedAction.ERC20_TRANSFER]: {
     title: 'Transfers & Mint',
     infoLineView: ERC20TransferInfoLine,
@@ -91,6 +98,18 @@ const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver);
 const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 export const defaultValues: Record<SupportedAction, DecodedAction> = {
+  [SupportedAction.NATIVE_TRANSFER]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.NATIVE_TRANSFER,
+      function: null,
+      to: '',
+      value: BigNumber.from(0),
+      args: null,
+    },
+  },
   [SupportedAction.ERC20_TRANSFER]: {
     id: '',
     contract: ERC20Contract,

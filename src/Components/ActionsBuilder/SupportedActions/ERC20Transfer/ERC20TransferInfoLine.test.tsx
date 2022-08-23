@@ -1,3 +1,4 @@
+import { mockChain } from 'Components/Web3Modals/fixtures';
 import { BigNumber } from 'ethers';
 import { render } from 'utils/tests';
 import ERC20TransferInfoLine from './ERC20TransferInfoLine';
@@ -24,6 +25,10 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
     decimals: 18,
     totalSupply: mockBigNumber,
   }),
+}));
+
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
 describe('ERC20TransferInfoLine', () => {

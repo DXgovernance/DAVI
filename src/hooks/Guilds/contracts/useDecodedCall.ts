@@ -6,6 +6,7 @@ import {
 import ERC20ABI from 'abis/ERC20.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import {
+  ApproveSendTokens,
   Call,
   DecodedCall,
   Option,
@@ -82,6 +83,8 @@ const getContractInterfaceFromRichContractData = (
 };
 
 const getContractFromKnownSighashes = (data: string) => {
+  if (!data) return null;
+
   // Get the first 10 characters of Tx data, which is the Function Selector (SigHash).
   const sigHash = data.substring(0, 10);
   // Heuristic detection using known sighashes
@@ -101,6 +104,24 @@ export const decodeCall = async (
   chainId: number
 ) => {
   let decodedCall: DecodedCall = null;
+
+  // Detect native asset transfer
+  if (!call.data || utils.hexValue(call.data) === utils.hexValue(0)) {
+    decodedCall = {
+      callType: SupportedAction.NATIVE_TRANSFER,
+      from: call.from,
+      to: call.to,
+      value: call.value,
+      function: null,
+      args: null,
+    };
+    return {
+      id: `action-${Math.random()}`,
+      decodedCall,
+      contract: null,
+      approval: call.approval || null,
+    };
+  }
 
   // Detect using the Guild calls registry.
   const matchedRichContractData = contracts?.find(
@@ -166,8 +187,15 @@ export const bulkDecodeCallsFromOptions = (
   );
 };
 
+interface DecodedCallResult {
+  id: string;
+  decodedCall: DecodedCall;
+  contract: utils.Interface;
+  approval: ApproveSendTokens;
+}
+
 export const useDecodedCall = (call: Call) => {
-  const [decodedCall, setDecodedCall] = useState<any>(null);
+  const [decodedCall, setDecodedCall] = useState<DecodedCallResult>(null);
   const isCancelled = useRef(false);
   const { chain } = useNetwork();
   const { contracts } = useRichContractRegistry();
@@ -185,5 +213,12 @@ export const useDecodedCall = (call: Call) => {
     };
   }, [call, contracts, chain]);
 
-  return decodedCall || { decodedCall: null, contract: null, approval: null };
+  return (
+    decodedCall || {
+      id: null,
+      decodedCall: null,
+      contract: null,
+      approval: null,
+    }
+  );
 };

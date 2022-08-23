@@ -29,6 +29,9 @@ jest.mock('contexts/Guilds/filters', () => ({
     };
   },
 }));
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => [],
+}));
 jest.mock('hooks/Guilds/ether-swr/guild/useVotingPowerOf', () => ({
   useVotingPowerOf: () => ({
     data: bn(10000),
