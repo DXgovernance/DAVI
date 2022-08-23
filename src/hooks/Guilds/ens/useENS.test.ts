@@ -33,18 +33,24 @@ describe('useENS', () => {
 
   it('should return a valid address', () => {
     const mockAddress = '0x0000000000000000000000000000000000000000';
+    const mockEnsName = 'wagmi.eth';
     jest.spyOn(wagmi, 'useEnsAddress').mockImplementationOnce(() => ({
       ...useEnsAddress(mockAddress),
       data: mockAddress,
       isLoading: false,
       isError: false,
     }));
+    jest.spyOn(wagmi, 'useEnsName').mockImplementationOnce(() => ({
+      ...useEnsAddress(mockEnsName),
+      data: mockEnsName,
+      isLoading: false,
+      isError: false,
+    }));
+
     const { address, name } = useENS(mockAddress);
     expect(address).toMatchInlineSnapshot(
       `"0x0000000000000000000000000000000000000000"`
     );
-    expect(name).toMatchInlineSnapshot(
-      `"0x0000000000000000000000000000000000000000"`
-    );
+    expect(name).toMatchInlineSnapshot(`"wagmi.eth"`);
   });
 });
