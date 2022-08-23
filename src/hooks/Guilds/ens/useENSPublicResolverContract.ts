@@ -3,15 +3,18 @@ import ensPublicResolverABI from 'abis/ENSPublicResolver.json';
 import {
   convertToIpfsHash,
   convertToNameHash,
+  isAvailableOnENS,
 } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 import useENSResolver from './useENSResolver';
+import { MAINNET_ID } from 'utils';
 
 /**
  * @dev This file contains all the functions contained in the ENS Public Resolver contract: https://docs.ens.domains/contract-api-reference/publicresolver
  */
 
 export function useENSAvatarUri(ensName: string, chainId?: number) {
-  const { resolver } = useENSResolver(ensName, chainId);
+  const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
+  const { resolver } = useENSResolver(ensName, supportedChainId);
   const { data, isError, isLoading } = useContractRead({
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolverABI,
@@ -26,7 +29,11 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
 }
 
 export function useENSContentHash(ensName: string, chainId?: number) {
-  const { resolver, isError, isLoading } = useENSResolver(ensName, chainId);
+  const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
+  const { resolver, isError, isLoading } = useENSResolver(
+    ensName,
+    supportedChainId
+  );
   const { data } = useContractRead({
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolverABI,
