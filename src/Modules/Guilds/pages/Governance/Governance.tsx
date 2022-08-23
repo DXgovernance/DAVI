@@ -7,6 +7,7 @@ import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
 import Input from 'old-components/Guilds/common/Form/Input';
+import { Button } from 'old-components/Guilds/common/Button';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
@@ -107,14 +108,25 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
-          <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
-            <StyledButton
-              variant="secondary"
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </StyledButton>
-          </UnstyledLink>
+          <>
+            <UnstyledLink to={`/${chainName}/${guildId}/createProposal`}>
+              <StyledButton
+                variant="secondary"
+                data-testid="create-proposal-button"
+              >
+                {t('createProposal')}
+              </StyledButton>
+            </UnstyledLink>
+            /
+            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+              <Button
+                variant="secondary"
+                data-testid="create-discussion-button"
+              >
+                {t('forum.createDiscussion')}
+              </Button>
+            </UnstyledLink>
+          </>
         )}
       </Flex>
       <ProposalsList data-testid="proposals-list">
