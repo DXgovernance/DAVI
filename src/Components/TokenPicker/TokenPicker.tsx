@@ -16,17 +16,22 @@ import {
   TokenList,
 } from './TokenPicker.styled';
 import { useAccount } from 'wagmi';
+import { TokenType } from 'hooks/Guilds/tokens/useTokenList';
 
 const TokenPicker: React.FC<TokenPickerProps> = ({
   walletAddress,
   isOpen,
   onSelect,
   onClose,
+  showNativeToken,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const { t } = useTranslation();
   const { address } = useAccount();
-  const { data } = useAllERC20Balances(walletAddress || address);
+  const { data } = useAllERC20Balances(
+    walletAddress || address,
+    showNativeToken
+  );
 
   const { instance, buildIndex, query } =
     useMiniSearch<TokenWithBalanceIndexable>({
@@ -42,7 +47,7 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
     return data.map(token => {
       return {
         ...token,
-        id: token?.address,
+        id: token.type === TokenType.NATIVE ? 'NATIVE' : token?.address,
       };
     });
   }, [data]);
@@ -76,11 +81,11 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
           />
         </SearchWrapper>
         <TokenList>
-          {(searchQuery ? searchResults : data)?.slice(0, 4).map(token => (
+          {(searchQuery ? searchResults : tokens)?.slice(0, 4).map(token => (
             <TokenListItem
-              key={token.address}
+              key={token.id}
               token={token}
-              onSelect={() => onSelect(token.address)}
+              onSelect={() => onSelect(token)}
             />
           ))}
         </TokenList>

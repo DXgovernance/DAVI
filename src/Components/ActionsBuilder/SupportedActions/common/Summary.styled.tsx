@@ -16,7 +16,7 @@ export const DetailHeader = styled(DetailRow)`
 
 export const DetailBody = styled(DetailRow)`
   color: ${({ theme }) => theme.colors.proposalText.grey};
-  margin-top: 0;
+  margin: 0;
 `;
 
 export const RedHighlight = styled.span`

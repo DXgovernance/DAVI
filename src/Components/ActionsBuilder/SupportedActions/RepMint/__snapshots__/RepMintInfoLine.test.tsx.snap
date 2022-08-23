@@ -166,7 +166,6 @@ exports[`RepMintInfoLine Should match snapshot in compact mode 1`] = `
   <span
     class="c0"
   >
-    
      
     NaN
      %
@@ -382,7 +381,6 @@ exports[`RepMintInfoLine Should match snapshot with default values in compact mo
   <span
     class="c0"
   >
-    
      
     NaN
      %
@@ -598,7 +596,6 @@ exports[`RepMintInfoLine Should match snapshot without data in compact mode 1`] 
   <span
     class="c0"
   >
-    
      
     NaN
      %

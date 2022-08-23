@@ -4,7 +4,7 @@ import GlobalErrorBoundary from './old-components/ErrorBoundary/GlobalErrorBound
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
 import EtherSWRManager from 'old-components/Guilds/EtherSWRManager';
-import ReactDOM from 'react-dom';
+import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { createClient, configureChains, WagmiConfig } from 'wagmi';
@@ -40,8 +40,10 @@ const Root = () => {
         <HashRouter>
           <SyncRouterWithWagmi>
             <EtherSWRManager>
-              <App />
-              <EnsureReadOnlyConnection />
+              <>
+                <App />
+                <EnsureReadOnlyConnection />
+              </>
             </EtherSWRManager>
           </SyncRouterWithWagmi>
         </HashRouter>
@@ -49,7 +51,10 @@ const Root = () => {
     </GlobalErrorBoundary>
   );
 };
-ReactDOM.render(<Root />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(rootElement);
+root.render(<Root />);
+// ReactDOM.render(<Root />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

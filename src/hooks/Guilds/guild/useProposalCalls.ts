@@ -63,7 +63,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           return {
             ...call,
             // We assume that if previous call was an approval, then current one is the one that is being approved
-            // So passing nested approval call and remove it from the calls array
+            // So passing nested temporary approvalCall and remove it from the calls array
             approvalCall: buildCall(index - 1),
           };
         }
@@ -100,16 +100,25 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
           const actions = await Promise.all(
             filteredActions.map(async call => {
               if (!!call?.approvalCall) {
-                const { decodedCall } = await decodeCall(
+                // If current call is an "spending" call will have a inner approvalCall
+                const { decodedCall: decodedApprovalCall } = await decodeCall(
                   call?.approvalCall,
                   contracts,
                   chain?.id
                 );
+                // Avoid spreading unnecesary approvalCall;
+                const { approvalCall, ...newCall } = call;
+
                 return {
-                  ...call,
+                  ...newCall,
                   approval: {
-                    amount: decodedCall?.args?._value,
-                    token: call.to,
+                    /**
+                     * amount being approved. Is extracted from the decoded approval call data (_value field).
+                     * token is the token address
+                     * More info on how we set these values: bulkEncodeCallsFromOptions function in hooks/Guilds/contracts/useEncodedCall.ts
+                     */
+                    amount: decodedApprovalCall?.args?._value,
+                    token: call?.approvalCall?.to,
                   },
                 };
               }

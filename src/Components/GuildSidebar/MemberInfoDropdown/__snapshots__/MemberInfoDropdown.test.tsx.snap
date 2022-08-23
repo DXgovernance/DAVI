@@ -118,7 +118,6 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
     <div
       class="c2 c0 c3"
     >
-      
       <div
         class="c4"
       >
@@ -279,7 +278,6 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
     <div
       class="c2 c0 c3"
     >
-      
       <div
         class="c4"
       >
@@ -485,7 +483,6 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
     <div
       class="c2 c0 c3"
     >
-      
       <div
         class="c4"
       >
@@ -646,7 +643,6 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
     <div
       class="c2 c0 c3"
     >
-      
       <div
         class="c4"
       >

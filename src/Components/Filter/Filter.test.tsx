@@ -5,6 +5,11 @@ import { ZERO_ADDRESS } from 'utils';
 import { mockChain } from 'Components/Web3Modals/fixtures';
 const bn = (value: number) => BigNumber.from(value);
 
+const mockFilterProps = {
+  openSearchBar: false,
+  setOpenSearchBar: jest.fn(),
+};
+
 jest.mock('contexts/Guilds/filters', () => ({
   useFilter: () => {
     return {
@@ -23,6 +28,9 @@ jest.mock('contexts/Guilds/filters', () => ({
       countCurrencySelected: jest.fn(),
     };
   },
+}));
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => [],
 }));
 jest.mock('hooks/Guilds/ether-swr/guild/useVotingPowerOf', () => ({
   useVotingPowerOf: () => ({
@@ -55,7 +63,7 @@ jest.mock('wagmi', () => ({
 
 describe('Filter', () => {
   it('Should match snapshot', () => {
-    const { container } = render(<Filter />);
+    const { container } = render(<Filter {...mockFilterProps} />);
     expect(container).toMatchSnapshot();
   });
 });

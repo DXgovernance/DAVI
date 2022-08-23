@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from 'old-components/Guilds/common/Button';
 import { Loading } from 'Components/Primitives/Loading';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import { Heading } from 'old-components/Guilds/common/Typography';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -32,7 +32,7 @@ import {
 const ProposalTypes: React.FC<ProposalTypesProps> = ({ data }) => {
   const { guildId, chainName: chain } = useTypedParams();
   const { t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const { isLoading: isGuildAvailabilityLoading } = useContext(
     GuildAvailabilityContext
@@ -51,7 +51,7 @@ const ProposalTypes: React.FC<ProposalTypesProps> = ({ data }) => {
     <Backdrop>
       <Wrapper>
         {isMobile ? (
-          <Header onClick={() => history.push(`/${chain}/${guildId}`)}>
+          <Header onClick={() => navigate(`/${chain}/${guildId}`)}>
             <HeaderWrap>
               <StyledIcon src={FiArrowLeft} />
               {t('backToOverview')}
@@ -62,7 +62,7 @@ const ProposalTypes: React.FC<ProposalTypesProps> = ({ data }) => {
           <Header>
             <Button
               variant="secondary"
-              onClick={() => history.push(`/${chain}/${guildId}`)}
+              onClick={() => navigate(`/${chain}/${guildId}`)}
             >
               <StyledIcon margin="0 10px 0 0" src={AiOutlineArrowLeft} />
               {t('backToOverview')}
@@ -105,7 +105,7 @@ const ProposalTypes: React.FC<ProposalTypesProps> = ({ data }) => {
         <Footer>
           <ButtonFooter
             variant="primary"
-            onClick={() => history.push(continueUrl)}
+            onClick={() => navigate(continueUrl)}
             data-testid="proposal-type-continue-button"
           >
             {t('continue')}

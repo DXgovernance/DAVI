@@ -30,6 +30,7 @@ import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
 import { DecodedCall } from 'Components/ActionsBuilder/types';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 const Web3 = require('web3');
 const web3 = new Web3();
@@ -80,6 +81,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
     },
   });
 
+  const { guildId } = useTypedParams();
   const { tokenAddress } = getValues();
 
   // Get token details from the token address
@@ -204,13 +206,13 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       readOnly
                     />
                   </ControlRow>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                   <TokenPicker
-                    walletAddress={parsedData?.to || ''}
+                    walletAddress={guildId}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
                     onSelect={asset => {
-                      field.onChange(asset);
+                      field.onChange(asset.address);
                       setIsTokenPickerOpen(false);
                     }}
                   />
@@ -240,7 +242,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       />
                     </ControlRow>
                   </Control>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </>
               );
             }}
@@ -275,7 +277,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       )}
                     </ControlRow>
                   </Control>
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </>
               );
             }}
@@ -322,7 +324,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                     )}
                   </ControlRow>
                 </Control>
-                {invalid && !!error && <Error>{error}</Error>}
+                {invalid && !!error && <Error>{error.message}</Error>}
               </>
             );
           }}
