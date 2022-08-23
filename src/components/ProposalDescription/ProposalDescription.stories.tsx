@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useTranslation } from 'react-i18next';
-import ProposalDescription from './ProposalDescription';
+import { ProposalDescription } from './ProposalDescription';
 import { withMetadata, noMetadata, errorMetadata } from './fixtures';
 
 export default {

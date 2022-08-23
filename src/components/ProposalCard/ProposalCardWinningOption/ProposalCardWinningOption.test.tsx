@@ -1,9 +1,6 @@
 import { render } from 'utils/tests';
 import ProposalCardWinningOption from './ProposalCardWinningOption';
-import {
-  optionsMock,
-  optionsWithSeveralActionsMock,
-} from 'components/Fixtures';
+import { optionsMock, optionsWithSeveralActionsMock } from 'utils/fixtures';
 import { BigNumber } from 'ethers';
 import { fireEvent } from '@testing-library/react';
 import { mockChain } from 'components/Web3Modals/fixtures';

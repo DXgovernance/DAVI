@@ -10,25 +10,6 @@ Object {
   padding: 0;
 }
 
-.c6 {
-  display: Flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   border: 1px solid #303338;
   border-radius: 10px;
@@ -62,6 +43,25 @@ Object {
 .c5 {
   padding: 1rem;
   color: #fff;
+}
+
+.c6 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .c7 {
@@ -166,25 +166,6 @@ Object {
   padding: 0;
 }
 
-.c6 {
-  display: Flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-  padding: 0;
-}
-
 .c1 {
   border: 1px solid #303338;
   border-radius: 10px;
@@ -218,6 +199,25 @@ Object {
 .c5 {
   padding: 1rem;
   color: #fff;
+}
+
+.c6 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .c7 {

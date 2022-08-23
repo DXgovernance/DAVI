@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { BiCheckShield } from 'react-icons/bi';
 import { ParsedDataInterface } from './types';
 import { useTranslation } from 'react-i18next';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 import { useNetwork } from 'wagmi';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';

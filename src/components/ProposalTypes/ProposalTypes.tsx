@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Primitives/Button';
 import { Loading } from 'components/Primitives/Loading';
 import { useNavigate, useLocation } from 'react-router-dom';
-import StyledIcon from 'components/Primitives/SVG';
+import { StyledIcon } from 'components/Primitives/StyledIcon';
 import { Heading } from 'components/Primitives/Typography';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';

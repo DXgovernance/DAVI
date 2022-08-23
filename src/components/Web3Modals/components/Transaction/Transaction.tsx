@@ -1,6 +1,6 @@
 import { FiArrowUpRight, FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { Transaction as TransactionInterface } from 'types/types.guilds';
-import PendingCircle from 'components/Primitives/PendingCircle';
+import { PendingCircle } from 'components/Primitives/PendingCircle';
 import { TransactionContainer, Link, Icon } from './Transaction.styled';
 import { getBlockExplorerUrl } from 'provider';
 import { useNetwork } from 'wagmi';

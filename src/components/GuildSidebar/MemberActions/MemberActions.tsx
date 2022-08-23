@@ -1,6 +1,6 @@
 import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { shortenAddress } from 'utils';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { Loading } from '../../Primitives/Loading';
 import { Moment } from 'moment';
 import { useState } from 'react';
@@ -10,7 +10,7 @@ import {
   VotingPower,
 } from './MemberActions.styled';
 import { BigNumber } from 'ethers';
-import { ENSAvatar } from 'components/Types';
+import { ENSAvatar } from 'types/types.guilds';
 import { MemberInfoDropdown } from '../MemberInfoDropdown';
 
 export interface MemberActionsProps {

@@ -6,14 +6,14 @@ interface ExecuteButtonProps {
   executeProposal: () => void;
 }
 
-const ExecuteButton: React.FC<ExecuteButtonProps> = ({ executeProposal }) => {
+export const ExecuteButton: React.FC<ExecuteButtonProps> = ({
+  executeProposal,
+}) => {
   const { t } = useTranslation();
 
   return (
-    <Button data-testid="execute-btn" onClick={() => executeProposal()}>
+    <Button data-testid="execute-btn" onClick={executeProposal}>
       {t('execute')}
     </Button>
   );
 };
-
-export default ExecuteButton;

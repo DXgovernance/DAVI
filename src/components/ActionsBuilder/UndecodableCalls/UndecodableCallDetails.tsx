@@ -3,7 +3,7 @@ import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import { Call } from '../types';
 import { BigNumber } from 'ethers';
 import { Box } from 'components/Primitives/Layout/Box';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
 import { FiExternalLink } from 'react-icons/fi';
 import styled, { useTheme } from 'styled-components';
 

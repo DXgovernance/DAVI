@@ -3,7 +3,7 @@ import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'components/Primitives/Button';
-import Input from 'components/Primitives/Forms/Input';
+import { Input } from 'components/Primitives/Forms/Input';
 import { FilterMenu, FilterButton } from './components';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useFilter } from 'contexts/Guilds/filters';
@@ -18,14 +18,17 @@ import {
   FilterBadge,
 } from './Filter.styled';
 import { useAccount } from 'wagmi';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
 
 interface FilterProps {
   openSearchBar: boolean;
   setOpenSearchBar: (openSearchBar: boolean) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ openSearchBar, setOpenSearchBar }) => {
+export const Filter: React.FC<FilterProps> = ({
+  openSearchBar,
+  setOpenSearchBar,
+}) => {
   const { t } = useTranslation();
   const { chainName, guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
@@ -105,5 +108,3 @@ const Filter: React.FC<FilterProps> = ({ openSearchBar, setOpenSearchBar }) => {
     </FilterContainer>
   );
 };
-
-export default Filter;

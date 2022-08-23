@@ -1,6 +1,6 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ExecuteButton from '.';
+import { ExecuteButton } from './ExecuteButton';
 import { render } from 'utils/tests';
 
 let mockedIsExecutable = true;

@@ -52,7 +52,7 @@ const IconMap = {
   [ResultState.WARNING]: FiAlertTriangle,
 };
 
-const Result: React.FC<ResultProps> = ({
+export const Result: React.FC<ResultProps> = ({
   title,
   state,
   icon,
@@ -76,5 +76,3 @@ const Result: React.FC<ResultProps> = ({
     </ResultWrapper>
   );
 };
-
-export default Result;

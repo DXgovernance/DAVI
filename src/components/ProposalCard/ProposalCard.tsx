@@ -1,8 +1,8 @@
 import { ProposalCardProps } from 'components/ProposalCard/types';
-import Avatar from 'components/Avatar';
-import ProposalStatus from 'components/ProposalStatus/ProposalStatus';
+import { Avatar } from 'components/Avatar';
+import { ProposalStatus } from 'components/ProposalStatus';
 import { Loading } from 'components/Primitives/Loading';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { shortenAddress } from 'utils';
 import {
@@ -16,7 +16,7 @@ import {
 } from 'components/ProposalCard/styles';
 import ProposalCardWinningOption from './ProposalCardWinningOption/ProposalCardWinningOption';
 
-const ProposalCard: React.FC<ProposalCardProps> = ({
+export const ProposalCard: React.FC<ProposalCardProps> = ({
   proposal,
   ensAvatar,
   href,
@@ -60,5 +60,3 @@ const ProposalCard: React.FC<ProposalCardProps> = ({
     </UnstyledLink>
   );
 };
-
-export default ProposalCard;

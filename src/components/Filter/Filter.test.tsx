@@ -1,4 +1,4 @@
-import Filter from './Filter';
+import { Filter } from './Filter';
 import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
 import { ZERO_ADDRESS } from 'utils';

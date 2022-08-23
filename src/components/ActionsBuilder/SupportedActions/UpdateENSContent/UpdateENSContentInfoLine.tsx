@@ -5,7 +5,7 @@ import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { StyledENSIcon } from './styles';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { MAINNET_ID } from 'utils';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { shortenAddress } from 'utils';
 import { ActionViewProps } from '..';
 import { useTranslation } from 'react-i18next';

@@ -4,7 +4,7 @@ import Markdown from 'markdown-to-jsx';
 import { Loading } from 'components/Primitives/Loading';
 import { useTranslation } from 'react-i18next';
 
-const ProposalDescription: React.FC<ProposalDescriptionProps> = ({
+export const ProposalDescription: React.FC<ProposalDescriptionProps> = ({
   metadata,
   error,
 }) => {
@@ -28,5 +28,3 @@ const ProposalDescription: React.FC<ProposalDescriptionProps> = ({
     </ProposalDescriptionWrapper>
   );
 };
-
-export default ProposalDescription;

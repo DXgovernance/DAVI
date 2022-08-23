@@ -1,6 +1,6 @@
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 import { Modal } from 'components/Primitives/Modal';
-import PendingCircle from 'components/Primitives/PendingCircle';
+import { PendingCircle } from 'components/Primitives/PendingCircle';
 import { FiX, FiCheck } from 'react-icons/fi';
 import {
   Message,

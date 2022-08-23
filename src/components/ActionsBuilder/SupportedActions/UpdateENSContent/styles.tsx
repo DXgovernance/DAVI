@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import StyledIcon from 'components/Primitives/SVG';
+import { StyledIcon } from 'components/Primitives/StyledIcon';
 import { Box } from 'components/Primitives/Layout/Box';
 import { StyledToolTip } from 'components/ToolTip';
 import { DetailBody } from '../common/Summary.styled';

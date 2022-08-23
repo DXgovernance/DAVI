@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 import { Button } from 'components/Primitives/Button';
 
 export const InputContainer = styled(Flex)`

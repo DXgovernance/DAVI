@@ -3,7 +3,7 @@ import { formatUnits } from 'ethers/lib/utils';
 import { ChildrenNode, Matcher, MatchResponse, Node } from 'interweave';
 import moment from 'moment';
 import { shortenAddress } from 'utils';
-import ENSAvatar from 'components/Avatar/ENSAvatar';
+import { ENSAvatar } from 'components/Avatar';
 import { FunctionParamWithValue } from './GenericCallInfoLine';
 
 interface MatcherOptions {

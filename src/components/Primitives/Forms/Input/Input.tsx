@@ -78,7 +78,7 @@ export interface InputProps<T>
   muted?: boolean;
 }
 
-const Input: React.FC<InputProps<any>> = ({
+export const Input: React.FC<InputProps<any>> = ({
   icon = null,
   iconRight = null,
   isInvalid,
@@ -100,5 +100,3 @@ const Input: React.FC<InputProps<any>> = ({
     </InputWrapper>
   );
 };
-
-export default Input;

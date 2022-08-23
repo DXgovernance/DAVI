@@ -48,7 +48,7 @@ const DetailText = styled(Box)`
   }
 `;
 
-const ProposalStatus: React.FC<ProposalStatusProps> = ({
+export const ProposalStatus: React.FC<ProposalStatusProps> = ({
   endTime,
   status,
   bordered,
@@ -91,5 +91,3 @@ const ProposalStatus: React.FC<ProposalStatusProps> = ({
     </ProposalStatusWrapper>
   );
 };
-
-export default ProposalStatus;

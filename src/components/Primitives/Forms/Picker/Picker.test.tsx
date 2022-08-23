@@ -2,7 +2,7 @@ import { render } from 'utils/tests';
 import { fullProps, propsWithIcon } from './fixtures';
 import Picker from './Picker';
 import { fireEvent } from '@testing-library/react';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import dxdaoIcon from 'assets/images/dxdao-icon.svg';
 
 const mockOnSelect = jest.fn();

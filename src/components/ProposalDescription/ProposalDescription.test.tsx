@@ -1,5 +1,5 @@
 import { render } from 'utils/tests';
-import ProposalDescription from './ProposalDescription';
+import { ProposalDescription } from './ProposalDescription';
 import { withMetadata, noMetadata, errorMetadata } from './fixtures';
 
 describe('ProposalDescription', () => {

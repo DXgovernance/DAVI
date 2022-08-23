@@ -1,13 +1,12 @@
-import ProposalCard from 'components/ProposalCard/ProposalCard';
+import { ProposalCard, ProposalCardProps } from 'components/ProposalCard';
 import { render } from '../../utils/tests';
-import { ProposalCardProps } from 'components/ProposalCard/types';
 import {
   ensAvatarMock,
   optionsMock,
   optionsWithSeveralActionsMock,
   proposalMock,
   proposalStatusPropsMock,
-} from 'components/Fixtures';
+} from 'utils/fixtures';
 import { BigNumber } from 'ethers';
 import { mockChain } from 'components/Web3Modals/fixtures';
 

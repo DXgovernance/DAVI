@@ -2,7 +2,7 @@ import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { useMemo } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { BiSend } from 'react-icons/bi';

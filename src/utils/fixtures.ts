@@ -2,7 +2,7 @@ import { ProposalStatusProps } from 'components/ProposalStatus/types';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
 import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
-import { ENSAvatar } from '../Types';
+import { ENSAvatar } from 'types/types.guilds';
 import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import {
   Call,

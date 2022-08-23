@@ -74,4 +74,4 @@ const PendingCircle = ({ height, width, color }: PendingCircleType) => {
   return <SpinningCircle height={height} width={width} color={color} />;
 };
 
-export default PendingCircle;
+export { PendingCircle };

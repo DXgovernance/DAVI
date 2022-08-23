@@ -19,7 +19,7 @@ const StyledIconWrapper = styled.div<Omit<StyledIconProps, 'src'>>`
   }
 `;
 
-const StyledIcon = React.memo((props: StyledIconProps) => {
+export const StyledIcon = React.memo((props: StyledIconProps) => {
   const { src, alt, ...rest } = props;
   const Icon = src;
 
@@ -37,5 +37,3 @@ const StyledIcon = React.memo((props: StyledIconProps) => {
     </StyledIconWrapper>
   );
 });
-
-export default StyledIcon;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box, Container } from 'components/Primitives/Layout/Box';
+import { Box, Container } from 'components/Primitives/Layout';
 import { Heading } from 'components/Primitives/Typography';
 
 export const HeaderWrapper = styled.nav`

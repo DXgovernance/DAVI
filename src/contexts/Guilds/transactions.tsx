@@ -3,7 +3,7 @@ import {
   TransactionOutcome,
   TransactionPending,
 } from 'components/ToastNotifications/TransactionToasts';
-import { TransactionModal } from 'components';
+import { TransactionModal } from 'components/Web3Modals';
 import { Transaction } from '../../types/types.guilds';
 import { providers } from 'ethers';
 import {

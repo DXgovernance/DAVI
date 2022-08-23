@@ -95,25 +95,6 @@ exports[`Filter Should match snapshot 1`] = `
   padding: 0;
 }
 
-.c2 {
-  display: Flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-  padding: 0;
-}
-
 .c10 {
   display: none;
   border: 1px solid #303338;
@@ -204,6 +185,25 @@ exports[`Filter Should match snapshot 1`] = `
   background-color: #1B1D1F;
   color: #fff;
   margin-right: 1rem;
+}
+
+.c2 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
 }
 
 .c1 {
@@ -340,6 +340,12 @@ exports[`Filter Should match snapshot 1`] = `
                 class="c12 c13"
               >
                 Failed
+                 
+              </a>
+              <a
+                class="c12 c13"
+              >
+                Finished
                  
               </a>
             </div>

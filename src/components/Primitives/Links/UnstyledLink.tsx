@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const UnstyledLink = styled(Link)`
+export const UnstyledLink = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
   &:focus,
@@ -12,5 +12,3 @@ const UnstyledLink = styled(Link)`
     text-decoration: none;
   }
 `;
-
-export default UnstyledLink;

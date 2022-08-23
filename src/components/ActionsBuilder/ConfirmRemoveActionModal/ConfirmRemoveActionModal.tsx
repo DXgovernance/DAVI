@@ -7,7 +7,7 @@ import {
   ConfirmButton,
   TextContainer,
 } from './ConfirmRemoveActionModal.styled';
-import { Modal } from 'components';
+import { Modal } from 'components/Primitives/Modal';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 

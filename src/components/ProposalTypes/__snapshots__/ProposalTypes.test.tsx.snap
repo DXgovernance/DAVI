@@ -119,6 +119,28 @@ exports[`ProposalTypes Should match snapshot 1`] = `
   padding: 0;
 }
 
+.c13 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.c14 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #BDC0C7;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+}
+
 .c1 {
   max-width: 386px;
 }
@@ -212,28 +234,6 @@ exports[`ProposalTypes Should match snapshot 1`] = `
   align-items: flex-start;
   margin-top: 10px;
   color: #fff;
-}
-
-.c13 {
-  text-align: left;
-  font-family: Inter;
-  margin: 4px;
-  font-style: normal;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.c14 {
-  text-align: left;
-  font-family: Inter;
-  margin: 4px;
-  font-style: normal;
-  color: #BDC0C7;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 20px;
 }
 
 @media only screen and (max-width:768px) {

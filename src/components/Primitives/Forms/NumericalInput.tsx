@@ -1,7 +1,7 @@
 // Based on https://github.com/levelkdev/dxswap-dapp/blob/master/src/components/Input/NumericalInput/index.tsx
 
 import React from 'react';
-import Input, { InputProps } from 'components/Primitives/Forms/Input';
+import { Input, InputProps } from 'components/Primitives/Forms/Input';
 import { escapeRegExp } from 'utils';
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
@@ -41,4 +41,4 @@ const NumericalInput: React.FC<InputProps<string>> = ({
   );
 };
 
-export default NumericalInput;
+export { NumericalInput };

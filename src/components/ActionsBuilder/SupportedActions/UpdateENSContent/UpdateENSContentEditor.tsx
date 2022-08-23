@@ -2,7 +2,7 @@
 import { StyledToolTip } from 'components/ToolTip';
 import React, { useState, useEffect } from 'react';
 import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
-import Input from 'components/Primitives/Forms/Input';
+import { Input } from 'components/Primitives/Forms/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
   convertToContentHash,

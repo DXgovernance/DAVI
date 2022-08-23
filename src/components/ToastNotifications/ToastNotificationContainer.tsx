@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ToastContainer } from 'react-toastify';
 
-const ToastNotificationContainer = styled(ToastContainer)`
+export const ToastNotificationContainer = styled(ToastContainer)`
   &.Toastify__toast-container--top-right {
     top: 6em;
   }
@@ -20,5 +20,3 @@ const ToastNotificationContainer = styled(ToastContainer)`
     fill: ${({ theme }) => theme.colors.text};
   }
 `;
-
-export default ToastNotificationContainer;

@@ -82,6 +82,17 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
   padding: 0;
 }
 
+.c11 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
 .c1 {
   position: fixed;
   top: 50%;
@@ -194,17 +205,6 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 
 .c16 svg path {
   fill: currentColor;
-}
-
-.c11 {
-  text-align: left;
-  font-family: Inter;
-  margin: 4px;
-  font-style: normal;
-  color: #fff;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .c8 {

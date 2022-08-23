@@ -1,7 +1,6 @@
-import { Circle, Flex } from 'components/Primitives/Layout/Box';
-import { ContainerText } from 'components/Primitives/Layout/Text';
-import { Modal } from 'components';
-import PendingCircle from 'components/Primitives/PendingCircle';
+import { Circle, Flex, ContainerText } from 'components/Primitives/Layout';
+import { Modal } from 'components/Primitives/Modal';
+import { PendingCircle } from 'components/Primitives/PendingCircle';
 import { useMemo } from 'react';
 import { AiOutlineArrowUp } from 'react-icons/ai';
 import { FiX } from 'react-icons/fi';

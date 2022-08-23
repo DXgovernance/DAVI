@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Picker from './Picker';
 import { fullProps, propsWithIcon, lengthyData } from './fixtures';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import dxdaoIcon from 'assets/images/dxdao-icon.svg';
 
 export default {

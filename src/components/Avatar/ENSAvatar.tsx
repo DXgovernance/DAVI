@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from '.';
+import { Avatar } from './Avatar';
 
 const ENSAvatarContainer = styled.span`
   display: inline-flex;
@@ -17,7 +17,7 @@ interface ENSAvatarProps {
   size?: number;
 }
 
-const ENSAvatar: React.FC<ENSAvatarProps> = ({ address, size = 24 }) => {
+export const ENSAvatar: React.FC<ENSAvatarProps> = ({ address, size = 24 }) => {
   const { imageUrl } = useENSAvatar(address, 1);
 
   return (
@@ -26,5 +26,3 @@ const ENSAvatar: React.FC<ENSAvatarProps> = ({ address, size = 24 }) => {
     </ENSAvatarContainer>
   );
 };
-
-export default ENSAvatar;

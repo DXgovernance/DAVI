@@ -4,7 +4,7 @@ import { EditButton } from './common';
 import { Option } from './types';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import { AddEditOptionModal } from './AddEditOptionModal';
-import SidebarCard, { SidebarCardHeaderSpaced } from 'components/SidebarCard';
+import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

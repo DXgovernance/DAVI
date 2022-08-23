@@ -2,10 +2,10 @@ import { ActionEditorProps } from '..';
 import { Button } from 'components/Primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
-import Input from 'components/Primitives/Forms/Input';
-import TokenAmountInput from 'components/Primitives/Forms/TokenAmountInput';
+import { Input } from 'components/Primitives/Forms/Input';
+import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
 import { Box } from 'components/Primitives/Layout/Box';
 import { BigNumber, utils } from 'ethers';
 import {

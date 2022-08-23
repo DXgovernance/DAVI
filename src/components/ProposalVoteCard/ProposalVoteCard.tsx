@@ -1,4 +1,5 @@
-import SidebarCard, {
+import {
+  SidebarCard,
   SidebarCardContent,
   SidebarCardHeaderSpaced,
 } from 'components/SidebarCard';

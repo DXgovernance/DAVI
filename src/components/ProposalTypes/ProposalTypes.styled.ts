@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FiX } from 'react-icons/fi';
 
 import { Button } from 'components/Primitives/Button';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 
 export const Backdrop = styled(Flex)``;
 export const CloseIcon = styled(FiX)`

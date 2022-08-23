@@ -53,13 +53,6 @@ exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1
   padding: 24px 24px 40px 24px;
 }
 
-.c10 {
-  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 600;
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -113,6 +106,13 @@ exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1
   background-color: #1B1D1F;
   color: #A1A6B0;
   padding: 0.25rem 0.4rem;
+}
+
+.c10 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 .c9 {
@@ -474,13 +474,6 @@ exports[`GuildCard Should render with full parameters 1`] = `
   padding: 24px 24px 40px 24px;
 }
 
-.c10 {
-  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 600;
-}
-
 .c4 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -534,6 +527,13 @@ exports[`GuildCard Should render with full parameters 1`] = `
   background-color: #1B1D1F;
   color: #1DE9B6;
   padding: 0.25rem 0.4rem;
+}
+
+.c10 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
 }
 
 .c9 {

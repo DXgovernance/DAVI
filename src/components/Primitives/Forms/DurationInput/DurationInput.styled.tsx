@@ -1,4 +1,4 @@
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 import { Button } from 'components/Primitives/Button';
 import styled from 'styled-components';
 

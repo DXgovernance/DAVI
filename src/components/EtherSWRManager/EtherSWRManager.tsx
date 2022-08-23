@@ -6,7 +6,9 @@ interface EtherSWRManagerProps {
   children: JSX.Element;
 }
 
-const EtherSWRManager: React.FC<EtherSWRManagerProps> = ({ children }) => {
+export const EtherSWRManager: React.FC<EtherSWRManagerProps> = ({
+  children,
+}) => {
   const provider = useProvider();
 
   return (
@@ -21,5 +23,3 @@ const EtherSWRManager: React.FC<EtherSWRManagerProps> = ({ children }) => {
     </EtherSWRConfig>
   );
 };
-
-export default EtherSWRManager;

@@ -18,7 +18,7 @@ import {
   CenteredButton,
 } from './WalletInfoBox.styled';
 import { useAccount, useEnsName, useNetwork } from 'wagmi';
-import ENSAvatar from 'components/Avatar/ENSAvatar';
+import { ENSAvatar } from 'components/Avatar';
 import { getBlockExplorerUrl } from 'provider';
 
 interface WalletInfoBoxProps {

@@ -12,7 +12,7 @@ import { ActionEditorProps } from '..';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import validateSetPermissions from './validateSetPermissions';
 import { StyledTokenAmount, ToggleWrapper, ToggleLabel } from './styles';
-import Toggle from 'components/Primitives/Forms/Toggle';
+import { Toggle } from 'components/Primitives/Forms/Toggle';
 import {
   Control,
   ControlLabel,
@@ -25,9 +25,9 @@ import {
   TabButton,
 } from './SetPermissionsEditor.styled';
 import { Button } from 'components/Primitives/Button';
-import AddressInput from 'components/Primitives/Forms/AddressInput';
-import Input from 'components/Primitives/Forms/Input';
-import Avatar from 'components/Avatar';
+import { AddressInput } from 'components/Primitives/Forms/AddressInput';
+import { Input } from 'components/Primitives/Forms/Input';
+import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
 import { DecodedCall } from 'components/ActionsBuilder/types';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';

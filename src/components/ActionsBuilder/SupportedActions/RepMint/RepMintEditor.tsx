@@ -1,7 +1,7 @@
-import Input from 'components/Primitives/Forms/Input';
+import { Input } from 'components/Primitives/Forms/Input';
 import { Button } from 'components/Primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';

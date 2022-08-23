@@ -1,8 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import ProposalCard from 'components/ProposalCard/ProposalCard';
-import { ProposalCardProps } from 'components/ProposalCard/types';
+import { ProposalCard, ProposalCardProps } from 'components/ProposalCard';
 import { proposalStatusMock } from 'components/ProposalStatus/fixtures';
-import { ensAvatarMock, proposalMock } from '../Fixtures';
+import { ensAvatarMock, proposalMock } from 'utils/fixtures';
 
 export default {
   title: 'Proposals/ProposalCard',

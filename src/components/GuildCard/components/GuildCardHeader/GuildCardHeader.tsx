@@ -5,8 +5,8 @@ import {
   MemberWrapper,
   MemberNumberWrapper,
   ProposalsInformation,
-} from './styles';
-
+} from './GuildCardHeader.styled';
+import { GuildCardHeaderProps } from './types';
 const Members = ({ numberOfMembers }) => {
   return (
     <MemberNumberWrapper>{numberOfMembers?.toString()}</MemberNumberWrapper>
@@ -23,14 +23,7 @@ const Proposals = ({ t, numberOfActiveProposals }) => {
   );
 };
 
-interface GuildCardHeaderProps {
-  isLoading?: boolean;
-  t: any;
-  numberOfActiveProposals: any;
-  numberOfMembers: any;
-}
-
-const GuildCardHeader: React.FC<GuildCardHeaderProps> = ({
+export const GuildCardHeader: React.FC<GuildCardHeaderProps> = ({
   isLoading,
   t,
   numberOfActiveProposals,
@@ -59,5 +52,3 @@ const GuildCardHeader: React.FC<GuildCardHeaderProps> = ({
     </Header>
   );
 };
-
-export default GuildCardHeader;

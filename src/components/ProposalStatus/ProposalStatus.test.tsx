@@ -1,4 +1,4 @@
-import ProposalStatus from './ProposalStatus';
+import { ProposalStatus } from './ProposalStatus';
 import { render } from '../../utils/tests';
 import { ProposalStatusProps } from './types';
 import { ProposalState } from 'types/types.guilds.d';

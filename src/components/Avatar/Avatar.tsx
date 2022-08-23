@@ -19,7 +19,11 @@ const AvatarIcon = styled(ButtonIcon)<{ size: number }>`
     `}
 `;
 
-const Avatar: React.FC<AvatarProps> = ({ src, defaultSeed, size = 24 }) => {
+export const Avatar: React.FC<AvatarProps> = ({
+  src,
+  defaultSeed,
+  size = 24,
+}) => {
   if (!src && !defaultSeed) {
     return (
       <Loading
@@ -45,5 +49,3 @@ const Avatar: React.FC<AvatarProps> = ({ src, defaultSeed, size = 24 }) => {
     />
   );
 };
-
-export default Avatar;

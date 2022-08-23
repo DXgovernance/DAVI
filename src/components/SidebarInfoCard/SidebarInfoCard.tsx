@@ -1,5 +1,6 @@
 import { duration } from 'moment';
-import SidebarCard, {
+import {
+  SidebarCard,
   SidebarCardContent,
   SidebarCardHeader,
 } from 'components/SidebarCard';

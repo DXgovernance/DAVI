@@ -17,4 +17,4 @@ Bullet.defaultProps = {
   size: 16,
 };
 
-export default Bullet;
+export { Bullet };

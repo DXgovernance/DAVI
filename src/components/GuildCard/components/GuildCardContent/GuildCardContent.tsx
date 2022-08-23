@@ -1,9 +1,9 @@
-import { DaoIcon, Content, DaoTitle } from './styles';
+import { DaoIcon, Content, DaoTitle } from './GuildCardContent.styled';
 import dxDaoIcon from 'assets/images/dxdao-icon.svg';
 import { Loading } from 'components/Primitives/Loading';
 import { GuildCardContentProps } from './types';
 
-const GuildCardContent: React.FC<GuildCardContentProps> = ({
+export const GuildCardContent: React.FC<GuildCardContentProps> = ({
   isLoading,
   ensName,
   data,
@@ -24,5 +24,3 @@ const GuildCardContent: React.FC<GuildCardContentProps> = ({
     </Content>
   );
 };
-
-export default GuildCardContent;

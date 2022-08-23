@@ -1,5 +1,5 @@
 import dxIcon from 'assets/images/dxdao-icon.svg';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
 import { Loading } from 'components/Primitives/Loading';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTranslation } from 'react-i18next';

@@ -3,7 +3,7 @@ import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/Primitives/Button';
 import { Box } from 'components/Primitives/Layout/Box';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
 import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
 import { Divider } from 'components/Divider';

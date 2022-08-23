@@ -3,7 +3,7 @@ import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString'
 import useStringToBigNumber from 'hooks/Guilds/conversions/useStringToBigNumber';
 import { useEffect, useState } from 'react';
 import { InputProps } from 'components/Primitives/Forms/Input';
-import NumericalInput from 'components/Primitives/Forms/NumericalInput';
+import { NumericalInput } from 'components/Primitives/Forms/NumericalInput';
 
 export interface TokenAmountInputProps extends InputProps<BigNumber> {
   decimals?: number;
@@ -48,4 +48,4 @@ const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   );
 };
 
-export default TokenAmountInput;
+export { TokenAmountInput };

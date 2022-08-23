@@ -1,8 +1,8 @@
 import { MultichainContext } from 'contexts/MultichainProvider';
 import { ButtonIcon, IconButton } from 'components/Primitives/Button';
 import { Box } from 'components/Primitives/Layout/Box';
-import Result, { ResultState } from 'components/Result';
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { Result, ResultState } from 'components/Result';
+import { UnstyledLink } from 'components/Primitives/Links';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';

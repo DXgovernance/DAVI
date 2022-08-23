@@ -39,4 +39,4 @@ const Toggle: React.FC<FormElementProps<boolean>> = ({
   );
 };
 
-export default Toggle;
+export { Toggle };

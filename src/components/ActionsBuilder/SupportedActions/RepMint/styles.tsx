@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import NumericalInput from 'components/Primitives/Forms/NumericalInput';
-import StyledIcon from 'components/Primitives/SVG';
+import { NumericalInput } from 'components/Primitives/Forms/NumericalInput';
+import { StyledIcon } from 'components/Primitives/StyledIcon';
 import { Box } from 'components/Primitives/Layout/Box';
 import { StyledToolTip } from 'components/ToolTip';
 import { ErrorLabel } from 'components/Primitives/Forms/ErrorLabel';

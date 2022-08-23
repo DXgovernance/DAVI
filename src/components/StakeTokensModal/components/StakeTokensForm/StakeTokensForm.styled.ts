@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Heading } from 'components/Primitives/Typography';
-import TokenAmountInput from 'components/Primitives/Forms/TokenAmountInput';
+import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
 import { Button } from 'components/Primitives/Button';
 
 export const GuestContainer = styled.div`

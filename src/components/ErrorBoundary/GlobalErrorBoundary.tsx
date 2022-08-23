@@ -1,12 +1,12 @@
 import React from 'react';
-import GlobalNotification from 'components/GlobalNotification';
+import { GlobalNotification } from 'components/GlobalNotification';
 
 const handledErrorTypes = {
   CacheLoadError:
     'We ran into an error while trying to update the cache. Data shown below might be incorrect or outdated. Please reload the page and try again.',
 };
 
-class GlobalErrorBoundary extends React.Component<
+export class GlobalErrorBoundary extends React.Component<
   { children: JSX.Element },
   { hasError: boolean; errorMessage: string }
 > {
@@ -67,5 +67,3 @@ class GlobalErrorBoundary extends React.Component<
     );
   }
 }
-
-export default GlobalErrorBoundary;

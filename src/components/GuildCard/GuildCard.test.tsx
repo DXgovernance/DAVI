@@ -1,4 +1,4 @@
-import GuildCard from './GuildCard';
+import { GuildCard } from './GuildCard';
 import { render } from '../../utils/tests';
 import '@testing-library/jest-dom';
 import { fullParameters, loadingParameters, noProposals } from './fixtures';

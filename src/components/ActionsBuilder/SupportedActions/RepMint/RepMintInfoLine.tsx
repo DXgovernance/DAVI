@@ -1,4 +1,4 @@
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { FiArrowRight } from 'react-icons/fi';
 import { MAINNET_ID, shortenAddress } from 'utils';

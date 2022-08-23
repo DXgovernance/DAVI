@@ -1,12 +1,11 @@
-import UnstyledLink from 'components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/Primitives/Links';
+import { Flex } from 'components/Primitives/Layout';
 import { Card } from 'components/Card';
-import GuildCardHeader from './GuildCardHeader';
-import GuildCardContent from './GuildCardContent';
-import { cardWrapperStyles } from './styles';
+import { cardWrapperStyles } from './GuildCard.styled';
 import { GuildCardProps } from './types';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { GuildCardHeader, GuildCardContent } from './components';
 
-const GuildCard: React.FC<GuildCardProps> = ({
+export const GuildCard: React.FC<GuildCardProps> = ({
   isLoading,
   guildAddress,
   numberOfMembers,
@@ -35,5 +34,3 @@ const GuildCard: React.FC<GuildCardProps> = ({
     </UnstyledLink>
   );
 };
-
-export default GuildCard;

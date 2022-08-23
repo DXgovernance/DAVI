@@ -1,6 +1,6 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import Input from 'components/Primitives/Forms/Input';
-import { Box, Flex } from 'components/Primitives/Layout/Box';
+import { Input } from 'components/Primitives/Forms/Input';
+import { Box, Flex } from 'components/Primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import contentHash from 'content-hash';
 import { useTransactions } from 'contexts/Guilds';

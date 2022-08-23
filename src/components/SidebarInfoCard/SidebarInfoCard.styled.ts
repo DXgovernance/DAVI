@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 
 export const Row = styled(Flex)`
   margin-bottom: 0.8rem;

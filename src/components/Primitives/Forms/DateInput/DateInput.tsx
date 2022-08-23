@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DateTime from 'react-datetime';
 import { Moment } from 'moment';
 import 'react-datetime/css/react-datetime.css';
-import Input, { InputProps } from 'components/Primitives/Forms/Input';
+import { Input, InputProps } from 'components/Primitives/Forms/Input';
 import { useMemo } from 'react';
 
 const StyledDateTime = styled(DateTime)`
@@ -93,7 +93,7 @@ export interface DateInputProps extends InputProps<string | Moment> {
   isValidDate?: (date: Moment) => boolean;
 }
 
-const DateInput: React.FC<DateInputProps> = ({
+export const DateInput: React.FC<DateInputProps> = ({
   value,
   onChange,
   inputType = InputType.DATE,
@@ -134,5 +134,3 @@ const DateInput: React.FC<DateInputProps> = ({
     />
   );
 };
-
-export default DateInput;

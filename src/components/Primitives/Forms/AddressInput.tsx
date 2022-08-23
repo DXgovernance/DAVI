@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Input, { InputProps } from 'components/Primitives/Forms/Input';
+import { Input, InputProps } from 'components/Primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import Avatar from 'components/Avatar';
+import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
 import { Box } from 'components/Primitives/Layout/Box';
 import { FiX } from 'react-icons/fi';
@@ -52,4 +52,4 @@ const AddressInput: React.FC<InputProps<string>> = ({
   );
 };
 
-export default AddressInput;
+export { AddressInput };

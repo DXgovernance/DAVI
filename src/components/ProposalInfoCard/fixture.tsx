@@ -1,5 +1,5 @@
 import { ProposalInfoCardProps } from './types';
-import { proposalMock, guildConfigMock } from 'components/Fixtures';
+import { proposalMock, guildConfigMock } from 'utils/fixtures';
 
 export const fullParameters: ProposalInfoCardProps = {
   proposal: proposalMock,

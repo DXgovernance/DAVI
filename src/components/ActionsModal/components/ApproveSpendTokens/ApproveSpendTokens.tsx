@@ -4,10 +4,10 @@ import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from 'components/Primitives/Button';
-import Input from 'components/Primitives/Forms/Input';
-import Avatar from 'components/Avatar';
+import { Input } from 'components/Primitives/Forms/Input';
+import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
-import TokenAmountInput from 'components/Primitives/Forms/TokenAmountInput';
+import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
 import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';

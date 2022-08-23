@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Circle, Flex } from 'components/Primitives/Layout/Box';
+import { Circle, Flex } from 'components/Primitives/Layout';
 
 export const StatusWrapper = styled(Flex)`
   margin: 3rem 0px;

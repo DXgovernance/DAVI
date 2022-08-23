@@ -18,7 +18,7 @@ interface GlobalNotificationProps {
   type: 'INFO' | 'ERROR';
 }
 
-const GlobalNotification: React.FC<GlobalNotificationProps> = ({
+export const GlobalNotification: React.FC<GlobalNotificationProps> = ({
   visible,
   message,
   type,
@@ -29,5 +29,3 @@ const GlobalNotification: React.FC<GlobalNotificationProps> = ({
     <GlobalNotificationWrapper type={type}>{message}</GlobalNotificationWrapper>
   );
 };
-
-export default GlobalNotification;

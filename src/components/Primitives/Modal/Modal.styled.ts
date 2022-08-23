@@ -3,7 +3,7 @@ import { Button } from 'components/Primitives/Button';
 import { FiX } from 'react-icons/fi';
 import { IoIosArrowBack } from 'react-icons/io';
 import { Heading } from 'components/Primitives/Typography';
-import { Flex } from 'components/Primitives/Layout/Box';
+import { Flex } from 'components/Primitives/Layout';
 
 export const Wrapper = styled.div<{ zIndex: number; maxWidth: number }>`
   position: fixed;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IconButton } from 'components/Primitives/Button';
-import { Flex, Box } from 'components/Primitives/Layout/Box';
+import { Flex, Box } from 'components/Primitives/Layout';
 import { Badge } from 'components/Badge';
 
 export const FilterContainer = styled(Box)`
