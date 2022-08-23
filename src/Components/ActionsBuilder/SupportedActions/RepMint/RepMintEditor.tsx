@@ -10,7 +10,7 @@ import { ReactComponent as Info } from 'assets/images/info.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
-import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
+import { Tooltip } from 'old-components/Guilds/common/Tooltip';
 import { useTranslation } from 'react-i18next';
 import { ethers } from 'ethers';
 import validateRepMint from './validateRepMint';
@@ -19,7 +19,8 @@ import {
   ControlRow,
   ControlLabel,
 } from 'Components/Primitives/Forms/Control';
-import { Error, StyledInfoIcon, RepMintInput } from './styles';
+import { Error, RepMintInput } from './styles';
+import StyledIcon from 'old-components/Guilds/common/SVG';
 
 interface RepMintFormValues {
   repPercent: string;
@@ -78,8 +79,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
         <Control>
           <ControlLabel>
             {t('repMint.recipient')}
-            <StyledInfoIcon src={Info} />
-            <StyledToolTip>{t('repMint.recipientTooltip')}</StyledToolTip>
+            <Tooltip content={t('repMint.recipientTooltip')} position="bottom">
+              <StyledIcon src={Info} />
+            </Tooltip>
           </ControlLabel>
           <ControlRow>
             <Input
@@ -107,10 +109,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
                 <Control>
                   <ControlLabel>
                     {t('repMint.repPercent')}
-                    <StyledInfoIcon src={Info} />
-                    <StyledToolTip>
-                      {t('repMint.repPercentTooltip')}
-                    </StyledToolTip>
+                    <Tooltip content={t('repMint.repPercentTooltip')}>
+                      <StyledIcon src={Info} />
+                    </Tooltip>
                   </ControlLabel>
                   <ControlRow>
                     <RepMintInput
@@ -131,8 +132,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
           <Control>
             <ControlLabel>
               {t('repMint.repAmount')}
-              <StyledInfoIcon src={Info} />
-              <StyledToolTip>{t('repMint.repAmountTooltip')}</StyledToolTip>
+              <Tooltip content={t('repMint.repAmountTooltip')}>
+                <StyledIcon src={Info} />
+              </Tooltip>
             </ControlLabel>
             <ControlRow>
               <RepMintInput disabled value={repAmount?.toString()} readOnly />

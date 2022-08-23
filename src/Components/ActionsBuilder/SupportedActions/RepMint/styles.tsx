@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import NumericalInput from 'old-components/Guilds/common/Form/NumericalInput';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import { Box } from 'Components/Primitives/Layout';
-import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
 import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
 
 export const StyledMintIcon = styled(StyledIcon)`
@@ -35,16 +34,6 @@ export const RepMintInput = styled(NumericalInput)`
   display: flex;
   align-items: center;
   width: 100%;
-`;
-
-export const StyledInfoIcon = styled(StyledIcon)`
-  &:hover + ${StyledToolTip} {
-    visibility: visible;
-  }
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
-  }
 `;
 
 export const Error = styled(ErrorLabel)`
