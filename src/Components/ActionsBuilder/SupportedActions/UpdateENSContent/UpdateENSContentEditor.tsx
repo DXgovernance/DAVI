@@ -77,7 +77,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       <Control>
         <ControlLabel>
           {t('ens.name')}
-          <Tooltip content={t('ens.nameTooltip')} position="bottom">
+          <Tooltip text={t('ens.nameTooltip')} placement="bottom">
             <StyledIcon src={Info} />
           </Tooltip>
         </ControlLabel>
@@ -90,7 +90,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
         <Control>
           <ControlLabel>
             {t('ens.ipfsHash')}
-            <Tooltip content={t('ens.ipfsHashToolTip')}>
+            <Tooltip text={t('ens.ipfsHashToolTip')}>
               <StyledIcon src={Info} />
             </Tooltip>
           </ControlLabel>

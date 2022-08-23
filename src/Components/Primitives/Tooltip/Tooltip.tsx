@@ -3,8 +3,8 @@ import { StyledSpan, TooltipContent } from './Tooltip.styled';
 import { TooltipProps } from './types';
 
 const Tooltip: React.FC<TooltipProps> = ({
-  content,
-  position = 'top',
+  text,
+  placement = 'top',
   children,
 }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
@@ -21,7 +21,7 @@ const Tooltip: React.FC<TooltipProps> = ({
       >
         {children}
         {isTooltipVisible && (
-          <TooltipContent position={position}>{content}</TooltipContent>
+          <TooltipContent placement={placement}>{text}</TooltipContent>
         )}
       </StyledSpan>
     </>

@@ -6,10 +6,10 @@ export default {
   title: 'Tooltip',
   component: Tooltip,
   argTypes: {
-    content: {
+    text: {
       description: 'Text of the tooltip',
     },
-    position: {
+    placement: {
       description:
         'Position of the tooltip. Either above (top) or below (bottom) the element',
     },
@@ -31,14 +31,14 @@ const Template: ComponentStory<typeof Tooltip> = args => (
 
 export const Top = Template.bind({});
 Top.args = {
-  content: 'Text of the tooltip',
-  position: 'top',
+  text: 'Text of the tooltip',
+  placement: 'top',
   children: 'Top tooltip',
 };
 
 export const Bottom = Template.bind({});
 Bottom.args = {
-  content: 'Text of the tooltip',
-  position: 'bottom',
+  text: 'Text of the tooltip',
+  placement: 'bottom',
   children: 'Bottom tooltip',
 };

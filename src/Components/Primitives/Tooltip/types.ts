@@ -1,5 +1,5 @@
 export interface TooltipProps {
-  content: string;
-  position?: 'top' | 'bottom';
+  text: string;
+  placement?: 'top' | 'bottom';
   children: any;
 }

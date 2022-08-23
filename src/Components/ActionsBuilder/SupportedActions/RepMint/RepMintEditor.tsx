@@ -79,7 +79,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
         <Control>
           <ControlLabel>
             {t('repMint.recipient')}
-            <Tooltip content={t('repMint.recipientTooltip')} position="bottom">
+            <Tooltip text={t('repMint.recipientTooltip')} placement="bottom">
               <StyledIcon src={Info} />
             </Tooltip>
           </ControlLabel>
@@ -109,7 +109,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
                 <Control>
                   <ControlLabel>
                     {t('repMint.repPercent')}
-                    <Tooltip content={t('repMint.repPercentTooltip')}>
+                    <Tooltip text={t('repMint.repPercentTooltip')}>
                       <StyledIcon src={Info} />
                     </Tooltip>
                   </ControlLabel>
@@ -132,7 +132,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
           <Control>
             <ControlLabel>
               {t('repMint.repAmount')}
-              <Tooltip content={t('repMint.repAmountTooltip')}>
+              <Tooltip text={t('repMint.repAmountTooltip')}>
                 <StyledIcon src={Info} />
               </Tooltip>
             </ControlLabel>

@@ -1,15 +1,15 @@
 import { Flex } from 'Components/Primitives/Layout';
 import styled from 'styled-components';
 
-export const TooltipContent = styled(Flex)<{ position }>`
+export const TooltipContent = styled(Flex)<{ placement }>`
   position: absolute;
   width: 200px;
   /* Conditional styling */
-  ${({ position }) => {
-    if (position === 'bottom') {
+  ${({ placement }) => {
+    if (placement === 'bottom') {
       return `left: 50%;
               transform: translateX(-50%);`;
-    } else if (position === 'top') {
+    } else if (placement === 'top') {
       return `left: 50%;
               top: 0;
               transform: translateX(-50%) translateY(-100%);`;
