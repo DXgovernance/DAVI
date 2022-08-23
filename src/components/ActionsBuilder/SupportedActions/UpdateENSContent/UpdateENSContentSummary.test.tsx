@@ -34,6 +34,9 @@ jest.mock('wagmi', () => ({
   chain: {
     mainnet: {},
   },
+  chainId: {
+    localhost: 1337,
+  },
 }));
 
 describe('UpdateENSNameSummary', () => {
