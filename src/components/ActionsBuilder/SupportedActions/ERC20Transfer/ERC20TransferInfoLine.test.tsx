@@ -1,4 +1,4 @@
-import { mockChain } from 'Components/Web3Modals/fixtures';
+import { mockChain } from 'components/Web3Modals/fixtures';
 import { BigNumber } from 'ethers';
 import { render } from 'utils/tests';
 import ERC20TransferInfoLine from './ERC20TransferInfoLine';

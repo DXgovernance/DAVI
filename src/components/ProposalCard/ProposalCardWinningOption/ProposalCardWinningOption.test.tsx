@@ -6,7 +6,7 @@ import {
 } from 'components/Fixtures';
 import { BigNumber } from 'ethers';
 import { fireEvent } from '@testing-library/react';
-import { mockChain } from 'Components/Web3Modals/fixtures';
+import { mockChain } from 'components/Web3Modals/fixtures';
 
 // More than one option, different vote count
 export let variousOptions = [{ ...optionsMock }, { ...optionsMock }];

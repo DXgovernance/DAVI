@@ -8,7 +8,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import { BiSend } from 'react-icons/bi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { useTranslation } from 'react-i18next';
-import { SupportedAction } from 'Components/ActionsBuilder/types';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 import { TokenType, useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { useNetwork } from 'wagmi';
 

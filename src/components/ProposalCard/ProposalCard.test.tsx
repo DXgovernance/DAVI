@@ -9,7 +9,7 @@ import {
   proposalStatusPropsMock,
 } from 'components/Fixtures';
 import { BigNumber } from 'ethers';
-import { mockChain } from 'Components/Web3Modals/fixtures';
+import { mockChain } from 'components/Web3Modals/fixtures';
 
 jest.mock('ipfs', () => jest.fn());
 jest.mock('cids', () => jest.fn());

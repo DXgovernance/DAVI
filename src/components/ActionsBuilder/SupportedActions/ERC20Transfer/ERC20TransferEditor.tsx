@@ -28,7 +28,7 @@ import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
 import { ErrorLabel } from 'components/Primitives/Forms/ErrorLabel';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { SupportedAction } from 'Components/ActionsBuilder/types';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';
 
 const Error = styled(ErrorLabel)`

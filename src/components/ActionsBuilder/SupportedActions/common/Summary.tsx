@@ -15,7 +15,7 @@ import {
 } from './Summary.styled';
 import { SummaryProps } from './types';
 import { BiLinkExternal } from 'react-icons/bi';
-import { SupportedAction } from 'Components/ActionsBuilder/types';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 
 const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
