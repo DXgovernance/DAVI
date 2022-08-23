@@ -10,7 +10,7 @@ import { ReactComponent as Info } from 'assets/images/info.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
-import { Tooltip } from 'old-components/Guilds/common/Tooltip';
+import { Tooltip } from 'Components/Primitives/Tooltip';
 import { useTranslation } from 'react-i18next';
 import { ethers } from 'ethers';
 import validateRepMint from './validateRepMint';

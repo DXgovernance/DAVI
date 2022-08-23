@@ -15,7 +15,7 @@ import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import StyledIcon from 'old-components/Guilds/common/SVG';
-import { Tooltip } from 'old-components/Guilds/common/Tooltip';
+import { Tooltip } from 'Components/Primitives/Tooltip';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
