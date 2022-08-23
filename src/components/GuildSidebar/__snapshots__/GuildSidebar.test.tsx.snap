@@ -34,22 +34,6 @@ exports[`GuildSidebar Should render with data 1`] = `
   margin: 0.5rem;
 }
 
-.c12 {
-  display: block;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-}
-
-.c12:visited,
-.c12:active,
-.c12:link {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  decoration: none;
-  color: inherit;
-}
-
 .c6 {
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 20px;
@@ -136,16 +120,16 @@ exports[`GuildSidebar Should render with data 1`] = `
   justify-content: space-between;
 }
 
-.c13 {
+.c12 {
   padding: 0.8rem 1rem;
   color: #A1A6B0;
 }
 
-.c13:hover {
+.c12:hover {
   border-bottom: 2px solid #303338;
 }
 
-.c13:active {
+.c12:active {
   border-bottom: 2px solid #303338;
 }
 
@@ -174,20 +158,20 @@ exports[`GuildSidebar Should render with data 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c13 {
+  .c12 {
     border-left: 2px solid transparent;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c13:hover {
+  .c12:hover {
     border-left: 2px solid #303338;
     border-bottom: initial;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c13:active {
+  .c12:active {
     border-left: 2px solid #fff;
     border-bottom: initial;
   }
@@ -237,27 +221,27 @@ exports[`GuildSidebar Should render with data 1`] = `
         class="c11"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        <a
-          class="c12 c13"
+        <div
+          class="c12"
         >
           governance
-        </a>
+        </div>
       </a>
       <a
         class="c11"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        <a
-          class="c12 c13"
+        <div
+          class="c12"
         >
           allProposals
-        </a>
+        </div>
       </a>
-      <a
-        class="c12 c13"
+      <div
+        class="c12"
       >
         settings
-      </a>
+      </div>
     </div>
   </div>
    
@@ -296,22 +280,6 @@ exports[`GuildSidebar Should render without data 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   margin: 0.5rem;
-}
-
-.c12 {
-  display: block;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-}
-
-.c12:visited,
-.c12:active,
-.c12:link {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  decoration: none;
-  color: inherit;
 }
 
 .c6 {
@@ -400,16 +368,16 @@ exports[`GuildSidebar Should render without data 1`] = `
   justify-content: space-between;
 }
 
-.c13 {
+.c12 {
   padding: 0.8rem 1rem;
   color: #A1A6B0;
 }
 
-.c13:hover {
+.c12:hover {
   border-bottom: 2px solid #303338;
 }
 
-.c13:active {
+.c12:active {
   border-bottom: 2px solid #303338;
 }
 
@@ -438,20 +406,20 @@ exports[`GuildSidebar Should render without data 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c13 {
+  .c12 {
     border-left: 2px solid transparent;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c13:hover {
+  .c12:hover {
     border-left: 2px solid #303338;
     border-bottom: initial;
   }
 }
 
 @media only screen and (min-width:768px) {
-  .c13:active {
+  .c12:active {
     border-left: 2px solid #fff;
     border-bottom: initial;
   }
@@ -527,27 +495,27 @@ exports[`GuildSidebar Should render without data 1`] = `
         class="c11"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        <a
-          class="c12 c13"
+        <div
+          class="c12"
         >
           governance
-        </a>
+        </div>
       </a>
       <a
         class="c11"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        <a
-          class="c12 c13"
+        <div
+          class="c12"
         >
           allProposals
-        </a>
+        </div>
       </a>
-      <a
-        class="c12 c13"
+      <div
+        class="c12"
       >
         settings
-      </a>
+      </div>
     </div>
   </div>
    

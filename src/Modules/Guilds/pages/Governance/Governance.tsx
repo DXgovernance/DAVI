@@ -132,7 +132,7 @@ const Governance = ({ guildId }) => {
         {proposalIds ? (
           <ProposalListWrapper>
             {revertedProposals.map(proposal => (
-              <ProposalCardWrapper proposalId={proposal} />
+              <ProposalCardWrapper key={proposal} proposalId={proposal} />
             ))}
           </ProposalListWrapper>
         ) : (

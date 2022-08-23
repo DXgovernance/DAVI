@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Box } from 'components/primitives/Layout/Box';
-import { Menu, MenuItem } from 'components/Menu';
+import { Menu } from 'components/Menu';
 import { Heading } from 'components/primitives/Typography';
 
 export const SidebarWrapper = styled(Box)`
@@ -63,7 +63,7 @@ export const SidebarMenu = styled(Menu)`
   }
 `;
 
-export const SidebarMenuItem = styled(MenuItem)<{ current?: boolean }>`
+export const SidebarMenuItem = styled.div<{ current?: boolean }>`
   padding: 0.8rem 1rem;
   color: ${({ current, theme }) =>
     current ? theme.colors.text : theme.colors.proposalText.grey};
