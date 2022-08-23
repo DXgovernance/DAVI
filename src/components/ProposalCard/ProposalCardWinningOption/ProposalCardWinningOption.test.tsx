@@ -6,6 +6,7 @@ import {
 } from 'components/Fixtures';
 import { BigNumber } from 'ethers';
 import { fireEvent } from '@testing-library/react';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 
 // More than one option, different vote count
 export let variousOptions = [{ ...optionsMock }, { ...optionsMock }];
@@ -34,6 +35,11 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
     decimals: 18,
     totalSupply: mockBigNumber,
   }),
+}));
+
+jest.mock('wagmi', () => ({
+  chain: {},
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
 describe('ProposalCardWinningOption', () => {

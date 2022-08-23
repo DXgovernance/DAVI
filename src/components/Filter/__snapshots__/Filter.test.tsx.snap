@@ -378,6 +378,11 @@ exports[`Filter Should match snapshot 1`] = `
               <a
                 class="c12 c13"
               >
+                Native Transfer
+              </a>
+              <a
+                class="c12 c13"
+              >
                 Erc20 Transfer
               </a>
               <a
@@ -403,7 +408,6 @@ exports[`Filter Should match snapshot 1`] = `
             </div>
           </div>
         </div>
-        0
       </div>
       <div
         class="c2 c14"

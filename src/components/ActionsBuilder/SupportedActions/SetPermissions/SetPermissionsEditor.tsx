@@ -212,7 +212,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
                     onSelect={asset => {
-                      field.onChange(asset);
+                      field.onChange(asset.address);
                       setIsTokenPickerOpen(false);
                     }}
                   />

@@ -1,10 +1,11 @@
 import { BigNumber, utils } from 'ethers';
+import { TokenInfoWithType, TokenType } from 'hooks/Guilds/tokens/useTokenList';
 import { TFunction } from 'react-i18next';
 
-interface ValidateERC20TransferValues {
+interface ValidateTokenTransferValues {
   recipientAddress: string;
   amount: any;
-  tokenAddress: string;
+  token: TokenInfoWithType;
 }
 
 interface Context {
@@ -12,18 +13,23 @@ interface Context {
 }
 
 const validateERC20Transfer = (
-  values: ValidateERC20TransferValues,
+  values: ValidateTokenTransferValues,
   { t }: Context
 ) => {
-  const { recipientAddress, amount, tokenAddress } = values;
+  const { recipientAddress, amount, token } = values;
   let errors = {
     recipientAddress: null,
     amount: null,
-    tokenAddress: null,
+    token: null,
   };
 
-  if (!utils.isAddress(tokenAddress)) {
-    errors.tokenAddress = t('invalidTokenAddress');
+  if (!token) {
+    errors.token = t('tokenIsRequired');
+  } else if (
+    token.type === TokenType.ERC20 &&
+    !utils.isAddress(token.address)
+  ) {
+    errors.token = t('invalidTokenAddress');
   }
   if (!BigNumber.isBigNumber(amount)) {
     errors.amount = t('invalidAmount');
@@ -39,9 +45,6 @@ const validateERC20Transfer = (
   }
   if (!amount) {
     errors.amount = t('amountIsRequired');
-  }
-  if (!tokenAddress) {
-    errors.tokenAddress = t('tokenAddressIsRequired');
   }
 
   return {

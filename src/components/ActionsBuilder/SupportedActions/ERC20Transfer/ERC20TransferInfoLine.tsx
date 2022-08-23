@@ -1,15 +1,16 @@
 import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
-import { BigNumber } from 'ethers';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import Avatar from 'components/Avatar';
 import { useMemo } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { BiSend } from 'react-icons/bi';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { useTranslation } from 'react-i18next';
+import { SupportedAction } from 'Components/ActionsBuilder/types';
+import { TokenType, useTokenList } from 'hooks/Guilds/tokens/useTokenList';
+import { useNetwork } from 'wagmi';
 
 const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -18,25 +19,40 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const { chain } = useNetwork();
+  const { tokens } = useTokenList(chain?.id, true);
+
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
 
-    return {
-      tokenAddress: decodedCall.to,
-      amount: BigNumber.from(decodedCall.args._value),
-      source: decodedCall.from,
-      destination: decodedCall.args._to as string,
-    };
-  }, [decodedCall]);
+    if (decodedCall.callType === SupportedAction.ERC20_TRANSFER) {
+      const token = tokens.find(token => token.address === decodedCall.to);
+      return {
+        source: decodedCall.from,
+        token,
+        amount: decodedCall.args._value,
+        recipientAddress: decodedCall.args._to,
+      };
+    } else if (decodedCall.callType === SupportedAction.NATIVE_TRANSFER) {
+      const token = tokens.find(token => token.type === TokenType.NATIVE);
+      return {
+        source: decodedCall.from,
+        token,
+        amount: decodedCall.value,
+        recipientAddress: decodedCall.to,
+      };
+    } else {
+      return null;
+    }
+  }, [decodedCall, tokens]);
 
-  const { data: tokenInfo } = useERC20Info(parsedData?.tokenAddress);
   const roundedBalance = useBigNumberToNumber(
     parsedData?.amount,
-    tokenInfo?.decimals,
+    parsedData?.token?.decimals,
     4
   );
   const { ensName, imageUrl } = useENSAvatar(
-    parsedData?.destination,
+    parsedData?.recipientAddress,
     MAINNET_ID
   );
 
@@ -46,7 +62,8 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
         <BiSend size={16} />
       </Segment>
       <Segment>
-        {!compact ? t('transfer') : ''} {roundedBalance} {tokenInfo?.symbol}
+        {!compact ? t('transfer') : ''} {roundedBalance}{' '}
+        {parsedData?.token?.symbol}
       </Segment>
       <Segment>
         <FiArrowRight />
@@ -54,7 +71,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
       {noAvatar ? null : (
         <Segment>
           <Avatar
-            defaultSeed={parsedData?.destination}
+            defaultSeed={parsedData?.recipientAddress}
             src={imageUrl}
             size={compact ? 14 : 24}
           />
@@ -62,8 +79,8 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
       )}
       <Segment>
         {ensName ||
-          (parsedData?.destination
-            ? shortenAddress(parsedData?.destination, compact ? 2 : 4)
+          (parsedData?.recipientAddress
+            ? shortenAddress(parsedData?.recipientAddress, compact ? 2 : 4)
             : '')}
       </Segment>
     </>

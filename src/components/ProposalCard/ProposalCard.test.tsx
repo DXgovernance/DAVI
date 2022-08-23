@@ -9,6 +9,7 @@ import {
   proposalStatusPropsMock,
 } from 'components/Fixtures';
 import { BigNumber } from 'ethers';
+import { mockChain } from 'Components/Web3Modals/fixtures';
 
 jest.mock('ipfs', () => jest.fn());
 jest.mock('cids', () => jest.fn());
@@ -32,6 +33,11 @@ jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
     decimals: 18,
     totalSupply: mockBigNumber,
   }),
+}));
+
+jest.mock('wagmi', () => ({
+  chain: {},
+  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
 const validProps: ProposalCardProps = {

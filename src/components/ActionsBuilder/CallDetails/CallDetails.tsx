@@ -10,12 +10,14 @@ import { Divider } from 'components/Divider';
 import {
   ActionParamRow,
   DetailsButton,
+  DetailsSection,
   ParamDetail,
   ParamTag,
   ParamTitleRow,
   ParamTitleTag,
 } from './CallDetails.styled';
 import { useTranslation } from 'react-i18next';
+import { SupportedAction } from '../types';
 
 export const CallDetails: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -63,7 +65,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   return (
     <>
       {!!approveSpendTokens && (
-        <Box margin="0 0 0.5rem">
+        <Box>
           <DetailsButton
             onClick={() => setIsApprovalExpanded(!isApprovalExpanded)}
             isExpanded={isApprovalExpanded}
@@ -116,47 +118,49 @@ export const CallDetails: React.FC<ActionViewProps> = ({
         </Box>
       )}
 
-      <Box>
-        <DetailsButton
-          onClick={() => setIsExpanded(!isExpanded)}
-          isExpanded={isExpanded}
-          variant={'secondary'}
-        >
-          {decodedCall?.function?.name} (
-          {decodedCall?.function?.inputs.map((param, index, params) => (
-            <span key={index}>
-              {index > 0 && <span>, </span>}
-              <ParamTag
-                key={index}
-                color={
-                  isExpanded
-                    ? theme?.colors?.params?.[index]
-                    : theme?.colors?.text
-                }
-              >
-                {param?.type}
-              </ParamTag>
-            </span>
-          ))}
-          )
-        </DetailsButton>
+      {decodedCall.callType !== SupportedAction.NATIVE_TRANSFER && (
+        <DetailsSection>
+          <DetailsButton
+            onClick={() => setIsExpanded(!isExpanded)}
+            isExpanded={isExpanded}
+            variant={'secondary'}
+          >
+            {decodedCall?.function?.name} (
+            {decodedCall?.function?.inputs.map((param, index) => (
+              <span key={index}>
+                {index > 0 && <span>, </span>}
+                <ParamTag
+                  key={index}
+                  color={
+                    isExpanded
+                      ? theme?.colors?.params?.[index]
+                      : theme?.colors?.text
+                  }
+                >
+                  {param?.type}
+                </ParamTag>
+              </span>
+            ))}
+            )
+          </DetailsButton>
 
-        {isExpanded &&
-          decodedCall?.function?.inputs?.map((param, index) => (
-            <ActionParamRow key={index}>
-              <ParamTitleRow>
-                <ParamTitleTag color={theme?.colors?.params?.[index]}>
-                  {param.name} <em>({param.type})</em>
-                </ParamTitleTag>
-                {param.type === 'bytes' && (
-                  <Button variant="secondary">{t('decode')}</Button>
-                )}
-              </ParamTitleRow>
+          {isExpanded &&
+            decodedCall?.function?.inputs?.map((param, index) => (
+              <ActionParamRow key={index}>
+                <ParamTitleRow>
+                  <ParamTitleTag color={theme?.colors?.params?.[index]}>
+                    {param.name} <em>({param.type})</em>
+                  </ParamTitleTag>
+                  {param.type === 'bytes' && (
+                    <Button variant="secondary">{t('decode')}</Button>
+                  )}
+                </ParamTitleRow>
 
-              {renderByParamType(param.type, decodedCall?.args?.[param.name])}
-            </ActionParamRow>
-          ))}
-      </Box>
+                {renderByParamType(param.type, decodedCall?.args?.[param.name])}
+              </ActionParamRow>
+            ))}
+        </DetailsSection>
+      )}
     </>
   );
 };
