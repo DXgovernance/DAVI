@@ -16,10 +16,12 @@ import {
   ERC20_APPROVE_SIGNATURE,
   ERC20_TRANSFER_SIGNATURE,
   SET_PERMISSION_SIGNATURE,
+  MINT_REP_SIGNATURE,
 } from 'utils';
 import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 import { useNetwork } from 'wagmi';
+import { ERC20SnapshotRep__factory } from 'types/contracts';
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -34,6 +36,10 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     [SET_PERMISSION_SIGNATURE]: {
       callType: SupportedAction.SET_PERMISSIONS,
       ABI: PermissionRegistry.abi,
+    },
+    [MINT_REP_SIGNATURE]: {
+      callType: SupportedAction.REP_MINT,
+      ABI: ERC20SnapshotRep__factory.abi,
     },
   };
 
