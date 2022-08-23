@@ -1,7 +1,7 @@
 import { ProposalDescriptionWrapper } from './ProposalDescription.styled';
 import { ProposalDescriptionProps } from './types';
 import Markdown from 'markdown-to-jsx';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { useTranslation } from 'react-i18next';
 
 export const ProposalDescription: React.FC<ProposalDescriptionProps> = ({

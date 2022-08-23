@@ -1,6 +1,6 @@
-import { Button } from 'components/Primitives/Button';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'components/primitives/Button';
 
 interface ExecuteButtonProps {
   executeProposal: () => void;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FiArrowLeft } from 'react-icons/fi';
-import { Heading } from 'components/Primitives/Typography';
+import { Heading } from 'components/primitives/Typography';
 
 export const Container = styled.div`
   margin: 2rem;

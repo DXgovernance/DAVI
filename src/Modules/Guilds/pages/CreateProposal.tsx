@@ -1,6 +1,6 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import { Input } from 'components/Primitives/Forms/Input';
-import { Box, Flex } from 'components/Primitives/Layout';
+import { Input } from 'components/primitives/Forms/Input';
+import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import contentHash from 'content-hash';
 import { useTransactions } from 'contexts/Guilds';
@@ -12,7 +12,7 @@ import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import { ActionsBuilder } from 'components/ActionsBuilder';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { useTextEditor } from 'components/Editor';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';

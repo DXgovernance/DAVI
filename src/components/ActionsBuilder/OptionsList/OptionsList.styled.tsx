@@ -1,5 +1,5 @@
-import { Box } from 'components/Primitives/Layout/Box';
-import { Button } from 'components/Primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
+import { Button } from 'components/primitives/Button';
 import styled from 'styled-components';
 
 export const AddOptionWrapper = styled(Box)`

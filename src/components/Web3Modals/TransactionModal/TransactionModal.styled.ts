@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Flex } from 'components/Primitives/Layout';
+import { Flex } from 'components/primitives/Layout';
 
 export const Container = styled.div`
   margin: 0.5rem 0 1rem 0;

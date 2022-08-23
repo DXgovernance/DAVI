@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
-import { Modal } from 'components/Primitives/Modal';
-import { Button } from 'components/Primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
+import { Modal } from 'components/primitives/Modal';
+import { Button } from 'components/primitives/Button';
 import { Option } from '../types';
-import { Input } from 'components/Primitives/Forms/Input';
+import { Input } from 'components/primitives/Forms/Input';
 import { DeleteButton, Dot } from './AddEditOptionModal.styled';
 
 interface AddEditOptionModalProps {

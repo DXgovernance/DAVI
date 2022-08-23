@@ -1,12 +1,12 @@
 import { ActionEditorProps } from '..';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
-import { Input } from 'components/Primitives/Forms/Input';
-import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Input } from 'components/primitives/Forms/Input';
+import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
+import { Box } from 'components/primitives/Layout/Box';
 import { BigNumber, utils } from 'ethers';
 import {
   TokenInfoWithType,
@@ -22,11 +22,11 @@ import {
   Control,
   ControlLabel,
   ControlRow,
-} from 'components/Primitives/Forms/Control';
+} from 'components/primitives/Forms/Control';
 import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
-import { ErrorLabel } from 'components/Primitives/Forms/ErrorLabel';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 
 export const Control = styled(Box)`
   display: flex;

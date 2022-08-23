@@ -1,4 +1,4 @@
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import styled from 'styled-components';
 
 export const StyledToolTip = styled(Box)`

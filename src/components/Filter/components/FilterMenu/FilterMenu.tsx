@@ -14,7 +14,7 @@ import {
   DropdownHeader,
   DropdownMenu,
   DropdownPosition,
-} from 'components/Primitives/DropdownMenu';
+} from 'components/primitives/DropdownMenu';
 
 import { Menu } from 'components/Menu';
 

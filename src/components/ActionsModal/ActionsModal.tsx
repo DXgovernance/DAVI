@@ -10,14 +10,14 @@ import {
   supportedActions,
   displaySubmit,
 } from 'components/ActionsBuilder/SupportedActions';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 
 import {
   DecodedAction,
   DecodedCall,
   SupportedAction,
 } from 'components/ActionsBuilder/types';
-import { Modal } from 'components/Primitives/Modal';
+import { Modal } from 'components/primitives/Modal';
 import {
   ContractActionsList,
   ApproveSpendTokens,

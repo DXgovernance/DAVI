@@ -1,4 +1,4 @@
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import styled, { css } from 'styled-components';
 
 export const ButtonsContainer = styled.div`

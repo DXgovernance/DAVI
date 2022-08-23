@@ -1,5 +1,5 @@
-import { UnstyledLink } from 'components/Primitives/Links';
-import { Flex } from 'components/Primitives/Layout';
+import { UnstyledLink } from 'components/primitives/Links';
+import { Flex } from 'components/primitives/Layout';
 import { Card } from 'components/Card';
 import { cardWrapperStyles } from './GuildCard.styled';
 import { GuildCardProps } from './types';

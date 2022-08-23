@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { isMobile } from 'react-device-detect';
 import { FiArrowLeft } from 'react-icons/fi';
-import { ModalProps } from 'components/Primitives/Modal';
+import { ModalProps } from 'components/primitives/Modal';
 
 import {
   Wrapper,

@@ -1,4 +1,4 @@
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import { useTranslation } from 'react-i18next';
 export interface GuestActionsProps {
   userWalletAddress?: string;

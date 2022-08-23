@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Button } from 'components/Primitives/Button';
-import { ContainerText } from 'components/Primitives/Layout/Text';
+import { Button } from 'components/primitives/Button';
+import { ContainerText } from 'components/primitives/Layout/Text';
 
 export const EditorWrapper = styled.div`
   margin: 1.25rem;

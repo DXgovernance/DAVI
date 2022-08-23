@@ -1,4 +1,4 @@
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import {
   ActionCount,
   ActionCountWrapper,

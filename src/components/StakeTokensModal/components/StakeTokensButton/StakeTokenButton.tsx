@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { MAX_UINT } from 'utils';
 import { formatUnits } from 'ethers/lib/utils';
 import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { StakeTokenButtonProps } from '../../types';
 import { useTranslation } from 'react-i18next';
 const StakeTokensButton = ({

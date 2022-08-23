@@ -1,8 +1,8 @@
 import { MetadataTag } from '../SupportedActions/common/infoLine';
 import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import styled, { css } from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
-import { Button } from 'components/Primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
+import { Button } from 'components/primitives/Button';
 
 export const ParamTag = styled(MetadataTag)`
   margin: 0;

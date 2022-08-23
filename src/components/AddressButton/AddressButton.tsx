@@ -4,7 +4,7 @@ import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { shortenAddress } from 'utils';
 import { Badge } from 'components/Badge';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { AddressButtonProps } from 'components/AddressButton/types';
 import {
   IconHolder,

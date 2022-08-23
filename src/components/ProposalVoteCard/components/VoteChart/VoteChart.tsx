@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { BigNumber } from 'ethers';
 import {
   VotesChartContainer,

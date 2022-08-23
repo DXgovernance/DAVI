@@ -8,7 +8,7 @@ import { VoteConfirmationModal } from './components/VoteConfirmationModal';
 import VoteResults from './components/VoteResults/VoteResults';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { useState, useMemo } from 'react';
 import { toast } from 'react-toastify';
 import {

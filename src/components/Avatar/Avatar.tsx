@@ -1,7 +1,7 @@
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
 import styled from 'styled-components';
-import { ButtonIcon } from 'components/Primitives/Button';
+import { ButtonIcon } from 'components/primitives/Button';
 
 interface AvatarProps {
   src?: string;

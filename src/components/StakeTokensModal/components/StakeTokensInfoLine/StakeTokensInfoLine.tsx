@@ -6,7 +6,7 @@ import {
   InfoItem,
 } from '../StakeTokensForm/StakeTokensForm.styled';
 import { FiArrowRight } from 'react-icons/fi';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import { FiInfo } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';

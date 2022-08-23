@@ -1,5 +1,5 @@
-import { Flex } from 'components/Primitives/Layout';
-import { Button } from 'components/Primitives/Button';
+import { Flex } from 'components/primitives/Layout';
+import { Button } from 'components/primitives/Button';
 import styled from 'styled-components';
 
 export const MainWrapper = styled(Flex)`

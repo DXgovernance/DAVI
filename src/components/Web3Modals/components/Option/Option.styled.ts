@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 
 export const OptionButton = styled(Button)`
   width: 100%;

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Flex } from 'components/Primitives/Layout/Flex';
+import { Flex } from 'components/primitives/Layout/Flex';
 
 type ContainerTextProps = {
   variant?: 'regular' | 'medium' | 'bold';

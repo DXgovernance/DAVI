@@ -4,7 +4,7 @@ import {
   SidebarCardContent,
   SidebarCardHeader,
 } from 'components/SidebarCard';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { Row, Label, ColoredLabel } from './SidebarInfoCard.styled';
 import { SidebarInfoCardProps } from './types';
 import { useTranslation } from 'react-i18next';

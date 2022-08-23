@@ -1,4 +1,4 @@
-import WalletModal from './WalletModal';
+import { WalletModal } from './WalletModal';
 import { render } from 'utils/tests';
 import { mockChain } from '../fixtures';
 

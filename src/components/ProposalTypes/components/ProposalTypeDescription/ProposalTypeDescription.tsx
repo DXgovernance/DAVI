@@ -5,7 +5,7 @@ import {
   PaddingWrapper,
   StyledProposalDescription,
 } from '../../ProposalTypes.styled';
-import { ContainerText } from 'components/Primitives/Layout/Text';
+import { ContainerText } from 'components/primitives/Layout/Text';
 import { ProposalTypeDescriptionProps } from '../../types';
 
 const ProposalTypeDescription: React.FC<ProposalTypeDescriptionProps> = ({

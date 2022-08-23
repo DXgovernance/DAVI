@@ -1,4 +1,4 @@
-import { IconButton } from 'components/Primitives/Button';
+import { IconButton } from 'components/primitives/Button';
 import { AiOutlinePlus } from 'react-icons/ai';
 import styled from 'styled-components';
 

@@ -1,8 +1,8 @@
 import { ProposalCardProps } from 'components/ProposalCard/types';
 import { Avatar } from 'components/Avatar';
 import { ProposalStatus } from 'components/ProposalStatus';
-import { Loading } from 'components/Primitives/Loading';
-import { UnstyledLink } from 'components/Primitives/Links';
+import { Loading } from 'components/primitives/Loading';
+import { UnstyledLink } from 'components/primitives/Links';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { shortenAddress } from 'utils';
 import {

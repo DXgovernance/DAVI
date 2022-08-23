@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { NumericalInput } from 'components/Primitives/Forms/NumericalInput';
-import { StyledIcon } from 'components/Primitives/StyledIcon';
-import { Box } from 'components/Primitives/Layout/Box';
+import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
+import { StyledIcon } from 'components/primitives/StyledIcon';
+import { Box } from 'components/primitives/Layout/Box';
 import { StyledToolTip } from 'components/ToolTip';
-import { ErrorLabel } from 'components/Primitives/Forms/ErrorLabel';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 
 export const StyledMintIcon = styled(StyledIcon)`
   margin: 0;

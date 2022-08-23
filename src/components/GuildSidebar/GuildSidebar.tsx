@@ -1,6 +1,6 @@
 import dxIcon from 'assets/images/dxdao-icon.svg';
-import { UnstyledLink } from 'components/Primitives/Links';
-import { Loading } from 'components/Primitives/Loading';
+import { UnstyledLink } from 'components/primitives/Links';
+import { Loading } from 'components/primitives/Loading';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';

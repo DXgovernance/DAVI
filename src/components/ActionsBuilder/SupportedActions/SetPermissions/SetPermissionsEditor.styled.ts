@@ -1,7 +1,7 @@
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import styled, { css } from 'styled-components';
-import { ErrorLabel } from 'components/Primitives/Forms/ErrorLabel';
-import { Button } from 'components/Primitives/Button';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
+import { Button } from 'components/primitives/Button';
 
 export const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;

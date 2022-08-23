@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Heading } from 'components/Primitives/Typography';
-import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
-import { Button } from 'components/Primitives/Button';
+import { Heading } from 'components/primitives/Typography';
+import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
+import { Button } from 'components/primitives/Button';
 
 export const GuestContainer = styled.div`
   display: flex;

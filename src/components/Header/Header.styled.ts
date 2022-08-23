@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Box, Container } from 'components/Primitives/Layout';
-import { Heading } from 'components/Primitives/Typography';
+import { Box, Container } from 'components/primitives/Layout';
+import { Heading } from 'components/primitives/Typography';
 
 export const HeaderWrapper = styled.nav`
   padding: 0.75rem 0;

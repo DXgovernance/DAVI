@@ -1,7 +1,7 @@
 import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { shortenAddress } from 'utils';
 import { Avatar } from 'components/Avatar';
-import { Loading } from '../../Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { Moment } from 'moment';
 import { useState } from 'react';
 import {

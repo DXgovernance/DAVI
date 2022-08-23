@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 import styled, { FlattenSimpleInterpolation } from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 
 export interface CardWrapperProps {
   customStyles?: string | FlattenSimpleInterpolation;

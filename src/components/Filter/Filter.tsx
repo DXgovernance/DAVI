@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'components/Primitives/Button';
-import { Input } from 'components/Primitives/Forms/Input';
+import { Button } from 'components/primitives/Button';
+import { Input } from 'components/primitives/Forms/Input';
 import { FilterMenu, FilterButton } from './components';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useFilter } from 'contexts/Guilds/filters';
@@ -18,7 +18,7 @@ import {
   FilterBadge,
 } from './Filter.styled';
 import { useAccount } from 'wagmi';
-import { UnstyledLink } from 'components/Primitives/Links';
+import { UnstyledLink } from 'components/primitives/Links';
 
 interface FilterProps {
   openSearchBar: boolean;

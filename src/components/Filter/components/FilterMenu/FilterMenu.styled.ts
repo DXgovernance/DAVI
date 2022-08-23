@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MenuItem } from 'components/Menu';
 
-import { DropdownButton } from 'components/Primitives/DropdownMenu';
+import { DropdownButton } from 'components/primitives/DropdownMenu';
 
 export const DropdownMenuItem = styled(MenuItem)`
   display: flex;

@@ -1,5 +1,5 @@
-import { Button as CommonButton } from 'components/Primitives/Button';
-import { Heading } from 'components/Primitives/Typography';
+import { Button as CommonButton } from 'components/primitives/Button';
+import { Heading } from 'components/primitives/Typography';
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IconButton } from 'components/Primitives/Button';
+import { IconButton } from 'components/primitives/Button';
 
 export const UserActionButton = styled(IconButton)`
   border-radius: 50px;

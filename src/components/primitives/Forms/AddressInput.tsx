@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { Input, InputProps } from 'components/Primitives/Forms/Input';
+import { Input, InputProps } from 'components/primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import { FiX } from 'react-icons/fi';
 
 export const ClickableIcon = styled(Box)`

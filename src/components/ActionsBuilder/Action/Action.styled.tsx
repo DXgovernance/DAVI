@@ -1,6 +1,6 @@
 import { EditButton, Grip } from '../common';
 import { CardWrapper, Header } from 'components/Card';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import styled, { css } from 'styled-components';
 import { CardStatus } from './Action';
 

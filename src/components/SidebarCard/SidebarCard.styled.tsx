@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Heading } from 'components/Primitives/Typography';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Heading } from 'components/primitives/Typography';
+import { Box } from 'components/primitives/Layout/Box';
 
 export const SidebarCardHeader = styled(Heading)`
   font-weight: 600;

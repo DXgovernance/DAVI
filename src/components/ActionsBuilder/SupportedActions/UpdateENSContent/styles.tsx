@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { StyledIcon } from 'components/Primitives/StyledIcon';
-import { Box } from 'components/Primitives/Layout/Box';
+import { StyledIcon } from 'components/primitives/StyledIcon';
+import { Box } from 'components/primitives/Layout/Box';
 import { StyledToolTip } from 'components/ToolTip';
 import { DetailBody } from '../common/Summary.styled';
 

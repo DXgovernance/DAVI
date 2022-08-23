@@ -1,1 +1,1 @@
-export { default as WalletModal } from './WalletModal';
+export { WalletModal } from './WalletModal';

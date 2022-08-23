@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
-import { Button } from 'components/Primitives/Button';
-import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
+import { Box } from 'components/primitives/Layout/Box';
+import { Button } from 'components/primitives/Button';
+import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
 
 interface ToggleLabelProps {
   selected: boolean;

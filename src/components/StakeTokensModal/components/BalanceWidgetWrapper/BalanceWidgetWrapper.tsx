@@ -5,8 +5,8 @@ import {
   InfoLabel,
   InfoValue,
 } from '../StakeTokensForm/StakeTokensForm.styled';
-import { Button } from 'components/Primitives/Button';
-import { Loading } from 'components/Primitives/Loading';
+import { Button } from 'components/primitives/Button';
+import { Loading } from 'components/primitives/Loading';
 import { BalanceWidgetWrapperProps } from '../../types';
 import { useTranslation } from 'react-i18next';
 const BalanceWidgetWrapper = ({

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { shortenAddress } from 'utils';
 import useClipboard from 'hooks/Guilds/useClipboard';
 import { LiveIndicator } from '../LiveIndicator';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import {
   Wrapper,
   Row,

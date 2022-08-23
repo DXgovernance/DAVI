@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { FormElementProps } from 'components/Primitives/Forms/types';
+import { FormElementProps } from 'components/primitives/Forms/types';
 
 const UnstyledInput = styled.input<InputHTMLAttributes<HTMLInputElement>>`
   border: none;

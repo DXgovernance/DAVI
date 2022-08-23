@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
-import { Input } from 'components/Primitives/Forms/Input';
-import { Modal } from 'components/Primitives/Modal';
+import { Input } from 'components/primitives/Forms/Input';
+import { Modal } from 'components/primitives/Modal';
 import { useAllERC20Balances } from 'hooks/Guilds/ether-swr/erc20/useAllERC20Balances';
 import useMiniSearch from 'hooks/useMiniSearch';
 

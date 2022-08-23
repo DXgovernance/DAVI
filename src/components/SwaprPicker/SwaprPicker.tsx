@@ -1,10 +1,10 @@
-import { Picker } from 'components/Primitives/Forms/Picker';
+import { Picker } from 'components/primitives/Forms/Picker';
 import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TransparentButton } from './SwaprPicker.styled';
 import { SwaprPickerProps } from './types';
 import AddressButton from 'components/AddressButton/AddressButton';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import moment from 'moment';
 import { useSwaprFetchPairs } from 'hooks/Guilds/useSwaprFetchPairs';
 import { SwaprFetchPairsInterface } from 'hooks/Guilds/useSwaprFetchPairs';

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getChainIcon } from 'utils';
-import { Button, ButtonIcon, IconButton } from 'components/Primitives/Button';
+import { Button, ButtonIcon, IconButton } from 'components/primitives/Button';
 import { NetworkModal } from 'components/Web3Modals/NetworkModal';
 import { useAccount, useNetwork } from 'wagmi';
 

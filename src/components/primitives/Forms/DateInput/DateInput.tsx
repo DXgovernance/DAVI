@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import DateTime from 'react-datetime';
 import { Moment } from 'moment';
 import 'react-datetime/css/react-datetime.css';
-import { Input, InputProps } from 'components/Primitives/Forms/Input';
+import { Input, InputProps } from 'components/primitives/Forms/Input';
 import { useMemo } from 'react';
 
 const StyledDateTime = styled(DateTime)`

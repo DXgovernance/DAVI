@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import { FiX } from 'react-icons/fi';
 import { IoIosArrowBack } from 'react-icons/io';
-import { Heading } from 'components/Primitives/Typography';
-import { Flex } from 'components/Primitives/Layout';
+import { Heading } from 'components/primitives/Typography';
+import { Flex } from 'components/primitives/Layout';
 
 export const Wrapper = styled.div<{ zIndex: number; maxWidth: number }>`
   position: fixed;

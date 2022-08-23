@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'components/Primitives/Modal';
+import { Modal } from 'components/primitives/Modal';
 import { getChainIcon } from 'utils';
 import { Option } from 'components/Web3Modals/components/Option';
 import {

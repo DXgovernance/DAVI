@@ -1,6 +1,6 @@
 import { Header } from 'components/Header';
 import { ToastNotificationContainer } from 'components/ToastNotifications';
-import { Container } from './components/Primitives/Layout';
+import { Container } from 'components/primitives/Layout';
 import { GuildsPage } from './Modules/Guilds/pages/Guilds';
 import { ProposalPage } from './Modules/Guilds/pages/Proposal';
 import GlobalStyle from './theme/GlobalTheme';

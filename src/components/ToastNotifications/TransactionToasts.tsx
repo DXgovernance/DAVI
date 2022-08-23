@@ -1,6 +1,7 @@
 import { chains } from 'provider';
 import React from 'react';
-import { NotificationDetail, NotificationHeading } from '.';
+import { NotificationDetail } from './NotificationDetail';
+import { NotificationHeading } from './NotificationHeading';
 import { getBlockchainLink } from 'utils';
 
 export const TransactionPending: React.FC<{ summary: string }> = ({

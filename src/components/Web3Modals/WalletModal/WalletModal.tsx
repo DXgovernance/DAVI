@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'components/Primitives/Modal';
+import { Modal } from 'components/primitives/Modal';
 import {
   BackIcon,
   ButtonContainer,
@@ -15,11 +15,14 @@ import { Option, Transaction, WalletInfoBox } from '../components';
 import { getIcon, isReadOnly } from 'provider/wallets';
 import { useTransactions } from 'contexts/Guilds';
 import { Divider } from 'components/Divider';
-import { Button } from 'components/Primitives/Button';
+import { Button } from 'components/primitives/Button';
 import { READ_ONLY_CONNECTOR_ID } from 'provider/ReadOnlyConnector';
 import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
 
-const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
+export const WalletModal: React.FC<WalletModalProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const { t } = useTranslation();
   const [isWalletListActive, setIsWalletsListActive] = useState(false);
   const { chain } = useNetwork();
@@ -167,5 +170,3 @@ const WalletModal: React.FC<WalletModalProps> = ({ isOpen, onClose }) => {
     </Modal>
   );
 };
-
-export default WalletModal;

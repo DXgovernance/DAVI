@@ -1,5 +1,5 @@
 import dxIcon from 'assets/images/dxdao-icon.svg';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { useMemo, useState } from 'react';
 
 import {

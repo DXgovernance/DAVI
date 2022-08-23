@@ -1,10 +1,10 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import { Input } from 'components/Primitives/Forms/Input';
-import { Box, Flex } from 'components/Primitives/Layout';
+import { Input } from 'components/primitives/Forms/Input';
+import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useTextEditor } from 'components/Editor';
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import { useContext, useMemo, useState, useEffect, useRef } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';

@@ -1,6 +1,6 @@
 import styled, { useTheme } from 'styled-components';
 import Switch, { ReactSwitchProps } from 'react-switch';
-import { FormElementProps } from 'components/Primitives/Forms/types';
+import { FormElementProps } from 'components/primitives/Forms/types';
 
 const StyledSwitch = styled(Switch)<ReactSwitchProps>`
   border: 1px solid ${({ theme }) => theme.colors.muted};

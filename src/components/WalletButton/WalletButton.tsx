@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'components/Primitives/Button';
-import { WalletModal } from 'components/Web3Modals/WalletModal';
+import { Button } from 'components/primitives/Button';
+import { WalletModal } from 'components/Web3Modals';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount, useNetwork } from 'wagmi';
 import AddressButton from 'components/AddressButton/AddressButton';

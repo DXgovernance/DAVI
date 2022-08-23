@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Flex, Box } from 'components/Primitives/Layout';
+import { Flex, Box } from 'components/primitives/Layout';
 
 export const Header = styled(Flex)`
   display: flex;

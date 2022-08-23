@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
-import { Heading } from 'components/Primitives/Typography';
+import { Box } from 'components/primitives/Layout/Box';
+import { Heading } from 'components/primitives/Typography';
 
 // TODO: base these components on a generic Card component
 export const CardWrapper = styled(Box)<{ disabled?: boolean }>`

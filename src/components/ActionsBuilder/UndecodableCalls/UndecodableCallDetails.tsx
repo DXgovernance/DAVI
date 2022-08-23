@@ -2,8 +2,8 @@ import { MetadataTag } from '../SupportedActions/common/infoLine';
 import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import { Call } from '../types';
 import { BigNumber } from 'ethers';
-import { Box } from 'components/Primitives/Layout/Box';
-import { UnstyledLink } from 'components/Primitives/Links';
+import { Box } from 'components/primitives/Layout/Box';
+import { UnstyledLink } from 'components/primitives/Links';
 import { FiExternalLink } from 'react-icons/fi';
 import styled, { useTheme } from 'styled-components';
 

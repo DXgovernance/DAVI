@@ -5,14 +5,14 @@ import { RegisterOptions } from 'react-hook-form';
 
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
-import { AddressInput } from 'components/Primitives/Forms/AddressInput';
-import { FormElementProps } from 'components/Primitives/Forms/types';
-import { DateInput, InputType } from 'components/Primitives/Forms/DateInput';
-import { Input } from 'components/Primitives/Forms/Input';
-import { NumericalInput } from 'components/Primitives/Forms/NumericalInput';
-import { Toggle } from 'components/Primitives/Forms/Toggle';
-import { TokenAmountInput } from 'components/Primitives/Forms/TokenAmountInput';
-import { DurationInput } from 'components/Primitives/Forms/DurationInput';
+import { AddressInput } from 'components/primitives/Forms/AddressInput';
+import { FormElementProps } from 'components/primitives/Forms/types';
+import { DateInput, InputType } from 'components/primitives/Forms/DateInput';
+import { Input } from 'components/primitives/Forms/Input';
+import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
+import { Toggle } from 'components/primitives/Forms/Toggle';
+import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
+import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { SwaprPicker } from 'components/SwaprPicker';
 
 interface FormElementRendererProps extends FormElementProps<any> {

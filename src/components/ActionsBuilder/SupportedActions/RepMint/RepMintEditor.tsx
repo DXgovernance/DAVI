@@ -1,5 +1,5 @@
-import { Input } from 'components/Primitives/Forms/Input';
-import { Button } from 'components/Primitives/Button';
+import { Input } from 'components/primitives/Forms/Input';
+import { Button } from 'components/primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
 import { Avatar } from 'components/Avatar';
 import React, { useEffect, useState } from 'react';
@@ -18,7 +18,7 @@ import {
   Control,
   ControlRow,
   ControlLabel,
-} from 'components/Primitives/Forms/Control';
+} from 'components/primitives/Forms/Control';
 import { Error, StyledInfoIcon, RepMintInput } from './styles';
 
 interface RepMintFormValues {

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
-import { Loading } from 'components/Primitives/Loading';
+import { Box } from 'components/primitives/Layout/Box';
+import { Loading } from 'components/primitives/Loading';
 import { ProposalState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
 

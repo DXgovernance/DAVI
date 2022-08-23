@@ -1,4 +1,4 @@
-import { Loading } from 'components/Primitives/Loading';
+import { Loading } from 'components/primitives/Loading';
 import React from 'react';
 import { LiveIndicator } from '../LiveIndicator';
 import { OptionButton, OptionButtonText, IconWrapper } from './Option.styled';

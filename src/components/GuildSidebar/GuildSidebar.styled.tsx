@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import { Menu, MenuItem } from 'components/Menu';
-import { Heading } from 'components/Primitives/Typography';
+import { Heading } from 'components/primitives/Typography';
 
 export const SidebarWrapper = styled(Box)`
   color: ${({ theme }) => theme.colors.text};

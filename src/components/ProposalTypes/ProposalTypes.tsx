@@ -4,11 +4,11 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { FiArrowLeft } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from 'components/Primitives/Button';
-import { Loading } from 'components/Primitives/Loading';
+import { Button } from 'components/primitives/Button';
+import { Loading } from 'components/primitives/Loading';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { StyledIcon } from 'components/Primitives/StyledIcon';
-import { Heading } from 'components/Primitives/Typography';
+import { StyledIcon } from 'components/primitives/StyledIcon';
+import { Heading } from 'components/primitives/Typography';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { ProposalTypeDescriptionProps, ProposalTypesProps } from './types';

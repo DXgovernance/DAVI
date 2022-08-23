@@ -4,8 +4,8 @@ import {
   DropdownMenu,
   DropdownContent,
   DropdownHeader,
-} from 'components/Primitives/DropdownMenu';
-import { Loading } from '../../Primitives/Loading';
+} from 'components/primitives/DropdownMenu';
+import { Loading } from 'components/primitives/Loading';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
 import { isMobile } from 'react-device-detect';
 import { FiArrowLeft } from 'react-icons/fi';
