@@ -1,5 +1,5 @@
-import { useHistory, useLocation } from 'react-router-dom';
-import { MAX_UINT, navigateUrl } from 'utils';
+import { useNavigate } from 'react-router-dom';
+import { MAX_UINT } from 'utils';
 import { formatUnits } from 'ethers/lib/utils';
 import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
 import { Loading } from 'Components/Primitives/Loading';
@@ -13,8 +13,7 @@ const StakeTokensButton = ({
   isStakeAmountValid,
   createTransaction,
 }: StakeTokenButtonProps) => {
-  const history = useHistory();
-  const location = useLocation();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const lockTokens = async () => {
     if (!isStakeAmountValid) return;
@@ -64,9 +63,7 @@ const StakeTokensButton = ({
           </ActionButton>
         )
       ) : (
-        <ActionButton
-          onClick={() => history.push(navigateUrl(location, 'proposalType'))}
-        >
+        <ActionButton onClick={() => navigate('proposalType')}>
           {t('mintRep')}
         </ActionButton>
       )}

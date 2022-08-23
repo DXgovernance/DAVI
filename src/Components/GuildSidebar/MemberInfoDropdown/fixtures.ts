@@ -3,14 +3,17 @@ import moment from 'moment';
 import { MemberInfoDropdownProps } from './MemberInfoDropdown';
 
 export const closedWithoutData: Omit<MemberInfoDropdownProps, 'onClose'> = {
+  children: null,
   isOpen: false,
 };
 
 export const openWithoutData: Omit<MemberInfoDropdownProps, 'onClose'> = {
+  children: null,
   isOpen: true,
 };
 
 export const closedWithData: Omit<MemberInfoDropdownProps, 'onClose'> = {
+  children: null,
   isOpen: false,
   guildToken: {
     decimals: 18,

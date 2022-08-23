@@ -53,11 +53,6 @@ const ProposalVoteCardWrapper = () => {
     voteData?.totalLocked
   );
 
-  const currentLockedPercent = useVotingPowerPercent(
-    voteData?.quorum,
-    voteData?.totalLocked
-  );
-
   return (
     <ProposalVoteCard
       voteData={voteData}
@@ -69,7 +64,6 @@ const ProposalVoteCardWrapper = () => {
         atSnapshot: votingPowerAtProposalSnapshot,
         atCurrentSnapshot: votingPowerAtProposalCurrentSnapshot,
       }}
-      currentLockedPercent={currentLockedPercent}
       contract={contract}
       createTransaction={createTransaction}
     />

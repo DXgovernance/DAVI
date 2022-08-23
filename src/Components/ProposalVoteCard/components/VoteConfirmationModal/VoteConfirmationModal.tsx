@@ -21,7 +21,7 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
   onConfirm,
   selectedAction,
   votingPower,
-  totalLocked,
+  currentVoteAmount,
 }) => {
   const { t } = useTranslation();
 
@@ -49,8 +49,8 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
           <InfoRow>
             <InfoLabel>{t('voteImpact')}</InfoLabel>
             <InfoValue>
-              <InfoValue grey> {totalLocked}% </InfoValue>
-              {`-->  ${votingPower + totalLocked}%`}
+              <InfoValue grey> {currentVoteAmount}% </InfoValue>
+              {`-->  ${votingPower + currentVoteAmount}%`}
             </InfoValue>
           </InfoRow>
         </Widget>

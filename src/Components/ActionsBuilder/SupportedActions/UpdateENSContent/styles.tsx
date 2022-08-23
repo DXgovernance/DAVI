@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import StyledIcon from 'old-components/Guilds/common/SVG';
 import { Box } from 'Components/Primitives/Layout';
 import { StyledToolTip } from 'old-components/Guilds/common/ToolTip';
+import { DetailBody } from '../common/Summary.styled';
 
 export const Control = styled(Box)`
   display: flex;
@@ -38,4 +39,20 @@ export const StyledInfoIcon = styled(StyledIcon)`
 export const StyledENSIcon = styled(StyledIcon)`
   margin: 0;
   height: 1.4rem;
+`;
+
+export const DiffContainer = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border-radius: 2px;
+`;
+
+export const DiffDetail = styled(DetailBody)`
+  padding: 0.75rem 1rem;
+  margin: 0;
+`;
+
+export const DiffStat = styled.span<{ removed?: boolean }>`
+  margin: 0 0.2rem;
+  color: ${({ removed, theme }) =>
+    removed ? theme.colors.red : theme.colors.green};
 `;

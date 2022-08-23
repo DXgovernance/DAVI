@@ -1,8 +1,8 @@
 import styled, { useTheme } from 'styled-components';
-import Switch from 'react-switch';
+import Switch, { ReactSwitchProps } from 'react-switch';
 import { FormElementProps } from './common';
 
-const StyledSwitch = styled(Switch)`
+const StyledSwitch = styled(Switch)<ReactSwitchProps>`
   border: 1px solid ${({ theme }) => theme.colors.muted};
 
   &:hover {

@@ -1,10 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UndecodableCallInfoLine Should match snapshot 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
 <div>
    
   <span
-    class="sc-bdfBQB enldmJ"
+    class="c0"
   >
     <svg
       color="#E75C5C"
@@ -39,7 +59,7 @@ exports[`UndecodableCallInfoLine Should match snapshot 1`] = `
     </svg>
   </span>
   <span
-    class="sc-bdfBQB sc-dlfnuX enldmJ dJRRZW"
+    class="c0 c1"
   >
     unknownAction
   </span>

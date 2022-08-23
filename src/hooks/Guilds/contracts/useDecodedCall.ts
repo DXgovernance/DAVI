@@ -4,52 +4,21 @@ import {
   useRichContractRegistry,
 } from './useRichContractRegistry';
 import ERC20ABI from 'abis/ERC20.json';
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import {
   Call,
   DecodedCall,
   Option,
   SupportedAction,
 } from 'Components/ActionsBuilder/types';
-import { ERC20_APPROVE_SIGNATURE, ERC20_TRANSFER_SIGNATURE } from 'utils';
+import {
+  ERC20_APPROVE_SIGNATURE,
+  ERC20_TRANSFER_SIGNATURE,
+  SET_PERMISSION_SIGNATURE,
+} from 'utils';
 import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
-import Web3 from 'web3';
 import { useNetwork } from 'wagmi';
-const web3 = new Web3();
-const SET_PERMISSION_SIGNATURE = web3.eth.abi.encodeFunctionSignature({
-  inputs: [
-    {
-      internalType: 'address[]',
-      name: 'asset',
-      type: 'address[]',
-    },
-    {
-      internalType: 'address[]',
-      name: 'to',
-      type: 'address[]',
-    },
-    {
-      internalType: 'bytes4[]',
-      name: 'functionSignature',
-      type: 'bytes4[]',
-    },
-    {
-      internalType: 'uint256[]',
-      name: 'valueAllowed',
-      type: 'uint256[]',
-    },
-    {
-      internalType: 'bool[]',
-      name: 'allowance',
-      type: 'bool[]',
-    },
-  ],
-  name: 'setPermission',
-  outputs: [],
-  stateMutability: 'nonpayable',
-  type: 'function',
-});
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -63,7 +32,7 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     },
     [SET_PERMISSION_SIGNATURE]: {
       callType: SupportedAction.SET_PERMISSIONS,
-      ABI: ERC20Guild.abi,
+      ABI: PermissionRegistry.abi,
     },
   };
 
@@ -97,6 +66,9 @@ const decodeCallUsingEthersInterface = (
     value: call.value,
     function: functionFragment,
     args: paramsJson,
+    optionalProps: {
+      asset: paramsJson?.to ?? '',
+    },
   };
 };
 
@@ -112,7 +84,6 @@ const getContractInterfaceFromRichContractData = (
 const getContractFromKnownSighashes = (data: string) => {
   // Get the first 10 characters of Tx data, which is the Function Selector (SigHash).
   const sigHash = data.substring(0, 10);
-
   // Heuristic detection using known sighashes
   const match = knownSigHashes[sigHash];
   if (!match) return null;
@@ -159,6 +130,12 @@ export const decodeCall = async (
 
   if (decodedCall && matchedRichContractData) {
     decodedCall.richData = matchedRichContractData;
+    // TODO better match function signature to include type checks
+    decodedCall.richFunctionData = matchedRichContractData.functions.find(
+      option =>
+        option.functionName === decodedCall.function.name &&
+        option.params.length === decodedCall.function.inputs.length
+    );
   }
 
   return {

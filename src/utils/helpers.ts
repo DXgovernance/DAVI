@@ -112,17 +112,3 @@ export async function retryPromise(
   }
   return toReturn;
 }
-
-interface LocationProps {
-  hash: string;
-  pathname: string;
-  search: string;
-}
-
-export const navigateUrl = (from: LocationProps, to: string) => {
-  let locationLastCharacter = from.pathname.slice(-1);
-  let newLocation = from.pathname;
-
-  if (locationLastCharacter !== '/') newLocation += '/';
-  return `${newLocation}${to}`;
-};

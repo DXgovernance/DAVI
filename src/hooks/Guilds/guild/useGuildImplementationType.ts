@@ -21,19 +21,14 @@ interface ImplementationTypeConfig {
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
-  isSnapshotRepGuild: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
 ): ImplementationTypeConfigReturn => {
   return {
     ...config,
-    isRepGuild:
-      config.features.includes('REP') && !config.features.includes('SNAPSHOT'),
-    isSnapshotGuild:
-      config.features.includes('SNAPSHOT') && !config.features.includes('REP'),
-    isSnapshotRepGuild:
-      config.features.includes('SNAPSHOT') && config.features.includes('REP'),
+    isRepGuild: config.features.includes('REP'),
+    isSnapshotGuild: config.features.includes('SNAPSHOT'),
   };
 };
 
@@ -58,9 +53,11 @@ export default function useGuildImplementationTypeConfig(
 
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
     if (!guildBytecode) return defaultImplementation;
+
     const match = deployedHashedBytecodes.find(
       ({ bytecode_hash }) => guildBytecode === bytecode_hash
     );
+
     return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode]);
   return parseConfig(implementationTypeConfig);

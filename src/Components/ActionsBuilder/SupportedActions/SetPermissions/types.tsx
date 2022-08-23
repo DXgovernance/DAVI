@@ -1,12 +1,13 @@
 import { BigNumber } from 'ethers';
 
 export interface ParsedDataInterface {
-  asset: string[];
-  to: string[];
-  functionSignature: string[];
-  valueAllowed: BigNumber[];
-  allowance: boolean[];
+  asset: string;
+  to: string;
+  functionSignature: string;
+  valueAllowed: BigNumber;
+  allowance: boolean;
   functionName: string;
+  tab?: number;
 }
 
 export interface ValidationsInterface {
@@ -14,4 +15,9 @@ export interface ValidationsInterface {
   to: boolean;
   valueAllowed: boolean;
   functionName: boolean;
+}
+
+export enum TABS {
+  ASSET_TRANSFER = 0,
+  FUNCTION_CALL = 1,
 }

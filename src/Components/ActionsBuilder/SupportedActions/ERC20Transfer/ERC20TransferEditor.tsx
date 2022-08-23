@@ -24,6 +24,7 @@ import { useTranslation } from 'react-i18next';
 import { useNetwork } from 'wagmi';
 import validateERC20Transfer from './validateERC20Transfer';
 import { ErrorLabel } from 'Components/Primitives/Forms/ErrorLabel';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;
@@ -71,6 +72,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
 
+  const { guildId } = useTypedParams();
   const { chain } = useNetwork();
 
   // Get token details from the token address
@@ -137,7 +139,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     }
                   />
                 </ControlRow>
-                {invalid && !!error && <Error>{error}</Error>}
+                {invalid && !!error && <Error>{error.message}</Error>}
               </Control>
             );
           }}
@@ -161,7 +163,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     />
                   </ControlRow>
 
-                  {invalid && !!error && <Error>{error}</Error>}
+                  {invalid && !!error && <Error>{error.message}</Error>}
                 </Control>
               );
             }}
@@ -199,12 +201,12 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                         readOnly
                       />
                     </ControlRow>
-                    {invalid && !!error && <Error>{error}</Error>}
+                    {invalid && !!error && <Error>{error.message}</Error>}
                   </Control>
 
                   <TokenPicker
                     {...field}
-                    walletAddress={parsedData.source || ''}
+                    walletAddress={guildId}
                     isOpen={isTokenPickerOpen}
                     onClose={() => setIsTokenPickerOpen(false)}
                     onSelect={tokenAddress => {

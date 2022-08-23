@@ -1,64 +1,260 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuildSidebar Should render with data 1`] = `
+.c11 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c11:focus,
+.c11:hover,
+.c11:visited,
+.c11:link,
+.c11:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.c12 {
+  display: block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.c12:visited,
+.c12:active,
+.c12:link {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  decoration: none;
+  color: inherit;
+}
+
+.c6 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  color: #fff;
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  height: 3rem;
+  width: 3rem;
+}
+
+.c7 {
+  margin-left: 4px;
+  line-height: 1;
+}
+
+.c8 {
+  margin-bottom: 0.5rem;
+}
+
+.c10 {
+  margin: 0;
+  padding: 1rem 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c13 {
+  padding: 0.8rem 1rem;
+  color: #A1A6B0;
+}
+
+.c13:hover {
+  border-bottom: 2px solid #303338;
+}
+
+.c13:active {
+  border-bottom: 2px solid #303338;
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    margin-right: 1rem;
+    border: 1px solid #303338;
+    border-radius: 10px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c10 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13 {
+    border-left: 2px solid transparent;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13:hover {
+    border-left: 2px solid #303338;
+    border-bottom: initial;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13:active {
+    border-left: 2px solid #fff;
+    border-bottom: initial;
+  }
+}
+
 <div>
    
   <div
-    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    class="c0 c1"
     data-testid="sidebar"
   >
     <div
-      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
+      class="c0 c2"
     >
       <div
-        class="sc-kEjbQP fycuIK"
+        class="c3"
       >
         <div
-          class="sc-iqHYmW jrXVBE"
+          class="c4"
         >
           <img
             alt="Test Guild"
-            class="sc-crrszt citRkA"
+            class="c5"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
+            class="c6 c7"
             size="2"
           >
             Test Guild
           </h1>
         </div>
         <div
-          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
+          class="c0 c8"
         >
           members
         </div>
       </div>
+      <div>
+        Test
+      </div>
     </div>
     <div
-      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
+      class="c0 c9 c10"
     >
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        proposals
+        <a
+          class="c12 c13"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        members
+        <a
+          class="c12 c13"
+        >
+          allProposals
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c12 c13"
       >
         settings
       </a>
@@ -69,31 +265,223 @@ exports[`GuildSidebar Should render with data 1`] = `
 `;
 
 exports[`GuildSidebar Should render without data 1`] = `
+.c11 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c11:focus,
+.c11:hover,
+.c11:visited,
+.c11:link,
+.c11:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.5rem;
+}
+
+.c12 {
+  display: block;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.c12:visited,
+.c12:active,
+.c12:link {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  decoration: none;
+  color: inherit;
+}
+
+.c6 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  color: #fff;
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5 {
+  height: 3rem;
+  width: 3rem;
+}
+
+.c7 {
+  margin-left: 4px;
+  line-height: 1;
+}
+
+.c8 {
+  margin-bottom: 0.5rem;
+}
+
+.c10 {
+  margin: 0;
+  padding: 1rem 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c13 {
+  padding: 0.8rem 1rem;
+  color: #A1A6B0;
+}
+
+.c13:hover {
+  border-bottom: 2px solid #303338;
+}
+
+.c13:active {
+  border-bottom: 2px solid #303338;
+}
+
+@media only screen and (min-width:768px) {
+  .c1 {
+    margin-right: 1rem;
+    border: 1px solid #303338;
+    border-radius: 10px;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c4 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c10 {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13 {
+    border-left: 2px solid transparent;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13:hover {
+    border-left: 2px solid #303338;
+    border-bottom: initial;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .c13:active {
+    border-left: 2px solid #fff;
+    border-bottom: initial;
+  }
+}
+
 <div>
    
   <div
-    class="sc-dlfnuX sc-pGacB jmIxJI xhkqm"
+    class="c0 c1"
     data-testid="sidebar"
   >
     <div
-      class="sc-dlfnuX sc-jrAFXE jmIxJI kfDExC"
+      class="c0 c2"
     >
       <div
-        class="sc-kEjbQP fycuIK"
+        class="c3"
       >
         <div
-          class="sc-iqHYmW jrXVBE"
+          class="c4"
         >
           <img
-            class="sc-crrszt citRkA"
+            class="c5"
             src="dxdao-icon.svg"
           />
           <h1
-            class="sc-fubCzh sc-dQoVA gZcuMh fTfxub"
+            class="c6 c7"
             size="2"
           >
             <div
-              class="sc-bdfBQB"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -111,10 +499,10 @@ exports[`GuildSidebar Should render without data 1`] = `
           </h1>
         </div>
         <div
-          class="sc-dlfnuX sc-bqyKOL jmIxJI jcgoHD"
+          class="c0 c8"
         >
           <div
-            class="sc-bdfBQB"
+            class=""
           >
             <span
               aria-busy="true"
@@ -133,29 +521,30 @@ exports[`GuildSidebar Should render without data 1`] = `
       </div>
     </div>
     <div
-      class="sc-dlfnuX sc-gKseQn sc-kstqJO jmIxJI hzfPLC eKyYJL"
+      class="c0 c9 c10"
     >
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
-        proposals
+        <a
+          class="c12 c13"
+        >
+          governance
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
       >
-        members
+        <a
+          class="c12 c13"
+        >
+          allProposals
+        </a>
       </a>
       <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
-      >
-        portfolio
-      </a>
-      <a
-        class="sc-iBPTik sc-hBEYId eLFkjO cyASOH"
-        href="#"
+        class="c12 c13"
       >
         settings
       </a>

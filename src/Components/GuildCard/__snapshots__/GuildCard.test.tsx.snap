@@ -1,27 +1,165 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1`] = `
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  width: 18%;
+  min-width: 229px;
+  height: 216px;
+  padding: 24px 24px 40px 24px;
+}
+
+.c10 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #A1A6B0;
+}
+
+.c6 {
+  padding-left: 7px;
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #A1A6B0;
+  background-color: #1B1D1F;
+  color: #A1A6B0;
+  padding: 0.25rem 0.4rem;
+}
+
+.c9 {
+  height: 4rem;
+  width: 4rem;
+}
+
+.c8 {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.c11 {
+  margin-left: 4px;
+  line-height: 24px;
+}
+
+@media (max-width:768px) {
+  .c3 {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin: 2rem;
+  }
+}
+
 <div>
    
   <a
-    class="sc-bdfBQB hcWJCy"
+    class="c0"
     data-testid="guildCard"
     href="/0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
   >
     <div
-      class="sc-hKgJUU dUEGLL"
+      class="c1"
     >
       <div
-        class="sc-gsTEea sc-jSgvzq couiEk iwIEDV"
+        class="c2 c3"
       >
         <div
-          class="sc-gsTEea couiEk"
+          class="c2"
         >
           <div
-            class="sc-hKgJUU sc-kEjbQP dUEGLL hpHCuO"
+            class="c1 c4"
           >
             <div
-              class="sc-hKgJUU sc-iqHYmW dUEGLL jYBUCp"
+              class="c1 c5"
             >
               <svg
                 fill="currentColor"
@@ -41,26 +179,26 @@ exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1
                 />
               </svg>
               <div
-                class="sc-crrszt eKuTZS"
+                class="c6"
               >
                 5
               </div>
             </div>
             <div
-              class="sc-gsTEea sc-dQoVA couiEk jaYorM"
+              class="c2 c7"
             >
               proposals
             </div>
           </div>
           <div
-            class="sc-gsTEea sc-kstqJO couiEk iYcgDI"
+            class="c2 c8"
           >
             <img
-              class="sc-bqyKOL RFBtI"
+              class="c9"
               src="dxdao-icon.svg"
             />
             <h2
-              class="sc-jrAFXE sc-hBEYId dNMen eSVrEG"
+              class="c10 c11"
               size="2"
             >
               REPGuild
@@ -75,27 +213,128 @@ exports[`GuildCard Should render 'No proposals' when there are zero proposals' 1
 `;
 
 exports[`GuildCard Should render loading state skeleton 1`] = `
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  width: 18%;
+  min-width: 229px;
+  height: 216px;
+  padding: 24px 24px 40px 24px;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #A1A6B0;
+}
+
+.c7 {
+  height: 4rem;
+  width: 4rem;
+}
+
+.c6 {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+@media (max-width:768px) {
+  .c3 {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin: 2rem;
+  }
+}
+
 <div>
    
   <a
-    class="sc-bdfBQB hcWJCy"
+    class="c0"
     data-testid="guildCard"
-    href="/null"
+    href="/"
   >
     <div
-      class="sc-hKgJUU dUEGLL"
+      class="c1"
     >
       <div
-        class="sc-gsTEea sc-jSgvzq couiEk iwIEDV"
+        class="c2 c3"
       >
         <div
-          class="sc-gsTEea couiEk"
+          class="c2"
         >
           <div
-            class="sc-hKgJUU sc-kEjbQP dUEGLL hpHCuO"
+            class="c1 c4"
           >
             <div
-              class="sc-hKgJUU sc-iqHYmW dUEGLL jYBUCp"
+              class="c1 c5"
             >
               <svg
                 fill="currentColor"
@@ -115,7 +354,7 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
                 />
               </svg>
               <div
-                class="sc-fubCzh"
+                class=""
               >
                 <span
                   aria-busy="true"
@@ -132,7 +371,7 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
               </div>
             </div>
             <div
-              class="sc-fubCzh"
+              class=""
               style="height: 43px; align-items: center; display: flex;"
             >
               <span
@@ -150,14 +389,14 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
             </div>
           </div>
           <div
-            class="sc-gsTEea sc-kstqJO couiEk iYcgDI"
+            class="c2 c6"
           >
             <img
-              class="sc-bqyKOL RFBtI"
+              class="c7"
               src="dxdao-icon.svg"
             />
             <div
-              class="sc-fubCzh"
+              class=""
               style="margin-top: 20px;"
             >
               <span
@@ -183,27 +422,165 @@ exports[`GuildCard Should render loading state skeleton 1`] = `
 `;
 
 exports[`GuildCard Should render with full parameters 1`] = `
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+  width: 18%;
+  min-width: 229px;
+  height: 216px;
+  padding: 24px 24px 40px 24px;
+}
+
+.c10 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  color: #A1A6B0;
+}
+
+.c6 {
+  padding-left: 7px;
+}
+
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin: 0.5rem;
+  border-radius: 15px;
+  border: 1px solid #1DE9B6;
+  background-color: #1B1D1F;
+  color: #1DE9B6;
+  padding: 0.25rem 0.4rem;
+}
+
+.c9 {
+  height: 4rem;
+  width: 4rem;
+}
+
+.c8 {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.c11 {
+  margin-left: 4px;
+  line-height: 24px;
+}
+
+@media (max-width:768px) {
+  .c3 {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    margin: 2rem;
+  }
+}
+
 <div>
    
   <a
-    class="sc-bdfBQB hcWJCy"
+    class="c0"
     data-testid="guildCard"
     href="/0xa47BbE8Dd6dB29D45FE5eeD838c4f136884AEAF3"
   >
     <div
-      class="sc-hKgJUU dUEGLL"
+      class="c1"
     >
       <div
-        class="sc-gsTEea sc-jSgvzq couiEk iwIEDV"
+        class="c2 c3"
       >
         <div
-          class="sc-gsTEea couiEk"
+          class="c2"
         >
           <div
-            class="sc-hKgJUU sc-kEjbQP dUEGLL hpHCuO"
+            class="c1 c4"
           >
             <div
-              class="sc-hKgJUU sc-iqHYmW dUEGLL jYBUCp"
+              class="c1 c5"
             >
               <svg
                 fill="currentColor"
@@ -223,26 +600,26 @@ exports[`GuildCard Should render with full parameters 1`] = `
                 />
               </svg>
               <div
-                class="sc-crrszt eKuTZS"
+                class="c6"
               >
                 5
               </div>
             </div>
             <div
-              class="sc-gsTEea sc-dQoVA couiEk clybEs"
+              class="c2 c7"
             >
               proposals
             </div>
           </div>
           <div
-            class="sc-gsTEea sc-kstqJO couiEk iYcgDI"
+            class="c2 c8"
           >
             <img
-              class="sc-bqyKOL RFBtI"
+              class="c9"
               src="dxdao-icon.svg"
             />
             <h2
-              class="sc-jrAFXE sc-hBEYId dNMen eSVrEG"
+              class="c10 c11"
               size="2"
             >
               REPGuild

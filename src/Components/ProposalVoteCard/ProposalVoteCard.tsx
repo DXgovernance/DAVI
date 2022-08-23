@@ -23,6 +23,7 @@ import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'Components/ProposalVoteCard/utils';
+import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 
 const ProposalVoteCard = ({
   voteData,
@@ -30,7 +31,6 @@ const ProposalVoteCard = ({
   votingPower,
   timestamp,
   contract,
-  currentLockedPercent,
   createTransaction,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
@@ -158,6 +158,7 @@ const ProposalVoteCard = ({
           </ButtonsContainer>
         )}
       </SidebarCardContent>
+
       <VoteConfirmationModal
         isOpen={modalOpen}
         onDismiss={() => setModalOpen(false)}
@@ -178,7 +179,10 @@ const ProposalVoteCard = ({
           t,
         })}
         votingPower={votingPower?.percent}
-        totalLocked={currentLockedPercent}
+        currentVoteAmount={useVotingPowerPercent(
+          voteData?.options?.[selectedAction?.toNumber()],
+          voteData?.totalLocked
+        )}
       />
     </SidebarCard>
   );

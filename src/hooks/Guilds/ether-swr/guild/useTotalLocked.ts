@@ -24,7 +24,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   const SNAPSHOT_ID =
     snapshotId ?? _snapshotId?.toString() ?? currentSnapshotId?.toString();
 
-  const { isSnapshotGuild, isRepGuild, isSnapshotRepGuild } =
+  const { isSnapshotGuild, isRepGuild } =
     useGuildImplementationType(guildAddress);
 
   const totalLockedResponse = useEtherSWR<BigNumber>(
@@ -47,9 +47,10 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   });
 
   // Return response based on implementation type
+  if (isRepGuild)
+    return SNAPSHOT_ID ? totalSupplyAtSnapshotResponse : totalLockedResponse;
   if (isSnapshotGuild) return totalLockedAtProposalSnapshotResponse;
-  if (isSnapshotRepGuild) return totalSupplyAtSnapshotResponse;
-  if (isRepGuild) return totalLockedResponse;
+  // if (isRepGuild) return totalLockedResponse;
   return totalLockedResponse;
 };
 

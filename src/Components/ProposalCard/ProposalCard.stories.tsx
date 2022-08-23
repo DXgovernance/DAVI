@@ -21,7 +21,6 @@ const proposalCardArgs: ProposalCardProps = {
   proposal: proposalMock,
   ensAvatar: ensAvatarMock,
   href: '/',
-  votes: [11, 1],
   statusProps: proposalStatusMock,
 };
 

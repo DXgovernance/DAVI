@@ -12,6 +12,7 @@ import { useMemo } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { ActionViewProps } from '..';
 import GenericCallParamsMatcher from './GenericCallParamsMatcher';
+import { useTranslation } from 'react-i18next';
 
 export interface FunctionParamWithValue extends RichContractFunctionParam {
   value: string;
@@ -22,6 +23,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
   approveSpendTokens,
   compact = false,
 }) => {
+  const { t } = useTranslation();
   const { data: tokenInfo } = useERC20Info(approveSpendTokens?.token);
   const approvalAmount = useBigNumberToString(
     approveSpendTokens?.amount,
@@ -60,17 +62,34 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
           {!!approveSpendTokens && (
             <>
               <Segment>
-                {approvalAmount} {tokenInfo?.symbol ?? ''}
+                {!!tokenInfo
+                  ? approvalAmount + tokenInfo?.symbol
+                  : t('unknownToken')}
               </Segment>
               <Segment>
                 <FiArrowRight />
               </Segment>
-              <Segment>{decodedCall?.function?.name}</Segment>
             </>
           )}
+          <Segment>
+            {decodedCall?.richFunctionData?.title ||
+              decodedCall?.function?.name}
+          </Segment>
         </>
       ) : (
         <>
+          {!!approveSpendTokens && (
+            <>
+              <Segment>
+                {!!tokenInfo
+                  ? approvalAmount + tokenInfo?.symbol ?? ''
+                  : 'Unknown token'}
+              </Segment>
+              <Segment>
+                <FiArrowRight />
+              </Segment>
+            </>
+          )}
           <Segment>
             <Interweave
               content={functionData?.templateLiteral}

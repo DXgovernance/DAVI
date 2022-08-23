@@ -1,24 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  display: none;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c2 {
+  left: 0;
+  right: auto;
+}
+
+.c4 {
+  padding: 20px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c7 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (max-width:768px) {
+  .c3 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: none;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button>
       Open
     </button>
     <div
-      class="sc-hKgJUU sc-pGacB dpFBPj cPwgnj"
+      class="c2 c0 c3"
     >
-      
       <div
-        class="sc-crrszt xObId"
+        class="c4"
       >
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           votingPower
            
@@ -27,7 +131,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           locked
            
@@ -36,7 +140,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           unlockedIn
            
@@ -45,7 +149,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
           </span>
         </div>
         <button
-          class="sc-bdfBQB sc-bqyKOL bFQUlx hcxqeg"
+          class="c6 c7"
         >
           increaseVotingPower
         </button>
@@ -57,30 +161,134 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
 `;
 
 exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  display: none;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c2 {
+  left: 0;
+  right: auto;
+}
+
+.c4 {
+  padding: 20px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c7 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (max-width:768px) {
+  .c3 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: none;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button>
       Open
     </button>
     <div
-      class="sc-hKgJUU sc-pGacB dpFBPj cPwgnj"
+      class="c2 c0 c3"
     >
-      
       <div
-        class="sc-crrszt xObId"
+        class="c4"
       >
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           votingPower
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -98,13 +306,13 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           locked
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -122,13 +330,13 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           unlockedIn
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -146,7 +354,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
           </span>
         </div>
         <button
-          class="sc-bdfBQB sc-bqyKOL bFQUlx hcxqeg"
+          class="c6 c7"
         >
           increaseVotingPower
         </button>
@@ -158,24 +366,128 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
 `;
 
 exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  display: block;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c2 {
+  left: 0;
+  right: auto;
+}
+
+.c4 {
+  padding: 20px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c7 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (max-width:768px) {
+  .c3 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: block;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button>
       Open
     </button>
     <div
-      class="sc-hKgJUU sc-pGacB dpFBPj dvcJvz"
+      class="c2 c0 c3"
     >
-      
       <div
-        class="sc-crrszt xObId"
+        class="c4"
       >
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           votingPower
            
@@ -184,7 +496,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           locked
            
@@ -193,7 +505,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           unlockedIn
            
@@ -202,7 +514,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
           </span>
         </div>
         <button
-          class="sc-bdfBQB sc-bqyKOL bFQUlx hcxqeg"
+          class="c6 c7"
         >
           increaseVotingPower
         </button>
@@ -214,30 +526,134 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
 `;
 
 exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c3 {
+  display: block;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c2 {
+  left: 0;
+  right: auto;
+}
+
+.c4 {
+  padding: 20px;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c7 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (max-width:768px) {
+  .c3 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: block;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-hKgJUU sc-jrAFXE dpFBPj fSeUlN"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button>
       Open
     </button>
     <div
-      class="sc-hKgJUU sc-pGacB dpFBPj dvcJvz"
+      class="c2 c0 c3"
     >
-      
       <div
-        class="sc-crrszt xObId"
+        class="c4"
       >
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           votingPower
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -255,13 +671,13 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           locked
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -279,13 +695,13 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-dQoVA cvHUTm"
+          class="c5"
         >
           unlockedIn
            
           <span>
             <div
-              class="sc-kEjbQP"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -303,7 +719,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
           </span>
         </div>
         <button
-          class="sc-bdfBQB sc-bqyKOL bFQUlx hcxqeg"
+          class="c6 c7"
         >
           increaseVotingPower
         </button>

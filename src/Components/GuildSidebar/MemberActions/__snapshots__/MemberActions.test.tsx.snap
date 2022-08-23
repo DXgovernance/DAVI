@@ -1,22 +1,201 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MemberActions Should match snapshot with data 1`] = `
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c2:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c2:hover:enabled {
+  border-color: #fff;
+}
+
+.c2:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c3 svg,
+.c3 img {
+  margin-right: .4rem;
+}
+
+.c3,
+.c3 button {
+  padding: .25rem 0.6rem;
+  background-color: #1B1D1F;
+}
+
+.c6 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c7 {
+  border-radius: 50%;
+  height: 18px;
+  width: 18px;
+}
+
+.c4 {
+  border-radius: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.c4 > div:first-child {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 img {
+  border-radius: 50%;
+  margin-right: 0;
+}
+
+.c8 {
+  background-color: #282b30;
+  color: #fff;
+  border-radius: 32px;
+  padding: 2px 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c10 {
+  display: none;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c9 {
+  left: 0;
+  right: auto;
+}
+
+.c11 {
+  padding: 20px;
+}
+
+.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c13 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+  .c5 {
+    margin-right: 0.3rem;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c10 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: none;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-pGacB sc-kstqJO kELkBy fkHEBq"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button
-      class="sc-dlfnuX sc-hKgJUU sc-gKseQn bcIZht eRtASc eHKpXr"
+      class="c2 c3 c4"
     >
       <div>
         <span
-          class="sc-iBPTik lkybgw"
+          class="c5"
         >
           <img
             alt="Avatar"
-            class="sc-eCstlR sc-jSgvzq ebJAYl fbWVQg"
+            class="c6 c7"
             data-testid="avatar"
             size="18"
             src="/assets/favicon-32x32.png"
@@ -27,20 +206,19 @@ exports[`MemberActions Should match snapshot with data 1`] = `
         </span>
       </div>
       <div
-        class="sc-fubCzh kFYzWV"
+        class="c8"
       >
         50%
       </div>
     </button>
     <div
-      class="sc-pGacB sc-bqyKOL kELkBy eA-dQQq"
+      class="c9 c0 c10"
     >
-      
       <div
-        class="sc-hBEYId gPHLnk"
+        class="c11"
       >
         <div
-          class="sc-fodVek jyvpfu"
+          class="c12"
         >
           votingPower
            
@@ -49,7 +227,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-fodVek jyvpfu"
+          class="c12"
         >
           locked
            
@@ -58,7 +236,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
           </span>
         </div>
         <div
-          class="sc-fodVek jyvpfu"
+          class="c12"
         >
           unlockedIn
            
@@ -67,7 +245,7 @@ exports[`MemberActions Should match snapshot with data 1`] = `
           </span>
         </div>
         <button
-          class="sc-dlfnuX sc-fFucqa bcIZht hyGtHU"
+          class="c2 c13"
         >
           increaseVotingPower
         </button>
@@ -79,21 +257,189 @@ exports[`MemberActions Should match snapshot with data 1`] = `
 `;
 
 exports[`MemberActions Should match snapshot without data 1`] = `
+.c2 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c2:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c2:hover:enabled {
+  border-color: #fff;
+}
+
+.c2:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c3 svg,
+.c3 img {
+  margin-right: .4rem;
+}
+
+.c3,
+.c3 button {
+  padding: .25rem 0.6rem;
+  background-color: #1B1D1F;
+}
+
+.c4 {
+  border-radius: 50px;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.c4 > div:first-child {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c5 img {
+  border-radius: 50%;
+  margin-right: 0;
+}
+
+.c6 {
+  background-color: #282b30;
+  color: #fff;
+  border-radius: 32px;
+  padding: 2px 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
+  display: none;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  padding-top: 0.25rem;
+  position: absolute;
+  background-color: #1B1D1F;
+  z-index: 9999;
+  width: 100%;
+  min-width: 200px;
+}
+
+.c1 {
+  position: relative;
+  width: 100%;
+}
+
+.c1 .c7 {
+  left: 0;
+  right: auto;
+}
+
+.c9 {
+  padding: 20px;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 14px;
+  padding-bottom: 8px;
+}
+
+.c11 {
+  margin-top: 12px;
+  width: 100%;
+}
+
+@media only screen and (min-width:768px) {
+  .c5 {
+    margin-right: 0.3rem;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c8 {
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: none;
+    border: none;
+  }
+}
+
 <div>
    
   <div
-    class="sc-pGacB sc-kstqJO kELkBy fkHEBq"
+    class="c0 c1"
     data-testid="member-actions-button"
   >
     <button
-      class="sc-dlfnuX sc-hKgJUU sc-gKseQn bcIZht eRtASc eHKpXr"
+      class="c2 c3 c4"
     >
       <div>
         <span
-          class="sc-iBPTik lkybgw"
+          class="c5"
         >
           <div
-            class="sc-bdfBQB"
+            class=""
           >
             <span
               aria-busy="true"
@@ -111,7 +457,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         </span>
         <span>
           <div
-            class="sc-bdfBQB"
+            class=""
           >
             <span
               aria-busy="true"
@@ -129,10 +475,10 @@ exports[`MemberActions Should match snapshot without data 1`] = `
         </span>
       </div>
       <div
-        class="sc-fubCzh kFYzWV"
+        class="c6"
       >
         <div
-          class="sc-bdfBQB"
+          class=""
         >
           <span
             aria-busy="true"
@@ -150,20 +496,19 @@ exports[`MemberActions Should match snapshot without data 1`] = `
       </div>
     </button>
     <div
-      class="sc-pGacB sc-bqyKOL kELkBy eA-dQQq"
+      class="c7 c0 c8"
     >
-      
       <div
-        class="sc-hBEYId gPHLnk"
+        class="c9"
       >
         <div
-          class="sc-fodVek jyvpfu"
+          class="c10"
         >
           votingPower
            
           <span>
             <div
-              class="sc-bdfBQB"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -181,13 +526,13 @@ exports[`MemberActions Should match snapshot without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-fodVek jyvpfu"
+          class="c10"
         >
           locked
            
           <span>
             <div
-              class="sc-bdfBQB"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -205,13 +550,13 @@ exports[`MemberActions Should match snapshot without data 1`] = `
           </span>
         </div>
         <div
-          class="sc-fodVek jyvpfu"
+          class="c10"
         >
           unlockedIn
            
           <span>
             <div
-              class="sc-bdfBQB"
+              class=""
             >
               <span
                 aria-busy="true"
@@ -229,7 +574,7 @@ exports[`MemberActions Should match snapshot without data 1`] = `
           </span>
         </div>
         <button
-          class="sc-dlfnuX sc-fFucqa bcIZht hyGtHU"
+          class="c2 c11"
         >
           increaseVotingPower
         </button>

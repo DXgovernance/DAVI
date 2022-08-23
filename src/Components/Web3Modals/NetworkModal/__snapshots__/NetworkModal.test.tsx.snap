@@ -1,31 +1,315 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NetworkModal Should match snapshot 1`] = `
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c12:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c12:hover:enabled {
+  border-color: #fff;
+}
+
+.c12:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c12:disabled {
+  color: #303338;
+}
+
+.c4 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c4 strong,
+.c4 b {
+  font-weight: 600;
+}
+
+.c1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: 501;
+  width: 40%;
+  min-width: 400px;
+  max-width: 380px;
+  outline: 0;
+}
+
+.c0 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(27,29,31,0.5);
+  z-index: 500;
+}
+
+.c2 {
+  z-index: 100;
+  background: #26282D;
+  position: relative;
+  margin: auto;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+}
+
+.c2 * {
+  -webkit-scrollbar-width: 12px;
+  -moz-scrollbar-width: 12px;
+  -ms-scrollbar-width: 12px;
+  scrollbar-width: 12px;
+  -webkit-scrollbar-color: #303338 transparent;
+  -moz-scrollbar-color: #303338 transparent;
+  -ms-scrollbar-color: #303338 transparent;
+  scrollbar-color: #303338 transparent;
+}
+
+.c2 *::-webkit-scrollbar {
+  width: 12px;
+}
+
+.c2 *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.c2 *::-webkit-scrollbar-thumb {
+  background-color: #303338;
+  border-radius: 10px;
+  border: 3px solid #26282D;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #303338;
+  position: relative;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.c5 {
+  margin: auto 8px;
+}
+
+.c6 {
+  position: absolute;
+  color: #fff;
+  right: 1.5rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 800;
+}
+
+.c6:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.c7 {
+  color: #fff;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.c15 {
+  height: 8px;
+  width: 8px;
+  margin-right: 0.5rem;
+  background-color: #4cc7a2;
+  border-radius: 50%;
+}
+
+.c13 {
+  width: 100%;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #303338;
+  margin-bottom: 0.8rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c13:hover {
+  background-color: #1B1D1F !important;
+  color: #fff !important;
+  outline: 1px solid #ccc;
+}
+
+.c13:focus {
+  border: 1px solid #fff;
+}
+
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  gap: 0.5rem;
+}
+
+.c16 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c16 > img,
+.c16 span {
+  height: 24px;
+  width: 24px;
+}
+
+.c8 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.c10 {
+  background-color: #1B1D1F;
+  color: var(--body-text);
+  padding: 2rem;
+}
+
+.c9 {
+  position: relative;
+  background-color: var(--panel-background);
+}
+
+.c9 h5 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.c9 h5:last-child {
+  margin-bottom: 0px;
+}
+
+.c9 h4 {
+  margin-top: 0;
+  font-weight: 500;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@media (max-width:960px) {
+  .c16 {
+    -webkit-align-items: flex-end;
+    -webkit-box-align: flex-end;
+    -ms-flex-align: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media (max-width:960px) {
+  .c10 {
+    padding: 1rem;
+  }
+}
+
 <body>
   <div>
     <div
-      class="sc-pGacB doHKro backdropModal"
+      class="c0 backdropModal"
     >
       <div
-        class="sc-fubCzh jCETGP"
+        class="c1"
       >
         <div
-          class="sc-jrAFXE jZmJyP"
+          class="c2"
         >
-          
            
           <div
-            class="sc-kEjbQP UrNhf"
+            class="c3"
           >
             <h2
-              class="sc-hKgJUU sc-crrszt iVaMyO gpIzKb"
+              class="c4 c5"
             >
               <div>
                 switchNetwork
               </div>
             </h2>
             <svg
-              class="sc-dQoVA faTCxr"
+              class="c6"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -51,34 +335,34 @@ exports[`NetworkModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-kstqJO glfmLR"
+            class="c7"
           >
             <div
-              class="sc-bBXrwG kFKYkX"
+              class="c8"
             >
               <div
-                class="sc-cxFLGX dwWZCR"
+                class="c9"
               >
                 <div
-                  class="sc-iwyWTf gbnIyu"
+                  class="c10"
                 >
                   <div
-                    class="sc-lmoMya jNRJIs"
+                    class="c11"
                   >
                     <button
-                      class="sc-bdfBQB sc-dmlqKv fuUPpr eLvDHF"
+                      class="c12 c13"
                       data-testid=""
                     >
                       <div
-                        class="sc-kfzBvY VQpPp"
+                        class="c14"
                       >
                         <span
-                          class="sc-hHfuMS jokvNa"
+                          class="c15"
                         />
                         Random Chain
                       </div>
                       <div
-                        class="sc-fKFxtB gJFluz"
+                        class="c16"
                       />
                     </button>
                   </div>

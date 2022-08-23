@@ -1,30 +1,309 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TransactionModal Should match snapshot 1`] = `
+.c9 {
+  border-radius: 50%;
+  background: #1B1D1F;
+  border: 1px solid #295FF4;
+  height: 86px;
+  width: 86px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c7 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.c15 {
+  text-align: left;
+  font-family: Inter;
+  margin: 4px;
+  font-style: normal;
+  color: grey;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.c17 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c17:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c17:hover:enabled {
+  border-color: #fff;
+}
+
+.c17:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c17:disabled {
+  color: #303338;
+}
+
+.c5 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c5 strong,
+.c5 b {
+  font-weight: 600;
+}
+
+.c1 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  z-index: 1001;
+  width: 40%;
+  min-width: 400px;
+  max-width: 300px;
+  outline: 0;
+}
+
+.c0 {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(27,29,31,0.5);
+  z-index: 1000;
+}
+
+.c2 {
+  z-index: 100;
+  background: #26282D;
+  position: relative;
+  margin: auto;
+  border: 1px solid #303338;
+  border-radius: 10px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 16px rgba(0,0,0,0.25);
+}
+
+.c2 * {
+  -webkit-scrollbar-width: 12px;
+  -moz-scrollbar-width: 12px;
+  -ms-scrollbar-width: 12px;
+  scrollbar-width: 12px;
+  -webkit-scrollbar-color: #303338 transparent;
+  -moz-scrollbar-color: #303338 transparent;
+  -ms-scrollbar-color: #303338 transparent;
+  scrollbar-color: #303338 transparent;
+}
+
+.c2 *::-webkit-scrollbar {
+  width: 12px;
+}
+
+.c2 *::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.c2 *::-webkit-scrollbar-thumb {
+  background-color: #303338;
+  border-radius: 10px;
+  border: 3px solid #26282D;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #303338;
+  position: relative;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.c4 {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-bottom: none;
+}
+
+.c6 {
+  margin: auto 8px;
+}
+
+.c10 {
+  position: absolute;
+  color: #fff;
+  right: 1.5rem;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 800;
+}
+
+.c10:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.c11 {
+  top: 25px;
+}
+
+.c12 {
+  color: #fff;
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-around;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: space-around;
+  justify-content: space-around;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.c18 {
+  margin: 8px;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.c14 {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.c8 {
+  margin-top: 2rem;
+}
+
+@media only screen and (max-width:768px) {
+  .c4 {
+    position: relative;
+    top: 25%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c12 {
+    position: relative;
+    top: 25%;
+  }
+}
+
+@media only screen and (max-width:768px) {
+  .c16 {
+    position: relative;
+    top: 60%;
+  }
+}
+
 <body>
   <div>
     <div
-      class="sc-jrAFXE eHzIhx backdropModal"
+      class="c0 backdropModal"
     >
       <div
-        class="sc-pGacB dPhapg"
+        class="c1"
       >
         <div
-          class="sc-kEjbQP kEDttW"
+          class="c2"
         >
-          
            
           <div
-            class="sc-iqHYmW sc-crrszt gVIZiL bAsWEw"
+            class="c3 c4"
           >
             <h2
-              class="sc-fubCzh sc-dQoVA lkMZWw hKuUWY"
+              class="c5 c6"
             >
               <div
-                class="sc-dlfnuX sc-euMpEg ghjVNo inFglf"
+                class="c7 c8"
               >
                 <div
-                  class="sc-gsTEea fSStiW"
+                  class="c9"
                 >
                   <svg
                     fill="currentColor"
@@ -43,7 +322,7 @@ exports[`TransactionModal Should match snapshot 1`] = `
               </div>
             </h2>
             <svg
-              class="sc-bqyKOL sc-kstqJO dVjkkk jnbpOY"
+              class="c10 c11"
               fill="none"
               height="1em"
               stroke="currentColor"
@@ -69,21 +348,21 @@ exports[`TransactionModal Should match snapshot 1`] = `
             </svg>
           </div>
           <div
-            class="sc-hBEYId fFTFNQ"
+            class="c12"
           >
             <div
-              class="sc-dlfnuX ghjVNo"
+              class="c7"
             >
               <div
-                class="sc-dlfnuX sc-eCstlR ghjVNo ctJTEk"
+                class="c7 c13"
               >
                 transactionSubmitted
               </div>
               <div
-                class="sc-gInthZ jzepTi"
+                class="c14"
               >
                 <a
-                  class="sc-dlfnuX sc-eCstlR ghjVNo wEAhX"
+                  class="c7 c15"
                   color="grey"
                   target="_blank"
                 >
@@ -93,10 +372,10 @@ exports[`TransactionModal Should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="sc-fodVek dzyyQT"
+            class="c16"
           >
             <button
-              class="sc-jSgvzq sc-fFucqa ksDUMN hpQKPN"
+              class="c17 c18"
             >
               close
             </button>

@@ -11,11 +11,20 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     features: ['SNAPSHOT'],
     isRepGuild: true,
     isSnapshotGuild: false,
-    isSnapshotRepGuild: false,
+  }),
+}));
+jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+  useGuildConfig: () => ({
+    data: {
+      permissionRegistry: '0x0000000000000000000000000000000000000000',
+    },
   }),
 }));
 
+const mockChainId = 123456;
+
 jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ isConnected: true }),
   chain: {
     mainnet: {},
