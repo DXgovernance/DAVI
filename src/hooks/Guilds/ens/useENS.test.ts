@@ -19,7 +19,7 @@ describe('useENS', () => {
     jest.restoreAllMocks();
   });
   it('should return the resolved ens name', () => {
-    const mockEnsName = 'wagmi.eth';
+    const mockEnsName: any = 'wagmi.eth';
     jest.spyOn(wagmi, 'useEnsName').mockImplementationOnce(() => ({
       ...useEnsName(mockEnsName),
       data: mockEnsName,
@@ -32,8 +32,8 @@ describe('useENS', () => {
   });
 
   it('should return a valid address', () => {
-    const mockAddress = '0x0000000000000000000000000000000000000000';
-    const mockEnsName = 'wagmi.eth';
+    const mockAddress: any = '0x0000000000000000000000000000000000000000';
+    const mockEnsName: any = 'wagmi.eth';
     jest.spyOn(wagmi, 'useEnsAddress').mockImplementationOnce(() => ({
       ...useEnsAddress(mockAddress),
       data: mockAddress,
