@@ -1,24 +1,20 @@
-import { useEnsName } from 'wagmi';
 import { isAvailableOnENS } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
 import { MAINNET_ID } from 'utils';
+import { useEnsResolver } from 'wagmi';
 
-export default function useENSNameFromAddress(
-  ensAddress?: string,
-  chainId?: number
-) {
+export default function useENSResolver(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const {
-    data: ensName,
-    isLoading,
+    data: resolver,
     isError,
-  } = useEnsName({
-    address: ensAddress,
+    isLoading,
+  } = useEnsResolver({
+    name: ensName,
     chainId: supportedChainId,
   });
-
   return {
-    ensName,
-    isLoading,
+    resolver,
     isError,
+    isLoading,
   };
 }

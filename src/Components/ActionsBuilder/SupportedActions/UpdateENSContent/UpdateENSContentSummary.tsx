@@ -11,7 +11,7 @@ import { useEnsName, useNetwork } from 'wagmi';
 import { convertToIpfsHash, getIpfsUrl, isSupportedChainId } from './utils';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
-import useENSContentHash from 'hooks/Guilds/ens/useENSContentHash';
+import { useENSContentHash } from 'hooks/Guilds/ens/useENSPublicResolverContract';
 import { BiLinkExternal } from 'react-icons/bi';
 import { getBlockExplorerUrl } from 'provider/chains';
 import useIPFSFileMetadata from 'hooks/Guilds/ipfs/useIPFSFileMetadata';

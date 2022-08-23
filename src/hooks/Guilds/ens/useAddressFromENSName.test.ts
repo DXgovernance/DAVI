@@ -1,9 +1,8 @@
 import useAddressFromENSName from './useAddressFromENSName';
 
-jest.mock('./useAddressFromENSName', () => ({
-  __esModule: true,
-  default: () => ({
-    ensAddress: '0x0000000000000000000000000000000000000000',
+jest.mock('wagmi', () => ({
+  useEnsAddress: () => ({
+    data: '0x0000000000000000000000000000000000000000',
     isError: false,
     isLoading: false,
   }),

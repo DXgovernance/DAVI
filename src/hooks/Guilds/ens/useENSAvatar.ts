@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { resolveUri } from '../../../utils/url';
 import useENS from './useENS';
-import useENSPublicResolver from './useENSPublicResolver';
+import { useENSAvatarUri } from './useENSPublicResolverContract';
 import useERC721NFT from '../ether-swr/nft/useERC721NFT';
 import useERC1155NFT from '../ether-swr/nft/useERC1155NFT';
 
 const useENSAvatar = (nameOrAddress: string, chainId?: number) => {
   const { name: ENSName, address: ethAddress } = useENS(nameOrAddress, chainId);
-  const { avatarUri } = useENSPublicResolver(ENSName, chainId);
+  const { avatarUri } = useENSAvatarUri(ENSName, chainId);
   const { imageUrl } = useENSAvatarNFT(avatarUri, ethAddress, chainId);
 
   const imageUrlToUse = useMemo(() => {
