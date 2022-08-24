@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'components/theme.tsx';
 import initializeI18Next from '../src/i18n';
 import GlobalStyle from 'theme/GlobalTheme';
+import { createClient, WagmiConfig } from 'wagmi';
+import { getDefaultProvider } from 'ethers';
 
 initializeI18Next({ debug: false });
 
@@ -16,13 +18,21 @@ export const parameters = {
     },
   },
 };
+
+const client = createClient({
+  autoConnect: true,
+  provider: getDefaultProvider(),
+});
+
 const ComponentContainer = ({ children }) => (
-  <ThemeProvider theme={GuildsDarkTheme}>
-    <HashRouter basename="/">
-      {children}
-      <GlobalStyle />
-    </HashRouter>
-  </ThemeProvider>
+  <WagmiConfig client={client}>
+    <ThemeProvider theme={GuildsDarkTheme}>
+      <HashRouter basename="/">
+        {children}
+        <GlobalStyle />
+      </HashRouter>
+    </ThemeProvider>
+  </WagmiConfig>
 );
 
 export const decorators = [
