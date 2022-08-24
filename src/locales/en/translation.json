@@ -216,5 +216,6 @@
   },
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code",
-  "noGuildsRegistered": "No guilds registered on this network"
+  "noGuildsRegistered": "No guilds registered on this network",
+  "stakeTokens": "Stake {{token}} tokens"
 }

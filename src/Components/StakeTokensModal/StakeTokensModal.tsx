@@ -1,18 +1,20 @@
 import { Loading } from 'Components/Primitives/Loading';
 import { Modal } from 'Components/Primitives/Modal';
+import { useTranslation } from 'react-i18next';
 import { StakeTokensModalProps } from './types';
 
 const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
   isOpen,
   onDismiss,
-  StakeTokensForm,
-  StakeTokensFormProps,
+  token,
+  children,
 }) => {
+  const { t } = useTranslation();
   return (
     <Modal
       header={
-        StakeTokensFormProps?.token ? (
-          `Stake ${StakeTokensFormProps.token?.name} tokens`
+        token ? (
+          t('stakeTokens', { token: token.symbol })
         ) : (
           <Loading loading text skeletonProps={{ width: '100px' }} />
         )
@@ -21,7 +23,7 @@ const StakeTokensModal: React.FC<StakeTokensModalProps> = ({
       onDismiss={onDismiss}
       maxWidth={300}
     >
-      <StakeTokensForm {...StakeTokensFormProps} />
+      {children}
     </Modal>
   );
 };
