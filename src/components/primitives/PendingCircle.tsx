@@ -70,8 +70,6 @@ const SpinningCircle = styled.div<{
   }
 `;
 
-const PendingCircle = ({ height, width, color }: PendingCircleType) => {
+export const PendingCircle = ({ height, width, color }: PendingCircleType) => {
   return <SpinningCircle height={height} width={width} color={color} />;
 };
-
-export { PendingCircle };

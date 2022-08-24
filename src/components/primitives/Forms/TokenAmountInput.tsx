@@ -9,7 +9,7 @@ export interface TokenAmountInputProps extends InputProps<BigNumber> {
   decimals?: number;
 }
 
-const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
+export const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   value,
   onChange,
   decimals = 18,
@@ -47,5 +47,3 @@ const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
     />
   );
 };
-
-export { TokenAmountInput };

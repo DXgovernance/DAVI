@@ -14,7 +14,7 @@ const StyledSwitch = styled(Switch)<ReactSwitchProps>`
   }
 `;
 
-const Toggle: React.FC<FormElementProps<boolean>> = ({
+export const Toggle: React.FC<FormElementProps<boolean>> = ({
   value,
   onChange,
   ...rest
@@ -38,5 +38,3 @@ const Toggle: React.FC<FormElementProps<boolean>> = ({
     />
   );
 };
-
-export { Toggle };

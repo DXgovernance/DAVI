@@ -12,7 +12,7 @@ export const ClickableIcon = styled(Box)`
   cursor: pointer;
 `;
 
-const AddressInput: React.FC<InputProps<string>> = ({
+export const AddressInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   isInvalid,
@@ -51,5 +51,3 @@ const AddressInput: React.FC<InputProps<string>> = ({
     />
   );
 };
-
-export { AddressInput };

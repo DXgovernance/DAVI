@@ -20,12 +20,12 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "spender",
+          "name": "_spender",
           "type": "address"
         },
         {
           "internalType": "uint256",
-          "name": "amount",
+          "name": "_value",
           "type": "uint256"
         }
       ],
@@ -61,17 +61,17 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "sender",
+          "name": "_from",
           "type": "address"
         },
         {
           "internalType": "address",
-          "name": "recipient",
+          "name": "_to",
           "type": "address"
         },
         {
           "internalType": "uint256",
-          "name": "amount",
+          "name": "_value",
           "type": "uint256"
         }
       ],
@@ -106,7 +106,7 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "account",
+          "name": "_owner",
           "type": "address"
         }
       ],
@@ -141,12 +141,12 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "recipient",
+          "name": "_to",
           "type": "address"
         },
         {
           "internalType": "uint256",
-          "name": "amount",
+          "name": "_value",
           "type": "uint256"
         }
       ],
@@ -167,12 +167,12 @@
       "inputs": [
         {
           "internalType": "address",
-          "name": "owner",
+          "name": "_owner",
           "type": "address"
         },
         {
           "internalType": "address",
-          "name": "spender",
+          "name": "_spender",
           "type": "address"
         }
       ],
