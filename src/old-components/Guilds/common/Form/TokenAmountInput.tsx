@@ -29,7 +29,6 @@ const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valueAsString]);
 
-  // Call onChange when the amount changes
   useEffect(() => {
     onChange(localAmountBN);
     // eslint-disable-next-line react-hooks/exhaustive-deps
