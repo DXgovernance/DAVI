@@ -109,7 +109,7 @@ const Governance = ({ guildId }) => {
         />
         {isProposalCreationAllowed && (
           <>
-            <UnstyledLink to={`/${chainName}/${guildId}/createProposal`}>
+            <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
               <StyledButton
                 variant="secondary"
                 data-testid="create-proposal-button"

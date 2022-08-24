@@ -47,7 +47,7 @@ const App = () => {
                   element={<ProposalPage />}
                 />
                 <Route
-                  path="/:chainName/:guildId/createProposal"
+                  path="/:chainName/:guildId/create-proposal"
                   element={<CreateProposalPage />}
                 />
                 <Route
