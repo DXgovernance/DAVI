@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { resolveUri } from '../../../utils/url';
+import { resolveUri } from 'utils/url';
 import useENS from './useENS';
 import { useENSAvatarUri } from './useENSPublicResolverContract';
 import useERC721NFT from '../ether-swr/nft/useERC721NFT';

@@ -1,4 +1,4 @@
-import { isAddress } from '../../../utils';
+import { isAddress } from 'utils';
 import useAddressFromENSName from './useAddressFromENSName';
 import useENSNameFromAddress from './useENSNameFromAddress';
 
