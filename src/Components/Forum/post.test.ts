@@ -1,6 +1,6 @@
 import { postTemplate } from './post';
 
-describe.only('post', () => {
+describe('post', () => {
   const mockPost = {
     body: 'Hello world',
     title: 'Hello',
