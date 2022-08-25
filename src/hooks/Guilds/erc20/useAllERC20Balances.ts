@@ -1,4 +1,4 @@
-import ERC20ABI from '../../../../abis/ERC20.json';
+import ERC20ABI from 'abis/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 import {

@@ -1,4 +1,4 @@
-import { useERC20Info } from '../ether-swr/erc20/useERC20Info';
+import { useERC20Info } from '../erc20/useERC20Info';
 import { useGuildConfig } from '../ether-swr/guild/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 

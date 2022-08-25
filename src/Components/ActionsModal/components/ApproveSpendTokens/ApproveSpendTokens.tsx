@@ -8,7 +8,7 @@ import Input from 'old-components/Guilds/common/Form/Input';
 import Avatar from 'old-components/Guilds/Avatar';
 import { TokenPicker } from 'Components/TokenPicker';
 import TokenAmountInput from 'old-components/Guilds/common/Form/TokenAmountInput';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';
 import {

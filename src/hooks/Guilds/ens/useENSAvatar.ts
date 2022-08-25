@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { resolveUri } from 'utils/url';
 import useENS from './useENS';
 import { useENSAvatarUri } from './useENSPublicResolverContract';
-import useERC721NFT from '../ether-swr/nft/useERC721NFT';
-import useERC1155NFT from '../ether-swr/nft/useERC1155NFT';
+import useERC721NFT from '../nft/useERC721NFT';
+import useERC1155NFT from '../nft/useERC1155NFT';
 
 const useENSAvatar = (nameOrAddress: string, chainId?: number) => {
   const { name: ENSName, address: ethAddress } = useENS(nameOrAddress, chainId);
@@ -66,7 +66,6 @@ const useENSAvatarNFT = (
 
     return {};
   }, [nftUri]);
-
   const { ownerAddress: ERC721Owner, metadata: ERC721Metadata } = useERC721NFT(
     decodedUrl.type === 'erc721' ? decodedUrl.contractId : null,
     decodedUrl.tokenId,

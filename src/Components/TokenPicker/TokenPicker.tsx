@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import Input from 'old-components/Guilds/common/Form/Input';
 import { Modal } from 'Components/Primitives/Modal';
-import { useAllERC20Balances } from 'hooks/Guilds/ether-swr/erc20/useAllERC20Balances';
+import { useAllERC20Balances } from 'hooks/Guilds/erc20/useAllERC20Balances';
 import useMiniSearch from 'hooks/useMiniSearch';
 
 import { TokenListItem } from './components/TokenListItem';

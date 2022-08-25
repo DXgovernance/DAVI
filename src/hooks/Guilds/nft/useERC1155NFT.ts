@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { resolveUri } from '../../../../utils/url';
-import ERC1155abi from '../../../../abis/ERC1155.json';
-import useEtherSWR from '../useEtherSWR';
+import { resolveUri } from '../../../utils/url';
+import ERC1155abi from '../../../abis/ERC1155.json';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import { BigNumber } from 'ethers';
 import useSWR from 'swr';
 import { useProvider } from 'wagmi';

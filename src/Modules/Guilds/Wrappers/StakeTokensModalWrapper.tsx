@@ -1,11 +1,11 @@
 import { StakeTokensModal } from 'Components/StakeTokensModal';
 import StakeTokensForm from 'Components/StakeTokensModal/components/StakeTokensForm/StakeTokensForm';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTransactions } from 'contexts/Guilds';
-import { useERC20Allowance } from 'hooks/Guilds/ether-swr/erc20/useERC20Allowance';
-import { useERC20Balance } from 'hooks/Guilds/ether-swr/erc20/useERC20Balance';
+import { useERC20Allowance } from 'hooks/Guilds/erc20/useERC20Allowance';
+import { useERC20Balance } from 'hooks/Guilds/erc20/useERC20Balance';
 import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
 import { useERC20, useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
