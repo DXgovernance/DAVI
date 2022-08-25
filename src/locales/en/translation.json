@@ -199,7 +199,7 @@
   "recipientAddressIsRequired": "Recipient address is required",
   "amountIsRequired": "Amount is required",
   "invalidRecipientAddress": "Invalid recipient address",
-  "tokenAddressIsRequired": "Token address is required",
+  "tokenIsRequired": "Token is required",
   "amountCannotBeZero": "Amount cannot be zero",
   "invalidAmount": "Invalid amount",
   "invalidTokenAddress": "Invalid token address",
