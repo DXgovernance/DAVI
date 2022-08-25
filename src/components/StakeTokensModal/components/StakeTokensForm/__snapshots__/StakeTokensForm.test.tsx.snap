@@ -325,7 +325,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             placeholder="0.0"
             spellcheck="false"
             type="text"
-            value="0.0"
+            value=""
           />
           <div
             class="c14"
@@ -385,12 +385,14 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
     </div>
     <button
       class="c15 c16"
-      data-testid="lock-token-spending"
+      data-testid="approve-token-spending"
       disabled=""
     >
-      Lock
+      approve
        
       REP
+       
+      spending
     </button>
   </div>
    
