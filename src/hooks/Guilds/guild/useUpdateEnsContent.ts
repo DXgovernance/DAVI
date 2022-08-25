@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { UpdateENSContentDecodedCall } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/types';
+import { UpdateENSContentDecodedCall } from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/types';
 
 /*
   @from: Guild address

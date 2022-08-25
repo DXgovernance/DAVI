@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { resolveUri } from '../../../../utils/url';
-import ERC721abi from '../../../../abis/ERC721.json';
+import ERC721 from 'contracts/ERC721.json';
 import useEtherSWR from '../useEtherSWR';
 import useSWR from 'swr';
 import { useProvider } from 'wagmi';
@@ -25,7 +25,7 @@ export default function useERC721NFT(
       : [],
     {
       web3Provider: provider,
-      ABIs: new Map([[contractId, ERC721abi]]),
+      ABIs: new Map([[contractId, ERC721.abi]]),
       refreshInterval: 0,
     }
   );
