@@ -1,4 +1,4 @@
-import { GuildsTheme } from "Components/theme"
+import { GuildsTheme } from "components/theme"
 
 // Override the styled components default theme
 declare module 'styled-components' {

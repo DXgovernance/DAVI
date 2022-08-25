@@ -20,7 +20,7 @@
     ],
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "noEmit": true,
     "declaration": true,
     "noUnusedParameters": false,
