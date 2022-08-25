@@ -14,6 +14,7 @@ import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { ProposalState } from 'types/types.guilds.d';
 import { useAccount } from 'wagmi';
 import {
   ProposalListWrapper,
@@ -72,8 +73,10 @@ const Governance = ({ guildId }) => {
 
   // Show only 'Active' and 'Executable' proposals
   useEffect(() => {
-    if (!isStateSelected('Active')) onToggleState('Active');
-    if (!isStateSelected('Executable')) onToggleState('Executable');
+    if (!isStateSelected(ProposalState.Active))
+      onToggleState(ProposalState.Active);
+    if (!isStateSelected(ProposalState.Executable))
+      onToggleState(ProposalState.Executable);
   }, [onToggleState]);
 
   const revertedProposals = useMemo(() => {
