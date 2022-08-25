@@ -1,4 +1,4 @@
-import ERC20ABI from '../../../../abis/ERC20.json';
+import ERC20 from 'contracts/ERC20.json';
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 import {
@@ -28,7 +28,7 @@ export const useAllERC20Balances = (
     enabled: erc20Tokens?.length > 0 && !!walletAddress,
     contracts: erc20Tokens.map(token => ({
       addressOrName: token.address,
-      contractInterface: ERC20ABI,
+      contractInterface: ERC20.abi,
       functionName: 'balanceOf',
       args: [walletAddress],
     })),

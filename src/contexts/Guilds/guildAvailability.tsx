@@ -1,8 +1,8 @@
 import { MultichainContext } from 'contexts/MultichainProvider';
-import { ButtonIcon, IconButton } from 'old-components/Guilds/common/Button';
-import { Box } from 'Components/Primitives/Layout';
-import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
+import { ButtonIcon, IconButton } from 'components/primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
+import { Result, ResultState } from 'components/Result';
+import { UnstyledLink } from 'components/primitives/Links';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import styled from 'styled-components';

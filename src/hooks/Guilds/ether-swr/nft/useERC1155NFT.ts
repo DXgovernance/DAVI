@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { resolveUri } from '../../../../utils/url';
-import ERC1155abi from '../../../../abis/ERC1155.json';
+import ERC1155 from 'contracts/ERC1155.json';
 import useEtherSWR from '../useEtherSWR';
 import { BigNumber } from 'ethers';
 import useSWR from 'swr';
@@ -27,7 +27,7 @@ export default function useERC1155NFT(
       : [],
     {
       web3Provider: provider,
-      ABIs: new Map([[contractId, ERC1155abi]]),
+      ABIs: new Map([[contractId, ERC1155.abi]]),
       refreshInterval: 0,
     }
   );

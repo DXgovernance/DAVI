@@ -1,7 +1,7 @@
 import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useProvider } from 'wagmi';
-import ensResolverABI from '../../../../abis/ENSPublicResolver.json';
+import ensResolver from 'contracts/ENSPublicResolver.json';
 import useEtherSWR from '../useEtherSWR';
 import useENSRegistry from './useENSRegistry';
 
@@ -21,7 +21,7 @@ export default function useENSPublicResolver(
       ? [[resolverAddress, 'text', utils.namehash(ensName), 'avatar']]
       : [],
     {
-      ABIs: new Map([[resolverAddress, ensResolverABI]]),
+      ABIs: new Map([[resolverAddress, ensResolver.abi]]),
       web3Provider: provider,
     }
   );
