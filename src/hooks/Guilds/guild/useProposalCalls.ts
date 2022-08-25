@@ -5,7 +5,7 @@ import { bulkDecodeCallsFromOptions } from '../contracts/useDecodedCall';
 import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import { useProposal } from '../ether-swr/guild/useProposal';
 import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
-import { Call, Option } from 'Components/ActionsBuilder/types';
+import { Call, Option } from 'components/ActionsBuilder/types';
 import { ZERO_HASH } from 'utils';
 import useProposalMetadata from '../useProposalMetadata';
 import { useRichContractRegistry } from '../contracts/useRichContractRegistry';

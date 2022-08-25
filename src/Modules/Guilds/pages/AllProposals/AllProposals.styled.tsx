@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Box } from 'Components/Primitives/Layout';
+import { Box } from 'components/primitives/Layout/Box';
 
 export const ProposalsList = styled(Box)`
   margin-top: 1rem;
