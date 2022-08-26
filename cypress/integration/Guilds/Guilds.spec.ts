@@ -58,7 +58,7 @@ describe('Guilds', () => {
         .should('be.visible')
         .click();
       cy.findByTestId(Guilds.stakeTokensModal).should('be.visible');
-      cy.findByText('Stake DXDao on localhost tokens').should('be.visible');
+      cy.findByText('Stake DXD tokens').should('be.visible');
     });
 
     it('Should set max amount, approve spending and close modal', () => {
