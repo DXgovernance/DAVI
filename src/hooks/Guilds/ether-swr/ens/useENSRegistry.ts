@@ -1,7 +1,7 @@
 import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useProvider } from 'wagmi';
-import ensRegistrarABI from '../../../../abis/ENSRegistrar.json';
+import ensRegistrar from 'contracts/ENSRegistrar.json';
 import { ENS_REGISTRAR_ADDRESS } from '../../../../constants/addresses';
 import useEtherSWR from '../../ether-swr/useEtherSWR';
 
@@ -16,7 +16,7 @@ export default function useENSRegistry(ensName: string, chainId?: number) {
       ? [[ENS_REGISTRAR_ADDRESS, 'resolver', utils.namehash(ensName)]]
       : [],
     {
-      ABIs: new Map([[ENS_REGISTRAR_ADDRESS, ensRegistrarABI]]),
+      ABIs: new Map([[ENS_REGISTRAR_ADDRESS, ensRegistrar.abi]]),
       web3Provider: provider,
     }
   );

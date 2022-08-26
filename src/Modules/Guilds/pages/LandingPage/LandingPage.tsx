@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
-import GuildCard from 'Components/GuildCard/GuildCard';
+import { GuildCard } from 'components/GuildCard/GuildCard';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';

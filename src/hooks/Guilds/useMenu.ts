@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProposalState } from 'types/types.guilds.d';
-import { SupportedAction } from 'Components/ActionsBuilder/types';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 
 // This hooks controls the filter for the menus.
 export const useMenu = ({
