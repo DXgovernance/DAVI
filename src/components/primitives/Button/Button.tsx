@@ -14,26 +14,26 @@ const variantStyles = (variant = 'primary') =>
       active?: boolean;
       selected?: boolean;
     }>`
-      border: 1px solid ${({ theme }) => theme.colors.border.initial};
-      background-color: ${({ theme }) => theme.colors.button.primary};
+      border: 1px solid ${({ theme }) => theme.colors.border1};
+      background-color: ${({ theme }) => theme.colors.primary1};
       color: ${({ theme }) => theme.colors.text};
       border-radius: ${({ theme }) => theme.radii.pill};
       padding: ${({ padding }) => (padding ? padding : ' 0.5rem 0.8rem')};
       margin: ${({ margin }) => (margin ? margin : '0.2rem')};
 
       :hover:enabled {
-        border-color: ${({ theme }) => theme.colors.border.hover};
+        border-color: ${({ theme }) => theme.colors.border3};
       }
 
       :active:enabled {
-        border: 1px solid ${({ theme }) => theme.colors.muted};
+        border: 1px solid ${({ theme }) => theme.colors.border1};
       }
 
       ${({ active, selected }) =>
         (active || selected) &&
         css`
-          background-color: ${({ theme }) => theme.colors.primary};
-          color: ${({ theme }) => theme.colors.background};
+          background-color: ${({ theme }) => theme.colors.primary1};
+          color: ${({ theme }) => theme.colors.bg1};
         `}
     `,
     secondary: css<{
@@ -42,7 +42,7 @@ const variantStyles = (variant = 'primary') =>
       active?: boolean;
       selected?: boolean;
     }>`
-      border: 1px solid ${({ theme }) => theme.colors.border.initial};
+      border: 1px solid ${({ theme }) => theme.colors.border1};
       background-color: transparent;
       color: ${({ theme }) => theme.colors.text};
       border-radius: ${({ theme }) => theme.radii.pill};
@@ -50,21 +50,21 @@ const variantStyles = (variant = 'primary') =>
       margin: ${({ margin }) => (margin ? margin : '0.2rem')};
 
       :hover:enabled {
-        border-color: ${({ theme }) => theme.colors.border.hover};
+        border-color: ${({ theme }) => theme.colors.border3};
       }
 
       :active:enabled {
-        border: 1px solid ${({ theme }) => theme.colors.muted};
+        border: 1px solid ${({ theme }) => theme.colors.border1};
       }
       :disabled {
-        color: ${({ theme }) => theme.colors.muted};
+        color: ${({ theme }) => theme.colors.border1};
       }
 
       ${({ active, selected }) =>
         (active || selected) &&
         css`
-          background-color: ${({ theme }) => theme.colors.primary};
-          color: ${({ theme }) => theme.colors.background};
+          background-color: ${({ theme }) => theme.colors.primary1};
+          color: ${({ theme }) => theme.colors.bg1};
         `}
     `,
     minimal: css`
@@ -73,7 +73,7 @@ const variantStyles = (variant = 'primary') =>
       color: ${({ theme }) => theme.colors.text};
 
       :hover:enabled {
-        color: ${({ theme }) => theme.colors.muted};
+        color: ${({ theme }) => theme.colors.border1};
       }
     `,
   }[variant]);

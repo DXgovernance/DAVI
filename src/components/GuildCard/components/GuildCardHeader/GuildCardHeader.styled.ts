@@ -11,7 +11,7 @@ export const MemberWrapper = styled(Flex)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 export const MemberNumberWrapper = styled.div`
   padding-left: 7px;
@@ -25,11 +25,9 @@ export const ProposalsInformation = styled(Box)<{ proposals?: string }>`
   border-radius: 15px;
   border: 1px solid
     ${({ proposals, theme }) =>
-      proposals === 'active'
-        ? theme.colors.card.green
-        : theme.colors.card.grey};
-  background-color: ${({ theme }) => theme.colors.background};
+      proposals === 'active' ? theme.colors.active : theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.bg1};
   color: ${({ proposals, theme }) =>
-    proposals === 'active' ? theme.colors.card.green : theme.colors.card.grey};
+    proposals === 'active' ? theme.colors.active : theme.colors.grey};
   padding: 0.25rem 0.4rem;
 `;

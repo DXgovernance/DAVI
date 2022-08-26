@@ -32,11 +32,15 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
   margin: 0.5rem;
   border-radius: 15px;
   border: 1px solid
-    ${props =>
-      props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${props =>
-    props.statusDetail === ProposalState.Failed ? '#D500F9' : '#1DE9B6'};
+    ${({ theme, statusDetail }) =>
+      statusDetail === ProposalState.Failed
+        ? theme.colors.failed
+        : theme.colors.active};
+  background-color: ${({ theme }) => theme.colors.bg1};
+  color: ${({ theme, statusDetail }) =>
+    statusDetail === ProposalState.Failed
+      ? theme.colors.failed
+      : theme.colors.active};
   padding: 0.25rem 0.4rem;
 `;
 

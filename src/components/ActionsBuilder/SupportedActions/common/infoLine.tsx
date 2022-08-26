@@ -9,6 +9,6 @@ export const Segment = styled.span`
 
 export const MetadataTag = styled.span`
   padding: 0.125rem 0.375rem;
-  background-color: ${({ theme }) => theme.colors.muted};
+  background-color: ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
 `;

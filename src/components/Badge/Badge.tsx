@@ -7,8 +7,8 @@ export interface BadgeProps {
 
 export const Badge = styled.div<BadgeProps>`
   border-radius: ${({ theme }) => theme.radii.rounded};
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.primary1};
+  color: ${({ theme }) => theme.colors.bg1};
   width: ${({ size }) => (size ? `${size}px` : '20px')};
   height: ${({ size }) => (size ? `${size}px` : '20px')};
   font-size: inherit;
@@ -20,7 +20,7 @@ export const Badge = styled.div<BadgeProps>`
   ${({ reverse }) =>
     reverse &&
     css`
-      background-color: ${({ theme }) => theme.colors.background};
-      color: ${({ theme }) => theme.colors.primary};
+      background-color: ${({ theme }) => theme.colors.bg1};
+      color: ${({ theme }) => theme.colors.primary1};
     `}
 `;

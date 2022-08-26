@@ -15,7 +15,7 @@ import FormElementRenderer, {
 const SubmitButton = styled(ActionsButton).attrs(() => ({
   variant: 'primary',
 }))`
-  background-color: ${({ theme }) => theme.colors.button.primary};
+  background-color: ${({ theme }) => theme.colors.primary1};
   justify-content: center;
 `;
 

@@ -7,13 +7,13 @@ import { useMemo } from 'react';
 
 const StyledDateTime = styled(DateTime)`
   .rdtPicker {
-    background: ${({ theme }) => theme.colors.modalBackground};
+    background: ${({ theme }) => theme.colors.bg3};
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-    border: 1px solid ${({ theme }) => theme.colors.muted};
+    border: 1px solid ${({ theme }) => theme.colors.border1};
     padding: 1.5rem;
     border-radius: 0.625rem;
     font-family: ${({ theme }) => theme.fonts.body};
-    color: ${({ theme }) => theme.colors.proposalText.grey};
+    color: ${({ theme }) => theme.colors.grey};
     position: fixed;
   }
 
@@ -36,20 +36,20 @@ const StyledDateTime = styled(DateTime)`
   .rdtPicker td.rdtHour:hover,
   .rdtPicker td.rdtMinute:hover,
   .rdtPicker td.rdtSecond:hover {
-    background: ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.bg4};
     border-radius: 50%;
     outline: 1px solid ${({ theme }) => theme.colors.text};
   }
 
   .rdtPicker td.rdtTimeToggle:hover,
   .rdtPicker td.rdtSwitch:hover {
-    background: ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.bg4};
     cursor: pointer;
   }
 
   .rdtPicker td.rdtOld,
   .rdtPicker td.rdtNew {
-    color: ${({ theme }) => theme.colors.proposalText.grey};
+    color: ${({ theme }) => theme.colors.grey};
   }
 
   .rdtPicker td.rdtToday:before {
@@ -59,7 +59,7 @@ const StyledDateTime = styled(DateTime)`
   .rdtPicker td.rdtActive,
   .rdtPicker td.rdtActive:hover {
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.bg1};
     cursor: pointer;
   }
 
@@ -76,7 +76,7 @@ const StyledDateTime = styled(DateTime)`
   .rdtPicker th.rdtNext:hover,
   .rdtPicker th.rdtPrev:hover,
   .rdtPicker .rdtCounter .rdtBtn:hover {
-    background: ${({ theme }) => theme.colors.secondary};
+    background: ${({ theme }) => theme.colors.bg4};
     cursor: pointer;
   }
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const OptionWrapper = styled(Box)<{ dragging: boolean }>`
   position: relative;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg1};
   padding: 1rem;
   border-top: 1px solid;
   border-bottom: 1px solid;

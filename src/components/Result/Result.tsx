@@ -42,7 +42,7 @@ const Title = styled(Heading).attrs<any>(() => ({
 const Subtitle = styled(Heading).attrs<{ theme: GuildsTheme }>(() => ({
   size: '1',
 }))`
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 const IconMap = {
@@ -68,7 +68,7 @@ export const Result: React.FC<ResultProps> = ({
           color:
             state === ResultState.ERROR
               ? theme?.colors?.red
-              : theme?.colors?.primary,
+              : theme?.colors?.primary1,
         })}
       <Title>{title}</Title>
       <Subtitle>{subtitle}</Subtitle>

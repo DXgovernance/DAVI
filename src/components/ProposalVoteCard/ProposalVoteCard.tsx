@@ -48,8 +48,8 @@ const ProposalVoteCard = ({
   const toastError = (msg: string) =>
     toast.error(msg, {
       style: {
-        backgroundColor: theme.colors.background,
-        borderColor: theme.colors.muted,
+        backgroundColor: theme.colors.bg1,
+        borderColor: theme.colors.border1,
       },
       autoClose: 2800,
       hideProgressBar: true,

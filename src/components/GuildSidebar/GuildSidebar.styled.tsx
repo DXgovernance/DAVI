@@ -7,13 +7,13 @@ export const SidebarWrapper = styled(Box)`
   color: ${({ theme }) => theme.colors.text};
   @media only screen and (min-width: 768px) {
     margin-right: 1rem;
-    border: 1px solid ${({ theme }) => theme.colors.muted};
+    border: 1px solid ${({ theme }) => theme.colors.border1};
     border-radius: ${({ theme }) => theme.radii.curved};
   }
 `;
 
 export const DaoInfoPanel = styled(Box)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
   display: flex;
   flex-direction: column;
   padding: 2rem;
@@ -66,7 +66,7 @@ export const SidebarMenu = styled(Menu)`
 export const SidebarMenuItem = styled.div<{ current?: boolean }>`
   padding: 0.8rem 1rem;
   color: ${({ current, theme }) =>
-    current ? theme.colors.text : theme.colors.proposalText.grey};
+    current ? theme.colors.text : theme.colors.grey};
 
   @media only screen and (min-width: 768px) {
     border-left: 2px solid
@@ -74,18 +74,18 @@ export const SidebarMenuItem = styled.div<{ current?: boolean }>`
   }
 
   &:hover {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.muted};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.border1};
 
     @media only screen and (min-width: 768px) {
       border-left: 2px solid
         ${({ current, theme }) =>
-          current ? theme.colors.text : theme.colors.muted};
+          current ? theme.colors.text : theme.colors.border1};
       border-bottom: initial;
     }
   }
 
   &:active {
-    border-bottom: 2px solid ${({ theme }) => theme.colors.muted};
+    border-bottom: 2px solid ${({ theme }) => theme.colors.border1};
 
     @media only screen and (min-width: 768px) {
       border-left: 2px solid ${({ theme }) => theme.colors.text};

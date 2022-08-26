@@ -20,7 +20,7 @@ export const ControlLabel = styled(Box)`
   display: flex;
   flex-direction: row;
   margin-bottom: 0.75rem;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   font-size: ${({ theme }) => theme.fontSizes.body};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
 `;

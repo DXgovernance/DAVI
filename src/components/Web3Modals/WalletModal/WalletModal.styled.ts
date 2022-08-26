@@ -19,7 +19,7 @@ export const BackIcon = styled(FiArrowLeft)`
   padding: 0;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.muted};
+    color: ${({ theme }) => theme.colors.border1};
   }
 `;
 
@@ -36,5 +36,5 @@ export const TransactionsListHeading = styled(Heading)`
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   font-size: ${({ theme }) => theme.fontSizes.body};
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;

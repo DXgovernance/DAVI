@@ -101,7 +101,7 @@ exports[`Filter Should match snapshot 1`] = `
   border-radius: 10px;
   padding-top: 0.25rem;
   position: absolute;
-  background-color: #1B1D1F;
+  background-color: #26282D;
   z-index: 9999;
   width: 100%;
   min-width: 200px;
@@ -161,7 +161,7 @@ exports[`Filter Should match snapshot 1`] = `
 }
 
 .c13:hover {
-  background-color: #f5f5f5;
+  background-color: #181B1B;
   color: #295FF4;
 }
 

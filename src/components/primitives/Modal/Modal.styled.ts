@@ -29,10 +29,10 @@ export const Backdrop = styled.div<{ zIndex: number }>`
 
 export const StyledModal = styled.div`
   z-index: 100;
-  background: ${({ theme }) => theme.colors.modalBackground};
+  background: ${({ theme }) => theme.colors.bg3};
   position: relative;
   margin: auto;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   box-sizing: border-box;
   box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
@@ -40,7 +40,7 @@ export const StyledModal = styled.div`
   /* Firefox */
   * {
     scrollbar-width: 12px;
-    scrollbar-color: ${({ theme }) => theme.colors.muted} transparent;
+    scrollbar-color: ${({ theme }) => theme.colors.border1} transparent;
   }
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
@@ -50,16 +50,16 @@ export const StyledModal = styled.div`
     background: transparent;
   }
   *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.colors.muted};
+    background-color: ${({ theme }) => theme.colors.border1};
     border-radius: 10px;
-    border: 3px solid ${({ theme }) => theme.colors.modalBackground};
+    border: 3px solid ${({ theme }) => theme.colors.bg3};
   }
 `;
 
 export const Header = styled.div`
   display: flex;
   padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
   position: relative;
   align-items: center;
   color: ${({ theme }) => theme.colors.text};

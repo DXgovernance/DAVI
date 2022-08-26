@@ -53,7 +53,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
   border-radius: 10px;
   padding-top: 0.25rem;
   position: absolute;
-  background-color: #1B1D1F;
+  background-color: #26282D;
   z-index: 9999;
   width: 100%;
   min-width: 200px;
@@ -213,7 +213,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
   border-radius: 10px;
   padding-top: 0.25rem;
   position: absolute;
-  background-color: #1B1D1F;
+  background-color: #26282D;
   z-index: 9999;
   width: 100%;
   min-width: 200px;
@@ -418,7 +418,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
   border-radius: 10px;
   padding-top: 0.25rem;
   position: absolute;
-  background-color: #1B1D1F;
+  background-color: #26282D;
   z-index: 9999;
   width: 100%;
   min-width: 200px;
@@ -578,7 +578,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
   border-radius: 10px;
   padding-top: 0.25rem;
   position: absolute;
-  background-color: #1B1D1F;
+  background-color: #26282D;
   z-index: 9999;
   width: 100%;
   min-width: 200px;

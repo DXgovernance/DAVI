@@ -15,7 +15,7 @@ export const DetailHeader = styled(DetailRow)`
 `;
 
 export const DetailBody = styled(DetailRow)`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin: 0;
 `;
 
@@ -24,7 +24,7 @@ export const RedHighlight = styled.span`
 `;
 
 export const StyledSegmentLink = styled.a`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-right: 0.5rem;
   display: flex;
   justify-content: space-between;

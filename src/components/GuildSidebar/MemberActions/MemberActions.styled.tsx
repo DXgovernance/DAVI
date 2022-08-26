@@ -27,7 +27,7 @@ export const IconHolder = styled.span`
 `;
 
 export const VotingPower = styled.div`
-  background-color: #282b30;
+  background-color: ${({ theme }) => theme.colors.bg2};
   color: #fff;
   border-radius: 32px;
   padding: 2px 8px;

@@ -9,7 +9,7 @@ export const InfoDetail = styled(Box)`
 `;
 
 export const InfoDetailMuted = styled.span`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const ProposalHistoryIcon = styled.span<{ active?: boolean }>`
@@ -17,16 +17,16 @@ export const ProposalHistoryIcon = styled.span<{ active?: boolean }>`
   height: 1.25rem;
   width: 1.25rem;
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.proposalText.grey};
+  border: 1px solid ${({ theme }) => theme.colors.grey};
   display: inline-flex;
   justify-content: center;
   align-items: center;
   &:hover {
-    border-color: ${({ theme }) => theme.colors.border.hover};
+    border-color: ${({ theme }) => theme.colors.border3};
   }
   ${({ active }) =>
     active &&
     css`
-      border-color: ${({ theme }) => theme.colors.border.hover};
+      border-color: ${({ theme }) => theme.colors.border3};
     `}
 `;

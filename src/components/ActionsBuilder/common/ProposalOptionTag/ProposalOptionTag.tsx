@@ -10,7 +10,7 @@ const Tag = styled.span<{ color: string }>`
   margin: 0;
   border-radius: 0.375rem;
   padding: 0.25rem 0.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   color: ${({ color }) => color};
   border-color: ${({ color }) => color};
