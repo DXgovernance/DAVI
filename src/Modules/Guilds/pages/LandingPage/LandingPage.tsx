@@ -2,8 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
-import GuildCard from 'Components/GuildCard/GuildCard';
-import Input from 'old-components/Guilds/common/Form/Input';
+import { GuildCard } from 'components/GuildCard/GuildCard';
+import { Input } from 'components/primitives/Forms/Input';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
@@ -77,6 +77,7 @@ const LandingPage: React.FC = () => {
           value=""
           icon={<AiOutlineSearch size={24} />}
           placeholder="Search Guild"
+          onChange={() => {}} // TODO: implement search guild
         />
         <StyledButton data-testid="create-guild-button">
           {' '}
