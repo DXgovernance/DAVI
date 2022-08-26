@@ -4,7 +4,7 @@ import {
 } from 'ethers';
 export interface Proposal {
   id: string;
-  creator: string;
+  creator: string; 
   startTime: Moment;
   endTime: Moment;
   timeDetail: string | null;
@@ -18,13 +18,13 @@ export interface Proposal {
   totalVotes: BigNumber[];
 }
 
-
 export enum ProposalState {
   Active = 'Active',
   Executable = 'Executable',
   Executed = 'Executed',
   Rejected = 'Rejected',
   Failed = 'Failed',
+  Finished = 'Finished', 
 }
 
 export enum ContractState {
@@ -33,7 +33,6 @@ export enum ContractState {
   Executed = 'Executed',
   Failed = 'Failed',
 }
-
 export interface ProposalMetadata {
   description: string;
   voteOptions: string[];
@@ -58,4 +57,9 @@ export enum GuildImplementationType {
   DXDGuild = 'DXDGuild',
   ERC20Guild = 'ERC20Guild',
   IERC20Guild = 'IERC20Guild',
+}
+
+export interface ENSAvatar {
+  imageUrl?: string;
+  ensName?: string;
 }

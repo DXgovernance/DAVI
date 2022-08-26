@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
-import { DecodedAction } from 'Components/ActionsBuilder/types';
-import { getActionPoints } from 'Components/ActionsBuilder/SupportedActions';
+import { DecodedAction } from 'components/ActionsBuilder/types';
+import { getActionPoints } from 'components/ActionsBuilder/SupportedActions';
 
 export interface PointedDecodedAction extends DecodedAction {
   points: number;

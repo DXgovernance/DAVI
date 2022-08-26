@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { render as rtlRender } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { GuildsDarkTheme } from 'Components/theme';
+import { GuildsDarkTheme } from 'components/theme';
 
 export const renderWithRoutes = (ui, options = {}) => {
   //wrap with MemoryRouter

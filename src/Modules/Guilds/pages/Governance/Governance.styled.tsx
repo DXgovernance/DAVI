@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Heading } from 'old-components/Guilds/common/Typography';
+import { Heading } from 'components/primitives/Typography';
 import { Link } from 'react-router-dom';
-import { Button } from 'old-components/Guilds/common/Button';
-import { Box } from 'Components/Primitives/Layout';
+import { Button } from 'components/primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
 
 export const ProposalsList = styled(Box)`
   margin-top: 1rem;
