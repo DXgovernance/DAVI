@@ -1,85 +1,39 @@
-import { useMemo } from 'react';
 import { resolveUri } from 'utils/url';
-import ERC721abi from 'abis/ERC721.json';
-import useEtherSWR from '../ether-swr/useEtherSWR';
-import useSWR from 'swr';
-import { useProvider } from 'wagmi';
-
-type ERC721Data = {
-  ownerOf: string;
-  tokenURI: string;
-};
+import ERC721ABI from 'abis/ERC721.json';
+import { useContractReads } from 'wagmi';
 
 export default function useERC721NFT(
   contractId: string,
   tokenId: string,
   chainId?: number
 ) {
-  const provider = useProvider();
-  const { data: result } = useEtherSWR(
-    contractId
-      ? [
-          [contractId, 'ownerOf', tokenId],
-          [contractId, 'tokenURI', tokenId],
-        ]
-      : [],
-    {
-      web3Provider: provider,
-      ABIs: new Map([[contractId, ERC721abi]]),
-      refreshInterval: 0,
-    }
-  );
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      {
+        addressOrName: contractId,
+        contractInterface: ERC721ABI,
+        functionName: 'ownerOf',
+        args: [tokenId],
+      },
+      {
+        addressOrName: contractId,
+        contractInterface: ERC721ABI,
+        functionName: 'tokenURI',
+        args: [tokenId],
+      },
+    ],
+  });
+  
 
-  const nftData: ERC721Data = useMemo(() => {
-    if (!result) return undefined;
+  if (!data || data.every(v => v === null))
+    return { data: undefined, isError, isLoading };
+  const [ownerOf, tokenURI] = data;
+  const resolvedTokenUri = resolveUri(tokenURI?.toString());
 
-    const [ownerOf, tokenURI] = result;
-    return {
-      ownerOf,
-      tokenURI: resolveUri(tokenURI),
-    };
-  }, [result]);
-
-  const { data: metadata } = useSWR(nftData?.tokenURI || null);
-
-  return { ownerAddress: nftData?.ownerOf, metadata };
+  return {
+    ownerAddress: ownerOf?.toString(),
+    resolvedTokenUri,
+    isError,
+    isLoading,
+  };
 }
-
-// import { resolveUri } from 'utils/url';
-// import ERC721ABI from 'abis/ERC721.json';
-// import useSWR from 'swr';
-// import { useContractReads } from 'wagmi';
-
-// export default function useERC721NFT(
-//   contractId: string,
-//   tokenId: string,
-//   chainId?: number
-// ) {
-//   console.log({ contractId, tokenId})
-//   const { data, isError, isLoading } = useContractReads({
-//     contracts: [
-//       {
-//         addressOrName: contractId,
-//         contractInterface: ERC721ABI,
-//         functionName: 'ownerOf',
-//         args: [tokenId],
-//       },
-//       {
-//         addressOrName: contractId,
-//         contractInterface: ERC721ABI,
-//         functionName: 'tokenURI',
-//         args: [tokenId],
-//       },
-//     ],
-//   });
-//   console.log({ data })
-//   const [ownerOf, tokenURI] = data;
-//   const resolvedTokenUri = tokenURI ? resolveUri(tokenURI.toString()) : null;
-//   const { data: metadata } = useSWR(resolvedTokenUri);
-//   return {
-//     ownerAddress: ownerOf.toString(),
-//     metadata,
-//     isError,
-//     isLoading,
-//   };
-// }

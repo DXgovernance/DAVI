@@ -1,48 +1,39 @@
-import { useMemo } from 'react';
-import { resolveUri } from '../../../utils/url';
-import ERC1155abi from '../../../abis/ERC1155.json';
-import useEtherSWR from '../ether-swr/useEtherSWR';
-import { BigNumber } from 'ethers';
-import useSWR from 'swr';
-import { useProvider } from 'wagmi';
-
-type ERC1155Data = {
-  balanceOf: BigNumber;
-  uri: string;
-};
+import { resolveUri } from 'utils/url';
+import ERC1155ABI from 'abis/ERC721.json';
+import { useContractReads } from 'wagmi';
 
 export default function useERC1155NFT(
   contractId: string,
   tokenId: string,
-  ownerAddress?: string,
+  ownerAddress: string,
   chainId?: number
 ) {
-  const provider = useProvider();
-  const { data: result } = useEtherSWR(
-    contractId
-      ? [
-          [contractId, 'balanceOf', ownerAddress, tokenId],
-          [contractId, 'uri', tokenId],
-        ]
-      : [],
-    {
-      web3Provider: provider,
-      ABIs: new Map([[contractId, ERC1155abi]]),
-      refreshInterval: 0,
-    }
-  );
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      {
+        addressOrName: contractId,
+        contractInterface: ERC1155ABI,
+        functionName: 'balanceOf',
+        args: [ownerAddress, tokenId],
+      },
+      {
+        addressOrName: contractId,
+        contractInterface: ERC1155ABI,
+        functionName: 'uri',
+        args: [tokenId],
+      },
+    ],
+  });
 
-  const nftData: ERC1155Data = useMemo(() => {
-    if (!result) return undefined;
+  if (!data || data.every(v => v === null))
+    return { data: undefined, isError, isLoading };
+  const [balanceOf, tokenURI] = data;
+  const resolvedTokenUri = resolveUri(tokenURI?.toString());
 
-    const [balanceOf, uri] = result;
-    return {
-      balanceOf,
-      uri: resolveUri(uri),
-    };
-  }, [result]);
-
-  const { data: metadata } = useSWR(nftData?.uri);
-
-  return { metadata, balance: nftData?.balanceOf };
+  return {
+    balance: balanceOf,
+    resolvedTokenUri,
+    isError,
+    isLoading,
+  };
 }
