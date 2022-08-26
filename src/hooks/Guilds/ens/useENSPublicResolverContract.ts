@@ -3,8 +3,8 @@ import ensPublicResolver from 'contracts/ENSPublicResolver.json';
 import {
   convertToIpfsHash,
   convertToNameHash,
-  isAvailableOnENS,
-} from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+} from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { isAvailableOnENS } from './utils';
 import useENSResolver from './useENSResolver';
 import { MAINNET_ID } from 'utils';
 

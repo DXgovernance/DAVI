@@ -3,7 +3,7 @@ import ProposalTypes from './ProposalTypes';
 import { testProps } from './fixtures';
 
 export default {
-  title: 'Components/ProposalTypes',
+  title: 'components/ProposalTypes',
   component: ProposalTypes,
 } as ComponentMeta<typeof ProposalTypes>;
 

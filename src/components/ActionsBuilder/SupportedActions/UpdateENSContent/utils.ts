@@ -1,5 +1,5 @@
 import contenthash from 'content-hash';
-import { MAINNET_ID, LOCALHOST_ID, GOERLI_ID } from 'utils';
+import { MAINNET_ID, LOCALHOST_ID } from 'utils';
 import { utils } from 'ethers';
 
 const DEFAULT_NAMEHASH =
@@ -35,10 +35,4 @@ export const isSupportedChainId = (chainId: number) => {
   } else {
     return chainId;
   }
-};
-
-export const isAvailableOnENS = (chainId: number) => {
-  const validChainId = isSupportedChainId(chainId);
-  const ensNetworks = [MAINNET_ID, GOERLI_ID];
-  return ensNetworks.includes(validChainId);
 };

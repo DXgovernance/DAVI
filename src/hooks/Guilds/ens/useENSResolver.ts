@@ -1,4 +1,4 @@
-import { isAvailableOnENS } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { isAvailableOnENS } from 'hooks/Guilds/ens/utils';
 import { MAINNET_ID } from 'utils';
 import { useEnsResolver } from 'wagmi';
 
