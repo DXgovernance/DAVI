@@ -2,7 +2,8 @@ import { IconButton } from 'components/primitives/Button';
 import { Result, ResultState } from 'components/Result';
 import { UnstyledLink } from 'components/primitives/Links';
 import { FiArrowLeft } from 'react-icons/fi';
-import { useTypedParams } from '../Hooks/useTypedParams';
+import { useTypedParams } from '/Modules/Guilds/Hooks/useTypedParams';
+
 import { useTranslation } from 'react-i18next';
 
 const NotFound: React.FC = () => {
