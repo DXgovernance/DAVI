@@ -1,6 +1,6 @@
 import { MultichainContext } from 'contexts/MultichainProvider';
 import { ButtonIcon, IconButton } from 'components/primitives/Button';
-import { Box } from 'components/Primitives/Layout/Box';
+import { Box } from 'components/primitives/Layout/Box';
 import { Result, ResultState } from 'components/Result';
 import { UnstyledLink } from 'components/primitives/Links';
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';

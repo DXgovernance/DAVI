@@ -3,7 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Focus from '@tiptap/extension-focus';
 import Highlight from '@tiptap/extension-highlight';
 import Placeholder from '@tiptap/extension-placeholder';
-import { Editor } from './components';
+import { Editor } from './components/Editor';
 import TurndownService from 'turndown';
 import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
 
