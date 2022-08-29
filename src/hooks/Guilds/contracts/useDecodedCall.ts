@@ -1,9 +1,12 @@
+import { useEffect, useRef, useState } from 'react';
 import { utils } from 'ethers';
+import { useNetwork } from 'wagmi';
 import {
   RichContractData,
   useRichContractRegistry,
 } from './useRichContractRegistry';
 import ERC20 from 'contracts/ERC20.json';
+import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import {
   ApproveSendTokens,
@@ -18,10 +21,7 @@ import {
   SET_PERMISSION_SIGNATURE,
   MINT_REP_SIGNATURE,
 } from 'utils';
-import { useEffect, useRef, useState } from 'react';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
-import { useNetwork } from 'wagmi';
-import { ERC20SnapshotRep__factory } from 'types/contracts';
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -39,7 +39,7 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     },
     [MINT_REP_SIGNATURE]: {
       callType: SupportedAction.REP_MINT,
-      ABI: ERC20SnapshotRep__factory.abi,
+      ABI: ERC20SnapshotRep.abi,
     },
   };
 
