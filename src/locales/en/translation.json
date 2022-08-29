@@ -210,11 +210,15 @@
   "invalidAddress": "Invalid Address",
   "addressIsRequired": "Address is required",
   "forum": {
+    "discussions_one": "Discussion",
+    "discussions_other": "Discussions",
     "createDiscussion": "Create Discussion",
     "discussionPlaceholder": "Write discussion content"
   },
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code",
   "noGuildsRegistered": "No guilds registered on this network",
-  "stakeTokens": "Stake {{token}} tokens"
+  "stakeTokens": "Stake {{token}} tokens",
+  "noActiveProposalsMessage": "There are no active proposals",
+  "goToAllProposalsPage": "Go to all proposals page"
 }

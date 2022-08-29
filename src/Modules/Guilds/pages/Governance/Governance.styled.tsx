@@ -8,12 +8,7 @@ export const ProposalsList = styled(Box)`
   margin-top: 1rem;
 `;
 
-export const ProposalListWrapper = styled.div`
-  height: 50vh;
-  @media only screen and (min-width: 768px) {
-    height: 75vh;
-  }
-`;
+export const ProposalListWrapper = styled.div``;
 
 export const StyledHeading = styled(Heading)`
   margin-top: 32px;

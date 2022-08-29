@@ -33,7 +33,7 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
 
   const locations = {
     governance: `/${chainName}/${guildId}`,
-    allProposals: `/${chainName}/${guildId}/allProposals`,
+    allProposals: `/${chainName}/${guildId}/all-proposals`,
   };
 
   return (
