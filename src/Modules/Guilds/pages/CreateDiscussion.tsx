@@ -103,7 +103,7 @@ const CreateDiscussionPage: React.FC = () => {
         >
           <StyledButton iconLeft onClick={handleBack}>
             <FiChevronLeft />
-            {'Back'}
+            {t('backToOverview')}
           </StyledButton>
 
           <StyledButton

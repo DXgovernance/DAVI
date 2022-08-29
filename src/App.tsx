@@ -33,11 +33,11 @@ const App = () => {
               <Route path="/:chainName" element={<LandingPage />} />
               <Route path="/:chainName/:guildId" element={<GuildsPage />} />
               <Route
-                path="/:chainName/:guildId/allProposals"
+                path="/:chainName/:guildId/all-proposals"
                 element={<GuildsPage pageContent={'allProposals'} />}
               />
               <Route
-                path="/:chainName/:guildId/proposalType"
+                path="/:chainName/:guildId/proposal-type"
                 element={<ProposalTypes data={ProposalTypesConfig} />}
               />
               <Route
@@ -45,11 +45,11 @@ const App = () => {
                 element={<ProposalPage />}
               />
               <Route
-                path="/:chainName/:guildId/create/:proposalType"
+                path="/:chainName/:guildId/create-proposal"
                 element={<CreateProposalPage />}
               />
               <Route
-                path="/:chainName/:guildId/:discussion"
+                path="/:chainName/:guildId/create"
                 element={<CreateDiscussionPage />}
               />
               <Route path="*" element={<NotFound />} />

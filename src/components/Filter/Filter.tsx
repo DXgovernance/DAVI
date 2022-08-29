@@ -71,21 +71,12 @@ export const Filter: React.FC<FilterProps> = ({
           </StyledIconButton>
           {isProposalCreationAllowed && (
             <>
-              <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
+              <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
                 <Button
                   variant="secondary"
                   data-testid="create-proposal-button"
                 >
                   {t('createProposal')}
-                </Button>
-              </UnstyledLink>
-              /
-              <UnstyledLink to={`/${chainName}/${guildId}/discussion`}>
-                <Button
-                  variant="secondary"
-                  data-testid="create-discussion-button"
-                >
-                  {t('forum.createDiscussion')}
                 </Button>
               </UnstyledLink>
             </>
