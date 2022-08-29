@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { StyledToolTip } from 'components/ToolTip';
 import React, { useState, useEffect } from 'react';
-import { Control, ControlLabel, ControlRow, StyledInfoIcon } from './styles';
+import { Control, ControlLabel, ControlRow } from './styles';
 import { Input } from 'components/primitives/Forms/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
@@ -15,6 +14,8 @@ import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
+import { Tooltip } from 'components/Tooltip';
+import { StyledIcon } from 'components/primitives/StyledIcon';
 import { LOCALHOST_ID } from 'utils';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
@@ -82,8 +83,9 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       <Control>
         <ControlLabel>
           {t('ens.name')}
-          <StyledInfoIcon src={Info} />
-          <StyledToolTip>{t('ens.nameTooltip')}</StyledToolTip>
+          <Tooltip text={t('ens.nameTooltip')} placement="bottom">
+            <StyledIcon src={Info} />
+          </Tooltip>
         </ControlLabel>
         <ControlRow>
           <Input value={ensName} onChange={e => setEnsName(e.target.value)} />
@@ -94,8 +96,9 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
         <Control>
           <ControlLabel>
             {t('ens.ipfsHash')}
-            <StyledInfoIcon src={Info} />
-            <StyledToolTip>{t('ens.ipfsHashToolTip')}</StyledToolTip>
+            <Tooltip text={t('ens.ipfsHashToolTip')}>
+              <StyledIcon src={Info} />
+            </Tooltip>
           </ControlLabel>
           <ControlRow>
             <Input
