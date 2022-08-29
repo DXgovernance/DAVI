@@ -1,6 +1,11 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import path from 'path';
-import { ZERO_ADDRESS, MAX_UINT, NULL_SIGNATURE } from '../src/utils/constants';
+import {
+  ZERO_ADDRESS,
+  MAX_UINT,
+  NULL_SIGNATURE,
+  ERC20_TRANSFER_SIGNATURE,
+} from '../src/utils/constants';
 
 require('dotenv').config();
 const hre = require('hardhat');
@@ -836,6 +841,71 @@ async function main() {
         description: 'Proposal with value > 1',
       },
     },
+    // Approve tokens to be locked from acc[1]
+    {
+      type: 'approve',
+      from: accounts[1],
+      data: {
+        asset: 'SWPR',
+        address: 'SWPRGuild-vault',
+        amount: MAX_UINT,
+      },
+    },
+    // Lock tokens
+    {
+      type: 'guild-lockTokens',
+      from: accounts[1],
+      data: {
+        guildName: 'SWPRGuild',
+        amount: web3.utils.toWei('30').toString(),
+      },
+    },
+    // After locking tokens acc[1] creates a proposal to allow guild to make SWPR transfers
+    {
+      type: 'guild-createProposal',
+      from: accounts[1],
+      data: {
+        guildName: 'SWPRGuild',
+        to: ['PermissionRegistry'],
+        callData: [
+          new web3.eth.Contract(PermissionRegistry.abi).methods
+            .setETHPermission(
+              networkContracts.addresses.SWPRGuild,
+              networkContracts.addresses.SWPR,
+              ERC20_TRANSFER_SIGNATURE,
+              web3.utils.toWei('0').toString(),
+              true
+            )
+            .encodeABI(),
+        ],
+        value: ['0'],
+        totalActions: '1',
+        title: 'Allow Swapr guild to transfer SWPR tokens',
+        description: 'Allow the guild to transfer swpr tokens',
+        voteOptions: ['For'],
+      },
+    },
+    // Vote for proposal
+    // {
+    //   type: 'guild-voteProposal',
+    //   from: accounts[1],
+    //   data: {
+    //     guildName: 'SWPRGuild',
+    //     proposal: 0,
+    //     action: '1',
+    //     votingPower: web3.utils.toWei('30').toString(),
+    //   },
+    // },
+    // // Execute proposal
+    // {
+    //   type: 'guild-endProposal',
+    //   increaseTime: moment.duration(20, 'minutes').asSeconds(),
+    //   from: accounts[1],
+    //   data: {
+    //     guildName: 'SWPRGuild',
+    //     proposal: 0,
+    //   },
+    // },
 
     {
       type: 'approve',
@@ -854,7 +924,6 @@ async function main() {
         amount: web3.utils.toWei('1'),
       },
     },
-
     {
       type: 'guild-createProposal',
       from: accounts[2],
