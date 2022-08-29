@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RepMintEditor Should match snapshot 1`] = `
-.c12 {
+.c10 {
   border: none;
   background: none;
   background-color: transparent;
@@ -11,7 +11,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   outline: none;
 }
 
-.c8 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,7 +28,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   background-color: transparent;
 }
 
-.c8 input {
+.c6 input {
   color: #A1A6B0;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
@@ -36,31 +36,31 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   text-align: left;
 }
 
-.c8 input::-webkit-input-placeholder {
+.c6 input::-webkit-input-placeholder {
   color: #A1A6B0;
 }
 
-.c8 input::-moz-placeholder {
+.c6 input::-moz-placeholder {
   color: #A1A6B0;
 }
 
-.c8 input:-ms-input-placeholder {
+.c6 input:-ms-input-placeholder {
   color: #A1A6B0;
 }
 
-.c8 input::placeholder {
+.c6 input::placeholder {
   color: #A1A6B0;
 }
 
-.c8:hover {
+.c6:hover {
   outline: 1px solid inherit;
 }
 
-.c8:focus {
+.c6:focus {
   outline: 2px solid #fff;
 }
 
-.c14 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,7 +77,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   background-color: transparent;
 }
 
-.c14 input {
+.c12 input {
   color: #fff;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
@@ -85,39 +85,39 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   text-align: left;
 }
 
-.c14 input::-webkit-input-placeholder {
+.c12 input::-webkit-input-placeholder {
   color: #A1A6B0;
 }
 
-.c14 input::-moz-placeholder {
+.c12 input::-moz-placeholder {
   color: #A1A6B0;
 }
 
-.c14 input:-ms-input-placeholder {
+.c12 input:-ms-input-placeholder {
   color: #A1A6B0;
 }
 
-.c14 input::placeholder {
+.c12 input::placeholder {
   color: #A1A6B0;
 }
 
-.c14:hover {
+.c12:hover {
   outline: 1px solid #fff;
 }
 
-.c14:focus {
+.c12:focus {
   outline: 2px solid #fff;
 }
 
-.c9 {
+.c7 {
   margin-right: 0.3rem;
 }
 
-.c13 {
+.c11 {
   margin-left: 0.3rem;
 }
 
-.c16 {
+.c14 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -143,26 +143,26 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   margin: 1rem 0 0;
 }
 
-.c16:disabled {
+.c14:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c16:hover:enabled {
+.c14:hover:enabled {
   border-color: #fff;
 }
 
-.c16:active:enabled {
+.c14:active:enabled {
   border: 1px solid #303338;
 }
 
-.c10 {
+.c8 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c11 {
+.c9 {
   border-radius: 50%;
   height: 18px;
   width: 18px;
@@ -175,19 +175,8 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   padding: 0;
 }
 
-.c6 {
-  -webkit-transform: translateY(2rem);
-  -ms-transform: translateY(2rem);
-  transform: translateY(2rem);
-  visibility: hidden;
-  position: absolute;
-  color: #fff;
-  background-color: #26282D;
-  border: 1px solid #303338;
-  padding: 8px 8px;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: 500;
+.c3 {
+  position: relative;
 }
 
 .c1 {
@@ -216,7 +205,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   font-weight: 500;
 }
 
-.c7 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -227,17 +216,17 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   align-items: stretch;
 }
 
-.c3 {
+.c4 {
   margin: 0 8px;
   width: undefinedpx;
   height: undefinedpx;
 }
 
-.c3 svg path {
+.c4 svg path {
   fill: currentColor;
 }
 
-.c15 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -247,23 +236,6 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
-}
-
-.c4:hover + .c5 {
-  visibility: visible;
-}
-
-.c4:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-@media only screen and (min-width:768px) {
-  .c6 {
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
 }
 
 <div>
@@ -276,51 +248,50 @@ exports[`RepMintEditor Should match snapshot 1`] = `
         class="c0 c2"
       >
         repMint.recipient
-        <div
-          class="c3 c4"
+        <span
+          class="c3"
         >
-          <svg>
-            info.svg
-          </svg>
-        </div>
-        <div
-          class="c5 c0 c6"
-        >
-          repMint.recipientTooltip
-        </div>
+          <div
+            class="c4"
+          >
+            <svg>
+              info.svg
+            </svg>
+          </div>
+        </span>
       </div>
       <div
-        class="c0 c7"
+        class="c0 c5"
       >
         <div
-          class="c8"
+          class="c6"
           disabled=""
         >
           <div
-            class="c9"
+            class="c7"
           >
             <img
               alt="Avatar"
-              class="c10 c11"
+              class="c8 c9"
               data-testid="avatar"
               size="18"
               src="test"
             />
           </div>
           <input
-            class="c12"
+            class="c10"
             disabled=""
             readonly=""
             value="0x0000...0000"
           />
           <div
-            class="c13"
+            class="c11"
           />
         </div>
       </div>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c5"
     >
       <div
         class="c0 c1"
@@ -329,32 +300,31 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c2"
         >
           repMint.repPercent
-          <div
-            class="c3 c4"
-          >
-            <svg>
-              info.svg
-            </svg>
-          </div>
-          <div
-            class="c5 c0 c6"
-          >
-            repMint.repPercentTooltip
-          </div>
-        </div>
-        <div
-          class="c0 c7"
-        >
-          <div
-            class="c14"
+          <span
+            class="c3"
           >
             <div
-              class="c9"
+              class="c4"
+            >
+              <svg>
+                info.svg
+              </svg>
+            </div>
+          </span>
+        </div>
+        <div
+          class="c0 c5"
+        >
+          <div
+            class="c12"
+          >
+            <div
+              class="c7"
             />
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c12 c15"
+              class="c10 c13"
               inputmode="decimal"
               maxlength="79"
               minlength="1"
@@ -366,14 +336,14 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               value="0"
             />
             <div
-              class="c13"
+              class="c11"
             />
           </div>
         </div>
       </div>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c5"
     >
       <div
         class="c0 c1"
@@ -382,33 +352,32 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c2"
         >
           repMint.repAmount
-          <div
-            class="c3 c4"
+          <span
+            class="c3"
           >
-            <svg>
-              info.svg
-            </svg>
-          </div>
-          <div
-            class="c5 c0 c6"
-          >
-            repMint.repAmountTooltip
-          </div>
+            <div
+              class="c4"
+            >
+              <svg>
+                info.svg
+              </svg>
+            </div>
+          </span>
         </div>
         <div
-          class="c0 c7"
+          class="c0 c5"
         >
           <div
-            class="c8"
+            class="c6"
             disabled=""
           >
             <div
-              class="c9"
+              class="c7"
             />
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c12 c15"
+              class="c10 c13"
               disabled=""
               inputmode="decimal"
               maxlength="79"
@@ -421,14 +390,14 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               value="0.0"
             />
             <div
-              class="c13"
+              class="c11"
             />
           </div>
         </div>
       </div>
     </div>
     <button
-      class="c16"
+      class="c14"
       type="submit"
     >
       saveAction
