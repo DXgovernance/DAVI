@@ -222,5 +222,6 @@
   "noGuildInThisAddress": "No guild exists on this address",
   "takeMeHome": "Take me home",
   "pageNotExist": "That page doesn't exist",
-  "makeSureCorrectAddress": "Make sure you typed the correct address"
+  "makeSureCorrectAddress": "Make sure you typed the correct address",
+  "stakeTokens": "Stake {{token}} tokens"
 }

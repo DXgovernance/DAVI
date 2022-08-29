@@ -41,24 +41,21 @@ const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
   const { data: totalLocked } = useTotalLocked(guildAddress);
 
   return (
-    <StakeTokensModal
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      StakeTokensForm={StakeTokensForm}
-      StakeTokensFormProps={{
-        token: {
+    <StakeTokensModal token={tokenInfo} isOpen={isOpen} onDismiss={onDismiss}>
+      <StakeTokensForm
+        token={{
           name: tokenInfo?.name,
           allowance: tokenAllowance,
           balance: tokenBalance,
           info: tokenInfo,
           contract: tokenContract,
-        },
-        userVotingPower,
-        createTransaction,
-        guild: { contract: guildContract, config: guildConfig, totalLocked },
-        isRepGuild,
-      }}
-    />
+        }}
+        userVotingPower={userVotingPower}
+        createTransaction={createTransaction}
+        guild={{ contract: guildContract, config: guildConfig, totalLocked }}
+        isRepGuild={isRepGuild}
+      />
+    </StakeTokensModal>
   );
 };
 
