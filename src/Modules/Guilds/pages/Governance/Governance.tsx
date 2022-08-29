@@ -135,7 +135,7 @@ const Governance = ({ guildId }) => {
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
             There are no active proposals.{' '}
-            <StyledLink to={`/${chainName}/${guildId}/allProposals`}>
+            <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
               Go to all proposals page.
             </StyledLink>
           </div>
