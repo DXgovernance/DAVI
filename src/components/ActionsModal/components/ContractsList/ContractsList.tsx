@@ -48,7 +48,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            {t('transferAndMint')}
+            {t('transfer')}
           </ButtonLabel>
         </ActionsButton>
         <ActionsButton

@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
   "contractName": "ERC20SnapshotRep",
-  "sourceName": "dxdao-contracts/contracts/utils/ERC20/ERC20SnapshotRep.sol",
+  "sourceName": "contracts/utils/ERC20/ERC20SnapshotRep.sol",
   "abi": [
     {
       "anonymous": false,
@@ -245,6 +245,19 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "getTotalHolders",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         {
           "internalType": "address",
@@ -352,6 +365,19 @@
           "internalType": "string",
           "name": "",
           "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalHolders",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
         }
       ],
       "stateMutability": "view",
