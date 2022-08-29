@@ -23,7 +23,6 @@ export default function useERC721NFT(
       },
     ],
   });
-  
 
   if (!data || data.every(v => v === null))
     return { data: undefined, isError, isLoading };
