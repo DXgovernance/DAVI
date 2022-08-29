@@ -1,8 +1,9 @@
 import useENSNameFromAddress from './useENSNameFromAddress';
+import { MOCK_ENS_NAME, MOCK_ADDRESS } from './fixtures';
 
 jest.mock('wagmi', () => ({
   useEnsName: () => ({
-    data: 'wagmi.eth',
+    data: MOCK_ENS_NAME,
     isError: false,
     isLoading: false,
   }),
@@ -13,10 +14,8 @@ describe('useAddressFromENSName', () => {
     jest.restoreAllMocks();
   });
   it('should return the address from the ens name', () => {
-    const { ensName, isError, isLoading } = useENSNameFromAddress(
-      '0x0000000000000000000000000000000000000000'
-    );
-    expect(ensName).toBe('wagmi.eth');
+    const { ensName, isError, isLoading } = useENSNameFromAddress(MOCK_ADDRESS);
+    expect(ensName).toBe(MOCK_ENS_NAME);
     expect(isError).toBe(false);
     expect(isLoading).toBe(false);
   });
