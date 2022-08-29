@@ -216,5 +216,11 @@
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code",
   "noGuildsRegistered": "No guilds registered on this network",
+  "guildNotAvailable": "Guild not available",
+  "guildNotAvailableOnThisNetwork": "This guild is not available on this network",
+  "noGuildInThisAddress": "No guild exists on this address",
+  "takeMeHome": "Take me home",
+  "pageNotExist": "That page doesn't exist",
+  "makeSureCorrectAddress": "Make sure you typed the correct address",
   "stakeTokens": "Stake {{token}} tokens"
 }
