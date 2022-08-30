@@ -57,9 +57,9 @@ const LandingPage: React.FC = () => {
   if (isValidating) {
     return (
       <CardsContainer>
-        <GuildCardLoader />;
-        <GuildCardLoader />;
-        <GuildCardLoader />;
+        <GuildCardLoader />
+        <GuildCardLoader />
+        <GuildCardLoader />
       </CardsContainer>
     );
   }
