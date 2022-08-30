@@ -3,6 +3,10 @@ import { DiscussionCard } from 'components/DiscussionCard';
 import { Post } from 'components/Forum/types';
 import { useEffect, useRef, useState } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
+import { Loading } from 'components/primitives/Loading';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
+import { Button } from 'components/primitives/Button';
+import { useTranslation } from 'react-i18next';
 
 const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
 
@@ -10,14 +14,19 @@ const DiscussionCardWrapper = () => {
   let orbis = useRef(new Orbis());
   const { guildId } = useTypedParams();
   const [posts, setPosts] = useState<Post[]>([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
-  let getPosts = async () => {
+  const { t } = useTranslation();
+
+  const getPosts = async () => {
     let { data, error } = await orbis.current.getPosts({
       context: guildId,
     });
 
     if (data) setPosts(data);
-    if (error) console.log(error);
+    if (error) setError(error);
+    if (isLoading) setIsLoading(false);
   };
 
   useEffect(() => {
@@ -32,7 +41,16 @@ const DiscussionCardWrapper = () => {
 
   return (
     <div>
-      <button onClick={getPosts}>Refresh</button>
+      {isLoading && <Loading loading text />}
+      {error && (
+        <>
+          <Button variant="secondary" onClick={getPosts}>
+            {t('reload')}
+          </Button>
+          <br />
+          <ErrorLabel>{error}</ErrorLabel>
+        </>
+      )}
       {posts.map(post => {
         return <DiscussionCard post={post} />;
       })}

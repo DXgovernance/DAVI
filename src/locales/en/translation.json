@@ -220,5 +220,6 @@
   "noGuildsRegistered": "No guilds registered on this network",
   "stakeTokens": "Stake {{token}} tokens",
   "noActiveProposalsMessage": "There are no active proposals",
-  "goToAllProposalsPage": "Go to all proposals page"
+  "goToAllProposalsPage": "Go to all proposals page",
+  "reload": "Reload"
 }
