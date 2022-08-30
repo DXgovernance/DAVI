@@ -1,6 +1,6 @@
 import { useMemo, useEffect, useState } from 'react';
 import { utils } from 'ethers';
-import { GuildImplementationType } from '../../../types/types.guilds.d';
+import { GuildImplementationType } from '../../../types/types.guilds';
 import deployedHashedBytecodes from '../../../bytecodes/config.json';
 import { useProvider } from 'wagmi';
 

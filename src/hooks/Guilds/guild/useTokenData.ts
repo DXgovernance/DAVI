@@ -1,5 +1,5 @@
 import { useERC20Info } from '../ether-swr/erc20/useERC20Info';
-import { useGuildConfig } from '../ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from './useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 export const useTokenData = () => {

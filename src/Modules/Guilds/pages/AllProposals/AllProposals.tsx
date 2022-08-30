@@ -1,4 +1,4 @@
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { useGuildProposalIds } from 'hooks/Guilds/guild/useGuildProposalIds';
 import { Filter } from 'components/Filter';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';

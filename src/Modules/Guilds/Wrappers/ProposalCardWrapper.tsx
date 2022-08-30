@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { ProposalCard } from 'components/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/guild/useProposal';
 import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';

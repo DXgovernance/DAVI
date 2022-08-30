@@ -7,8 +7,8 @@ import { Input } from 'components/primitives/Forms/Input';
 import { FilterMenu, FilterButton } from './components';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useFilter } from 'contexts/Guilds/filters';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { useGuildConfig } from 'hooks/Guilds/guild/useGuildConfig';
+import { useVotingPowerOf } from 'hooks/Guilds/guild/useVotingPowerOf';
 import {
   FilterContainer,
   FilterRow,

@@ -1,6 +1,6 @@
 import moment, { unix } from 'moment';
 import { Middleware, SWRHook } from 'swr';
-import useEtherSWR from '../useEtherSWR';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import { Proposal, ContractState } from 'types/types.guilds.d';
 

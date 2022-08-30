@@ -1,9 +1,9 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/guild/useProposal';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
-import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
+import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
+import { useVotingPowerOf } from 'hooks/Guilds/guild/useVotingPowerOf';
+import { useVotingResults } from 'hooks/Guilds/guild/useVotingResults';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';

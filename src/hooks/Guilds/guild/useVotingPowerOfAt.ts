@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import { SWRResponse } from 'swr';
-import useEtherSWR from '../useEtherSWR';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import useCurrentSnapshotId from './useCurrentSnapshotId';
 

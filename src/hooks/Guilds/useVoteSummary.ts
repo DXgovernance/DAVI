@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
-import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import { useProposal } from 'hooks/Guilds/guild/useProposal';
+import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
+import useTotalLocked from 'hooks/Guilds/guild/useTotalLocked';
 
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 

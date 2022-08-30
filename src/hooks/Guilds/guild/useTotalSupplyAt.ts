@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import { SWRResponse } from 'swr';
-import useEtherSWR from '../useEtherSWR';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 
 interface UseTotalSupplyAtProps {

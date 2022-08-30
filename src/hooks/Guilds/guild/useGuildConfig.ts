@@ -2,7 +2,7 @@ import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
 import { SWRResponse } from 'swr';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import useEtherSWR from '../useEtherSWR';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import useGuildToken from './useGuildToken';
 
 export type GuildConfigProps = {

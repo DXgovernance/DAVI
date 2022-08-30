@@ -1,7 +1,7 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from 'hooks/Guilds/guild/useGuildConfig';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import useTotalLocked from 'hooks/Guilds/guild/useTotalLocked';
 import { SidebarInfoCard } from 'components/SidebarInfoCard';
 
 const SidebarInfoCardWrapper = () => {

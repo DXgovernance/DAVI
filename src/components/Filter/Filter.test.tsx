@@ -32,12 +32,12 @@ jest.mock('contexts/Guilds/filters', () => ({
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
   useTokenList: () => [],
 }));
-jest.mock('hooks/Guilds/ether-swr/guild/useVotingPowerOf', () => ({
+jest.mock('hooks/Guilds/guild/useVotingPowerOf', () => ({
   useVotingPowerOf: () => ({
     data: bn(10000),
   }),
 }));
-jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+jest.mock('hooks/Guilds/guild/useGuildConfig', () => ({
   useGuildConfig: () => ({
     data: {
       name: 'REPGuild',

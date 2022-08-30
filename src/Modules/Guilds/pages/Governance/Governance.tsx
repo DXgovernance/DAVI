@@ -4,17 +4,17 @@ import { useContext, useEffect, useMemo } from 'react';
 import { Result, ResultState } from 'components/Result';
 import { Flex } from 'components/primitives/Layout';
 import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { useGuildProposalIds } from 'hooks/Guilds/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
 import { Input } from 'components/primitives/Forms/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
+import useActiveProposalsNow from 'hooks/Guilds/guild/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { useGuildConfig } from 'hooks/Guilds/guild/useGuildConfig';
+import { useVotingPowerOf } from 'hooks/Guilds/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';
 import {
   ProposalListWrapper,

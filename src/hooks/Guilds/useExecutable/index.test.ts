@@ -2,7 +2,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import { BigNumber } from 'ethers';
 import { ContractState } from 'types/types.guilds.d';
 import useExecutable from '.';
-import * as hooks from '../ether-swr/guild/useProposal';
+import * as hooks from '../guild/useProposal';
 
 jest.mock('moment', () => {
   return () =>

@@ -1,5 +1,5 @@
-import { Proposal } from '../../../../types/types.guilds';
-import useEtherSWR from '../useEtherSWR';
+import { Proposal } from '../../../types/types.guilds';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 
 export const useProposal = (guildId: string, proposalId: string) => {

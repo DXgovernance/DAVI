@@ -1,4 +1,4 @@
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
+import { useProposal } from 'hooks/Guilds/guild/useProposal';
 import AddressButton from 'components/AddressButton/AddressButton';
 import { ProposalDescription } from 'components/ProposalDescription';
 import { ProposalInfoCard } from 'components/ProposalInfoCard';
@@ -7,9 +7,9 @@ import { IconButton } from 'components/primitives/Button';
 import { UnstyledLink } from 'components/primitives/Links';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
-import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
+import { useGuildProposalIds } from 'hooks/Guilds/guild/useGuildProposalIds';
+import useTotalLocked from 'hooks/Guilds/guild/useTotalLocked';
+import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
 import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
 import { Loading } from 'components/primitives/Loading';
 import { Result, ResultState } from 'components/Result';
@@ -20,7 +20,7 @@ import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWra
 import { ExecuteButton } from 'components/ExecuteButton';
 import { useProposalState } from 'hooks/Guilds/useProposalState';
 import useExecutable from 'hooks/Guilds/useExecutable';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from 'hooks/Guilds/guild/useGuildConfig';
 import { ProposalState } from 'types/types.guilds.d';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';

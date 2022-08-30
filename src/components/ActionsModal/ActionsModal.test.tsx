@@ -13,7 +13,7 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     isSnapshotGuild: false,
   }),
 }));
-jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+jest.mock('hooks/Guilds/guild/useGuildConfig', () => ({
   useGuildConfig: () => ({
     data: {
       permissionRegistry: '0x0000000000000000000000000000000000000000',

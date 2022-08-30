@@ -1,4 +1,4 @@
-import useEtherSWR from '../useEtherSWR';
+import useEtherSWR from '../ether-swr/useEtherSWR';
 import GuildRegistry from 'contracts/GuildsRegistry.json';
 import useNetworkConfig from 'hooks/Guilds/useNetworkConfig';
 

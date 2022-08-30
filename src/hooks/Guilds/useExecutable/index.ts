@@ -2,7 +2,7 @@ import { useTransactions } from 'contexts/Guilds/transactions';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useMemo } from 'react';
-import { useProposal } from '../ether-swr/guild/useProposal';
+import { useProposal } from '../guild/useProposal';
 
 interface useExecutableReturns {
   data: {

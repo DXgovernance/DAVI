@@ -1,10 +1,10 @@
-import { ERC20Info, useERC20Info } from '../erc20/useERC20Info';
+import { ERC20Info, useERC20Info } from '../ether-swr/erc20/useERC20Info';
 import { useGuildConfig } from './useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { BigNumber } from 'ethers';
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
-import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import { useProposal } from 'hooks/Guilds/guild/useProposal';
+import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
+import useTotalLocked from 'hooks/Guilds/guild/useTotalLocked';
 import { useMemo } from 'react';
 
 export interface VoteData {
