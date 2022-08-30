@@ -25,7 +25,7 @@ import {
   createPost,
   postTemplate,
 } from 'components/Forum';
-import { Post } from 'components/Forum/types';
+import { PostContent } from 'components/Forum/types';
 
 const CreateDiscussionPage: React.FC = () => {
   let orbis = useRef(new Orbis());
@@ -72,7 +72,7 @@ const CreateDiscussionPage: React.FC = () => {
 
   const handleBack = () => navigate(`/${chain}/${guildId}/`);
 
-  const handleCreateDiscussion = async (post: Post) => {
+  const handleCreateDiscussion = async (post: PostContent) => {
     if (postTemplate(post)) {
       const res = await createPost(orbis.current, post);
       handleBack();
@@ -144,7 +144,8 @@ const CreateDiscussionPage: React.FC = () => {
         )}
         <Box margin="16px 0px">
           <StyledButton
-            onClick={() =>
+            onClick={() => {
+              debugger;
               handleCreateDiscussion({
                 title,
                 body: discussionBodyMd,
@@ -153,8 +154,8 @@ const CreateDiscussionPage: React.FC = () => {
                 replyTo: '',
                 mentions: [],
                 data: {},
-              })
-            }
+              });
+            }}
             variant="secondary"
             disabled={!isValid}
             data-testid="create-proposal-action-button"

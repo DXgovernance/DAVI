@@ -8,8 +8,6 @@ export const ProposalsList = styled(Box)`
   margin-top: 1rem;
 `;
 
-export const ProposalListWrapper = styled.div``;
-
 export const StyledHeading = styled(Heading)`
   margin-top: 32px;
   margin-bottom: 20px;

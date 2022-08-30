@@ -17,12 +17,12 @@ import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';
 import {
-  ProposalListWrapper,
   ProposalsList,
   StyledButton,
   StyledHeading,
   StyledLink,
 } from './Governance.styled';
+import DiscussionCardWrapper from 'Modules/Guilds/Wrappers/DiscussionCardWrapper';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -96,6 +96,8 @@ const Governance = ({ guildId }) => {
     );
   }
 
+  // TODO: Maybe split this component into multiple sections for clarity
+
   return (
     <>
       <Flex direction="row">
@@ -142,11 +144,11 @@ const Governance = ({ guildId }) => {
         )}
 
         {proposalIds ? (
-          <ProposalListWrapper>
+          <>
             {revertedProposals.map(proposal => (
               <ProposalCardWrapper key={proposal} proposalId={proposal} />
             ))}
-          </ProposalListWrapper>
+          </>
         ) : (
           <>
             <ProposalCardWrapper />
@@ -156,8 +158,10 @@ const Governance = ({ guildId }) => {
             <ProposalCardWrapper />
           </>
         )}
-
+      </ProposalsList>
+      <ProposalsList>
         <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
+        <DiscussionCardWrapper />
       </ProposalsList>
     </>
   );
