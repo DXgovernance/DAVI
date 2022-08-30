@@ -20,7 +20,7 @@ export const FooterElement = styled(Flex)`
   font-weight: 600;
 `;
 
-export const DiscussionCardWrapper = styled(CardWrapper)<{
+export const MainWrapper = styled(CardWrapper)<{
   disabled?: boolean;
 }>`
   margin-bottom: 1rem;

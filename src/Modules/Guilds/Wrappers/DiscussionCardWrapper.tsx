@@ -8,12 +8,13 @@ import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
 import { useTranslation } from 'react-i18next';
 import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
+import { StyledLink } from 'Modules/Guilds/pages/Governance/Governance.styled';
 
 const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
 
 const DiscussionCardWrapper = () => {
   let orbis = useRef(new Orbis());
-  const { guildId } = useTypedParams();
+  const { chainName, guildId } = useTypedParams();
   const [posts, setPosts] = useState<Post[]>([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -41,24 +42,32 @@ const DiscussionCardWrapper = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isLoading) return <Loading loading text />;
+
+  if (error) {
+    return (
+      <>
+        <Button variant="secondary" onClick={getPosts}>
+          {t('reload')}
+        </Button>
+        <br />
+        <ErrorLabel>{error}</ErrorLabel>
+      </>
+    );
+  }
+
   return (
-    <div>
-      {isLoading && <Loading loading text />}
-      {error && (
-        <>
-          <Button variant="secondary" onClick={getPosts}>
-            {t('reload')}
-          </Button>
-          <br />
-          <ErrorLabel>{error}</ErrorLabel>
-        </>
+    <>
+      {posts?.length === 0 && `${t('forum.thereAreNoDiscussions')}. `}
+      {posts?.length === 0 && isProposalCreationAllowed && (
+        <StyledLink to={`/${chainName}/${guildId}/create`}>
+          {t('forum.createDiscussionWordy')}.
+        </StyledLink>
       )}
-      {posts?.length === 0 && !isLoading && 'There are no discussions. '}
-      {isProposalCreationAllowed && 'Create a new discussion'}
       {posts.map(post => {
         return <DiscussionCard post={post} />;
       })}
-    </div>
+    </>
   );
 };
 

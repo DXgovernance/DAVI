@@ -3,11 +3,7 @@ import { Flex } from 'components/primitives/Layout';
 import { UnstyledLink } from 'components/primitives/Links';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
-import {
-  CardTitle,
-  DiscussionCardWrapper,
-  FooterElement,
-} from './DiscussionCard.styled';
+import { CardTitle, MainWrapper, FooterElement } from './DiscussionCard.styled';
 import { BiHeart } from 'react-icons/bi';
 import { MdReply } from 'react-icons/md';
 
@@ -22,7 +18,7 @@ export const DiscussionCard: React.FC<DiscussionCardProps> = ({ post }) => {
 
   return (
     <UnstyledLink to="#" data-testid="discussion-card">
-      <DiscussionCardWrapper>
+      <MainWrapper>
         <CardTitle>{post.content?.title}</CardTitle>
         <Flex direction="row" justifyContent="flex-start">
           <FooterElement>
@@ -35,7 +31,7 @@ export const DiscussionCard: React.FC<DiscussionCardProps> = ({ post }) => {
             <MdReply size="20px" /> {post?.count_replies}
           </FooterElement>
         </Flex>
-      </DiscussionCardWrapper>
+      </MainWrapper>
     </UnstyledLink>
   );
 };

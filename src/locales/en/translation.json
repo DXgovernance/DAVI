@@ -210,9 +210,12 @@
   "invalidAddress": "Invalid Address",
   "addressIsRequired": "Address is required",
   "forum": {
+    "discussions_zero": "No Discussions",
     "discussions_one": "Discussion",
     "discussions_other": "Discussions",
+    "thereAreNoDiscussions": "There are no discussions",
     "createDiscussion": "Create Discussion",
+    "createDiscussionWordy": "Create a new discussion",
     "discussionPlaceholder": "Write discussion content"
   },
   "none": "None",
