@@ -10,7 +10,7 @@ export const ActionNumber = styled.div`
   align-items: center;
   height: 1.5rem;
   width: 1.5rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
   border: 1px solid;
   border-radius: 50%;
   font-weight: 600;
@@ -26,15 +26,15 @@ export const ActionsTooltipWrapper = styled.div`
   align-items: flex-start;
   align-self: flex-start;
   border-radius: ${({ theme }) => theme.radii.curved};
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   padding: 16px 20px;
-  background-color: ${({ theme }) => theme.colors.modalBackground};
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  background-color: ${({ theme }) => theme.colors.bg3};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 export const SpacerLine = styled.div`
   height: 20px;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
   border-right: 1px solid;
   margin-left: 13px;
 `;

@@ -8,14 +8,14 @@ export const Error = styled(ErrorLabel)`
 `;
 
 export const FunctionSignatureWrapper = styled.div`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-left: 1.5rem;
   margin-top: 0.5rem;
 `;
 
 export const DetailWrapper = styled(Box)`
   margin: 1.25rem 0rem;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.card.grey};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.grey};
 `;
 
 interface TabButtonProps {
@@ -26,12 +26,12 @@ export const TabButton = styled(Button)<TabButtonProps>`
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: -1px;
   border-radius: 10px 10px 0px 0px;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 
   ${({ active }) =>
     active &&
     css`
-      border: 2px solid ${({ theme }) => theme.colors.card.grey};
+      border: 2px solid ${({ theme }) => theme.colors.grey};
       color: ${({ theme }) => theme.colors.text};
     `}
 `;

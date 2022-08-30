@@ -5,7 +5,7 @@ export const OptionButton = styled(Button)`
   width: 100%;
 
   padding: 0.6rem 1.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   margin-bottom: 0.8rem;
 
   display: flex;
@@ -13,9 +13,9 @@ export const OptionButton = styled(Button)`
   align-items: center;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.background} !important;
+    background-color: ${({ theme }) => theme.colors.bg1} !important;
     color: ${({ theme }) => theme.colors.text} !important;
-    outline: 1px solid #ccc;
+    outline: 1px solid ${({ theme }) => theme.colors.text};
   }
 
   &:focus {

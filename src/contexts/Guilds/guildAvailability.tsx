@@ -10,6 +10,7 @@ import { getNetworkById, getChainIcon } from 'utils';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useNetwork } from 'wagmi';
 import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
+import { useTranslation } from 'react-i18next';
 
 interface ContractAvailability {
   [chainId: number]: boolean;
@@ -23,7 +24,7 @@ interface GuildAvailabilityContextInterface {
 const GreyText = styled(Box)`
   margin-top: 2rem;
   margin-bottom: 0.3rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 const NetworkIconButton = styled(IconButton)`
@@ -36,11 +37,12 @@ export const GuildAvailabilityContext =
 // TODO: Refactor this to not use the MultichainContext.
 // We should remove the MultichainContext as we no longer need it.
 const GuildAvailabilityProvider = ({ children }) => {
-  const { guildId } = useTypedParams();
+  const { guildId, chainName } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);
   const [availability, setAvailability] = useState<ContractAvailability>({});
   const { chain: currentChain } = useNetwork();
   const { switchNetwork } = useSwitchNetwork();
+  const { t } = useTranslation();
 
   const currentChainId = useMemo(() => currentChain?.id, [currentChain]);
 
@@ -84,11 +86,11 @@ const GuildAvailabilityProvider = ({ children }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title="Guild not available."
+        title={t('guildNotAvailable')}
         subtitle={
           Object.values(availability).includes(true)
-            ? 'This guild is not available on this network.'
-            : 'No guild exists on this address.'
+            ? t('guildNotAvailableOnThisNetwork')
+            : t('noGuildInThisAddress')
         }
         extra={
           Object.values(availability).includes(true) ? (
@@ -118,9 +120,9 @@ const GuildAvailabilityProvider = ({ children }) => {
               </div>
             </>
           ) : (
-            <UnstyledLink to={`/`}>
+            <UnstyledLink to={`/${chainName}`}>
               <IconButton iconLeft>
-                <FiArrowLeft /> Take me home
+                <FiArrowLeft /> {t('takeMeHome')}
               </IconButton>
             </UnstyledLink>
           )

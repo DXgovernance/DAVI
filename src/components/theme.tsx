@@ -9,33 +9,28 @@ interface ThemeBase {
 
 export interface GuildsTheme extends ThemeBase {
   colors?: {
-    text: string;
-    primary: string;
-    secondary: string;
+    white: string;
     red: string;
-    green: string;
-    orange: string;
     grey: string;
-    proposalText: {
-      grey: string;
-      lightGrey: string;
-    };
-    card: {
-      grey: string;
-      green: string;
-    };
-    background: string;
-    modalBackground?: string;
-    button: {
-      primary: string;
-      secondary: string;
-    };
-    muted: string;
-    hoverMenu?: string;
-    border: {
-      initial: string;
-      hover: string;
-    };
+    grey2: string;
+    failed: string;
+    active: string;
+
+    params: { [key: number]: string };
+
+    text: string;
+    primary1: string;
+    primary2: string;
+
+    bg1: string;
+    bg2: string;
+    bg3: string;
+    bg4: string;
+
+    border1: string;
+    border2: string;
+    border3: string;
+
     syntax: {
       key: string;
       value: string;
@@ -48,9 +43,11 @@ export interface GuildsTheme extends ThemeBase {
       remove: string;
       removeLight: string;
       removeText: string;
+      addStat: string;
+      removeStat: string;
     };
+
     votes: { [key: number]: string };
-    params: { [key: number]: string };
   };
   fonts?: {
     body: string;

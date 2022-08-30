@@ -10,7 +10,7 @@ export const TokenItem = styled.div`
   border-radius: 0.5rem;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme }) => theme.colors.bg4};
   }
 `;
 
@@ -30,6 +30,6 @@ export const TokenTicker = styled.div`
   padding-bottom: 0.1rem;
 `;
 export const TokenName = styled.div`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   font-size: ${({ theme }) => theme.fontSizes.label};
 `;

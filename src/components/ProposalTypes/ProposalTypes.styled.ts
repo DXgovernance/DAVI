@@ -27,7 +27,7 @@ export const Wrapper = styled(Flex)`
   }
 `;
 export const Container = styled(Flex)`
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   margin: 10px 0;
   width: 100%;
   @media only screen and (max-width: 768px) {
@@ -68,7 +68,7 @@ export const ContainerHeader = styled(Flex)`
   justify-content: initial;
   flex-direction: row;
   margin: 6px 0;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 export const Footer = styled(Flex)`

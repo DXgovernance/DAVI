@@ -4,7 +4,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { Avatar } from 'components/Avatar';
 import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';

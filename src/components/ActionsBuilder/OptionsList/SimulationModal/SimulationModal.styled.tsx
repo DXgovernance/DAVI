@@ -33,7 +33,7 @@ export const Muted = styled.p`
   line-height: 16px;
   letter-spacing: 0em;
   text-align: left;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const TenderlyLogo = styled.img`

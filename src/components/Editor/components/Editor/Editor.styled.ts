@@ -4,13 +4,17 @@ import { transparentize } from 'polished';
 import { EditorContent } from '@tiptap/react';
 
 export const EditorWrap = styled.div`
-  background-color: ${({ theme }) => theme.colors.background};
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  background-color: ${({ theme }) => theme.colors.bg1};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: 10px;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey};
   display: flex;
   flex-direction: column;
   max-height: 26rem;
+
+  :hover {
+    border: 1px solid ${({ theme }) => theme.colors.text};
+  }
 `;
 
 export const Content = styled(EditorContent)`
@@ -21,12 +25,14 @@ export const Content = styled(EditorContent)`
   -webkit-overflow-scrolling: touch;
   ${css`
     .ProseMirror {
+      font-size: ${({ theme }) => theme.fontSizes.header1};
+
       > * + * {
         margin-top: 0.75em;
       }
 
       p.is-editor-empty:first-child::before {
-        color: ${({ theme }) => transparentize(0.5, theme.colors.text)};
+        color: ${({ theme }) => theme.colors.grey};
         content: attr(data-placeholder);
         float: left;
         height: 0;
@@ -52,14 +58,14 @@ export const Content = styled(EditorContent)`
 
       code {
         background-color: ${({ theme }) =>
-          transparentize(0.8, theme.colors.muted)};
-        color: ${({ theme }) => theme.colors.muted};
+          transparentize(0.8, theme.colors.border1)};
+        color: ${({ theme }) => theme.colors.border1};
       }
 
       pre {
-        background: ${({ theme }) => theme.colors.primary};
+        background: ${({ theme }) => theme.colors.primary1};
         border-radius: 10px;
-        color: ${({ theme }) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.bg1};
         padding: 0.75rem 1rem;
 
         code {
@@ -71,7 +77,7 @@ export const Content = styled(EditorContent)`
       }
 
       mark {
-        background-color: #faf594;
+        background-color: ${({ theme }) => theme.colors.active};
       }
 
       img {
@@ -85,14 +91,14 @@ export const Content = styled(EditorContent)`
 
       blockquote {
         border-left: 2px solid
-          ${({ theme }) => transparentize(0.9, theme.colors.primary)};
+          ${({ theme }) => transparentize(0.9, theme.colors.primary1)};
         padding-left: 1rem;
       }
 
       hr {
         border: none;
         border-top: 2px solid
-          ${({ theme }) => transparentize(0.8, theme.colors.primary)};
+          ${({ theme }) => transparentize(0.8, theme.colors.primary1)};
         margin: 2rem 0;
       }
 

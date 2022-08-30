@@ -1,7 +1,7 @@
 import { ActionEditorProps } from '..';
 import { Button } from 'components/primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
 import { Input } from 'components/primitives/Forms/Input';

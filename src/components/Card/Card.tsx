@@ -6,13 +6,13 @@ export interface CardWrapperProps {
   customStyles?: string | FlattenSimpleInterpolation;
 }
 export const CardWrapper = styled(Box)<CardWrapperProps>`
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   ${({ customStyles }) => customStyles}
 `;
 
 const CardHeader = styled(Box)`
-  border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
   padding: 8px 16px;
 `;
 export const Header = styled.div<{ headerStyles?: any }>`

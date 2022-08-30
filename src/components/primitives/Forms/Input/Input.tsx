@@ -25,7 +25,7 @@ const InputWrapper = styled.div<{
 
   border: 1px solid
     ${({ theme, isInvalid }) =>
-      isInvalid ? theme.colors.red : theme.colors.muted};
+      isInvalid ? theme.colors.red : theme.colors.border1};
   border-radius: 1.5rem;
   padding: 0.5rem 0.8rem;
   background-color: transparent;
@@ -33,7 +33,7 @@ const InputWrapper = styled.div<{
   input {
     color: ${({ theme, isInvalid, muted, disabled }) => {
       if (isInvalid) return theme.colors.red;
-      if (muted) return theme.colors.muted;
+      if (muted) return theme.colors.border1;
       if (disabled) return theme.colors.grey;
       return theme.colors.text;
     }};
@@ -43,7 +43,7 @@ const InputWrapper = styled.div<{
     text-align: ${({ textAlign }) => textAlign || 'left'};
 
     &::placeholder {
-      color: ${({ theme }) => theme.colors.proposalText.grey};
+      color: ${({ theme }) => theme.colors.grey};
     }
   }
 

@@ -7,7 +7,7 @@ export const ToastNotificationContainer = styled(ToastContainer)`
   }
   .Toastify__toast {
     color: ${({ theme }) => theme.colors.text};
-    background: ${({ theme }) => theme.colors.modalBackground};
+    background: ${({ theme }) => theme.colors.bg3};
     box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.25);
     padding: 0.6rem;
   }

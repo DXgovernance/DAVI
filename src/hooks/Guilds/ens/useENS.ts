@@ -1,4 +1,4 @@
-import { isAddress } from '../../../../utils';
+import { isAddress } from 'utils';
 import useAddressFromENSName from './useAddressFromENSName';
 import useENSNameFromAddress from './useENSNameFromAddress';
 
@@ -16,7 +16,9 @@ export default function useENS(nameOrAddress: string, chainId?: number) {
   );
 
   return {
-    address: validAddress || resolvedAddress,
-    name: resolvedENSName || (resolvedAddress ? nameOrAddress : null),
+    address: validAddress || resolvedAddress.ensAddress,
+    name:
+      resolvedENSName.ensName ||
+      (resolvedAddress.ensAddress ? nameOrAddress : null),
   };
 }

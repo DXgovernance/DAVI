@@ -11,8 +11,8 @@ export const DropdownMenuItem = styled(MenuItem)`
   color: ${({ theme }) => theme.colors.text};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.hoverMenu};
-    color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.bg4};
+    color: ${({ theme }) => theme.colors.primary1};
   }
 `;
 
@@ -32,7 +32,7 @@ export const FilterResetMobile = styled.div`
 `;
 
 export const FilterResetDesktop = styled.div`
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.bg1};
   padding: 10px;
   text-align: center;
   cursor: pointer;
@@ -40,7 +40,7 @@ export const FilterResetDesktop = styled.div`
 `;
 
 export const FilterButton = styled(DropdownButton)`
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg1};
   color: ${({ theme }) => theme.colors.text};
   margin-right: 1rem;
 `;

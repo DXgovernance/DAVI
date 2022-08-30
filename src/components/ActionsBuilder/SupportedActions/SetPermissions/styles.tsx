@@ -22,7 +22,7 @@ export const StyledTokenAmount = styled(TokenAmountInput)`
   ${({ disabled }) =>
     disabled &&
     css`
-      color: ${({ theme }) => theme.colors.proposalText.grey} !important;
+      color: ${({ theme }) => theme.colors.grey} !important;
     `}
 `;
 
@@ -38,6 +38,6 @@ export const ToggleLabel = styled.div<ToggleLabelProps>`
   ${({ selected }) =>
     !selected &&
     css`
-      color: ${({ theme }) => theme.colors.proposalText.grey} !important;
+      color: ${({ theme }) => theme.colors.grey} !important;
     `}
 `;

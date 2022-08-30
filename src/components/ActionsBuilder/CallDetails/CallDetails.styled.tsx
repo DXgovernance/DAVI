@@ -26,7 +26,7 @@ export const ActionParamRow = styled(Box)`
 `;
 
 export const ParamDetail = styled(Box)`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   overflow-wrap: break-word;
 `;
 
@@ -41,6 +41,6 @@ export const DetailsButton = styled(Button)<{ isExpanded: boolean }>`
   ${({ isExpanded }) =>
     isExpanded &&
     css`
-      border-color: ${({ theme }) => theme.colors.border.hover};
+      border-color: ${({ theme }) => theme.colors.border3};
     `}
 `;

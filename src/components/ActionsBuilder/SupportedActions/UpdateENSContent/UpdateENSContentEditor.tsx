@@ -6,7 +6,7 @@ import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
   convertToContentHash,
   convertToNameHash,
-  isValidChainId,
+  isSupportedChainId,
 } from './utils';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
 import { isEnsName, isIpfsHash } from './validation';
@@ -16,6 +16,7 @@ import { ActionEditorProps } from '..';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { Tooltip } from 'components/Tooltip';
 import { StyledIcon } from 'components/primitives/StyledIcon';
+import { LOCALHOST_ID } from 'utils';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -32,11 +33,16 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   const fullEnsName = `${debouncedEnsName}.eth`;
 
   const { chain } = useNetwork();
-  const chainId = isValidChainId(chain.id);
+  const chainId = isSupportedChainId(chain.id);
   const { data: resolver } = useEnsResolver({
     name: `${debouncedEnsName}.eth`,
     chainId,
   });
+
+  if (chain.id === LOCALHOST_ID)
+    console.warn(
+      `ENS content doesn't work on Localhost. This action is left here just for development purposes but will throw an error if its included in a proposal.`
+    );
 
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
