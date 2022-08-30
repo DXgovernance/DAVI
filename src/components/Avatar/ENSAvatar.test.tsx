@@ -6,7 +6,7 @@ import { ENSAvatar } from './ENSAvatar';
 
 const testImage = '/image/test.jpg';
 
-jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', (address?: string) => {
+jest.mock('hooks/Guilds/ens/useENSAvatar', (address?: string) => {
   return {
     __esModule: true,
     default: () => ({

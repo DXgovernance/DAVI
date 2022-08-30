@@ -4,7 +4,7 @@ import GenericCallParamsMatcher from './GenericCallParamsMatcher';
 import { FunctionParamWithValue } from './GenericCallInfoLine';
 import { render } from 'utils/tests';
 
-jest.mock('hooks/Guilds/ether-swr/ens/useENSAvatar', () => ({
+jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
     avatarUri: 'test',

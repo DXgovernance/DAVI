@@ -1,4 +1,4 @@
-import { MenuBar } from '../';
+import { MenuBar } from '../MenuBar';
 import { EditorWrap, Content } from './Editor.styled';
 
 const Editor = ({ EditorConfig }) => {

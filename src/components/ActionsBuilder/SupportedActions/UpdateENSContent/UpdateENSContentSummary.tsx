@@ -8,10 +8,10 @@ import {
 import Summary from '../common/Summary';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { useEnsName, useNetwork } from 'wagmi';
-import { convertToIpfsHash, getIpfsUrl, isValidChainId } from './utils';
+import { convertToIpfsHash, getIpfsUrl, isSupportedChainId } from './utils';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
-import useENSContentHash from 'hooks/Guilds/ens/useENSContentHash';
+import { useENSContentHash } from 'hooks/Guilds/ens/useENSPublicResolverContract';
 import { BiLinkExternal } from 'react-icons/bi';
 import { getBlockExplorerUrl } from 'provider/chains';
 import useIPFSFileMetadata from 'hooks/Guilds/ipfs/useIPFSFileMetadata';
@@ -28,7 +28,7 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
   const { t } = useTranslation();
   const { parsedData } = useUpdateEnsContent({ decodedCall });
   const { chain } = useNetwork();
-  const chainId = isValidChainId(chain.id);
+  const chainId = isSupportedChainId(chain.id);
   const { data: ensName } = useEnsName({
     address: parsedData?.from,
     chainId,

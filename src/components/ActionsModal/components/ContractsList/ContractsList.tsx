@@ -20,7 +20,7 @@ import {
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { useNetwork } from 'wagmi';
-import { isAvailableOnENS } from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { isAvailableOnENS } from 'hooks/Guilds/ens/utils';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;

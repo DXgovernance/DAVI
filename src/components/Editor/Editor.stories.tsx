@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Editor } from './Components/';
+import { Editor } from './components/Editor';
 import { useTextEditor } from './useTextEditor';
 
 export default {
