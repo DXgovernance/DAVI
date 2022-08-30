@@ -873,7 +873,7 @@ async function main() {
               networkContracts.addresses.SWPRGuild,
               networkContracts.addresses.SWPR,
               ERC20_TRANSFER_SIGNATURE,
-              web3.utils.toWei('5').toString(),
+              web3.utils.toWei('5'),
               true
             )
             .encodeABI(),
