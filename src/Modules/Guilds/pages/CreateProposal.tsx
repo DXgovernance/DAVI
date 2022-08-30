@@ -75,7 +75,7 @@ const CreateProposalPage: React.FC = () => {
     setEditMode(v => !v);
   };
 
-  const handleBack = () => navigate(`/${chain}/${guildId}/proposalType`);
+  const handleBack = () => navigate(`/${chain}/${guildId}`);
 
   const ipfs = useIPFSNode();
 
@@ -182,7 +182,7 @@ const CreateProposalPage: React.FC = () => {
         >
           <StyledButton iconLeft onClick={handleBack}>
             <FiChevronLeft />
-            {t('changeProposalType')}
+            {t('backToOverview')}
           </StyledButton>
 
           <StyledButton

@@ -1,16 +1,14 @@
 import { READ_ONLY_CONNECTOR_ID } from 'provider/ReadOnlyConnector';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useAccount, useConnect, useNetwork } from 'wagmi';
 
 const EnsureReadOnlyConnection = () => {
-  const { chains } = useNetwork();
-  const defaultChain = useMemo(() => {
-    if (chains?.length === 0) return null;
+  const { chain } = useNetwork();
 
-    // Localhost is only available on development environments.
-    // const localhost = chains.find(chain => chain.id === 1337);
-    return chains[0];
-  }, [chains]);
+  const [latestWorkingNetwork, setLatestWorkingNetwork] = useState(null);
+  useEffect(() => {
+    if (chain) setLatestWorkingNetwork(chain);
+  }, [chain]);
 
   const { connector, isConnecting, isReconnecting } = useAccount();
   const { connect, connectors } = useConnect();
@@ -22,7 +20,10 @@ const EnsureReadOnlyConnection = () => {
       );
       if (readOnlyConnector) {
         console.log('Initiating read only connection');
-        connect({ connector: readOnlyConnector, chainId: defaultChain?.id });
+        connect({
+          connector: readOnlyConnector,
+          chainId: latestWorkingNetwork?.id,
+        });
       }
     }
   }, [
@@ -31,9 +32,8 @@ const EnsureReadOnlyConnection = () => {
     isReconnecting,
     connector,
     connectors,
-    defaultChain,
+    latestWorkingNetwork,
   ]);
-
   return null;
 };
 

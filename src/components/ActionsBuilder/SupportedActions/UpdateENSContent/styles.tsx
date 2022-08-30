@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { StyledIcon } from 'components/primitives/StyledIcon';
 import { Box } from 'components/primitives/Layout/Box';
-import { StyledToolTip } from 'components/ToolTip';
 import { DetailBody } from '../common/Summary.styled';
 
 export const Control = styled(Box)`
@@ -24,16 +23,6 @@ export const ControlRow = styled(Box)`
   display: flex;
   align-items: stretch;
   height: 100%;
-`;
-
-export const StyledInfoIcon = styled(StyledIcon)`
-  &:hover + ${StyledToolTip} {
-    visibility: visible;
-  }
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
-  }
 `;
 
 export const StyledENSIcon = styled(StyledIcon)`

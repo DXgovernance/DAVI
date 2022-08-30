@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
 import { StyledIcon } from 'components/primitives/StyledIcon';
 import { Box } from 'components/primitives/Layout/Box';
-import { StyledToolTip } from 'components/ToolTip';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 
 export const StyledMintIcon = styled(StyledIcon)`
@@ -35,16 +34,6 @@ export const RepMintInput = styled(NumericalInput)`
   display: flex;
   align-items: center;
   width: 100%;
-`;
-
-export const StyledInfoIcon = styled(StyledIcon)`
-  &:hover + ${StyledToolTip} {
-    visibility: visible;
-  }
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.text};
-  }
 `;
 
 export const Error = styled(ErrorLabel)`

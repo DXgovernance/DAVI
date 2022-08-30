@@ -5,12 +5,12 @@ import { Avatar } from 'components/Avatar';
 import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
-import { shortenAddress, MAINNET_ID } from 'utils';
+import { MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
 import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
-import { StyledToolTip } from 'components/ToolTip';
+import { Tooltip } from 'components/Tooltip';
 import { useTranslation } from 'react-i18next';
 import { ethers } from 'ethers';
 import validateRepMint from './validateRepMint';
@@ -19,7 +19,8 @@ import {
   ControlRow,
   ControlLabel,
 } from 'components/primitives/Forms/Control';
-import { Error, StyledInfoIcon, RepMintInput } from './styles';
+import { Error, RepMintInput } from './styles';
+import { StyledIcon } from 'components/primitives/StyledIcon';
 
 interface RepMintFormValues {
   repPercent: string;
@@ -32,6 +33,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
   const [repAmount, setRepAmount] = useState<string>('0');
   const { parsedData } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
+  const [recipient, setRecipient] = useState<string>(parsedData?.toAddress);
   const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
   const { imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
 
@@ -67,6 +69,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
       ...decodedCall,
       args: {
         ...decodedCall.args,
+        to: recipient,
         amount: ethers.utils.parseUnits(repAmount.toString()),
       },
     });
@@ -78,12 +81,14 @@ export const Mint: React.FC<ActionEditorProps> = ({
         <Control>
           <ControlLabel>
             {t('repMint.recipient')}
-            <StyledInfoIcon src={Info} />
-            <StyledToolTip>{t('repMint.recipientTooltip')}</StyledToolTip>
+            <Tooltip text={t('repMint.recipientTooltip')} placement="bottom">
+              <StyledIcon src={Info} />
+            </Tooltip>
           </ControlLabel>
           <ControlRow>
             <Input
-              value={shortenAddress(parsedData?.toAddress)}
+              value={recipient}
+              onChange={e => setRecipient(e.target.value)}
               icon={
                 <Avatar
                   src={imageUrl}
@@ -91,8 +96,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
                   size={18}
                 />
               }
-              readOnly
-              disabled
             />
           </ControlRow>
         </Control>
@@ -107,10 +110,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
                 <Control>
                   <ControlLabel>
                     {t('repMint.repPercent')}
-                    <StyledInfoIcon src={Info} />
-                    <StyledToolTip>
-                      {t('repMint.repPercentTooltip')}
-                    </StyledToolTip>
+                    <Tooltip text={t('repMint.repPercentTooltip')}>
+                      <StyledIcon src={Info} />
+                    </Tooltip>
                   </ControlLabel>
                   <ControlRow>
                     <RepMintInput
@@ -131,8 +133,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
           <Control>
             <ControlLabel>
               {t('repMint.repAmount')}
-              <StyledInfoIcon src={Info} />
-              <StyledToolTip>{t('repMint.repAmountTooltip')}</StyledToolTip>
+              <Tooltip text={t('repMint.repAmountTooltip')}>
+                <StyledIcon src={Info} />
+              </Tooltip>
             </ControlLabel>
             <ControlRow>
               <RepMintInput disabled value={repAmount?.toString()} readOnly />

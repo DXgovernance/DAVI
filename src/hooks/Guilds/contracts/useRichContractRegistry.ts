@@ -53,42 +53,44 @@ export const useRichContractRegistry = (chainId?: number) => {
         contract => contract.title === 'Vesting contract for DXD token'
       ).networks[1337] = localhost.contracts.utils.dxdVestingFactory;
       // Add NFT factory
-      data[data.length] = {
-        title: 'NFT Factory',
-        tags: ['NFT', 'DXdao', 'factory'],
-        networks: {
-          '1337': localhost.contracts.utils.dxDaoNFT,
-        },
-        functions: [
-          {
-            title: 'Mint NFT',
-            functionName: 'mint',
-            params: [
-              {
-                type: 'address',
-                component: 'address',
-                name: 'recipient',
-                defaultValue: '',
-                description: 'Address of the recipient',
-              },
-              {
-                type: 'string',
-                component: 'string',
-                name: 'tokenURI',
-                defaultValue: '',
-                description: 'IPFS hash of metadata',
-              },
-            ],
-            templateLiteral:
-              // eslint-disable-next-line no-template-curly-in-string
-              'Mint NFT to ${recipient} with tokenURI ${tokenURI}',
-            shortDescription: 'Creates NFTs minted by DXdao',
-            longDescription:
-              'Creates NFTs minted by DXdao and transfers them to the recipient',
-            spendsTokens: false,
+      if (!data.find(contract => contract.title === 'NFT Factory')) {
+        data[data.length] = {
+          title: 'NFT Factory',
+          tags: ['NFT', 'DXdao', 'factory'],
+          networks: {
+            '1337': localhost.contracts.utils.dxDaoNFT,
           },
-        ],
-      };
+          functions: [
+            {
+              title: 'Mint NFT',
+              functionName: 'mint',
+              params: [
+                {
+                  type: 'address',
+                  component: 'address',
+                  name: 'recipient',
+                  defaultValue: '',
+                  description: 'Address of the recipient',
+                },
+                {
+                  type: 'string',
+                  component: 'string',
+                  name: 'tokenURI',
+                  defaultValue: '',
+                  description: 'IPFS hash of metadata',
+                },
+              ],
+              templateLiteral:
+                // eslint-disable-next-line no-template-curly-in-string
+                'Mint NFT to ${recipient} with tokenURI ${tokenURI}',
+              shortDescription: 'Creates NFTs minted by DXdao',
+              longDescription:
+                'Creates NFTs minted by DXdao and transfers them to the recipient',
+              spendsTokens: false,
+            },
+          ],
+        };
+      }
     }
 
     return data
