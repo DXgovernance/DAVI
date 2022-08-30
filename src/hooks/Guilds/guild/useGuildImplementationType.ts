@@ -1,7 +1,7 @@
 import { useMemo, useEffect, useState } from 'react';
 import { utils } from 'ethers';
-import { GuildImplementationType } from '../../../types/types.guilds';
-import deployedHashedBytecodes from '../../../bytecodes/config.json';
+import { GuildImplementationType } from 'types/types.guilds.d';
+import deployedHashedBytecodes from 'bytecodes/config.json';
 import { useProvider } from 'wagmi';
 
 const defaultImplementation = deployedHashedBytecodes.find(
