@@ -3,7 +3,7 @@ import Switch, { ReactSwitchProps } from 'react-switch';
 import { FormElementProps } from 'components/primitives/Forms/types';
 
 const StyledSwitch = styled(Switch)<ReactSwitchProps>`
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
 
   &:hover {
     border: 1px solid ${({ theme }) => theme.colors.text};
@@ -30,10 +30,10 @@ export const Toggle: React.FC<FormElementProps<boolean>> = ({
       height={32}
       width={64}
       borderRadius={32}
-      offColor={theme.colors.modalBackground}
-      onColor={theme.colors.muted}
+      offColor={theme.colors.bg3}
+      onColor={theme.colors.border1}
       handleDiameter={24}
-      activeBoxShadow={`0 0 2px 3px ${theme.colors.muted}`}
+      activeBoxShadow={`0 0 2px 3px ${theme.colors.border1}`}
       {...rest}
     />
   );

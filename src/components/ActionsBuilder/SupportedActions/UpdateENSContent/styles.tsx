@@ -14,7 +14,7 @@ export const ControlLabel = styled(Box)`
   display: flex;
   flex-direction: row;
   margin-bottom: 0.75rem;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   font-size: ${({ theme }) => theme.fontSizes.body};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
 `;
@@ -31,7 +31,7 @@ export const StyledENSIcon = styled(StyledIcon)`
 `;
 
 export const DiffContainer = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: 2px;
 `;
 
@@ -43,5 +43,5 @@ export const DiffDetail = styled(DetailBody)`
 export const DiffStat = styled.span<{ removed?: boolean }>`
   margin: 0 0.2rem;
   color: ${({ removed, theme }) =>
-    removed ? theme.colors.red : theme.colors.green};
+    removed ? theme.colors.syntax.removeStat : theme.colors.syntax.addStat};
 `;

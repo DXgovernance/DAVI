@@ -4,17 +4,17 @@ import { Heading } from 'components/primitives/Typography';
 
 // TODO: base these components on a generic Card component
 export const CardWrapper = styled(Box)<{ disabled?: boolean }>`
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   margin-bottom: 1rem;
   padding: 1rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 
   &:hover {
     ${({ theme, disabled }) =>
       disabled
         ? `cursor: default;`
-        : `border-color: ${theme.colors.border.hover};
+        : `border-color: ${theme.colors.border3};
           color: ${theme.colors.text};`}
   }
 `;
@@ -77,14 +77,14 @@ export const ActionsWrapper = styled(Box)`
     width: 100%;
     height: 100%;
     background: ${({ theme }) =>
-      `linear-gradient(to right, transparent 89%, ${theme.colors.background} 100%)`};
+      `linear-gradient(to right, transparent 89%, ${theme.colors.bg1} 100%)`};
   }
   & > div {
     margin: 4px 2px;
   }
   @media only screen and (max-width: 524px) {
     flex-wrap: wrap;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
     & > div:nth-child(n + 3) {

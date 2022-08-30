@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle<{ theme: GuildsTheme }>`
     margin: 0;
     padding: 0;
     color: ${({ theme }) => theme.colors.text};
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.bg1};
     font-family: ${({ theme }) => theme.fonts.body};
     font-weight: ${({ theme }) => theme.fontWeights.regular};
     line-height: ${({ theme }) => theme.lineHeights.body};

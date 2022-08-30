@@ -8,7 +8,7 @@ export const CardWrapperWithMargin = styled(CardWrapper)<{
   cardStatus?: CardStatus;
 }>`
   position: relative;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg1};
   margin-top: 0.8rem;
   border: 1px solid;
   border-color: ${({ cardStatus, theme }) =>
@@ -17,8 +17,8 @@ export const CardWrapperWithMargin = styled(CardWrapper)<{
       : cardStatus === CardStatus.warning
       ? theme.colors.red
       : cardStatus === CardStatus.simulationFailed
-      ? theme.colors.orange
-      : theme.colors.muted};
+      ? theme.colors.border2
+      : theme.colors.border1};
   z-index: ${({ cardStatus }) =>
     cardStatus === CardStatus.dragging ? 999 : 'initial'};
   box-shadow: ${({ cardStatus }) =>
@@ -46,19 +46,19 @@ export const ChevronIcon = styled.span<{ active?: boolean }>`
   height: 1.4rem;
   width: 1.4rem;
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   display: inline-flex;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.border.hover};
+    border-color: ${({ theme }) => theme.colors.border3};
   }
 
   ${({ active }) =>
     active &&
     css`
-      border-color: ${({ theme }) => theme.colors.border.hover};
+      border-color: ${({ theme }) => theme.colors.border3};
     `}
 `;
 
@@ -74,8 +74,8 @@ export const Separator = styled(Box)<{ cardStatus?: CardStatus }>`
       : cardStatus === CardStatus.warning
       ? theme.colors.red
       : cardStatus === CardStatus.simulationFailed
-      ? theme.colors.orange
-      : theme.colors.muted};
+      ? theme.colors.border2
+      : theme.colors.border1};
 `;
 
 export const GripWithMargin = styled(Grip)`
@@ -97,5 +97,5 @@ export const SectionHeader = styled(Box)`
 `;
 
 export const SectionBody = styled(Box)`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;

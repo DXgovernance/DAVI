@@ -5,5 +5,5 @@ export const ProposalDescriptionWrapper = styled.div`
   line-height: 1.5;
   font-size: 16px;
   text-align: justify;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;

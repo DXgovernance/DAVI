@@ -24,7 +24,7 @@ interface GuildAvailabilityContextInterface {
 const GreyText = styled(Box)`
   margin-top: 2rem;
   margin-bottom: 0.3rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 const NetworkIconButton = styled(IconButton)`

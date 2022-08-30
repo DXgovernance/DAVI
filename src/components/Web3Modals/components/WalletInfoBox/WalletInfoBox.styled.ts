@@ -3,7 +3,7 @@ import { Button } from 'components/primitives/Button';
 
 export const Wrapper = styled.div`
   padding: 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   margin: 1.5rem;
 `;
@@ -15,7 +15,7 @@ export const Row = styled.div`
 
 export const ConnectionStatusText = styled(Row)`
   font-size: 0.9rem;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const ConnectionStatusRow = styled(Row)`
@@ -34,8 +34,8 @@ export const ExternalLink = styled.a`
 `;
 
 export const ConnectionActionButton = styled.a`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
-  background-color: ${({ theme }) => theme.colors.modalBackground};
+  color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.bg3};
   display: flex;
   align-items: center;
   cursor: pointer;

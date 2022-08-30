@@ -35,7 +35,7 @@ export const SectionTitle = styled(ContainerText).attrs(() => ({
   variant: 'bold',
 }))`
   display: block;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
 `;
@@ -49,7 +49,7 @@ export const ButtonDetail = styled(ContainerText).attrs(() => ({
   variant: 'medium',
 }))<{ vertical?: boolean }>`
   margin: ${({ vertical }) => (vertical ? '0.5rem 0 0 0' : '0')};
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const FormElement = styled.div`
@@ -57,7 +57,7 @@ export const FormElement = styled.div`
 `;
 
 export const FormLabel = styled.div`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 0.75rem;
 `;
 

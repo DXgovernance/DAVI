@@ -17,7 +17,7 @@ export const Title = styled(Heading)`
 export const InfoItem = styled.span`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.body};
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
   justify-content: center;
 `;
 
@@ -43,6 +43,6 @@ export const CancelButton = styled(ConfirmButton).attrs({
   variant: 'secondary',
 })`
   background: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   margin-left: 0;
 `;
