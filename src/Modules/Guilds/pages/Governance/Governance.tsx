@@ -13,9 +13,6 @@ import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActivePr
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import { useAccount } from 'wagmi';
 import {
   ProposalsList,
   StyledButton,
@@ -23,6 +20,7 @@ import {
   StyledLink,
 } from './Governance.styled';
 import DiscussionCardWrapper from 'Modules/Guilds/Wrappers/DiscussionCardWrapper';
+import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -30,22 +28,7 @@ const Governance = ({ guildId }) => {
   const { t } = useTranslation();
   const { data: activeProposals } = useActiveProposalsNow(guildId);
   const { chainName } = useTypedParams();
-  const { address } = useAccount();
-  const { data: guildConfig } = useGuildConfig(guildId);
-  const { data: votingPower } = useVotingPowerOf({
-    contractAddress: guildId,
-    userAddress: address,
-  });
-
-  const isProposalCreationAllowed = useMemo(() => {
-    if (!guildConfig || !votingPower) {
-      return false;
-    }
-    if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
-      return true;
-    }
-    return false;
-  }, [votingPower, guildConfig]);
+  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   /*
   Since filters are a global state, we need to reset all of them

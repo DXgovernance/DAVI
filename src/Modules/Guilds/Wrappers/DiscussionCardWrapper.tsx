@@ -7,6 +7,7 @@ import { Loading } from 'components/primitives/Loading';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
 import { useTranslation } from 'react-i18next';
+import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
 
 const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
 
@@ -18,6 +19,7 @@ const DiscussionCardWrapper = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const { t } = useTranslation();
+  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   const getPosts = async () => {
     let { data, error } = await orbis.current.getPosts({
@@ -51,7 +53,8 @@ const DiscussionCardWrapper = () => {
           <ErrorLabel>{error}</ErrorLabel>
         </>
       )}
-      {posts?.length === 0 && !isLoading && 'There are no discussions'}
+      {posts?.length === 0 && !isLoading && 'There are no discussions. '}
+      {isProposalCreationAllowed && 'Create a new discussion'}
       {posts.map(post => {
         return <DiscussionCard post={post} />;
       })}
