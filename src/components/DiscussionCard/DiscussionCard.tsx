@@ -1,13 +1,15 @@
 import { Post } from 'components/Forum/types';
 import { Flex } from 'components/primitives/Layout';
 import { UnstyledLink } from 'components/primitives/Links';
-import {
-  CardWrapper,
-  CardContent,
-  CardTitle,
-} from 'components/ProposalCard/styles';
-import useENSAvatar from 'hooks/Guilds/ether-swr/ens/useENSAvatar';
+import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
+import {
+  CardTitle,
+  DiscussionCardWrapper,
+  FooterElement,
+} from './DiscussionCard.styled';
+import { BiHeart } from 'react-icons/bi';
+import { MdReply } from 'react-icons/md';
 
 interface DiscussionCardProps {
   post: Post;
@@ -20,18 +22,20 @@ export const DiscussionCard: React.FC<DiscussionCardProps> = ({ post }) => {
 
   return (
     <UnstyledLink to="#" data-testid="discussion-card">
-      <CardWrapper>
-        <CardContent>
-          <CardTitle size={2}>
-            <strong>{post.content?.title}</strong>
-          </CardTitle>
-        </CardContent>
+      <DiscussionCardWrapper>
+        <CardTitle>{post.content?.title}</CardTitle>
         <Flex direction="row" justifyContent="flex-start">
-          <div>{ensAvatar?.ensName || shortenAddress(creatorAddress)} - </div>
-          <div>{post?.count_likes} likes - </div>
-          <div>{post?.count_replies} replies</div>
+          <FooterElement>
+            {ensAvatar?.ensName || shortenAddress(creatorAddress)}
+          </FooterElement>
+          <FooterElement>
+            <BiHeart size="20px" /> {post?.count_likes}
+          </FooterElement>
+          <FooterElement>
+            <MdReply size="20px" /> {post?.count_replies}
+          </FooterElement>
         </Flex>
-      </CardWrapper>
+      </DiscussionCardWrapper>
     </UnstyledLink>
   );
 };

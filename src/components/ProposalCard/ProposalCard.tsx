@@ -6,7 +6,7 @@ import { UnstyledLink } from 'components/primitives/Links';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { shortenAddress } from 'utils';
 import {
-  CardWrapper,
+  ProposalCardWrapper,
   CardHeader,
   IconDetailWrapper,
   Detail,
@@ -25,7 +25,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
 }) => {
   return (
     <UnstyledLink to={href || '#'} data-testid="proposal-card">
-      <CardWrapper disabled={!href}>
+      <ProposalCardWrapper disabled={!href}>
         <CardHeader>
           <IconDetailWrapper>
             <Avatar
@@ -56,7 +56,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
         <CardFooter>
           {options && <ProposalCardWinningOption option={options[0]} />}
         </CardFooter>
-      </CardWrapper>
+      </ProposalCardWrapper>
     </UnstyledLink>
   );
 };

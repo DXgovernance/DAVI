@@ -51,6 +51,7 @@ const DiscussionCardWrapper = () => {
           <ErrorLabel>{error}</ErrorLabel>
         </>
       )}
+      {posts?.length === 0 && !isLoading && 'There are no discussions'}
       {posts.map(post => {
         return <DiscussionCard post={post} />;
       })}
