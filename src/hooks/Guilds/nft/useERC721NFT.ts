@@ -24,11 +24,11 @@ export default function useERC721NFT(
     ],
   });
 
-  if (!data || data.every(v => v === null))
+  if (!data || data.every(v => v === null)) {
     return { data: undefined, isError, isLoading };
+  }
   const [ownerOf, tokenURI] = data;
   const resolvedTokenUri = resolveUri(tokenURI?.toString());
-
   return {
     ownerAddress: ownerOf?.toString(),
     resolvedTokenUri,

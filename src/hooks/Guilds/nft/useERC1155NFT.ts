@@ -1,5 +1,5 @@
 import { resolveUri } from 'utils/url';
-import ERC1155 from 'contracts/ERC721.json';
+import ERC1155 from 'contracts/ERC1155.json';
 import { useContractReads } from 'wagmi';
 
 export default function useERC1155NFT(
@@ -25,8 +25,9 @@ export default function useERC1155NFT(
     ],
   });
 
-  if (!data || data.every(v => v === null))
+  if (!data || data.every(v => v === null)) {
     return { data: undefined, isError, isLoading };
+  }
   const [balanceOf, tokenURI] = data;
   const resolvedTokenUri = resolveUri(tokenURI?.toString());
 
