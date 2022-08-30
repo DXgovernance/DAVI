@@ -841,7 +841,7 @@ async function main() {
         description: 'Proposal with value > 1',
       },
     },
-    // Approve tokens to be locked from acc[1]
+
     {
       type: 'approve',
       from: accounts[0],
@@ -851,16 +851,16 @@ async function main() {
         amount: MAX_UINT,
       },
     },
-    // Lock tokens
+
     {
       type: 'guild-lockTokens',
       from: accounts[0],
       data: {
         guildName: 'SWPRGuild',
-        amount: web3.utils.toWei('30').toString(),
+        amount: web3.utils.toWei('30'),
       },
     },
-    // After locking tokens acc[1] creates a proposal to allow guild to make SWPR transfers
+
     {
       type: 'guild-createProposal',
       from: accounts[0],
@@ -885,7 +885,7 @@ async function main() {
         voteOptions: ['For'],
       },
     },
-    // Vote for proposal
+
     {
       type: 'guild-voteProposal',
       from: accounts[0],
@@ -896,7 +896,7 @@ async function main() {
         votingPower: web3.utils.toWei('15').toString(),
       },
     },
-    // // Execute proposal
+
     {
       type: 'guild-endProposal',
       increaseTime: moment.duration(5, 'minutes').asSeconds(),
