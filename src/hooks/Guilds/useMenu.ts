@@ -2,12 +2,36 @@ import { useState } from 'react';
 import { ProposalState } from 'types/types.guilds.d';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 
+export interface UseMenuReturn {
+  //State
+  onToggleState: (value: ProposalState) => void;
+  onResetState: () => void;
+  isStateSelected: (value: ProposalState) => boolean;
+  countStateSelected: number;
+  filterState: ProposalState[];
+
+  //Type
+  onToggleActionType: (value: string) => void;
+  onResetActionType: () => void;
+  isActionTypeSelected: (value: SupportedAction) => boolean;
+  countActionTypeSelected: number;
+  filterActionTypes: SupportedAction[];
+
+  //Currency
+  onToggleCurrency: (value: string) => void;
+  onResetCurrency: () => void;
+  isCurrencySelected: (value: string) => boolean;
+  countCurrencySelected: number;
+  filterCurrency: string[];
+
+  totalFilters: number;
+}
 // This hooks controls the filter for the menus.
 export const useMenu = ({
   initialStates = [],
   initialTypes = [],
   initialCurrencies = [],
-}) => {
+}): UseMenuReturn => {
   const [filterState, setFilterState] =
     useState<ProposalState[]>(initialStates);
   const [filterActionTypes, setFilterActionType] =
