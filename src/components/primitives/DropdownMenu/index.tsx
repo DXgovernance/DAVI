@@ -34,11 +34,11 @@ export const DropdownHeader = styled.div`
 // In mobile, if fullScreenMobile is true it renders an absolute full screen menu.
 export const DropdownContent = styled(Box)<DropdownContentProps>`
   display: ${({ show }) => (show ? 'block' : 'none')};
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   padding-top: 0.25rem;
   position: absolute;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.bg3};
   z-index: 9999;
   width: 100%;
   min-width: 200px;

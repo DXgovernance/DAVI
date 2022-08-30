@@ -1,13 +1,13 @@
 import { Button } from 'components/primitives/Button';
 import styled from 'styled-components';
-import { IconDetailWrapper } from '../styles';
+import { IconDetailWrapper } from '../ProposalCard.styled';
 
 export const WinningOptionWrapper = styled(IconDetailWrapper)``;
 
 export const OptionVotesAndLabelWrapper = styled(IconDetailWrapper)`
   display: flex;
   flex: none;
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: 1rem 0rem 0rem 1rem;
   border-right: none;
   font-weight: 600;
@@ -21,7 +21,7 @@ export const ActionDetailsButton = styled(Button)<{ isClickable: boolean }>`
   justify-content: flex-start;
   flex: none;
   background-color: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: 0rem 1rem 1rem 0rem;
   height: 32px;
   width: fit-content;
@@ -49,7 +49,7 @@ export const ActionCount = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.muted};
+  background-color: ${({ theme }) => theme.colors.border1};
   border-radius: 50%;
   height: 24px;
   width: 24px;

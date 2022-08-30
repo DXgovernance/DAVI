@@ -3,7 +3,7 @@ import { transparentize } from 'polished';
 
 export const Header = styled.div`
   align-items: center;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border.initial};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
   display: flex;
   flex: 0 0 auto;
   flex-wrap: wrap;
@@ -11,7 +11,8 @@ export const Header = styled.div`
 `;
 
 export const Divider = styled.div`
-  background-color: ${({ theme }) => transparentize(0.9, theme.colors.primary)};
+  background-color: ${({ theme }) =>
+    transparentize(0.9, theme.colors.primary1)};
   height: 1.25rem;
   margin-left: 0.5rem;
   margin-right: 0.75rem;

@@ -14,7 +14,7 @@ export const Title = styled(Heading)`
 export const InfoItem = styled.span`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.body};
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
   justify-content: center;
 `;
 export const Widget = styled.div`
@@ -22,7 +22,7 @@ export const Widget = styled.div`
   display: flex;
   flex-direction: column;
   margin: 2.5rem 0 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
 `;
 export const InfoRow = styled.div`
@@ -43,7 +43,7 @@ export const BaseFont = css`
 
 export const InfoLabel = styled.span`
   ${BaseFont}
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 export const InfoValue = styled.span<{ grey?: boolean }>`
   ${BaseFont}
@@ -51,8 +51,7 @@ export const InfoValue = styled.span<{ grey?: boolean }>`
   flex-wrap: wrap;
   display: inline-flex;
   align-items: center;
-  color: ${({ theme, grey }) =>
-    grey ? theme.colors.card.grey : theme.colors.text};
+  color: ${({ theme, grey }) => (grey ? theme.colors.grey : theme.colors.text)};
 `;
 export const ActionWrapper = styled.div`
   display: flex;
@@ -69,6 +68,6 @@ export const CancelButton = styled(ConfirmButton).attrs({
   variant: 'secondary',
 })`
   background: transparent;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   margin-left: 0;
 `;

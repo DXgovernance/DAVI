@@ -29,10 +29,10 @@ exports[`Editor Should match snapshot 1`] = `
 }
 
 .c2 {
-  background-color: #1B1D1F;
+  background-color: transparent;
   border: none;
   border-radius: 0.4rem;
-  color: white;
+  color: #BDC0C7;
   height: 1.75rem;
   margin-right: 0.25rem;
   padding: 0.25rem;
@@ -40,16 +40,15 @@ exports[`Editor Should match snapshot 1`] = `
   cursor: pointer;
 }
 
-.c2:hover: {
-  background-color: white;
-  color: #0d0d0d;
+.c2:hover {
+  color: #fff;
 }
 
 .c4 {
-  background-color: white;
+  background-color: #295FF4;
   border: none;
   border-radius: 0.4rem;
-  color: #0d0d0d;
+  color: #BDC0C7;
   height: 1.75rem;
   margin-right: 0.25rem;
   padding: 0.25rem;
@@ -57,16 +56,15 @@ exports[`Editor Should match snapshot 1`] = `
   cursor: pointer;
 }
 
-.c4:hover: {
-  background-color: white;
-  color: #0d0d0d;
+.c4:hover {
+  color: #fff;
 }
 
 .c0 {
   background-color: #1B1D1F;
   border: 1px solid #303338;
   border-radius: 10px;
-  color: #BDC0C7;
+  color: #A1A6B0;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -75,6 +73,10 @@ exports[`Editor Should match snapshot 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   max-height: 26rem;
+}
+
+.c0:hover {
+  border: 1px solid #fff;
 }
 
 .c5 {
@@ -88,6 +90,7 @@ exports[`Editor Should match snapshot 1`] = `
 }
 
 .c5 .ProseMirror {
+  font-size: 16px;
   outline: none;
   min-height: 200px;
 }
@@ -97,7 +100,7 @@ exports[`Editor Should match snapshot 1`] = `
 }
 
 .c5 .ProseMirror p.is-editor-empty:first-child::before {
-  color: rgba(255,255,255,0.5);
+  color: #A1A6B0;
   content: attr(data-placeholder);
   float: left;
   height: 0;
@@ -138,7 +141,7 @@ exports[`Editor Should match snapshot 1`] = `
 }
 
 .c5 .ProseMirror mark {
-  background-color: #faf594;
+  background-color: #1DE9B6;
 }
 
 .c5 .ProseMirror img {

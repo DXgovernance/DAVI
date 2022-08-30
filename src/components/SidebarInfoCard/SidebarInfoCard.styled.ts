@@ -19,5 +19,5 @@ export const Label = styled.span`
 `;
 
 export const ColoredLabel = styled(Label)`
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;

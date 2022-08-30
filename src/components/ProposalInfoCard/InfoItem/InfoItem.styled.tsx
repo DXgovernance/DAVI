@@ -5,7 +5,7 @@ export const InfoItemWrapper = styled(Box)<{ clickable?: boolean }>`
   display: flex;
   flex: 1;
   justify-content: space-between;
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 1.25rem;
   ${({ clickable }) =>
     clickable &&

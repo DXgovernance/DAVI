@@ -190,7 +190,7 @@ exports[`NetworkModal Should match snapshot 1`] = `
 .c13:hover {
   background-color: #1B1D1F !important;
   color: #fff !important;
-  outline: 1px solid #ccc;
+  outline: 1px solid #fff;
 }
 
 .c13:focus {

@@ -22,7 +22,7 @@ const ActionParamRow = styled(Box)`
 `;
 
 const ParamDetail = styled(Box)`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   overflow-wrap: break-word;
 `;
 

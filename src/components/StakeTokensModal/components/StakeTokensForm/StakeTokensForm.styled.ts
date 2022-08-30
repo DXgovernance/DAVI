@@ -32,7 +32,7 @@ export const DaoTitle = styled(Heading)`
 export const InfoItem = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.body};
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 0.4rem;
 `;
 
@@ -42,7 +42,7 @@ export const BalanceWidget = styled.div`
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
 `;
 
@@ -65,7 +65,7 @@ export const BaseFont = css`
 
 export const InfoLabel = styled.span`
   ${BaseFont}
-  color: ${({ theme }) => theme.colors.card.grey};
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const InfoValue = styled.span`
@@ -78,7 +78,7 @@ export const InfoValue = styled.span`
 `;
 
 export const InfoOldValue = styled(InfoValue)`
-  color: ${({ theme }) => theme.colors.muted};
+  color: ${({ theme }) => theme.colors.border1};
   display: inline-flex;
   align-items: center;
 `;

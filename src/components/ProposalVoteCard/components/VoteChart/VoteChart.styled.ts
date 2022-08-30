@@ -15,7 +15,7 @@ export const VotesChartRow = styled.div`
   flex: 1;
   height: 0.75rem;
   border-radius: ${({ theme }) => theme.radii.pill};
-  background-color: ${({ theme }) => theme.colors.muted};
+  background-color: ${({ theme }) => theme.colors.border1};
   overflow: hidden;
 `;
 
@@ -33,12 +33,12 @@ export const VoteQuorumMarker = styled.div<{ quorum: number }>`
   margin-top: ${({ quorum }) =>
     quorum === 0 || quorum === 100 ? '10px' : '14px'};
   width: 1px;
-  background: ${({ theme }) => theme.colors.muted};
+  background: ${({ theme }) => theme.colors.border1};
 `;
 
 export const VoteQuorumLabel = styled.div<{ quorum: number }>`
   padding: 4px 8px;
-  border: 1px solid ${({ theme }) => theme.colors.muted};
+  border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ quorum, theme }) =>
     quorum < 10
       ? `0px ${theme.radii.pill} ${theme.radii.pill}`

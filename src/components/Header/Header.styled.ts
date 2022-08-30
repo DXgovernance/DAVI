@@ -8,13 +8,13 @@ export const HeaderWrapper = styled.nav`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.colors.bg1};
   z-index: 200;
   @media only screen and(min-width: 768px) {
     padding: 1.5rem 0;
   }
 
-  border-bottom: 1px solid ${({ theme }) => theme.colors.muted};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border1};
 `;
 
 export const HeaderContainer = styled(Container)`

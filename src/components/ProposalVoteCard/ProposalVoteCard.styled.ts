@@ -20,7 +20,7 @@ export const VotesContainer = styled.div`
 `;
 
 export const VoteOptionsLabel = styled.div`
-  color: ${({ theme }) => theme.colors.proposalText.grey};
+  color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 0.5rem;
 `;
 
@@ -29,8 +29,8 @@ export const VoteActionButton = styled(Button)`
 
   :disabled {
     background-color: transparent;
-    border: 1px solid ${({ theme }) => theme.colors.border.initial};
-    color: ${({ theme }) => theme.colors.proposalText.grey};
+    border: 1px solid ${({ theme }) => theme.colors.border1};
+    color: ${({ theme }) => theme.colors.grey};
     opacity: 1;
   }
 `;
@@ -40,17 +40,17 @@ export const VoteOptionButton = styled(VoteActionButton)<{
   selected?: boolean;
 }>`
   margin-bottom: 1rem;
-  background-color: ${({ theme }) => theme.colors.muted};
+  background-color: ${({ theme }) => theme.colors.border1};
 
   :active {
-    color: ${({ theme }) => theme.colors.background};
-    background-color: ${({ theme }) => theme.colors.border.hover};
+    color: ${({ theme }) => theme.colors.bg1};
+    background-color: ${({ theme }) => theme.colors.border3};
   }
 
   ${({ active, selected }) =>
     (active || selected) &&
     css`
-      color: ${({ theme }) => theme.colors.background};
-      background-color: ${({ theme }) => theme.colors.border.hover};
+      color: ${({ theme }) => theme.colors.bg1};
+      background-color: ${({ theme }) => theme.colors.border3};
     `}
 `;

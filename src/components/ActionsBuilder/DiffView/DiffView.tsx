@@ -41,7 +41,7 @@ export const DiffView: React.FC<DiffViewProps> = ({ oldCode, newCode }) => {
             diffViewerBackground: 'transparent',
             gutterBackground: 'transparent',
             gutterBackgroundDark: 'transparent',
-            gutterColor: theme.colors.proposalText.grey,
+            gutterColor: theme.colors.grey,
             codeFoldGutterBackground: theme.colors.syntax.expBlue,
             codeFoldBackground: theme.colors.syntax.expLight,
             addedBackground: theme.colors.syntax.addLight,
@@ -52,7 +52,7 @@ export const DiffView: React.FC<DiffViewProps> = ({ oldCode, newCode }) => {
             wordRemovedBackground: theme.colors.syntax.removeText,
             removedGutterBackground: theme.colors.syntax.remove,
             removedGutterColor: theme.colors.text,
-            codeFoldContentColor: theme.colors.proposalText.grey,
+            codeFoldContentColor: theme.colors.grey,
           },
         },
       }}

@@ -29,8 +29,8 @@ export const StyledAddressButton = styled(IconButton)`
   &:hover,
   &:active {
     ${Badge} {
-      background-color: ${({ theme }) => theme.colors.background};
-      color: ${({ theme }) => theme.colors.primary};
+      background-color: ${({ theme }) => theme.colors.bg1};
+      color: ${({ theme }) => theme.colors.primary1};
     }
   }
 `;
