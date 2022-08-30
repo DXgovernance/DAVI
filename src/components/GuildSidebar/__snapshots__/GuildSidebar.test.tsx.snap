@@ -229,7 +229,7 @@ exports[`GuildSidebar Should render with data 1`] = `
       </a>
       <a
         class="c11"
-        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-proposals"
       >
         <div
           class="c12"
@@ -503,7 +503,7 @@ exports[`GuildSidebar Should render without data 1`] = `
       </a>
       <a
         class="c11"
-        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/allProposals"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-proposals"
       >
         <div
           class="c12"

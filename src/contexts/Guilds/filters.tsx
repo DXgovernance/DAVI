@@ -65,7 +65,7 @@ export const FilterProvider = ({
 
   const matchCurrency = (summaryActions: PointedDecodedAction[]) =>
     countCurrencySelected
-      ? summaryActions.some(action =>
+      ? summaryActions?.some(action =>
           filterCurrency.includes(action.decodedCall?.to)
         )
       : true;

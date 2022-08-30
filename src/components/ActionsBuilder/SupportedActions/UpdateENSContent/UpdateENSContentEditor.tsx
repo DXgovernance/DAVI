@@ -16,6 +16,7 @@ import { ActionEditorProps } from '..';
 import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
 import { Tooltip } from 'components/Tooltip';
 import { StyledIcon } from 'components/primitives/StyledIcon';
+import { LOCALHOST_ID } from 'utils';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -37,6 +38,11 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
     name: `${debouncedEnsName}.eth`,
     chainId,
   });
+
+  if (chain.id === LOCALHOST_ID)
+    console.warn(
+      `ENS content doesn't work on Localhost. This action is left here just for development purposes but will throw an error if its included in a proposal.`
+    );
 
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {

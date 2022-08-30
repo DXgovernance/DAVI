@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
+import { Button } from 'components/primitives/Button';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';
@@ -107,14 +108,25 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
-          <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
-            <StyledButton
-              variant="secondary"
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </StyledButton>
-          </UnstyledLink>
+          <>
+            <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
+              <StyledButton
+                variant="secondary"
+                data-testid="create-proposal-button"
+              >
+                {t('createProposal')}
+              </StyledButton>
+            </UnstyledLink>
+            /
+            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+              <Button
+                variant="secondary"
+                data-testid="create-discussion-button"
+              >
+                {t('forum.createDiscussion')}
+              </Button>
+            </UnstyledLink>
+          </>
         )}
       </Flex>
       <ProposalsList data-testid="proposals-list">
@@ -123,7 +135,7 @@ const Governance = ({ guildId }) => {
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
             There are no active proposals.{' '}
-            <StyledLink to={`/${chainName}/${guildId}/allProposals`}>
+            <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
               Go to all proposals page.
             </StyledLink>
           </div>

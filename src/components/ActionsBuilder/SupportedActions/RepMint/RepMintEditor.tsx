@@ -5,7 +5,7 @@ import { Avatar } from 'components/Avatar';
 import React, { useEffect, useState } from 'react';
 import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import { shortenAddress, MAINNET_ID } from 'utils';
+import { MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
@@ -33,6 +33,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
   const [repAmount, setRepAmount] = useState<string>('0');
   const { parsedData } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
+  const [recipient, setRecipient] = useState<string>(parsedData?.toAddress);
   const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
   const { imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
 
@@ -68,6 +69,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
       ...decodedCall,
       args: {
         ...decodedCall.args,
+        to: recipient,
         amount: ethers.utils.parseUnits(repAmount.toString()),
       },
     });
@@ -85,7 +87,8 @@ export const Mint: React.FC<ActionEditorProps> = ({
           </ControlLabel>
           <ControlRow>
             <Input
-              value={shortenAddress(parsedData?.toAddress)}
+              value={recipient}
+              onChange={e => setRecipient(e.target.value)}
               icon={
                 <Avatar
                   src={imageUrl}
@@ -93,8 +96,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
                   size={18}
                 />
               }
-              readOnly
-              disabled
             />
           </ControlRow>
         </Control>

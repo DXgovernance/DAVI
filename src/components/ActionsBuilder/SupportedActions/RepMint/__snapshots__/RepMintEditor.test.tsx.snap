@@ -29,7 +29,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
 }
 
 .c6 input {
-  color: #A1A6B0;
+  color: #fff;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -53,14 +53,14 @@ exports[`RepMintEditor Should match snapshot 1`] = `
 }
 
 .c6:hover {
-  outline: 1px solid inherit;
+  outline: 1px solid #fff;
 }
 
 .c6:focus {
   outline: 2px solid #fff;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,35 +77,35 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   background-color: transparent;
 }
 
-.c12 input {
-  color: #fff;
+.c13 input {
+  color: #A1A6B0;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
   font-weight: 500;
   text-align: left;
 }
 
-.c12 input::-webkit-input-placeholder {
+.c13 input::-webkit-input-placeholder {
   color: #A1A6B0;
 }
 
-.c12 input::-moz-placeholder {
+.c13 input::-moz-placeholder {
   color: #A1A6B0;
 }
 
-.c12 input:-ms-input-placeholder {
+.c13 input:-ms-input-placeholder {
   color: #A1A6B0;
 }
 
-.c12 input::placeholder {
+.c13 input::placeholder {
   color: #A1A6B0;
 }
 
-.c12:hover {
-  outline: 1px solid #fff;
+.c13:hover {
+  outline: 1px solid inherit;
 }
 
-.c12:focus {
+.c13:focus {
   outline: 2px solid #fff;
 }
 
@@ -226,7 +226,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   fill: currentColor;
 }
 
-.c13 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,7 +265,6 @@ exports[`RepMintEditor Should match snapshot 1`] = `
       >
         <div
           class="c6"
-          disabled=""
         >
           <div
             class="c7"
@@ -280,9 +279,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           </div>
           <input
             class="c10"
-            disabled=""
-            readonly=""
-            value="0x0000...0000"
+            value="0x0000000000000000000000000000000000000000"
           />
           <div
             class="c11"
@@ -316,7 +313,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c5"
         >
           <div
-            class="c12"
+            class="c6"
           >
             <div
               class="c7"
@@ -324,7 +321,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c10 c13"
+              class="c10 c12"
               inputmode="decimal"
               maxlength="79"
               minlength="1"
@@ -368,7 +365,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c5"
         >
           <div
-            class="c6"
+            class="c13"
             disabled=""
           >
             <div
@@ -377,7 +374,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c10 c13"
+              class="c10 c12"
               disabled=""
               inputmode="decimal"
               maxlength="79"

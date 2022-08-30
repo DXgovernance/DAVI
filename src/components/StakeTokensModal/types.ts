@@ -2,11 +2,12 @@ import { BigNumber, providers } from 'ethers';
 import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
 import { ERC20, ERC20Guild } from 'types/contracts';
 import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import React from 'react';
 export interface StakeTokensModalProps {
   isOpen: boolean;
   onDismiss: () => void;
-  StakeTokensForm: React.FC<StakeTokensFormsProps>;
-  StakeTokensFormProps: StakeTokensFormsProps;
+  token?: ERC20Info;
+  children?: React.ReactElement;
 }
 
 export interface StakeTokensFormsProps {
