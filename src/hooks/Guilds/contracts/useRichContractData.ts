@@ -1,4 +1,4 @@
-import { DecodedCall } from 'Components/ActionsBuilder/types';
+import { DecodedCall } from 'components/ActionsBuilder/types';
 import { useMemo } from 'react';
 import { RichContractFunction } from './useRichContractRegistry';
 

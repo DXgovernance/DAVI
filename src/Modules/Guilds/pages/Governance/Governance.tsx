@@ -1,17 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useContext, useEffect, useMemo } from 'react';
-import Result, { ResultState } from 'old-components/Guilds/common/Result';
-import { Flex } from 'Components/Primitives/Layout';
+import { Result, ResultState } from 'components/Result';
+import { Flex } from 'components/primitives/Layout';
 import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
-import Input from 'old-components/Guilds/common/Form/Input';
+import { Input } from 'components/primitives/Forms/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
-import UnstyledLink from 'Components/Primitives/Links/UnstyledLink';
+import { UnstyledLink } from 'components/primitives/Links';
+import { Button } from 'components/primitives/Button';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import { useAccount } from 'wagmi';
@@ -107,14 +108,25 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
-          <UnstyledLink to={`/${chainName}/${guildId}/proposalType`}>
-            <StyledButton
-              variant="secondary"
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </StyledButton>
-          </UnstyledLink>
+          <>
+            <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
+              <StyledButton
+                variant="secondary"
+                data-testid="create-proposal-button"
+              >
+                {t('createProposal')}
+              </StyledButton>
+            </UnstyledLink>
+            /
+            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+              <Button
+                variant="secondary"
+                data-testid="create-discussion-button"
+              >
+                {t('forum.createDiscussion')}
+              </Button>
+            </UnstyledLink>
+          </>
         )}
       </Flex>
       <ProposalsList data-testid="proposals-list">
@@ -123,7 +135,7 @@ const Governance = ({ guildId }) => {
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
             There are no active proposals.{' '}
-            <StyledLink to={`/${chainName}/${guildId}/allProposals`}>
+            <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
               Go to all proposals page.
             </StyledLink>
           </div>
@@ -132,7 +144,7 @@ const Governance = ({ guildId }) => {
         {proposalIds ? (
           <ProposalListWrapper>
             {revertedProposals.map(proposal => (
-              <ProposalCardWrapper proposalId={proposal} />
+              <ProposalCardWrapper key={proposal} proposalId={proposal} />
             ))}
           </ProposalListWrapper>
         ) : (

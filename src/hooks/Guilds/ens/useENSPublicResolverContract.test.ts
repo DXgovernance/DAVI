@@ -1,9 +1,15 @@
 import * as ENSPublicResolverContract from './useENSPublicResolverContract';
+import {
+  MOCK_ADDRESS,
+  MOCK_ENS_NAME,
+  MOCK_IPFS_HASH,
+  MOCK_AVATAR_URI,
+} from './fixtures';
 
 jest.mock('wagmi', () => ({
   useEnsResolver: () => ({
     data: {
-      address: '0x0000000000000000000000000000000000000000',
+      address: MOCK_ADDRESS,
     },
   }),
   useContractRead: () => ({
@@ -20,12 +26,12 @@ describe('useENSContentHash', () => {
     jest
       .spyOn(ENSPublicResolverContract, 'useENSContentHash')
       .mockImplementation(() => ({
-        ipfsHash: 'QmfGgQYwL4ZrXLVshYuwH2WHeSvPFQCDXeYTzPPFReCJqJ',
+        ipfsHash: MOCK_IPFS_HASH,
         isLoading: false,
         isError: false,
       }));
     const { ipfsHash } =
-      ENSPublicResolverContract.useENSContentHash('wagmi.eth');
+      ENSPublicResolverContract.useENSContentHash(MOCK_ENS_NAME);
     expect(ipfsHash).toMatchInlineSnapshot(
       `"QmfGgQYwL4ZrXLVshYuwH2WHeSvPFQCDXeYTzPPFReCJqJ"`
     );
@@ -35,12 +41,12 @@ describe('useENSContentHash', () => {
     jest
       .spyOn(ENSPublicResolverContract, 'useENSAvatarUri')
       .mockImplementation(() => ({
-        avatarUri: 'https://',
+        avatarUri: MOCK_AVATAR_URI,
         isError: false,
         isLoading: false,
       }));
     const { avatarUri } =
-      ENSPublicResolverContract.useENSAvatarUri('wagmi.eth');
+      ENSPublicResolverContract.useENSAvatarUri(MOCK_ENS_NAME);
     expect(avatarUri).toMatchInlineSnapshot(`"https://"`);
   });
 });

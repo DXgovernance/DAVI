@@ -1,9 +1,10 @@
 import useENSResolver from './useENSResolver';
+import { MOCK_ADDRESS, MOCK_ENS_NAME } from './fixtures';
 
 jest.mock('wagmi', () => ({
   useEnsResolver: () => ({
     data: {
-      address: '0x0000000000000000000000000000000000000000',
+      address: MOCK_ADDRESS,
     },
     isError: false,
     isLoading: false,
@@ -15,7 +16,7 @@ describe('useAddressFromENSName', () => {
     jest.restoreAllMocks();
   });
   it('should return the resolver address from the ens name', () => {
-    const { resolver, isError, isLoading } = useENSResolver('wagmi.eth');
+    const { resolver, isError, isLoading } = useENSResolver(MOCK_ENS_NAME);
     expect(resolver.address).toMatchInlineSnapshot(
       `"0x0000000000000000000000000000000000000000"`
     );

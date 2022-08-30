@@ -1,17 +1,17 @@
 import App from './App';
 import initializeI18Next from './i18n';
-import GlobalErrorBoundary from './old-components/ErrorBoundary/GlobalErrorBoundary';
+import { GlobalErrorBoundary } from './components/ErrorBoundary';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
-import EtherSWRManager from 'old-components/Guilds/EtherSWRManager';
+import { EtherSWRManager } from 'components/EtherSWRManager';
 import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { createClient, configureChains, WagmiConfig } from 'wagmi';
 import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
-import EnsureReadOnlyConnection from 'Components/Web3Modals/EnsureReadOnlyConnection';
-import SyncRouterWithWagmi from 'Components/Web3Modals/SyncRouterWithWagmi';
+import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnection';
+import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -54,7 +54,6 @@ const Root = () => {
 const rootElement = document.getElementById('root');
 const root = ReactDOMClient.createRoot(rootElement);
 root.render(<Root />);
-// ReactDOM.render(<Root />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

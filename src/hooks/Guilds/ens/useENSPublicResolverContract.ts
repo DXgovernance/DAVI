@@ -1,10 +1,10 @@
 import { useContractRead } from 'wagmi';
-import ensPublicResolverABI from 'abis/ENSPublicResolver.json';
+import ensPublicResolver from 'contracts/ENSPublicResolver.json';
 import {
   convertToIpfsHash,
   convertToNameHash,
-  isAvailableOnENS,
-} from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+} from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { isAvailableOnENS } from './utils';
 import useENSResolver from './useENSResolver';
 import { MAINNET_ID } from 'utils';
 
@@ -17,7 +17,7 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
   const { resolver } = useENSResolver(ensName, supportedChainId);
   const { data, isError, isLoading } = useContractRead({
     addressOrName: resolver?.address,
-    contractInterface: ensPublicResolverABI,
+    contractInterface: ensPublicResolver.abi,
     functionName: 'text',
     args: [convertToNameHash(ensName), 'avatar'],
   });
@@ -36,7 +36,7 @@ export function useENSContentHash(ensName: string, chainId?: number) {
   );
   const { data } = useContractRead({
     addressOrName: resolver?.address,
-    contractInterface: ensPublicResolverABI,
+    contractInterface: ensPublicResolver.abi,
     functionName: 'contenthash',
     args: convertToNameHash(ensName),
     select(data) {

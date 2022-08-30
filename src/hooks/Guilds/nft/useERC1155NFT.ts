@@ -1,5 +1,5 @@
 import { resolveUri } from 'utils/url';
-import ERC1155ABI from 'abis/ERC721.json';
+import ERC1155 from 'contracts/ERC721.json';
 import { useContractReads } from 'wagmi';
 
 export default function useERC1155NFT(
@@ -12,13 +12,13 @@ export default function useERC1155NFT(
     contracts: [
       {
         addressOrName: contractId,
-        contractInterface: ERC1155ABI,
+        contractInterface: ERC1155.abi,
         functionName: 'balanceOf',
         args: [ownerAddress, tokenId],
       },
       {
         addressOrName: contractId,
-        contractInterface: ERC1155ABI,
+        contractInterface: ERC1155.abi,
         functionName: 'uri',
         args: [tokenId],
       },

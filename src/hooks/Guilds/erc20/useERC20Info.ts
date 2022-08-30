@@ -1,6 +1,6 @@
-import ERC20ABI from 'abis/ERC20.json';
 import { BigNumber } from 'ethers';
 import { useContractReads } from 'wagmi';
+import ERC20 from 'contracts/ERC20.json';
 
 interface ERC20InfoHook {
   data: ERC20Info;
@@ -18,7 +18,7 @@ export type ERC20Info = {
 export const useERC20Info = (contractAddress: string): ERC20InfoHook => {
   const erc20InfoContract = {
     addressOrName: contractAddress,
-    contractInterface: ERC20ABI,
+    contractInterface: ERC20.abi,
   };
   const { data, isError, isLoading } = useContractReads({
     contracts: [

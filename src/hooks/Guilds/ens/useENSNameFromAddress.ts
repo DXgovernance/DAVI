@@ -1,5 +1,5 @@
 import { useEnsName } from 'wagmi';
-import { isAvailableOnENS } from 'Components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { isAvailableOnENS } from './utils';
 import { MAINNET_ID } from 'utils';
 
 export default function useENSNameFromAddress(

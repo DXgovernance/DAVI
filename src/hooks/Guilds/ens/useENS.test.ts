@@ -1,5 +1,6 @@
 import useENS from './useENS';
 import wagmi, { useEnsName, useEnsAddress } from 'wagmi';
+import { MOCK_ENS_NAME, MOCK_ADDRESS } from './fixtures';
 
 jest.mock('wagmi', () => ({
   useEnsName: () => ({
@@ -19,7 +20,7 @@ describe('useENS', () => {
     jest.restoreAllMocks();
   });
   it('should return the resolved ens name', () => {
-    const mockEnsName: any = 'wagmi.eth';
+    const mockEnsName: any = MOCK_ENS_NAME;
     jest.spyOn(wagmi, 'useEnsName').mockImplementationOnce(() => ({
       ...useEnsName(mockEnsName),
       data: mockEnsName,
@@ -32,8 +33,8 @@ describe('useENS', () => {
   });
 
   it('should return a valid address', () => {
-    const mockAddress: any = '0x0000000000000000000000000000000000000000';
-    const mockEnsName: any = 'wagmi.eth';
+    const mockAddress: any = MOCK_ADDRESS;
+    const mockEnsName: any = MOCK_ENS_NAME;
     jest.spyOn(wagmi, 'useEnsAddress').mockImplementationOnce(() => ({
       ...useEnsAddress(mockAddress),
       data: mockAddress,

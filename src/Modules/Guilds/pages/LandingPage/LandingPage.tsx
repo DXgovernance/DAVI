@@ -1,20 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineSearch } from 'react-icons/ai';
 import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
-import GuildCard from 'Components/GuildCard/GuildCard';
-import Input from 'old-components/Guilds/common/Form/Input';
+import { GuildCard } from 'components/GuildCard/GuildCard';
 
 import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
 import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
 import useENSNameFromAddress from 'hooks/Guilds/ens/useENSNameFromAddress';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import {
-  CardsContainer,
-  InputContainer,
-  StyledButton,
-  StyledLink,
-} from './LandingPage.styled';
+
+import { CardsContainer } from './LandingPage.styled';
 
 const GuildCardLoader = () => {
   return (
@@ -72,17 +66,6 @@ const LandingPage: React.FC = () => {
 
   return (
     <>
-      <InputContainer>
-        <Input
-          value=""
-          icon={<AiOutlineSearch size={24} />}
-          placeholder="Search Guild"
-        />
-        <StyledButton data-testid="create-guild-button">
-          {' '}
-          <StyledLink to={`createGuild`}>{t('guilds.create')}</StyledLink>
-        </StyledButton>
-      </InputContainer>
       <CardsContainer>
         {error ? (
           <>{/* Render error state */}</>

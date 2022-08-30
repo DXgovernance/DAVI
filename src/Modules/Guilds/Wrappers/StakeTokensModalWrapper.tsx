@@ -1,5 +1,5 @@
-import { StakeTokensModal } from 'Components/StakeTokensModal';
-import StakeTokensForm from 'Components/StakeTokensModal/components/StakeTokensForm/StakeTokensForm';
+import { StakeTokensModal } from 'components/StakeTokensModal';
+import StakeTokensForm from 'components/StakeTokensModal/components/StakeTokensForm/StakeTokensForm';
 import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -41,24 +41,21 @@ const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
   const { data: totalLocked } = useTotalLocked(guildAddress);
 
   return (
-    <StakeTokensModal
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      StakeTokensForm={StakeTokensForm}
-      StakeTokensFormProps={{
-        token: {
+    <StakeTokensModal token={tokenInfo} isOpen={isOpen} onDismiss={onDismiss}>
+      <StakeTokensForm
+        token={{
           name: tokenInfo?.name,
           allowance: tokenAllowance,
           balance: tokenBalance,
           info: tokenInfo,
           contract: tokenContract,
-        },
-        userVotingPower,
-        createTransaction,
-        guild: { contract: guildContract, config: guildConfig, totalLocked },
-        isRepGuild,
-      }}
-    />
+        }}
+        userVotingPower={userVotingPower}
+        createTransaction={createTransaction}
+        guild={{ contract: guildContract, config: guildConfig, totalLocked }}
+        isRepGuild={isRepGuild}
+      />
+    </StakeTokensModal>
   );
 };
 

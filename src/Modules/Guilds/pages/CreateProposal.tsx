@@ -1,6 +1,6 @@
 import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapper';
-import Input from 'old-components/Guilds/common/Form/Input';
-import { Box, Flex } from 'Components/Primitives/Layout';
+import { Input } from 'components/primitives/Forms/Input';
+import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import contentHash from 'content-hash';
 import { useTransactions } from 'contexts/Guilds';
@@ -9,10 +9,10 @@ import { BigNumber } from 'ethers';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
-import { ActionsBuilder } from 'Components/ActionsBuilder';
-import { Call, Option } from 'Components/ActionsBuilder/types';
-import { useTextEditor } from 'Components/Editor';
-import { Loading } from 'Components/Primitives/Loading';
+import { ActionsBuilder } from 'components/ActionsBuilder';
+import { Call, Option } from 'components/ActionsBuilder/types';
+import { useTextEditor } from 'components/Editor';
+import { Loading } from 'components/primitives/Loading';
 import React, { useContext, useMemo, useState } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
@@ -75,7 +75,7 @@ const CreateProposalPage: React.FC = () => {
     setEditMode(v => !v);
   };
 
-  const handleBack = () => navigate(`/${chain}/${guildId}/proposalType`);
+  const handleBack = () => navigate(`/${chain}/${guildId}`);
 
   const ipfs = useIPFSNode();
 
@@ -182,7 +182,7 @@ const CreateProposalPage: React.FC = () => {
         >
           <StyledButton iconLeft onClick={handleBack}>
             <FiChevronLeft />
-            {t('changeProposalType')}
+            {t('backToOverview')}
           </StyledButton>
 
           <StyledButton

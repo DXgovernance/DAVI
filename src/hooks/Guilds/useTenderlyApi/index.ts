@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { Call, Option } from 'Components/ActionsBuilder/types';
+import { Call, Option } from 'components/ActionsBuilder/types';
 import { useNetwork, useProvider } from 'wagmi';
 
 // Variables are hardcoded because they didn't work
