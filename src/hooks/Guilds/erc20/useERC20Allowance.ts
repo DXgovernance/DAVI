@@ -12,6 +12,7 @@ export const useERC20Allowance = (
     contractInterface: ERC20.abi,
     functionName: 'allowance',
     args: [walletAddress, spenderAddress],
+    watch: true,
   });
   return {
     data: data ? BigNumber.from(data) : undefined,

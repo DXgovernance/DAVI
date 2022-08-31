@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { resolveUri } from 'utils/url';
 import useENS from './useENS';
 import { useENSAvatarUri } from './useENSPublicResolverContract';
-import useERC721NFT from '../nft/useERC721NFT';
-import useERC1155NFT from '../nft/useERC1155NFT';
+import useERC721NFT from 'hooks/Guilds/nft/useERC721NFT';
+import useERC1155NFT from 'hooks/Guilds/nft/useERC1155NFT';
 import useSWR from 'swr';
 
 const useENSAvatar = (nameOrAddress: string, chainId?: number) => {

@@ -5,6 +5,7 @@ import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
 import { Loading } from 'components/primitives/Loading';
 import { StakeTokenButtonProps } from '../../types';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 const StakeTokensButton = ({
   isRepGuild,
   stakeAmount,
@@ -15,6 +16,14 @@ const StakeTokensButton = ({
 }: StakeTokenButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const [approvedTokenAllowance, setApprovedTokenAllowance] = useState(false);
+  useEffect(() => {
+    if (stakeAmount) {
+      if (token?.allowance?.gte(stakeAmount) && token?.allowance?.gt(0)) {
+        setApprovedTokenAllowance(true);
+      }
+    }
+  }, [token, stakeAmount, approvedTokenAllowance]);
   const lockTokens = async () => {
     if (!isStakeAmountValid) return;
 
@@ -38,7 +47,7 @@ const StakeTokensButton = ({
   return (
     <>
       {!isRepGuild ? (
-        stakeAmount && token?.allowance?.gte(stakeAmount) ? (
+        stakeAmount && approvedTokenAllowance ? (
           <ActionButton
             data-testid="lock-token-spending"
             disabled={!isStakeAmountValid}
