@@ -214,6 +214,7 @@
     "discussions_one": "Discussion",
     "discussions_other": "Discussions",
     "thereAreNoDiscussions": "There are no discussions",
+    "noMoreDiscussions": "There are no more discussions",
     "createDiscussion": "Create Discussion",
     "createDiscussionWordy": "Create a new discussion",
     "discussionPlaceholder": "Write discussion content"

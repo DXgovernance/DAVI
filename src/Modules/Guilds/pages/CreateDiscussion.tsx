@@ -145,7 +145,6 @@ const CreateDiscussionPage: React.FC = () => {
         <Box margin="16px 0px">
           <StyledButton
             onClick={() => {
-              debugger;
               handleCreateDiscussion({
                 title,
                 body: discussionBodyMd,
