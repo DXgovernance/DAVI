@@ -1,7 +1,7 @@
-import { PostContent } from './types';
+import { DiscussionContent } from './types';
 import type { Orbis as OrbisType } from '@orbisclub/orbis-sdk';
 
-export const postTemplate = (post: PostContent): PostContent => {
+export const postTemplate = (post: DiscussionContent): DiscussionContent => {
   if (!post.title || !post.body) {
     throw Error('Missing post title or body');
   }
@@ -16,7 +16,7 @@ export const postTemplate = (post: PostContent): PostContent => {
   };
 };
 
-export async function createPost(orbis: OrbisType, content: PostContent) {
+export async function createPost(orbis: OrbisType, content: DiscussionContent) {
   let res = await orbis.createPost(content);
   if (res.status === 200) {
     console.log('Post created: ', res);

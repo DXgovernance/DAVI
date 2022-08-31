@@ -1,6 +1,6 @@
 import { Orbis } from '@orbisclub/orbis-sdk';
 import { DiscussionCard } from 'components/DiscussionCard';
-import { Post } from 'components/Forum/types';
+import { Discussion } from 'components/Forum/types';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { Loading } from 'components/primitives/Loading';
@@ -16,7 +16,7 @@ const DISCUSSIONS_TO_SHOW = 10;
 
 const DiscussionCardWrapper = () => {
   let orbis = useRef(new Orbis());
-  const [discussions, setDiscussions] = useState<Post[]>([]);
+  const [discussions, setDiscussions] = useState<Discussion[]>([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [numberOfDiscussionsToShow, setNumberOfDiscussionsToShow] =
@@ -31,22 +31,16 @@ const DiscussionCardWrapper = () => {
 
   const getDiscussions = async (page: number = 0) => {
     setIsLoading(true);
-    console.log('querying to orbis');
-    console.log('page: ', page);
     let { data, error } = await orbis.current.getPosts(
       {
+        algorithm: 'all-context-master-posts',
         context: guildId,
       },
       page
     );
     // ! Just to test various proposals
     // ! delete before merging
-    // let { data, error } = await orbis.current.getPosts(
-    //   {
-    //     algorithm: 'all-master-posts',
-    //   },
-    //   page
-    // );
+    // let { data, error } = await orbis.current.getPosts({}, page);
 
     setIsLoading(false);
 
@@ -111,7 +105,7 @@ const DiscussionCardWrapper = () => {
 
   const Footer = () => {
     if (isLoading) return <Loading loading text />;
-    return <div>{t('noMoreDiscussions')}.</div>;
+    return <div>{t('forum.noMoreDiscussions')}.</div>;
   };
 
   if (error) {
@@ -142,7 +136,7 @@ const DiscussionCardWrapper = () => {
           totalCount={shownDiscussions?.length}
           data={shownDiscussions}
           itemContent={index => (
-            <DiscussionCard post={shownDiscussions[index]} />
+            <DiscussionCard discussion={shownDiscussions[index]} />
           )}
           endReached={showMoreDiscussions}
           components={{ Footer }}

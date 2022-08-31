@@ -25,7 +25,7 @@ import {
   createPost,
   postTemplate,
 } from 'components/Forum';
-import { PostContent } from 'components/Forum/types';
+import { DiscussionContent } from 'components/Forum/types';
 
 const CreateDiscussionPage: React.FC = () => {
   let orbis = useRef(new Orbis());
@@ -72,7 +72,7 @@ const CreateDiscussionPage: React.FC = () => {
 
   const handleBack = () => navigate(`/${chain}/${guildId}/`);
 
-  const handleCreateDiscussion = async (post: PostContent) => {
+  const handleCreateDiscussion = async (post: DiscussionContent) => {
     if (postTemplate(post)) {
       const res = await createPost(orbis.current, post);
       handleBack();
@@ -149,8 +149,8 @@ const CreateDiscussionPage: React.FC = () => {
                 title,
                 body: discussionBodyMd,
                 context: guildId,
-                master: '',
-                replyTo: '',
+                master: null,
+                replyTo: null,
                 mentions: [],
                 data: {},
               });
