@@ -7,6 +7,7 @@ import { UnstyledLink } from 'components/primitives/Links';
 import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
 import { Divider } from 'components/Divider';
+import { getSummaryView } from '../SupportedActions';
 import {
   ActionParamRow,
   DetailsButton,
@@ -27,6 +28,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
   const [isApprovalExpanded, setIsApprovalExpanded] = useState(false);
+  const ActionSummary = getSummaryView(decodedCall?.callType);
 
   function renderByParamType(type: string, value: any) {
     if (!type || !value) return null;
@@ -65,58 +67,67 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   return (
     <>
       {!!approveSpendTokens && (
-        <Box>
-          <DetailsButton
-            onClick={() => setIsApprovalExpanded(!isApprovalExpanded)}
-            isExpanded={isApprovalExpanded}
-            variant={'secondary'}
-          >
-            approve ({' '}
-            <ParamTag
-              color={
-                isApprovalExpanded
-                  ? theme?.colors?.params?.[0]
-                  : theme?.colors?.text
-              }
-            >
-              address
-            </ParamTag>
-            {', '}
-            <ParamTag
-              color={
-                isApprovalExpanded
-                  ? theme?.colors?.params?.[1]
-                  : theme?.colors?.text
-              }
-            >
-              uint256
-            </ParamTag>{' '}
-            )
-          </DetailsButton>
-          {isApprovalExpanded && (
-            <>
-              <ActionParamRow></ActionParamRow>
-              <ActionParamRow>
-                <ParamTitleRow>
-                  <ParamTitleTag color={theme?.colors?.params?.[0]}>
-                    spender <em>(address)</em>
-                  </ParamTitleTag>
-                </ParamTitleRow>
-                {renderByParamType('address', decodedCall.to)}
-              </ActionParamRow>
-              <ActionParamRow>
-                <ParamTitleRow>
-                  <ParamTitleTag color={theme?.colors?.params?.[1]}>
-                    amount <em>(uint256)</em>
-                  </ParamTitleTag>
-                </ParamTitleRow>
-                {renderByParamType('uint256', approveSpendTokens?.amount)}
-              </ActionParamRow>
-              <Divider style={{ marginBottom: '2rem' }} />
-            </>
-          )}
-        </Box>
+        <>
+          <Box margin="0 0 1rem">
+            {ActionSummary && (
+              <ActionSummary decodedCall={approveSpendTokens} />
+            )}
+            <DetailsSection>
+              <DetailsButton
+                onClick={() => setIsApprovalExpanded(!isApprovalExpanded)}
+                isExpanded={isApprovalExpanded}
+                variant={'secondary'}
+              >
+                approve ({' '}
+                <ParamTag
+                  color={
+                    isApprovalExpanded
+                      ? theme?.colors?.params?.[0]
+                      : theme?.colors?.text
+                  }
+                >
+                  address
+                </ParamTag>
+                {', '}
+                <ParamTag
+                  color={
+                    isApprovalExpanded
+                      ? theme?.colors?.params?.[1]
+                      : theme?.colors?.text
+                  }
+                >
+                  uint256
+                </ParamTag>{' '}
+                )
+              </DetailsButton>
+              {isApprovalExpanded && (
+                <>
+                  <ActionParamRow></ActionParamRow>
+                  <ActionParamRow>
+                    <ParamTitleRow>
+                      <ParamTitleTag color={theme?.colors?.params?.[0]}>
+                        spender <em>(address)</em>
+                      </ParamTitleTag>
+                    </ParamTitleRow>
+                    {renderByParamType('address', decodedCall.to)}
+                  </ActionParamRow>
+                  <ActionParamRow>
+                    <ParamTitleRow>
+                      <ParamTitleTag color={theme?.colors?.params?.[1]}>
+                        amount <em>(uint256)</em>
+                      </ParamTitleTag>
+                    </ParamTitleRow>
+                    {renderByParamType('uint256', approveSpendTokens?.amount)}
+                  </ActionParamRow>
+                </>
+              )}
+            </DetailsSection>
+          </Box>
+          <Divider style={{ marginBottom: '1rem' }} />
+        </>
       )}
+
+      {ActionSummary && <ActionSummary decodedCall={decodedCall} />}
 
       {decodedCall.callType !== SupportedAction.NATIVE_TRANSFER && (
         <DetailsSection>
