@@ -44,7 +44,7 @@ const GuildCardWithContent = ({ guildAddress, t }) => {
 
 const LandingPage: React.FC = () => {
   const { t } = useTranslation();
-  const { data: allGuilds, error, isValidating } = useGuildRegistry();
+  const { data: allGuilds, error, isLoading } = useGuildRegistry();
 
   const EmptyGuilds = () => {
     return <h1>{t('noGuildsRegistered')}</h1>;
@@ -54,7 +54,7 @@ const LandingPage: React.FC = () => {
     return <EmptyGuilds />;
   }
 
-  if (isValidating) {
+  if (isLoading) {
     return (
       <CardsContainer>
         <GuildCardLoader />

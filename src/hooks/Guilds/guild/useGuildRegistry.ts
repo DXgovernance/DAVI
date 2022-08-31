@@ -1,22 +1,16 @@
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import GuildRegistry from 'contracts/GuildsRegistry.json';
 import useNetworkConfig from 'hooks/Guilds/useNetworkConfig';
+import { useContractRead } from 'wagmi';
 
 export const useGuildRegistry = (contractAddress?: string) => {
   const config = useNetworkConfig();
-
-  const address = contractAddress || config?.contracts?.utils.guildRegistry;
-  const { data, error, isValidating } = useEtherSWR(
-    address ? [address, 'getGuildsAddresses'] : [],
-    {
-      ABIs: new Map([[address, GuildRegistry.abi]]),
-      refreshInterval: 0,
-    }
-  );
-
+  const { data, ...rest } = useContractRead({
+    addressOrName: contractAddress || config?.contracts?.utils.guildRegistry,
+    contractInterface: GuildRegistry.abi,
+    functionName: 'getGuildsAddresses',
+  });
   return {
     data,
-    isValidating,
-    error,
+    ...rest,
   };
 };

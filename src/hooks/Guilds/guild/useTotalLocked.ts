@@ -1,5 +1,3 @@
-import { BigNumber } from 'ethers';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import useCurrentSnapshotId from './useCurrentSnapshotId';
 import useGuildToken from './useGuildToken';
 import useTotalSupplyAt from './useTotalSupplyAt';
@@ -8,6 +6,8 @@ import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
 import useTotalLockedAt from 'hooks/Guilds/guild/useTotalLockedAt';
 import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
+import { useContractRead } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   // Hooks call
@@ -27,31 +27,50 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   const { isSnapshotGuild, isRepGuild } =
     useGuildImplementationType(guildAddress);
 
-  const totalLockedResponse = useEtherSWR<BigNumber>(
-    guildAddress ? [guildAddress, 'getTotalLocked'] : [],
-    {
-      ABIs: new Map([[guildAddress, ERC20GuildContract.abi]]),
-      refreshInterval: 0,
-    }
-  );
-  const totalLockedAtProposalSnapshotResponse = useTotalLockedAt({
+  const { data: totalLockedResponse } = useContractRead({
+    addressOrName: guildAddress,
+    contractInterface: ERC20GuildContract.abi,
+    functionName: 'getTotalLocked',
+  });
+
+  const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
     contractAddress: guildAddress,
     snapshotId: SNAPSHOT_ID,
   });
 
   const { data: guildTokenAddress } = useGuildToken(guildAddress);
 
-  const totalSupplyAtSnapshotResponse = useTotalSupplyAt({
+  const { data: totalSupplyAtSnapshotResponse } = useTotalSupplyAt({
     contractAddress: guildTokenAddress,
     snapshotId: SNAPSHOT_ID,
   });
 
   // Return response based on implementation type
-  if (isRepGuild)
-    return SNAPSHOT_ID ? totalSupplyAtSnapshotResponse : totalLockedResponse;
-  if (isSnapshotGuild) return totalLockedAtProposalSnapshotResponse;
+  if (isRepGuild) {
+    return SNAPSHOT_ID
+      ? {
+          data: totalSupplyAtSnapshotResponse
+            ? BigNumber.from(totalSupplyAtSnapshotResponse)
+            : undefined,
+        }
+      : {
+          data: totalLockedResponse
+            ? BigNumber.from(totalLockedResponse)
+            : undefined,
+        };
+  }
+
+  if (isSnapshotGuild) {
+    return {
+      data: totalLockedAtProposalSnapshotResponse
+        ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
+        : undefined,
+    };
+  }
   // if (isRepGuild) return totalLockedResponse;
-  return totalLockedResponse;
+  return {
+    data: totalLockedResponse ? BigNumber.from(totalLockedResponse) : undefined,
+  };
 };
 
 export default useTotalLocked;

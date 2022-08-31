@@ -14,14 +14,14 @@ import { StyledMintIcon } from './styles';
 const RepMintInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { t } = useTranslation();
 
-  const { parsedData } = useTotalSupply({ decodedCall });
+  const { data } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
 
   const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
 
-  const { ensName, imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
+  const { ensName, imageUrl } = useENSAvatar(data?.toAddress, MAINNET_ID);
 
-  const roundedRepAmount = useBigNumberToNumber(parsedData?.amount, 16, 3);
+  const roundedRepAmount = useBigNumberToNumber(data?.amount, 16, 3);
   const roundedRepPercent = roundedRepAmount / totalSupply;
 
   return (
@@ -36,9 +36,9 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
         <FiArrowRight />
       </Segment>
       <Segment>
-        <Avatar defaultSeed={parsedData?.toAddress} src={imageUrl} size={24} />
+        <Avatar defaultSeed={data?.toAddress} src={imageUrl} size={24} />
       </Segment>
-      <Segment>{ensName || shortenAddress(parsedData?.toAddress)}</Segment>
+      <Segment>{ensName || shortenAddress(data?.toAddress)}</Segment>
     </>
   );
 };

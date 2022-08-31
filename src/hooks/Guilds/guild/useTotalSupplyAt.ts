@@ -1,35 +1,30 @@
-import { BigNumber } from 'ethers';
-import { SWRResponse } from 'swr';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
+import { BigNumber } from 'ethers';
+import { useContractRead } from 'wagmi';
 
-interface UseTotalSupplyAtProps {
+interface useTotalSupplyAtProps {
   contractAddress: string;
   snapshotId: string;
 }
 
-type UseTotalSupplyAtHook = (
-  args: UseTotalSupplyAtProps
-) => SWRResponse<BigNumber>;
-
 /**
  * Get the total supply amount at snapshot
  */
-const useTotalSupplyAt: UseTotalSupplyAtHook = ({
+const useTotalSupplyAt = ({
   contractAddress, // tokenAddress,
   snapshotId,
-}) => {
-  return useEtherSWR(
-    snapshotId && contractAddress
-      ? [contractAddress, 'totalSupplyAt', snapshotId]
-      : [],
-    {
-      ABIs: new Map([[contractAddress, ERC20SnapshotRep.abi]]),
-      refreshInterval: 0,
-      shouldRetryOnError: false,
-      errorRetryInterval: 0,
-    }
-  );
+}: useTotalSupplyAtProps) => {
+  const { data, ...rest } = useContractRead({
+    addressOrName: contractAddress,
+    contractInterface: ERC20SnapshotRep.abi,
+    functionName: 'totalSupplyAt',
+    args: [snapshotId],
+  });
+
+  return {
+    data: data ? BigNumber.from(data) : undefined,
+    ...rest,
+  };
 };
 
 export default useTotalSupplyAt;

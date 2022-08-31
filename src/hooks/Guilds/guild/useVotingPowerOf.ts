@@ -1,9 +1,8 @@
-import { BigNumber } from 'ethers';
-import { SWRResponse } from 'swr';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import useGuildImplementationType from './useGuildImplementationType';
 import useVotingPowerOfAt from './useVotingPowerOfAt';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import { useContractRead } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 interface UseVotingPowerOfProps {
   contractAddress: string;
@@ -11,30 +10,22 @@ interface UseVotingPowerOfProps {
   snapshotId?: string;
   fallbackSnapshotId?: boolean;
 }
-
-type UseVotingPowerOfHook = (
-  args: UseVotingPowerOfProps
-) => SWRResponse<BigNumber>;
-
 /**
  * Get the voting power of an account
  */
-export const useVotingPowerOf: UseVotingPowerOfHook = ({
+export const useVotingPowerOf = ({
   contractAddress,
   userAddress,
   snapshotId,
   fallbackSnapshotId = true,
-}) => {
+}: UseVotingPowerOfProps) => {
   const { isSnapshotGuild } = useGuildImplementationType(contractAddress);
-  const votingPowerOfResponse = useEtherSWR(
-    contractAddress && userAddress
-      ? [contractAddress, 'votingPowerOf', userAddress]
-      : [],
-    {
-      ABIs: new Map([[contractAddress, ERC20GuildContract.abi]]),
-      refreshInterval: 0,
-    }
-  );
+  const { data: votingPowerOfResponse } = useContractRead({
+    addressOrName: contractAddress,
+    contractInterface: ERC20GuildContract.abi,
+    functionName: 'votingPowerOf',
+    args: [userAddress],
+  });
 
   const votingPowerAtSnapshotResponse = useVotingPowerOfAt({
     contractAddress,
@@ -44,5 +35,9 @@ export const useVotingPowerOf: UseVotingPowerOfHook = ({
   });
 
   if (isSnapshotGuild) return votingPowerAtSnapshotResponse;
-  return votingPowerOfResponse;
+  return {
+    data: votingPowerOfResponse
+      ? BigNumber.from(votingPowerOfResponse)
+      : undefined,
+  };
 };

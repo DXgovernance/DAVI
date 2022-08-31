@@ -18,14 +18,14 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({
 }) => {
   const { t } = useTranslation();
 
-  const { parsedData } = useTotalSupply({ decodedCall });
+  const { data } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
 
   const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
 
-  const { ensName, imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
+  const { ensName, imageUrl } = useENSAvatar(data?.toAddress, MAINNET_ID);
 
-  const roundedRepAmount = useBigNumberToNumber(parsedData?.amount, 16, 3);
+  const roundedRepAmount = useBigNumberToNumber(data?.amount, 16, 3);
   const roundedRepPercent = roundedRepAmount / totalSupply;
 
   return (
@@ -42,14 +42,14 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({
       {noAvatar ? null : (
         <Segment>
           <Avatar
-            defaultSeed={parsedData?.toAddress}
+            defaultSeed={data?.toAddress}
             src={imageUrl}
             size={compact ? 14 : 24}
           />
         </Segment>
       )}
       <Segment>
-        {ensName || shortenAddress(parsedData?.toAddress, compact ? 2 : 2)}
+        {ensName || shortenAddress(data?.toAddress, compact ? 2 : 2)}
       </Segment>
     </>
   );

@@ -1,8 +1,7 @@
 import { BigNumber } from 'ethers';
-import { SWRResponse } from 'swr';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import useCurrentSnapshotId from './useCurrentSnapshotId';
+import { useContractRead } from 'wagmi';
 
 interface useVotingPowerOfAtProps {
   contractAddress: string;
@@ -11,32 +10,39 @@ interface useVotingPowerOfAtProps {
   fallbackSnapshotId?: boolean;
 }
 
-type useVotingPowerOfAtHook = (
-  args: useVotingPowerOfAtProps
-) => SWRResponse<BigNumber>;
-
 /**
  * Get the voting power of an account at snapshot id
  */
-const useVotingPowerOfAt: useVotingPowerOfAtHook = ({
+const useVotingPowerOfAt = ({
   contractAddress,
   userAddress,
   snapshotId,
   fallbackSnapshotId = true,
-}) => {
+}: useVotingPowerOfAtProps) => {
   const { data: currentSnapshotId } = useCurrentSnapshotId({ contractAddress });
   const SNAPSHOT_ID = fallbackSnapshotId
     ? snapshotId ?? currentSnapshotId?.toString()
     : snapshotId;
-  return useEtherSWR(
+  const { data, ...rest } = useContractRead(
     SNAPSHOT_ID
-      ? [contractAddress, 'votingPowerOfAt', userAddress, SNAPSHOT_ID]
-      : [contractAddress, 'votingPowerOf', userAddress],
-    {
-      ABIs: new Map([[contractAddress, SnapshotERC20Guild.abi]]),
-      refreshInterval: 0,
-    }
+      ? {
+          addressOrName: contractAddress,
+          contractInterface: SnapshotERC20Guild.abi,
+          functionName: 'votingPowerOfAt',
+          args: [userAddress, SNAPSHOT_ID],
+        }
+      : {
+          addressOrName: contractAddress,
+          contractInterface: SnapshotERC20Guild.abi,
+          functionName: 'votingPowerOf',
+          args: [userAddress],
+        }
   );
+
+  return {
+    data: data ? BigNumber.from(data) : undefined,
+    ...rest,
+  };
 };
 
 export default useVotingPowerOfAt;

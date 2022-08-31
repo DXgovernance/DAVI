@@ -31,11 +31,11 @@ export const Mint: React.FC<ActionEditorProps> = ({
 }) => {
   const { t } = useTranslation();
   const [repAmount, setRepAmount] = useState<string>('0');
-  const { parsedData } = useTotalSupply({ decodedCall });
+  const { data } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
-  const [recipient, setRecipient] = useState<string>(parsedData?.toAddress);
+  const [recipient, setRecipient] = useState<string>(data?.toAddress);
   const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
-  const { imageUrl } = useENSAvatar(parsedData?.toAddress, MAINNET_ID);
+  const { imageUrl } = useENSAvatar(data?.toAddress, MAINNET_ID);
 
   const { control, handleSubmit, setValue } = useForm<RepMintFormValues>({
     resolver: validateRepMint,
@@ -43,17 +43,14 @@ export const Mint: React.FC<ActionEditorProps> = ({
   });
 
   useEffect(() => {
-    const initialRepAmount = ethers.utils.formatEther(
-      parsedData?.amount?.toString()
-    );
-    if (initialRepAmount) {
-      setRepAmount(initialRepAmount);
+    if (data?.amount) {
+      setRepAmount((data?.amount).toString());
       setValue(
         'repPercent',
-        String((Number(initialRepAmount) * 100) / totalSupply || 0)
+        String((Number(data?.amount) * 100) / totalSupply || 0)
       );
     }
-  }, []); //eslint-disable-line
+  }, [data]); //eslint-disable-line
 
   const updateRepAmount = (value: string) => {
     if (!value) {
@@ -92,7 +89,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
               icon={
                 <Avatar
                   src={imageUrl}
-                  defaultSeed={parsedData?.toAddress}
+                  defaultSeed={data?.toAddress}
                   size={18}
                 />
               }

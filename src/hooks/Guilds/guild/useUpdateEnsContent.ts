@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
 import { UpdateENSContentDecodedCall } from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/types';
 
-/*
-  @from: Guild address
-  @to ENS resolver address
-  @node: Namehash of the ENS name 
-  @contentHash: IPFS/CID hash
-  @optionalProps: Props needed to update the ENS frontend content
-  */
+/**
+ * @property {string} from Guild address
+ * @property {string} to ENS resolver address
+ * @property {string} node Namehash of the ENS name
+ * @property {string} contentHash IPFS/CID hash
+ * @property {object} optionalProps Props needed to update the ENS frontend content
+ */
 
 export const useUpdateEnsContent = ({
   decodedCall,

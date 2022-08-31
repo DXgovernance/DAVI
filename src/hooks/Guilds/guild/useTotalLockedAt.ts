@@ -1,33 +1,25 @@
-import { BigNumber } from 'ethers';
-import { SWRResponse } from 'swr';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
+import { useContractRead } from 'wagmi';
 
-interface UseTotalLockedAtProps {
+interface useTotalLockedAtProps {
   contractAddress: string;
   snapshotId: string;
 }
 
-type UseTotalLockedAtHook = (
-  args: UseTotalLockedAtProps
-) => SWRResponse<BigNumber>;
-
 /**
  * Get the total locked amount at snapshot
  */
-const useTotalLockedAt: UseTotalLockedAtHook = ({
+const useTotalLockedAt = ({
   contractAddress,
   snapshotId,
-}) => {
-  return useEtherSWR(
-    snapshotId && contractAddress
-      ? [contractAddress, 'totalLockedAt', snapshotId]
-      : [],
-    {
-      ABIs: new Map([[contractAddress, SnapshotERC20Guild.abi]]),
-      refreshInterval: 0,
-    }
-  );
+}: useTotalLockedAtProps) => {
+  const { data, ...rest } = useContractRead({
+    addressOrName: contractAddress,
+    contractInterface: SnapshotERC20Guild.abi,
+    functionName: 'totalLockedAt',
+    args: [snapshotId],
+  });
+  return { data, ...rest };
 };
 
 export default useTotalLockedAt;

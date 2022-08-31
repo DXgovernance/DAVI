@@ -16,6 +16,6 @@ export const useTotalSupply = ({ decodedCall }) => {
   }, [decodedCall]);
 
   return {
-    parsedData,
+    data: parsedData,
   };
 };

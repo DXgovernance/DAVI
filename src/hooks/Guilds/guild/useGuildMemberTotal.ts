@@ -1,11 +1,13 @@
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import ERC20Guild from 'contracts/ERC20Guild.json';
+import { useContractRead } from 'wagmi';
 
 const useGuildMemberTotal = (guildAddress: string) => {
-  return useEtherSWR(guildAddress ? [guildAddress, 'getTotalMembers'] : [], {
-    ABIs: new Map([[guildAddress, ERC20Guild.abi]]),
-    refreshInterval: 0,
+  const { data, ...rest } = useContractRead({
+    addressOrName: guildAddress,
+    contractInterface: ERC20Guild.abi,
+    functionName: 'getTotalMembers',
   });
+  return { data: Number(data), ...rest };
 };
 
 export default useGuildMemberTotal;

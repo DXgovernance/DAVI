@@ -1,30 +1,24 @@
-import { BigNumber } from 'ethers';
-import { SWRResponse } from 'swr';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
+import { useContractRead } from 'wagmi';
 
-interface UseCurrentSnapshotIdProps {
+interface useCurrentSnapshotIdProps {
   contractAddress: string;
 }
 
-type UseCurrentSnapshotIdHook = (
-  args: UseCurrentSnapshotIdProps
-) => SWRResponse<BigNumber>;
-
-const useCurrentSnapshotId: UseCurrentSnapshotIdHook = ({
+const useCurrentSnapshotId = ({
   contractAddress,
-}) => {
+}: useCurrentSnapshotIdProps) => {
   const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
-  return useEtherSWR(
-    isSnapshotGuild && contractAddress
-      ? [contractAddress, 'getCurrentSnapshotId']
-      : [],
-    {
-      ABIs: new Map([[contractAddress, SnapshotERC20Guild.abi]]),
-      refreshInterval: 0,
-    }
-  );
+  const { data, ...rest } = useContractRead({
+    addressOrName: isSnapshotGuild && contractAddress,
+    contractInterface: SnapshotERC20Guild.abi,
+    functionName: 'getCurrentSnapshotId',
+  });
+  return {
+    data,
+    ...rest,
+  };
 };
 
 export default useCurrentSnapshotId;
