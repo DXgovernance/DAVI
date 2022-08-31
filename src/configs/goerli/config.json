@@ -9,12 +9,20 @@
   },
   "tokens": [
     {
-      "address": "0x2c212B56cE6c73646f7259EF1daAA52e515e73C6",
+      "address": "0x2f9343cf18baacf57ac4a4e20188b9b00cfce3f1",
       "name": "SWAPR",
       "decimals": 18,
       "symbol": "SWPR",
       "fetchPrice": true,
       "logoURI": "https://s2.coinmarketcap.com/static/img/coins/200x200/12368.png"
+    },
+    {
+      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+      "name": "Wrapped ETH",
+      "decimals": 18,
+      "symbol": "WETH",
+      "fetchPrice": true,
+      "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1547036627"
     }
   ],
   "version": 1

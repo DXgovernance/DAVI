@@ -36,7 +36,9 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   const { tokens } = useTokenList(chain?.id);
 
   let currentToken = useMemo(() => {
-    return tokens.filter(token => token?.address === parsedData?.asset)[0];
+    return tokens.filter(
+      token => token?.address.toLowerCase() === parsedData?.asset.toLowerCase()
+    )[0];
   }, [tokens, parsedData]);
 
   return (
@@ -56,7 +58,7 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
             <Flex margin={'0 0.5rem'}>{currentToken.symbol}</Flex>
           </>
         ) : (
-          t('anyToken')
+          t('unknownToken')
         )}
       </Segment>
     </>

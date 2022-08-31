@@ -31,7 +31,7 @@ export const useSwaprFetchPairs = async (
 ): Promise<[SwaprFetchPairsInterface[], string]> => {
   const networkApiPair = {
     1: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2', //mainnet
-    5: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // goerly
+    5: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-goerli', // goerly
     100: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // gnosis
     1337: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', //localhost
     42161:
