@@ -1,15 +1,16 @@
-import { ContractType } from 'stores/Provider';
 import {
   BigNumber,
   WalletSchemeProposalState,
   VotingMachineProposalState,
 } from './utils';
+import * as IPFS from 'ipfs-core';
 
 declare global {
   // Window ethereum type
 
   interface Window {
     ethereum?: EthereumProvider;
+    ipfs?: IPFS.IPFS;
   }
 
   // DaoStore types
@@ -284,6 +285,7 @@ declare global {
       fetchPrice: boolean;
       logoURI?: string;
     }[];
+    guilds: string[];
   }
 
   interface AppConfig {

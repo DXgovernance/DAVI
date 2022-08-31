@@ -1,0 +1,21 @@
+{
+  "contracts": {
+    "utils": {
+      "dxDaoNFT": "0xF7A2f72E8f6aeb884905a1fE515c1BB5752D342f",
+      "dxdVestingFactory": "0xB5D42c8cA3B04479200E3782C41D99b46Cf8A6E1",
+      "guildRegistry": "0x304de4fd740e73db7f8a4fC11f41680d51dB1aF2",
+      "multicall": "0x1FDD273e0B7E0d921Bda044Ebf64811428A79f15"
+    }
+  },
+  "tokens": [
+    {
+      "address": "0x2c212B56cE6c73646f7259EF1daAA52e515e73C6",
+      "name": "SWAPR",
+      "decimals": 18,
+      "symbol": "SWPR",
+      "fetchPrice": true,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/200x200/12368.png"
+    }
+  ],
+  "version": 1
+}

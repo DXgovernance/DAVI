@@ -1,8 +1,8 @@
 import { useMemo, useEffect, useState } from 'react';
 import { utils } from 'ethers';
-import useJsonRpcProvider from '../web3/useJsonRpcProvider';
 import { GuildImplementationType } from '../../../types/types.guilds.d';
 import deployedHashedBytecodes from '../../../bytecodes/config.json';
+import { useProvider } from 'wagmi';
 
 const defaultImplementation = deployedHashedBytecodes.find(
   ({ type }) => type === GuildImplementationType.IERC20Guild
@@ -21,36 +21,31 @@ interface ImplementationTypeConfig {
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
-  isSnapshotRepGuild: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
 ): ImplementationTypeConfigReturn => {
   return {
     ...config,
-    isRepGuild:
-      config.features.includes('REP') && !config.features.includes('SNAPSHOT'),
-    isSnapshotGuild:
-      config.features.includes('SNAPSHOT') && !config.features.includes('REP'),
-    isSnapshotRepGuild:
-      config.features.includes('SNAPSHOT') && config.features.includes('REP'),
+    isRepGuild: config.features.includes('REP'),
+    isSnapshotGuild: config.features.includes('SNAPSHOT'),
   };
 };
 
 /**
  * @function useGuildImplementationType
  * @param {string} guildAddress
- * @returns {string} GuildImplementationType. 'SnapshotRepERC20Guild' | 'DXDGuild' | 'ERC20Guild' | 'IERC20Guild'
+ * @returns {ImplementationTypeConfigReturn}
  */
 export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
   const [guildBytecode, setGuildBytecode] = useState<string>('');
-  const provider = useJsonRpcProvider();
-
+  const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
-      const hashedBytecode = utils.sha256(await provider.getCode(guildAddress));
+      const btcode = await provider.getCode(guildAddress);
+      const hashedBytecode = utils.sha256(btcode);
       setGuildBytecode(hashedBytecode);
     };
     getBytecode();
@@ -63,8 +58,7 @@ export default function useGuildImplementationTypeConfig(
       ({ bytecode_hash }) => guildBytecode === bytecode_hash
     );
 
-    return match ? match : defaultImplementation; // default to IERC20Guild
+    return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode]);
-
   return parseConfig(implementationTypeConfig);
 }

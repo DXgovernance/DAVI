@@ -14,11 +14,11 @@ Hosted in https://dxvote.eth.link/ and under control of dxdao.
 
 ### Release Candidate
 
-Source code of `master` branch built and hosted on IPFS in https://dxvote.dev/ and under control of DXgovernance code owners.
+Source code of `master` branch built and hosted on IPFS in https://prod.project-davi.dev/ and under control of DXgovernance code owners.
 
 ### Developer Version
 
-Source code of `develop` branch built and hosted on IPFS in https://develop.dxvote.dev/ and under control of DXgovernance developers.
+Source code of `develop` branch built and hosted on IPFS in https://project-davi.dev/ and under control of DXgovernance developers.
 
 ## Maintenance
 

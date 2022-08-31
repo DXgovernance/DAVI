@@ -1,13 +1,14 @@
 import React from 'react';
-import GlobalNotification from '../GlobalNotification';
+import { GlobalNotification } from 'components/GlobalNotification';
 
 const handledErrorTypes = {
   CacheLoadError:
     'We ran into an error while trying to update the cache. Data shown below might be incorrect or outdated. Please reload the page and try again.',
+  default: 'Something went wrong',
 };
 
-class GlobalErrorBoundary extends React.Component<
-  {},
+export class GlobalErrorBoundary extends React.Component<
+  { children: JSX.Element },
   { hasError: boolean; errorMessage: string }
 > {
   constructor(props) {
@@ -16,9 +17,9 @@ class GlobalErrorBoundary extends React.Component<
   }
 
   static getDerivedStateFromError(error: Error) {
-    const errorMessage = this ? this.getErrorMessage(error.name) : false;
+    const errorMessage = GlobalErrorBoundary.getErrorMessage(error.name);
     return {
-      hasError: !!errorMessage,
+      hasError: true,
       errorMessage,
     };
   }
@@ -51,21 +52,20 @@ class GlobalErrorBoundary extends React.Component<
       return handledErrorTypes[errorName];
     }
 
-    return null;
+    return handledErrorTypes.default;
   }
 
   render() {
+    const { hasError, errorMessage } = this.state;
     return (
       <>
         <GlobalNotification
-          visible={this.state.hasError}
+          visible={hasError}
           type="ERROR"
-          message={this.state.errorMessage}
+          message={errorMessage}
         />
-        {this.props.children}
+        {!hasError && this.props.children}
       </>
     );
   }
 }
-
-export default GlobalErrorBoundary;

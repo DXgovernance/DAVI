@@ -1,0 +1,1 @@
+export const RICH_CONTRACT_DATA_REGISTRY = 'QmfV1ughR6ZDHbt5rB5E7vvcYGCJis5ei4Whh2wFD864jN';

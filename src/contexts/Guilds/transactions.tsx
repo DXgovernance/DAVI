@@ -1,4 +1,11 @@
-import { useWeb3React } from '@web3-react/core';
+import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
+import {
+  TransactionOutcome,
+  TransactionPending,
+} from 'components/ToastNotifications/TransactionToasts';
+import { TransactionModal } from 'components/Web3Modals';
+import { Transaction } from '../../types/types.guilds';
+import { providers } from 'ethers';
 import {
   createContext,
   useCallback,
@@ -7,18 +14,10 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { providers } from 'ethers';
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
-
-import { Transaction } from '../../types/types.guilds';
-import useJsonRpcProvider from '../../hooks/Guilds/web3/useJsonRpcProvider';
-import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
-import TransactionModal from '../../components/Guilds/Web3Modals/TransactionModal';
 import { toast } from 'react-toastify';
-import {
-  TransactionOutcome,
-  TransactionPending,
-} from '../../components/Guilds/ToastNotifications/TransactionToasts';
+import { useAccount, useNetwork, useProvider } from 'wagmi';
+
 export interface TransactionState {
   [chainId: number]: {
     [txHash: string]: Transaction;
@@ -35,7 +34,9 @@ interface TransactionsContextInterface {
   pendingTransaction: PendingTransaction;
   createTransaction: (
     summary: string,
-    txFunction: () => Promise<providers.TransactionResponse>
+    txFunction: () => Promise<providers.TransactionResponse>,
+    showModal?: boolean,
+    cb?: (error?: any, txtHash?: any) => void
   ) => void;
   clearAllTransactions: () => void;
 }
@@ -43,10 +44,12 @@ interface TransactionsContextInterface {
 const TransactionsContext = createContext<TransactionsContextInterface>(null);
 
 export const TransactionsProvider = ({ children }) => {
-  const { chainId, account } = useWeb3React();
+  const { chain } = useNetwork();
+  const chainId = useMemo(() => chain?.id, [chain]);
+  const { address } = useAccount();
 
   const [transactions, setTransactions] = useLocalStorage<TransactionState>(
-    `transactions/${account}`,
+    `transactions/${address}`,
     {}
   );
   const [pendingTransaction, setPendingTransaction] =
@@ -112,7 +115,7 @@ export const TransactionsProvider = ({ children }) => {
   );
 
   // Mark the transactions as finalized when they are mined
-  const provider = useJsonRpcProvider();
+  const provider = useProvider({ chainId });
   useEffect(() => {
     let isSubscribed = true;
 
@@ -170,7 +173,8 @@ export const TransactionsProvider = ({ children }) => {
   const createTransaction = async (
     summary: string,
     txFunction: () => Promise<providers.TransactionResponse>,
-    showModal: boolean = true
+    showModal: boolean = true,
+    cb: (error?: any, txtHash?: any) => void = null
   ) => {
     setPendingTransaction({
       summary,
@@ -192,12 +196,14 @@ export const TransactionsProvider = ({ children }) => {
         autoClose: false,
         isLoading: true,
       });
+      if (cb && typeof cb === 'function') cb(null, transactionHash);
     } catch (e) {
       console.error('Transaction execution failed', e);
       setPendingTransaction(pendingTransaction => ({
         ...pendingTransaction,
         cancelled: true,
       }));
+      if (cb && typeof cb === 'function') cb(e, null);
     }
   };
 

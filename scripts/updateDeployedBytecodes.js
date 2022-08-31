@@ -23,7 +23,6 @@ const paths = {
     '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
   [GUILD_TYPES.DXDGuild]:
     '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
-  //TODO: add other contracts here (IERC20Guild)
 };
 
 const getGuildFeatures = guildType => {

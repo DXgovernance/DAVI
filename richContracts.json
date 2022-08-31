@@ -1,0 +1,93 @@
+[
+  {
+    "title": "Vesting contract for DXD token",
+    "tags": ["DXD", "DXdao", "factory"],
+    "networks": {
+      "5": "0x0000000000000000000000000000000000000000",
+      "1337": "0x0000000000000000000000000000000000000000"
+    },
+    "functions": [
+      {
+        "title": "Create vesting contract",
+        "functionName": "create",
+        "params": [
+          {
+            "type": "address",
+            "component": "address",
+            "name": "beneficiary",
+            "defaultValue": "",
+            "description": "Receiving address of tokens"
+          },
+          {
+            "type": "uint256",
+            "component": "date",
+            "name": "start",
+            "defaultValue": "",
+            "description": "Starting time for contract"
+          },
+          {
+            "type": "uint256",
+            "component": "time",
+            "name": "cliffDuration",
+            "defaultValue": "",
+            "description": "How long before cliff"
+          },
+          {
+            "type": "uint256",
+            "component": "time",
+            "name": "duration",
+            "defaultValue": "",
+            "description": "How long before contract finishes fully"
+          },
+          {
+            "type": "uint256",
+            "component": "tokenAmount",
+            "name": "value",
+            "defaultValue": "",
+            "description": "Number of tokens to vest"
+          }
+        ],
+        "shortDescription": "Creates DXD vesting contracts for worker proposals",
+        "longDescription": "Factory contract to create new vesting contracts for the ERC20 token DXD with owenership then passed to the DXdao",
+        "spendsTokens": true,
+        "templateLiteral": "Vest ${value} ${approvalTokenSymbol} for ${duration} with ${cliffDuration} cliff for ${beneficiary}"
+      }
+    ]
+  },
+  {
+    "title": "Swapr fees",
+    "tags": ["DXgov", "Guilds", "permissions"],
+    "networks": {
+      "5": "0x7d5Cc70B1d1778B8bEdeaD40283056CDb71E32B2",
+      "1337": "0x0000000000000000000000000000000000000000"
+    },
+    "functions": [
+      {
+        "title": "Set fee for a pool",
+        "functionName": "setSwapFee",
+        "params": [
+          {
+            "type": "address",
+            "component": "swaprPicker",
+            "name": "pair",
+            "title": "Pool",
+            "defaultValue": "",
+            "description": "Pool pair to set fee on"
+          },
+          {
+            "type": "uint32",
+            "component": "integer",
+            "name": "swapFee",
+            "title": "Swap Fee %",
+            "defaultValue": "",
+            "description": "Address of contract / receiver in case of asset"
+          }
+        ],
+        "shortDescription": "Sets the swap fee for a given pool on swapr",
+        "longDescription": "Sets the overall fee taken from a specific pool in swapr on this chain",
+        "templateLiteral": "Set fee for ${pair} to ${swapFee}",
+        "spendsTokens": false
+      }
+    ]
+  }
+]

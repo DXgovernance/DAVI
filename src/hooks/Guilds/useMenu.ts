@@ -1,14 +1,43 @@
 import { useState } from 'react';
+import { ProposalState } from 'types/types.guilds.d';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 
+export interface UseMenuReturn {
+  //State
+  onToggleState: (value: ProposalState) => void;
+  onResetState: () => void;
+  isStateSelected: (value: ProposalState) => boolean;
+  countStateSelected: number;
+  filterState: ProposalState[];
+
+  //Type
+  onToggleActionType: (value: string) => void;
+  onResetActionType: () => void;
+  isActionTypeSelected: (value: SupportedAction) => boolean;
+  countActionTypeSelected: number;
+  filterActionTypes: SupportedAction[];
+
+  //Currency
+  onToggleCurrency: (value: string) => void;
+  onResetCurrency: () => void;
+  isCurrencySelected: (value: string) => boolean;
+  countCurrencySelected: number;
+  filterCurrency: string[];
+
+  totalFilters: number;
+}
 // This hooks controls the filter for the menus.
 export const useMenu = ({
   initialStates = [],
   initialTypes = [],
   initialCurrencies = [],
-}) => {
-  const [filterState, setFilterState] = useState(initialStates);
-  const [filterType, setFilterType] = useState(initialTypes);
-  const [filterCurrency, setFilterCurrency] = useState(initialCurrencies);
+}): UseMenuReturn => {
+  const [filterState, setFilterState] =
+    useState<ProposalState[]>(initialStates);
+  const [filterActionTypes, setFilterActionType] =
+    useState<SupportedAction[]>(initialTypes);
+  const [filterCurrency, setFilterCurrency] =
+    useState<string[]>(initialCurrencies);
 
   // abstract function to toggle given value, state, and setSate params.
   const onToggleFilter = (value, stateToUse, setStateToUse) => {
@@ -30,12 +59,15 @@ export const useMenu = ({
     onResetState: () => setFilterState([]),
     isStateSelected: value => filterState.indexOf(value) > -1,
     countStateSelected: filterState.length,
+    filterState,
 
     //Type
-    onToggleType: value => onToggleFilter(value, filterType, setFilterType),
-    onResetType: () => setFilterType([]),
-    isTypeSelected: value => filterType.indexOf(value) > -1,
-    countTypeSelected: filterType.length,
+    onToggleActionType: value =>
+      onToggleFilter(value, filterActionTypes, setFilterActionType),
+    onResetActionType: () => setFilterActionType([]),
+    isActionTypeSelected: value => filterActionTypes.indexOf(value) > -1,
+    countActionTypeSelected: filterActionTypes.length,
+    filterActionTypes,
 
     //Currency
     onToggleCurrency: value =>
@@ -43,8 +75,9 @@ export const useMenu = ({
     onResetCurrency: () => setFilterCurrency([]),
     isCurrencySelected: value => filterCurrency.indexOf(value) > -1,
     countCurrencySelected: filterCurrency.length,
+    filterCurrency,
 
     totalFilters:
-      filterState.length + filterType.length + filterCurrency.length,
+      filterState.length + filterActionTypes.length + filterCurrency.length,
   };
 };

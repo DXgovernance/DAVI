@@ -1,6 +1,5 @@
 export * from './address';
 export * from './bignumber';
-export * from './cache';
 export * from './constants';
 export * from './date';
 export * from './enums';
@@ -16,3 +15,5 @@ export * from './signature';
 export * from './array';
 export * from './votes';
 export * from './ipfs';
+export * from './img';
+export * from './validations';

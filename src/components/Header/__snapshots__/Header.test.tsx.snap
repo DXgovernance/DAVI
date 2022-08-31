@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Should match snapshot 1`] = `
+.c7 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c7:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c7:hover:enabled {
+  border-color: #fff;
+}
+
+.c7:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c4 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  width: 1200px;
+  max-width: calc(100% - 1.25rem);
+  margin: 0 auto;
+}
+
+.c0 {
+  padding: 0.75rem 0;
+  position: -webkit-sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #1B1D1F;
+  z-index: 200;
+  border-bottom: 1px solid #303338;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0;
+  color: #fff;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-left: auto;
+}
+
+.c5 {
+  cursor: pointer;
+}
+
+@media only screen and (min-width:768px) {
+  .c2 {
+    padding: 3rem 0rem;
+  }
+}
+
+@media only screen and(min-width:768px) {
+  .c0 {
+    padding: 1.5rem 0;
+  }
+}
+
+<div>
+   
+  <header
+    class="c0"
+  >
+    <div
+      class="c1 c2 c3"
+    >
+      <h2
+        class="c4 c5"
+        size="2"
+      >
+        <strong>
+          guilds.guilds
+        </strong>
+      </h2>
+      <div
+        class="c1 c6"
+      >
+        <button
+          class="c7"
+        >
+          notConnected
+        </button>
+        <button
+          class="c7"
+          data-testid="connectWalletBtn"
+        >
+          connectWallet
+        </button>
+      </div>
+    </div>
+  </header>
+   
+</div>
+`;

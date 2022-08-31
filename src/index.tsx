@@ -1,50 +1,28 @@
-import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch, useLocation } from 'react-router-dom';
-import { Web3ReactProvider } from '@web3-react/core';
-import Web3ReactManager from 'components/Web3ReactManager';
-import Web3 from 'web3';
-import moment from 'moment';
-import styled from 'styled-components';
+import App from './App';
+import initializeI18Next from './i18n';
+import { GlobalErrorBoundary } from './components/ErrorBoundary';
 import * as serviceWorker from './serviceWorker';
-
-import ThemeProvider, { GlobalStyle } from './theme';
-
-import Header from './components/Header';
-import Footer from './components/Footer';
-import GlobalErrorBoundary from './components/ErrorBoundary/GlobalErrorBoundary';
-import PageRouter from './PageRouter';
-
-import ProposalsPage from './pages/proposals';
-import { SubmitProposalPage } from './pages/SubmitProposal';
-import { NewProposalTypePage } from './pages/NewProposalType';
-import UserPage from './pages/User';
-import ProposalPage from './pages/Proposal';
-import InfoPage from './pages/Info';
-import ConfigPage from './pages/Configuration';
-import FAQPage from './pages/FAQ';
-import ForumPage from './pages/Forum';
-import CachePage from 'pages/Cache';
-import { CreateMetadataPage } from 'pages/Metadata';
-import GuildsApp from './GuildsApp';
-
-import { ToastContainer } from 'react-toastify';
+import moment from 'moment';
+import { EtherSWRManager } from 'components/EtherSWRManager';
+import * as ReactDOMClient from 'react-dom/client';
+import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import MultichainProvider from './contexts/MultichainProvider';
-import useJsonRpcProvider from './hooks/Guilds/web3/useJsonRpcProvider';
-import { useEffect } from 'react';
-import { useContext } from './contexts';
-import { MAINNET_ID } from './utils';
+import { createClient, configureChains, WagmiConfig } from 'wagmi';
+import { chains, providers } from 'provider';
+import { getConnectors } from 'provider/wallets';
+import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnection';
+import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
 
-import EtherSWRManager from 'components/Guilds/EtherSWRManager';
+const { provider, webSocketProvider } = configureChains(chains, providers);
 
-const Content = styled.div`
-  margin: auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 85%;
-`;
+const client = createClient({
+  autoConnect: true,
+  connectors: getConnectors(chains),
+  provider,
+  webSocketProvider,
+});
+
+initializeI18Next();
 
 moment.updateLocale('en', {
   relativeTime: {
@@ -55,119 +33,27 @@ moment.updateLocale('en', {
   },
 });
 
-function getLibrary(provider) {
-  return new Web3(provider);
-}
-
-const Routes = () => {
-  const location = useLocation();
-  return (
-    <PageRouter>
-      <Route exact path="/">
-        {' '}
-        <ProposalsPage />{' '}
-      </Route>
-      <Route exact path="/config">
-        {' '}
-        <ConfigPage />{' '}
-      </Route>
-      <Route exact path="/forum">
-        {' '}
-        <ForumPage />{' '}
-      </Route>
-      <Route exact path="/faq">
-        {' '}
-        <FAQPage />{' '}
-      </Route>
-      <Route exact path="/cache">
-        {' '}
-        <CachePage />{' '}
-      </Route>
-      <Route exact path="/:network/proposals">
-        {' '}
-        <ProposalsPage />{' '}
-      </Route>
-      <Route exact path="/:network/create/type">
-        {' '}
-        <NewProposalTypePage />{' '}
-      </Route>
-      <Route path="/:network/create/submit">
-        {' '}
-        <SubmitProposalPage />{' '}
-      </Route>
-      <Route path="/:network/create/metadata/:proposalType">
-        {' '}
-        <CreateMetadataPage />{' '}
-      </Route>
-      <Route exact path="/:network/info">
-        {' '}
-        <InfoPage />{' '}
-      </Route>
-      <Route exact path="/:network/user/:address">
-        {' '}
-        <UserPage />{' '}
-      </Route>
-      <Route exact path="/:network/proposal/:proposalId">
-        {' '}
-        <ProposalPage />{' '}
-      </Route>
-      {location.pathname.indexOf('/proposals') < 0 &&
-        location.pathname.indexOf('/create/metadata') < 0 && <Footer />}
-    </PageRouter>
-  );
-};
-
-const SplitApp = () => {
-  // This split between DXvote and Guilds frontends are temporary.
-  // We'll eventually converge changes on the Guilds side to DXvote.
-  const location = useLocation();
-  const isGuilds = location.pathname.startsWith('/guilds');
-
-  const {
-    context: { ensService },
-  } = useContext();
-  const mainnetProvider = useJsonRpcProvider(MAINNET_ID);
-
-  useEffect(() => {
-    ensService.setWeb3Provider(mainnetProvider);
-  }, [mainnetProvider, ensService]);
-
-  return (
-    <EtherSWRManager>
-      {!isGuilds ? (
-        <Switch>
-          <Web3ReactManager>
-            <GlobalStyle />
-            <Content>
-              <Header />
-              <Routes />
-              <ToastContainer />
-            </Content>
-          </Web3ReactManager>
-        </Switch>
-      ) : (
-        <GuildsApp />
-      )}
-    </EtherSWRManager>
-  );
-};
-
 const Root = () => {
   return (
     <GlobalErrorBoundary>
-      <Web3ReactProvider getLibrary={getLibrary}>
-        <MultichainProvider>
-          <ThemeProvider>
-            <HashRouter>
-              <SplitApp />
-            </HashRouter>
-          </ThemeProvider>
-        </MultichainProvider>
-      </Web3ReactProvider>
+      <WagmiConfig client={client}>
+        <HashRouter>
+          <SyncRouterWithWagmi>
+            <EtherSWRManager>
+              <>
+                <App />
+                <EnsureReadOnlyConnection />
+              </>
+            </EtherSWRManager>
+          </SyncRouterWithWagmi>
+        </HashRouter>
+      </WagmiConfig>
     </GlobalErrorBoundary>
   );
 };
-ReactDOM.render(<Root />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+const root = ReactDOMClient.createRoot(rootElement);
+root.render(<Root />);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

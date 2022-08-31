@@ -1,4 +1,3 @@
-import { useWeb3React } from '@web3-react/core';
 import useEtherSWRHook, {
   etherKeyFuncInterface,
   ethKeyInterface,
@@ -7,6 +6,7 @@ import useEtherSWRHook, {
 } from 'ether-swr';
 import { useEffect } from 'react';
 import { SWRResponse, Fetcher } from 'swr';
+import { useNetwork } from 'wagmi';
 import { usePrevious } from '../usePrevious';
 
 function useEtherSWR<Data = any, Error = any>(
@@ -26,14 +26,14 @@ function useEtherSWR<Data = any, Error = any>(
 ): SWRResponse<Data, Error> {
   // @ts-ignore - TS gets confused here about the number of args
   const swrResponse = useEtherSWRHook<Data, Error>(...args);
-  const { chainId } = useWeb3React();
+  const { chain } = useNetwork();
 
-  const prevChainId = usePrevious(chainId);
+  const prevChainId = usePrevious(chain?.id);
   useEffect(() => {
-    if (prevChainId && chainId !== prevChainId) {
+    if (prevChainId && chain?.id !== prevChainId) {
       swrResponse.mutate(null);
     }
-  }, [chainId, prevChainId, swrResponse]);
+  }, [chain?.id, prevChainId, swrResponse]);
 
   return swrResponse;
 }

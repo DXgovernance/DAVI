@@ -8,8 +8,12 @@ export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
 export const ANY_ADDRESS = '0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa';
 export const ANY_FUNC_SIGNATURE = '0xaaaaaaaa';
 export const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
+export const SET_PERMISSION_SIGNATURE = '0x6cfe0489';
+export const MINT_REP_SIGNATURE = '0x40c10f19';
+
 export const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
 export const DEFAULT_TOKEN_DECIMALS = 18;
+export const NULL_SIGNATURE = '0x00000000';
 
 export const MAX_BLOCKS_PER_EVENTS_FETCH: number = 1000000;
 
@@ -21,13 +25,16 @@ export const DISCOURSE_URL_ROOT = 'https://daotalk.org';
 
 export const MAINNET_ID = 1;
 export const LOCALHOST_ID = 1337;
+export const GOERLI_ID = 5;
+export const ARBITRUM_ID = 42161;
+export const ARBITRUM_TESTNET_ID = 421611;
 
 export const DEFAULT_CHAIN_ID =
   process.env.NODE_ENV === 'development' ? LOCALHOST_ID : MAINNET_ID;
 
 export const POKT_NETWORK_URLS = {
   '1': 'https://eth-archival.gateway.pokt.network/v1/lb/61f86d630d66d80038fb8c38',
-  '4': 'https://eth-rinkeby.gateway.pokt.network/v1/lb/61116c81a585a20035149067',
+  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/6229f9b8abc11f0039cb2d2c',
   '100':
     'https://poa-xdai-archival.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
 };
@@ -49,17 +56,17 @@ export const NETWORKS: ChainConfig[] =
           api: 'https://api.etherscan.io',
         },
         {
-          id: 4,
-          name: 'rinkeby',
-          displayName: 'Rinkeby Testnet',
-          defaultRpc: POKT_NETWORK_URLS['4'],
+          id: 5,
+          name: 'goerli',
+          displayName: 'Goerli Testnet',
+          defaultRpc: POKT_NETWORK_URLS['5'],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',
             decimals: 18,
           },
-          blockExplorer: 'https://rinkeby.etherscan.io/',
-          api: 'https://api-rinkeby.etherscan.io/',
+          blockExplorer: 'https://goerli.etherscan.io/',
+          api: 'https://api-goerli.etherscan.io/',
         },
         {
           id: 100,
@@ -126,17 +133,17 @@ export const NETWORKS: ChainConfig[] =
           api: 'https://api.etherscan.io',
         },
         {
-          id: 4,
-          name: 'rinkeby',
-          displayName: 'Rinkeby Testnet',
-          defaultRpc: POKT_NETWORK_URLS['4'],
+          id: 5,
+          name: 'goerli',
+          displayName: 'Goerli Testnet',
+          defaultRpc: POKT_NETWORK_URLS['5'],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',
             decimals: 18,
           },
-          blockExplorer: 'https://rinkeby.etherscan.io/',
-          api: 'https://api-rinkeby.etherscan.io/',
+          blockExplorer: 'https://goerli.etherscan.io/',
+          api: 'https://api-goerli.etherscan.io/',
         },
         {
           id: 100,
@@ -185,11 +192,11 @@ export const NETWORK_NAMES: Record<ChainConfig['id'], ChainConfig['name']> =
   }, {});
 
 export const getNetworkByName = function (networkName: string): ChainConfig {
-  return NETWORKS.find(network => network.name == networkName);
+  return NETWORKS.find(network => network.name === networkName);
 };
 
 export const getNetworkById = function (networkId: number): ChainConfig {
-  return NETWORKS.find(network => network.id == networkId);
+  return NETWORKS.find(network => network.id === networkId);
 };
 
 export const NETWORK_DISPLAY_NAMES: Record<
@@ -228,14 +235,14 @@ export const NETWORK_ASSET_SYMBOL: Record<
 
 export const INFURA_NETWORK_NAMES = {
   '1': 'mainnet',
-  '4': 'rinkeby',
+  '5': 'goerli',
   '42161': 'arbitrum-mainnet',
   '421611': 'arbitrum-rinkeby',
 };
 
 export const ALCHEMY_NETWORK_URLS = {
   '1': 'eth-mainnet.alchemyapi.io',
-  '4': 'eth-rinkeby.alchemyapi.io',
+  '5': 'eth-goerli.alchemyapi.io',
   '42161': 'arb-mainnet.g.alchemy.com',
   '421611': 'arb-rinkeby.g.alchemy.com',
 };

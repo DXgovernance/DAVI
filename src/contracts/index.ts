@@ -6,7 +6,7 @@ const DXDVotingMachine = require('./DXDVotingMachine');
 const GenesisProtocol = require('./GenesisProtocol');
 const ERC20 = require('./ERC20');
 const Multicall = require('./Multicall');
-const VestingFactory = require('./DXDVestingFactory');
+const VestingFactory = require('./ERC20VestingFactory');
 
 export const getContracts = async function (
   networkConfig: NetworkContracts,
@@ -43,7 +43,7 @@ export const getContracts = async function (
 
   for (const votingMachineAddress in networkConfig.votingMachines) {
     if (
-      networkConfig.votingMachines[votingMachineAddress].type ==
+      networkConfig.votingMachines[votingMachineAddress].type ===
       'GenesisProtocol'
     )
       votingMachines[votingMachineAddress] = {
@@ -58,7 +58,7 @@ export const getContracts = async function (
         ),
       };
     else if (
-      networkConfig.votingMachines[votingMachineAddress].type ==
+      networkConfig.votingMachines[votingMachineAddress].type ===
       'DXDVotingMachine'
     )
       votingMachines[votingMachineAddress] = {

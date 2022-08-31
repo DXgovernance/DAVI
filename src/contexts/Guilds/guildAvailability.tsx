@@ -1,16 +1,16 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import styled from 'styled-components';
-import { useWeb3React } from '@web3-react/core';
-import { useRouteMatch } from 'react-router-dom';
-import { getNetworkById } from 'utils';
-import Result, { ResultState } from 'components/Guilds/common/Result';
-import { ButtonIcon, IconButton } from 'components/Guilds/common/Button';
-import { iconsByChain } from 'components/Guilds/Header/NetworkButton';
-import { Box } from 'components/Guilds/common/Layout';
 import { MultichainContext } from 'contexts/MultichainProvider';
-import UnstyledLink from 'components/Guilds/common/UnstyledLink';
-import useNetworkSwitching from 'hooks/Guilds/web3/useNetworkSwitching';
+import { ButtonIcon, IconButton } from 'components/primitives/Button';
+import { Box } from 'components/primitives/Layout/Box';
+import { Result, ResultState } from 'components/Result';
+import { UnstyledLink } from 'components/primitives/Links';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
+import styled from 'styled-components';
+import { getNetworkById, getChainIcon } from 'utils';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { useNetwork } from 'wagmi';
+import useSwitchNetwork from 'hooks/Guilds/web3/useSwitchNetwork';
+import { useTranslation } from 'react-i18next';
 
 interface ContractAvailability {
   [chainId: number]: boolean;
@@ -24,7 +24,7 @@ interface GuildAvailabilityContextInterface {
 const GreyText = styled(Box)`
   margin-top: 2rem;
   margin-bottom: 0.3rem;
-  color: ${({ theme }) => theme.colors.proposalText.lightGrey};
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 const NetworkIconButton = styled(IconButton)`
@@ -34,15 +34,17 @@ const NetworkIconButton = styled(IconButton)`
 export const GuildAvailabilityContext =
   createContext<GuildAvailabilityContextInterface>({});
 
+// TODO: Refactor this to not use the MultichainContext.
+// We should remove the MultichainContext as we no longer need it.
 const GuildAvailabilityProvider = ({ children }) => {
-  const routeMatch = useRouteMatch<{ guild_id?: string }>(
-    '/:chain_name/:guild_id'
-  );
-  const guildId = routeMatch?.params?.guild_id;
+  const { guildId, chainName } = useTypedParams();
   const { providers: multichainProviders } = useContext(MultichainContext);
   const [availability, setAvailability] = useState<ContractAvailability>({});
-  const { chainId: currentChainId } = useWeb3React();
-  const { trySwitching } = useNetworkSwitching();
+  const { chain: currentChain } = useNetwork();
+  const { switchNetwork } = useSwitchNetwork();
+  const { t } = useTranslation();
+
+  const currentChainId = useMemo(() => currentChain?.id, [currentChain]);
 
   useEffect(() => {
     if (!guildId || !multichainProviders) {
@@ -84,11 +86,11 @@ const GuildAvailabilityProvider = ({ children }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title="Guild not available."
+        title={t('guildNotAvailable')}
         subtitle={
           Object.values(availability).includes(true)
-            ? 'This guild is not available on this network.'
-            : 'No guild exists on this address.'
+            ? t('guildNotAvailableOnThisNetwork')
+            : t('noGuildInThisAddress')
         }
         extra={
           Object.values(availability).includes(true) ? (
@@ -102,10 +104,12 @@ const GuildAvailabilityProvider = ({ children }) => {
                     <div key={chainConfig?.id}>
                       <NetworkIconButton
                         iconLeft
-                        onClick={() => trySwitching(chainConfig)}
+                        onClick={() =>
+                          switchNetwork ? switchNetwork(chainConfig?.id) : null
+                        }
                       >
                         <ButtonIcon
-                          src={iconsByChain[chainConfig?.id]}
+                          src={getChainIcon(chainConfig?.id)}
                           alt={chainConfig?.name}
                         />{' '}
                         {chainConfig?.displayName}
@@ -116,9 +120,9 @@ const GuildAvailabilityProvider = ({ children }) => {
               </div>
             </>
           ) : (
-            <UnstyledLink to={`/`}>
+            <UnstyledLink to={`/${chainName}`}>
               <IconButton iconLeft>
-                <FiArrowLeft /> Take me home
+                <FiArrowLeft /> {t('takeMeHome')}
               </IconButton>
             </UnstyledLink>
           )

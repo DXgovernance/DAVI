@@ -1,0 +1,487 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProposalVoteCard matches the snapshot 1`] = `
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+.c2 {
+  border-bottom: 1px solid #303338;
+  padding: 8px 16px;
+}
+
+.c3 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c3 strong,
+.c3 b {
+  font-weight: 600;
+}
+
+.c4 {
+  font-weight: 600;
+  margin: 0.5rem;
+  color: #fff;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c8 {
+  padding: 1rem;
+  color: #fff;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 10px 0px 40px 0px;
+  width: 100%;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 0.75rem;
+  border-radius: 32px;
+  background-color: #303338;
+  overflow: hidden;
+}
+
+.c17 {
+  width: 10%;
+  background: #E75C5C;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c18 {
+  width: 10%;
+  background: #295FF4;
+  height: 0.75rem;
+  overflow: hidden;
+}
+
+.c20 {
+  height: 18px;
+  margin-top: 10px;
+  width: 1px;
+  background: #303338;
+}
+
+.c21 {
+  padding: 4px 8px;
+  border: 1px solid #303338;
+  border-radius: 0px 32px 32px;
+  font-size: 14px;
+  font-weight: 600;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c21 span {
+  margin-left: 2px;
+}
+
+.c19 {
+  width: 65px;
+  position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  left: 0%;
+}
+
+.c22 {
+  margin-right: 0.4rem;
+}
+
+.c6 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: transparent;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c6:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c6:hover:enabled {
+  border-color: #fff;
+}
+
+.c6:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c6:disabled {
+  color: #303338;
+}
+
+.c27 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c27:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c27:hover:enabled {
+  border-color: #fff;
+}
+
+.c27:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c13 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #295FF4;
+  border-radius: 50%;
+}
+
+.c14 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: 8px;
+  width: 8px;
+  background-color: #E75C5C;
+  border-radius: 50%;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 5px 0px 5px 0px;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c12 {
+  margin-right: 0.5rem;
+}
+
+.c23 {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2.5rem;
+}
+
+.c7 {
+  margin: 0px;
+  padding: 0.1rem 0.4rem;
+  width: 60px;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  color: #fff;
+}
+
+.c24 {
+  color: #A1A6B0;
+  margin-bottom: 0.5rem;
+}
+
+.c25 {
+  height: 2.5rem;
+}
+
+.c25:disabled {
+  background-color: transparent;
+  border: 1px solid #303338;
+  color: #A1A6B0;
+  opacity: 1;
+}
+
+.c26 {
+  margin-bottom: 1rem;
+  background-color: #303338;
+}
+
+.c26:active {
+  color: #1B1D1F;
+  background-color: #fff;
+}
+
+<div>
+   
+  <div
+    class="c0 c1"
+  >
+    <div
+      class="c0 c2"
+    >
+      <h2
+        class="c3 c4 c5"
+      >
+        castVote
+        <button
+          class="c6 c7"
+        >
+          DXD
+        </button>
+      </h2>
+    </div>
+    <div
+      class="c0"
+    >
+      <div
+        class="c0 c8"
+      >
+        <div
+          class="c9"
+        >
+          <div
+            class="c10"
+          >
+            <div
+              class="c11"
+            >
+              <span
+                class="c12"
+              >
+                <span
+                  class="c13"
+                  color="#295FF4"
+                  size="8"
+                />
+              </span>
+              No
+            </div>
+            <span>
+              0.0001 DXD
+            </span>
+          </div>
+          <div
+            class="c10"
+          >
+            <div
+              class="c11"
+            >
+              <span
+                class="c12"
+              >
+                <span
+                  class="c14"
+                  color="#E75C5C"
+                  size="8"
+                />
+              </span>
+              Yes
+            </div>
+            <span>
+              0.0001 DXD
+            </span>
+          </div>
+          <div
+            class="c15"
+          >
+            <div
+              class="c16"
+            >
+              <div
+                class="c17"
+                color="#E75C5C"
+              />
+              <div
+                class="c18"
+                color="#295FF4"
+              />
+            </div>
+            <div
+              class="c19"
+            >
+              <div
+                class="c20"
+              />
+              <div
+                class="c21"
+              >
+                <svg
+                  class="c22"
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M243.2 189.9V258c26.1 5.9 49.3 15.6 73.6 22.3v-68.2c-26-5.8-49.4-15.5-73.6-22.2zm223.3-123c-34.3 15.9-76.5 31.9-117 31.9C296 98.8 251.7 64 184.3 64c-25 0-47.3 4.4-68 12 2.8-7.3 4.1-15.2 3.6-23.6C118.1 24 94.8 1.2 66.3 0 34.3-1.3 8 24.3 8 56c0 19 9.5 35.8 24 45.9V488c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24v-94.4c28.3-12.1 63.6-22.1 114.4-22.1 53.6 0 97.8 34.8 165.2 34.8 48.2 0 86.7-16.3 122.5-40.9 8.7-6 13.8-15.8 13.8-26.4V95.9c.1-23.3-24.2-38.8-45.4-29zM169.6 325.5c-25.8 2.7-50 8.2-73.6 16.6v-70.5c26.2-9.3 47.5-15 73.6-17.4zM464 191c-23.6 9.8-46.3 19.5-73.6 23.9V286c24.8-3.4 51.4-11.8 73.6-26v70.5c-25.1 16.1-48.5 24.7-73.6 27.1V286c-27 3.7-47.9 1.5-73.6-5.6v67.4c-23.9-7.4-47.3-16.7-73.6-21.3V258c-19.7-4.4-40.8-6.8-73.6-3.8v-70c-22.4 3.1-44.6 10.2-73.6 20.9v-70.5c33.2-12.2 50.1-19.8 73.6-22v71.6c27-3.7 48.4-1.3 73.6 5.7v-67.4c23.7 7.4 47.2 16.7 73.6 21.3v68.4c23.7 5.3 47.6 6.9 73.6 2.7V143c27-4.8 52.3-13.6 73.6-22.5z"
+                  />
+                </svg>
+                <span>
+                  0
+                </span>
+                <span>
+                  DXD
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="c23"
+        >
+          <div
+            class="c24"
+          >
+            options
+          </div>
+          <button
+            class="c6 c25 c26"
+          >
+            No
+          </button>
+          <button
+            class="c6 c25 c26"
+          >
+            Yes
+          </button>
+          <button
+            class="c27 c25"
+            disabled=""
+          >
+            vote
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;

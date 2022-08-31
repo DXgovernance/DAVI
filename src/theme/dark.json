@@ -1,45 +1,59 @@
 {
   "colors": {
-    "text": "#fff",
-    "primary": "#295FF4",
-    "secondary": "#181B1B",
+    "white": "#fff",
     "red": "#E75C5C",
-    "proposalText": {
-      "grey": "#A1A6B0",
-      "lightGrey": "#BDC0C7"
-    },
-    "card": {
-      "grey": "#A1A6B0",
-      "green": "#1DE9B6"
-    },
-    "background": "#1B1D1F",
-    "modalBackground": "#26282D",
-    "button": {
-      "primary": "#295FF4",
-      "secondary": "#000"
-    },
-    "muted": "#303338",
-    "hoverMenu": "#f5f5f5",
-    "border": {
-      "initial": "#303338",
-      "hover": "#fff"
-    },
-    "votes": {
-      "0": "#295FF4",
-      "1": "#E75C5C",
-      "2": "#ccc"
-    },
+    "grey": "#A1A6B0",
+    "grey2": "#BDC0C7",
+    "failed": "#D500F9",
+    "active": "#1DE9B6",
+
     "params": {
       "0": "#9575CD",
       "1": "#F06292",
       "2": "#4DB6AC",
       "3": "#64B5F6"
+    },
+
+    "text": "#fff",
+    "primary1": "#295FF4",
+    "primary2": "#1F56EF",
+
+    "bg1": "#1B1D1F",
+    "bg2": "#282B30",
+    "bg3": "#26282D",
+    "bg4": "#181B1B",
+
+    "border1": "#303338",
+    "border2": "#D17A06",
+    "border3": "#fff",
+
+    "votes": {
+      "0": "#E75C5C",
+      "1": "#295FF4",
+      "2": "#BDC0C7",
+      "3": "#ccc"
+    },
+
+    "syntax": {
+      "key": "#69F0AE",
+      "value": "#00B0FF",
+      "expBlue": "#1E2F4C",
+      "expHover": "#1F3962",
+      "expLight": "#1C2635",
+      "add": "#1B463D",
+      "addLight": "#1B312E",
+      "addText": "#1c5246",
+      "remove": "#491C26",
+      "removeLight": "#321C23",
+      "removeText": "#841A30",
+      "addStat": "#4DB6AC",
+      "removeStat": "#E75C5C"
     }
   },
   "fonts": {
     "body": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
     "heading": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
-    "monospace": "'Azeret Mono', Menlo, Monaco, Consolas, 'Courier New', monospace"
+    "monospace": "'Inter', Menlo, Monaco, Consolas, 'Courier New', monospace"
   },
   "fontSizes": {
     "label": "12px",

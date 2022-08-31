@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenericCallInfoLine Should match snapshot 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+   
+  <span
+    class="c0"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+  <span
+    class="c0"
+  >
+    <span>
+      Test template 
+      <span
+        matchedparam="param1"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param2"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param3"
+      >
+        0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
+      </span>
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallInfoLine Should match snapshot in compact mode 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+   
+  <span
+    class="c0"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+  <span
+    class="c0"
+  >
+    increaseAllowance
+  </span>
+   
+</div>
+`;
+
+exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+<div>
+   
+  <span
+    class="c0"
+  >
+    <svg
+      fill="none"
+      height="16"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polyline
+        points="16 18 22 12 16 6"
+      />
+      <polyline
+        points="8 6 2 12 8 18"
+      />
+    </svg>
+  </span>
+  <span
+    class="c0"
+  >
+    Unknown token
+  </span>
+  <span
+    class="c0"
+  >
+    <svg
+      fill="none"
+      height="1em"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      viewBox="0 0 24 24"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <line
+        x1="5"
+        x2="19"
+        y1="12"
+        y2="12"
+      />
+      <polyline
+        points="12 5 19 12 12 19"
+      />
+    </svg>
+  </span>
+  <span
+    class="c0"
+  >
+    <span>
+      Test template 
+      <span
+        matchedparam="param1"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param2"
+      >
+        10000
+      </span>
+       
+      <span
+        matchedparam="param3"
+      >
+        0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
+      </span>
+    </span>
+  </span>
+   
+</div>
+`;

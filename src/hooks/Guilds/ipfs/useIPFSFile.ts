@@ -18,7 +18,7 @@ async function ipfsContentFetcher<T>(hash: string) {
     fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
     fetcher('https://gateway.pinata.cloud/ipfs/' + hash),
     fetcher('https://dweb.link/ipfs/' + hash),
-    fetcher('https://infura-ipfs.io/ipfs/' + hash),
+    fetcher('https://dxgov.mypinata.cloud/ipfs/' + hash),
   ]);
 
   return response;

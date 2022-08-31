@@ -1,0 +1,672 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ERC20TransferEditor Should match snapshot 1`] = `
+.c12 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: 100%;
+  margin: 1rem 0 0;
+}
+
+.c12:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c12:hover:enabled {
+  border-color: #fff;
+}
+
+.c12:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c6 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c7 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c8 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #303338;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c4 input {
+  color: #fff;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c4 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  outline: 1px solid #fff;
+}
+
+.c4:focus {
+  outline: 2px solid #fff;
+}
+
+.c5 {
+  margin-right: 0.3rem;
+}
+
+.c9 {
+  margin-left: 0.3rem;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.75rem 0;
+  width: 100%;
+}
+
+.c2 {
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  color: #A1A6B0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c11 {
+  margin-right: 1rem;
+}
+
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+<div>
+   
+  <div>
+    <form>
+      <div
+        class="c0 c1"
+      >
+        <div
+          class="c0 c2"
+        >
+          recipient
+        </div>
+        <div
+          class="c0 c3"
+        >
+          <div
+            class="c4"
+          >
+            <div
+              class="c5"
+            >
+              <div>
+                <img
+                  alt="Avatar"
+                  class="c6 c7"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
+              </div>
+            </div>
+            <input
+              class="c8"
+              name="recipientAddress"
+              placeholder="ethereumAddress"
+              value="0xaF8eB8C3A5d9d900AA0B98e3Df0bcC17d3C5F698"
+            />
+            <div
+              class="c9"
+            >
+              <div
+                class="c0 c10"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="c0 c3"
+      >
+        <div
+          class="c0 c1"
+        >
+          <div
+            class="c0 c2"
+          >
+            amount
+          </div>
+          <div
+            class="c0 c3"
+          >
+            <div
+              class="c4"
+            >
+              <div
+                class="c5"
+              />
+              <input
+                autocomplete="off"
+                autocorrect="off"
+                class="c8"
+                inputmode="decimal"
+                maxlength="79"
+                minlength="1"
+                name="amount"
+                pattern="^[0-9]*[.,]?[0-9]*$"
+                placeholder="0.0"
+                spellcheck="false"
+                type="text"
+                value="5.0"
+              />
+              <div
+                class="c9"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="c0 c11"
+        />
+        <div
+          class="c0 c1"
+        >
+          <div
+            class="c0 c2"
+          >
+            asset
+          </div>
+          <div
+            class="c0 c3"
+          >
+            <div
+              class="c4"
+            >
+              <div
+                class="c5"
+              >
+                <div />
+              </div>
+              <input
+                class="c8"
+                name="token"
+                placeholder="token"
+                readonly=""
+                value=""
+              />
+              <div
+                class="c9"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="c12"
+        data-testid="submit-erc20transfer"
+        type="submit"
+      >
+        saveAction
+      </button>
+    </form>
+  </div>
+   
+</div>
+`;
+
+exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
+.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: 100%;
+  margin: 1rem 0 0;
+}
+
+.c11:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c11:hover:enabled {
+  border-color: #fff;
+}
+
+.c11:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c6 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c7 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c8 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #303338;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c4 input {
+  color: #fff;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c4 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c4 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c4:hover {
+  outline: 1px solid #fff;
+}
+
+.c4:focus {
+  outline: 2px solid #fff;
+}
+
+.c5 {
+  margin-right: 0.3rem;
+}
+
+.c9 {
+  margin-left: 0.3rem;
+}
+
+.c0 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0.75rem 0;
+  width: 100%;
+}
+
+.c2 {
+  margin-bottom: 0.75rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  color: #A1A6B0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.c10 {
+  margin-right: 1rem;
+}
+
+<div>
+   
+  <div>
+    <form>
+      <div
+        class="c0 c1"
+      >
+        <div
+          class="c0 c2"
+        >
+          recipient
+        </div>
+        <div
+          class="c0 c3"
+        >
+          <div
+            class="c4"
+          >
+            <div
+              class="c5"
+            >
+              <div>
+                <img
+                  alt="Avatar"
+                  class="c6 c7"
+                  data-testid="avatar"
+                  size="24"
+                  src="test"
+                />
+              </div>
+            </div>
+            <input
+              class="c8"
+              name="recipientAddress"
+              placeholder="ethereumAddress"
+              value=""
+            />
+            <div
+              class="c9"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c0 c3"
+      >
+        <div
+          class="c0 c1"
+        >
+          <div
+            class="c0 c2"
+          >
+            amount
+          </div>
+          <div
+            class="c0 c3"
+          >
+            <div
+              class="c4"
+            >
+              <div
+                class="c5"
+              />
+              <input
+                autocomplete="off"
+                autocorrect="off"
+                class="c8"
+                inputmode="decimal"
+                maxlength="79"
+                minlength="1"
+                name="amount"
+                pattern="^[0-9]*[.,]?[0-9]*$"
+                placeholder="0.0"
+                spellcheck="false"
+                type="text"
+                value="0.0"
+              />
+              <div
+                class="c9"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="c0 c10"
+        />
+        <div
+          class="c0 c1"
+        >
+          <div
+            class="c0 c2"
+          >
+            asset
+          </div>
+          <div
+            class="c0 c3"
+          >
+            <div
+              class="c4"
+            >
+              <div
+                class="c5"
+              >
+                <div />
+              </div>
+              <input
+                class="c8"
+                name="token"
+                placeholder="token"
+                readonly=""
+                value=""
+              />
+              <div
+                class="c9"
+              >
+                <svg
+                  fill="none"
+                  height="20"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <polyline
+                    points="6 9 12 15 18 9"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="c11"
+        data-testid="submit-erc20transfer"
+        type="submit"
+      >
+        saveAction
+      </button>
+    </form>
+  </div>
+   
+</div>
+`;
