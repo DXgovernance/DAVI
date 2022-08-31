@@ -4,6 +4,9 @@
     "guild": "Guild",
     "guilds": "Guilds"
   },
+  "projectDavi": {
+    "projectDavi": "Project-DAVI"
+  },
   "proposals": "Proposals",
   "proposals_zero": "No proposals",
   "proposals_one": "{{count}} proposal",
