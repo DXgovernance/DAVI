@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
+// import { utils } from 'ethers';
+// import { formatUnits } from 'ethers/lib/utils';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
@@ -17,8 +19,72 @@ import {
   ParamTitleRow,
   ParamTitleTag,
 } from './CallDetails.styled';
+import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { useTranslation } from 'react-i18next';
-import { SupportedAction } from '../types';
+// import { SupportedAction } from '../types';
+import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
+import { ENSAvatar } from 'components/Avatar';
+import { DecodedCall, SupportedAction } from 'components/ActionsBuilder/types';
+// import moment from 'moment';
+// import { capitalizeFirstLetter } from 'utils';
+import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
+
+type Param = Partial<FunctionParamWithValue>;
+
+function getStringValueForParam(type: string, value: any) {
+  if (!type || !value) return null;
+
+  if (type.startsWith('uint') || type.startsWith('int')) {
+    return BigNumber.from(value).toString();
+  }
+  return value;
+}
+
+function renderDefaultParamValue(param: Param) {
+  if (!param) return null;
+
+  if (param.type === 'address') {
+    return (
+      <UnstyledLink to="#">
+        <ParamDetail>
+          <ENSAvatar address={param.value} size={16} /> {param.value}{' '}
+          <FiExternalLink size={16} />
+        </ParamDetail>
+      </UnstyledLink>
+    );
+  }
+
+  if (param.type.startsWith('uint') || param.type.startsWith('int')) {
+    if (Array.isArray(param.value)) {
+      let valuesStringFromArray: string = '[';
+
+      param.value.forEach((element, index) => {
+        let separator = ', ';
+        if (index === 0) separator = '';
+
+        const elementBigNumber = BigNumber.from(element).toString();
+        return (valuesStringFromArray += separator += elementBigNumber);
+      });
+      valuesStringFromArray += ']';
+
+      return <ParamDetail>{valuesStringFromArray}</ParamDetail>;
+    }
+
+    return <ParamDetail>{BigNumber.from(param.value).toString()}</ParamDetail>;
+  }
+
+  return <ParamDetail>{param.value}</ParamDetail>;
+}
+
+function renderParamValue(param: Param, decodedCall: DecodedCall) {
+  if (!param) return null;
+  switch (decodedCall.callType) {
+    case SupportedAction.GENERIC_CALL:
+      return renderGenericCallParamValue(param);
+    default:
+      return renderDefaultParamValue(param);
+  }
+}
 
 export const CallDetails: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -29,41 +95,34 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [isApprovalExpanded, setIsApprovalExpanded] = useState(false);
   const ActionSummary = getSummaryView(decodedCall?.callType);
+  const { functionData } = useRichContractData(decodedCall);
 
-  function renderByParamType(type: string, value: any) {
-    if (!type || !value) return null;
+  const params: Param[] = useMemo(() => {
+    if (!decodedCall) return null;
 
-    if (type === 'address') {
-      return (
-        <UnstyledLink to="#">
-          <ParamDetail>
-            {value} <FiExternalLink size={16} />
-          </ParamDetail>
-        </UnstyledLink>
-      );
-    }
+    return decodedCall.callType === SupportedAction.GENERIC_CALL && functionData
+      ? functionData.params.map(param => ({
+          ...param,
+          value: getStringValueForParam(
+            param.type,
+            decodedCall.args[param.name]
+          ),
+        }))
+      : decodedCall?.function?.inputs.map(param => ({
+          ...param,
+          value: getStringValueForParam(
+            param.type,
+            decodedCall.args[param.name]
+          ),
+        }));
+  }, [functionData, decodedCall]);
 
-    if (type.startsWith('uint') || type.startsWith('int')) {
-      if (Array.isArray(value)) {
-        let valuesStringFromArray: string = '[';
+  console.log({
+    decodedCall,
+    params,
+    inputs: decodedCall?.function?.inputs,
+  });
 
-        value.forEach((element, index) => {
-          let separator = ', ';
-          if (index === 0) separator = '';
-
-          const elementBigNumber = BigNumber.from(element).toString();
-          return (valuesStringFromArray += separator += elementBigNumber);
-        });
-        valuesStringFromArray += ']';
-
-        return <ParamDetail>{valuesStringFromArray}</ParamDetail>;
-      }
-
-      return <ParamDetail>{BigNumber.from(value).toString()}</ParamDetail>;
-    }
-
-    return <ParamDetail>{value}</ParamDetail>;
-  }
   return (
     <>
       {!!approveSpendTokens && (
@@ -109,7 +168,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                         spender <em>(address)</em>
                       </ParamTitleTag>
                     </ParamTitleRow>
-                    {renderByParamType('address', decodedCall.to)}
+                    {/* {renderByParamType('address', decodedCall.to)} */}
                   </ActionParamRow>
                   <ActionParamRow>
                     <ParamTitleRow>
@@ -117,7 +176,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                         amount <em>(uint256)</em>
                       </ParamTitleTag>
                     </ParamTitleRow>
-                    {renderByParamType('uint256', approveSpendTokens?.amount)}
+                    {/* {renderByParamType('uint256', approveSpendTokens?.amount)} */}
                   </ActionParamRow>
                 </>
               )}
@@ -156,20 +215,23 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           </DetailsButton>
 
           {isExpanded &&
-            decodedCall?.function?.inputs?.map((param, index) => (
-              <ActionParamRow key={index}>
-                <ParamTitleRow>
-                  <ParamTitleTag color={theme?.colors?.params?.[index]}>
-                    {param.name} <em>({param.type})</em>
-                  </ParamTitleTag>
-                  {param.type === 'bytes' && (
-                    <Button variant="secondary">{t('decode')}</Button>
-                  )}
-                </ParamTitleRow>
+            params?.map((param, index) => {
+              // console.log({ param, args: decodedCall?.args });
+              return (
+                <ActionParamRow key={index}>
+                  <ParamTitleRow>
+                    <ParamTitleTag color={theme?.colors?.params?.[index]}>
+                      {param.name} <em>({param.type})</em>
+                    </ParamTitleTag>
+                    {param.type === 'bytes' && (
+                      <Button variant="secondary">{t('decode')}</Button>
+                    )}
+                  </ParamTitleRow>
 
-                {renderByParamType(param.type, decodedCall?.args?.[param.name])}
-              </ActionParamRow>
-            ))}
+                  {renderParamValue(param, decodedCall)}
+                </ActionParamRow>
+              );
+            })}
         </DetailsSection>
       )}
     </>

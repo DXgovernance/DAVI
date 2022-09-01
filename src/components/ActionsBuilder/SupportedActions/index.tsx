@@ -4,7 +4,7 @@ import {
   DecodedCall,
   SupportedAction,
   ApproveSendTokens,
-} from '../types';
+} from 'components/ActionsBuilder/types';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 import ERC20 from 'contracts/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
