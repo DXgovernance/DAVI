@@ -29,7 +29,7 @@ const validateAssetTransferPermission = (
     amount: null,
     functionName: null,
   };
-  const allowedAmount = BigNumber.from(amount);
+  // const allowedAmount = BigNumber.from(amount);
   if (activeTab === 0) {
     if (!tokenAddress || tokenAddress === ZERO_ADDRESS) {
       errors.tokenAddress = t('tokenAddressIsRequired');
@@ -66,10 +66,10 @@ const validateAssetTransferPermission = (
     // only validate for function_call. asset transfer set maxAmount by default.
     if (!amount || !BigNumber.isBigNumber(amount)) {
       errors.amount = t('amountIsRequired');
-    } else {
-      if (allowedAmount && allowedAmount?.lte(0)) {
-        errors.amount = t('amountCannotBeZero');
-      }
+      // } else {
+      //   if (allowedAmount && allowedAmount?.lte(0)) {
+      //     errors.amount = t('amountCannotBeZero');
+      //   }
     }
   }
 
