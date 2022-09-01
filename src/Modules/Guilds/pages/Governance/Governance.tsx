@@ -20,7 +20,7 @@ import {
   StyledLink,
 } from './Governance.styled';
 import { ProposalState } from 'types/types.guilds.d';
-import DiscussionCardWrapper from 'Modules/Guilds/Wrappers/DiscussionCardWrapper';
+import Discussions from 'Modules/Social/Discussions';
 import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
 
 const Governance = ({ guildId }) => {
@@ -81,8 +81,6 @@ const Governance = ({ guildId }) => {
       />
     );
   }
-
-  // TODO: Maybe split this component into multiple sections for clarity
 
   return (
     <>
@@ -147,7 +145,7 @@ const Governance = ({ guildId }) => {
       </ProposalsList>
       <ProposalsList>
         <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
-        <DiscussionCardWrapper />
+        <Discussions />
       </ProposalsList>
     </>
   );

@@ -1,21 +1,22 @@
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Orbis } from '@orbisclub/orbis-sdk';
+import { useTranslation } from 'react-i18next';
+import { Virtuoso } from 'react-virtuoso';
 import { DiscussionCard } from 'components/DiscussionCard';
 import { Discussion } from 'components/Forum/types';
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { useTypedParams } from '../Hooks/useTypedParams';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { StyledLink } from 'Modules/Guilds/pages/Governance/Governance.styled';
 import { Loading } from 'components/primitives/Loading';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
-import { useTranslation } from 'react-i18next';
 import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
-import { StyledLink } from 'Modules/Guilds/pages/Governance/Governance.styled';
-import { Virtuoso } from 'react-virtuoso';
 
 const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
 const DISCUSSIONS_TO_SHOW = 10;
 
-const DiscussionCardWrapper = () => {
+const Discussions = () => {
   let orbis = useRef(new Orbis());
+
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,9 +39,6 @@ const DiscussionCardWrapper = () => {
       },
       page
     );
-    // ! Just to test various proposals
-    // ! delete before merging
-    // let { data, error } = await orbis.current.getPosts({}, page);
 
     setIsLoading(false);
 
@@ -146,4 +144,4 @@ const DiscussionCardWrapper = () => {
   );
 };
 
-export default DiscussionCardWrapper;
+export default Discussions;
