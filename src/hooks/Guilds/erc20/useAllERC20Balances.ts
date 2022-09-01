@@ -73,6 +73,5 @@ export const useAllERC20Balances = (
       return 0;
     });
   }, [tokens, erc20TokensWithBalance, nativeTokenWithBalance]);
-
   return { data: parsed, ...rest };
 };
