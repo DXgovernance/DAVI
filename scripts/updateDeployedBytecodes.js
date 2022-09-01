@@ -61,7 +61,7 @@ function main() {
   }, []);
 
   fs.writeFileSync(
-    path.resolve(__dirname, '../src/bytecodes/config.json'),
+    path.resolve(__dirname, '../src/bytecodes/local.json'),
     JSON.stringify(data, null, 2)
   );
 }
