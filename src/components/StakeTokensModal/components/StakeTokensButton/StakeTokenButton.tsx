@@ -18,10 +18,12 @@ const StakeTokensButton = ({
   const { t } = useTranslation();
   const [approvedTokenAllowance, setApprovedTokenAllowance] = useState(false);
   useEffect(() => {
-    if (stakeAmount) {
-      if (token?.allowance?.gte(stakeAmount) && token?.allowance?.gt(0)) {
-        setApprovedTokenAllowance(true);
-      }
+    if (
+      stakeAmount &&
+      token?.allowance?.gte(stakeAmount) &&
+      token?.allowance?.gt(0)
+    ) {
+      setApprovedTokenAllowance(true);
     }
   }, [token, stakeAmount, approvedTokenAllowance]);
   const lockTokens = async () => {

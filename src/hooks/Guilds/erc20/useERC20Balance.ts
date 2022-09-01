@@ -11,6 +11,7 @@ export const useERC20Balance = (
     contractInterface: ERC20.abi,
     functionName: 'balanceOf',
     args: [walletAddress],
+    watch: true,
   });
   return {
     data: data ? BigNumber.from(data) : null,
