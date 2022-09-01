@@ -109,8 +109,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
         );
       }
 
-      // console.log(contractInterface.getFunction(selectedFunction));
-
       return (
         <ParamsForm
           fn={fn}

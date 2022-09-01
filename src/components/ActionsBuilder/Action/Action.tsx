@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { CallDetails } from '../CallDetails';
-// import { getInfoLineView, getSummaryView } from '../SupportedActions';
 import { getInfoLineView } from '../SupportedActions';
 import UndecodableCallDetails from '../UndecodableCalls/UndecodableCallDetails';
 import UndecodableCallInfoLine from '../UndecodableCalls/UndecodableCallInfoLine';
@@ -70,7 +69,6 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   // Get renderable components for the action
   const InfoLine = getInfoLineView(decodedCall?.callType);
-  // const ActionSummary = getSummaryView(decodedCall?.callType);
 
   const dndStyles = {
     transform: CSS.Translate.toString(transform),
@@ -152,7 +150,6 @@ export const ActionRow: React.FC<ActionViewProps> = ({
             </>
           )}
           <DetailWrapper>
-            {/* {ActionSummary && <ActionSummary decodedCall={decodedCall} />} */}
             {decodedCall ? (
               <CallDetails
                 decodedCall={decodedCall}
