@@ -104,16 +104,13 @@ const Governance = ({ guildId }) => {
               </StyledButton>
             </UnstyledLink>
             /
-            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
-              <Button
-                variant="secondary"
-                data-testid="create-discussion-button"
-              >
-                {t('forum.createDiscussion')}
-              </Button>
-            </UnstyledLink>
           </>
         )}
+        <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+          <Button variant="secondary" data-testid="create-discussion-button">
+            {t('forum.createDiscussion')}
+          </Button>
+        </UnstyledLink>
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>

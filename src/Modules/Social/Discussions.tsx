@@ -9,7 +9,6 @@ import { StyledLink } from 'Modules/Guilds/pages/Governance/Governance.styled';
 import { Loading } from 'components/primitives/Loading';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
-import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
 
 const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
 const DISCUSSIONS_TO_SHOW = 10;
@@ -28,7 +27,6 @@ const Discussions = () => {
 
   const { chainName, guildId } = useTypedParams();
   const { t } = useTranslation();
-  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   const getDiscussions = async (page: number = 0) => {
     setIsLoading(true);
@@ -120,13 +118,13 @@ const Discussions = () => {
 
   return (
     <>
-      {discussions?.length === 0 &&
-        !isLoading &&
-        `${t('forum.thereAreNoDiscussions')}. `}
-      {discussions?.length === 0 && !isLoading && isProposalCreationAllowed && (
-        <StyledLink to={`/${chainName}/${guildId}/create`}>
-          {t('forum.createDiscussionWordy')}.
-        </StyledLink>
+      {discussions?.length === 0 && !isLoading && (
+        <>
+          {t('forum.thereAreNoDiscussions')}.{' '}
+          <StyledLink to={`/${chainName}/${guildId}/create`}>
+            {t('forum.createDiscussionWordy')}.
+          </StyledLink>
+        </>
       )}
       {discussions.length > 0 && (
         <Virtuoso
