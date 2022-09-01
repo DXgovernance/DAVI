@@ -19,6 +19,7 @@ import {
   StyledHeading,
   StyledLink,
 } from './Governance.styled';
+import { ProposalState } from 'types/types.guilds.d';
 import DiscussionCardWrapper from 'Modules/Guilds/Wrappers/DiscussionCardWrapper';
 import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
 
@@ -56,8 +57,10 @@ const Governance = ({ guildId }) => {
 
   // Show only 'Active' and 'Executable' proposals
   useEffect(() => {
-    if (!isStateSelected('Active')) onToggleState('Active');
-    if (!isStateSelected('Executable')) onToggleState('Executable');
+    if (!isStateSelected(ProposalState.Active))
+      onToggleState(ProposalState.Active);
+    if (!isStateSelected(ProposalState.Executable))
+      onToggleState(ProposalState.Executable);
   }, [onToggleState]);
 
   const revertedProposals = useMemo(() => {
