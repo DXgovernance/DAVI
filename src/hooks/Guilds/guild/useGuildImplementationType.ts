@@ -1,8 +1,9 @@
 import { useMemo, useEffect, useState } from 'react';
-import { utils } from 'ethers';
+import { useProvider } from 'wagmi';
+import SHA256 from 'crypto-js/sha256';
+import Hex from 'crypto-js/enc-hex';
 import { GuildImplementationType } from '../../../types/types.guilds.d';
 import deployedHashedBytecodes from '../../../bytecodes/config.json';
-import { useProvider } from 'wagmi';
 
 const defaultImplementation = deployedHashedBytecodes.find(
   ({ type }) => type === GuildImplementationType.IERC20Guild
@@ -45,7 +46,7 @@ export default function useGuildImplementationTypeConfig(
   useEffect(() => {
     const getBytecode = async () => {
       const btcode = await provider.getCode(guildAddress);
-      const hashedBytecode = utils.sha256(btcode);
+      const hashedBytecode = `0x${SHA256(btcode).toString(Hex)}`;
       setGuildBytecode(hashedBytecode);
     };
     getBytecode();
