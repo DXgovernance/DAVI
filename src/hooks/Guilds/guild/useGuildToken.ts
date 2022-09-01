@@ -7,7 +7,7 @@ const useGuildToken = (guildAddress: string) => {
     contractInterface: ERC20Guild.abi,
     functionName: 'getToken',
   });
-  return { data: data.toString(), ...rest };
+  return { data: data ? data.toString() : undefined, ...rest };
 };
 
 export default useGuildToken;

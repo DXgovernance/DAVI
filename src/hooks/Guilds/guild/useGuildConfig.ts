@@ -1,9 +1,8 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import { SWRResponse } from 'swr';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import useEtherSWR from '../ether-swr/useEtherSWR';
 import useGuildToken from './useGuildToken';
+import { useContractReads } from 'wagmi';
 
 export type GuildConfigProps = {
   name: string;
@@ -18,30 +17,52 @@ export type GuildConfigProps = {
   lockTime: BigNumber;
 };
 
-export const useGuildConfig = (
-  guildAddress: string
-): SWRResponse<GuildConfigProps> => {
-  const { data, error, isValidating, mutate } = useEtherSWR(
-    guildAddress
-      ? [
-          [guildAddress, 'getPermissionRegistry'], // Get the address of the permission registry contract
-          [guildAddress, 'getName'], // Get the name of the ERC20Guild
-          [guildAddress, 'getProposalTime'], // Get the proposalTime (seconds)
-          [guildAddress, 'getTimeForExecution'], // Get the timeForExecution (seconds)
-          [guildAddress, 'getMaxActiveProposals'], // Get the maxActiveProposals
-          [guildAddress, 'getVotingPowerForProposalCreation'],
-          [guildAddress, 'getVotingPowerForProposalExecution'],
-          [guildAddress, 'getTokenVault'],
-          [guildAddress, 'getLockTime'],
-        ]
-      : [],
-    {
-      ABIs: new Map([[guildAddress, ERC20GuildContract.abi]]),
-      refreshInterval: 0,
-    }
-  );
+export const useGuildConfig = (guildAddress: string) => {
+  const erc20GuildContract = {
+    addressOrName: guildAddress,
+    contractInterface: ERC20GuildContract.abi,
+  };
+  const { data, ...rest } = useContractReads({
+    contracts: [
+      {
+        ...erc20GuildContract,
+        functionName: 'getPermissionRegistry', // Get the address of the permission registry contract
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getName', // Get the name of the ERC20Guild
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getProposalTime', // Get the proposalTime (seconds)
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getTimeForExecution', // Get the timeForExecution (seconds)
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getMaxActiveProposals', // Get the maxActiveProposals
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getVotingPowerForProposalCreation',
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getVotingPowerForProposalExecution',
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getTokenVault', // Get the address of the token vault
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'getLockTime', // Get the lockTime (seconds)
+      },
+    ],
+  });
   const { data: token } = useGuildToken(guildAddress);
-
   // TODO: Move this into a SWR middleware
   const transformedData = useMemo(() => {
     if (!data) return undefined;
@@ -59,8 +80,10 @@ export const useGuildConfig = (
     ] = data;
 
     return {
-      permissionRegistry,
-      name,
+      permissionRegistry: permissionRegistry
+        ? permissionRegistry.toString()
+        : undefined,
+      name: name ? name.toString() : undefined,
       proposalTime: BigNumber.from(proposalTime),
       timeForExecution: BigNumber.from(timeForExecution),
       maxActiveProposals: BigNumber.from(maxActiveProposals),
@@ -70,15 +93,13 @@ export const useGuildConfig = (
       votingPowerForProposalExecution: BigNumber.from(
         votingPowerForProposalExecution
       ),
-      tokenVault,
+      tokenVault: tokenVault ? tokenVault.toString() : undefined,
       lockTime: BigNumber.from(lockTime),
     };
   }, [data]);
 
   return {
-    error,
-    isValidating,
-    mutate,
     data: transformedData ? { ...transformedData, token } : undefined,
+    ...rest,
   };
 };

@@ -20,7 +20,7 @@ export const useVotingPowerOf = ({
   fallbackSnapshotId = true,
 }: UseVotingPowerOfProps) => {
   const { isSnapshotGuild } = useGuildImplementationType(contractAddress);
-  const { data: votingPowerOfResponse } = useContractRead({
+  const { data: votingPowerOfResponse, ...rest } = useContractRead({
     addressOrName: contractAddress,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'votingPowerOf',
@@ -39,5 +39,6 @@ export const useVotingPowerOf = ({
     data: votingPowerOfResponse
       ? BigNumber.from(votingPowerOfResponse)
       : undefined,
+    ...rest,
   };
 };

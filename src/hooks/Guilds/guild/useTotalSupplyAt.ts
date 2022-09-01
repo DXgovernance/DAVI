@@ -20,7 +20,6 @@ const useTotalSupplyAt = ({
     functionName: 'totalSupplyAt',
     args: [snapshotId],
   });
-
   return {
     data: data ? BigNumber.from(data) : undefined,
     ...rest,

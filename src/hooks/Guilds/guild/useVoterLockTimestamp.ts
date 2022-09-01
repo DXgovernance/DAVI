@@ -16,9 +16,8 @@ export const useVoterLockTimestamp = (
     functionName: 'getVoterLockTimestamp',
     args: [userAddress],
   });
-
   return {
-    data: data ? unix(data.toNumber()) : undefined,
+    data: data ? unix(Number(data)) : undefined,
     ...rest,
   };
 };
