@@ -58,7 +58,7 @@
     "title": "Swapr fees",
     "tags": ["DXgov", "Guilds", "permissions"],
     "networks": {
-      "5": "0x7d5Cc70B1d1778B8bEdeaD40283056CDb71E32B2",
+      "5": "0x885b28d6b93087623483af5e5f7362bd6d8a0a6b",
       "1337": "0x0000000000000000000000000000000000000000"
     },
     "functions": [
