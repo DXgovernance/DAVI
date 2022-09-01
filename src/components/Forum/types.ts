@@ -25,13 +25,15 @@ export interface Discussion {
   context: string | null;
   context_details: ContextDetails;
   master: string | null;
+  timestamp: number;
+  group_id: string | null;
   reply_to: string | null;
   reply_to_details?: Discussion;
   count_likes: number;
   count_haha: number;
   count_downvotes: number;
   count_replies: number;
-  type: string /** Will be deprecated or improved soon, according to the docs */;
+  type: string | null;
 }
 
 export interface CreatorDetails {
@@ -42,7 +44,7 @@ export interface CreatorDetails {
   };
   metadata: {
     address: string;
-    chain: number;
+    chain: string | number;
     ensName: string | null;
   };
 }

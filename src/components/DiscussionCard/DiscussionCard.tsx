@@ -1,4 +1,3 @@
-import { Discussion } from 'components/Forum/types';
 import { Flex } from 'components/primitives/Layout';
 import { UnstyledLink } from 'components/primitives/Links';
 import { shortenAddress } from 'utils';
@@ -6,10 +5,7 @@ import { CardTitle, MainWrapper, FooterElement } from './DiscussionCard.styled';
 import { BiHeart } from 'react-icons/bi';
 import { MdReply } from 'react-icons/md';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-
-interface DiscussionCardProps {
-  discussion: Discussion;
-}
+import { DiscussionCardProps } from './types';
 
 export const DiscussionCard: React.FC<DiscussionCardProps> = ({
   discussion,
