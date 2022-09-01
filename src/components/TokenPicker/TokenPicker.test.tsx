@@ -1,10 +1,10 @@
 import TokenPicker from './TokenPicker';
 import { render } from 'utils/tests';
-import { useAllERC20Balances } from 'hooks/Guilds/ether-swr/erc20/useAllERC20Balances';
+import { useAllERC20Balances } from 'hooks/Guilds/erc20/useAllERC20Balances';
 import { data } from './fixtures';
 import { ZERO_ADDRESS } from 'utils';
 
-jest.mock('hooks/Guilds/ether-swr/erc20/useAllERC20Balances', () => ({
+jest.mock('hooks/Guilds/erc20/useAllERC20Balances', () => ({
   useAllERC20Balances: jest.fn(),
 }));
 

@@ -2,8 +2,9 @@ import { useMemo } from 'react';
 import { resolveUri } from 'utils/url';
 import useENS from './useENS';
 import { useENSAvatarUri } from './useENSPublicResolverContract';
-import useERC721NFT from '../ether-swr/nft/useERC721NFT';
-import useERC1155NFT from '../ether-swr/nft/useERC1155NFT';
+import useERC721NFT from 'hooks/Guilds/nft/useERC721NFT';
+import useERC1155NFT from 'hooks/Guilds/nft/useERC1155NFT';
+import useSWR from 'swr';
 
 const useENSAvatar = (nameOrAddress: string, chainId?: number) => {
   const { name: ENSName, address: ethAddress } = useENS(nameOrAddress, chainId);
@@ -66,19 +67,21 @@ const useENSAvatarNFT = (
 
     return {};
   }, [nftUri]);
-
-  const { ownerAddress: ERC721Owner, metadata: ERC721Metadata } = useERC721NFT(
-    decodedUrl.type === 'erc721' ? decodedUrl.contractId : null,
-    decodedUrl.tokenId,
-    chainId
-  );
-  const { balance: ERC1155Balance, metadata: ERC1155Metadata } = useERC1155NFT(
-    decodedUrl.type === 'erc1155' ? decodedUrl.contractId : null,
-    decodedUrl.tokenId,
-    ownerAddress,
-    chainId
-  );
-
+  const { ownerAddress: ERC721Owner, resolvedTokenUri: ERC721TokenUri } =
+    useERC721NFT(
+      decodedUrl.type === 'erc721' ? decodedUrl.contractId : null,
+      decodedUrl.tokenId,
+      chainId
+    );
+  const { data: ERC721Metadata } = useSWR(ERC721TokenUri);
+  const { balance: ERC1155Balance, resolvedTokenUri: ERC1155TokenUri } =
+    useERC1155NFT(
+      decodedUrl.type === 'erc1155' ? decodedUrl.contractId : null,
+      decodedUrl.tokenId,
+      ownerAddress,
+      chainId
+    );
+  const { data: ERC1155Metadata } = useSWR(ERC1155TokenUri);
   let imageUrl: string = useMemo(() => {
     if (!decodedUrl || !ownerAddress || !ERC721Owner) return null;
 
