@@ -38,7 +38,8 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
 
   let currentToken = useMemo(() => {
     return tokens.filter(
-      token => token?.address.toLowerCase() === parsedData?.asset.toLowerCase()
+      token =>
+        token?.address?.toLowerCase() === parsedData?.asset?.toLowerCase()
     )[0];
   }, [tokens, parsedData]);
 

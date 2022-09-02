@@ -27,7 +27,7 @@ const ERC20TransferInfoLine: React.FC<ActionViewProps> = ({
 
     if (decodedCall.callType === SupportedAction.ERC20_TRANSFER) {
       const token = tokens.find(
-        token => token.address.toLowerCase() === decodedCall.to.toLowerCase()
+        token => token.address?.toLowerCase() === decodedCall.to?.toLowerCase()
       );
       return {
         source: decodedCall.from,
