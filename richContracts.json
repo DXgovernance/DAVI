@@ -80,7 +80,7 @@
             "name": "swapFee",
             "title": "Swap Fee %",
             "defaultValue": "",
-            "description": "Address of contract / receiver in case of asset"
+            "description": "Fee to be set for pair (10 = 0.1%)"
           }
         ],
         "shortDescription": "Sets the swap fee for a given pool on swapr",
