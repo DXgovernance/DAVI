@@ -11,8 +11,7 @@ const useCurrentSnapshotId = ({
 }: useCurrentSnapshotIdProps) => {
   const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
   const { data, ...rest } = useContractRead({
-    enabled: isSnapshotGuild,
-    addressOrName: contractAddress,
+    addressOrName: isSnapshotGuild && contractAddress,
     contractInterface: SnapshotERC20Guild.abi,
     functionName: 'getCurrentSnapshotId',
   });
