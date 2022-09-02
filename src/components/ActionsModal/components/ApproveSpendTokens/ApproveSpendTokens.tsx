@@ -25,8 +25,8 @@ import {
 import { useNetwork } from 'wagmi';
 
 export interface TokenSpendApproval {
-  amount: BigNumber;
-  token: string;
+  amount?: BigNumber;
+  token?: string;
 }
 
 interface ApproveSpendTokensProps {

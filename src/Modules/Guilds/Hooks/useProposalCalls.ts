@@ -117,8 +117,9 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
                      * token is the token address
                      * More info on how we set these values: bulkEncodeCallsFromOptions function in hooks/Guilds/contracts/useEncodedCall.ts
                      */
+                    ...decodedApprovalCall,
                     amount: decodedApprovalCall?.args?._value,
-                    token: call?.approvalCall?.to,
+                    token: decodedApprovalCall?.to,
                   },
                 };
               }

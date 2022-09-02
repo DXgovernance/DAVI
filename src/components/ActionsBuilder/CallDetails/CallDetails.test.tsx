@@ -6,6 +6,30 @@ import {
   emptyDecodedCallMock,
 } from './fixtures';
 
+jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
+  __esModule: true,
+  default: () => ({
+    avatarUri: 'test',
+    imageUrl: 'test',
+    ensName: 'test.eth',
+  }),
+}));
+
+jest.mock('utils', () => ({
+  getNetworkById: () => ({
+    nativeAsset: {
+      symbol: 'TST',
+    },
+  }),
+}));
+
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: 1 } }),
+  chain: {
+    mainnet: {},
+  },
+}));
+
 describe('CallDetails', () => {
   it('Should match', () => {
     const { container } = render(<CallDetails decodedCall={decodedCallMock} />);
