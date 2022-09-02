@@ -43,7 +43,6 @@ export const formatterMiddleware = (data): Proposal => {
   } else {
     clone.timeDetail = `${timeDifference} left`;
   }
-  console.log({ clone });
   return clone;
 };
 
