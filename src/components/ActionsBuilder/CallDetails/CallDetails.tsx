@@ -118,9 +118,10 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   }, [functionData, decodedCall]);
 
   console.log({
-    decodedCall,
-    params,
-    inputs: decodedCall?.function?.inputs,
+    // decodedCall,
+    // params,
+    // inputs: decodedCall?.function?.inputs,
+    approveSpendTokens,
   });
 
   return (
@@ -169,6 +170,10 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                       </ParamTitleTag>
                     </ParamTitleRow>
                     {/* {renderByParamType('address', decodedCall.to)} */}
+                    {renderDefaultParamValue({
+                      type: 'address',
+                      value: decodedCall?.to,
+                    })}
                   </ActionParamRow>
                   <ActionParamRow>
                     <ParamTitleRow>
@@ -176,7 +181,10 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                         amount <em>(uint256)</em>
                       </ParamTitleTag>
                     </ParamTitleRow>
-                    {/* {renderByParamType('uint256', approveSpendTokens?.amount)} */}
+                    {renderDefaultParamValue({
+                      type: 'uint256',
+                      value: approveSpendTokens?.amount?.toString(),
+                    })}
                   </ActionParamRow>
                 </>
               )}
