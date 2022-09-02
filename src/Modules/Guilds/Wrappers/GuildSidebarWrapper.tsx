@@ -5,7 +5,7 @@ import { useVotingPowerOf } from 'hooks/Guilds/guild/useVotingPowerOf';
 import { GuildSidebar } from 'components/GuildSidebar';
 import { MemberActions } from 'components/GuildSidebar/MemberActions';
 import { GuestActions } from 'components/GuildSidebar/GuestActions';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useVoterLockTimestamp } from 'hooks/Guilds/guild/useVoterLockTimestamp';
 import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
 import { useTransactions } from 'contexts/Guilds';

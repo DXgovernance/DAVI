@@ -50,7 +50,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       }}
       options={sortedOptionsByWinningVotes}
     />
-  )(proposal, status);
+  )(proposal, status, options);
 };
 
 export default ProposalCardWrapper;

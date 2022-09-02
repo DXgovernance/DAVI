@@ -36,6 +36,9 @@ jest.mock('wagmi', () => ({
   chain: {
     mainnet: {},
   },
+  useContractReads: () => ({
+    data: [{}],
+  }),
   chainId: {
     localhost: 1337,
   },
