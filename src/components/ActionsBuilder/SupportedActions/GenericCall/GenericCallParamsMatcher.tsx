@@ -2,7 +2,6 @@ import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';
 import { ChildrenNode, Matcher, MatchResponse, Node } from 'interweave';
 import moment from 'moment';
-// import { shortenAddress } from 'utils';
 import { FiExternalLink } from 'react-icons/fi';
 import { UnstyledLink } from 'components/primitives/Links';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';

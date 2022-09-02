@@ -1,6 +1,4 @@
 import { useState, useMemo } from 'react';
-// import { utils } from 'ethers';
-// import { formatUnits } from 'ethers/lib/utils';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
@@ -21,12 +19,9 @@ import {
 } from './CallDetails.styled';
 import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { useTranslation } from 'react-i18next';
-// import { SupportedAction } from '../types';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { ENSAvatar } from 'components/Avatar';
 import { DecodedCall, SupportedAction } from 'components/ActionsBuilder/types';
-// import moment from 'moment';
-// import { capitalizeFirstLetter } from 'utils';
 import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
 
 type Param = Partial<FunctionParamWithValue>;
@@ -117,13 +112,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
         }));
   }, [functionData, decodedCall]);
 
-  console.log({
-    // decodedCall,
-    // params,
-    // inputs: decodedCall?.function?.inputs,
-    approveSpendTokens,
-  });
-
   return (
     <>
       {!!approveSpendTokens && (
@@ -169,7 +157,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                         spender <em>(address)</em>
                       </ParamTitleTag>
                     </ParamTitleRow>
-                    {/* {renderByParamType('address', decodedCall.to)} */}
                     {renderDefaultParamValue({
                       type: 'address',
                       value: decodedCall?.to,
@@ -224,7 +211,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
 
           {isExpanded &&
             params?.map((param, index) => {
-              // console.log({ param, args: decodedCall?.args });
               return (
                 <ActionParamRow key={index}>
                   <ParamTitleRow>
@@ -235,7 +221,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                       <Button variant="secondary">{t('decode')}</Button>
                     )}
                   </ParamTitleRow>
-
                   {renderParamValue(param, decodedCall)}
                 </ActionParamRow>
               );
