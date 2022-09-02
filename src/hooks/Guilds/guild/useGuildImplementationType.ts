@@ -1,8 +1,11 @@
 import { useMemo, useEffect, useState } from 'react';
-import { utils } from 'ethers';
-import { GuildImplementationType } from '../../../types/types.guilds.d';
-import deployedHashedBytecodes from '../../../bytecodes/config.json';
-import { useProvider } from 'wagmi';
+import { useNetwork, useProvider } from 'wagmi';
+import SHA256 from 'crypto-js/sha256';
+import Hex from 'crypto-js/enc-hex';
+import { GuildImplementationType } from 'types/types.guilds.d';
+import deployedHashedBytecodes from 'bytecodes/prod.json';
+import deployedHashedBytecodesLocal from 'bytecodes/local.json';
+import { LOCALHOST_ID } from 'utils';
 
 const defaultImplementation = deployedHashedBytecodes.find(
   ({ type }) => type === GuildImplementationType.IERC20Guild
@@ -40,12 +43,15 @@ const parseConfig = (
 export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
+  const { chain } = useNetwork();
+  const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
+
   const [guildBytecode, setGuildBytecode] = useState<string>('');
   const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
       const btcode = await provider.getCode(guildAddress);
-      const hashedBytecode = utils.sha256(btcode);
+      const hashedBytecode = `0x${SHA256(btcode).toString(Hex)}`;
       setGuildBytecode(hashedBytecode);
     };
     getBytecode();
@@ -54,11 +60,12 @@ export default function useGuildImplementationTypeConfig(
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
     if (!guildBytecode) return defaultImplementation;
 
-    const match = deployedHashedBytecodes.find(
-      ({ bytecode_hash }) => guildBytecode === bytecode_hash
-    );
+    const match = (
+      isLocalhost ? deployedHashedBytecodesLocal : deployedHashedBytecodes
+    ).find(({ bytecode_hash }) => guildBytecode === bytecode_hash);
 
     return match ?? defaultImplementation; // default to IERC20Guild
-  }, [guildBytecode]);
+  }, [guildBytecode, isLocalhost]);
+
   return parseConfig(implementationTypeConfig);
 }
