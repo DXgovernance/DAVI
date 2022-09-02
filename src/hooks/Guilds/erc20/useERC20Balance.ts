@@ -14,7 +14,7 @@ export const useERC20Balance = (
     watch: true,
   });
   return {
-    data: data ? BigNumber.from(data) : null,
+    data: data ? BigNumber.from(data) : undefined,
     ...rest,
   };
 };

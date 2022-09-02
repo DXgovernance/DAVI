@@ -2,7 +2,7 @@ import React from 'react';
 import ActionsModal from './ActionsModal';
 import { render } from 'utils/tests';
 
-jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
+jest.mock('Modules/Guilds/Hooks/useGuildImplementationType', () => ({
   __esModule: true,
   default: () => ({
     type: 'SnapshotERC20Guild',
@@ -13,7 +13,7 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     isSnapshotGuild: false,
   }),
 }));
-jest.mock('hooks/Guilds/guild/useGuildConfig', () => ({
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
   useGuildConfig: () => ({
     data: {
       permissionRegistry: '0x0000000000000000000000000000000000000000',

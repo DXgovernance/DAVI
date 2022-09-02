@@ -24,7 +24,7 @@ import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 
 const ProposalVoteCard = ({
   voteData,

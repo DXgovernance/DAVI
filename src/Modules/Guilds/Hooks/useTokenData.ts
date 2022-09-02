@@ -6,7 +6,6 @@ export const useTokenData = () => {
   const { guildId } = useTypedParams();
   const { data } = useGuildConfig(guildId);
   const { data: tokenData } = useERC20Info(data?.token);
-
   return {
     tokenData,
   };

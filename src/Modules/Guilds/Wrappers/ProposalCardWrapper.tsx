@@ -2,11 +2,11 @@ import { useMemo } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { ProposalCard } from 'components/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import { useProposal } from 'hooks/Guilds/guild/useProposal';
+import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
 import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
-import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
+import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;

@@ -6,8 +6,8 @@ import { ActionViewProps } from '..';
 import { Segment } from '../common/infoLine';
 import { ReactComponent as Mint } from 'assets/images/mint.svg';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
-import { useTotalSupply } from 'hooks/Guilds/guild/useTotalSupply';
-import { useTokenData } from 'hooks/Guilds/guild/useTokenData';
+import { useTotalSupply } from 'Modules/Guilds/Hooks/useTotalSupply';
+import { useTokenData } from 'Modules/Guilds/Hooks/useTokenData';
 import { useTranslation } from 'react-i18next';
 import { StyledMintIcon } from './styles';
 

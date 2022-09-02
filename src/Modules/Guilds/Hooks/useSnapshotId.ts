@@ -1,4 +1,4 @@
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import { useContractRead } from 'wagmi';
 
@@ -15,6 +15,7 @@ const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
     functionName: 'getProposalSnapshotId',
     args: [proposalId],
   });
+
   return { data, ...rest };
 };
 

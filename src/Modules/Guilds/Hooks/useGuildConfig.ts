@@ -78,12 +78,9 @@ export const useGuildConfig = (guildAddress: string) => {
       tokenVault,
       lockTime,
     ] = data;
-
     return {
-      permissionRegistry: permissionRegistry
-        ? permissionRegistry.toString()
-        : undefined,
-      name: name ? name.toString() : undefined,
+      permissionRegistry: permissionRegistry.toString(),
+      name: name.toString(),
       proposalTime: BigNumber.from(proposalTime),
       timeForExecution: BigNumber.from(timeForExecution),
       maxActiveProposals: BigNumber.from(maxActiveProposals),
@@ -93,7 +90,7 @@ export const useGuildConfig = (guildAddress: string) => {
       votingPowerForProposalExecution: BigNumber.from(
         votingPowerForProposalExecution
       ),
-      tokenVault: tokenVault ? tokenVault.toString() : undefined,
+      tokenVault: tokenVault.toString(),
       lockTime: BigNumber.from(lockTime),
     };
   }, [data]);

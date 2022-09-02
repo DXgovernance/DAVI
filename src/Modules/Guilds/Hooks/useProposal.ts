@@ -5,8 +5,7 @@ import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
 export const formatterMiddleware = (data): Proposal => {
-  const original = data;
-  const clone: any = Object.assign({}, data);
+  const clone = Object.assign({}, data);
 
   //rename state to contractState
   clone.contractState = clone.state;
@@ -26,13 +25,12 @@ export const formatterMiddleware = (data): Proposal => {
       clone.contractState = ContractState.Failed;
       break;
   }
-  if (original.startTime instanceof BigNumber) {
-    clone.startTime = original.startTime
-      ? unix(original.startTime.toNumber())
-      : null;
+
+  if (data.startTime instanceof BigNumber) {
+    clone.startTime = data.startTime ? unix(data.startTime.toNumber()) : null;
   }
-  if (original.endTime instanceof BigNumber) {
-    clone.endTime = original.endTime ? unix(original.endTime.toNumber()) : null;
+  if (data.endTime instanceof BigNumber) {
+    clone.endTime = data.endTime ? unix(data.endTime.toNumber()) : null;
   }
   // Add timeDetail
   const currentTime = moment();

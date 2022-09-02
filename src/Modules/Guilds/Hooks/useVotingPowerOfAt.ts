@@ -38,7 +38,6 @@ const useVotingPowerOfAt = ({
           args: [userAddress],
         }
   );
-
   return {
     data: data ? BigNumber.from(data) : undefined,
     ...rest,

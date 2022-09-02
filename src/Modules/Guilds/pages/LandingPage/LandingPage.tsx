@@ -1,12 +1,12 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGuildRegistry } from 'hooks/Guilds/guild/useGuildRegistry';
+import { useGuildRegistry } from 'Modules/Guilds/Hooks/useGuildRegistry';
 import { GuildCard } from 'components/GuildCard/GuildCard';
 
-import useGuildMemberTotal from 'hooks/Guilds/guild/useGuildMemberTotal';
-import useActiveProposalsNow from 'hooks/Guilds/guild/useGuildActiveProposals';
+import useGuildMemberTotal from 'Modules/Guilds/Hooks/useGuildMemberTotal';
+import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals';
 import useENSNameFromAddress from 'hooks/Guilds/ens/useENSNameFromAddress';
-import { useGuildConfig } from 'hooks/Guilds/guild/useGuildConfig';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 import { CardsContainer } from './LandingPage.styled';
 

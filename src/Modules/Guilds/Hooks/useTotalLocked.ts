@@ -3,9 +3,9 @@ import useGuildToken from './useGuildToken';
 import useTotalSupplyAt from './useTotalSupplyAt';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
-import useTotalLockedAt from 'hooks/Guilds/guild/useTotalLockedAt';
-import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
+import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
+import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
+import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
@@ -46,6 +46,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   });
 
   // Return response based on implementation type
+
   if (isRepGuild) {
     return SNAPSHOT_ID
       ? {

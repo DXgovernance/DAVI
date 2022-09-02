@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import useProposalCalls from 'hooks/Guilds/guild/useProposalCalls';
+import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { DecodedAction } from 'components/ActionsBuilder/types';
 import { getActionPoints } from 'components/ActionsBuilder/SupportedActions';
 

@@ -1,5 +1,5 @@
 import { useTheme } from 'styled-components';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { Loading } from 'components/primitives/Loading';
 import { BigNumber } from 'ethers';

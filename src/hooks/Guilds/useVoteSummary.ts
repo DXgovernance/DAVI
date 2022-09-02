@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { useProposal } from 'hooks/Guilds/guild/useProposal';
-import useSnapshotId from 'hooks/Guilds/guild/useSnapshotId';
-import useTotalLocked from 'hooks/Guilds/guild/useTotalLocked';
+import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
+import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
+import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 
