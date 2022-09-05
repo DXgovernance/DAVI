@@ -22,7 +22,7 @@ const Header = () => {
           onClick={() => navigate(`/${chain.network}`)}
           size={2}
         >
-          <strong>{t('guilds.guilds')}</strong>
+          <strong>{t('projectDavi.projectDavi')}</strong>
         </ClickableHeading>
         <MenuItems>
           <NetworkButton />

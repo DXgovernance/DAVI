@@ -9,6 +9,7 @@ import { Flex } from 'components/primitives/Layout';
 import { useNetwork } from 'wagmi';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';
+import { shortenAddress } from 'utils';
 
 const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -36,7 +37,10 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   const { tokens } = useTokenList(chain?.id);
 
   let currentToken = useMemo(() => {
-    return tokens.filter(token => token?.address === parsedData?.asset)[0];
+    return tokens.filter(
+      token =>
+        token?.address?.toLowerCase() === parsedData?.asset?.toLowerCase()
+    )[0];
   }, [tokens, parsedData]);
 
   return (
@@ -56,7 +60,7 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
             <Flex margin={'0 0.5rem'}>{currentToken.symbol}</Flex>
           </>
         ) : (
-          t('anyToken')
+          shortenAddress(parsedData?.to)
         )}
       </Segment>
     </>
