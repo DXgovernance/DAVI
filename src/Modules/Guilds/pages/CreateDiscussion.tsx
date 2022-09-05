@@ -88,9 +88,10 @@ const CreateDiscussionPage: React.FC = () => {
   const isValid = useMemo(() => {
     if (!title) return false;
     if (!discussionBodyHtml) return false;
+    if (!discussionBodyMd || !discussionBodyMd.length) return false;
 
     return true;
-  }, [title, discussionBodyHtml]);
+  }, [title, discussionBodyHtml, discussionBodyMd]);
 
   if (isGuildAvailabilityLoading) return <Loading loading />;
   return (
@@ -108,7 +109,7 @@ const CreateDiscussionPage: React.FC = () => {
 
           <StyledButton
             onClick={handleToggleEditMode}
-            disabled={!title || !discussionBodyMd}
+            disabled={!isValid}
             data-testid="create-proposal-editor-toggle-button"
           >
             {editMode ? (
