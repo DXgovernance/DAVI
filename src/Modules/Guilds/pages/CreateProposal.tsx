@@ -85,7 +85,7 @@ const CreateProposalPage: React.FC = () => {
   const handleBack = () => navigate(`/${chain}/${guildId}`);
 
   const ipfs = useIPFSNode();
-  const { pinJSON } = usePinataIPFS();
+  const { pinToPinata } = usePinataIPFS();
 
   const uploadToIPFS = async () => {
     const content = {
@@ -94,7 +94,7 @@ const CreateProposalPage: React.FC = () => {
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
-    const pinataPinResult = await pinJSON(content);
+    const pinataPinResult = await pinToPinata(cid, content);
 
     if (pinataPinResult.IpfsHash !== `${cid}`) {
       throw new Error(t('ipfs.hashNotTheSame'));
