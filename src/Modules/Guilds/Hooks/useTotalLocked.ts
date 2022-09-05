@@ -68,7 +68,6 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
         : undefined,
     };
   }
-  // if (isRepGuild) return totalLockedResponse;
   return {
     data: totalLockedResponse ? BigNumber.from(totalLockedResponse) : undefined,
   };

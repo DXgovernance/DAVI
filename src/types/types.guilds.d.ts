@@ -9,13 +9,17 @@ export interface Proposal {
   endTime: Moment;
   timeDetail: string | null;
   to: string[];
-  data: string[];
+  data?: string[];
   value: BigNumber[];
   totalActions: BigNumber; // Not used in the codebase but in the deploy scripts
   title: string;
   contentHash: string;
   contractState: ContractState;
   totalVotes: BigNumber[];
+}
+
+export type InitialProposal = Partial<Proposal> & {
+  state: number
 }
 
 export enum ProposalState {

@@ -63,7 +63,6 @@ export const useGuildConfig = (guildAddress: string) => {
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
-  // TODO: Move this into a SWR middleware
   const transformedData = useMemo(() => {
     if (!data) return undefined;
 

@@ -1,30 +1,21 @@
 import moment, { unix } from 'moment';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import { Proposal, ContractState } from 'types/types.guilds.d';
+import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
-export const formatterMiddleware = (data): Proposal => {
-  const clone = Object.assign({}, data);
+export const formatterMiddleware = (data: InitialProposal): Proposal => {
+  const clone = { ...data };
 
-  //rename state to contractState
-  clone.contractState = clone.state;
+  const contractStatesMapping = {
+    0: ContractState.Active,
+    1: ContractState.Rejected,
+    2: ContractState.Executed,
+    3: ContractState.Failed,
+  };
+  clone.contractState = contractStatesMapping[clone.contractState];
+  //we are removing the clone.state key
   delete clone.state;
-
-  switch (clone.contractState) {
-    case 1:
-      clone.contractState = ContractState.Active;
-      break;
-    case 2:
-      clone.contractState = ContractState.Rejected;
-      break;
-    case 3:
-      clone.contractState = ContractState.Executed;
-      break;
-    case 4:
-      clone.contractState = ContractState.Failed;
-      break;
-  }
 
   if (data.startTime instanceof BigNumber) {
     clone.startTime = data.startTime ? unix(data.startTime.toNumber()) : null;
@@ -41,7 +32,7 @@ export const formatterMiddleware = (data): Proposal => {
   } else {
     clone.timeDetail = `${timeDifference} left`;
   }
-  return clone;
+  return clone as Proposal;
 };
 
 export const useProposal = (guildId: string, proposalId: string) => {
@@ -51,8 +42,11 @@ export const useProposal = (guildId: string, proposalId: string) => {
     functionName: 'getProposal',
     args: [proposalId],
   });
+  const proposalData = data as unknown as InitialProposal;
   return {
-    data: data ? formatterMiddleware({ ...data, id: proposalId }) : undefined,
+    data: data
+      ? formatterMiddleware({ ...proposalData, id: proposalId })
+      : undefined,
     ...rest,
   };
 };
