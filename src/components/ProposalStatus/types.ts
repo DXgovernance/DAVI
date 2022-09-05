@@ -7,4 +7,12 @@ export interface ProposalStatusProps {
   bordered?: boolean;
   hideTime?: boolean;
   timeDetail?: string;
+  guildId?: string;
+}
+
+export interface TimeDetailProps {
+  endTime: Moment;
+  timeDetail?: string;
+  status: ProposalState;
+  guildId?: string;
 }

@@ -1,0 +1,43 @@
+import { ProposalState } from 'types/types.guilds.d';
+import { TimeDetailProps } from './types';
+import moment, { unix } from 'moment';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+
+export const TimeDetail: React.FC<TimeDetailProps> = ({
+  endTime,
+  timeDetail,
+  status,
+  guildId,
+}) => {
+  const { data: guildConfig } = useGuildConfig(guildId);
+
+  if (!guildConfig || status === ProposalState.Active) {
+    return (
+      <span title={endTime?.format('MMMM Do, YYYY - h:mm a')}>
+        {timeDetail}
+      </span>
+    );
+  }
+
+  let { timeForExecution }: any = guildConfig;
+  let executionTimeDetail = '';
+
+  timeForExecution = unix(timeForExecution.toNumber());
+  const executionTime = moment(endTime).add(timeForExecution);
+  const currentTime = moment();
+  let differenceInMilliseconds = currentTime.diff(executionTime);
+  let timeDifference = moment.duration(differenceInMilliseconds).humanize();
+  if (executionTime.isBefore(currentTime)) {
+    executionTimeDetail = `expired ${timeDifference} ago`;
+  } else {
+    executionTimeDetail = `expires in ${timeDifference}`;
+  }
+
+  if (status === ProposalState.Executable || status === ProposalState.Failed) {
+    return (
+      <span title={executionTime?.format('MMMM Do, YYYY - h:mm a')}>
+        {executionTimeDetail}
+      </span>
+    );
+  } else return null;
+};

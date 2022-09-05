@@ -118,6 +118,7 @@ const ProposalPage: React.FC = () => {
               timeDetail={proposal?.timeDetail}
               status={status}
               endTime={proposal?.endTime}
+              guildId={guildId}
             />
             {status === ProposalState.Executable && !isReadOnly(connector) && (
               <ExecuteButton executeProposal={executeProposal} />

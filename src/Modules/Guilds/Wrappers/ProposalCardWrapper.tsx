@@ -47,6 +47,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         timeDetail: proposal?.timeDetail,
         status,
         endTime: proposal?.endTime,
+        guildId: guildId,
       }}
       options={sortedOptionsByWinningVotes}
     />
