@@ -36,7 +36,7 @@ export const renderGenericCallParamValue = (
       const bn = BigNumber.from(param.value);
       return bn.toString();
     case 'date':
-      return moment.unix(Number(param.value)).format('LLLL');
+      return `${moment.unix(Number(param.value)).utc().format('LLLL')} UTC`;
     case 'duration':
     case 'time':
       return capitalizeFirstLetter(

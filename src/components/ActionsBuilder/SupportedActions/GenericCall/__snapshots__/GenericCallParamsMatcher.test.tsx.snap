@@ -112,7 +112,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 4`] = `
 <div>
    
-  Sunday, May 29, 2022 3:17 PM
+  Sunday, May 29, 2022 6:17 PM UTC
    
 </div>
 `;
@@ -284,7 +284,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 4`] = `
   <span
     matchedparam="dateParam"
   >
-    Sunday, May 29, 2022 3:17 PM
+    Sunday, May 29, 2022 6:17 PM UTC
   </span>
    
 </div>
