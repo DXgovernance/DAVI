@@ -30,6 +30,7 @@ import {
   SidebarContent,
   Label,
 } from '../styles';
+import usePinataIPFS from 'hooks/Guilds/ipfs/usePinataIPFS';
 
 const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -78,6 +79,7 @@ const CreateProposalPage: React.FC = () => {
   const handleBack = () => navigate(`/${chain}/${guildId}`);
 
   const ipfs = useIPFSNode();
+  const { pinJSON } = usePinataIPFS();
 
   const uploadToIPFS = async () => {
     const content = {
@@ -86,6 +88,7 @@ const CreateProposalPage: React.FC = () => {
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
+    await pinJSON(content);
     return contentHash.fromIpfs(cid);
   };
 
@@ -98,9 +101,7 @@ const CreateProposalPage: React.FC = () => {
     try {
       contentHash = await uploadToIPFS();
     } catch (e) {
-      toast.error(
-        'Failed to upload to IPFS, please refresh the page and try again'
-      );
+      toast.error(t('ipfs.failedToUpload'));
       return;
     }
 
