@@ -126,7 +126,18 @@ const ActionModal: React.FC<ActionModalProps> = ({
                 args,
                 richData: selectedContract,
               },
-              approval: payableFnData,
+              ...(isPayable &&
+                !!payableFnData && {
+                  approval: {
+                    callType: SupportedAction.GENERIC_CALL,
+                    from: guildId,
+                    to: payableFnData?.token,
+                    value: BigNumber.from(0),
+                    function: null,
+                    args: {},
+                    ...payableFnData,
+                  },
+                }),
             });
             handleClose();
           }}
