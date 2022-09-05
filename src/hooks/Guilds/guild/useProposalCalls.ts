@@ -12,6 +12,7 @@ import { useRichContractRegistry } from '../contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
+import { EMPTY_CALL } from 'Modules/Guilds/pages/CreateProposal';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -39,13 +40,9 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
 
   const totalOptionsNum = totalVotes?.length || 0;
   const displayableOptionsNum = totalOptionsNum - 1;
-  const nonApprovalOrEmptyCalls = useMemo(
-    () => dataArray?.filter(data => !isApprovalData(data) && !isZeroHash(data)),
-    [dataArray]
-  );
 
   const callsPerOption = totalOptionsNum
-    ? nonApprovalOrEmptyCalls.length / displayableOptionsNum
+    ? Math.ceil(dataArray.length / displayableOptionsNum)
     : 0;
   const optionLabels = metadata?.voteOptions;
 
@@ -57,7 +54,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       value: valuesArray[idx],
     });
     return dataArray
-      ?.map((dataValue, index) => {
+      ?.map((_, index) => {
         const call = buildCall(index);
         if (isApprovalData(dataArray[index - 1])) {
           return {
@@ -67,8 +64,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             approvalCall: buildCall(index - 1),
           };
         }
-
-        if (isApprovalCall(call) || isZeroHash(dataValue)) return null;
+        // Inyecting empty call to keep consistency on number of calls per option after nesting approval call. This will be skipped later when decoding options.
+        if (isApprovalCall(call)) return EMPTY_CALL;
         return call;
       })
       .filter(Boolean);
@@ -95,7 +92,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       const encodedOptions: Option[] = await Promise.all(
         splitCalls.map(async (calls, index) => {
           const filteredActions = calls.filter(
-            call => call.data !== ZERO_HASH || !call.value?.isZero()
+            call => !isZeroHash(call?.data) || !call.value?.isZero()
           );
           const actions = await Promise.all(
             filteredActions.map(async call => {

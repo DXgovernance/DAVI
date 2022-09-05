@@ -31,7 +31,7 @@ import {
   Label,
 } from '../styles';
 
-const EMPTY_CALL: Call = {
+export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
   from: ZERO_ADDRESS,
   to: ZERO_ADDRESS,
@@ -105,6 +105,7 @@ const CreateProposalPage: React.FC = () => {
     }
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
+
     const totalActions = encodedOptions.length;
     const maxActionsPerOption = encodedOptions.reduce(
       (acc, cur) => (acc < cur.actions.length ? cur.actions.length : acc),
