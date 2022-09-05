@@ -1,5 +1,4 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const DEFAULT_API_KEY =
@@ -17,17 +16,8 @@ interface DataInterface {
 }
 
 const usePinataIPFS = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { t } = useTranslation();
   const { chainName } = useTypedParams();
-
-  const authenticate = async () => {
-    const url = 'https://api.pinata.cloud/data/testAuthentication';
-    const headers = { Authorization: `Bearer ${DEFAULT_API_KEY}` };
-    const result = await fetch(url, { headers });
-    if (result.status === 200) setIsAuthenticated(true);
-    console.log(isAuthenticated);
-  };
 
   const pinToPinata = async (hash: string, jsonData?: any) => {
     let data: DataInterface = {
@@ -66,7 +56,7 @@ const usePinataIPFS = () => {
     return result.json();
   };
 
-  return { authenticate, pinToPinata };
+  return { pinToPinata };
 };
 
 export default usePinataIPFS;
