@@ -6,6 +6,7 @@ import { BigNumber } from 'ethers';
 
 export const formatterMiddleware = (data): Proposal => {
   const clone = Object.assign({}, data);
+  const ONE_MINUTE = 60000;
 
   //rename state to contractState
   clone.contractState = clone.state;
@@ -35,7 +36,10 @@ export const formatterMiddleware = (data): Proposal => {
   // Add timeDetail
   const currentTime = moment();
   let differenceInMilliseconds = currentTime.diff(clone.endTime);
-  let timeDifference = moment.duration(differenceInMilliseconds).humanize();
+  let timeDifference =
+    Math.abs(differenceInMilliseconds) >= ONE_MINUTE
+      ? moment.duration(differenceInMilliseconds).humanize()
+      : 'a few seconds';
   if (clone.endTime.isBefore(currentTime)) {
     clone.timeDetail = `ended ${timeDifference} ago`;
   } else {

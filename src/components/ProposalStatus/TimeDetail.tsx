@@ -10,6 +10,7 @@ export const TimeDetail: React.FC<TimeDetailProps> = ({
   guildId,
 }) => {
   const { data: guildConfig } = useGuildConfig(guildId);
+  const ONE_MINUTE = 60000;
 
   if (!guildConfig || status === ProposalState.Active) {
     return (
@@ -26,7 +27,11 @@ export const TimeDetail: React.FC<TimeDetailProps> = ({
   const executionTime = moment(endTime).add(timeForExecution);
   const currentTime = moment();
   let differenceInMilliseconds = currentTime.diff(executionTime);
-  let timeDifference = moment.duration(differenceInMilliseconds).humanize();
+  let timeDifference =
+    Math.abs(differenceInMilliseconds) >= ONE_MINUTE
+      ? moment.duration(differenceInMilliseconds).humanize()
+      : 'a few seconds';
+
   if (executionTime.isBefore(currentTime)) {
     executionTimeDetail = `expired ${timeDifference} ago`;
   } else {
