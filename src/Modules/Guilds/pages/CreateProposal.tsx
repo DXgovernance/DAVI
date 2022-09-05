@@ -31,6 +31,7 @@ import {
   Label,
 } from '../styles';
 import usePinataIPFS from 'hooks/Guilds/ipfs/usePinataIPFS';
+import { Modal } from 'components/primitives/Modal';
 
 const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -70,6 +71,10 @@ const CreateProposalPage: React.FC = () => {
     t('enterProposalDescription')
   );
 
+  const [errorIPFS, setErrorIPFS] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
+
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;
@@ -88,8 +93,21 @@ const CreateProposalPage: React.FC = () => {
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
-    await pinJSON(content);
+    const pinataPinResult = await pinJSON(content);
+    if (pinataPinResult.IpfsHash !== `${cid}`)
+      throw new Error(t('ipfs.hashNotTheSame'));
     return contentHash.fromIpfs(cid);
+  };
+
+  const handleSkipUploadToIPFS = () => {
+    setSkipUploadToIPFs(true);
+    setIsModalOpen(false);
+    handleCreateProposal();
+  };
+
+  const handleRetryUploadToIPFS = () => {
+    setIsModalOpen(false);
+    handleCreateProposal();
   };
 
   const { createTransaction } = useTransactions();
@@ -98,11 +116,15 @@ const CreateProposalPage: React.FC = () => {
 
   const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
-    try {
-      contentHash = await uploadToIPFS();
-    } catch (e) {
-      toast.error(t('ipfs.failedToUpload'));
-      return;
+    if (!skipUploadToIPFs) {
+      try {
+        contentHash = await uploadToIPFS();
+      } catch (e) {
+        console.log(e);
+        setErrorIPFS(e.message);
+        setIsModalOpen(true);
+        return;
+      }
     }
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
@@ -241,6 +263,24 @@ const CreateProposalPage: React.FC = () => {
       <SidebarContent>
         <SidebarInfoCardWrapper />
       </SidebarContent>
+      <Modal
+        isOpen={isModalOpen}
+        onDismiss={() => setIsModalOpen(false)}
+        header={t('ipfs.errorWhileUploading')}
+      >
+        <Box>
+          {errorIPFS}
+          <StyledButton onClick={handleSkipUploadToIPFS}>
+            {t('createAnyway')}
+          </StyledButton>
+          <StyledButton onClick={handleRetryUploadToIPFS}>
+            {t('retry')}
+          </StyledButton>
+          <StyledButton onClick={() => setIsModalOpen(false)}>
+            {t('close')}
+          </StyledButton>
+        </Box>
+      </Modal>
     </PageContainer>
   );
 };

@@ -225,6 +225,9 @@
   "stakeTokens": "Stake {{token}} tokens",
   "ipfs": {
     "failedToUpload": "Failed to upload to IPFS, please refresh the page and try again",
-    "hashNotTheSame": "Hash returned by pinata isn't the same as local hash"
-  }
+    "hashNotTheSame": "Hash returned by pinata isn't the same as local hash",
+    "errorWhileUploading": "Error while uploading to IPFS"
+  },
+  "createAnyway": "Create anyway",
+  "retry": "Retry"
 }
