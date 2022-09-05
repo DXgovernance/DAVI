@@ -17,6 +17,7 @@ async function ipfsContentFetcher<T>(hash: string) {
     fetcher('https://gateway.ipfs.io/ipfs/' + hash),
     fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
     fetcher('https://dweb.link/ipfs/' + hash),
+    fetcher('https://ipfs.fleek.co/ipfs/' + hash),
   ]);
 
   return response;
