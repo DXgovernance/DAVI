@@ -177,7 +177,7 @@ exports[`WalletButton Should match snapshot and display connected address 1`] = 
     <span
       class="c6"
     >
-      0x0000...0000
+      test.eth
     </span>
   </button>
    

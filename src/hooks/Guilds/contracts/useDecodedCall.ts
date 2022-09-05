@@ -129,9 +129,11 @@ export const decodeCall = async (
     };
   }
 
-  // Detect using the Guild calls registry.
+  // Detect using the rich contract data registry.
   const matchedRichContractData = contracts?.find(
-    contract => contract.networks[chainId] === call.to
+    contract =>
+      contract.networks[chainId].toLocaleLowerCase() ===
+      call.to.toLocaleLowerCase()
   );
   let matchedContract = matchedRichContractData
     ? getContractInterfaceFromRichContractData(matchedRichContractData)

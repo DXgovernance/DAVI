@@ -20,6 +20,7 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
     contractInterface: ensPublicResolver.abi,
     functionName: 'text',
     args: [convertToNameHash(ensName), 'avatar'],
+    chainId: supportedChainId,
   });
   return {
     avatarUri: data?.toString(),
