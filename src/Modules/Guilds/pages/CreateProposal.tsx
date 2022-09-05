@@ -13,8 +13,8 @@ import { ActionsBuilder } from 'components/ActionsBuilder';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import React, { useContext, useMemo, useState } from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
@@ -32,6 +32,7 @@ import {
 } from '../styles';
 import usePinataIPFS from 'hooks/Guilds/ipfs/usePinataIPFS';
 import { Modal } from 'components/primitives/Modal';
+import { WarningCircle } from 'components/primitives/StatusCircles';
 
 const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -71,8 +72,8 @@ const CreateProposalPage: React.FC = () => {
     t('enterProposalDescription')
   );
 
-  const [errorIPFS, setErrorIPFS] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ipfsError, setIpfsError] = useState('');
+  const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
   const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
 
   const handleToggleEditMode = () => {
@@ -94,19 +95,25 @@ const CreateProposalPage: React.FC = () => {
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
     const pinataPinResult = await pinJSON(content);
-    if (pinataPinResult.IpfsHash !== `${cid}`)
+
+    if (pinataPinResult.IpfsHash !== `${cid}`) {
       throw new Error(t('ipfs.hashNotTheSame'));
+    }
     return contentHash.fromIpfs(cid);
   };
 
   const handleSkipUploadToIPFS = () => {
+    setIsIpfsErrorModalOpen(false);
     setSkipUploadToIPFs(true);
-    setIsModalOpen(false);
-    handleCreateProposal();
   };
 
+  useEffect(() => {
+    if (skipUploadToIPFs && !isIpfsErrorModalOpen) handleCreateProposal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skipUploadToIPFs, isIpfsErrorModalOpen]);
+
   const handleRetryUploadToIPFS = () => {
-    setIsModalOpen(false);
+    setIsIpfsErrorModalOpen(false);
     handleCreateProposal();
   };
 
@@ -121,11 +128,13 @@ const CreateProposalPage: React.FC = () => {
         contentHash = await uploadToIPFS();
       } catch (e) {
         console.log(e);
-        setErrorIPFS(e.message);
-        setIsModalOpen(true);
+        setIpfsError(e.message);
+        setIsIpfsErrorModalOpen(true);
         return;
       }
     }
+    setSkipUploadToIPFs(false);
+    setIsIpfsErrorModalOpen(false);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     const totalActions = encodedOptions.length;
@@ -264,22 +273,33 @@ const CreateProposalPage: React.FC = () => {
         <SidebarInfoCardWrapper />
       </SidebarContent>
       <Modal
-        isOpen={isModalOpen}
-        onDismiss={() => setIsModalOpen(false)}
+        isOpen={isIpfsErrorModalOpen}
+        onDismiss={() => setIsIpfsErrorModalOpen(false)}
         header={t('ipfs.errorWhileUploading')}
+        maxWidth={390}
       >
-        <Box>
-          {errorIPFS}
-          <StyledButton onClick={handleSkipUploadToIPFS}>
-            {t('createAnyway')}
-          </StyledButton>
-          <StyledButton onClick={handleRetryUploadToIPFS}>
-            {t('retry')}
-          </StyledButton>
-          <StyledButton onClick={() => setIsModalOpen(false)}>
-            {t('close')}
-          </StyledButton>
-        </Box>
+        <Flex padding={'1.5rem'}>
+          <Flex>
+            <WarningCircle>
+              <FiX size={40} />
+            </WarningCircle>
+            <Flex padding={'1.5rem 0'}>{ipfsError}</Flex>
+          </Flex>
+          <Flex direction="row" style={{ columnGap: '1rem' }}>
+            <StyledButton onClick={handleRetryUploadToIPFS}>
+              {t('retry')}
+            </StyledButton>
+            <StyledButton onClick={handleSkipUploadToIPFS} variant="secondary">
+              {t('createAnyway')}
+            </StyledButton>
+            <StyledButton
+              onClick={() => setIsIpfsErrorModalOpen(false)}
+              variant="secondary"
+            >
+              {t('close')}
+            </StyledButton>
+          </Flex>
+        </Flex>
       </Modal>
     </PageContainer>
   );

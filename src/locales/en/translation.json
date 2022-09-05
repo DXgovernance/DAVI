@@ -226,8 +226,10 @@
   "ipfs": {
     "failedToUpload": "Failed to upload to IPFS, please refresh the page and try again",
     "hashNotTheSame": "Hash returned by pinata isn't the same as local hash",
-    "errorWhileUploading": "Error while uploading to IPFS"
+    "errorWhileUploading": "Error while uploading to IPFS",
+    "couldntUploadToPinata": "Couldn't upload and pin to Pinata"
   },
-  "createAnyway": "Create anyway",
-  "retry": "Retry"
+  "createAnyway": "Create anyways",
+  "retry": "Retry",
+  "error": "Error"
 }
