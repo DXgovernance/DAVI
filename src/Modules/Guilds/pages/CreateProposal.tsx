@@ -129,6 +129,16 @@ const CreateProposalPage: React.FC = () => {
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
 
+    if (
+      toArray.length === 0 &&
+      dataArray.length === 0 &&
+      valueArray.length === 0
+    ) {
+      toArray.push(ZERO_ADDRESS);
+      dataArray.push(ZERO_HASH);
+      valueArray.push(BigNumber.from(0));
+    }
+
     const { isValid, error } = isValidProposal({
       toArray,
       dataArray,
