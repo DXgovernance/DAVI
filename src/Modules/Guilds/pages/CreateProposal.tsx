@@ -31,7 +31,7 @@ import {
   Label,
 } from '../styles';
 
-const EMPTY_CALL: Call = {
+export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
   from: ZERO_ADDRESS,
   to: ZERO_ADDRESS,
