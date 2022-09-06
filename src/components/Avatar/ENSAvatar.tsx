@@ -11,18 +11,27 @@ const ENSAvatarContainer = styled.span`
   border-radius: 50%;
   line-height: 0;
 `;
-
+const Address = styled.span`
+  margin-left: 6px;
+`;
 interface ENSAvatarProps {
   address?: string;
   size?: number;
+  displayEnsOrAddress?: boolean;
 }
 
-export const ENSAvatar: React.FC<ENSAvatarProps> = ({ address, size = 24 }) => {
-  const { imageUrl } = useENSAvatar(address, 1);
+export const ENSAvatar: React.FC<ENSAvatarProps> = ({
+  address,
+  size = 24,
+  displayEnsOrAddress,
+}) => {
+  const { imageUrl, ensName } = useENSAvatar(address, 1);
 
   return (
     <ENSAvatarContainer>
       <Avatar src={imageUrl} defaultSeed={address} size={size} />
+      {/* {displayEnsOrAddress && ensName ? `${ensName}` : null} */}
+      {displayEnsOrAddress ? <Address>{ensName ?? address}</Address> : null}
     </ENSAvatarContainer>
   );
 };

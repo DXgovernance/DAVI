@@ -7,6 +7,7 @@ import { UnstyledLink } from 'components/primitives/Links';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { ENSAvatar } from 'components/Avatar';
 import { capitalizeFirstLetter } from 'utils';
+import { ParamDetail } from 'components/ActionsBuilder/CallDetails/CallDetails.styled';
 
 interface MatcherOptions {
   params: FunctionParamWithValue[];
@@ -26,8 +27,10 @@ export const renderGenericCallParamValue = (
       return (
         <>
           <UnstyledLink to="#">
-            <ENSAvatar address={param.value} size={16} /> {param.value}{' '}
-            <FiExternalLink size={16} />
+            <ParamDetail>
+              <ENSAvatar address={param.value} size={16} displayEnsOrAddress />{' '}
+              <FiExternalLink size={16} />
+            </ParamDetail>
           </UnstyledLink>
         </>
       );
@@ -80,7 +83,11 @@ class GenericCallParamsMatcher extends Matcher<{}, MatcherOptions> {
     const paramName = props.matchedParam;
     const param = this.options.params?.find(param => param.name === paramName);
 
-    return <span {...props}>{this.renderByParamType(param)}</span>;
+    return (
+      <span style={{ display: 'inline-block' }} {...props}>
+        {this.renderByParamType(param)}
+      </span>
+    );
   }
 
   asTag(): string {

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+// import { useState } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
@@ -20,9 +21,12 @@ import {
 import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { useTranslation } from 'react-i18next';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
-import { ENSAvatar } from 'components/Avatar';
-import { DecodedCall, SupportedAction } from 'components/ActionsBuilder/types';
+import { SupportedAction } from 'components/ActionsBuilder/types';
 import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
+import {
+  camelCaseToSplitWordsString,
+  capitalizeFirstLetterMultiWord,
+} from 'utils';
 
 type Param = Partial<FunctionParamWithValue>;
 
@@ -42,8 +46,7 @@ function renderDefaultParamValue(param: Param) {
     return (
       <UnstyledLink to="#">
         <ParamDetail>
-          <ENSAvatar address={param.value} size={16} /> {param.value}{' '}
-          <FiExternalLink size={16} />
+          {param.value} <FiExternalLink size={16} />
         </ParamDetail>
       </UnstyledLink>
     );
@@ -71,16 +74,6 @@ function renderDefaultParamValue(param: Param) {
   return <ParamDetail>{param.value}</ParamDetail>;
 }
 
-function renderParamValue(param: Param, decodedCall: DecodedCall) {
-  if (!param) return null;
-  switch (decodedCall.callType) {
-    case SupportedAction.GENERIC_CALL:
-      return renderGenericCallParamValue(param);
-    default:
-      return renderDefaultParamValue(param);
-  }
-}
-
 export const CallDetails: React.FC<ActionViewProps> = ({
   decodedCall,
   approveSpendTokens,
@@ -92,24 +85,17 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const ActionSummary = getSummaryView(decodedCall?.callType);
   const { functionData } = useRichContractData(decodedCall);
 
-  const params: Param[] = useMemo(() => {
-    if (!decodedCall) return null;
-
-    return decodedCall.callType === SupportedAction.GENERIC_CALL && functionData
-      ? functionData.params.map(param => ({
-          ...param,
-          value: getStringValueForParam(
-            param.type,
-            decodedCall.args[param.name]
-          ),
-        }))
-      : decodedCall?.function?.inputs.map(param => ({
-          ...param,
-          value: getStringValueForParam(
-            param.type,
-            decodedCall.args[param.name]
-          ),
-        }));
+  const genericParams: Param[] = useMemo(() => {
+    if (
+      !decodedCall &&
+      !functionData &&
+      decodedCall.callType !== SupportedAction.GENERIC_CALL
+    )
+      return null;
+    return functionData?.params?.map(param => ({
+      ...param,
+      value: getStringValueForParam(param.type, decodedCall.args[param.name]),
+    }));
   }, [functionData, decodedCall]);
 
   return (
@@ -177,8 +163,33 @@ export const CallDetails: React.FC<ActionViewProps> = ({
               )}
             </DetailsSection>
           </Box>
-          <Divider style={{ marginBottom: '1rem' }} />
+          <Divider />
         </>
+      )}
+
+      {genericParams?.map((param, index) => {
+        // console.log(param);
+        return (
+          <ActionParamRow margin="0" key={index}>
+            <ParamTitleRow>
+              {capitalizeFirstLetterMultiWord(
+                camelCaseToSplitWordsString(param.name)
+              )}
+            </ParamTitleRow>
+            <ParamDetail>
+              {renderGenericCallParamValue({
+                ...param,
+                value: getStringValueForParam(
+                  param.type,
+                  decodedCall?.args[param.name]
+                ),
+              })}
+            </ParamDetail>
+          </ActionParamRow>
+        );
+      })}
+      {genericParams && (
+        <Divider style={{ width: '50%', margin: '1rem auto' }} />
       )}
 
       {ActionSummary && <ActionSummary decodedCall={decodedCall} />}
@@ -210,21 +221,26 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           </DetailsButton>
 
           {isExpanded &&
-            params?.map((param, index) => {
-              return (
-                <ActionParamRow key={index}>
-                  <ParamTitleRow>
-                    <ParamTitleTag color={theme?.colors?.params?.[index]}>
-                      {param.name} <em>({param.type})</em>
-                    </ParamTitleTag>
-                    {param.type === 'bytes' && (
-                      <Button variant="secondary">{t('decode')}</Button>
-                    )}
-                  </ParamTitleRow>
-                  {renderParamValue(param, decodedCall)}
-                </ActionParamRow>
-              );
-            })}
+            decodedCall?.function?.inputs?.map((param, index) => (
+              <ActionParamRow key={index}>
+                <ParamTitleRow>
+                  <ParamTitleTag color={theme?.colors?.params?.[index]}>
+                    {param.name} <em>({param.type})</em>
+                  </ParamTitleTag>
+                  {param.type === 'bytes' && (
+                    <Button variant="secondary">{t('decode')}</Button>
+                  )}
+                </ParamTitleRow>
+
+                {renderDefaultParamValue({
+                  ...param,
+                  value: getStringValueForParam(
+                    param.type,
+                    decodedCall.args[param.name]
+                  ),
+                })}
+              </ActionParamRow>
+            ))}
         </DetailsSection>
       )}
     </>

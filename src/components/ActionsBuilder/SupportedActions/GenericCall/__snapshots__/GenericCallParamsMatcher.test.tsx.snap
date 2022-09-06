@@ -16,18 +16,18 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   text-decoration: none;
 }
 
-.c2 {
+.c4 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c3 {
+.c5 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c1 {
+.c3 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -44,50 +44,73 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   line-height: 0;
 }
 
+.c6 {
+  margin-left: 6px;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  color: #A1A6B0;
+  overflow-wrap: break-word;
+}
+
 <div>
    
   <a
     class="c0"
     href="/"
   >
-    <span
-      class="c1"
+    <div
+      class="c1 c2"
     >
-      <img
-        alt="Avatar"
-        class="c2 c3"
-        data-testid="avatar"
-        size="16"
-        src="test"
-      />
-    </span>
-     
-    0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
-     
-    <svg
-      fill="none"
-      height="16"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      viewBox="0 0 24 24"
-      width="16"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-      />
-      <polyline
-        points="15 3 21 3 21 9"
-      />
-      <line
-        x1="10"
-        x2="21"
-        y1="14"
-        y2="3"
-      />
-    </svg>
+      <span
+        class="c3"
+      >
+        <img
+          alt="Avatar"
+          class="c4 c5"
+          data-testid="avatar"
+          size="16"
+          src="test"
+        />
+        <span
+          class="c6"
+        >
+          test.eth
+        </span>
+      </span>
+       
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+        />
+        <polyline
+          points="15 3 21 3 21 9"
+        />
+        <line
+          x1="10"
+          x2="21"
+          y1="14"
+          y2="3"
+        />
+      </svg>
+    </div>
   </a>
    
 </div>
@@ -173,18 +196,18 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   text-decoration: none;
 }
 
-.c2 {
+.c4 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c3 {
+.c5 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c1 {
+.c3 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -201,53 +224,77 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   line-height: 0;
 }
 
+.c6 {
+  margin-left: 6px;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  color: #A1A6B0;
+  overflow-wrap: break-word;
+}
+
 <div>
    
   <span
     matchedparam="addressParam"
+    style="display: inline-block;"
   >
     <a
       class="c0"
       href="/"
     >
-      <span
-        class="c1"
+      <div
+        class="c1 c2"
       >
-        <img
-          alt="Avatar"
-          class="c2 c3"
-          data-testid="avatar"
-          size="16"
-          src="test"
-        />
-      </span>
-       
-      0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
-       
-      <svg
-        fill="none"
-        height="16"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        width="16"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-        />
-        <polyline
-          points="15 3 21 3 21 9"
-        />
-        <line
-          x1="10"
-          x2="21"
-          y1="14"
-          y2="3"
-        />
-      </svg>
+        <span
+          class="c3"
+        >
+          <img
+            alt="Avatar"
+            class="c4 c5"
+            data-testid="avatar"
+            size="16"
+            src="test"
+          />
+          <span
+            class="c6"
+          >
+            test.eth
+          </span>
+        </span>
+         
+        <svg
+          fill="none"
+          height="16"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="16"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
     </a>
   </span>
    
@@ -259,6 +306,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 2`] = `
    
   <span
     matchedparam="integerParam"
+    style="display: inline-block;"
   >
     1000000000000000000
   </span>
@@ -271,6 +319,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 3`] = `
    
   <span
     matchedparam="decimalParam"
+    style="display: inline-block;"
   >
     1
   </span>
@@ -283,6 +332,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 4`] = `
    
   <span
     matchedparam="dateParam"
+    style="display: inline-block;"
   >
     Sunday, May 29, 2022 6:17 PM UTC
   </span>
@@ -295,6 +345,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 5`] = `
    
   <span
     matchedparam="timeParam"
+    style="display: inline-block;"
   >
     52 years
   </span>
@@ -307,6 +358,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 6`] = `
    
   <span
     matchedparam="booleanParam"
+    style="display: inline-block;"
   >
     false
   </span>
@@ -319,6 +371,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 7`] = `
    
   <span
     matchedparam="tokenAmountParam"
+    style="display: inline-block;"
   >
     1
   </span>
@@ -331,6 +384,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 8`] = `
    
   <span
     matchedparam="contentHashParam"
+    style="display: inline-block;"
   >
     QmXk294ZQebU6J7yYpAhBqBPaMquCKxGmGoNHLBpvUJ9on
   </span>
@@ -343,6 +397,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 9`] = `
    
   <span
     matchedparam="otherParam"
+    style="display: inline-block;"
   >
     Test String
   </span>

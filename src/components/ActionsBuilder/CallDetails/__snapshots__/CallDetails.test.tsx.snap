@@ -489,7 +489,6 @@ exports[`CallDetails Should match with empty data 1`] = `
   </div>
   <div
     class="c14"
-    style="margin-bottom: 1rem;"
   />
   <div
     class="c1 c2 c3"
