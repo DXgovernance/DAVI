@@ -1,5 +1,4 @@
 import { useState, useMemo } from 'react';
-// import { useState } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
@@ -168,7 +167,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
       )}
 
       {genericParams?.map((param, index) => {
-        // console.log(param);
         return (
           <ActionParamRow margin="0" key={index}>
             <ParamTitleRow>
