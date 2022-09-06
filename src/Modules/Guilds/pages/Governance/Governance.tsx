@@ -134,7 +134,6 @@ const Governance = ({ guildId }) => {
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
-
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
             There are no active proposals.{' '}
@@ -143,7 +142,6 @@ const Governance = ({ guildId }) => {
             </StyledLink>
           </div>
         )}
-
         {proposalIds ? (
           <ProposalListWrapper>
             {revertedProposals.map(proposal => (

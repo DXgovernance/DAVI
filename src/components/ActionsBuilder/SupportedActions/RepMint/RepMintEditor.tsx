@@ -50,7 +50,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
         String((Number(data?.amount) * 100) / totalSupply || 0)
       );
     }
-  }, [data]); //eslint-disable-line
+  }, [data?.amount]); //eslint-disable-line
 
   const updateRepAmount = (value: string) => {
     if (!value) {

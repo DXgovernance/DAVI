@@ -1,5 +1,5 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
+import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';

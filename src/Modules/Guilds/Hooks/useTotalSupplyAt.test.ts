@@ -1,10 +1,10 @@
-import useTotalSupplyAt from './useTotalSupplyAt';
+import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import {
   MOCK_BIG_NUMBER,
   MOCK_CONTRACT_ADDRESS,
   MOCK_SNAPSHOT_ID,
-} from './fixtures';
-jest.mock('./useTotalSupplyAt', () => ({
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useTotalSupplyAt', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_BIG_NUMBER,

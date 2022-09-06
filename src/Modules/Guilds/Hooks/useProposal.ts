@@ -13,7 +13,7 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
     2: ContractState.Executed,
     3: ContractState.Failed,
   };
-  clone.contractState = contractStatesMapping[clone.contractState];
+  clone.contractState = contractStatesMapping[clone.state];
   //we are removing the clone.state key
   delete clone.state;
 
@@ -35,7 +35,7 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
   return clone as Proposal;
 };
 
-export const useProposal = (guildId: string, proposalId: string) => {
+const useProposal = (guildId: string, proposalId: string) => {
   const { data, ...rest } = useContractRead({
     addressOrName: guildId,
     contractInterface: ERC20GuildContract.abi,
@@ -50,3 +50,5 @@ export const useProposal = (guildId: string, proposalId: string) => {
     ...rest,
   };
 };
+
+export default useProposal;

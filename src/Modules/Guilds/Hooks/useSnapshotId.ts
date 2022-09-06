@@ -9,15 +9,13 @@ interface useSnapshotIdProps {
 
 const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
   const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
-  const { data, ...rest } = useContractRead({
+  return useContractRead({
     enabled: isSnapshotGuild,
     addressOrName: contractAddress,
     contractInterface: SnapshotERC20Guild.abi,
     functionName: 'getProposalSnapshotId',
     args: [proposalId],
   });
-
-  return { data, ...rest };
 };
 
 export default useSnapshotId;

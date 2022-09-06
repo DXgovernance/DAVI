@@ -1,11 +1,11 @@
-import { useVoterLockTimestamp } from './useVoterLockTimestamp';
+import { useVoterLockTimestamp } from 'Modules/Guilds/Hooks/useVoterLockTimestamp';
 import {
   MOCK_CONTRACT_ADDRESS,
   MOCK_USER_ADDRESS,
   MOCK_BIG_NUMBER,
-} from './fixtures';
+} from 'Modules/Guilds/Hooks/fixtures';
 
-jest.mock('./useVoterLockTimestamp', () => {
+jest.mock('Modules/Guilds/Hooks/useVoterLockTimestamp', () => {
   const moment = require('moment');
   return {
     useVoterLockTimestamp: () => ({

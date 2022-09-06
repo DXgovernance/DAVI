@@ -1,6 +1,9 @@
-import useGuildActiveProposals from './useGuildActiveProposals';
-import { MOCK_BIG_NUMBER, MOCK_GUILD_ADDRESS } from './fixtures';
-jest.mock('./useGuildActiveProposals', () => ({
+import useGuildActiveProposals from 'Modules/Guilds/Hooks/useGuildActiveProposals';
+import {
+  MOCK_BIG_NUMBER,
+  MOCK_GUILD_ADDRESS,
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useGuildActiveProposals', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_BIG_NUMBER,

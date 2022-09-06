@@ -1,6 +1,6 @@
 import useCurrentSnapshotId from './useCurrentSnapshotId';
-import useGuildToken from './useGuildToken';
-import useTotalSupplyAt from './useTotalSupplyAt';
+import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
+import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';

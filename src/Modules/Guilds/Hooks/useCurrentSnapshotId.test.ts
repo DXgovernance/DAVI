@@ -1,6 +1,9 @@
-import useCurrentSnapshotId from './useCurrentSnapshotId';
-import { MOCK_CONTRACT_ADDRESS, MOCK_SNAPSHOT_ID } from './fixtures';
-jest.mock('./useCurrentSnapshotId', () => ({
+import useCurrentSnapshotId from 'Modules/Guilds/Hooks/useCurrentSnapshotId';
+import {
+  MOCK_CONTRACT_ADDRESS,
+  MOCK_SNAPSHOT_ID,
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useCurrentSnapshotId', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_SNAPSHOT_ID,
