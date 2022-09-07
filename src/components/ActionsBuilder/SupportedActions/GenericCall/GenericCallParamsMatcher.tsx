@@ -28,7 +28,12 @@ export const renderGenericCallParamValue = (
         <>
           <UnstyledLink to="#">
             <ParamDetail>
-              <ENSAvatar address={param.value} size={16} displayEnsOrAddress />{' '}
+              <ENSAvatar
+                address={param.value}
+                size={16}
+                displayEnsOrAddress
+                shortAddress
+              />{' '}
               <FiExternalLink size={16} />
             </ParamDetail>
           </UnstyledLink>

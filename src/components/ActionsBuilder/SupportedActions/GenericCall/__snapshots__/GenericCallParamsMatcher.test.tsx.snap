@@ -82,7 +82,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
         <span
           class="c6"
         >
-          test.eth
+          0x3f94...4351
         </span>
       </span>
        
@@ -266,7 +266,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
           <span
             class="c6"
           >
-            test.eth
+            0x3f94...4351
           </span>
         </span>
          

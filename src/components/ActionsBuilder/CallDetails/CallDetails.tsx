@@ -3,6 +3,7 @@ import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
 import { Box } from 'components/primitives/Layout/Box';
+import { Flex } from 'components/primitives/Layout/Flex';
 import { UnstyledLink } from 'components/primitives/Links';
 import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
@@ -101,7 +102,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     }));
   }, [functionData, decodedCall]);
 
-  const renderRawData = () => {
+  const renderRawDataParams = () => {
     return decodedCall?.function?.inputs?.map((param, index) => (
       <ActionParamRow key={index}>
         <ParamTitleRow>
@@ -153,13 +154,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   return (
     <>
       {functionData && genericParams && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            alignItems: 'center',
-          }}
-        >
+        <Flex direction="row" justifyContent="flex-end">
           <DetailsButton
             isExpanded={false}
             variant={'secondary'}
@@ -167,7 +162,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           >
             {displayRichData ? 'Display Row Data' : 'Display Formated Data'}
           </DetailsButton>
-        </div>
+        </Flex>
       )}
 
       {!!approveSpendTokens && (
@@ -271,9 +266,9 @@ export const CallDetails: React.FC<ActionViewProps> = ({
       )}
 
       {ActionSummary && (
-        <div style={{ marginTop: '1rem' }}>
+        <Box margin="1rem 0 0">
           <ActionSummary decodedCall={decodedCall} />
-        </div>
+        </Box>
       )}
 
       {decodedCall.callType !== SupportedAction.NATIVE_TRANSFER && (
@@ -311,7 +306,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           {isExpanded
             ? isGenericCall && genericParams && displayRichData
               ? renderRichDataParams()
-              : renderRawData()
+              : renderRawDataParams()
             : null}
         </DetailsSection>
       )}
