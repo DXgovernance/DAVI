@@ -34,7 +34,7 @@ const BalanceWidgetWrapper = ({
       </InfoRow>
       <InfoRow>
         <StakeAmountInput
-          value={stakeAmount ? stakeAmount : BigNumber.from(0)}
+          value={stakeAmount || BigNumber.from(0)}
           onChange={setStakeAmount}
           decimals={token?.info?.decimals}
           data-testid="stake-amount-input"
