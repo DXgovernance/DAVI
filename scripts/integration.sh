@@ -14,4 +14,4 @@ export FAIL_ON_ERROR=0
 # export SKIP_METAMASK_INSTALL=false
 # export SKIP_METAMASK_SETUP=false
 
-synpress run --configFile ./cypress/config/development.json --record --key $DASHBOARD_KEY
+synpress run --configFile ./cypress/config/development.json --record --key $CYPRESS_RECORD_KEY
