@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # Get record key from env
-export $(grep -v '^#' .env | xargs)
 RECORD_KEY="${CYPRESS_RECORD_KEY}"
 
 export SECRET_WORDS="cream core pear sure dinner indoor citizen divorce sudden captain subject remember"
