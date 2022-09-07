@@ -16,6 +16,7 @@ import {
   ParamTag,
   ParamTitleRow,
   ParamTitleTag,
+  ParamDescription,
 } from './CallDetails.styled';
 import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { useTranslation } from 'react-i18next';
@@ -80,9 +81,12 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const theme = useTheme();
   const { t } = useTranslation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const [displayRichData, setDisplayRichData] = useState(false);
   const [isApprovalExpanded, setIsApprovalExpanded] = useState(false);
   const ActionSummary = getSummaryView(decodedCall?.callType);
   const { functionData } = useRichContractData(decodedCall);
+
+  const isGenericCall = decodedCall.callType === SupportedAction.GENERIC_CALL;
 
   const genericParams: Param[] = useMemo(() => {
     if (
@@ -97,8 +101,75 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     }));
   }, [functionData, decodedCall]);
 
+  const renderRawData = () => {
+    return decodedCall?.function?.inputs?.map((param, index) => (
+      <ActionParamRow key={index}>
+        <ParamTitleRow>
+          <ParamTitleTag color={theme?.colors?.params?.[index]}>
+            {param.name} <em>({param.type})</em>
+          </ParamTitleTag>
+          {param.type === 'bytes' && (
+            <Button variant="secondary">{t('decode')}</Button>
+          )}
+        </ParamTitleRow>
+
+        {renderDefaultParamValue({
+          ...param,
+          value: getStringValueForParam(
+            param.type,
+            decodedCall.args[param.name]
+          ),
+        })}
+      </ActionParamRow>
+    ));
+  };
+
+  const renderRichDataParams = () => {
+    return genericParams?.map((param, index) => {
+      return (
+        <ActionParamRow key={index}>
+          <ParamTitleRow margin="0">
+            {capitalizeFirstLetterMultiWord(
+              camelCaseToSplitWordsString(param.name)
+            )}
+          </ParamTitleRow>
+          {param?.description && (
+            <ParamDescription>{param.description}</ParamDescription>
+          )}
+          <ParamDetail>
+            {renderGenericCallParamValue({
+              ...param,
+              value: getStringValueForParam(
+                param.type,
+                decodedCall?.args[param.name]
+              ),
+            })}
+          </ParamDetail>
+        </ActionParamRow>
+      );
+    });
+  };
+
   return (
     <>
+      {functionData && genericParams && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            alignItems: 'center',
+          }}
+        >
+          <DetailsButton
+            isExpanded={false}
+            variant={'secondary'}
+            onClick={() => setDisplayRichData(v => !v)}
+          >
+            {displayRichData ? 'Display Row Data' : 'Display Formated Data'}
+          </DetailsButton>
+        </div>
+      )}
+
       {!!approveSpendTokens && (
         <>
           <Box margin="0 0 1rem">
@@ -111,86 +182,99 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                 isExpanded={isApprovalExpanded}
                 variant={'secondary'}
               >
-                approve ({' '}
-                <ParamTag
-                  color={
-                    isApprovalExpanded
-                      ? theme?.colors?.params?.[0]
-                      : theme?.colors?.text
-                  }
-                >
-                  address
-                </ParamTag>
-                {', '}
-                <ParamTag
-                  color={
-                    isApprovalExpanded
-                      ? theme?.colors?.params?.[1]
-                      : theme?.colors?.text
-                  }
-                >
-                  uint256
-                </ParamTag>{' '}
-                )
+                {isGenericCall && genericParams && displayRichData ? (
+                  'Approve spending call'
+                ) : (
+                  <>
+                    approve ({' '}
+                    <ParamTag
+                      color={
+                        isApprovalExpanded
+                          ? theme?.colors?.params?.[0]
+                          : theme?.colors?.text
+                      }
+                    >
+                      address
+                    </ParamTag>
+                    {', '}
+                    <ParamTag
+                      color={
+                        isApprovalExpanded
+                          ? theme?.colors?.params?.[1]
+                          : theme?.colors?.text
+                      }
+                    >
+                      uint256
+                    </ParamTag>{' '}
+                    )
+                  </>
+                )}
               </DetailsButton>
-              {isApprovalExpanded && (
-                <>
-                  <ActionParamRow></ActionParamRow>
-                  <ActionParamRow>
-                    <ParamTitleRow>
-                      <ParamTitleTag color={theme?.colors?.params?.[0]}>
-                        spender <em>(address)</em>
-                      </ParamTitleTag>
-                    </ParamTitleRow>
-                    {renderDefaultParamValue({
-                      type: 'address',
-                      value: decodedCall?.to,
-                    })}
-                  </ActionParamRow>
-                  <ActionParamRow>
-                    <ParamTitleRow>
-                      <ParamTitleTag color={theme?.colors?.params?.[1]}>
-                        amount <em>(uint256)</em>
-                      </ParamTitleTag>
-                    </ParamTitleRow>
-                    {renderDefaultParamValue({
-                      type: 'uint256',
-                      value: approveSpendTokens?.amount?.toString(),
-                    })}
-                  </ActionParamRow>
-                </>
-              )}
+              {isApprovalExpanded ? (
+                isGenericCall && genericParams && displayRichData ? (
+                  <>
+                    <ActionParamRow>
+                      <ParamTitleRow margin="0">Spender</ParamTitleRow>
+                      <ParamDescription>
+                        Address to which the expense is being authorized
+                      </ParamDescription>
+                      <ParamDetail>
+                        {renderGenericCallParamValue({
+                          component: 'address',
+                          value: decodedCall?.to,
+                        })}
+                      </ParamDetail>
+                    </ActionParamRow>
+                    <ActionParamRow>
+                      <ParamTitleRow margin="0">Amount</ParamTitleRow>
+                      <ParamDescription>Amount being approved</ParamDescription>
+                      <ParamDetail>
+                        {renderGenericCallParamValue({
+                          component: 'tokenAmount',
+                          value: approveSpendTokens?.amount?.toString(),
+                        })}{' '}
+                      </ParamDetail>
+                    </ActionParamRow>
+                  </>
+                ) : (
+                  <>
+                    <ActionParamRow>
+                      <ParamTitleRow>
+                        <ParamTitleTag color={theme?.colors?.params?.[0]}>
+                          spender <em>(address)</em>
+                        </ParamTitleTag>
+                      </ParamTitleRow>
+
+                      {renderDefaultParamValue({
+                        type: 'address',
+                        value: decodedCall?.to,
+                      })}
+                    </ActionParamRow>
+                    <ActionParamRow>
+                      <ParamTitleRow>
+                        <ParamTitleTag color={theme?.colors?.params?.[1]}>
+                          amount <em>(uint256)</em>
+                        </ParamTitleTag>
+                      </ParamTitleRow>
+                      {renderDefaultParamValue({
+                        type: 'uint256',
+                        value: approveSpendTokens?.amount?.toString(),
+                      })}
+                    </ActionParamRow>
+                  </>
+                )
+              ) : null}
             </DetailsSection>
           </Box>
           <Divider />
         </>
       )}
 
-      {genericParams?.map((param, index) => {
-        return (
-          <ActionParamRow margin="0" key={index}>
-            <ParamTitleRow>
-              {capitalizeFirstLetterMultiWord(
-                camelCaseToSplitWordsString(param.name)
-              )}
-            </ParamTitleRow>
-            <ParamDetail>
-              {renderGenericCallParamValue({
-                ...param,
-                value: getStringValueForParam(
-                  param.type,
-                  decodedCall?.args[param.name]
-                ),
-              })}
-            </ParamDetail>
-          </ActionParamRow>
-        );
-      })}
-      {genericParams && (
-        <Divider style={{ width: '50%', margin: '1rem auto' }} />
+      {ActionSummary && (
+        <div style={{ marginTop: '1rem' }}>
+          <ActionSummary decodedCall={decodedCall} />
+        </div>
       )}
-
-      {ActionSummary && <ActionSummary decodedCall={decodedCall} />}
 
       {decodedCall.callType !== SupportedAction.NATIVE_TRANSFER && (
         <DetailsSection>
@@ -199,46 +283,36 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             isExpanded={isExpanded}
             variant={'secondary'}
           >
-            {decodedCall?.function?.name} (
-            {decodedCall?.function?.inputs.map((param, index) => (
-              <span key={index}>
-                {index > 0 && <span>, </span>}
-                <ParamTag
-                  key={index}
-                  color={
-                    isExpanded
-                      ? theme?.colors?.params?.[index]
-                      : theme?.colors?.text
-                  }
-                >
-                  {param?.type}
-                </ParamTag>
-              </span>
-            ))}
-            )
+            {isGenericCall && genericParams && displayRichData ? (
+              functionData.title
+            ) : (
+              <>
+                {decodedCall?.function?.name} (
+                {decodedCall?.function?.inputs.map((param, index) => (
+                  <span key={index}>
+                    {index > 0 && <span>, </span>}
+                    <ParamTag
+                      key={index}
+                      color={
+                        isExpanded
+                          ? theme?.colors?.params?.[index]
+                          : theme?.colors?.text
+                      }
+                    >
+                      {param?.type}
+                    </ParamTag>
+                  </span>
+                ))}
+                )
+              </>
+            )}
           </DetailsButton>
 
-          {isExpanded &&
-            decodedCall?.function?.inputs?.map((param, index) => (
-              <ActionParamRow key={index}>
-                <ParamTitleRow>
-                  <ParamTitleTag color={theme?.colors?.params?.[index]}>
-                    {param.name} <em>({param.type})</em>
-                  </ParamTitleTag>
-                  {param.type === 'bytes' && (
-                    <Button variant="secondary">{t('decode')}</Button>
-                  )}
-                </ParamTitleRow>
-
-                {renderDefaultParamValue({
-                  ...param,
-                  value: getStringValueForParam(
-                    param.type,
-                    decodedCall.args[param.name]
-                  ),
-                })}
-              </ActionParamRow>
-            ))}
+          {isExpanded
+            ? isGenericCall && genericParams && displayRichData
+              ? renderRichDataParams()
+              : renderRawData()
+            : null}
         </DetailsSection>
       )}
     </>

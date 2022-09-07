@@ -152,57 +152,61 @@ exports[`CallDetails Should match 1`] = `
 <div>
    
   <div
-    class="c0 c1 c2"
-  >
-    interactWith
-     
-    <span>
-      0.0
-       
-      TST
-    </span>
-    :
-  </div>
-  <div
-    class="c0 c1"
+    style="margin-top: 1rem;"
   >
     <div
-      class="c0 c1 c3"
+      class="c0 c1 c2"
     >
-      <span
-        class="c4"
-      >
-        <img
-          alt="Avatar"
-          class="c5 c6"
-          data-testid="avatar"
-          size="24"
-          src="test"
-        />
+      interactWith
+       
+      <span>
+        0.0
+         
+        TST
       </span>
-      <a
-        class="c7"
-        rel="noopener"
-        target="_blank"
+      :
+    </div>
+    <div
+      class="c0 c1"
+    >
+      <div
+        class="c0 c1 c3"
       >
-        test.eth
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          class="c4"
         >
-          <path
-            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+          <img
+            alt="Avatar"
+            class="c5 c6"
+            data-testid="avatar"
+            size="24"
+            src="test"
           />
-          <path
-            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-          />
-        </svg>
-      </a>
+        </span>
+        <a
+          class="c7"
+          rel="noopener"
+          target="_blank"
+        >
+          test.eth
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            />
+            <path
+              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div
@@ -491,57 +495,61 @@ exports[`CallDetails Should match with empty data 1`] = `
     class="c14"
   />
   <div
-    class="c1 c2 c3"
-  >
-    interactWith
-     
-    <span>
-      0.0
-       
-      TST
-    </span>
-    :
-  </div>
-  <div
-    class="c1 c2"
+    style="margin-top: 1rem;"
   >
     <div
-      class="c1 c2 c4"
+      class="c1 c2 c3"
     >
-      <span
-        class="c5"
-      >
-        <img
-          alt="Avatar"
-          class="c6 c7"
-          data-testid="avatar"
-          size="24"
-          src="test"
-        />
+      interactWith
+       
+      <span>
+        0.0
+         
+        TST
       </span>
-      <a
-        class="c8"
-        rel="noopener"
-        target="_blank"
+      :
+    </div>
+    <div
+      class="c1 c2"
+    >
+      <div
+        class="c1 c2 c4"
       >
-        test.eth
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+        <span
+          class="c5"
         >
-          <path
-            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+          <img
+            alt="Avatar"
+            class="c6 c7"
+            data-testid="avatar"
+            size="24"
+            src="test"
           />
-          <path
-            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-          />
-        </svg>
-      </a>
+        </span>
+        <a
+          class="c8"
+          rel="noopener"
+          target="_blank"
+        >
+          test.eth
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            />
+            <path
+              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div
