@@ -44,13 +44,14 @@ export const Mint: React.FC<ActionEditorProps> = ({
 
   useEffect(() => {
     if (data?.amount) {
-      setRepAmount((data?.amount).toString());
+      const initialRepAmount = ethers.utils.formatEther(data?.amount);
+      setRepAmount(initialRepAmount);
       setValue(
         'repPercent',
-        String((Number(data?.amount) * 100) / totalSupply || 0)
+        String((Number(initialRepAmount) * 100) / totalSupply || 0)
       );
     }
-  }, [data]); //eslint-disable-line
+  }, [data?.amount]); //eslint-disable-line
 
   const updateRepAmount = (value: string) => {
     if (!value) {

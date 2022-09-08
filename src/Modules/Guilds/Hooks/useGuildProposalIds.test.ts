@@ -1,6 +1,9 @@
-import { useGuildProposalIds } from './useGuildProposalIds';
-import { MOCK_GUILD_ADDRESS, MOCK_CONTRACT_ADDRESSES } from './fixtures';
-jest.mock('./useGuildProposalIds', () => ({
+import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
+import {
+  MOCK_GUILD_ADDRESS,
+  MOCK_CONTRACT_ADDRESSES,
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useGuildProposalIds', () => ({
   useGuildProposalIds: () => ({
     data: MOCK_CONTRACT_ADDRESSES,
     isError: false,

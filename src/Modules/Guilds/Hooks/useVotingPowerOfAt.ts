@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
-import useCurrentSnapshotId from './useCurrentSnapshotId';
+import useCurrentSnapshotId from 'Modules/Guilds/Hooks/useCurrentSnapshotId';
 import { useContractRead } from 'wagmi';
 
 interface useVotingPowerOfAtProps {

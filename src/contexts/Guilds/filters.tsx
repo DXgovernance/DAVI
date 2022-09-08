@@ -110,8 +110,7 @@ export const FilterProvider = ({
   const withFilters =
     (Component: JSX.Element) =>
     (proposal: Proposal, proposalState: ProposalState, options: Option[]) => {
-      if (!options || options.includes(undefined)) return null;
-      const actions = options.map(option => option.decodedActions).flat();
+      const actions = options?.map(option => option?.decodedActions).flat();
       return match(proposal, proposalState, actions) ? Component : null;
     };
 

@@ -1,6 +1,9 @@
-import useGuildMemberTotal from './useGuildMemberTotal';
-import { MOCK_GUILD_MEMBERS_TOTAL, MOCK_GUILD_ADDRESS } from './fixtures';
-jest.mock('./useGuildMemberTotal', () => ({
+import useGuildMemberTotal from 'Modules/Guilds/Hooks/useGuildMemberTotal';
+import {
+  MOCK_GUILD_MEMBERS_TOTAL,
+  MOCK_GUILD_ADDRESS,
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useGuildMemberTotal', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_GUILD_MEMBERS_TOTAL,

@@ -1,6 +1,9 @@
-import useGuildToken from './useGuildToken';
-import { MOCK_CONTRACT_ADDRESS, MOCK_GUILD_ADDRESS } from './fixtures';
-jest.mock('./useGuildToken', () => ({
+import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
+import {
+  MOCK_CONTRACT_ADDRESS,
+  MOCK_GUILD_ADDRESS,
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useGuildToken', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_CONTRACT_ADDRESS,

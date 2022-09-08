@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import useGuildToken from './useGuildToken';
+import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
 
 export type GuildConfigProps = {
@@ -63,7 +63,6 @@ export const useGuildConfig = (guildAddress: string) => {
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
-  // TODO: Move this into a SWR middleware
   const transformedData = useMemo(() => {
     if (!data) return undefined;
 
@@ -79,19 +78,23 @@ export const useGuildConfig = (guildAddress: string) => {
       lockTime,
     ] = data;
     return {
-      permissionRegistry: permissionRegistry.toString(),
-      name: name.toString(),
-      proposalTime: BigNumber.from(proposalTime),
-      timeForExecution: BigNumber.from(timeForExecution),
-      maxActiveProposals: BigNumber.from(maxActiveProposals),
-      votingPowerForProposalCreation: BigNumber.from(
-        votingPowerForProposalCreation
-      ),
-      votingPowerForProposalExecution: BigNumber.from(
-        votingPowerForProposalExecution
-      ),
-      tokenVault: tokenVault.toString(),
-      lockTime: BigNumber.from(lockTime),
+      permissionRegistry: permissionRegistry?.toString(),
+      name: name?.toString(),
+      proposalTime: proposalTime ? BigNumber.from(proposalTime) : undefined,
+      timeForExecution: timeForExecution
+        ? BigNumber.from(timeForExecution)
+        : undefined,
+      maxActiveProposals: maxActiveProposals
+        ? BigNumber.from(maxActiveProposals)
+        : undefined,
+      votingPowerForProposalCreation: votingPowerForProposalCreation
+        ? BigNumber.from(votingPowerForProposalCreation)
+        : undefined,
+      votingPowerForProposalExecution: votingPowerForProposalExecution
+        ? BigNumber?.from(votingPowerForProposalExecution)
+        : undefined,
+      tokenVault: tokenVault?.toString(),
+      lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
     };
   }, [data]);
 

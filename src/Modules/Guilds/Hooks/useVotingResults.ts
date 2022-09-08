@@ -1,8 +1,8 @@
 import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
-import { useGuildConfig } from './useGuildConfig';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { BigNumber } from 'ethers';
-import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
+import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import { useMemo } from 'react';

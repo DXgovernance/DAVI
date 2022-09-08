@@ -72,11 +72,11 @@ jest.mock('hooks/Guilds/contracts/useContract', () => ({
 
 describe('useExecutable', () => {
   it(`executeProposal function is valid if there is proposal data`, async () => {
-    jest.spyOn(hooks, 'useProposal').mockImplementation(
+    jest.spyOn(hooks, 'default').mockImplementation(
       () =>
         ({
           data: mockedData,
-        } as ReturnType<typeof hooks.useProposal>)
+        } as ReturnType<typeof hooks.default>)
     );
     const { result } = renderHook(() => useExecutable());
     expect(result.current.loading).toBeFalsy();
@@ -84,11 +84,11 @@ describe('useExecutable', () => {
   });
 
   it(`executeProposal function is null if there isn't proposal data`, async () => {
-    jest.spyOn(hooks, 'useProposal').mockImplementation(
+    jest.spyOn(hooks, 'default').mockImplementation(
       () =>
         ({
           data: null,
-        } as ReturnType<typeof hooks.useProposal>)
+        } as ReturnType<typeof hooks.default>)
     );
     const { result } = renderHook(() => useExecutable());
     expect(result.current.loading).toBeTruthy();

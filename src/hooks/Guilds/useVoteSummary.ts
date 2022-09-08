@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
+import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 

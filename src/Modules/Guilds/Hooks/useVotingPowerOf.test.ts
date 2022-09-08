@@ -1,11 +1,11 @@
-import { useVotingPowerOf } from './useVotingPowerOf';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import {
   MOCK_BIG_NUMBER,
   MOCK_CONTRACT_ADDRESS,
   MOCK_SNAPSHOT_ID,
   MOCK_USER_ADDRESS,
-} from './fixtures';
-jest.mock('./useVotingPowerOf', () => ({
+} from 'Modules/Guilds/Hooks/fixtures';
+jest.mock('Modules/Guilds/Hooks/useVotingPowerOf', () => ({
   useVotingPowerOf: () => ({
     data: MOCK_BIG_NUMBER,
     isError: false,

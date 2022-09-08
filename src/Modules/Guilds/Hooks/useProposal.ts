@@ -1,31 +1,22 @@
 import moment, { unix } from 'moment';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
-import { Proposal, ContractState } from 'types/types.guilds.d';
+import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
-export const formatterMiddleware = (data): Proposal => {
-  const clone = Object.assign({}, data);
+export const formatterMiddleware = (data: InitialProposal): Proposal => {
+  const clone = { ...data };
   const ONE_MINUTE = 60000;
 
-  //rename state to contractState
-  clone.contractState = clone.state;
+  const contractStatesMapping = {
+    1: ContractState.Active,
+    2: ContractState.Rejected,
+    3: ContractState.Executed,
+    4: ContractState.Failed,
+  };
+  clone.contractState = contractStatesMapping[clone.state];
+  //we are removing the clone.state key
   delete clone.state;
-
-  switch (clone.contractState) {
-    case 1:
-      clone.contractState = ContractState.Active;
-      break;
-    case 2:
-      clone.contractState = ContractState.Rejected;
-      break;
-    case 3:
-      clone.contractState = ContractState.Executed;
-      break;
-    case 4:
-      clone.contractState = ContractState.Failed;
-      break;
-  }
 
   if (data.startTime instanceof BigNumber) {
     clone.startTime = data.startTime ? unix(data.startTime.toNumber()) : null;
@@ -45,18 +36,23 @@ export const formatterMiddleware = (data): Proposal => {
   } else {
     clone.timeDetail = `${timeDifference} left`;
   }
-  return clone;
+  return clone as Proposal;
 };
 
-export const useProposal = (guildId: string, proposalId: string) => {
+const useProposal = (guildId: string, proposalId: string) => {
   const { data, ...rest } = useContractRead({
     addressOrName: guildId,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getProposal',
     args: [proposalId],
   });
+  const proposalData = data as unknown as InitialProposal;
   return {
-    data: data ? formatterMiddleware({ ...data, id: proposalId }) : undefined,
+    data: data
+      ? formatterMiddleware({ ...proposalData, id: proposalId })
+      : undefined,
     ...rest,
   };
 };
+
+export default useProposal;

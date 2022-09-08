@@ -1,5 +1,5 @@
-import useGuildImplementationType from './useGuildImplementationType';
-import useVotingPowerOfAt from './useVotingPowerOfAt';
+import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
+import useVotingPowerOfAt from 'Modules/Guilds/Hooks/useVotingPowerOfAt';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';

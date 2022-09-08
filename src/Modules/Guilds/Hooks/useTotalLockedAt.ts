@@ -13,13 +13,12 @@ const useTotalLockedAt = ({
   contractAddress,
   snapshotId,
 }: useTotalLockedAtProps) => {
-  const { data, ...rest } = useContractRead({
+  return useContractRead({
     addressOrName: contractAddress,
     contractInterface: SnapshotERC20Guild.abi,
     functionName: 'totalLockedAt',
     args: [snapshotId],
   });
-  return { data, ...rest };
 };
 
 export default useTotalLockedAt;

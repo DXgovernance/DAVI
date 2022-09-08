@@ -1,6 +1,6 @@
 import WalletButton from './WalletButton';
 import { render } from 'utils/tests';
-import { shortenAddress, ZERO_ADDRESS } from 'utils';
+import { ZERO_ADDRESS } from 'utils';
 import { mockChain } from 'components/Web3Modals/fixtures';
 import wagmi from 'wagmi';
 
@@ -57,6 +57,6 @@ describe('WalletButton', () => {
 
     const { container, getByText } = render(<WalletButton />);
     expect(container).toMatchSnapshot();
-    expect(getByText(shortenAddress(mockAddress))).toBeInTheDocument();
+    expect(getByText('test.eth')).toBeInTheDocument();
   });
 });

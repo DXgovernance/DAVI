@@ -1,4 +1,4 @@
-import { useProposal } from 'Modules/Guilds/Hooks/useProposal';
+import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import AddressButton from 'components/AddressButton/AddressButton';
 import { ProposalDescription } from 'components/ProposalDescription';
 import { ProposalInfoCard } from 'components/ProposalInfoCard';
