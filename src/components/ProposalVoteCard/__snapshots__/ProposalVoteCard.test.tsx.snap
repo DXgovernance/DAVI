@@ -194,8 +194,7 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
 
 .c23 {
   margin: 1rem 0 0;
-  border: 1px solid #292b2f;
-  border-radius: 12px;
+  border-radius: 0.375rem;
   padding: 8px;
   font-size: 12px;
   background: #303338;

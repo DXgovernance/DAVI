@@ -2,7 +2,7 @@ import ERC20Guild from 'contracts/ERC20Guild.json';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import { ContractReadResponse } from 'Modules/Guilds/Hooks/types';
+import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
 
 export interface UseProposalVotesOfVoterReturn {
   action: string;
@@ -13,7 +13,7 @@ const useProposalVotesOfVoter = (
   guildAddress: string,
   proposalId: string,
   userAddress: string
-): ContractReadResponse<UseProposalVotesOfVoterReturn> => {
+): WagmiUseContractReadResponse<UseProposalVotesOfVoterReturn> => {
   const { data, ...rest } = useContractRead({
     enabled: !!guildAddress && !!proposalId && !!userAddress,
     addressOrName: guildAddress,
@@ -26,7 +26,7 @@ const useProposalVotesOfVoter = (
   const parsedData = useMemo<UseProposalVotesOfVoterReturn>(() => {
     if (!data?.votingPower || !data?.action)
       return { action: null, votingPower: null };
-    if (data.votingPower.gt(0)) {
+    if (BigNumber.from(data.votingPower || 0).gt(0)) {
       return {
         action: data.action.toString(),
         votingPower: data?.votingPower,

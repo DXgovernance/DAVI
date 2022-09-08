@@ -1,4 +1,4 @@
-export type ContractReadResponse<T> = Pick<
+export type WagmiUseContractReadResponse<T> = Pick<
   import('react-query').QueryObserverResult<
     import('ethers/lib/utils').Result,
     Error
