@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { ActionViewProps } from '../SupportedActions';
 import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
@@ -17,17 +17,12 @@ import {
   ParamTag,
   ParamTitleRow,
   ParamTitleTag,
-  ParamDescription,
 } from './CallDetails.styled';
 import useRichContractData from 'hooks/Guilds/contracts/useRichContractData';
 import { useTranslation } from 'react-i18next';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
-import {
-  camelCaseToSplitWordsString,
-  capitalizeFirstLetterMultiWord,
-} from 'utils';
 
 type Param = Partial<FunctionParamWithValue>;
 
@@ -129,14 +124,15 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     return genericParams?.map((param, index) => {
       return (
         <ActionParamRow key={index}>
-          <ParamTitleRow margin="0">
-            {capitalizeFirstLetterMultiWord(
-              camelCaseToSplitWordsString(param.name)
-            )}
+          <ParamTitleRow>
+            {/* {capitalizeFirstLetterMultiWord(
+              camelCaseToSplitWordsString(param.description)
+            )} */}
+            {param.description}
           </ParamTitleRow>
-          {param?.description && (
+          {/* {param?.description && (
             <ParamDescription>{param.description}</ParamDescription>
-          )}
+          )} */}
           <ParamDetail>
             {renderGenericCallParamValue({
               ...param,
@@ -151,6 +147,12 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     });
   };
 
+  useEffect(() => {
+    if (isGenericCall && genericParams) {
+      setDisplayRichData(true);
+    }
+  }, []); // eslint-disable-line
+
   return (
     <>
       {functionData && genericParams && (
@@ -160,7 +162,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             variant={'secondary'}
             onClick={() => setDisplayRichData(v => !v)}
           >
-            {displayRichData ? 'Display Row Data' : 'Display Formated Data'}
+            {displayRichData ? 'Display Raw Data' : 'Display Formated Data'}
           </DetailsButton>
         </Flex>
       )}
@@ -209,10 +211,10 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                 isGenericCall && genericParams && displayRichData ? (
                   <>
                     <ActionParamRow>
-                      <ParamTitleRow margin="0">Spender</ParamTitleRow>
-                      <ParamDescription>
+                      <ParamTitleRow>
                         Address to which the expense is being authorized
-                      </ParamDescription>
+                      </ParamTitleRow>
+
                       <ParamDetail>
                         {renderGenericCallParamValue({
                           component: 'address',
@@ -221,8 +223,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                       </ParamDetail>
                     </ActionParamRow>
                     <ActionParamRow>
-                      <ParamTitleRow margin="0">Amount</ParamTitleRow>
-                      <ParamDescription>Amount being approved</ParamDescription>
+                      <ParamTitleRow>Amount being approved</ParamTitleRow>
                       <ParamDetail>
                         {renderGenericCallParamValue({
                           component: 'tokenAmount',

@@ -14,11 +14,6 @@ export const ParamTag = styled(MetadataTag)`
 export const ParamTitleRow = styled(DetailRow)`
   margin: ${({ margin }) => margin || 'inherit inherit 0.75rem'};
 `;
-export const ParamDescription = styled(Box)`
-  color: ${({ theme }) => theme.colors.white};
-  font-size: 0.75rem;
-  margin-bottom: 0.75rem;
-`;
 
 export const ParamTitleTag = styled(MetadataTag)`
   display: inline-block;
