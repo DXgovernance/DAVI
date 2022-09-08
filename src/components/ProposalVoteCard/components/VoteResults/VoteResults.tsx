@@ -32,7 +32,6 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
     voteData?.totalLocked,
     2
   );
-
   const label = getOptionLabel({ metadata: proposalMetadata, optionKey, t });
   return (
     <VotesRowWrapper>

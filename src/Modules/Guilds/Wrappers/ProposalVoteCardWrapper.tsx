@@ -10,7 +10,7 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { ProposalVoteCard } from 'components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
-import useProposalVotesOfVoter from 'hooks/Guilds/ether-swr/guild/useProposalVotesOfVoter';
+import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();

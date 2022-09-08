@@ -192,43 +192,13 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
   color: #303338;
 }
 
-.c27 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  text-align: center;
-  cursor: pointer;
-  font-size: 14px;
-  border: 1px solid #303338;
-  background-color: #295FF4;
-  color: #fff;
-  border-radius: 32px;
-  padding: 0.5rem 0.8rem;
-  margin: 0.2rem;
-  width: auto;
-}
-
-.c27:disabled {
-  color: initial;
-  opacity: 0.4;
-  cursor: auto;
-}
-
-.c27:hover:enabled {
-  border-color: #fff;
-}
-
-.c27:active:enabled {
-  border: 1px solid #303338;
+.c23 {
+  margin: 1rem 0 0;
+  border: 1px solid #292b2f;
+  border-radius: 12px;
+  padding: 8px;
+  font-size: 12px;
+  background: #303338;
 }
 
 .c13 {
@@ -282,17 +252,6 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
   margin-right: 0.5rem;
 }
 
-.c23 {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 1.5rem;
-}
-
 .c7 {
   margin: 0px;
   padding: 0.1rem 0.4rem;
@@ -308,32 +267,6 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   color: #fff;
-}
-
-.c24 {
-  color: #A1A6B0;
-  margin-bottom: 0.5rem;
-}
-
-.c25 {
-  height: 2.5rem;
-}
-
-.c25:disabled {
-  background-color: transparent;
-  border: 1px solid #303338;
-  color: #A1A6B0;
-  opacity: 1;
-}
-
-.c26 {
-  margin-bottom: 1rem;
-  background-color: #303338;
-}
-
-.c26:active {
-  color: #1B1D1F;
-  background-color: #fff;
 }
 
 <div>
@@ -455,29 +388,13 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
           </div>
         </div>
         <div
-          class="c23"
+          class="c0 c23"
         >
-          <div
-            class="c24"
-          >
-            options
-          </div>
-          <button
-            class="c6 c25 c26"
-          >
-            No
-          </button>
-          <button
-            class="c6 c25 c26"
-          >
-            Yes
-          </button>
-          <button
-            class="c27 c25"
-            disabled=""
-          >
-            vote
-          </button>
+          You voted for option "
+          Yes
+          " with
+           
+          0%
         </div>
       </div>
     </div>

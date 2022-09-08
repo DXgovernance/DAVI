@@ -47,22 +47,14 @@ const ProposalVoteCard = ({
     [proposal, timestamp]
   );
 
-  const userVotedOptionKey = useMemo<string | null>(() => {
-    if (!userVote) return null;
-    if (userVote.votingPower.gt(0)) {
-      return userVote.action.toString();
-    }
-    return null;
-  }, [userVote]);
-
-  const votedOption = useMemo(() => {
-    if (!userVotedOptionKey) return null;
+  const votedOptionLabel = useMemo(() => {
+    if (!userVote?.action) return null;
     return getOptionLabel({
       metadata: proposal?.metadata,
-      optionKey: userVotedOptionKey,
+      optionKey: userVote?.action,
       t,
     });
-  }, [userVotedOptionKey, proposal.metadata, t]);
+  }, [userVote?.action, proposal?.metadata, t]);
 
   const toastError = (msg: string) =>
     toast.error(msg, {
@@ -134,11 +126,11 @@ const ProposalVoteCard = ({
         <UserVote
           isPercent={isPercent}
           voteData={voteData}
-          votedOptionKey={userVotedOptionKey}
-          votedOptionLabel={votedOption}
+          userVote={userVote}
+          votedOptionLabel={votedOptionLabel}
         />
         {/* Hide voting options if user has already voted */}
-        {isOpen && !userVotedOptionKey && voteData?.options && (
+        {isOpen && !userVote?.action && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 

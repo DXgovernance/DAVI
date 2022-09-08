@@ -1,6 +1,7 @@
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+// import { BigNumber } from 'ethers';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { formatUnits } from 'ethers/lib/utils';
-import type { VoteData } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
+import type { VoteData } from 'Modules/Guilds/Hooks/useVotingResults';
 import { Box } from 'components/primitives/Layout/Box';
 import styled from 'styled-components';
 
@@ -13,29 +14,29 @@ const Container = styled(Box)`
   background: #303338;
 `;
 interface UserVoteProps {
-  votedOptionKey: string;
   votedOptionLabel: string;
   voteData: VoteData;
   isPercent: boolean;
+  userVote: any; // TODO: assign types
 }
 
 const UserVote: React.FC<UserVoteProps> = ({
   voteData,
-  votedOptionKey,
   votedOptionLabel,
   isPercent,
+  userVote,
 }) => {
   const votingPowerPercent = useVotingPowerPercent(
-    voteData?.options?.[votedOptionKey],
+    userVote.votingPower,
     voteData?.totalLocked,
     2
   );
 
-  const voting = `${formatUnits(voteData?.options?.[votedOptionKey] || 0)} ${
+  const voting = `${formatUnits(userVote.votingPower || 0)} ${
     voteData?.token?.symbol
   }`;
 
-  return votedOptionKey ? (
+  return userVote.action ? (
     <Container>
       You voted for option "{votedOptionLabel}" with{' '}
       {isPercent ? `${votingPowerPercent}%` : voting}
