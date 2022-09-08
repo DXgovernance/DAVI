@@ -121,18 +121,12 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   };
 
   const renderRichDataParams = () => {
-    return genericParams?.map((param, index) => {
+    return genericParams?.map(param => {
       return (
-        <ActionParamRow key={index}>
-          <ParamTitleRow>
-            {/* {capitalizeFirstLetterMultiWord(
-              camelCaseToSplitWordsString(param.description)
-            )} */}
-            {param.description}
-          </ParamTitleRow>
-          {/* {param?.description && (
-            <ParamDescription>{param.description}</ParamDescription>
-          )} */}
+        <ActionParamRow
+          key={`${param?.name}${param?.type}${param.description}`}
+        >
+          <ParamTitleRow>{param?.description ?? param?.name}</ParamTitleRow>
           <ParamDetail>
             {renderGenericCallParamValue({
               ...param,
@@ -162,7 +156,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             variant={'secondary'}
             onClick={() => setDisplayRichData(v => !v)}
           >
-            {displayRichData ? 'Display Raw Data' : 'Display Formated Data'}
+            {displayRichData ? t('displayRawData') : t('displayFormatedData')}
           </DetailsButton>
         </Flex>
       )}
@@ -180,7 +174,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                 variant={'secondary'}
               >
                 {isGenericCall && genericParams && displayRichData ? (
-                  'Approve spending call'
+                  t('approveSpendingCall')
                 ) : (
                   <>
                     approve ({' '}
@@ -212,7 +206,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                   <>
                     <ActionParamRow>
                       <ParamTitleRow>
-                        Address to which the expense is being authorized
+                        {t('addressToWhichTheExpenseIsBeingAuthorized')}
                       </ParamTitleRow>
 
                       <ParamDetail>
@@ -223,7 +217,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                       </ParamDetail>
                     </ActionParamRow>
                     <ActionParamRow>
-                      <ParamTitleRow>Amount being approved</ParamTitleRow>
+                      <ParamTitleRow> {t('amountBeingApproved')}</ParamTitleRow>
                       <ParamDetail>
                         {renderGenericCallParamValue({
                           component: 'tokenAmount',
