@@ -6,7 +6,6 @@ import { BigNumber } from 'ethers';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
-  console.log({ clone });
 
   const contractStatesMapping = {
     1: ContractState.Active,
