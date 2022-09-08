@@ -4,6 +4,7 @@ import { ERC20Guild } from 'types/contracts';
 import { ProposalMetadata } from 'types/types.guilds';
 import { Moment } from 'moment';
 import { providers } from 'ethers';
+import { UseProposalVotesOfVoterReturn } from 'hooks/Guilds/ether-swr/guild/useProposalVotesOfVoter';
 
 export interface VoteConfirmationModalProps {
   isOpen: boolean;
@@ -47,6 +48,7 @@ export interface ProposalVoteCardProps {
     summary: string,
     txFunction: () => Promise<providers.TransactionResponse>
   ) => void;
+  userVote?: UseProposalVotesOfVoterReturn;
 }
 
 export interface ResultRowProps {

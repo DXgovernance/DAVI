@@ -5,6 +5,7 @@ import {
 } from 'components/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
+import { UserVote } from './components/UserVote';
 import VoteResults from './components/VoteResults/VoteResults';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
@@ -33,6 +34,7 @@ const ProposalVoteCard = ({
   timestamp,
   contract,
   createTransaction,
+  userVote,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
@@ -44,6 +46,23 @@ const ProposalVoteCard = ({
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
   );
+
+  const userVotedOptionKey = useMemo<string | null>(() => {
+    if (!userVote) return null;
+    if (userVote.votingPower.gt(0)) {
+      return userVote.action.toString();
+    }
+    return null;
+  }, [userVote]);
+
+  const votedOption = useMemo(() => {
+    if (!userVotedOptionKey) return null;
+    return getOptionLabel({
+      metadata: proposal?.metadata,
+      optionKey: userVotedOptionKey,
+      t,
+    });
+  }, [userVotedOptionKey, proposal.metadata, t]);
 
   const toastError = (msg: string) =>
     toast.error(msg, {
@@ -94,9 +113,9 @@ const ProposalVoteCard = ({
             {!voteData ? (
               <Loading loading text skeletonProps={{ width: 40 }} />
             ) : isPercent ? (
-              voteData?.token?.symbol
-            ) : (
               '%'
+            ) : (
+              voteData?.token?.symbol
             )}
           </SmallButton>
         </SidebarCardHeaderSpaced>
@@ -112,7 +131,14 @@ const ProposalVoteCard = ({
           <VotesChart isPercent={isPercent} voteData={voteData} />
         </VotesContainer>
 
-        {isOpen && voteData?.options && (
+        <UserVote
+          isPercent={isPercent}
+          voteData={voteData}
+          votedOptionKey={userVotedOptionKey}
+          votedOptionLabel={votedOption}
+        />
+        {/* Hide voting options if user has already voted */}
+        {isOpen && !userVotedOptionKey && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 

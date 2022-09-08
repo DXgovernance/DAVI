@@ -57,8 +57,8 @@ const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
           <VoteQuorumMarker quorum={flagCheckered} />
           <VoteQuorumLabel quorum={flagCheckered}>
             <PaddedFlagCheckered />
-            <span>{isPercent ? nQuorum : flagCheckered}</span>
-            <span>{isPercent ? voteData?.token?.symbol : '%'}</span>
+            <span>{isPercent ? flagCheckered : nQuorum}</span>
+            <span>{isPercent ? '%' : voteData?.token?.symbol}</span>
           </VoteQuorumLabel>
         </VoteQuorumContainer>
       )}

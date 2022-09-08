@@ -10,16 +10,22 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { ProposalVoteCard } from 'components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
+import useProposalVotesOfVoter from 'hooks/Guilds/ether-swr/guild/useProposalVotesOfVoter';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
+  const { address: userAddress } = useAccount();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: proposalMetadata } = useProposalMetadata(guildId, proposalId);
   const voteData = useVotingResults();
+  const { data: userVote } = useProposalVotesOfVoter(
+    guildId,
+    proposalId,
+    userAddress
+  );
 
   const timestamp = useTimedRerender(10000);
 
-  const { address: userAddress } = useAccount();
   const { data: userVotingPower } = useVotingPowerOf({
     contractAddress: guildId,
     userAddress,
@@ -66,6 +72,7 @@ const ProposalVoteCardWrapper = () => {
       }}
       contract={contract}
       createTransaction={createTransaction}
+      userVote={userVote}
     />
   );
 };
