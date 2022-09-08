@@ -6,12 +6,13 @@ import { BigNumber } from 'ethers';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
+  console.log({ clone });
 
   const contractStatesMapping = {
-    0: ContractState.Active,
-    1: ContractState.Rejected,
-    2: ContractState.Executed,
-    3: ContractState.Failed,
+    1: ContractState.Active,
+    2: ContractState.Rejected,
+    3: ContractState.Executed,
+    4: ContractState.Failed,
   };
   clone.contractState = contractStatesMapping[clone.state];
   //we are removing the clone.state key
