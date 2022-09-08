@@ -1,5 +1,5 @@
 import { formatUnits } from 'ethers/lib/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { Bullet } from 'components/primitives/Bullet';
 import { Loading } from 'components/primitives/Loading';
 import { useTheme } from 'styled-components';

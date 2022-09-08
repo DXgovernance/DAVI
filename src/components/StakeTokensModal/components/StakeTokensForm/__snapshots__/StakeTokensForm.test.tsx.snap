@@ -325,7 +325,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             placeholder="0.0"
             spellcheck="false"
             type="text"
-            value=""
+            value="0.0"
           />
           <div
             class="c14"

@@ -2,7 +2,6 @@ import App from './App';
 import initializeI18Next from './i18n';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
-import { EtherSWRManager } from 'components/EtherSWRManager';
 import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -37,12 +36,10 @@ const Root = () => {
     <WagmiConfig client={client}>
       <HashRouter>
         <SyncRouterWithWagmi>
-          <EtherSWRManager>
-            <>
-              <App />
-              <EnsureReadOnlyConnection />
-            </>
-          </EtherSWRManager>
+          <>
+            <App />
+            <EnsureReadOnlyConnection />
+          </>
         </SyncRouterWithWagmi>
       </HashRouter>
     </WagmiConfig>

@@ -7,7 +7,7 @@ export const useERC20Allowance = (
   walletAddress: string,
   spenderAddress: string
 ) => {
-  const { data, isError, isLoading } = useContractRead({
+  const { data, ...rest } = useContractRead({
     addressOrName: contractAddress,
     contractInterface: ERC20.abi,
     functionName: 'allowance',
@@ -16,7 +16,6 @@ export const useERC20Allowance = (
   });
   return {
     data: data ? BigNumber.from(data) : undefined,
-    isError,
-    isLoading,
+    ...rest,
   };
 };

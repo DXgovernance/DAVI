@@ -28,7 +28,7 @@ import { EditorWrapper } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
 import { useAccount } from 'wagmi';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 const ActionModal: React.FC<ActionModalProps> = ({
   action,
