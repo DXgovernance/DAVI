@@ -16,7 +16,7 @@ import {
   FilterBadge,
 } from './Filter.styled';
 import { UnstyledLink } from 'components/primitives/Links';
-import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
+import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
 
 interface FilterProps {
   openSearchBar: boolean;

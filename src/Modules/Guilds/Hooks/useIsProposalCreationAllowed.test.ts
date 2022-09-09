@@ -1,6 +1,6 @@
 import * as useGuildConfig from 'Modules/Guilds/Hooks/useGuildConfig';
 import * as useVotingPowerOf from 'Modules/Guilds/Hooks/useVotingPowerOf';
-import useIsProposalCreationAllowed from './index';
+import useIsProposalCreationAllowed from './useIsProposalCreationAllowed';
 import { renderHook } from '@testing-library/react-hooks';
 import { BigNumber } from 'ethers';
 import { ZERO_ADDRESS } from 'utils';

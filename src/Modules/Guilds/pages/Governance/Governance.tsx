@@ -21,7 +21,7 @@ import {
 } from './Governance.styled';
 import { ProposalState } from 'types/types.guilds.d';
 import Discussions from 'Modules/Social/Discussions';
-import useIsProposalCreationAllowed from 'hooks/Guilds/useIsProposalCreationAllowed';
+import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);

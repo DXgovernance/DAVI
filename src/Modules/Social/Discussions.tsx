@@ -9,9 +9,8 @@ import { StyledLink } from 'Modules/Guilds/pages/Governance/Governance.styled';
 import { Loading } from 'components/primitives/Loading';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
-
-const REFRESH_DISCUSSIONS_INTERVAL = 10000; // 10 seconds
-const DISCUSSIONS_TO_SHOW = 10;
+import { DISCUSSIONS_TO_SHOW, REFRESH_DISCUSSIONS_INTERVAL } from './constants';
+import { Box } from 'components/primitives/Layout';
 
 const Discussions = () => {
   let orbis = useRef(new Orbis());
@@ -101,7 +100,7 @@ const Discussions = () => {
 
   const Footer = () => {
     if (isLoading) return <Loading loading text />;
-    return <div>{t('forum.noMoreDiscussions')}.</div>;
+    return <Box padding={'24px'}>{t('forum.noMoreDiscussions')}.</Box>;
   };
 
   if (error) {
