@@ -1,9 +1,7 @@
 import App from './App';
 import initializeI18Next from './i18n';
-import { GlobalErrorBoundary } from './components/ErrorBoundary';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
-import { EtherSWRManager } from 'components/EtherSWRManager';
 import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -35,20 +33,16 @@ moment.updateLocale('en', {
 
 const Root = () => {
   return (
-    <GlobalErrorBoundary>
-      <WagmiConfig client={client}>
-        <HashRouter>
-          <SyncRouterWithWagmi>
-            <EtherSWRManager>
-              <>
-                <App />
-                <EnsureReadOnlyConnection />
-              </>
-            </EtherSWRManager>
-          </SyncRouterWithWagmi>
-        </HashRouter>
-      </WagmiConfig>
-    </GlobalErrorBoundary>
+    <WagmiConfig client={client}>
+      <HashRouter>
+        <SyncRouterWithWagmi>
+          <>
+            <App />
+            <EnsureReadOnlyConnection />
+          </>
+        </SyncRouterWithWagmi>
+      </HashRouter>
+    </WagmiConfig>
   );
 };
 const rootElement = document.getElementById('root');

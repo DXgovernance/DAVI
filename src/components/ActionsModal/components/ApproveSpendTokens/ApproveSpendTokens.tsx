@@ -8,7 +8,7 @@ import { Input } from 'components/primitives/Forms/Input';
 import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
 import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';
 import {
@@ -25,8 +25,8 @@ import {
 import { useNetwork } from 'wagmi';
 
 export interface TokenSpendApproval {
-  amount: BigNumber;
-  token: string;
+  amount?: BigNumber;
+  token?: string;
 }
 
 interface ApproveSpendTokensProps {

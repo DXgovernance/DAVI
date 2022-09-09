@@ -6261,6 +6261,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/crypto-js@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-4.1.1.tgz#602859584cecc91894eb23a4892f38cfa927890d"
+  integrity sha512-BG7fQKZ689HIoc5h+6D2Dgq1fABRa0RbBWKBd9SP/MVRVXROflpm5fhwyATX5duFmbStzyzyycPB8qUYKDH3NA==
+
 "@types/debug@^4.1.7":
   version "4.1.7"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.7.tgz#7cc0ea761509124709b8b2d1090d8f6c17aadb82"
@@ -11438,6 +11443,11 @@ crypto-browserify@3.12.0, crypto-browserify@^3.0.0, crypto-browserify@^3.11.0, c
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-js@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.1.1.tgz#9e485bcf03521041bd85844786b83fb7619736cf"
+  integrity sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==
+
 crypto-random-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
@@ -13870,11 +13880,6 @@ eth-tx-summary@^3.1.2:
     ethereumjs-util "^5.0.1"
     ethereumjs-vm "^2.6.0"
     through2 "^2.0.3"
-
-ether-swr@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ether-swr/-/ether-swr-2.0.1.tgz#76175d8a1f4758545cdfa03410c2d134bc97e947"
-  integrity sha512-FWck86RyNU4giiJeLyWzT/xPGYuTA8G2yFioSRON20aL3urbUbTqv0krh1yWvgQ+JZX4/cqnB92GiRQr0zkNzQ==
 
 ethereum-bloom-filters@^1.0.6:
   version "1.0.10"

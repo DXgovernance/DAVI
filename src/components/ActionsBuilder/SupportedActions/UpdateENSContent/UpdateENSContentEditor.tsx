@@ -13,7 +13,7 @@ import { isEnsName, isIpfsHash } from './validation';
 import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
-import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
+import { useUpdateEnsContent } from 'hooks/Guilds/useUpdateEnsContent';
 import { Tooltip } from 'components/Tooltip';
 import { StyledIcon } from 'components/primitives/StyledIcon';
 import { LOCALHOST_ID } from 'utils';

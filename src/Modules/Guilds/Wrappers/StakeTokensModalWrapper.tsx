@@ -1,15 +1,15 @@
 import { StakeTokensModal } from 'components/StakeTokensModal';
 import StakeTokensForm from 'components/StakeTokensModal/components/StakeTokensForm/StakeTokensForm';
-import { useERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTransactions } from 'contexts/Guilds';
-import { useERC20Allowance } from 'hooks/Guilds/ether-swr/erc20/useERC20Allowance';
-import { useERC20Balance } from 'hooks/Guilds/ether-swr/erc20/useERC20Balance';
-import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
+import { useERC20Allowance } from 'hooks/Guilds/erc20/useERC20Allowance';
+import { useERC20Balance } from 'hooks/Guilds/erc20/useERC20Balance';
+import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useERC20, useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
+import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import { useAccount } from 'wagmi';
 
 const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {

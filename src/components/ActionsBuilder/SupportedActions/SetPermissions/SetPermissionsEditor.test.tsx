@@ -20,13 +20,6 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
-jest.mock('hooks/Guilds/ether-swr/useEtherSWR.ts', () => ({
-  __esModule: true,
-  default: () => ({
-    getNetwork: 'eth',
-  }),
-}));
-
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: false }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),

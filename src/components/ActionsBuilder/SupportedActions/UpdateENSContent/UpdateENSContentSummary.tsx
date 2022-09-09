@@ -6,7 +6,7 @@ import {
   StyledSegmentLink,
 } from '../common/Summary.styled';
 import Summary from '../common/Summary';
-import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
+import { useUpdateEnsContent } from 'hooks/Guilds/useUpdateEnsContent';
 import { useEnsName, useNetwork } from 'wagmi';
 import { convertToIpfsHash, getIpfsUrl, isSupportedChainId } from './utils';
 import { useTranslation } from 'react-i18next';

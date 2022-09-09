@@ -33,7 +33,9 @@ const AddressButton: React.FC<AddressButtonProps> = ({
       </IconHolder>
       {isDesktop && (
         <AddressText>
-          {ensName || address ? (
+          {ensName ? (
+            ensName
+          ) : address ? (
             showFullAddress ? (
               address
             ) : (

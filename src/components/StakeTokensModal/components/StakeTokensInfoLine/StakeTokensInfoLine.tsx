@@ -7,7 +7,7 @@ import {
 } from '../StakeTokensForm/StakeTokensForm.styled';
 import { FiArrowRight } from 'react-icons/fi';
 import { Loading } from 'components/primitives/Loading';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { FiInfo } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';

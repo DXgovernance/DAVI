@@ -83,9 +83,7 @@ describe('SwaprPicker', () => {
     const optionOne = await waitFor(() => result.getByText('XDOGE - DON'));
     fireEvent.click(optionOne);
 
-    const addressButton = await waitFor(() =>
-      result.getByText('0x003a...6c1b')
-    );
+    const addressButton = await waitFor(() => result.getByText('test.eth'));
 
     expect(addressButton).toBeInTheDocument();
   });

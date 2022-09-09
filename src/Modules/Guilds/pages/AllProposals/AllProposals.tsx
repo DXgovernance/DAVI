@@ -1,4 +1,4 @@
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
 import { Filter } from 'components/Filter';
 import ProposalCardWrapper from 'Modules/Guilds/Wrappers/ProposalCardWrapper';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
@@ -14,7 +14,7 @@ const PROPOSALS_TO_LOAD = 10;
 const AllProposals = ({ guildId }) => {
   const { t } = useTranslation();
   const { isLoading } = useContext(GuildAvailabilityContext);
-  const { data: proposalIds, error } = useGuildProposalIds(guildId);
+  const { data: proposalIds, isError, error } = useGuildProposalIds(guildId);
   const [openSearchBar, setOpenSearchBar] = useState(false);
 
   /*
@@ -57,7 +57,7 @@ const AllProposals = ({ guildId }) => {
     }
   };
 
-  if (!isLoading && !proposalIds && error) {
+  if (!isLoading && !proposalIds && isError) {
     return (
       <Result
         state={ResultState.ERROR}

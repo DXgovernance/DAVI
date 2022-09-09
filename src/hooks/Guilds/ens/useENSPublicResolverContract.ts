@@ -15,25 +15,22 @@ import { MAINNET_ID } from 'utils';
 export function useENSAvatarUri(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver } = useENSResolver(ensName, supportedChainId);
-  const { data, isError, isLoading } = useContractRead({
+  const { data, ...rest } = useContractRead({
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'text',
     args: [convertToNameHash(ensName), 'avatar'],
+    chainId: supportedChainId,
   });
   return {
     avatarUri: data?.toString(),
-    isError,
-    isLoading,
+    ...rest,
   };
 }
 
 export function useENSContentHash(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
-  const { resolver, isError, isLoading } = useENSResolver(
-    ensName,
-    supportedChainId
-  );
+  const { resolver, ...rest } = useENSResolver(ensName, supportedChainId);
   const { data } = useContractRead({
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
@@ -45,7 +42,6 @@ export function useENSContentHash(ensName: string, chainId?: number) {
   });
   return {
     ipfsHash: data?.toString(),
-    isLoading,
-    isError,
+    ...rest,
   };
 }

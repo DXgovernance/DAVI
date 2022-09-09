@@ -6,7 +6,7 @@ import { Interweave } from 'interweave';
 import {
   useERC20Info,
   getTokenInfoParsedParams,
-} from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+} from 'hooks/Guilds/erc20/useERC20Info';
 import { Segment } from '../common/infoLine';
 import { useMemo } from 'react';
 import { FiArrowRight, FiCode } from 'react-icons/fi';

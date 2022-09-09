@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import type { VoteData } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
+import type { VoteData } from 'Modules/Guilds/Hooks/useVotingResults';
 import { ERC20Guild } from 'types/contracts';
 import { ProposalMetadata } from 'types/types.guilds';
 import { Moment } from 'moment';

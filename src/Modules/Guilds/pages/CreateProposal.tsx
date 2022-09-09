@@ -31,7 +31,7 @@ import {
   Label,
 } from '../styles';
 
-const EMPTY_CALL: Call = {
+export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
   from: ZERO_ADDRESS,
   to: ZERO_ADDRESS,
@@ -128,6 +128,16 @@ const CreateProposalPage: React.FC = () => {
     const toArray = calls.map(call => call.to);
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
+
+    if (
+      toArray.length === 0 &&
+      dataArray.length === 0 &&
+      valueArray.length === 0
+    ) {
+      toArray.push(ZERO_ADDRESS);
+      dataArray.push(ZERO_HASH);
+      valueArray.push(BigNumber.from(0));
+    }
 
     const { isValid, error } = isValidProposal({
       toArray,

@@ -25,7 +25,7 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
-jest.mock('hooks/Guilds/ether-swr/erc20/useERC20Info', () => ({
+jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
   useERC20Info: () => ({
     name: 'Test ERC20',
     symbol: 'TEST',
