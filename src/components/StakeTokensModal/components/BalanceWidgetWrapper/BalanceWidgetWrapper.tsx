@@ -9,6 +9,7 @@ import { Button } from 'components/primitives/Button';
 import { Loading } from 'components/primitives/Loading';
 import { BalanceWidgetWrapperProps } from '../../types';
 import { useTranslation } from 'react-i18next';
+import { BigNumber } from 'ethers';
 const BalanceWidgetWrapper = ({
   token,
   stakeAmount,
@@ -33,7 +34,7 @@ const BalanceWidgetWrapper = ({
       </InfoRow>
       <InfoRow>
         <StakeAmountInput
-          value={stakeAmount}
+          value={stakeAmount || BigNumber.from(0)}
           onChange={setStakeAmount}
           decimals={token?.info?.decimals}
           data-testid="stake-amount-input"

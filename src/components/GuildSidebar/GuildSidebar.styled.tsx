@@ -37,6 +37,13 @@ export const DaoBrand = styled.div`
   }
 `;
 
+export const MemberIconWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 export const DaoIcon = styled.img`
   height: 3rem;
   width: 3rem;

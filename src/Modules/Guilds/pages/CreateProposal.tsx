@@ -13,8 +13,8 @@ import { ActionsBuilder } from 'components/ActionsBuilder';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import React, { useContext, useMemo, useState } from 'react';
-import { FiChevronLeft } from 'react-icons/fi';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
+import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
@@ -30,6 +30,9 @@ import {
   SidebarContent,
   Label,
 } from '../styles';
+import usePinataIPFS from 'hooks/Guilds/ipfs/usePinataIPFS';
+import { Modal } from 'components/primitives/Modal';
+import { WarningCircle } from 'components/primitives/StatusCircles';
 
 export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -69,6 +72,10 @@ const CreateProposalPage: React.FC = () => {
     t('enterProposalDescription')
   );
 
+  const [ipfsError, setIpfsError] = useState('');
+  const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
+  const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
+
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;
@@ -78,6 +85,7 @@ const CreateProposalPage: React.FC = () => {
   const handleBack = () => navigate(`/${chain}/${guildId}`);
 
   const ipfs = useIPFSNode();
+  const { pinToPinata } = usePinataIPFS();
 
   const uploadToIPFS = async () => {
     const content = {
@@ -86,7 +94,27 @@ const CreateProposalPage: React.FC = () => {
     };
     const cid = await ipfs.add(JSON.stringify(content));
     await ipfs.pin(cid);
+    const pinataPinResult = await pinToPinata(cid, content);
+
+    if (pinataPinResult.IpfsHash !== `${cid}`) {
+      throw new Error(t('ipfs.hashNotTheSame'));
+    }
     return contentHash.fromIpfs(cid);
+  };
+
+  const handleSkipUploadToIPFS = () => {
+    setIsIpfsErrorModalOpen(false);
+    setSkipUploadToIPFs(true);
+  };
+
+  useEffect(() => {
+    if (skipUploadToIPFs && !isIpfsErrorModalOpen) handleCreateProposal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [skipUploadToIPFs, isIpfsErrorModalOpen]);
+
+  const handleRetryUploadToIPFS = () => {
+    setIsIpfsErrorModalOpen(false);
+    handleCreateProposal();
   };
 
   const { createTransaction } = useTransactions();
@@ -95,14 +123,18 @@ const CreateProposalPage: React.FC = () => {
 
   const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
-    try {
-      contentHash = await uploadToIPFS();
-    } catch (e) {
-      toast.error(
-        'Failed to upload to IPFS, please refresh the page and try again'
-      );
-      return;
+    if (!skipUploadToIPFs) {
+      try {
+        contentHash = await uploadToIPFS();
+      } catch (e) {
+        console.log(e);
+        setIpfsError(e.message);
+        setIsIpfsErrorModalOpen(true);
+        return;
+      }
     }
+    setSkipUploadToIPFs(false);
+    setIsIpfsErrorModalOpen(false);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     const totalActions = encodedOptions.length;
@@ -128,6 +160,16 @@ const CreateProposalPage: React.FC = () => {
     const toArray = calls.map(call => call.to);
     const dataArray = calls.map(call => call.data);
     const valueArray = calls.map(call => call.value);
+
+    if (
+      toArray.length === 0 &&
+      dataArray.length === 0 &&
+      valueArray.length === 0
+    ) {
+      toArray.push(ZERO_ADDRESS);
+      dataArray.push(ZERO_HASH);
+      valueArray.push(BigNumber.from(0));
+    }
 
     const { isValid, error } = isValidProposal({
       toArray,
@@ -240,6 +282,35 @@ const CreateProposalPage: React.FC = () => {
       <SidebarContent>
         <SidebarInfoCardWrapper />
       </SidebarContent>
+      <Modal
+        isOpen={isIpfsErrorModalOpen}
+        onDismiss={() => setIsIpfsErrorModalOpen(false)}
+        header={t('ipfs.errorWhileUploading')}
+        maxWidth={390}
+      >
+        <Flex padding={'1.5rem'}>
+          <Flex>
+            <WarningCircle>
+              <FiX size={40} />
+            </WarningCircle>
+            <Flex padding={'1.5rem 0'}>{ipfsError}</Flex>
+          </Flex>
+          <Flex direction="row" style={{ columnGap: '1rem' }}>
+            <StyledButton onClick={handleRetryUploadToIPFS}>
+              {t('retry')}
+            </StyledButton>
+            <StyledButton onClick={handleSkipUploadToIPFS} variant="secondary">
+              {t('createAnyway')}
+            </StyledButton>
+            <StyledButton
+              onClick={() => setIsIpfsErrorModalOpen(false)}
+              variant="secondary"
+            >
+              {t('close')}
+            </StyledButton>
+          </Flex>
+        </Flex>
+      </Modal>
     </PageContainer>
   );
 };

@@ -13,7 +13,7 @@ import {
   Wrapper,
 } from '../../ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import React from 'react';
 import {
   RichContractData,

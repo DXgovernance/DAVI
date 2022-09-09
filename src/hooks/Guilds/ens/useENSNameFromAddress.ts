@@ -7,18 +7,13 @@ export default function useENSNameFromAddress(
   chainId?: number
 ) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
-  const {
-    data: ensName,
-    isLoading,
-    isError,
-  } = useEnsName({
+  const { data: ensName, ...rest } = useEnsName({
     address: ensAddress,
     chainId: supportedChainId,
   });
 
   return {
     ensName,
-    isLoading,
-    isError,
+    ...rest,
   };
 }

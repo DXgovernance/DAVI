@@ -4,17 +4,17 @@ import { useContext, useEffect, useMemo } from 'react';
 import { Result, ResultState } from 'components/Result';
 import { Flex } from 'components/primitives/Layout';
 import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
 import { Input } from 'components/primitives/Forms/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
+import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import { ProposalState } from 'types/types.guilds.d';
 import { useAccount } from 'wagmi';
 import {
@@ -134,7 +134,6 @@ const Governance = ({ guildId }) => {
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
-
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
             There are no active proposals.{' '}
@@ -143,7 +142,6 @@ const Governance = ({ guildId }) => {
             </StyledLink>
           </div>
         )}
-
         {proposalIds ? (
           <ProposalListWrapper>
             {revertedProposals.map(proposal => (
