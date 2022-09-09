@@ -1,8 +1,8 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useMemo } from 'react';
 import { useAccount } from 'wagmi';
-import { useGuildConfig } from '../ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from '../ether-swr/guild/useVotingPowerOf';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 
 const useIsProposalCreationAllowed = () => {
   const { guildId } = useTypedParams();
