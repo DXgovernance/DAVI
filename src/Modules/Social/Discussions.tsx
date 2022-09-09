@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Orbis } from '@orbisclub/orbis-sdk';
+import { useContext, useEffect, useMemo, useState } from 'react';
+// import { Orbis } from '@orbisclub/orbis-sdk';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso } from 'react-virtuoso';
 import { DiscussionCard } from 'components/DiscussionCard';
@@ -11,9 +11,10 @@ import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
 import { DISCUSSIONS_TO_SHOW, REFRESH_DISCUSSIONS_INTERVAL } from './constants';
 import { Box } from 'components/primitives/Layout';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 
 const Discussions = () => {
-  let orbis = useRef(new Orbis());
+  const { orbis } = useContext(OrbisContext);
 
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
   const [error, setError] = useState(null);
@@ -99,8 +100,11 @@ const Discussions = () => {
   }, [currentPage]);
 
   const Footer = () => {
-    if (isLoading) return <Loading loading text />;
-    return <Box padding={'24px'}>{t('forum.noMoreDiscussions')}.</Box>;
+    return (
+      <Box padding={'24px'}>
+        {isLoading ? <Loading loading text /> : t('forum.noMoreDiscussions')}
+      </Box>
+    );
   };
 
   if (error) {

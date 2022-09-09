@@ -5,7 +5,7 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import { useContext, useMemo, useState, useEffect, useRef } from 'react';
+import { useContext, useMemo, useState, useEffect } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,6 @@ import {
   SidebarContent,
   Label,
 } from '../styles';
-import { Orbis } from '@orbisclub/orbis-sdk';
 import {
   connect,
   isConnected,
@@ -26,9 +25,10 @@ import {
   postTemplate,
 } from 'components/Forum';
 import { DiscussionContent } from 'components/Forum/types';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 
 const CreateDiscussionPage: React.FC = () => {
-  let orbis = useRef(new Orbis());
+  const { orbis } = useContext(OrbisContext);
 
   const { guildId, chainName: chain } = useTypedParams();
   const { isLoading: isGuildAvailabilityLoading } = useContext(
@@ -51,7 +51,7 @@ const CreateDiscussionPage: React.FC = () => {
         });
       }
     });
-  }, [user]);
+  }, [user, orbis]);
 
   const {
     Editor,

@@ -19,7 +19,6 @@ export const postTemplate = (post: DiscussionContent): DiscussionContent => {
 export async function createPost(orbis: OrbisType, content: DiscussionContent) {
   let res = await orbis.createPost(content);
   if (res.status === 200) {
-    console.log('Post created: ', res);
     return res;
   } else {
     console.error('Error creating post: ', res.error);
