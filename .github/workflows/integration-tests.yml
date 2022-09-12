@@ -59,5 +59,3 @@ jobs:
       - name: Run Synpress without dashboard
         if: ${{ needs.check-if-tests-should-run.outcome != 'success' }}
         run: yarn run test:e2e
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.DASHBOARD_KEY }}
