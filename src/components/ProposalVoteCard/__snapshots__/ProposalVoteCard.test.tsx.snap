@@ -389,9 +389,9 @@ exports[`ProposalVoteCard matches the snapshot 1`] = `
         <div
           class="c0 c23"
         >
-          You voted for option "
-          Yes
-          " with
+          youVotedForOption
+           
+          with
            
           0%
         </div>
