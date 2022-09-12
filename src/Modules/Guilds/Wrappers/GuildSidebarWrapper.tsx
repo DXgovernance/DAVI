@@ -19,6 +19,7 @@ import StakeTokensModalWrapper from './StakeTokensModalWrapper';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
+import useGuildHolderTotal from '../Hooks/useGuildHolderTotal';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
@@ -29,6 +30,7 @@ const GuildSidebarWrapper = () => {
   const { isRepGuild } = useGuildImplementationType(guildAddress);
   const { data: guildToken } = useERC20Info(guildConfig?.token);
   const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
+  const { data: numberOfHolders } = useGuildHolderTotal(guildConfig?.token);
   const { address: userAddress, connector } = useAccount();
   const { ensName, imageUrl } = useENSAvatar(userAddress);
   const { data: unlockedAt } = useVoterLockTimestamp(guildAddress, userAddress);
@@ -43,6 +45,8 @@ const GuildSidebarWrapper = () => {
   );
 
   const { createTransaction } = useTransactions();
+  const participants = isRepGuild ? numberOfHolders : numberOfMembers;
+
   const guildContract = useERC20Guild(guildAddress);
   const withdrawTokens = async () => {
     createTransaction(
@@ -58,7 +62,7 @@ const GuildSidebarWrapper = () => {
     <>
       <GuildSidebar
         guildName={guildConfig?.name}
-        numberOfMembers={numberOfMembers}
+        numberOfMembers={participants}
         actions={
           userVotingPower && !userVotingPower?.isZero() ? (
             <MemberActions
