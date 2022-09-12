@@ -15,6 +15,7 @@ const useCurrentSnapshotId = ({
     addressOrName: contractAddress,
     contractInterface: SnapshotERC20Guild.abi,
     functionName: 'getCurrentSnapshotId',
+    watch: true,
   });
 };
 

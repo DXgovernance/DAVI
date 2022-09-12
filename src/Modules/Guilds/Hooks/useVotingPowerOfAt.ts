@@ -30,12 +30,14 @@ const useVotingPowerOfAt = ({
           contractInterface: SnapshotERC20Guild.abi,
           functionName: 'votingPowerOfAt',
           args: [userAddress, SNAPSHOT_ID],
+          watch: true,
         }
       : {
           addressOrName: contractAddress,
           contractInterface: SnapshotERC20Guild.abi,
           functionName: 'votingPowerOf',
           args: [userAddress],
+          watch: true,
         }
   );
   return {

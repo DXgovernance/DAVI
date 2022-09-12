@@ -6,5 +6,6 @@ export const useGuildProposalIds = (guildId: string) => {
     addressOrName: guildId,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getProposalsIds',
+    watch: true,
   });
 };
