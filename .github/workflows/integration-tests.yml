@@ -51,11 +51,11 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run Synpress with dashboard
-        if: ${{ needs.check-if-tests-should-run.outcome == 'success' }}
+        if: ${{ needs.check-if-tests-should-run.outcome == 'success' || (github.event_name == 'push') }}
         run: yarn run test:e2e record
         env:
           CYPRESS_RECORD_KEY: ${{ secrets.DASHBOARD_KEY }}
 
       - name: Run Synpress without dashboard
-        if: ${{ needs.check-if-tests-should-run.outcome != 'success' }}
+        if: ${{ needs.check-if-tests-should-run.outcome != 'success' && !(github.event_name == 'push')}}
         run: yarn run test:e2e
