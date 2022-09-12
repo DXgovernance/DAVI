@@ -44,5 +44,6 @@ jobs:
           echo -e 'pcm.!default {\n type hw\n card 0\n}\n\nctl.!default {\n type hw\n card 0\n}' > ~/.asoundrc
 
       - name: Run Synpress
-        run: yarn run test:e2e
-
+        run: yarn run test:e2e $CYPRESS_RECORD_KEY
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.DASHBOARD_KEY }}
