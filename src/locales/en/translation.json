@@ -225,6 +225,12 @@
   "pageNotExist": "That page doesn't exist",
   "makeSureCorrectAddress": "Make sure you typed the correct address",
   "stakeTokens": "Stake {{token}} tokens",
+  "ipfs": {
+    "failedToUpload": "Failed to upload to IPFS, please refresh the page and try again",
+    "hashNotTheSame": "Hash returned by pinata isn't the same as local hash",
+    "errorWhileUploading": "Error while uploading to IPFS",
+    "couldntUploadToPinata": "Couldn't upload and pin to Pinata"
+  },
   "createAnyway": "Create anyways",
   "retry": "Retry",
   "error": "Error",
