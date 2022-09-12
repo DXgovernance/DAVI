@@ -1,19 +1,21 @@
 import { Flex } from 'components/primitives/Layout';
 import { Modal } from 'components/primitives/Modal';
-import { PendingCircle } from 'components/primitives/PendingCircle';
 import { FiX, FiCheck } from 'react-icons/fi';
 import {
   Message,
   Muted,
   StatusWrapper,
-  SuccessCircle,
   TenderlyLogo,
-  WarningCircle,
 } from './SimulationModal.styled';
 import { Button } from 'components/primitives/Button';
 import { useTranslation } from 'react-i18next';
 import tenderlyLogo from 'assets/images/tenderly-dark-mode.svg';
 import { SimulationState } from '../types';
+import {
+  SuccessCircle,
+  WarningCircle,
+  PendingCircle,
+} from 'components/primitives/StatusCircles';
 
 interface SimulationModalProps {
   isOpen: boolean;
