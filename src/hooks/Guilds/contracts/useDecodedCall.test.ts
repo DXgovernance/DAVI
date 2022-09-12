@@ -18,6 +18,7 @@ jest.mock('./useRichContractRegistry', () => ({
 
 jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+  useProvider: () => ({ getCode: jest.fn() }),
 }));
 
 describe('useDecodedCall', () => {

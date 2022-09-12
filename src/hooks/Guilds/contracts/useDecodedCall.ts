@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { utils } from 'ethers';
-import { useNetwork } from 'wagmi';
+import { useNetwork, useProvider } from 'wagmi';
 import {
   RichContractData,
   useRichContractRegistry,
@@ -22,6 +22,8 @@ import {
   MINT_REP_SIGNATURE,
 } from 'utils';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
+import { Provider } from '@wagmi/core';
+import { enc, SHA256 } from 'crypto-js';
 
 const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
   {
@@ -107,7 +109,8 @@ const getContractFromKnownSighashes = (data: string) => {
 export const decodeCall = async (
   call: Call,
   contracts: RichContractData[],
-  chainId: number
+  chainId: number,
+  provider?: Provider
 ) => {
   let decodedCall: DecodedCall = null;
 
@@ -130,11 +133,24 @@ export const decodeCall = async (
   }
 
   // Detect using the rich contract data registry.
-  const matchedRichContractData = contracts?.find(
+  let matchedRichContractData = contracts?.find(
     contract =>
       contract.networks[chainId].toLocaleLowerCase() ===
       call.to.toLocaleLowerCase()
   );
+
+  // Try to detect clone contracts
+  if (!matchedRichContractData && provider) {
+    const btcode = await provider.getCode(call.to);
+    const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
+
+    matchedRichContractData = contracts?.find(
+      contract =>
+        contract.networks[chainId].toLocaleLowerCase() ===
+        hashedBytecode.toLocaleLowerCase()
+    );
+  }
+
   let matchedContract = matchedRichContractData
     ? getContractInterfaceFromRichContractData(matchedRichContractData)
     : getContractFromKnownSighashes(call.data);
@@ -178,13 +194,14 @@ export const decodeCall = async (
 export const bulkDecodeCallsFromOptions = (
   options: Option[],
   contracts: RichContractData[],
-  chainId: number
+  chainId: number,
+  provider?: Provider
 ) => {
   return Promise.all(
     options.map(async option => {
       const { actions } = option;
       const actionPromisesArray = actions.map(
-        async action => await decodeCall(action, contracts, chainId)
+        async action => await decodeCall(action, contracts, chainId, provider)
       );
       const decodedActions = await Promise.all(actionPromisesArray);
       return {
@@ -207,10 +224,11 @@ export const useDecodedCall = (call: Call) => {
   const isCancelled = useRef(false);
   const { chain } = useNetwork();
   const { contracts } = useRichContractRegistry();
+  const provider = useProvider();
 
   useEffect(() => {
     if (call && !isCancelled.current) {
-      decodeCall(call, contracts, chain?.id).then(decodedData =>
+      decodeCall(call, contracts, chain?.id, provider).then(decodedData =>
         setDecodedCall(decodedData)
       );
     } else if (!call) {
@@ -219,7 +237,7 @@ export const useDecodedCall = (call: Call) => {
     return () => {
       isCancelled.current = true;
     };
-  }, [call, contracts, chain]);
+  }, [call, contracts, chain, provider]);
 
   return (
     decodedCall || {
