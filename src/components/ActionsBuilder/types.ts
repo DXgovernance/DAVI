@@ -55,7 +55,7 @@ export interface Option {
   votePercentage?: number;
 }
 
-export interface ApproveSendTokens {
-  amount: BigNumber;
-  token: string;
+export interface ApproveSendTokens extends DecodedCall {
+  amount?: BigNumber;
+  token?: string;
 }

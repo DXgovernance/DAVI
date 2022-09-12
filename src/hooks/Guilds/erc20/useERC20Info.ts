@@ -1,7 +1,12 @@
-import useEtherSWR from '../useEtherSWR';
-import ERC20 from 'contracts/ERC20.json';
-import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
+import { useContractReads } from 'wagmi';
+import ERC20 from 'contracts/ERC20.json';
+
+interface ERC20InfoHook {
+  data: ERC20Info;
+  isError: boolean;
+  isLoading: boolean;
+}
 
 export type ERC20Info = {
   name: string;
@@ -10,34 +15,43 @@ export type ERC20Info = {
   totalSupply: BigNumber;
 };
 
-export const useERC20Info = (contractAddress: string) => {
-  const { data, ...rest } = useEtherSWR(
-    contractAddress
-      ? [
-          [contractAddress, 'name'],
-          [contractAddress, 'symbol'],
-          [contractAddress, 'decimals'],
-          [contractAddress, 'totalSupply'],
-        ]
-      : [],
-    {
-      ABIs: new Map([[contractAddress, ERC20.abi]]),
-      refreshInterval: 0,
-    }
-  );
-
-  const transformedData: ERC20Info = useMemo(() => {
-    if (!data) return undefined;
-
-    return {
-      name: data[0],
-      symbol: data[1],
-      decimals: data[2],
-      totalSupply: data[3],
-    };
-  }, [data]);
-
-  return { data: transformedData, ...rest };
+export const useERC20Info = (contractAddress: string): ERC20InfoHook => {
+  const erc20InfoContract = {
+    addressOrName: contractAddress,
+    contractInterface: ERC20.abi,
+  };
+  const { data, isError, isLoading } = useContractReads({
+    contracts: [
+      {
+        ...erc20InfoContract,
+        functionName: 'name',
+      },
+      {
+        ...erc20InfoContract,
+        functionName: 'symbol',
+      },
+      {
+        ...erc20InfoContract,
+        functionName: 'decimals',
+      },
+      {
+        ...erc20InfoContract,
+        functionName: 'totalSupply',
+      },
+    ],
+  });
+  if (!data || data.every(v => v === null))
+    return { data: undefined, isError, isLoading };
+  return {
+    data: {
+      name: data[0].toString(),
+      symbol: data[1].toString(),
+      decimals: Number(data[2]),
+      totalSupply: BigNumber.from(data[3]),
+    },
+    isError,
+    isLoading,
+  };
 };
 
 export const getTokenInfoParsedParams = (tokenInfo: ERC20Info) =>

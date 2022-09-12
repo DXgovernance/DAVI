@@ -38,7 +38,9 @@ export const useAllERC20Balances = (
 
     return erc20Tokens.map((token, index) => ({
       ...token,
-      balance: BigNumber.from(erc20Balances[index]),
+      balance: erc20Balances[index]
+        ? BigNumber.from(erc20Balances[index])
+        : null,
     }));
   }, [erc20Balances, erc20Tokens]);
 
@@ -73,6 +75,5 @@ export const useAllERC20Balances = (
       return 0;
     });
   }, [tokens, erc20TokensWithBalance, nativeTokenWithBalance]);
-
   return { data: parsed, ...rest };
 };

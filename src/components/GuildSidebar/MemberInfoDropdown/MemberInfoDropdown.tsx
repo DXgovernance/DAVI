@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ERC20Info } from 'hooks/Guilds/ether-swr/erc20/useERC20Info';
+import { ERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import {
   DropdownMenu,
   DropdownContent,

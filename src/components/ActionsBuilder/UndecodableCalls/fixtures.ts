@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import { Call } from '../types';
+import { Call, SupportedAction } from '../types';
 
 export const callMock: Call = {
   from: '0x0000000000000000000000000000000000000000',
@@ -11,6 +11,12 @@ export const callMock: Call = {
 export const callMockWithApproval: Call = {
   ...callMock,
   approval: {
+    callType: SupportedAction.GENERIC_CALL,
+    from: '0x0000000000000000000000000000000000000000',
+    to: '0x0000000000000000000000000000000000000000',
+    value: BigNumber.from(0),
+    function: null,
+    args: {},
     amount: BigNumber.from('10000'),
     token: '0x0000000000000000000000000000000000000000',
   },

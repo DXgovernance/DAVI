@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Should match snapshot 1`] = `
-.c7 {
+.c8 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -26,17 +26,17 @@ exports[`Header Should match snapshot 1`] = `
   width: auto;
 }
 
-.c7:disabled {
+.c8:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c7:hover:enabled {
+.c8:hover:enabled {
   border-color: #fff;
 }
 
-.c7:active:enabled {
+.c8:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -62,6 +62,7 @@ exports[`Header Should match snapshot 1`] = `
 
 .c0 {
   padding: 0.75rem 0;
+  max-height: 80px;
   position: -webkit-sticky;
   position: -webkit-sticky;
   position: sticky;
@@ -88,7 +89,7 @@ exports[`Header Should match snapshot 1`] = `
   color: #fff;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,6 +107,11 @@ exports[`Header Should match snapshot 1`] = `
 
 .c5 {
   cursor: pointer;
+}
+
+.c6 {
+  width: 40%;
+  max-height: 50px;
 }
 
 @media only screen and (min-width:768px) {
@@ -132,20 +138,22 @@ exports[`Header Should match snapshot 1`] = `
         class="c4 c5"
         size="2"
       >
-        <strong>
-          guilds.guilds
-        </strong>
+        <svg
+          class="c6"
+        >
+          project_davi_logo_white.svg
+        </svg>
       </h2>
       <div
-        class="c1 c6"
+        class="c1 c7"
       >
         <button
-          class="c7"
+          class="c8"
         >
           notConnected
         </button>
         <button
-          class="c7"
+          class="c8"
           data-testid="connectWalletBtn"
         >
           connectWallet

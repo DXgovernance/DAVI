@@ -152,7 +152,7 @@ exports[`AddressButton Should render properly with full props 1`] = `
     <span
       class="c6"
     >
-      0x7970...0928
+      test.eth
     </span>
     <div
       class="c7 c8"
@@ -290,7 +290,7 @@ exports[`AddressButton Should render properly with partial props 1`] = `
     <span
       class="c6"
     >
-      0x7970...0928
+      test.eth
     </span>
   </button>
    
