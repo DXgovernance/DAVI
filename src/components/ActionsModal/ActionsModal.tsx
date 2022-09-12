@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BigNumber } from 'ethers';
+import { BigNumber, utils } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -109,9 +109,11 @@ const ActionModal: React.FC<ActionModalProps> = ({
         );
       }
 
+      const isCloneBytecodeHash = !utils.isAddress(contractId);
       return (
         <ParamsForm
           fn={fn}
+          contractBytecodeHash={isCloneBytecodeHash ? contractId : null}
           defaultValues={data?.args}
           onSubmit={args => {
             onAddAction({
@@ -120,7 +122,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
               decodedCall: {
                 callType: SupportedAction.GENERIC_CALL,
                 from: guildId,
-                to: contractId,
+                to: args._clonedContractAddress || contractId,
                 function: contractInterface.getFunction(selectedFunction),
                 value: BigNumber.from(0),
                 args,

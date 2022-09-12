@@ -3,7 +3,6 @@ import { useMemo } from 'react';
 import moment, { Moment } from 'moment';
 import { RegisterOptions } from 'react-hook-form';
 
-import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
 import { AddressInput } from 'components/primitives/Forms/AddressInput';
 import { FormElementProps } from 'components/primitives/Forms/types';
@@ -16,17 +15,17 @@ import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { SwaprPicker } from 'components/SwaprPicker';
 
 interface FormElementRendererProps extends FormElementProps<any> {
-  param: RichContractFunctionParam;
+  formElement: string;
 }
 
 const FormElementRenderer: React.FC<FormElementRendererProps> = ({
-  param,
+  formElement,
   value,
   onChange,
   ...remainingProps
 }) => {
   const FormElement: React.FC<FormElementProps<any>> = useMemo(() => {
-    switch (param.component) {
+    switch (formElement) {
       case 'address':
         return AddressInput;
       case 'integer':
@@ -47,10 +46,10 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
       default:
         return Input;
     }
-  }, [param]);
+  }, [formElement]);
 
   const props = useMemo(() => {
-    switch (param.component) {
+    switch (formElement) {
       case 'date':
         return {
           isUTC: true,
@@ -70,7 +69,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
       default:
         return {};
     }
-  }, [param, value, onChange]);
+  }, [formElement, value, onChange]);
 
   return (
     <FormElement
@@ -87,12 +86,10 @@ type Validations = Omit<
   'valueAsNumber' | 'valueAsDate' | 'setValueAs' | 'disabled'
 >;
 
-export const getDefaultValidationsByFormElement = (
-  param: RichContractFunctionParam
-) => {
+export const getDefaultValidationsByFormElement = (formElement: string) => {
   const validations: Validations = { required: 'This field is required.' };
 
-  switch (param.component) {
+  switch (formElement) {
     case 'address':
       validations.validate = (value: string) =>
         !!isAddress(value) || 'Invalid address.';
