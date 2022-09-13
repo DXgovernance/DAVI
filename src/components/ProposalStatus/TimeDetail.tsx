@@ -12,7 +12,11 @@ export const TimeDetail: React.FC<TimeDetailProps> = ({
   const { data: guildConfig } = useGuildConfig(guildId);
   const ONE_MINUTE = 60000;
 
-  if (!guildConfig || status === ProposalState.Active) {
+  if (
+    !guildConfig ||
+    status === ProposalState.Active ||
+    status === ProposalState.Executed
+  ) {
     return (
       <span title={endTime?.format('MMMM Do, YYYY - h:mm a')}>
         {timeDetail}
