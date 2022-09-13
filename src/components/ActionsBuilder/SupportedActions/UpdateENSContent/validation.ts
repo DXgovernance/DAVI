@@ -1,10 +1,35 @@
-export const isEnsName = (name: string) => {
-  const ensNameRegex = /[-a-zA-Z0-9@:%._+~#=]{1,256}/;
-  return ensNameRegex.test(name);
-};
+export const isEnsName = (
+  name: string
+): { isValid: boolean; validationError: string } => {
+  let isValid = true;
+  let validationError = null;
 
-export const isIpfsHash = (value: string) => {
-  const ipfsHashRegex =
-    /^(Qm[1-9A-HJ-NP-Za-km-z]{44,}|b[A-Za-z2-7]{58,}|B[A-Z2-7]{58,}|z[1-9A-HJ-NP-Za-km-z]{48,}|F[0-9A-F]{50,})$/;
-  return ipfsHashRegex.test(value);
+  if (!name) {
+    validationError = 'Name cannot be empty';
+    isValid = false;
+    return { isValid, validationError };
+  }
+
+  let labelArray = name.split('.');
+
+  let numberOfInvalidLabels = labelArray.filter(
+    element => element.length === 0
+  );
+  if (numberOfInvalidLabels.length > 0) {
+    validationError = 'Domain names have invalid length';
+    isValid = false;
+  }
+
+  if (name.includes(' ')) {
+    validationError = 'Domain name cannot include spaces';
+    isValid = false;
+  }
+
+  if (labelArray.length > 3) {
+    validationError =
+      'Domain cannot be more than three levels deep (subdomain.domain.eth)';
+    isValid = false;
+  }
+
+  return { isValid, validationError };
 };

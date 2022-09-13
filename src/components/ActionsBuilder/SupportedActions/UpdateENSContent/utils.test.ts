@@ -2,9 +2,10 @@ import { GOERLI_ID, LOCALHOST_ID } from 'utils';
 import {
   convertToNameHash,
   convertToContentHash,
-  convertToIpfsHash,
+  // convertToIpfsHash,
   isSupportedChainId,
   getIpfsUrl,
+  convertToIpfsHash,
 } from './utils';
 
 describe('utils', () => {
@@ -31,54 +32,25 @@ describe('utils', () => {
 
       expect(nameHash).toBeNull();
     });
-
-    it(`should return an error if there's a subdomain with no letters on it (two dots together)`, () => {
-      const name = 'test..eth';
-      const { error } = convertToNameHash(name);
-
-      expect(error).toBe('Domain names have invalid length');
-    });
-
-    it(`should return an error if the domain starts with a dot`, () => {
-      const name = '.test.eth';
-      const { error } = convertToNameHash(name);
-
-      expect(error).toBe('Domain names have invalid length');
-    });
-
-    it(`should return an error if the domain has spaces`, () => {
-      const name = 'sub domain.test.eth';
-      const { error } = convertToNameHash(name);
-
-      expect(error).toBe('Domain name cannot include spaces');
-    });
-
-    it(`should return an error if the domain is more than two levels deep`, () => {
-      const name = 'subsubdomain.subdomain.test.eth';
-      const { error } = convertToNameHash(name);
-
-      expect(error).toBe(
-        'Domain cannot be more than three levels deep (subdomain.domain.eth)'
-      );
-    });
   });
 
   describe('convertToContentHash', () => {
-    it('should convert to IPFS hash', () => {
-      const contentHash =
-        'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be';
-      expect(convertToIpfsHash(contentHash)).toMatchInlineSnapshot(
-        `"QmdTPkMMBWQvL8t7yXogo7jq5pAcWg8J7RkLrDsWZHT82y"`
-      );
+    it('should return an error if the IPFS hash is invalid', () => {
+      let ipfsHash = 'invalidIPFSHash';
+      const { hash, error } = convertToContentHash(ipfsHash);
+
+      expect(hash).toBeNull();
+      expect(error).toBe('IPFS hash not valid');
     });
   });
 
   describe('convertToIpfsHash', () => {
-    const ipfsHash = 'QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4';
-    it('should convert to content hash', () => {
-      expect(convertToContentHash(ipfsHash)).toMatchInlineSnapshot(
-        `"0xe3010170122029f2d17be6139079dc48696d1f582a8530eb9805b561eda517e22a892c7e3f1f"`
-      );
+    it('should convert contentHash to IPFS hash', () => {
+      let ipfsHash = 'QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4';
+      let contentHash =
+        '0xe3010170122029f2d17be6139079dc48696d1f582a8530eb9805b561eda517e22a892c7e3f1f';
+      const hash = convertToIpfsHash(contentHash);
+      expect(hash).toBe(ipfsHash);
     });
   });
 

@@ -9,7 +9,6 @@ import {
   isSupportedChainId,
 } from './utils';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
-import { isEnsName, isIpfsHash } from './validation';
 import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';
 import { ActionEditorProps } from '..';
@@ -27,6 +26,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   const [ensName, setEnsName] = useState(parsedData?.optionalProps?.ensName);
   const [ipfsHash, setIpfsHash] = useState(parsedData?.optionalProps?.ipfsHash);
   const [nameHashError, setNameHashError] = useState(null);
+  const [contentHashError, setContentHashError] = useState(null);
 
   // useDebounce will make sure we're not spamming the resolver
   const debouncedEnsName = useDebounce(ensName, 200);
@@ -46,7 +46,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
     );
 
   useEffect(() => {
-    if (debouncedEnsName && isEnsName(debouncedEnsName)) {
+    if (debouncedEnsName) {
       const { nameHash, error } = convertToNameHash(fullEnsName);
       setNameHashError(error);
       updateCall({
@@ -65,14 +65,15 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   }, [debouncedEnsName]);
 
   useEffect(() => {
-    if (debouncedIpfsHash && isIpfsHash(debouncedIpfsHash)) {
-      const contentHash = convertToContentHash(debouncedIpfsHash);
+    if (debouncedIpfsHash) {
+      const { hash, error } = convertToContentHash(debouncedIpfsHash);
+      setContentHashError(error);
       updateCall({
         ...decodedCall,
         to: resolver?.address,
         args: {
           ...decodedCall.args,
-          hash: contentHash,
+          hash: hash,
         },
         optionalProps: {
           ...decodedCall.optionalProps,
@@ -110,6 +111,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
           </ControlLabel>
           <ControlRow>
             <Input
+              isInvalid={!!contentHashError}
               value={ipfsHash}
               onChange={e => setIpfsHash(e.target.value)}
             />
