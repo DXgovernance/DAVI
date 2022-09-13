@@ -12,16 +12,55 @@ describe('utils', () => {
     it('should convert to namehash', () => {
       const name = 'test.eth';
       const { nameHash } = convertToNameHash(name);
-      expect(nameHash).toMatchInlineSnapshot(
-        `"0xeb4f647bea6caa36333c816d7b46fdcb05f9466ecacc140ea8c66faf15b3d9f1"`
+      expect(nameHash).toBe(
+        '0xeb4f647bea6caa36333c816d7b46fdcb05f9466ecacc140ea8c66faf15b3d9f1'
       );
     });
 
-    it(`should return a namehash for subdomains`, () => {});
+    it(`should return a namehash for subdomains`, () => {
+      const name = 'subdomain.test.eth';
+      const { nameHash } = convertToNameHash(name);
+      expect(nameHash).toBe(
+        '0x8ff0886bcef88e45c53b2811a4eef521200ce49147fc76ed9fe7fa3272b0d5d7'
+      );
+    });
 
-    it(`should return an error if there's a subdomain with no letters on it (two dots together)`, () => {});
+    it(`should return null namehash if there is an error`, () => {
+      const name = 'test..eth';
+      const { nameHash } = convertToNameHash(name);
 
-    it(`should return an error if the domain has spaces`, () => {});
+      expect(nameHash).toBeNull();
+    });
+
+    it(`should return an error if there's a subdomain with no letters on it (two dots together)`, () => {
+      const name = 'test..eth';
+      const { error } = convertToNameHash(name);
+
+      expect(error).toBe('Domain names have invalid length');
+    });
+
+    it(`should return an error if the domain starts with a dot`, () => {
+      const name = '.test.eth';
+      const { error } = convertToNameHash(name);
+
+      expect(error).toBe('Domain names have invalid length');
+    });
+
+    it(`should return an error if the domain has spaces`, () => {
+      const name = 'sub domain.test.eth';
+      const { error } = convertToNameHash(name);
+
+      expect(error).toBe('Domain name cannot include spaces');
+    });
+
+    it(`should return an error if the domain is more than two levels deep`, () => {
+      const name = 'subsubdomain.subdomain.test.eth';
+      const { error } = convertToNameHash(name);
+
+      expect(error).toBe(
+        'Domain cannot be more than three levels deep (subdomain.domain.eth)'
+      );
+    });
   });
 
   describe('convertToContentHash', () => {
