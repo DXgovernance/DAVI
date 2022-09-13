@@ -26,6 +26,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   const { t } = useTranslation();
   const [ensName, setEnsName] = useState(parsedData?.optionalProps?.ensName);
   const [ipfsHash, setIpfsHash] = useState(parsedData?.optionalProps?.ipfsHash);
+  const [nameHashError, setNameHashError] = useState(null);
 
   // useDebounce will make sure we're not spamming the resolver
   const debouncedEnsName = useDebounce(ensName, 200);
@@ -46,7 +47,8 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
 
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
-      const nameHash = convertToNameHash(fullEnsName);
+      const { nameHash, error } = convertToNameHash(fullEnsName);
+      if (error) setNameHashError(error);
       updateCall({
         ...decodedCall,
         to: resolver?.address,
@@ -61,6 +63,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       });
     }
   }, [debouncedEnsName]);
+
   useEffect(() => {
     if (debouncedIpfsHash && isIpfsHash(debouncedIpfsHash)) {
       const contentHash = convertToContentHash(debouncedIpfsHash);
@@ -78,8 +81,9 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
       });
     }
   }, [debouncedIpfsHash]);
+
   return (
-    <React.Fragment>
+    <>
       <Control>
         <ControlLabel>
           {t('ens.name')}
@@ -88,7 +92,11 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
           </Tooltip>
         </ControlLabel>
         <ControlRow>
-          <Input value={ensName} onChange={e => setEnsName(e.target.value)} />
+          <Input
+            isInvalid={!!nameHashError}
+            value={ensName}
+            onChange={e => setEnsName(e.target.value)}
+          />
           <p>.eth</p>
         </ControlRow>
       </Control>
@@ -108,7 +116,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
           </ControlRow>
         </Control>
       </ControlRow>
-    </React.Fragment>
+    </>
   );
 };
 

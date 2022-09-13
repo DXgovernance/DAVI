@@ -19,7 +19,7 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'text',
-    args: [convertToNameHash(ensName), 'avatar'],
+    args: [convertToNameHash(ensName).nameHash, 'avatar'],
     chainId: supportedChainId,
   });
   return {
@@ -35,7 +35,7 @@ export function useENSContentHash(ensName: string, chainId?: number) {
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'contenthash',
-    args: convertToNameHash(ensName),
+    args: convertToNameHash(ensName).nameHash,
     select(data) {
       return convertToIpfsHash(data.toString());
     },
