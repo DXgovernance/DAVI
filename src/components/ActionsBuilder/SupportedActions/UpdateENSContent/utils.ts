@@ -1,8 +1,7 @@
 import contenthash from 'content-hash';
 import { MAINNET_ID, LOCALHOST_ID } from 'utils';
 import { utils } from 'ethers';
-import isIPFS from 'is-ipfs';
-import { isEnsName } from './validation';
+import { isEnsName, isIpfsHash } from './validation';
 
 const DEFAULT_NAMEHASH =
   '0x0000000000000000000000000000000000000000000000000000000000000000';
@@ -15,7 +14,7 @@ export const convertToNameHash = (
 
   if (!name) nameHash = DEFAULT_NAMEHASH;
 
-  let { isValid, validationError } = isEnsName(name);
+  const { isValid, validationError } = isEnsName(name);
 
   if (!isValid) {
     error = validationError;
@@ -30,7 +29,9 @@ export const convertToContentHash = (ipfsHash: string) => {
   let error: string = null;
   let hash: string = null;
 
-  if (!isIPFS.cid(ipfsHash)) error = 'IPFS hash not valid';
+  const { isValid, validationError } = isIpfsHash(ipfsHash);
+
+  if (!isValid) error = validationError;
   else hash = `0x${contenthash.fromIpfs(ipfsHash)}`;
 
   return { hash, error };

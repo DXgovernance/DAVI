@@ -55,7 +55,14 @@
     "newContent": "New content",
     "updateContent": "ENS: Update Content",
     "name": "ENS Name",
-    "ipfsHash": "CID/IPFS Hash"
+    "ipfsHash": "CID/IPFS Hash",
+    "validation": {
+      "nameCannotBeEmpty": "Name cannot be empty",
+      "domainNameInvalidLength": "Domain names have invalid length",
+      "domainNameCannotIncludeSpaces": "Domain name cannot include spaces",
+      "domainCannotBeMoreThanThreeLevels": "Domain cannot be more than three levels deep (subdomain.domain.eth)",
+      "ipfsHashNotValid": "IPFS hash not valid"
+    }
   },
   "mint": "Mint",
   "toAddress": "To Address",

@@ -2,11 +2,16 @@ import { GOERLI_ID, LOCALHOST_ID } from 'utils';
 import {
   convertToNameHash,
   convertToContentHash,
-  // convertToIpfsHash,
   isSupportedChainId,
   getIpfsUrl,
   convertToIpfsHash,
 } from './utils';
+
+jest.mock('i18next', () => {
+  return {
+    t: (key: string) => key,
+  };
+});
 
 describe('utils', () => {
   describe('convertToNameHash', () => {
@@ -40,7 +45,7 @@ describe('utils', () => {
       const { hash, error } = convertToContentHash(ipfsHash);
 
       expect(hash).toBeNull();
-      expect(error).toBe('IPFS hash not valid');
+      expect(error).toBe('ens.validation.ipfsHashNotValid');
     });
   });
 

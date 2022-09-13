@@ -1,3 +1,6 @@
+import i18next from 'i18next';
+import isIPFS from 'is-ipfs';
+
 export const isEnsName = (
   name: string
 ): { isValid: boolean; validationError: string } => {
@@ -5,7 +8,7 @@ export const isEnsName = (
   let validationError = null;
 
   if (!name) {
-    validationError = 'Name cannot be empty';
+    validationError = i18next.t('ens.validation.nameCannotBeEmpty');
     isValid = false;
     return { isValid, validationError };
   }
@@ -16,18 +19,33 @@ export const isEnsName = (
     element => element.length === 0
   );
   if (numberOfInvalidLabels.length > 0) {
-    validationError = 'Domain names have invalid length';
+    validationError = i18next.t('ens.validation.domainNameInvalidLength');
     isValid = false;
   }
 
   if (name.includes(' ')) {
-    validationError = 'Domain name cannot include spaces';
+    validationError = i18next.t('ens.validation.domainNameCannotIncludeSpaces');
     isValid = false;
   }
 
   if (labelArray.length > 3) {
-    validationError =
-      'Domain cannot be more than three levels deep (subdomain.domain.eth)';
+    validationError = i18next.t(
+      'ens.validation.domainCannotBeMoreThanThreeLevels'
+    );
+    isValid = false;
+  }
+
+  return { isValid, validationError };
+};
+
+export const isIpfsHash = (
+  hash: string
+): { isValid: boolean; validationError: string } => {
+  let isValid = true;
+  let validationError = null;
+
+  if (!isIPFS.cid(hash)) {
+    validationError = i18next.t('ens.validation.ipfsHashNotValid');
     isValid = false;
   }
 
