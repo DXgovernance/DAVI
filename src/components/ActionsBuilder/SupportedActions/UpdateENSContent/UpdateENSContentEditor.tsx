@@ -48,7 +48,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   useEffect(() => {
     if (debouncedEnsName && isEnsName(debouncedEnsName)) {
       const { nameHash, error } = convertToNameHash(fullEnsName);
-      if (error) setNameHashError(error);
+      setNameHashError(error);
       updateCall({
         ...decodedCall,
         to: resolver?.address,
