@@ -68,6 +68,7 @@
   "functionCall": "Function Call",
   "functionCalls": "Function Calls",
   "permission": "Permission",
+  "setPermissions": "Set Permissions",
   "setPermissionsFor": "Set permissions for",
   "unknownAction": "Unknown Action",
   "default": "Default",

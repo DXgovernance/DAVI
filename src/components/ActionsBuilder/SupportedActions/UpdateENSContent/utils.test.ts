@@ -11,11 +11,17 @@ describe('utils', () => {
   describe('convertToNameHash', () => {
     it('should convert to namehash', () => {
       const name = 'test.eth';
-      const namehash = convertToNameHash(name);
-      expect(namehash).toMatchInlineSnapshot(
+      const { nameHash } = convertToNameHash(name);
+      expect(nameHash).toMatchInlineSnapshot(
         `"0xeb4f647bea6caa36333c816d7b46fdcb05f9466ecacc140ea8c66faf15b3d9f1"`
       );
     });
+
+    it(`should return a namehash for subdomains`, () => {});
+
+    it(`should return an error if there's a subdomain with no letters on it (two dots together)`, () => {});
+
+    it(`should return an error if the domain has spaces`, () => {});
   });
 
   describe('convertToContentHash', () => {
@@ -32,7 +38,7 @@ describe('utils', () => {
     const ipfsHash = 'QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4';
     it('should convert to content hash', () => {
       expect(convertToContentHash(ipfsHash)).toMatchInlineSnapshot(
-        `"e3010170122029f2d17be6139079dc48696d1f582a8530eb9805b561eda517e22a892c7e3f1f"`
+        `"0xe3010170122029f2d17be6139079dc48696d1f582a8530eb9805b561eda517e22a892c7e3f1f"`
       );
     });
   });
