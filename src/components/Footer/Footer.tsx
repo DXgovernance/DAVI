@@ -34,7 +34,7 @@ const Footer = () => {
           target="_blank"
           rel="noopener"
         >
-          <FaGithub size={20} />
+          <FaGithub size={18} />
         </Link>
       </FooterContainer>
     </Wrapper>
