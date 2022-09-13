@@ -5,7 +5,7 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import { useContext, useMemo, useState, useEffect, useRef } from 'react';
+import { useContext, useMemo, useState, useEffect } from 'react';
 import { FiChevronLeft } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -18,17 +18,17 @@ import {
   SidebarContent,
   Label,
 } from '../styles';
-import { Orbis } from '@orbisclub/orbis-sdk';
 import {
   connect,
   isConnected,
   createPost,
   postTemplate,
 } from 'components/Forum';
-import { Post } from 'components/Forum/types';
+import { DiscussionContent } from 'components/Forum/types';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 
 const CreateDiscussionPage: React.FC = () => {
-  let orbis = useRef(new Orbis());
+  const { orbis } = useContext(OrbisContext);
 
   const { guildId, chainName: chain } = useTypedParams();
   const { isLoading: isGuildAvailabilityLoading } = useContext(
@@ -51,7 +51,7 @@ const CreateDiscussionPage: React.FC = () => {
         });
       }
     });
-  }, [user]);
+  }, [user, orbis]);
 
   const {
     Editor,
@@ -72,7 +72,7 @@ const CreateDiscussionPage: React.FC = () => {
 
   const handleBack = () => navigate(`/${chain}/${guildId}/`);
 
-  const handleCreateDiscussion = async (post: Post) => {
+  const handleCreateDiscussion = async (post: DiscussionContent) => {
     if (postTemplate(post)) {
       const res = await createPost(orbis.current, post);
       handleBack();
@@ -88,9 +88,10 @@ const CreateDiscussionPage: React.FC = () => {
   const isValid = useMemo(() => {
     if (!title) return false;
     if (!discussionBodyHtml) return false;
+    if (!discussionBodyMd || !discussionBodyMd.length) return false;
 
     return true;
-  }, [title, discussionBodyHtml]);
+  }, [title, discussionBodyHtml, discussionBodyMd]);
 
   if (isGuildAvailabilityLoading) return <Loading loading />;
   return (
@@ -108,7 +109,7 @@ const CreateDiscussionPage: React.FC = () => {
 
           <StyledButton
             onClick={handleToggleEditMode}
-            disabled={!title || !discussionBodyMd}
+            disabled={!isValid}
             data-testid="create-proposal-editor-toggle-button"
           >
             {editMode ? (
@@ -144,17 +145,17 @@ const CreateDiscussionPage: React.FC = () => {
         )}
         <Box margin="16px 0px">
           <StyledButton
-            onClick={() =>
+            onClick={() => {
               handleCreateDiscussion({
                 title,
                 body: discussionBodyMd,
                 context: guildId,
-                master: '',
-                replyTo: '',
+                master: null,
+                replyTo: null,
                 mentions: [],
                 data: {},
-              })
-            }
+              });
+            }}
             variant="secondary"
             disabled={!isValid}
             data-testid="create-proposal-action-button"

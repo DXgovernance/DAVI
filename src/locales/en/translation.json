@@ -212,7 +212,13 @@
   "invalidAddress": "Invalid Address",
   "addressIsRequired": "Address is required",
   "forum": {
+    "discussions_zero": "No Discussions",
+    "discussions_one": "Discussion",
+    "discussions_other": "Discussions",
+    "thereAreNoDiscussions": "There are no discussions",
+    "noMoreDiscussions": "There are no more discussions",
     "createDiscussion": "Create Discussion",
+    "createDiscussionWordy": "Create a new discussion",
     "discussionPlaceholder": "Write discussion content"
   },
   "none": "None",
@@ -240,5 +246,8 @@
   "addressToWhichTheExpenseIsBeingAuthorized": "Address to which the expense is being authorized",
   "amountBeingApproved": "Amount being approved",
   "youVotedForOption": "You voted for option \"{{optionLabel}}\"",
-  "with": "With"
+  "with": "With",
+  "noActiveProposalsMessage": "There are no active proposals",
+  "goToAllProposalsPage": "Go to all proposals page",
+  "reload": "Reload"
 }

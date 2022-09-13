@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { Box } from 'components/primitives/Layout/Box';
 import { Heading } from 'components/primitives/Typography';
+import { CardWrapper } from 'components/Card';
 
 // TODO: base these components on a generic Card component
-export const CardWrapper = styled(Box)<{ disabled?: boolean }>`
-  border: 1px solid ${({ theme }) => theme.colors.border1};
-  border-radius: ${({ theme }) => theme.radii.curved};
+export const ProposalCardWrapper = styled(CardWrapper)<{ disabled?: boolean }>`
   margin-bottom: 1rem;
   padding: 1rem;
   color: ${({ theme }) => theme.colors.grey2};
