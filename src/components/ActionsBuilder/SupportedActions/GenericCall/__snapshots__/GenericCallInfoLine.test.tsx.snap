@@ -48,18 +48,21 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
       Test template 
       <span
         matchedparam="param1"
+        style="display: inline-block;"
       >
         10000
       </span>
        
       <span
         matchedparam="param2"
+        style="display: inline-block;"
       >
         10000
       </span>
        
       <span
         matchedparam="param3"
+        style="display: inline-block;"
       >
         0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
       </span>
@@ -197,18 +200,21 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
       Test template 
       <span
         matchedparam="param1"
+        style="display: inline-block;"
       >
         10000
       </span>
        
       <span
         matchedparam="param2"
+        style="display: inline-block;"
       >
         10000
       </span>
        
       <span
         matchedparam="param3"
+        style="display: inline-block;"
       >
         0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351
       </span>
