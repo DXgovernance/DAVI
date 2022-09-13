@@ -7,6 +7,7 @@ const useProposalVotes = (guildId: string, proposalId: string) => {
     contractInterface: ERC20GuildContract.abi,
     functionName: 'proposalVotes',
     args: [proposalId],
+    watch: true,
   });
 };
 
