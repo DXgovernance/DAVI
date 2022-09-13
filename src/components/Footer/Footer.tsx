@@ -11,12 +11,15 @@ const Footer = () => {
   return (
     <Wrapper>
       <FooterContainer>
-        <Label>
-          {VERSION && `v${VERSION}`}
-          {VERSION ? ':' : null}
-          {ENV && !isProd && `${ENV}`}
-        </Label>
-        <Dot />
+        {VERSION && (
+          <>
+            <Label>
+              {VERSION && `v${VERSION}`}
+              {ENV && !isProd ? `${VERSION ? ':' : null}${ENV}` : null}
+            </Label>
+            <Dot />
+          </>
+        )}
         <Link
           href="https://github.com/DXgovernance/DAVI/issues/new?assignees=&labels=Bug&template=bug_report.md&title="
           target="_blank"
