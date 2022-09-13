@@ -31,6 +31,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     addressOrName: guildAddress,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getTotalLocked',
+    watch: true,
   });
 
   const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({

@@ -15,6 +15,7 @@ export const useVoterLockTimestamp = (
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getVoterLockTimestamp',
     args: [userAddress],
+    watch: true,
   });
   return {
     data: data ? unix(Number(data)) : undefined,

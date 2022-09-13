@@ -245,6 +245,8 @@
   "approveSpendingCall": "Approve spending call",
   "addressToWhichTheExpenseIsBeingAuthorized": "Address to which the expense is being authorized",
   "amountBeingApproved": "Amount being approved",
+  "youVotedForOption": "You voted for option \"{{optionLabel}}\"",
+  "with": "With",
   "noActiveProposalsMessage": "There are no active proposals",
   "goToAllProposalsPage": "Go to all proposals page",
   "reload": "Reload"

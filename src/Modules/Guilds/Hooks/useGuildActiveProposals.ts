@@ -6,6 +6,7 @@ const useActiveProposalsNow = (guildAddress: string) => {
     addressOrName: guildAddress,
     contractInterface: ERC20Guild.abi,
     functionName: 'getActiveProposalsNow',
+    watch: true,
   });
 };
 
