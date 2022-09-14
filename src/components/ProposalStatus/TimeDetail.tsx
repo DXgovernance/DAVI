@@ -1,7 +1,9 @@
 import { ProposalState } from 'types/types.guilds.d';
 import { TimeDetailProps } from './types';
-import moment, { unix } from 'moment';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { getTimeDetail } from '../../utils/timeDetail';
+import { unix } from 'moment';
+import moment from 'moment';
 
 export const TimeDetail: React.FC<TimeDetailProps> = ({
   endTime,
@@ -10,7 +12,6 @@ export const TimeDetail: React.FC<TimeDetailProps> = ({
   guildId,
 }) => {
   const { data: guildConfig } = useGuildConfig(guildId);
-  const ONE_MINUTE = 60000;
 
   if (
     !guildConfig ||
@@ -24,29 +25,27 @@ export const TimeDetail: React.FC<TimeDetailProps> = ({
     );
   }
 
-  let { timeForExecution }: any = guildConfig;
+  const { timeForExecution } = guildConfig;
   let executionTimeDetail = '';
 
-  timeForExecution = unix(timeForExecution.toNumber());
-  const executionTime = moment(endTime).add(timeForExecution);
-  const currentTime = moment();
-  let differenceInMilliseconds = currentTime.diff(executionTime);
-  let timeDifference =
-    Math.abs(differenceInMilliseconds) >= ONE_MINUTE
-      ? moment.duration(differenceInMilliseconds).humanize()
-      : 'a few seconds';
+  const timeForExecutionUnix = unix(timeForExecution.toNumber());
+  const executionTimeMoment = moment(endTime).add(
+    timeForExecutionUnix.toString()
+  );
 
-  if (executionTime.isBefore(currentTime)) {
-    executionTimeDetail = `expired ${timeDifference} ago`;
-  } else {
-    executionTimeDetail = `expires in ${timeDifference}`;
-  }
+  const { isBefore, timeDetailHumanize } = getTimeDetail(executionTimeMoment);
+
+  executionTimeDetail = isBefore
+    ? `expired ${timeDetailHumanize} ago`
+    : `expires in ${timeDetailHumanize}`;
 
   if (status === ProposalState.Executable || status === ProposalState.Failed) {
     return (
-      <span title={executionTime?.format('MMMM Do, YYYY - h:mm a')}>
+      <span title={executionTimeMoment?.format('MMMM Do, YYYY - h:mm a')}>
         {executionTimeDetail}
       </span>
     );
-  } else return null;
+  }
+
+  return null;
 };

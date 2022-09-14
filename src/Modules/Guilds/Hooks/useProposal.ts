@@ -1,12 +1,12 @@
-import moment, { unix } from 'moment';
+import { unix } from 'moment';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
+import { getTimeDetail } from 'utils/timeDetail';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
-  const ONE_MINUTE = 60000;
 
   const contractStatesMapping = {
     1: ContractState.Active,
@@ -24,18 +24,13 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
   if (data.endTime instanceof BigNumber) {
     clone.endTime = data.endTime ? unix(data.endTime.toNumber()) : null;
   }
-  // Add timeDetail
-  const currentTime = moment();
-  let differenceInMilliseconds = currentTime.diff(clone.endTime);
-  let timeDifference =
-    Math.abs(differenceInMilliseconds) >= ONE_MINUTE
-      ? moment.duration(differenceInMilliseconds).humanize()
-      : 'a few seconds';
-  if (clone.endTime.isBefore(currentTime)) {
-    clone.timeDetail = `ended ${timeDifference} ago`;
-  } else {
-    clone.timeDetail = `${timeDifference} left`;
-  }
+
+  const { isBefore, timeDetailHumanize } = getTimeDetail(clone.endTime);
+
+  clone.timeDetail = isBefore
+    ? `ended ${timeDetailHumanize} ago`
+    : `${timeDetailHumanize} left`;
+
   return clone as Proposal;
 };
 
@@ -47,6 +42,7 @@ const useProposal = (guildId: string, proposalId: string) => {
     args: [proposalId],
   });
   const proposalData = data as unknown as InitialProposal;
+
   return {
     data: data
       ? formatterMiddleware({ ...proposalData, id: proposalId })
