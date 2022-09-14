@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Container } from 'components/primitives/Layout';
-import { Dot as GenericDot } from 'components/ActionsBuilder/AddEditOptionModal/AddEditOptionModal.styled';
+import { Bullet } from 'components/primitives/Bullet';
 
 export const Wrapper = styled.footer`
   padding: 0.2rem 0;
@@ -41,10 +41,9 @@ export const Link = styled.a`
   }
 `;
 
-export const Dot = styled(GenericDot)`
+export const Dot = styled(Bullet).attrs({ size: 5 })`
   margin: 0 0.5rem;
-  height: 5px;
-  width: 5px;
+  background: ${({ theme, color }) => color ?? theme.colors.border1};
   @media only screen and (max-width: 468px) {
     display: none;
   }

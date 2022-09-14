@@ -15,7 +15,7 @@ const Footer = () => {
           <>
             <Label>
               {VERSION && `v${VERSION}`}
-              {ENV && !isProd ? `${VERSION ? ':' : null}${ENV}` : null}
+              {ENV && !isProd ? `:${ENV}` : null}
             </Label>
             <Dot />
           </>
