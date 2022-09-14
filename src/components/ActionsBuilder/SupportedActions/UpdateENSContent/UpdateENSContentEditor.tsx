@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
-import { Control, ControlLabel, ControlRow } from './styles';
+import { Control, ControlLabel, ControlRow, Error } from './styles';
 import { Input } from 'components/primitives/Forms/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
@@ -19,17 +18,7 @@ import { LOCALHOST_ID } from 'utils';
 import { Controller, useForm } from 'react-hook-form';
 import validateENSContent from './validateENSContent';
 import { Button } from 'components/primitives/Button';
-import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
-import styled from 'styled-components';
-
-export interface ENSContentForm {
-  ensName: string;
-  ipfsHash: string;
-}
-
-const Error = styled(ErrorLabel)`
-  margin-top: 0.5rem;
-`;
+import { ENSContentForm } from './types';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -61,7 +50,6 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
 
     const { nameHash } = convertToNameHash(fullEnsName);
     const { contentHash } = convertToContentHash(values.ipfsHash);
-    debugger;
 
     onSubmit({
       ...decodedCall,
@@ -91,7 +79,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
           name="ensName"
           control={control}
           render={({ field: { ref, ...field }, fieldState }) => {
-            const { invalid, error } = fieldState;
+            const { error } = fieldState;
 
             return (
               <Control>
@@ -104,12 +92,12 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
                 <ControlRow>
                   <Input
                     {...field}
-                    isInvalid={invalid && !!error}
+                    isInvalid={!!error}
                     onChange={e => field.onChange(e.target.value)}
                   />
                   <p>.eth</p>
                 </ControlRow>
-                {invalid && !!error && <Error>{error.toString()}</Error>}
+                {!!error && <Error>{error.toString()}</Error>}
               </Control>
             );
           }}
@@ -120,7 +108,7 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
             name="ipfsHash"
             control={control}
             render={({ field: { ref, ...field }, fieldState }) => {
-              const { invalid, error } = fieldState;
+              const { error } = fieldState;
 
               return (
                 <Control>
@@ -133,11 +121,11 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
                   <ControlRow>
                     <Input
                       {...field}
-                      isInvalid={invalid && !!error}
+                      isInvalid={!!error}
                       onChange={e => field.onChange(e.target.value)}
                     />
                   </ControlRow>
-                  {invalid && !!error && <Error>{error.toString()}</Error>}
+                  {!!error && <Error>{error.toString()}</Error>}
                 </Control>
               );
             }}

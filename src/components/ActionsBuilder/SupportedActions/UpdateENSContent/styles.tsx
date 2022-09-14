@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { StyledIcon } from 'components/primitives/StyledIcon';
 import { Box } from 'components/primitives/Layout/Box';
 import { DetailBody } from '../common/Summary.styled';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 
 export const Control = styled(Box)`
   display: flex;
@@ -44,4 +45,8 @@ export const DiffStat = styled.span<{ removed?: boolean }>`
   margin: 0 0.2rem;
   color: ${({ removed, theme }) =>
     removed ? theme.colors.syntax.removeStat : theme.colors.syntax.addStat};
+`;
+
+export const Error = styled(ErrorLabel)`
+  margin-top: 0.5rem;
 `;
