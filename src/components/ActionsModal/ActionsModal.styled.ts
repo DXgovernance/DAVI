@@ -34,7 +34,8 @@ export const ActionsButton = styled(Button).attrs(() => ({
 export const SectionTitle = styled(ContainerText).attrs(() => ({
   variant: 'bold',
 }))`
-  display: block;
+  display: flex;
+  align-items: flex-start;
   color: ${({ theme }) => theme.colors.grey};
   margin-bottom: 0.75rem;
   font-size: 0.875rem;

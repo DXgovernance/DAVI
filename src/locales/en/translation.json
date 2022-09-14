@@ -221,6 +221,8 @@
     "createDiscussionWordy": "Create a new discussion",
     "discussionPlaceholder": "Write discussion content"
   },
+  "advancedOptions": "Advanced options",
+  "rawTransaction": "Raw transaction",
   "none": "None",
   "expandLinesOfCode": "Expand {{numLines}} lines of code",
   "noGuildsRegistered": "No guilds registered on this network",

@@ -82,6 +82,25 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
   padding: 0;
 }
 
+.c17 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c11 {
   text-align: left;
   font-family: Inter;
@@ -243,7 +262,14 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
 }
 
 .c12 {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
   color: #A1A6B0;
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
@@ -258,6 +284,30 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.c18 {
+  cursor: pointer;
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 50%;
+  border: 1px solid #303338;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c18:hover {
+  border-color: #fff;
 }
 
 <body>
@@ -378,6 +428,37 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
                   class="c10 c11 c12"
                 >
                   externalContracts
+                </div>
+              </div>
+              <div
+                class="c9"
+              >
+                <div
+                  class="c17 c11 c12"
+                  direction="row"
+                >
+                  advancedOptions
+                  <span
+                    class="c18"
+                    height="1.25rem"
+                    width="1.25rem"
+                  >
+                    <svg
+                      fill="none"
+                      height="1em"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      width="1em"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <polyline
+                        points="6 9 12 15 18 9"
+                      />
+                    </svg>
+                  </span>
                 </div>
               </div>
             </div>

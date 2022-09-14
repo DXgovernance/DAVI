@@ -14,13 +14,14 @@ import {
 } from '../../ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RichContractData,
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { useNetwork } from 'wagmi';
 import { isAvailableOnENS } from 'hooks/Guilds/ens/utils';
+import { ExpandButton } from 'components/ExpandButton';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;
@@ -36,6 +37,10 @@ const ContractsList: React.FC<ContractsListProps> = ({
   const { contracts } = useRichContractRegistry(chain?.id);
   const { guildId: guildAddress } = useTypedParams();
   const { isRepGuild } = useGuildImplementationTypeConfig(guildAddress);
+
+  const [isAdvancedOptionsExpanded, setIsAdvancedOptionsExpanded] =
+    useState(false);
+
   return (
     <Wrapper data-testid="actions-modal-contract-list">
       <SectionWrapper>
@@ -100,6 +105,20 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonDetail>
           </ActionsButton>
         ))}
+      </SectionWrapper>
+      <SectionWrapper>
+        <SectionTitle direction="row" justifyContent="space-between">
+          {t('advancedOptions')}
+          <ExpandButton
+            expanded={isAdvancedOptionsExpanded}
+            onClick={() =>
+              setIsAdvancedOptionsExpanded(!isAdvancedOptionsExpanded)
+            }
+          />
+        </SectionTitle>
+        {isAdvancedOptionsExpanded && (
+          <ActionsButton>{t('rawTransaction')}</ActionsButton>
+        )}
       </SectionWrapper>
     </Wrapper>
   );
