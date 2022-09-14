@@ -1,3 +1,8 @@
+// 
+// File name: Guilds.spec.ts
+// Executing guide: 
+
+
 /// <reference types="cypress" />
 import Guilds from '../../support/pageObjects/Guilds';
 import {
