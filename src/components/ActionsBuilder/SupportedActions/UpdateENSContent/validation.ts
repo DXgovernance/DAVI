@@ -44,6 +44,12 @@ export const isIpfsHash = (
   let isValid = true;
   let validationError = null;
 
+  if (hash.substring(0, 2) !== 'Qm') {
+    validationError = i18next.t('ens.validation.onlyCidV0Supported');
+    isValid = false;
+    return { isValid, validationError };
+  }
+
   if (!isIPFS.cid(hash)) {
     validationError = i18next.t('ens.validation.ipfsHashNotValid');
     isValid = false;

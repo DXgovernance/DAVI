@@ -61,7 +61,8 @@
       "domainNameInvalidLength": "Domain names have invalid length",
       "domainNameCannotIncludeSpaces": "Domain name cannot include spaces",
       "domainCannotBeMoreThanThreeLevels": "Domain cannot be more than three levels deep (subdomain.domain.eth)",
-      "ipfsHashNotValid": "IPFS hash not valid"
+      "ipfsHashNotValid": "IPFS hash not valid",
+      "onlyCidV0Supported": "Only CID v0 is supported"
     }
   },
   "mint": "Mint",

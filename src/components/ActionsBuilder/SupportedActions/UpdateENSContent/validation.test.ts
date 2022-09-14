@@ -74,10 +74,18 @@ describe('ENS update validations', () => {
 
     describe('should catch validation errors', () => {
       it('should return an error if its not an IPFS hash', () => {
-        const ipfsHash = 'wrongIPFShash';
+        const ipfsHash = 'QmWrongIPFShash';
         const { isValid, validationError } = isIpfsHash(ipfsHash);
         expect(isValid).toBe(false);
         expect(validationError).toBe('ens.validation.ipfsHashNotValid');
+      });
+
+      it('should return an error if its not CID v0', () => {
+        const ipfsHash =
+          'bafybeidwasglq7az7eltms4tlwiptyggm2mjzfkd37hpbkyymaub3rm63m';
+        const { isValid, validationError } = isIpfsHash(ipfsHash);
+        expect(isValid).toBe(false);
+        expect(validationError).toBe('ens.validation.onlyCidV0Supported');
       });
     });
   });
