@@ -25,11 +25,9 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
     clone.endTime = data.endTime ? unix(data.endTime.toNumber()) : null;
   }
 
-  const { isBefore, timeDetailHumanize } = getTimeDetail(clone.endTime);
+  const { timeDetailHumanized } = getTimeDetail(clone.endTime);
 
-  clone.timeDetail = isBefore
-    ? `ended ${timeDetailHumanize} ago`
-    : `${timeDetailHumanize} left`;
+  clone.timeDetail = timeDetailHumanized;
 
   return clone as Proposal;
 };
