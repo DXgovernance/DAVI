@@ -40,7 +40,7 @@ export const useERC20Info = (contractAddress: string): ERC20InfoHook => {
       },
     ],
   });
-  if (!data || data.some(v => !v)) {
+  if (!data || data.some(v => v === null)) {
     return { data: undefined, isError, isLoading };
   }
   return {
