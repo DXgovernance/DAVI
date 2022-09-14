@@ -1,4 +1,4 @@
-import { ENSContentForm } from './UpdateENSContentEditor';
+import { ENSContentForm } from './types';
 import { isEnsName, isIpfsHash } from './validation';
 
 const validateENSContent = (values: ENSContentForm) => {
