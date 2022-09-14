@@ -1,76 +1,62 @@
-# DXvote
+# Project-DAVI  
 
-> DXdao recognizes the need to adapt and build new systems that reach consensus in a scalable, decentralized and effective way. Consensus is not an end, but a process.
->
-> *DXdao Manifesto https://ipfs.io/ipfs/QmfGgQYwL4ZrXLVshYuwH2WHeSvPFQCDXeYTzPPFReCJqJ*
+Project-DAVI is built by DXdao as an all in one interface for our on-chain governance systems. 
+Supported systems: 
+- ERC20 guilds
+  - Smaller scale DAO's whose voting power is tied to ERC20 tokens locked in a vault
+- Soulbound guilds (Non-transferable REP)
+  - An extension to token guilds where the token can only be minted and burned by the DAO, no transferring power. 
+  - Great for smaller communities to coordinate and start operating as a decentralized autonomous collective 
+- Governance 2.0 (coming soon)
+  - The novel governance system designed by DXdao to enable voting power based on a combination of ERC20 tokens and non transferable soulbound tokens
+  - A larger system made up of multiple schemes with distinct purposes, permissions, security and funds all built around the main DAO's secure treasury
 
-With the requirements mentioned above DXdao built DXvote, an application that instead of trusting external and centralized services commonly used by other dapps DXvote brings complete control and maintenance responsibilities to the DXdao members, a huge responsibility that brings the decentralized freedom that DXdao needs.
+## Main features
+### Accessible Autonomy
+At the core of DAVI is supporting on chain actions and autonomy.
+But there is an issue with current solutions to this, they require technical knowledge. Its our belief that on chain autonomy should be accessible to the point that anyone can govern a DAO on our platform. 
+
+To achieve this we have a modular interface, the action builder, powered by rich contract data that is curated and designed by technical users that understand the contracts without requiring them to write code. This shifts the technical knowledge requirements to the maintainers of the configuration instead of the end users. And best of all it is all powered by remote configurations managed by ENS domains (currently maintained by DXgov team). 
+### Flexible architecture 
+For the most part governance requires very similar interfaces and components regardless of the contracts. So we designed our great UX and UI elements to be flexible enough to adapt to different data and logic layers that can be placed on top of them.
+
+This allows us to support a wide range of DAOs from the smaller soulbound guilds to larger token based guilds or even full large scale Gov 2.0 DAOs with multiple schemes and guilds attached to it. 
+
+This is the structure we will use to quickly integrate gov 2.0 in the existing guild supporting application. Hopefully also simplifying maintenance and code readability. 
+### Social
+Off chain governance closely linked with on chain governance whilst keeping decentralized values by utilizing orbis.club and ceramic, enabling data portability and user ownership.
+### DAO-DAO governance
+Related to accessible autonomy one of the toughest parts of on chain interactions to make accessible and smooth is one DAO using its voting power in another DAO. Its perfectly possible to do this via the action builder but a more advanced dynamic proposal mirroring interface is planned.
+
+The first example of this will be DXD guild voting in DXdao's currently REP based governance system. 
+
+Later this is planned to evolve into a revenue generated governance consultancy service for DAVI DAOs. 
+### Decentralization and transparency
+Core to all of what DXdao does, we aim to enable as much decentralization as possible whether that be the ENS powered and DAO owned frontend & application configuration or the use of fallbacks in place of failing dependencies. All of our code is open source and maintained by a team of contributors to DXdao. 
 
 ## Versions
-
 ### Stable Release
+Hosted in https://project-davi.eth.limo and under control of dxdao via ENS+IPFS.
+### Staging QA Environment
+Available in https://development.project-davi.eth.limo and controlled by project owner via ENS+IPNS.
 
-Hosted in https://dxvote.eth.link/ and under control of dxdao.
+## Development environment setup  
+The following steps should get the app up and running:
 
-### Release Candidate
-
-Source code of `master` branch built and hosted on IPFS in https://prod.project-davi.dev/ and under control of DXgovernance code owners.
-
-### Developer Version
-
-Source code of `develop` branch built and hosted on IPFS in https://project-davi.dev/ and under control of DXgovernance developers.
-
-## Maintenance
-
-Like we mention before the maintenance of the dapp is in charge of the users of it, this does not mean that they have to work full time to make the DAO worked, truth be told the maintenance of the application is not hard.
-The application gets all the necessary configuration information from a single file (called config file), inside the file all the cache, contracts, and dapp information is stored. From this file the dapp knwos from which URL should fetch the cache hosted in IPFS for each network.
-
-All maintenance actions are executed in the blockchain network trough transactions, this is extremely helpful to refund the maintenance cost instantly as well as providing an economic incentive to those who maintain the dapp.
-
-### Cache
-
-To update the cache a script need to be executed, this script will fetch and index all the necessary information to be served in the dapp when it starts, so the dapp will only need to fetch the remaining information to the last block.
-
-Example: If the dapp is used in mainnet and the last block number is 11 million and the cache file has all the data till block number 10 million the application will get all the remaining data between block number 10 million and 11 million before starting, once it finish it will start the dapp.
-
-**Pros and Cons**: The big Pro of this is that there wont be loading times between actions while the user is using the dapp, all actions would seem to be instant, and they are because the information is already there. The Con in this approach is that if the cache is not updated often (days or weeks depending on the network) it can cause low loading times when you open the application for the first time.
-
-The cache script will gather all immutable information from the ethereum networks supported and save all of it in cache files uploaded in IPFS. This script is ran
-
-To understand a bit better what the script will do you can see `src/services/cacheService.ts`.
-
-### Configuration
-
-The configuration is even easier than the cache, it is just one file that stores all the smart contracts addresses, the tokens to be used, and the proposal templates and the calls to be recommended to be used in the new proposal.
-
-Each network in the config file has a token array, recommended calls array and templates array, if you want to add new tokens, templates and recommended calls to the dapp just add them in the config file. You only change the file when you want to change the values mentioned before.
-
-## Install
-
-Be sure you are using correct node version listed in `./package.json` (`engines.node`)
-
-`nvm use`
-
-Install all dependencies with yarn.
-
-`yarn`
-
-## Development
+1. Fork DAVI repo
+2. ``` git checkout develop ```
+3. ``` yarn ```
+4. ``` yarn dev ```
 
 The development script will start a local hardhat node, deploy all dxdao contracts with local development configuration and start the dapp with the development configuration in the port 3000.
 
-`yarn dev`
+### Wallet 
+- Use whichever wallet you enjoy (tested mostly with firefox and frame.sh)
+- Import a test account you can find in `hardhat.config.js`
+- You may need to reset accounts after running yarn dev in metamask, try `Settings` -> `Advanced` -> `Reset Account on your wallet` (this will not remove any accounts)
 
-To understand a bit better what the script will do you can see `scripts/dev.sh` and `scripts/deployDevContracts.ts`.
 
-## Start
-
-The script will start the dapp with the production configuration locally on port 8080 serving the folder build after running the production build.
-
-`yarn start`
-
-## Build
-
-The script build the dapp with the production configuration and save it in the build folder.
-
-`yarn build`
+## Links 
+- [Contracts repo](https://github.com/DXgovernance/dxdao-contracts)
+- [Sprint board](https://github.com/orgs/DXgovernance/projects/7/views/1)
+- [Feedback & Roadmap](https://davi.canny.io/)
