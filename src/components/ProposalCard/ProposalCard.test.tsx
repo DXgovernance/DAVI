@@ -10,9 +10,6 @@ import {
 import { BigNumber } from 'ethers';
 import { mockChain } from 'components/Web3Modals/fixtures';
 
-jest.mock('ipfs', () => jest.fn());
-jest.mock('cids', () => jest.fn());
-jest.mock('axios', () => jest.fn());
 jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
   useGuildConfig: () => jest.fn(),
 }));
