@@ -42,9 +42,9 @@ describe('utils', () => {
   describe('convertToContentHash', () => {
     it('should return an error if the IPFS hash is invalid', () => {
       let ipfsHash = 'QmInvalidIPFSHash';
-      const { hash, error } = convertToContentHash(ipfsHash);
+      const { contentHash, error } = convertToContentHash(ipfsHash);
 
-      expect(hash).toBeNull();
+      expect(contentHash).toBeNull();
       expect(error).toBe('ens.validation.ipfsHashNotValid');
     });
   });

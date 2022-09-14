@@ -89,7 +89,7 @@ export const supportedActions: Record<
     infoLineView: UpdateENSContentInfoLine,
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
-    displaySubmit: true,
+    displaySubmit: false,
   },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
