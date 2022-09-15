@@ -1,30 +1,7 @@
 import styled from 'styled-components';
 import { StyledIcon } from 'components/primitives/StyledIcon';
-import { Box } from 'components/primitives/Layout/Box';
 import { DetailBody } from '../common/Summary.styled';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
-
-export const Control = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  margin: 0.75rem 0;
-  width: 100%;
-`;
-
-export const ControlLabel = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 0.75rem;
-  color: ${({ theme }) => theme.colors.grey};
-  font-size: ${({ theme }) => theme.fontSizes.body};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-`;
-
-export const ControlRow = styled(Box)`
-  display: flex;
-  align-items: stretch;
-  height: 100%;
-`;
 
 export const StyledENSIcon = styled(StyledIcon)`
   margin: 0;

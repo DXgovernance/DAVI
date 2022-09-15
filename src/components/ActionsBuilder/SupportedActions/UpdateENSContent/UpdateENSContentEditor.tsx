@@ -1,5 +1,5 @@
 import React from 'react';
-import { Control, ControlLabel, ControlRow, Error } from './styles';
+import { Error } from './styles';
 import { Input } from 'components/primitives/Forms/Input';
 import { ReactComponent as Info } from 'assets/images/info.svg';
 import {
@@ -19,6 +19,11 @@ import { Controller, useForm } from 'react-hook-form';
 import validateENSContent from './validateENSContent';
 import { Button } from 'components/primitives/Button';
 import { ENSContentForm } from './types';
+import {
+  Control,
+  ControlLabel,
+  ControlRow,
+} from 'components/primitives/Forms/Control';
 
 const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
