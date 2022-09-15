@@ -304,7 +304,9 @@ exports[`NetworkModal Should match snapshot 1`] = `
             <h2
               class="c4 c5"
             >
-              <div>
+              <div
+                data-testid="switchNetworkModal"
+              >
                 switchNetwork
               </div>
             </h2>
@@ -351,7 +353,7 @@ exports[`NetworkModal Should match snapshot 1`] = `
                   >
                     <button
                       class="c12 c13"
-                      data-testid=""
+                      data-testid="network-option-123456"
                     >
                       <div
                         class="c14"
