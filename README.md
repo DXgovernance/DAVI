@@ -51,7 +51,7 @@ The following steps should get the app up and running:
 The development script will start a local hardhat node, deploy all dxdao contracts with local development configuration and start the dapp with the development configuration in the port 3000.
 
 ### Wallet 
-- Use whichever wallet you enjoy (tested mostly with firefox and frame.sh)
+- Use whichever wallet you enjoy (tested mostly with metamask and frame.sh)
 - Import a test account you can find in `hardhat.config.js`
 - You may need to reset accounts after running yarn dev in metamask, try `Settings` -> `Advanced` -> `Reset Account on your wallet` (this will not remove any accounts)
 
