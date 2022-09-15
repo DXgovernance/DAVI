@@ -225,6 +225,7 @@
   "expiresInTimeDetail": "expires in {{timeDetailHumanized}}",
   "endingTimeLeft": "{{timeDetailHumanized}} left",
   "endedTimeAgo": "ended {{timeDetailHumanized}} ago",
+  "aFewSeconds": "a few seconds",
   "takeMeHome": "Take me home",
   "pageNotExist": "That page doesn't exist",
   "makeSureCorrectAddress": "Make sure you typed the correct address",

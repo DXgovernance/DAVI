@@ -1,3 +1,4 @@
+import i18next from 'i18next';
 import moment from 'moment';
 
 export function getTimeDetail(endTime: moment.Moment) {
@@ -9,7 +10,7 @@ export function getTimeDetail(endTime: moment.Moment) {
   let timeDetailHumanized =
     Math.abs(differenceInMilliseconds) >= ONE_MINUTE
       ? moment.duration(differenceInMilliseconds).humanize()
-      : 'a few seconds';
+      : i18next.t('aFewSeconds');
 
   const isBefore = endTime.isBefore(currentTime);
 
