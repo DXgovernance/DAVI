@@ -4,7 +4,7 @@ import { isEnsName, isIpfsHash } from 'utils/validations';
 const validateENSContent = (values: ENSContentForm) => {
   const { ensName, ipfsHash } = values;
 
-  let errors = {
+  const errors = {
     ensName: null,
     ipfsHash: null,
   };

@@ -21,7 +21,7 @@ import {
   ERC20_TRANSFER_SIGNATURE,
   SET_PERMISSION_SIGNATURE,
   MINT_REP_SIGNATURE,
-  ENS_UPDATE_CONTENT,
+  ENS_UPDATE_CONTENT_SIGNATURE,
 } from 'utils';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 
@@ -43,7 +43,7 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
       callType: SupportedAction.REP_MINT,
       ABI: ERC20SnapshotRep.abi,
     },
-    [ENS_UPDATE_CONTENT]: {
+    [ENS_UPDATE_CONTENT_SIGNATURE]: {
       callType: SupportedAction.ENS_UPDATE_CONTENT,
       ABI: ENSPublicResolver.abi,
     },

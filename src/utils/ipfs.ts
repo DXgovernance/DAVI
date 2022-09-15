@@ -17,7 +17,9 @@ export const convertToNameHash = (
   return { nameHash, error };
 };
 
-export const convertToContentHash = (ipfsHash: string) => {
+export const convertToContentHash = (
+  ipfsHash: string
+): { contentHash: string; error: string } => {
   let error: string = null;
   let contentHash: string = null;
 
