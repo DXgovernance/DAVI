@@ -249,5 +249,7 @@
   "with": "With",
   "noActiveProposalsMessage": "There are no active proposals",
   "goToAllProposalsPage": "Go to all proposals page",
-  "reload": "Reload"
+  "reload": "Reload",
+  "reportABug": "Report a bug",
+  "suggestAFeature": "Suggest a feature"
 }
