@@ -107,17 +107,24 @@ const ContractsList: React.FC<ContractsListProps> = ({
         ))}
       </SectionWrapper>
       <SectionWrapper>
-        <SectionTitle direction="row" justifyContent="space-between">
+        <SectionTitle
+          direction="row"
+          justifyContent="space-between"
+          onClick={() =>
+            setIsAdvancedOptionsExpanded(!isAdvancedOptionsExpanded)
+          }
+        >
           {t('advancedOptions')}
-          <ExpandButton
-            expanded={isAdvancedOptionsExpanded}
-            onClick={() =>
-              setIsAdvancedOptionsExpanded(!isAdvancedOptionsExpanded)
-            }
-          />
+          <ExpandButton expanded={isAdvancedOptionsExpanded} />
         </SectionTitle>
         {isAdvancedOptionsExpanded && (
-          <ActionsButton>{t('rawTransaction')}</ActionsButton>
+          <ActionsButton
+            onClick={() =>
+              onSupportedActionSelect(SupportedAction.RAW_TRANSACTION)
+            }
+          >
+            {t('rawTransaction')}
+          </ActionsButton>
         )}
       </SectionWrapper>
     </Wrapper>

@@ -91,6 +91,13 @@ export const supportedActions: Record<
     editor: UpdateENSContentEditor,
     displaySubmit: true,
   },
+  [SupportedAction.RAW_TRANSACTION]: {
+    title: 'Raw Transaction',
+    infoLineView: GenericCallInfoLine,
+    summaryView: Summary,
+    editor: () => <div>Generic Call Editor</div>,
+    displaySubmit: false,
+  },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
@@ -191,6 +198,18 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
         ensName: '',
         ipfsHash: '',
       },
+    },
+  },
+  [SupportedAction.RAW_TRANSACTION]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.RAW_TRANSACTION,
+      function: null,
+      to: '',
+      args: {},
+      value: BigNumber.from(0),
     },
   },
 };
