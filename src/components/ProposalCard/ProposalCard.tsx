@@ -54,7 +54,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           </CardTitle>
         </CardContent>
         <CardFooter>
-          {options && <ProposalCardWinningOption option={options[0]} />}
+          <ProposalCardWinningOption options={options} />
         </CardFooter>
       </ProposalCardWrapper>
     </UnstyledLink>

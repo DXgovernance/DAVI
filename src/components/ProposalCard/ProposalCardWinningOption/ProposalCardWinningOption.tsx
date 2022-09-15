@@ -8,16 +8,27 @@ import {
 } from './ProposalCardWinningOption.styled';
 import { getInfoLineView } from 'components/ActionsBuilder/SupportedActions';
 import UndecodableCallInfoLine from 'components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExpandedActionsList } from '../ExpandedActionsList';
 import { ProposalCardWinningOptionProps } from './types';
 
 const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
-  option,
+  options,
 }) => {
   const [expandedActionsVisible, setExpandedActionsVisible] = useState(false);
   const { t } = useTranslation();
+
+  const option = useMemo(() => {
+    if (!options) return null;
+    return options?.reduce(
+      (acc, option) =>
+        option.totalVotes?.toBigInt() > acc?.totalVotes.toBigInt()
+          ? option
+          : acc,
+      options[0]
+    );
+  }, [options]);
 
   if (!option) {
     return (
