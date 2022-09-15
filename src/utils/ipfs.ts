@@ -1,7 +1,7 @@
 import contenthash from 'content-hash';
 import { MAINNET_ID, LOCALHOST_ID } from 'utils';
 import { utils } from 'ethers';
-import { isEnsName, isIpfsHash } from './validation';
+import { isEnsName, isIpfsHash } from './validations';
 
 export const convertToNameHash = (
   name: string

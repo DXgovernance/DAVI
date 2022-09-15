@@ -6,7 +6,7 @@ import {
   convertToContentHash,
   convertToNameHash,
   isSupportedChainId,
-} from './utils';
+} from 'utils/ipfs';
 import { useDebounce } from 'hooks/Guilds/useDebounce';
 import { useTranslation } from 'react-i18next';
 import { useNetwork, useEnsResolver } from 'wagmi';

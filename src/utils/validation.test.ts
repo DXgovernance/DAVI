@@ -1,4 +1,4 @@
-import { isEnsName, isIpfsHash } from './validation';
+import { isEnsName, isIpfsHash } from './validations';
 import isIPFS from 'is-ipfs';
 
 jest.mock('i18next', () => {

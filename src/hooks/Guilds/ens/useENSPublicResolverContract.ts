@@ -1,9 +1,6 @@
 import { useContractRead } from 'wagmi';
 import ensPublicResolver from 'contracts/ENSPublicResolver.json';
-import {
-  convertToIpfsHash,
-  convertToNameHash,
-} from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { convertToIpfsHash, convertToNameHash } from 'utils/ipfs';
 import { isAvailableOnENS } from './utils';
 import useENSResolver from './useENSResolver';
 import { MAINNET_ID } from 'utils';

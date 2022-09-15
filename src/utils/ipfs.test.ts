@@ -5,7 +5,7 @@ import {
   isSupportedChainId,
   getIpfsUrl,
   convertToIpfsHash,
-} from './utils';
+} from './ipfs';
 
 jest.mock('i18next', () => {
   return {

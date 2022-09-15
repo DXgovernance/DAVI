@@ -1,5 +1,5 @@
 import { ENSContentForm } from './types';
-import { isEnsName, isIpfsHash } from './validation';
+import { isEnsName, isIpfsHash } from 'utils/validations';
 
 const validateENSContent = (values: ENSContentForm) => {
   const { ensName, ipfsHash } = values;
