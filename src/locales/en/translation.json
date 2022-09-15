@@ -223,7 +223,7 @@
   "noGuildInThisAddress": "No guild exists on this address",
   "expiredTimeAgo": "expired {{timeDetailHumanized}} ago",
   "expiresInTimeDetail": "expires in {{timeDetailHumanized}}",
-  "endingLeftTime": "{{timeDetailHumanized}} left",
+  "endingTimeLeft": "{{timeDetailHumanized}} left",
   "endedTimeAgo": "ended {{timeDetailHumanized}} ago",
   "takeMeHome": "Take me home",
   "pageNotExist": "That page doesn't exist",
