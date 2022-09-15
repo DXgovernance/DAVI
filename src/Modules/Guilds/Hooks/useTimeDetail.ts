@@ -1,4 +1,4 @@
-import moment, { unix } from 'moment';
+import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { ProposalState } from 'types/types.guilds.d';
 import { getTimeDetail } from 'utils/timeDetail';
@@ -15,14 +15,14 @@ const useTimeDetail = (
   let endTimeDetail = '';
   let endTimeMoment: moment.Moment;
 
+  // with states Executable and Failed we show the time difference with execution time. Otherwise, with ending time
   if (
     guildConfig &&
     (status === ProposalState.Executable || status === ProposalState.Failed)
   ) {
     const { timeForExecution } = guildConfig;
 
-    const timeForExecutionUnix = unix(timeForExecution.toNumber());
-    endTimeMoment = moment(endTime).add(timeForExecutionUnix.toString());
+    endTimeMoment = moment(endTime).add(timeForExecution.toNumber(), 'seconds');
 
     const { isBefore, timeDetailHumanized } = getTimeDetail(endTimeMoment);
 
@@ -31,9 +31,10 @@ const useTimeDetail = (
       : t('expiresInTimeDetail', { timeDetailHumanized });
   } else {
     const { isBefore, timeDetailHumanized } = getTimeDetail(endTime);
+
     endTimeDetail = isBefore
       ? t('endedTimeAgo', { timeDetailHumanized })
-      : t('endingLeftTime', { timeDetailHumanized });
+      : t('endingTimeLeft', { timeDetailHumanized });
     endTimeMoment = endTime;
   }
 

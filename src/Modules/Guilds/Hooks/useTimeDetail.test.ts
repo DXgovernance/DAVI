@@ -14,7 +14,7 @@ jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
 }));
 
 describe('useTimeDetail', () => {
-  it('should return expires in ... when state is Executable and execution time is before current moment', () => {
+  it('should return expiresInTimeDetail when state is Executable and end time is after current moment', () => {
     const dateAfterCurrent = moment().add(1, 'day');
 
     const { endTimeDetail } = useTimeDetail(
@@ -25,18 +25,18 @@ describe('useTimeDetail', () => {
     expect(endTimeDetail).toBe('expiresInTimeDetail');
   });
 
-  it('should return expiredTimeAgo ago when state is Executable and execution time is after current moment', () => {
-    const dateAfterCurrent = moment().subtract(1, 'day');
+  it('should return expiredTimeAgo ago when state is Executable and end time is before current moment', () => {
+    const dateBeforeCurrent = moment().subtract(3, 'day');
 
     const { endTimeDetail } = useTimeDetail(
       MOCK_GUILD_ADDRESS,
       ProposalState.Executable,
-      dateAfterCurrent
+      dateBeforeCurrent
     );
     expect(endTimeDetail).toBe('expiredTimeAgo');
   });
 
-  it('should return expiresInTimeDetail when state is Failed and execution time is before current moment', () => {
+  it('should return expiresInTimeDetail when state is Failed and end time is after current moment', () => {
     const dateAfterCurrent = moment().add(1, 'day');
 
     const { endTimeDetail } = useTimeDetail(
@@ -47,8 +47,8 @@ describe('useTimeDetail', () => {
     expect(endTimeDetail).toBe('expiresInTimeDetail');
   });
 
-  it('should return expiredTimeAgo when state is Failed and execution time is after current moment', () => {
-    const dateBeforeCurrent = moment().subtract(1, 'day');
+  it('should return expiredTimeAgo when state is Failed and end time is before current moment', () => {
+    const dateBeforeCurrent = moment().subtract(3, 'day');
 
     const { endTimeDetail } = useTimeDetail(
       MOCK_GUILD_ADDRESS,
@@ -58,7 +58,7 @@ describe('useTimeDetail', () => {
     expect(endTimeDetail).toBe('expiredTimeAgo');
   });
 
-  it('should return endingLeftTime left when state is not Executable nor Failed and end time is after current moment', () => {
+  it('should return endingTimeLeft left when state is not Executable nor Failed and end time is after current moment', () => {
     const dateAfterCurrent = moment().add(1, 'day');
 
     const { endTimeDetail } = useTimeDetail(
@@ -66,10 +66,10 @@ describe('useTimeDetail', () => {
       ProposalState.Active,
       dateAfterCurrent
     );
-    expect(endTimeDetail).toBe('endingLeftTime');
+    expect(endTimeDetail).toBe('endingTimeLeft');
   });
 
-  it('should return endedTimeAgo when state is not Executable nor Failed and execution time is before current moment', () => {
+  it('should return endedTimeAgo when state is not Executable nor Failed and end time is before current moment', () => {
     const dateBeforeCurrent = moment().subtract(1, 'day');
 
     const { endTimeDetail } = useTimeDetail(
