@@ -9,7 +9,6 @@ import useENSNameFromAddress from 'hooks/Guilds/ens/useENSNameFromAddress';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 import { CardsContainer } from './LandingPage.styled';
-import useGuildHolderTotal from 'Modules/Guilds/Hooks/useGuildHolderTotal';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 
 const GuildCardLoader = () => {
@@ -29,18 +28,19 @@ const GuildCardLoader = () => {
 const GuildCardWithContent = ({ guildAddress, t }) => {
   const { data: guildConfig } = useGuildConfig(guildAddress);
   const { isRepGuild } = useGuildImplementationType(guildAddress);
-  const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
-  const { data: numberOfHolders } = useGuildHolderTotal(guildConfig?.token);
+  const { data: numberOfMembers } = useGuildMemberTotal(
+    guildAddress,
+    guildConfig?.token,
+    isRepGuild
+  );
   const { data: numberOfActiveProposals } = useActiveProposalsNow(guildAddress);
   const ensName = useENSNameFromAddress(guildAddress)?.ensName?.split('.')[0];
   const { data } = useGuildConfig(guildAddress);
 
-  const participants = isRepGuild ? numberOfHolders : numberOfMembers;
-
   return (
     <GuildCard
       guildAddress={guildAddress}
-      numberOfMembers={participants}
+      numberOfMembers={numberOfMembers}
       t={t}
       numberOfActiveProposals={numberOfActiveProposals}
       ensName={ensName}
