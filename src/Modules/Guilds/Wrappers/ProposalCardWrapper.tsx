@@ -6,6 +6,8 @@ import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
+import { useAccount } from 'wagmi';
+import useProposalVotesOfVoter from '../Hooks/useProposalVotesOfVoter';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -19,10 +21,20 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
+  const { address } = useAccount();
+  const { data: proposalVotesOfVoter } = useProposalVotesOfVoter(
+    guildId,
+    proposalId,
+    address
+  );
 
   return withFilters(
     <ProposalCard
-      proposal={{ ...proposal, id: proposalId }}
+      proposal={{
+        ...proposal,
+        id: proposalId,
+        votesOfVoters: proposalVotesOfVoter,
+      }}
       ensAvatar={ensAvatar}
       href={
         proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
@@ -33,6 +45,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         endTime: proposal?.endTime,
       }}
       options={options}
+      address={address}
     />
   )(proposal, status, options);
 };

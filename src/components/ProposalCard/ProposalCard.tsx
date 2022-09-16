@@ -15,6 +15,7 @@ import {
   CardFooter,
 } from './ProposalCard.styled';
 import ProposalCardWinningOption from './ProposalCardWinningOption/ProposalCardWinningOption';
+import ProposalCardActions from './ProposalCardActions/ProposalCardActions';
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({
   proposal,
@@ -22,6 +23,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   href,
   statusProps,
   options,
+  address,
 }) => {
   return (
     <UnstyledLink to={href || '#'} data-testid="proposal-card">
@@ -55,6 +57,11 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
         </CardContent>
         <CardFooter>
           <ProposalCardWinningOption options={options} />
+          <ProposalCardActions
+            votesOfVoters={proposal?.votesOfVoters}
+            created={proposal?.creator}
+            userAddress={address}
+          />
         </CardFooter>
       </ProposalCardWrapper>
     </UnstyledLink>
