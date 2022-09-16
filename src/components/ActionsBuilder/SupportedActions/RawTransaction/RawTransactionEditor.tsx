@@ -5,6 +5,7 @@ import {
   ControlLabel,
   ControlRow,
 } from 'components/primitives/Forms/Control';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Input } from 'components/primitives/Forms/Input';
 import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
 import { BigNumber } from 'ethers';
@@ -33,6 +34,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
   }, [decodedCall]);
 
   const { t } = useTranslation();
+
   const { control, handleSubmit } = useForm({
     resolver: validateRawTransaction,
     context: { t },
@@ -73,6 +75,9 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
                     placeholder={t('ethereumAddress')}
                   />
                 </ControlRow>
+                {!!error && (
+                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                )}
               </Control>
             );
           }}
@@ -86,7 +91,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
 
             return (
               <Control>
-                <ControlLabel>{t('amount')}</ControlLabel>
+                <ControlLabel>{`${t('amount')} (${t('in')} wei)`}</ControlLabel>
                 <ControlRow>
                   <TokenAmountInput
                     {...field}
@@ -95,7 +100,9 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
                   />
                 </ControlRow>
 
-                {!!error && <>{error.message}</>}
+                {!!error && (
+                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                )}
               </Control>
             );
           }}
@@ -109,7 +116,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
 
             return (
               <Control>
-                <ControlLabel>{t('data')}</ControlLabel>
+                <ControlLabel>{`${t('data')} (hex)`}</ControlLabel>
                 <ControlRow>
                   <Input
                     {...field}
@@ -117,6 +124,9 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
                     placeholder={t('data')}
                   />
                 </ControlRow>
+                {!!error && (
+                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                )}
               </Control>
             );
           }}
