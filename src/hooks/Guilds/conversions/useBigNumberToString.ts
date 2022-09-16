@@ -4,10 +4,10 @@ import { useMemo } from 'react';
 
 export default function useBigNumberToString(
   number: BigNumber,
-  decimals: number
+  decimals: number = 0
 ) {
   const stakeAmountParsed = useMemo(() => {
-    if (!number || !decimals) return null;
+    if (!number) return null;
 
     let formatted = formatUnits(number, decimals);
     return formatted;

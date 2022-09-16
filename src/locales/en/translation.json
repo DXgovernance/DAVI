@@ -61,6 +61,8 @@
   "toAddress": "To Address",
   "anyAddress": "Any Address",
   "maxValue": "Max Value",
+  "value": "Value",
+  "data": "Data",
   "unknownToken": "Unknown token",
   "functionName": "Function Name",
   "functionSignature": "Function Signature",

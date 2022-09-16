@@ -20,6 +20,7 @@ import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
 import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
 import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
 import Summary from './common/Summary';
+import RawTransactionEditor from './RawTransaction/RawTransactionEditor';
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -95,7 +96,7 @@ export const supportedActions: Record<
     title: 'Raw Transaction',
     infoLineView: GenericCallInfoLine,
     summaryView: Summary,
-    editor: () => <div>Generic Call Editor</div>,
+    editor: RawTransactionEditor,
     displaySubmit: false,
   },
 };
@@ -210,6 +211,9 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       to: '',
       args: {},
       value: BigNumber.from(0),
+      optionalProps: {
+        data: '',
+      },
     },
   },
 };
