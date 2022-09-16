@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { ProposalCard } from 'components/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
@@ -21,21 +20,6 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
 
-  const sortedOptionsByWinningVotes = useMemo(() => {
-    if (options) {
-      const sortedOptionsByWiningVote: any = options?.sort((a, b) => {
-        const aVotes = a.totalVotes?.toBigInt();
-        const bVotes = b.totalVotes?.toBigInt();
-        if (aVotes === bVotes) return 0;
-        if (aVotes < bVotes) return 1;
-        return -1;
-      });
-      return sortedOptionsByWiningVote;
-    } else {
-      return [];
-    }
-  }, [options]);
-
   return withFilters(
     <ProposalCard
       proposal={{ ...proposal, id: proposalId }}
@@ -48,7 +32,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         status,
         endTime: proposal?.endTime,
       }}
-      options={sortedOptionsByWinningVotes}
+      options={options}
     />
   )(proposal, status, options);
 };

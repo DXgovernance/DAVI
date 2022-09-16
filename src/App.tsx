@@ -1,4 +1,5 @@
 import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 import { ToastNotificationContainer } from 'components/ToastNotifications';
 import { Container } from 'components/primitives/Layout';
 import { GuildsPage } from './Modules/Guilds/pages/Guilds';
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Container>
+          <Footer />
         </GuildsContextProvider>
       </TransactionsProvider>
 
