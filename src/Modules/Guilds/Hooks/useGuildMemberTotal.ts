@@ -15,6 +15,7 @@ const useGuildMemberTotal = (
     addressOrName: addressOrName,
     contractInterface: contractInterface,
     functionName: functionName,
+    watch: true,
   });
 
   return { data: Number(data), ...rest };

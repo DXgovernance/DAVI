@@ -39,6 +39,10 @@ export const mockProposalVoteCardProps = {
   contract: {} as any,
   createTransaction: () => {},
   currentLockedPercent: 100,
+  userVote: {
+    action: '0',
+    votingPower: BigNumber.from(100000000),
+  },
 };
 
 export const mockVoteResults = {

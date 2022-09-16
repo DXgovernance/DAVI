@@ -13,17 +13,15 @@ import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals'
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
-import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
-import { ProposalState } from 'types/types.guilds.d';
-import { useAccount } from 'wagmi';
 import {
-  ProposalListWrapper,
   ProposalsList,
   StyledButton,
   StyledHeading,
   StyledLink,
 } from './Governance.styled';
+import { ProposalState } from 'types/types.guilds.d';
+import Discussions from 'Modules/Social/Discussions';
+import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -31,22 +29,7 @@ const Governance = ({ guildId }) => {
   const { t } = useTranslation();
   const { data: activeProposals } = useActiveProposalsNow(guildId);
   const { chainName } = useTypedParams();
-  const { address } = useAccount();
-  const { data: guildConfig } = useGuildConfig(guildId);
-  const { data: votingPower } = useVotingPowerOf({
-    contractAddress: guildId,
-    userAddress: address,
-  });
-
-  const isProposalCreationAllowed = useMemo(() => {
-    if (!guildConfig || !votingPower) {
-      return false;
-    }
-    if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
-      return true;
-    }
-    return false;
-  }, [votingPower, guildConfig]);
+  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -93,7 +76,7 @@ const Governance = ({ guildId }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title={t('genericProposalError')}
+        title={t('errorMessage.genericProposalError')}
         subtitle={error.message}
       />
     );
@@ -121,33 +104,30 @@ const Governance = ({ guildId }) => {
               </StyledButton>
             </UnstyledLink>
             /
-            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
-              <Button
-                variant="secondary"
-                data-testid="create-discussion-button"
-              >
-                {t('forum.createDiscussion')}
-              </Button>
-            </UnstyledLink>
           </>
         )}
+        <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+          <Button variant="secondary" data-testid="create-discussion-button">
+            {t('forum.createDiscussion')}
+          </Button>
+        </UnstyledLink>
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
-            There are no active proposals.{' '}
+            {t('noActiveProposalsMessage')}.{' '}
             <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
-              Go to all proposals page.
+              {t('goToAllProposalsPage')}.
             </StyledLink>
           </div>
         )}
         {proposalIds ? (
-          <ProposalListWrapper>
+          <>
             {revertedProposals.map(proposal => (
               <ProposalCardWrapper key={proposal} proposalId={proposal} />
             ))}
-          </ProposalListWrapper>
+          </>
         ) : (
           <>
             <ProposalCardWrapper />
@@ -157,6 +137,10 @@ const Governance = ({ guildId }) => {
             <ProposalCardWrapper />
           </>
         )}
+      </ProposalsList>
+      <ProposalsList>
+        <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
+        <Discussions />
       </ProposalsList>
     </>
   );
