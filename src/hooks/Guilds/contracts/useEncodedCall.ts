@@ -28,10 +28,15 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
     const { decodedActions } = option;
     const encodedCalls: Call[] = decodedActions?.reduce(
       (acc, decodedAction) => {
+        const data =
+          decodedAction.decodedCall.callType === 'RAW_TRANSACTION'
+            ? decodedAction.decodedCall.optionalProps.data
+            : encodeCall(decodedAction.decodedCall, decodedAction.contract);
+
         const actionCall = {
           from: decodedAction.decodedCall.from,
           to: decodedAction.decodedCall.to,
-          data: encodeCall(decodedAction.decodedCall, decodedAction.contract),
+          data,
           value: decodedAction.decodedCall.value,
         };
         if (!!decodedAction.approval) {
@@ -46,6 +51,7 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
           };
           return [...acc, approvalCall, actionCall];
         }
+        debugger;
         return [...acc, actionCall];
       },
       []
