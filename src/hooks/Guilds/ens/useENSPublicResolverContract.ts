@@ -12,11 +12,14 @@ import { MAINNET_ID } from 'utils';
 export function useENSAvatarUri(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver } = useENSResolver(ensName, supportedChainId);
+  const { nameHash, error } = convertToNameHash(ensName);
+  debugger;
   const { data, ...rest } = useContractRead({
+    enabled: !error,
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'text',
-    args: [convertToNameHash(ensName).nameHash, 'avatar'],
+    args: [nameHash, 'avatar'],
     chainId: supportedChainId,
   });
   return {
@@ -28,11 +31,14 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
 export function useENSContentHash(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver, ...rest } = useENSResolver(ensName, supportedChainId);
+  const { nameHash, error } = convertToNameHash(ensName);
+  debugger;
   const { data } = useContractRead({
+    enabled: !error,
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'contenthash',
-    args: convertToNameHash(ensName).nameHash,
+    args: nameHash,
     select(data) {
       return convertToIpfsHash(data.toString());
     },
