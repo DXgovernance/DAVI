@@ -5,14 +5,17 @@ export function getTimeDetail(endTime: moment.Moment) {
   const ONE_MINUTE = 60000;
 
   const currentTime = moment();
-  let differenceInMilliseconds = currentTime.diff(endTime);
+  const differenceInMilliseconds = currentTime.diff(endTime);
   // manual fix because moment.js is returning one second instead of 'a few seconds'
-  let timeDetailHumanized =
+  const timeDetailHumanized =
     Math.abs(differenceInMilliseconds) >= ONE_MINUTE
       ? moment.duration(differenceInMilliseconds).humanize()
       : i18next.t('aFewSeconds');
 
-  const isBefore = endTime.isBefore(currentTime);
+  return timeDetailHumanized;
+}
 
-  return { isBefore, timeDetailHumanized };
+export function isBeforeCurrentTime(time: moment.Moment) {
+  const currentTime = moment();
+  return time.isBefore(currentTime);
 }

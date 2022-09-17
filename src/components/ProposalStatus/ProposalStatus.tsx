@@ -66,12 +66,7 @@ export const ProposalStatus: React.FC<ProposalStatusProps> = ({
         {!hideTime && (
           <DetailText>
             {timeDetail ? (
-              <TimeDetail
-                endTime={endTime}
-                timeDetail={timeDetail}
-                status={status}
-                guildId={guildId}
-              />
+              <TimeDetail endTime={endTime} status={status} guildId={guildId} />
             ) : (
               <Loading
                 test-id="skeleton"

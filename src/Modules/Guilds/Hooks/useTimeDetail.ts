@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { ProposalState } from 'types/types.guilds.d';
-import { getTimeDetail } from 'utils/timeDetail';
+import { getTimeDetail, isBeforeCurrentTime } from 'utils/time/time';
 import { useGuildConfig } from './useGuildConfig';
 
 const useTimeDetail = (
@@ -24,15 +24,15 @@ const useTimeDetail = (
 
     endTimeMoment = moment(endTime).add(timeForExecution.toNumber(), 'seconds');
 
-    const { isBefore, timeDetailHumanized } = getTimeDetail(endTimeMoment);
+    const timeDetailHumanized = getTimeDetail(endTimeMoment);
 
-    endTimeDetail = isBefore
+    endTimeDetail = isBeforeCurrentTime(endTimeMoment)
       ? t('expiredTimeAgo', { timeDetailHumanized })
       : t('expiresInTimeDetail', { timeDetailHumanized });
   } else {
-    const { isBefore, timeDetailHumanized } = getTimeDetail(endTime);
+    const timeDetailHumanized = getTimeDetail(endTime);
 
-    endTimeDetail = isBefore
+    endTimeDetail = isBeforeCurrentTime(endTime)
       ? t('endedTimeAgo', { timeDetailHumanized })
       : t('endingTimeLeft', { timeDetailHumanized });
     endTimeMoment = endTime;
