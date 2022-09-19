@@ -41,7 +41,7 @@ describe('Guilds', () => {
     });
   });
 
-  describe('Lock tokens', () => {
+  describe.skip('Lock tokens', () => {
     const testAcccount = ACCOUNTS[3];
     before(() => {
       cy.disconnectMetamaskWalletFromAllDapps();

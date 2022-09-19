@@ -14,6 +14,6 @@ export * from './encodingCalls';
 export * from './signature';
 export * from './array';
 export * from './votes';
-export * from './ipfs';
 export * from './img';
 export * from './validations';
+export * from './strings';

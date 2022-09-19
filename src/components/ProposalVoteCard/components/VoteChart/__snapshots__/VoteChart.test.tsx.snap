@@ -140,7 +140,7 @@ exports[`VoteChart matches the snapshot 1`] = `
           0
         </span>
         <span>
-          DXD
+          %
         </span>
       </div>
     </div>

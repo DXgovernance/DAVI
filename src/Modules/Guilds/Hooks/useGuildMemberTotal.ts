@@ -6,6 +6,7 @@ const useGuildMemberTotal = (guildAddress: string) => {
     addressOrName: guildAddress,
     contractInterface: ERC20Guild.abi,
     functionName: 'getTotalMembers',
+    watch: true,
   });
   return { data: Number(data), ...rest };
 };

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'components/primitives/Button';
+import { Bullet } from 'components/primitives/Bullet';
 
 export const DeleteButton = styled(Button)`
   background: ${({ theme }) => theme.colors.border1};
@@ -8,9 +9,6 @@ export const DeleteButton = styled(Button)`
   }
 `;
 
-export const Dot = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 10px;
+export const Dot = styled(Bullet).attrs({ size: 10 })`
   background: ${({ theme, color }) => color ?? theme.colors.border1};
 `;

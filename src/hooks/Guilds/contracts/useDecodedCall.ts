@@ -8,6 +8,7 @@ import {
 import ERC20 from 'contracts/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
+import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 import {
   ApproveSendTokens,
   Call,
@@ -20,6 +21,7 @@ import {
   ERC20_TRANSFER_SIGNATURE,
   SET_PERMISSION_SIGNATURE,
   MINT_REP_SIGNATURE,
+  ENS_UPDATE_CONTENT_SIGNATURE,
 } from 'utils';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 import { Provider } from '@wagmi/core';
@@ -42,6 +44,10 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     [MINT_REP_SIGNATURE]: {
       callType: SupportedAction.REP_MINT,
       ABI: ERC20SnapshotRep.abi,
+    },
+    [ENS_UPDATE_CONTENT_SIGNATURE]: {
+      callType: SupportedAction.ENS_UPDATE_CONTENT,
+      ABI: ENSPublicResolver.abi,
     },
   };
 

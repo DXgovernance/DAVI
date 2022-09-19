@@ -8,9 +8,7 @@ import {
   defaultValues,
   getEditor,
   supportedActions,
-  displaySubmit,
 } from 'components/ActionsBuilder/SupportedActions';
-import { Button } from 'components/primitives/Button';
 
 import {
   DecodedAction,
@@ -166,15 +164,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
             updateCall={setData}
             onSubmit={saveSupportedAction}
           />
-          {displaySubmit(selectedAction) && (
-            <Button
-              m="1rem 0 0"
-              fullWidth
-              onClick={() => saveSupportedAction()}
-            >
-              {t('saveAction')}
-            </Button>
-          )}
         </EditorWrapper>
       );
     }

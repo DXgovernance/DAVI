@@ -1,19 +1,8 @@
 import styled from 'styled-components';
-import { Circle, Flex } from 'components/primitives/Layout';
+import { Flex } from 'components/primitives/Layout';
 
 export const StatusWrapper = styled(Flex)`
   margin: 3rem 0px;
-`;
-
-export const SuccessCircle = styled(Circle)`
-  color: ${({ theme }) => theme.colors.params['2']};
-  border-color: ${({ theme }) => theme.colors.params['2']};
-  background-color: transparent;
-`;
-export const WarningCircle = styled(Circle)`
-  color: ${({ theme }) => theme.colors.red};
-  border-color: ${({ theme }) => theme.colors.red};
-  background-color: transparent;
 `;
 
 export const Message = styled.h3`
