@@ -14,7 +14,7 @@ const useIsProposalCreationAllowed = () => {
   });
 
   const isProposalCreationAllowed = useMemo(() => {
-    if (!guildConfig || !votingPower) {
+    if (!guildConfig?.votingPowerForProposalCreation || !votingPower) {
       return false;
     }
     if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
