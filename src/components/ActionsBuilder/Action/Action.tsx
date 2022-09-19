@@ -178,6 +178,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           setIsOpen={setIsEditActionModalOpen}
           action={decodedAction}
           onAddAction={onEdit}
+          isEditable={isEditable}
         />
       )}
     </CardWrapperWithMargin>

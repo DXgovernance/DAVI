@@ -49,6 +49,7 @@ interface FormValues {
 const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
   onSubmit,
+  isEdit,
 }) => {
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
@@ -65,10 +66,6 @@ const Permissions: React.FC<ActionEditorProps> = ({
       tab,
     };
   }, [decodedCall]);
-
-  const isEdit = useMemo(() => {
-    return !!decodedCall.args?.to || !!decodedCall.args?.functionSignature;
-  }, []); //eslint-disable-line
 
   const { t } = useTranslation();
 

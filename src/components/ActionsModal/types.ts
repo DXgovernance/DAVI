@@ -5,4 +5,5 @@ export interface ActionModalProps {
   setIsOpen: (isOpen: boolean) => void;
   onAddAction: (action: DecodedAction | DecodedAction[]) => void;
   action?: DecodedAction;
+  isEditable?: boolean;
 }

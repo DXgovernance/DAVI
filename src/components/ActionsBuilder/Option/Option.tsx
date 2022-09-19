@@ -148,6 +148,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
           addAction(action);
           setIsActionsModalOpen(false);
         }}
+        isEditable={false}
       />
     </OptionWrapper>
   );

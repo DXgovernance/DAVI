@@ -33,6 +33,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   isOpen,
   setIsOpen,
   onAddAction,
+  isEditable,
 }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
@@ -161,6 +162,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
             decodedCall={data}
             updateCall={setData}
             onSubmit={handleEditorSubmit}
+            isEdit={isEditable}
           />
         </EditorWrapper>
       );
@@ -217,12 +219,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
       contract: defaultDecodedAction.contract,
     };
     return decodedAction;
-  }
-
-  function saveSupportedAction(call?: DecodedCall) {
-    if (!call) return;
-    const decodedAction = buildAction(call);
-    onAddAction(decodedAction);
   }
 
   function handleEditorSubmit(calls?: DecodedCall[] | DecodedCall) {
