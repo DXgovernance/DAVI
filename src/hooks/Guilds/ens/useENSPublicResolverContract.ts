@@ -13,7 +13,6 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver } = useENSResolver(ensName, supportedChainId);
   const { nameHash, error } = convertToNameHash(ensName);
-  debugger;
   const { data, ...rest } = useContractRead({
     enabled: !error,
     addressOrName: resolver?.address,
@@ -32,7 +31,6 @@ export function useENSContentHash(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver, ...rest } = useENSResolver(ensName, supportedChainId);
   const { nameHash, error } = convertToNameHash(ensName);
-  debugger;
   const { data } = useContractRead({
     enabled: !error,
     addressOrName: resolver?.address,
