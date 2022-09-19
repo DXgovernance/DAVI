@@ -370,22 +370,6 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
                     mintRep
                   </div>
                 </button>
-                <button
-                  class="c13 c14"
-                >
-                  <div
-                    class="c15"
-                  >
-                    <div
-                      class="c16"
-                    >
-                      <svg>
-                        mint.svg
-                      </svg>
-                    </div>
-                    mintRep
-                  </div>
-                </button>
               </div>
               <div
                 class="c9"
