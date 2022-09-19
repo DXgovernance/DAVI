@@ -7,6 +7,7 @@ import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
+import useTimeDetail from '../Hooks/useTimeDetail';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -20,6 +21,11 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
+  const { endTimeMoment, endTimeDetail } = useTimeDetail(
+    guildId,
+    status,
+    proposal?.endTime
+  );
 
   const sortedOptionsByWinningVotes = useMemo(() => {
     if (options) {
@@ -44,10 +50,9 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
       }
       statusProps={{
-        timeDetail: proposal?.timeDetail,
         status,
-        endTime: proposal?.endTime,
-        guildId: guildId,
+        endTimeMoment: endTimeMoment,
+        endTimeDetail: endTimeDetail,
       }}
       options={sortedOptionsByWinningVotes}
     />

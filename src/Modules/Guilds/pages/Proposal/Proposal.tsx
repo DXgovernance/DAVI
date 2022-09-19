@@ -38,6 +38,7 @@ import {
   StyledIconButton,
 } from './Proposal.styled';
 import { useTranslation } from 'react-i18next';
+import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 
 const ProposalPage: React.FC = () => {
   const { t } = useTranslation();
@@ -70,6 +71,11 @@ const ProposalPage: React.FC = () => {
   );
 
   const status = useProposalState(proposal);
+  const { endTimeMoment, endTimeDetail } = useTimeDetail(
+    guildId,
+    status,
+    proposal?.endTime
+  );
 
   const {
     data: { executeProposal },
@@ -115,10 +121,9 @@ const ProposalPage: React.FC = () => {
             </UnstyledLink>
 
             <ProposalStatus
-              timeDetail={proposal?.timeDetail}
               status={status}
-              endTime={proposal?.endTime}
-              guildId={guildId}
+              endTimeDetail={endTimeDetail}
+              endTimeMoment={endTimeMoment}
             />
             {status === ProposalState.Executable && !isReadOnly(connector) && (
               <ExecuteButton executeProposal={executeProposal} />

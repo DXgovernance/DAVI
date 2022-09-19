@@ -1,17 +1,10 @@
 import { TimeDetailProps } from './types';
-import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
+// import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 
 export const TimeDetail: React.FC<TimeDetailProps> = ({
-  endTime,
-  status,
-  guildId,
+  endTimeMoment,
+  endTimeDetail,
 }) => {
-  const { endTimeMoment, endTimeDetail } = useTimeDetail(
-    guildId,
-    status,
-    endTime
-  );
-
   return (
     <span title={endTimeMoment?.format('MMMM Do, YYYY - h:mm a')}>
       {endTimeDetail}

@@ -53,20 +53,22 @@ const DetailText = styled(Box)`
   }
 `;
 export const ProposalStatus: React.FC<ProposalStatusProps> = ({
-  endTime,
   status,
   bordered,
   hideTime,
-  timeDetail,
-  guildId,
+  endTimeDetail,
+  endTimeMoment,
 }) => {
   return (
     <ProposalStatusWrapper>
       <Status test-id="proposal-status" bordered={hideTime ? false : bordered}>
         {!hideTime && (
           <DetailText>
-            {timeDetail ? (
-              <TimeDetail endTime={endTime} status={status} guildId={guildId} />
+            {endTimeDetail ? (
+              <TimeDetail
+                endTimeMoment={endTimeMoment}
+                endTimeDetail={endTimeDetail}
+              />
             ) : (
               <Loading
                 test-id="skeleton"

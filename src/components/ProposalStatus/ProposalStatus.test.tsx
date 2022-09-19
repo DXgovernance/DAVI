@@ -9,15 +9,15 @@ jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
 }));
 
 const validProps: ProposalStatusProps = {
-  timeDetail: 'Time',
   status: ProposalState.Active,
-  endTime: moment('2022-05-09T08:00:00'),
+  endTimeDetail: 'endedTimeAgo',
+  endTimeMoment: moment('2022-05-09T08:00:00'),
 };
 
 const invalidProps: ProposalStatusProps = {
-  timeDetail: null,
   status: null,
-  endTime: null,
+  endTimeDetail: null,
+  endTimeMoment: null,
 };
 
 test('ProposalStatus votes', async () => {

@@ -1,7 +1,10 @@
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { ProposalState } from 'types/types.guilds.d';
-import { getTimeDetail, isBeforeCurrentTime } from 'utils/time/time';
+import {
+  getTimeDifferenceFromCurrentTimeHumanized,
+  isBeforeCurrentTime,
+} from 'utils/time/time';
 import { useGuildConfig } from './useGuildConfig';
 
 const useTimeDetail = (
@@ -15,6 +18,8 @@ const useTimeDetail = (
   let endTimeDetail = '';
   let endTimeMoment: moment.Moment;
 
+  if (!endTime) return {};
+
   // with states Executable and Failed we show the time difference with execution time. Otherwise, with ending time
   if (
     guildConfig &&
@@ -24,17 +29,19 @@ const useTimeDetail = (
 
     endTimeMoment = moment(endTime).add(timeForExecution.toNumber(), 'seconds');
 
-    const timeDetailHumanized = getTimeDetail(endTimeMoment);
+    const timeDifferenceHumanized =
+      getTimeDifferenceFromCurrentTimeHumanized(endTimeMoment);
 
     endTimeDetail = isBeforeCurrentTime(endTimeMoment)
-      ? t('expiredTimeAgo', { timeDetailHumanized })
-      : t('expiresInTimeDetail', { timeDetailHumanized });
+      ? t('expiredTimeAgo', { timeDifferenceHumanized })
+      : t('expiresInTimeDetail', { timeDifferenceHumanized });
   } else {
-    const timeDetailHumanized = getTimeDetail(endTime);
+    const timeDifferenceHumanized =
+      getTimeDifferenceFromCurrentTimeHumanized(endTime);
 
     endTimeDetail = isBeforeCurrentTime(endTime)
-      ? t('endedTimeAgo', { timeDetailHumanized })
-      : t('endingTimeLeft', { timeDetailHumanized });
+      ? t('endedTimeAgo', { timeDifferenceHumanized })
+      : t('endingTimeLeft', { timeDifferenceHumanized });
     endTimeMoment = endTime;
   }
 

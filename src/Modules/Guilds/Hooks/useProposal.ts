@@ -3,7 +3,6 @@ import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { getTimeDetail } from 'utils/time/time';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
@@ -24,8 +23,6 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
   if (data.endTime instanceof BigNumber) {
     clone.endTime = data.endTime ? unix(data.endTime.toNumber()) : null;
   }
-
-  clone.timeDetail = getTimeDetail(clone.endTime);
 
   return clone as Proposal;
 };

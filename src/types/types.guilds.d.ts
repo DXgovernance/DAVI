@@ -7,7 +7,6 @@ export interface Proposal {
   creator: string; 
   startTime: Moment;
   endTime: Moment;
-  timeDetail: string | null;
   to: string[];
   data?: string[];
   value: BigNumber[];

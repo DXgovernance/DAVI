@@ -22,7 +22,6 @@ export const proposalMock: Proposal = {
   value: [],
   startTime: moment(),
   endTime: moment(),
-  timeDetail: '',
   contractState: ContractState.Active,
   totalActions: BigNumber.from(0),
   totalVotes: [],
@@ -34,9 +33,9 @@ export const ensAvatarMock: ENSAvatar = {
 };
 
 export const proposalStatusPropsMock: ProposalStatusProps = {
-  timeDetail: 'Time',
   status: ProposalState.Active,
-  endTime: moment('2022-05-09T08:00:00'),
+  endTimeDetail: 'endedTimeAgo',
+  endTimeMoment: moment('2022-05-09T08:00:00'),
 };
 
 export const guildConfigMock: GuildConfigProps = {
