@@ -29,7 +29,7 @@ interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  onEdit?: (updatedCall: DecodedAction) => void;
+  onEdit?: (updatedCall: DecodedAction | DecodedAction[]) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
 

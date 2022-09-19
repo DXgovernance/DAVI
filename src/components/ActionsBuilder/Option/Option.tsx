@@ -43,14 +43,21 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   } = useSortable({ id: option.id });
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false);
 
-  function addAction(action: DecodedAction) {
+  function addAction(action: DecodedAction | DecodedAction[]) {
+    const newActions = Array.isArray(action) ? action : [action];
+
     onChange({
       ...option,
-      decodedActions: [...option.decodedActions, action],
+      decodedActions: [...option.decodedActions, ...newActions],
     });
   }
 
-  function updateAction(index: number, action: DecodedAction) {
+  function updateAction(
+    index: number,
+    action: DecodedAction | DecodedAction[]
+  ) {
+    if (Array.isArray(action)) return;
+
     const updatedActions = option?.decodedActions.map((a, i) =>
       index === i ? action : a
     );

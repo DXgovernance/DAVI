@@ -160,7 +160,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
           <Editor
             decodedCall={data}
             updateCall={setData}
-            onSubmit={saveSupportedAction}
+            onSubmit={handleEditorSubmit}
           />
         </EditorWrapper>
       );
@@ -207,20 +207,29 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedAction(action);
   }
 
-  function saveSupportedAction(call?: DecodedCall) {
-    const decodedCall = call ?? data;
-
+  function buildAction(decodedCall: DecodedCall): DecodedAction {
+    if (!decodedCall) return null;
     const defaultDecodedAction = defaultValues[decodedCall.callType];
-
-    if (!selectedAction || !decodedCall) return;
 
     const decodedAction: DecodedAction = {
       id: `action-${Math.random()}`,
       decodedCall,
       contract: defaultDecodedAction.contract,
     };
+    return decodedAction;
+  }
 
+  function saveSupportedAction(call?: DecodedCall) {
+    if (!call) return;
+    const decodedAction = buildAction(call);
     onAddAction(decodedAction);
+  }
+
+  function handleEditorSubmit(calls?: DecodedCall[] | DecodedCall) {
+    if (!calls) return;
+    onAddAction(
+      Array.isArray(calls) ? calls.map(buildAction) : buildAction(calls)
+    );
     handleClose();
   }
 

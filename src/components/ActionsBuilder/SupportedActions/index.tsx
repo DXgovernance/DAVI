@@ -32,7 +32,7 @@ export interface ActionViewProps {
 
 export interface ActionEditorProps extends ActionViewProps {
   updateCall?: (updatedCall: DecodedCall) => void;
-  onSubmit: (decodedCall: DecodedCall) => void;
+  onSubmit: (decodedCall: DecodedCall | DecodedCall[]) => void;
 }
 
 type SupportedActionViews = {
