@@ -15,10 +15,10 @@ const useTimeDetail = (
   const { t } = useTranslation();
   const { data: guildConfig } = useGuildConfig(guildId);
 
-  let endTimeDetail = '';
-  let endTimeMoment: moment.Moment;
+  let endTimeDetail = null;
+  let endTimeMoment = null;
 
-  if (!endTime) return {};
+  if (!endTime) return { endTimeMoment, endTimeDetail };
 
   // with states Executable and Failed we show the time difference with execution time. Otherwise, with ending time
   if (
