@@ -29,7 +29,7 @@ interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  onEdit?: (updatedCall: DecodedAction | DecodedAction[]) => void;
+  onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
 
@@ -177,8 +177,9 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           isOpen={isEditActionModalOpen}
           setIsOpen={setIsEditActionModalOpen}
           action={decodedAction}
-          onAddAction={onEdit}
-          isEditable={isEditable}
+          onAddActions={null}
+          onEditAction={onEdit}
+          isEditing={true}
         />
       )}
     </CardWrapperWithMargin>

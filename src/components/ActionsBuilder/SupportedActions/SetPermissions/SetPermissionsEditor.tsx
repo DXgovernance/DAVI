@@ -150,15 +150,15 @@ const Permissions: React.FC<ActionEditorProps> = ({
       },
       optionalProps: {
         ...baseCall.optionalProps,
-        functionName: 'approve',
+        functionName: 'approve(address,uint256)',
       },
     };
 
     if (isEdit) {
       // in case of edit mode we submit only one action that is being edited
-      return parsedData.functionSignature === ERC20_APPROVE_SIGNATURE
-        ? onSubmit(newApprovalAssetCall)
-        : onSubmit(newAssetTransferCall);
+      return parsedData?.functionSignature === ERC20_APPROVE_SIGNATURE
+        ? onSubmit([newApprovalAssetCall])
+        : onSubmit([newAssetTransferCall]);
     }
     return onSubmit([newAssetTransferCall, newApprovalAssetCall]);
   };
@@ -180,7 +180,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
         tab: activeTab,
       },
     };
-    onSubmit(newCall);
+    onSubmit([newCall]);
   };
 
   const submitAction = (values: FormValues) => {

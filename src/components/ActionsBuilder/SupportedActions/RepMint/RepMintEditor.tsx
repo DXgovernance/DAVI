@@ -63,14 +63,16 @@ export const Mint: React.FC<ActionEditorProps> = ({
   };
 
   const submitAction = () => {
-    onSubmit({
-      ...decodedCall,
-      args: {
-        ...decodedCall.args,
-        to: recipient,
-        amount: ethers.utils.parseUnits(repAmount.toString()),
+    onSubmit([
+      {
+        ...decodedCall,
+        args: {
+          ...decodedCall.args,
+          to: recipient,
+          amount: ethers.utils.parseUnits(repAmount.toString()),
+        },
       },
-    });
+    ]);
   };
 
   return (

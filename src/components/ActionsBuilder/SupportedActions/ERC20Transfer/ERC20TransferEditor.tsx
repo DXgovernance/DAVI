@@ -103,26 +103,30 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     if (values.token.type === TokenType.ERC20) {
       const ERC20Contract = new utils.Interface(ERC20.abi);
 
-      onSubmit({
-        ...decodedCall,
-        callType: SupportedAction.ERC20_TRANSFER,
-        to: values.token.address,
-        value: BigNumber.from(0),
-        function: ERC20Contract.getFunction('transfer'),
-        args: {
-          _value: values.amount,
-          _to: values.recipientAddress,
+      onSubmit([
+        {
+          ...decodedCall,
+          callType: SupportedAction.ERC20_TRANSFER,
+          to: values.token.address,
+          value: BigNumber.from(0),
+          function: ERC20Contract.getFunction('transfer'),
+          args: {
+            _value: values.amount,
+            _to: values.recipientAddress,
+          },
         },
-      });
+      ]);
     } else {
-      onSubmit({
-        ...decodedCall,
-        callType: SupportedAction.NATIVE_TRANSFER,
-        to: values.recipientAddress,
-        value: values.amount,
-        function: null,
-        args: null,
-      });
+      onSubmit([
+        {
+          ...decodedCall,
+          callType: SupportedAction.NATIVE_TRANSFER,
+          to: values.recipientAddress,
+          value: values.amount,
+          function: null,
+          args: null,
+        },
+      ]);
     }
   };
 
