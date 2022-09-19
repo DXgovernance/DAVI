@@ -59,7 +59,7 @@ exports[`UpdateENSInfoLine Should match snapshot 1`] = `
   <span
     class="c0"
   >
-    ens.updateContent
+    ens.updateContentCoreAction
   </span>
   <span
     class="c0"

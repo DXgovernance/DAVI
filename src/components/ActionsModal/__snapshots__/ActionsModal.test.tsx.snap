@@ -351,7 +351,7 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
                         vector.svg
                       </svg>
                     </div>
-                    Set Permissions
+                    setPermissions
                   </div>
                 </button>
                 <button
