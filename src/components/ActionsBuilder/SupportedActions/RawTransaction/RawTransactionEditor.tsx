@@ -91,7 +91,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
 
             return (
               <Control>
-                <ControlLabel>{`${t('amount')} (${t('in')} wei)`}</ControlLabel>
+                <ControlLabel>{`${t('value')} (${t('in')} wei)`}</ControlLabel>
                 <ControlRow>
                   <TokenAmountInput
                     {...field}

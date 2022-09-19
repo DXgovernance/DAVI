@@ -51,7 +51,6 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
           };
           return [...acc, approvalCall, actionCall];
         }
-        debugger;
         return [...acc, actionCall];
       },
       []
