@@ -75,6 +75,7 @@
     "interweave": "^13.0.0",
     "ipfs": "0.62.3",
     "ipfs-only-hash": "^4.0.0",
+    "is-ipfs": "^6.0.2",
     "jsonexport": "^3.2.0",
     "jszip": "^3.7.1",
     "lodash": "^4.17.21",

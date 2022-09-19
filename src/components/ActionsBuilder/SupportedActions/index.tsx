@@ -42,7 +42,6 @@ type SupportedActionViews = {
 
 type SupportedActionEditors = {
   editor: React.FC<ActionEditorProps>;
-  displaySubmit?: boolean;
 };
 
 export const supportedActions: Record<
@@ -54,42 +53,36 @@ export const supportedActions: Record<
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
-    displaySubmit: false,
   },
   [SupportedAction.ERC20_TRANSFER]: {
     title: 'Transfers & Mint',
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
-    displaySubmit: false,
   },
   [SupportedAction.REP_MINT]: {
     title: 'Mint Reputation',
     infoLineView: RepMintInfoLine,
     summaryView: Summary,
     editor: RepMintEditor,
-    displaySubmit: false,
   },
   [SupportedAction.GENERIC_CALL]: {
     title: 'Generic Call',
     infoLineView: GenericCallInfoLine,
     summaryView: Summary,
     editor: () => <div>Generic Call Editor</div>,
-    displaySubmit: false,
   },
   [SupportedAction.SET_PERMISSIONS]: {
     title: 'Set permissions',
     infoLineView: SetPermissionsInfoLine,
     summaryView: Summary,
     editor: SetPermissionsEditor,
-    displaySubmit: false,
   },
   [SupportedAction.ENS_UPDATE_CONTENT]: {
     title: 'Update ENS content',
     infoLineView: UpdateENSContentInfoLine,
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
-    displaySubmit: true,
   },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
@@ -211,12 +204,6 @@ export const getEditor = (actionType: SupportedAction) => {
   if (actionType == null) return null;
 
   return supportedActions[actionType].editor;
-};
-
-export const displaySubmit = (actionType: SupportedAction) => {
-  if (actionType == null) return null;
-
-  return supportedActions[actionType].displaySubmit;
 };
 
 const isApprovalCall = (action: DecodedAction) => {
