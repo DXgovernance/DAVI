@@ -10,7 +10,6 @@ const ProposalCardActions = ({
   const isCreator = proposalCreated === userAddress;
   const hasVoted =
     votesOfVoters?.action !== null && votesOfVoters?.votingPower !== null;
-  console.log({ proposalCreated, votesOfVoters });
   return (
     <ProposalCardActionsWrapper>
       {hasVoted ? <IoMdCheckmarkCircleOutline size={30} /> : null}
