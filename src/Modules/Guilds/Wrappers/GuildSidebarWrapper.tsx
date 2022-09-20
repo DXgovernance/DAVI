@@ -28,7 +28,11 @@ const GuildSidebarWrapper = () => {
   const { data: guildConfig } = useGuildConfig(guildAddress);
   const { isRepGuild } = useGuildImplementationType(guildAddress);
   const { data: guildToken } = useERC20Info(guildConfig?.token);
-  const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
+  const { data: numberOfMembers } = useGuildMemberTotal(
+    guildAddress,
+    guildConfig?.token,
+    isRepGuild
+  );
   const { address: userAddress, connector } = useAccount();
   const { ensName, imageUrl } = useENSAvatar(userAddress);
   const { data: unlockedAt } = useVoterLockTimestamp(guildAddress, userAddress);
@@ -43,6 +47,7 @@ const GuildSidebarWrapper = () => {
   );
 
   const { createTransaction } = useTransactions();
+
   const guildContract = useERC20Guild(guildAddress);
   const withdrawTokens = async () => {
     createTransaction(

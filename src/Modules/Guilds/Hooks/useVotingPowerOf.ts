@@ -35,7 +35,7 @@ export const useVotingPowerOf = ({
     fallbackSnapshotId,
   });
 
-  if (isSnapshotGuild) return votingPowerAtSnapshotResponse;
+  if (isSnapshotGuild && snapshotId) return votingPowerAtSnapshotResponse;
   return {
     data: votingPowerOfResponse
       ? BigNumber.from(votingPowerOfResponse)
