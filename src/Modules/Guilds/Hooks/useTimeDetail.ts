@@ -4,7 +4,7 @@ import { ProposalState } from 'types/types.guilds.d';
 import {
   getTimeDifferenceFromCurrentTimeHumanized,
   isBeforeCurrentTime,
-} from 'utils/time';
+} from 'utils/time/time';
 import { useGuildConfig } from './useGuildConfig';
 
 const useTimeDetail = (
