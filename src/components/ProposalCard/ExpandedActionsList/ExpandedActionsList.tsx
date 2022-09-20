@@ -10,29 +10,31 @@ import {
 import { ExpandedActionsListProps } from './types';
 
 const ExpandedActionsList: React.FC<ExpandedActionsListProps> = ({
-  actions,
+  option,
 }) => {
   return (
     <ActionsTooltipWrapper aria-label={'expanded actions list tooltip'}>
-      {actions.map((action, index) => {
-        const InfoLine = getInfoLineView(action?.decodedCall?.callType);
+      {option?.actions.map((action, index) => {
+        const decodedAction = option?.decodedActions[index];
+
+        let InfoLine = getInfoLineView(decodedAction?.decodedCall?.callType);
 
         return (
-          <Fragment key={action.id}>
+          <Fragment key={decodedAction?.id || index}>
             <ActionWrapper>
               <ActionNumber>{index + 1}</ActionNumber>
               {!!InfoLine ? (
                 <InfoLine
-                  decodedCall={action?.decodedCall}
-                  approveSpendTokens={action?.approval}
+                  decodedCall={decodedAction?.decodedCall}
+                  approveSpendTokens={decodedAction.approval}
                   noAvatar
                   compact
                 />
               ) : (
-                <UndecodableCallInfoLine />
+                <UndecodableCallInfoLine call={action} />
               )}
             </ActionWrapper>
-            {index !== actions.length - 1 && <SpacerLine />}
+            {index !== option?.actions.length - 1 && <SpacerLine />}
           </Fragment>
         );
       })}

@@ -18,11 +18,12 @@ export enum SupportedAction {
 export interface Call {
   from: string;
   to: string;
-  data: string;
+  data?: string;
   value: BigNumber;
   approval?: ApproveSendTokens;
   functionName?: string;
   approvalCall?: Call;
+  optionalProps?: Record<string, any>;
 }
 
 export interface DecodedCall {

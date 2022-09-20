@@ -21,6 +21,8 @@ import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary'
 import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
 import Summary from './common/Summary';
 import RawTransactionEditor from './RawTransaction/RawTransactionEditor';
+import RawTransactionInfoLine from './RawTransaction/RawTransactionInfoLine';
+
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -94,8 +96,7 @@ export const supportedActions: Record<
   },
   [SupportedAction.RAW_TRANSACTION]: {
     title: 'Raw Transaction',
-    infoLineView: GenericCallInfoLine,
-    summaryView: Summary,
+    infoLineView: RawTransactionInfoLine,
     editor: RawTransactionEditor,
     displaySubmit: false,
   },

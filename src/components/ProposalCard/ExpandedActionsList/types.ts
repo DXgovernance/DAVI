@@ -1,5 +1,5 @@
-import { DecodedAction } from 'components/ActionsBuilder/types';
+import { Option } from 'components/ActionsBuilder/types';
 
 export interface ExpandedActionsListProps {
-  actions: DecodedAction[];
+  option: Option;
 }

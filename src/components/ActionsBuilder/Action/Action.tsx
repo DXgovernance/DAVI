@@ -106,7 +106,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           {InfoLine && (
             <InfoLine decodedCall={decodedCall} approveSpendTokens={approval} />
           )}
-          {!decodedCall && <UndecodableCallInfoLine />}
+          {!decodedCall && <UndecodableCallInfoLine call={call} />}
         </CardLabel>
         <CardActions>
           {isEditable && (

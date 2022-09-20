@@ -52,7 +52,7 @@ const UndecodableCallDetails: React.FC<{ call: Call }> = ({ call }) => {
   const renderedCallDetails: Call = {
     from: call.from,
     to: call.to,
-    data: call.data,
+    data: call.data || call.optionalProps.data,
     value: call.value,
   };
 
