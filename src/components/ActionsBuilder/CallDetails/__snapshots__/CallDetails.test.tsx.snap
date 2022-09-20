@@ -485,7 +485,8 @@ exports[`CallDetails Should match with empty data 1`] = `
       <button
         class="c10 c11"
       >
-        approve (
+        approve
+         (
          
         <span
           class="c12 c13"

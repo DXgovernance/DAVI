@@ -28,6 +28,9 @@ jest.mock('wagmi', () => ({
   chain: {
     mainnet: {},
   },
+  useEnsAddress: () => ({
+    data: '0x0000000000000000000000000000000000000000',
+  }),
 }));
 
 describe('CallDetails', () => {
