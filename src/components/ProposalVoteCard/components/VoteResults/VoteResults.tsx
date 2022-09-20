@@ -1,5 +1,5 @@
 import { formatUnits } from 'ethers/lib/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { Bullet } from 'components/primitives/Bullet';
 import { Loading } from 'components/primitives/Loading';
 import { useTheme } from 'styled-components';
@@ -32,7 +32,6 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
     voteData?.totalLocked,
     2
   );
-
   const label = getOptionLabel({ metadata: proposalMetadata, optionKey, t });
   return (
     <VotesRowWrapper>
@@ -53,10 +52,10 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
       {isReady && voteData ? (
         <span>
           {isPercent
-            ? `${formatUnits(voteData?.options?.[optionKey] || 0)} ${
+            ? `${votingPowerPercent}%`
+            : `${formatUnits(voteData?.options?.[optionKey] || 0)} ${
                 voteData?.token?.symbol
-              }`
-            : `${votingPowerPercent}%`}
+              }`}
         </span>
       ) : (
         <Loading loading text skeletonProps={{ width: 50 }} />

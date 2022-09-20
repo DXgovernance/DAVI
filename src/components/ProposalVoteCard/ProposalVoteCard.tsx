@@ -5,6 +5,7 @@ import {
 } from 'components/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
+import { UserVote } from './components/UserVote';
 import VoteResults from './components/VoteResults/VoteResults';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
@@ -24,7 +25,7 @@ import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 
 const ProposalVoteCard = ({
   voteData,
@@ -33,6 +34,7 @@ const ProposalVoteCard = ({
   timestamp,
   contract,
   createTransaction,
+  userVote,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
@@ -44,6 +46,15 @@ const ProposalVoteCard = ({
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
   );
+
+  const votedOptionLabel = useMemo(() => {
+    if (!userVote?.action) return null;
+    return getOptionLabel({
+      metadata: proposal?.metadata,
+      optionKey: userVote?.action,
+      t,
+    });
+  }, [userVote?.action, proposal?.metadata, t]);
 
   const toastError = (msg: string) =>
     toast.error(msg, {
@@ -94,9 +105,9 @@ const ProposalVoteCard = ({
             {!voteData ? (
               <Loading loading text skeletonProps={{ width: 40 }} />
             ) : isPercent ? (
-              voteData?.token?.symbol
-            ) : (
               '%'
+            ) : (
+              voteData?.token?.symbol
             )}
           </SmallButton>
         </SidebarCardHeaderSpaced>
@@ -112,7 +123,14 @@ const ProposalVoteCard = ({
           <VotesChart isPercent={isPercent} voteData={voteData} />
         </VotesContainer>
 
-        {isOpen && voteData?.options && (
+        <UserVote
+          isPercent={isPercent}
+          voteData={voteData}
+          userVote={userVote}
+          votedOptionLabel={votedOptionLabel}
+        />
+        {/* Hide voting options if user has already voted */}
+        {isOpen && !userVote?.action && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 

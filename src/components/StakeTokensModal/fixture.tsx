@@ -1,5 +1,5 @@
 import { BigNumber } from 'ethers';
-import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { GuildConfigProps } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { ERC20 } from 'types/contracts';
 import { ERC20Guild } from 'types/contracts/ERC20Guild';
 import { StakeTokensModalProps } from './types';

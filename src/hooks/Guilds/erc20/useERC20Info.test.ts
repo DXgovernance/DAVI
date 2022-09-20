@@ -22,16 +22,16 @@ describe('useERC20Info', () => {
   it('should return ERC20Info', () => {
     const { data, isError, isLoading } = useERC20Info(MOCK_CONTRACT_ADDRESS);
     expect(data).toMatchInlineSnapshot(`
-      Object {
-        "decimals": 0,
-        "name": "WAGMI",
-        "symbol": "WAG",
-        "totalSupply": Object {
-          "hex": "0x64",
-          "type": "BigNumber",
-        },
-      }
-    `);
+    Object {
+      "decimals": 0,
+      "name": "WAGMI",
+      "symbol": "WAG",
+      "totalSupply": Object {
+        "hex": "0x64",
+        "type": "BigNumber",
+      },
+    }
+  `);
     expect(isError).toBe(false);
     expect(isLoading).toBe(false);
   });

@@ -4,7 +4,7 @@ import { repMintEmptyDecodedCallMock } from './fixtures';
 import { Mint } from './RepMintEditor';
 const mockBigNumber = BigNumber.from(0);
 
-jest.mock('hooks/Guilds/guild/useTotalSupply', () => ({
+jest.mock('Modules/Guilds/Hooks/useTotalSupply', () => ({
   useTotalSupply: () => ({
     parsedData: {
       toAddress: '0x0000000000000000000000000000000000000000',
@@ -13,7 +13,7 @@ jest.mock('hooks/Guilds/guild/useTotalSupply', () => ({
   }),
 }));
 
-jest.mock('hooks/Guilds/guild/useTokenData', () => ({
+jest.mock('Modules/Guilds/Hooks/useTokenData', () => ({
   useTokenData: () => ({
     tokenData: {
       symbol: 'REP',

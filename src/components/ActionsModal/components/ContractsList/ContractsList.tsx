@@ -13,7 +13,7 @@ import {
   Wrapper,
 } from '../../ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import React from 'react';
 import {
   RichContractData,
@@ -58,10 +58,10 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            Set Permissions
+            {t('setPermissions')}
           </ButtonLabel>
         </ActionsButton>
-        {!isRepGuild ? (
+        {!!isRepGuild ? (
           <ActionsButton
             onClick={() => onSupportedActionSelect(SupportedAction.REP_MINT)}
           >

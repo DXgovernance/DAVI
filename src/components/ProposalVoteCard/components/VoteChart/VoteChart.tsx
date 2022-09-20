@@ -1,5 +1,5 @@
 import { useTheme } from 'styled-components';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { Loading } from 'components/primitives/Loading';
 import { BigNumber } from 'ethers';
@@ -57,8 +57,8 @@ const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
           <VoteQuorumMarker quorum={flagCheckered} />
           <VoteQuorumLabel quorum={flagCheckered}>
             <PaddedFlagCheckered />
-            <span>{isPercent ? nQuorum : flagCheckered}</span>
-            <span>{isPercent ? voteData?.token?.symbol : '%'}</span>
+            <span>{isPercent ? flagCheckered : nQuorum}</span>
+            <span>{isPercent ? '%' : voteData?.token?.symbol}</span>
           </VoteQuorumLabel>
         </VoteQuorumContainer>
       )}

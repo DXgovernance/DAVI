@@ -1,25 +1,31 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { useProposal } from 'hooks/Guilds/ether-swr/guild/useProposal';
+import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
-import useSnapshotId from 'hooks/Guilds/ether-swr/guild/useSnapshotId';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import { useVotingResults } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
+import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { ProposalVoteCard } from 'components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
+import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
+  const { address: userAddress } = useAccount();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: proposalMetadata } = useProposalMetadata(guildId, proposalId);
   const voteData = useVotingResults();
+  const { data: userVote } = useProposalVotesOfVoter(
+    guildId,
+    proposalId,
+    userAddress
+  );
 
   const timestamp = useTimedRerender(10000);
 
-  const { address: userAddress } = useAccount();
   const { data: userVotingPower } = useVotingPowerOf({
     contractAddress: guildId,
     userAddress,
@@ -66,6 +72,7 @@ const ProposalVoteCardWrapper = () => {
       }}
       contract={contract}
       createTransaction={createTransaction}
+      userVote={userVote}
     />
   );
 };

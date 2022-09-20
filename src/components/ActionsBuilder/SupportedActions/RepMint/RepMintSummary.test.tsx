@@ -17,7 +17,7 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
-jest.mock('hooks/Guilds/guild/useTokenData', () => ({
+jest.mock('Modules/Guilds/Hooks/useTokenData', () => ({
   useTokenData: () => ({
     tokenData: {
       symbol: 'REP',

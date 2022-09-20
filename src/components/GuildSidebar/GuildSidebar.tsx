@@ -4,6 +4,8 @@ import { Loading } from 'components/primitives/Loading';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import { MdOutlinePeopleAlt } from 'react-icons/md';
+import { Label } from 'components/SidebarInfoCard/SidebarInfoCard.styled';
 import {
   DaoBrand,
   DaoIcon,
@@ -11,6 +13,7 @@ import {
   DaoInfoPanel,
   DaoMemberCount,
   DaoTitle,
+  MemberIconWrapper,
   SidebarMenu,
   SidebarMenuItem,
   SidebarWrapper,
@@ -35,10 +38,19 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
     governance: `/${chainName}/${guildId}`,
     allProposals: `/${chainName}/${guildId}/all-proposals`,
   };
-
   return (
     <SidebarWrapper data-testid="sidebar">
       <DaoInfoPanel>
+        <DaoMemberCount>
+          {numberOfMembers != null ? (
+            <MemberIconWrapper>
+              <MdOutlinePeopleAlt size={26} />
+              <Label>{numberOfMembers.toString()}</Label>
+            </MemberIconWrapper>
+          ) : (
+            <Loading loading text />
+          )}
+        </DaoMemberCount>
         <DaoInfo>
           <DaoBrand>
             <DaoIcon src={dxIcon} alt={guildName} />
@@ -47,15 +59,6 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
               {guildName || <Loading loading text />}
             </DaoTitle>
           </DaoBrand>
-          <DaoMemberCount>
-            {numberOfMembers != null ? (
-              t('members', {
-                count: numberOfMembers,
-              })
-            ) : (
-              <Loading loading text />
-            )}
-          </DaoMemberCount>
         </DaoInfo>
         {actions}
       </DaoInfoPanel>

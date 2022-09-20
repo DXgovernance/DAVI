@@ -1,9 +1,10 @@
 import { BigNumber } from 'ethers';
-import type { VoteData } from 'hooks/Guilds/ether-swr/guild/useVotingResults';
+import type { VoteData } from 'Modules/Guilds/Hooks/useVotingResults';
 import { ERC20Guild } from 'types/contracts';
 import { ProposalMetadata } from 'types/types.guilds';
 import { Moment } from 'moment';
 import { providers } from 'ethers';
+import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
 export interface VoteConfirmationModalProps {
   isOpen: boolean;
@@ -47,6 +48,7 @@ export interface ProposalVoteCardProps {
     summary: string,
     txFunction: () => Promise<providers.TransactionResponse>
   ) => void;
+  userVote?: UseProposalVotesOfVoterReturn;
 }
 
 export interface ResultRowProps {

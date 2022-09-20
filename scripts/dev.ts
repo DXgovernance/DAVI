@@ -1,6 +1,11 @@
 import { mkdirSync, writeFileSync } from 'fs';
 import path from 'path';
-import { ZERO_ADDRESS, MAX_UINT, NULL_SIGNATURE } from '../src/utils/constants';
+import {
+  ZERO_ADDRESS,
+  MAX_UINT,
+  NULL_SIGNATURE,
+  ERC20_TRANSFER_SIGNATURE,
+} from '../src/utils/constants';
 
 require('dotenv').config();
 const hre = require('hardhat');
@@ -263,14 +268,14 @@ async function main() {
         token: 'SWPR',
         contractName: 'ERC20GuildUpgradeable',
         name: 'SWPRGuild',
-        proposalTime: moment.duration(3, 'minutes').asSeconds(),
+        proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(60, 'minutes').asSeconds(),
         votingPowerForProposalExecution: '30',
         votingPowerForProposalCreation: '5',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '999',
-        lockTime: moment.duration(5, 'minutes').asSeconds(),
+        lockTime: moment.duration(20, 'minutes').asSeconds(),
       },
     ],
   };
@@ -839,25 +844,26 @@ async function main() {
 
     {
       type: 'approve',
-      from: accounts[2],
+      from: accounts[0],
       data: {
         asset: 'SWPR',
         address: 'SWPRGuild-vault',
         amount: MAX_UINT,
       },
     },
+
     {
       type: 'guild-lockTokens',
-      from: accounts[2],
+      from: accounts[0],
       data: {
         guildName: 'SWPRGuild',
-        amount: web3.utils.toWei('1'),
+        amount: web3.utils.toWei('30'),
       },
     },
 
     {
       type: 'guild-createProposal',
-      from: accounts[2],
+      from: accounts[0],
       data: {
         guildName: 'SWPRGuild',
         to: ['PermissionRegistry'],
@@ -865,19 +871,39 @@ async function main() {
           new web3.eth.Contract(PermissionRegistry.abi).methods
             .setETHPermission(
               networkContracts.addresses.SWPRGuild,
-              ZERO_ADDRESS,
-              NULL_SIGNATURE,
-              web3.utils.toWei('5').toString(),
+              networkContracts.addresses.SWPR,
+              ERC20_TRANSFER_SIGNATURE,
+              web3.utils.toWei('5'),
               true
             )
             .encodeABI(),
         ],
         value: ['0'],
         totalActions: '1',
-        title: 'Proposal Test #1 to SWPRGuild',
-        description:
-          'Allow call any address and function and send a max of 5 ETH per proposal',
-        voteOptions: ['Test Option'],
+        title: 'Allow Swapr guild to transfer SWPR tokens',
+        description: 'Allow the guild to transfer swpr tokens',
+        voteOptions: ['For'],
+      },
+    },
+
+    {
+      type: 'guild-voteProposal',
+      from: accounts[0],
+      data: {
+        guildName: 'SWPRGuild',
+        proposal: 0,
+        action: '1',
+        votingPower: web3.utils.toWei('15').toString(),
+      },
+    },
+
+    {
+      type: 'guild-endProposal',
+      increaseTime: moment.duration(5, 'minutes').asSeconds(),
+      from: accounts[1],
+      data: {
+        guildName: 'SWPRGuild',
+        proposal: 0,
       },
     },
 
