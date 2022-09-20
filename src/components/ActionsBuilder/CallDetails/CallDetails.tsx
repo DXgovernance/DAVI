@@ -152,8 +152,6 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     }
   }, []); // eslint-disable-line
 
-  debugger;
-
   return (
     <>
       {functionData && genericParams && (
