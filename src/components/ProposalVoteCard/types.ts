@@ -1,8 +1,8 @@
 import { BigNumber } from 'ethers';
 import type { VoteData } from 'Modules/Guilds/Hooks/useVotingResults';
 import { ERC20Guild } from 'types/contracts';
-import { ProposalMetadata } from 'types/types.guilds';
-import { Moment } from 'moment';
+import { Proposal, ProposalMetadata } from 'types/types.guilds';
+// import { Moment } from 'moment';
 import { providers } from 'ethers';
 import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
@@ -13,6 +13,7 @@ export interface VoteConfirmationModalProps {
   onConfirm: () => void;
   votingPower?: number;
   currentVoteAmount?: number;
+  onAddToVoteCart: () => void;
 }
 
 export interface Voter {
@@ -31,12 +32,12 @@ interface VotingPower {
   atCurrentSnapshot: BigNumber;
 }
 
-interface Proposal {
-  id: string;
-  metadata: ProposalMetadata;
-  endTime: Moment;
-  title?: string;
-}
+// interface Proposal {
+//   id: string;
+//   metadata: ProposalMetadata;
+//   endTime: Moment;
+//   title?: string;
+// }
 
 export interface ProposalVoteCardProps {
   voteData: VoteData;

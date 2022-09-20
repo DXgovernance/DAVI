@@ -26,6 +26,8 @@ import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
+import { useVoteCart } from 'contexts/Guilds/voteCart';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 const ProposalVoteCard = ({
   voteData,
@@ -38,10 +40,11 @@ const ProposalVoteCard = ({
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
-
+  const { addVote, votes } = useVoteCart();
   const [isPercent, setIsPercent] = useState(true);
   const [selectedOption, setSelectedOption] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
+  const { guildId } = useTypedParams();
   const isOpen = useMemo(
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
@@ -128,6 +131,19 @@ const ProposalVoteCard = ({
           userVote={userVote}
           votedOptionLabel={votedOptionLabel}
         />
+        {votes.some(v => v.proposal.id === proposal.id) && (
+          <div
+            style={{
+              marginTop: 16,
+              background: '#303338',
+              padding: 6,
+              borderRadius: 4,
+              fontSize: 12,
+            }}
+          >
+            You have vote stored in vote cart for this proposal
+          </div>
+        )}
         {/* Hide voting options if user has already voted */}
         {isOpen && !userVote?.option && voteData?.options && (
           <ButtonsContainer>
@@ -187,6 +203,21 @@ const ProposalVoteCard = ({
             selectedOption,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,
+          });
+          setModalOpen(false);
+          setSelectedOption(null);
+        }}
+        onAddToVoteCart={() => {
+          addVote({
+            proposal,
+            selectedOption,
+            votingPower: votingPower.userVotingPower,
+            contractAddress: guildId,
+            optionLabel: getOptionLabel({
+              metadata: proposal?.metadata,
+              optionKey: selectedOption?.toNumber(),
+              t,
+            }),
           });
           setModalOpen(false);
           setSelectedOption(null);

@@ -7,7 +7,7 @@ import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
 import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
 import { Input } from 'components/primitives/Forms/Input';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineShoppingCart } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
 import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
@@ -22,6 +22,7 @@ import {
 import { ProposalState } from 'types/types.guilds.d';
 import Discussions from 'Modules/Social/Discussions';
 import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
+import { useVoteCart } from 'contexts/Guilds/voteCart';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -30,6 +31,7 @@ const Governance = ({ guildId }) => {
   const { data: activeProposals } = useActiveProposalsNow(guildId);
   const { chainName } = useTypedParams();
   const isProposalCreationAllowed = useIsProposalCreationAllowed();
+  const { openVoteCart } = useVoteCart();
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -116,6 +118,14 @@ const Governance = ({ guildId }) => {
             </UnstyledLink>
           </>
         )}
+        <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+          <Button variant="secondary" data-testid="create-discussion-button">
+            {t('forum.createDiscussion')}
+          </Button>
+        </UnstyledLink>
+        <Button onClick={openVoteCart} variant="secondary">
+          <AiOutlineShoppingCart size={20} />
+        </Button>
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>

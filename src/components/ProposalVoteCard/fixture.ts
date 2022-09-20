@@ -1,5 +1,6 @@
 import { BigNumber } from 'ethers';
 import moment from 'moment';
+import { ContractState } from 'types/types.guilds.d';
 
 const mockBignumber = BigNumber.from(100000000);
 const mockBigNumberOption = BigNumber.from(100000000000000);
@@ -14,6 +15,16 @@ export const mockProposalVoteCardProps = {
       voteOptions: ['Yes', 'No'],
     },
     endTime: moment(),
+    creator: '0x1234567890123456789012345678901234567890',
+    startTime: moment(),
+    timeDetail: '',
+    title: 'SWPR single reward campaign',
+    to: [],
+    value: [],
+    totalActions: BigNumber.from(0),
+    contentHash: '0x1234567890123456789012345678901234567890',
+    contractState: ContractState.Active,
+    totalVotes: [],
   },
   voteData: {
     options: {
@@ -74,6 +85,7 @@ export const mockVoteConfirmationModal = {
   selectedAction: 'Yes',
   votingPower: 100,
   totalLocked: 100,
+  onAddToVoteCart: () => {},
 };
 
 export const mockVoteChart = {
