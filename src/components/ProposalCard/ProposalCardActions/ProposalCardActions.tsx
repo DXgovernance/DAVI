@@ -2,9 +2,15 @@ import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { ProposalCardActionsWrapper } from './ProposalCardActions.styled';
 
-const ProposalCardActions = ({ votesOfVoters, created, userAddress }) => {
-  const isCreator = created === userAddress;
-  const hasVoted = votesOfVoters?.action !== null;
+const ProposalCardActions = ({
+  votesOfVoters,
+  proposalCreated,
+  userAddress,
+}) => {
+  const isCreator = proposalCreated === userAddress;
+  const hasVoted =
+    votesOfVoters?.action !== null && votesOfVoters?.votingPower !== null;
+  console.log({ proposalCreated, votesOfVoters });
   return (
     <ProposalCardActionsWrapper>
       {hasVoted ? <IoMdCheckmarkCircleOutline size={30} /> : null}

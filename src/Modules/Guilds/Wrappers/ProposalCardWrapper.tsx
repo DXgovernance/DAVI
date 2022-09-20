@@ -7,7 +7,7 @@ import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { useAccount } from 'wagmi';
-import useProposalVotesOfVoter from '../Hooks/useProposalVotesOfVoter';
+import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -27,7 +27,6 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
     proposalId,
     address
   );
-
   return withFilters(
     <ProposalCard
       proposal={{

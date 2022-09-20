@@ -270,7 +270,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 }
 
 .c19 {
-  width: 6rem;
+  width: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -782,7 +782,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
 }
 
 .c19 {
-  width: 6rem;
+  width: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1310,7 +1310,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
 }
 
 .c20 {
-  width: 6rem;
+  width: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1655,7 +1655,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
 }
 
 .c14 {
-  width: 6rem;
+  width: 5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
