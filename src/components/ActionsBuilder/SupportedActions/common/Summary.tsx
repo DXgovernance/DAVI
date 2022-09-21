@@ -35,7 +35,7 @@ const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
     <>
       <DetailHeader>
         {isNativeTransfer ? t('transfer') : t('interactWith')}{' '}
-        {parsedValueToString !== '0.0' ? (
+        {!isNativeTransfer && parsedValueToString !== '0.0' ? (
           <RedHighlight>
             {parsedValueToString} {nativeTokenSymbol}
           </RedHighlight>

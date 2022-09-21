@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FiAlertCircle, FiArrowRight } from 'react-icons/fi';
 import { getNetworkById, MAINNET_ID, shortenAddress } from 'utils';
 import { useNetwork } from 'wagmi';
-import { Segment } from '../SupportedActions/common/infoLine';
+import { Segment } from 'components/ActionsBuilder/SupportedActions/common/infoLine';
 import { RedWrapper } from './styles';
 
 const UndecodableCallInfoLine = ({
@@ -35,9 +35,7 @@ const UndecodableCallInfoLine = ({
         <FiAlertCircle size={16} />
       </Segment>
       <Segment>
-        <>
-          <Segment>{t('unknownAction')}</Segment>
-        </>
+        <Segment>{t('unknownAction')}</Segment>
         {parsedData?.value?.toString() !== '0' && (
           <>
             + {parsedValueToString} {nativeTokenSymbol}

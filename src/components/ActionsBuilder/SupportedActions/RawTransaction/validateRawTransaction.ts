@@ -2,7 +2,7 @@ import { BigNumber } from 'ethers';
 import { hexStripZeros, isHexString } from 'ethers/lib/utils';
 import { TFunction } from 'react-i18next';
 import { isAddress } from 'utils';
-import { RawTransactionValues } from './RawTransactionEditor';
+import { RawTransactionValues } from './types';
 
 interface Context {
   t: TFunction;

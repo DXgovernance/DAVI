@@ -1,16 +1,12 @@
 import UndecodableCallInfoLine from 'components/ActionsBuilder/UndecodableCalls/UndecodableCallInfoLine';
-import { useMemo } from 'react';
-import { ActionViewProps } from '..';
+import { ActionViewProps } from 'components/ActionsBuilder/SupportedActions';
 
 const RawTransactionInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
-  const parsedData = useMemo(() => {
-    return {
-      to: decodedCall?.to,
-      value: decodedCall?.value,
-    };
-  }, [decodedCall]);
-
-  return <UndecodableCallInfoLine call={parsedData} />;
+  return (
+    <UndecodableCallInfoLine
+      call={{ to: decodedCall?.to, value: decodedCall?.value }}
+    />
+  );
 };
 
 export default RawTransactionInfoLine;

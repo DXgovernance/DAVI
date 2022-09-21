@@ -11,15 +11,10 @@ import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ActionEditorProps } from '..';
-import { StyledTextarea } from './styles';
+import { ActionEditorProps } from 'components/ActionsBuilder/SupportedActions';
 import validateRawTransaction from './validateRawTransaction';
-
-export interface RawTransactionValues {
-  to: string;
-  value: BigNumber;
-  data: string;
-}
+import { RawTransactionValues } from './types';
+import { TextArea } from 'components/primitives/Forms/TextArea';
 
 const RawTransactionEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
@@ -127,7 +122,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
               <Control>
                 <ControlLabel>{`${t('data')} (hex)`}</ControlLabel>
                 <ControlRow>
-                  <StyledTextarea
+                  <TextArea
                     {...field}
                     data-testid="input-data"
                     spellCheck={false}

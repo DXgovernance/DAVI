@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers';
 import { MOCK_ADDRESS } from 'hooks/Guilds/ens/fixtures';
 
 export const rawDataCallMock: DecodedCall = {
-  from: '0x0000000000000000000000000000000000000000',
+  from: MOCK_ADDRESS,
   callType: SupportedAction.RAW_TRANSACTION,
   function: null,
   to: MOCK_ADDRESS,

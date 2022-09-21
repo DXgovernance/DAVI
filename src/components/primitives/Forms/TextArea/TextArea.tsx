@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledTextarea = styled.textarea<{ isInvalid?: boolean }>`
+export const TextArea = styled.textarea<{ isInvalid?: boolean }>`
   resize: none;
   box-sizing: border-box;
   border: 1px solid

@@ -1,5 +1,6 @@
 import { fireEvent, waitFor } from '@testing-library/react';
 import { BigNumber } from 'ethers';
+import { MOCK_ADDRESS, MOCK_ENS_NAME } from 'hooks/Guilds/ens/fixtures';
 import { act } from 'react-dom/test-utils';
 import { render } from 'utils/tests';
 import { rawDataCallMock } from './fixtures';
@@ -9,8 +10,8 @@ jest.mock('wagmi', () => ({
   __esModule: true,
   useEnsResolver: () => ({
     data: {
-      name: 'name.eth',
-      address: '0x0000000000000000000000000000000000000000',
+      name: MOCK_ENS_NAME,
+      address: MOCK_ADDRESS,
     },
   }),
   useNetwork: () => ({
@@ -24,10 +25,10 @@ jest.mock('wagmi', () => ({
     },
   }),
   useEnsName: () => ({
-    data: 'name.eth',
+    data: MOCK_ENS_NAME,
   }),
   useEnsAddress: () => ({
-    data: '0x0000000000000000000000000000000000000000',
+    data: MOCK_ADDRESS,
   }),
   useContractRead: () => ({
     data: 'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be',

@@ -11,7 +11,7 @@ import {
   SectionTitle,
   SectionWrapper,
   Wrapper,
-} from '../../ActionsModal.styled';
+} from 'components/ActionsModal/ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import React, { useState } from 'react';
