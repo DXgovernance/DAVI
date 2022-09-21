@@ -5,6 +5,6 @@ export const mockProposalCardActionsProps = {
     action: '1',
     votingPower: BigNumber.from(0),
   },
-  proposalCreated: true,
+  proposalCreator: '0x0000000000000000000000000000000000000000',
   userAddress: '0x0000000000000000000000000000000000000000',
 };
