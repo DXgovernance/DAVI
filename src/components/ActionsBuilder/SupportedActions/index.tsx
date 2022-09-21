@@ -91,7 +91,6 @@ export const supportedActions: Record<
     title: 'Raw Transaction',
     infoLineView: RawTransactionInfoLine,
     editor: RawTransactionEditor,
-    displaySubmit: false,
   },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
