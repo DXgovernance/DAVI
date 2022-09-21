@@ -275,10 +275,11 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 @media only screen and (min-width:768px) {
@@ -493,11 +494,11 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         >
           <svg
             fill="currentColor"
-            height="30"
+            height="20"
             stroke="currentColor"
             stroke-width="0"
             viewBox="0 0 512 512"
-            width="30"
+            width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -787,10 +788,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 @media only screen and (min-width:768px) {
@@ -1005,11 +1007,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
         >
           <svg
             fill="currentColor"
-            height="30"
+            height="20"
             stroke="currentColor"
             stroke-width="0"
             viewBox="0 0 512 512"
-            width="30"
+            width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -1315,10 +1317,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 @media only screen and (min-width:768px) {
@@ -1491,11 +1494,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
         >
           <svg
             fill="currentColor"
-            height="30"
+            height="20"
             stroke="currentColor"
             stroke-width="0"
             viewBox="0 0 512 512"
-            width="30"
+            width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -1660,10 +1663,11 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 @media only screen and (min-width:768px) {
@@ -1843,11 +1847,11 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         >
           <svg
             fill="currentColor"
-            height="30"
+            height="20"
             stroke="currentColor"
             stroke-width="0"
             viewBox="0 0 512 512"
-            width="30"
+            width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
@@ -1856,11 +1860,11 @@ exports[`ProposalCard ProposalCard loading 1`] = `
           </svg>
           <svg
             fill="none"
-            height="30"
+            height="20"
             stroke="currentColor"
             stroke-width="0"
             viewBox="0 0 24 24"
-            width="30"
+            width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path

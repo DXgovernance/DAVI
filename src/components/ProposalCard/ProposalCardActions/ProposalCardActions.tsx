@@ -12,8 +12,8 @@ const ProposalCardActions = ({
     votesOfVoters?.action !== null && votesOfVoters?.votingPower !== null;
   return (
     <ProposalCardActionsWrapper>
-      {hasVoted ? <IoMdCheckmarkCircleOutline size={30} /> : null}
-      {isCreator ? <HiOutlinePencil size={30} /> : null}
+      {hasVoted ? <IoMdCheckmarkCircleOutline size={20} /> : null}
+      {isCreator ? <HiOutlinePencil size={20} /> : null}
     </ProposalCardActionsWrapper>
   );
 };

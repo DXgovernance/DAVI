@@ -7,10 +7,11 @@ exports[`ProposalCardActions renders properly and shows no icons if you have nei
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 <div>
@@ -29,10 +30,11 @@ exports[`ProposalCardActions renders properly and shows two icons if you have cr
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
 }
 
 <div>
@@ -42,11 +44,11 @@ exports[`ProposalCardActions renders properly and shows two icons if you have cr
   >
     <svg
       fill="currentColor"
-      height="30"
+      height="20"
       stroke="currentColor"
       stroke-width="0"
       viewBox="0 0 512 512"
-      width="30"
+      width="20"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
