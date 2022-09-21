@@ -49,6 +49,17 @@ jest.mock('wagmi', () => ({
 
 describe('RawTransactionEditor', () => {
   describe('valid inputs', () => {
+    it('should match snapshot', () => {
+      const { container } = render(
+        <RawTransactionEditor
+          decodedCall={rawDataCallMock}
+          onSubmit={jest.fn()}
+        />
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
     it('should submit if all fields are present', async () => {
       const mockOnSubmit = jest.fn();
 

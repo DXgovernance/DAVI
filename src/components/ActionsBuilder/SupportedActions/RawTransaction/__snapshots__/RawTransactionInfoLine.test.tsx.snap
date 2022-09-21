@@ -1,0 +1,642 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RawTransactionInfoLine should match snapshot in compact mode 1`] = `
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
+<div>
+   
+  <span
+    class="c0 c1"
+  >
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          x2="12"
+          y1="8"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="12.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <span
+        class="c0"
+      >
+        unknownAction
+      </span>
+      + 
+      1.0
+       
+      ETH
+    </span>
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="5"
+          x2="19"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 5 19 12 12 19"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="24"
+        src="https://metadata.ens.domains/mainnet/avatar/wagmi.eth"
+      />
+    </span>
+    <span
+      class="c0"
+    >
+      wagmi.eth
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`RawTransactionInfoLine should match snapshot in noAvatar and compact mode 1`] = `
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
+<div>
+   
+  <span
+    class="c0 c1"
+  >
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          x2="12"
+          y1="8"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="12.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <span
+        class="c0"
+      >
+        unknownAction
+      </span>
+      + 
+      1.0
+       
+      ETH
+    </span>
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="5"
+          x2="19"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 5 19 12 12 19"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="24"
+        src="https://metadata.ens.domains/mainnet/avatar/wagmi.eth"
+      />
+    </span>
+    <span
+      class="c0"
+    >
+      wagmi.eth
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`RawTransactionInfoLine should match snapshot in noAvatar mode 1`] = `
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
+<div>
+   
+  <span
+    class="c0 c1"
+  >
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          x2="12"
+          y1="8"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="12.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <span
+        class="c0"
+      >
+        unknownAction
+      </span>
+      + 
+      1.0
+       
+      ETH
+    </span>
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="5"
+          x2="19"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 5 19 12 12 19"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="24"
+        src="https://metadata.ens.domains/mainnet/avatar/wagmi.eth"
+      />
+    </span>
+    <span
+      class="c0"
+    >
+      wagmi.eth
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`RawTransactionInfoLine should match snapshot with full data 1`] = `
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
+<div>
+   
+  <span
+    class="c0 c1"
+  >
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          x2="12"
+          y1="8"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="12.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <span
+        class="c0"
+      >
+        unknownAction
+      </span>
+      + 
+      1.0
+       
+      ETH
+    </span>
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="5"
+          x2="19"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 5 19 12 12 19"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="24"
+        src="https://metadata.ens.domains/mainnet/avatar/wagmi.eth"
+      />
+    </span>
+    <span
+      class="c0"
+    >
+      wagmi.eth
+    </span>
+  </span>
+   
+</div>
+`;
+
+exports[`RawTransactionInfoLine should match snapshot with no value 1`] = `
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c0 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c1 {
+  color: #E75C5C;
+}
+
+<div>
+   
+  <span
+    class="c0 c1"
+  >
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="16"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          cx="12"
+          cy="12"
+          r="10"
+        />
+        <line
+          x1="12"
+          x2="12"
+          y1="8"
+          y2="12"
+        />
+        <line
+          x1="12"
+          x2="12.01"
+          y1="16"
+          y2="16"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <span
+        class="c0"
+      >
+        unknownAction
+      </span>
+    </span>
+    <span
+      class="c0"
+    >
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <line
+          x1="5"
+          x2="19"
+          y1="12"
+          y2="12"
+        />
+        <polyline
+          points="12 5 19 12 12 19"
+        />
+      </svg>
+    </span>
+    <span
+      class="c0"
+    >
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="24"
+        src="https://metadata.ens.domains/mainnet/avatar/wagmi.eth"
+      />
+    </span>
+    <span
+      class="c0"
+    >
+      wagmi.eth
+    </span>
+  </span>
+   
+</div>
+`;
