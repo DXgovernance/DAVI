@@ -221,6 +221,7 @@
   "dataIsNotAHexString": "Data is not a hex string",
   "dataIsRequired": "Data is required",
   "eitherDataOrValueRequired": "Either data or value is required",
+  "dataIsOddLength": "Data is of odd length",
   "reputationPercentageTooHigh": "Reputation percentage too high",
   "reputationPercentIsRequired": "Reputation percentage is required",
   "governance": "Governance",

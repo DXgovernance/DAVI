@@ -211,5 +211,27 @@ describe('RawTransactionEditor', () => {
         expect(mockOnSubmit).not.toHaveBeenCalled();
       });
     });
+
+    it('should fail if data is of odd length', async () => {
+      const mockOnSubmit = jest.fn();
+
+      const data = {
+        ...rawDataCallMock,
+        value: BigNumber.from(0),
+        optionalProps: { data: '0x0' },
+      };
+      const { findByTestId } = render(
+        <RawTransactionEditor decodedCall={data} onSubmit={mockOnSubmit} />
+      );
+
+      await act(async () => {
+        const submitButton = await findByTestId('submit-rawtransaction');
+        fireEvent.submit(submitButton);
+      });
+
+      await waitFor(() => {
+        expect(mockOnSubmit).not.toHaveBeenCalled();
+      });
+    });
   });
 });

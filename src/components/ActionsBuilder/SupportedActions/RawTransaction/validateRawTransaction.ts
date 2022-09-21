@@ -44,10 +44,14 @@ const validateRawTransaction = (
       errors.data = t('dataIsNotAHexString');
     } else if (hexStripZeros(data) === '0x') {
       errors.data = t('eitherDataOrValueRequired');
+    } else if (data.length % 2 !== 0) {
+      errors.data = t('dataIsOddLength');
     }
   } else if (data) {
     if (!isHexString(data)) {
       errors.data = t('dataIsNotAHexString');
+    } else if (data.length % 2 !== 0) {
+      errors.data = t('dataIsOddLength');
     }
   }
 
