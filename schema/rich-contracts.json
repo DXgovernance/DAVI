@@ -125,12 +125,11 @@
             "$id": "#/properties/networks",
             "type": "object",
             "title": "The networks schema",
-            "description": "A mapping of chains to addresses, for factory created contracts use 0x0 for all chains",
+            "description": "A mapping of chains to addresses. For factory-created or other cloned contracts use the sha256-hashed bytecode of the contract instead.",
             "default": {},
             "examples": [
                 {
                     "mainnet": "0x0b17cf48420400e1D71F8231d4a8e43B3566BB5B",
-                    "mainnet": "0x0",
                     "rinkeby": "0x0b17cf48420400e1D71F8231d4a8e43B3566BB5B",
                     "gnosis": "0x0b17cf48420400e1D71F8231d4a8e43B3566BB5B",
                     "arbitrum": "0x0b17cf48420400e1D71F8231d4a8e43B3566BB5B",

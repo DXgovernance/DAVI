@@ -10,7 +10,7 @@ import { ZERO_HASH } from 'utils';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import { useRichContractRegistry } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
-import { useNetwork } from 'wagmi';
+import { useNetwork, useProvider } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 import { EMPTY_CALL } from 'Modules/Guilds/pages/CreateProposal';
 
@@ -27,6 +27,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
+  const provider = useProvider();
 
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
@@ -102,7 +103,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
                 const { decodedCall: decodedApprovalCall } = await decodeCall(
                   call?.approvalCall,
                   contracts,
-                  chain?.id
+                  chain?.id,
+                  provider
                 );
                 // Avoid spreading unnecesary approvalCall;
                 const { approvalCall, ...newCall } = call;
@@ -145,7 +147,12 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
         })
       );
 
-      return bulkDecodeCallsFromOptions(encodedOptions, contracts, chain?.id);
+      return bulkDecodeCallsFromOptions(
+        encodedOptions,
+        contracts,
+        chain?.id,
+        provider
+      );
     }
     decodeOptions().then(options =>
       // Return options putting default against-call last
@@ -162,6 +169,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
+    provider,
   ]);
 
   return {
