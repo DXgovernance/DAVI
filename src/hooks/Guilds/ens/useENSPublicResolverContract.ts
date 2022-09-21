@@ -1,9 +1,6 @@
 import { useContractRead } from 'wagmi';
 import ensPublicResolver from 'contracts/ENSPublicResolver.json';
-import {
-  convertToIpfsHash,
-  convertToNameHash,
-} from 'components/ActionsBuilder/SupportedActions/UpdateENSContent/utils';
+import { convertToIpfsHash, convertToNameHash } from 'utils/ipfs';
 import { isAvailableOnENS } from './utils';
 import useENSResolver from './useENSResolver';
 import { MAINNET_ID } from 'utils';
@@ -15,11 +12,13 @@ import { MAINNET_ID } from 'utils';
 export function useENSAvatarUri(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver } = useENSResolver(ensName, supportedChainId);
+  const { nameHash, error } = convertToNameHash(ensName);
   const { data, ...rest } = useContractRead({
+    enabled: !error,
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'text',
-    args: [convertToNameHash(ensName), 'avatar'],
+    args: [nameHash, 'avatar'],
     chainId: supportedChainId,
   });
   return {
@@ -31,11 +30,13 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
 export function useENSContentHash(ensName: string, chainId?: number) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
   const { resolver, ...rest } = useENSResolver(ensName, supportedChainId);
+  const { nameHash, error } = convertToNameHash(ensName);
   const { data } = useContractRead({
+    enabled: !error,
     addressOrName: resolver?.address,
     contractInterface: ensPublicResolver.abi,
     functionName: 'contenthash',
-    args: convertToNameHash(ensName),
+    args: nameHash,
     select(data) {
       return convertToIpfsHash(data.toString());
     },

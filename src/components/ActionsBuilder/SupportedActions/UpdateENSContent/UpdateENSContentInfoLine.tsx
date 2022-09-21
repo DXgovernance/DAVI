@@ -24,7 +24,7 @@ const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <StyledENSIcon src={ENSIcon} />
       </Segment>
-      <Segment>{!compact ? t('ens.updateContent') : ''}</Segment>
+      <Segment>{t('ens.updateContentCoreAction')}</Segment>
       <Segment>
         <MdArrowRightAlt />
       </Segment>

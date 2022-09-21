@@ -16,13 +16,13 @@ import {
   SectionWrapper,
   Wrapper,
 } from '../../ActionsModal.styled';
+import { Spacer } from './ApproveSpendTokens.styled';
+import { useNetwork } from 'wagmi';
 import {
-  ControlRow,
   Control,
   ControlLabel,
-  Spacer,
-} from './ApproveSpendTokens.styled';
-import { useNetwork } from 'wagmi';
+  ControlRow,
+} from 'components/primitives/Forms/Control';
 
 export interface TokenSpendApproval {
   amount?: BigNumber;
