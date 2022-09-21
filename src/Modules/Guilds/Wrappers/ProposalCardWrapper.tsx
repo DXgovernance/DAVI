@@ -21,11 +21,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
-  const { endTimeMoment, endTimeDetail } = useTimeDetail(
-    guildId,
-    status,
-    proposal?.endTime
-  );
+  const endTime = useTimeDetail(guildId, status, proposal?.endTime);
 
   const sortedOptionsByWinningVotes = useMemo(() => {
     if (options) {
@@ -51,8 +47,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       }
       statusProps={{
         status,
-        endTimeMoment,
-        endTimeDetail,
+        endTime: endTime,
       }}
       options={sortedOptionsByWinningVotes}
     />

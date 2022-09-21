@@ -4,6 +4,5 @@ import { ProposalStatusProps } from './types';
 
 export const proposalStatusMock: ProposalStatusProps = {
   status: ProposalState.Active,
-  endTimeDetail: '1 hour ago',
-  endTimeMoment: moment().add(1, 'hour'),
+  endTime: { detail: '1 hour ago', moment: moment().add(1, 'hour') },
 };
