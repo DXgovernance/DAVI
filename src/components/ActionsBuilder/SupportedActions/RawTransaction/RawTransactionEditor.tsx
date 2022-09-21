@@ -6,13 +6,13 @@ import {
   ControlRow,
 } from 'components/primitives/Forms/Control';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
-import { Input } from 'components/primitives/Forms/Input';
 import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { ActionEditorProps } from '..';
+import { StyledTextarea } from './styles';
 import validateRawTransaction from './validateRawTransaction';
 
 export interface RawTransactionValues {
@@ -46,6 +46,9 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
   });
 
   const submitAction = (values: RawTransactionValues) => {
+    if (!values.data) values.data = '0x0';
+    if (!values.value) values.value = BigNumber.from(0);
+
     onSubmit({
       ...decodedCall,
       to: values.to,
@@ -71,12 +74,15 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
                 <ControlRow>
                   <AddressInput
                     {...field}
+                    data-testid="input-to"
                     isInvalid={!!error}
                     placeholder={t('ethereumAddress')}
                   />
                 </ControlRow>
                 {!!error && (
-                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                  <ErrorLabel data-testid="error-to" margin="0.5rem 0">
+                    {error.toString()}
+                  </ErrorLabel>
                 )}
               </Control>
             );
@@ -95,13 +101,16 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
                 <ControlRow>
                   <TokenAmountInput
                     {...field}
+                    data-testid="input-value"
                     decimals={0}
                     isInvalid={!!error}
                   />
                 </ControlRow>
 
                 {!!error && (
-                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                  <ErrorLabel data-testid="error-value" margin="0.5rem 0">
+                    {error.toString()}
+                  </ErrorLabel>
                 )}
               </Control>
             );
@@ -118,14 +127,18 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
               <Control>
                 <ControlLabel>{`${t('data')} (hex)`}</ControlLabel>
                 <ControlRow>
-                  <Input
+                  <StyledTextarea
                     {...field}
+                    data-testid="input-data"
+                    spellCheck={false}
                     isInvalid={!!error}
                     placeholder={t('data')}
                   />
                 </ControlRow>
                 {!!error && (
-                  <ErrorLabel margin="0.5rem 0">{error.toString()}</ErrorLabel>
+                  <ErrorLabel data-testid="error-data" margin="0.5rem 0">
+                    {error.toString()}
+                  </ErrorLabel>
                 )}
               </Control>
             );
@@ -135,7 +148,7 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
         <Button
           m="1rem 0 0"
           fullWidth
-          data-testid="submit-erc20transfer"
+          data-testid="submit-rawtransaction"
           type="submit"
         >
           {t('saveAction')}

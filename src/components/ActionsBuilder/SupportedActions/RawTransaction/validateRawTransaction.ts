@@ -20,41 +20,57 @@ const validateRawTransaction = (
     data: null,
   };
 
-  const isValueEmpty = (value: BigNumber) => {
-    if (!value) return true;
+  const checkValueEmpty = (value: BigNumber) => {
+    const noValue = !value;
+    if (noValue) return true;
     if (BigNumber.isBigNumber(value) && value.toString() === '0') return true;
     return false;
   };
 
-  const isDataEmpty = (data: string) => {
+  const checkDataEmpty = (data: string) => {
     if (!data) return true;
     if (isHexString(data) && hexStripZeros(data) === '0x') return true;
     return false;
   };
 
-  // There is a check at the start of each validation. If there is already
-  // an error for that field, it doesn't perform any more validations.
+  const isValueEmpty = checkValueEmpty(value);
+  const isDataEmpty = checkDataEmpty(data);
 
-  if (
-    !errors.value &&
-    !errors.data &&
-    isValueEmpty(value) &&
-    isDataEmpty(data)
-  ) {
-    errors.value = t('eitherDataOrValueRequired');
-    errors.data = t('eitherDataOrValueRequired');
+  // Data validations
+  if (isValueEmpty) {
+    if (!data) {
+      errors.data = t('eitherDataOrValueRequired');
+    } else if (!isHexString(data)) {
+      errors.data = t('dataIsNotAHexString');
+    } else if (hexStripZeros(data) === '0x') {
+      errors.data = t('eitherDataOrValueRequired');
+    }
+  } else if (data) {
+    if (!isHexString(data)) {
+      errors.data = t('dataIsNotAHexString');
+    }
   }
 
-  if (!errors.value && !BigNumber.isBigNumber(value)) {
-    errors.value = t('invalidValue');
+  // Value validations
+  if (isDataEmpty) {
+    if (!value) {
+      errors.value = t('eitherDataOrValueRequired');
+    } else if (!BigNumber.isBigNumber(value)) {
+      errors.value = t('invalidValue');
+    } else if (value.toString() === '0') {
+      errors.value = t('eitherDataOrValueRequired');
+    }
+  } else if (value) {
+    if (!BigNumber.isBigNumber(value)) {
+      errors.value = t('invalidValue');
+    }
   }
 
-  if (!errors.data && !isHexString(data)) {
-    errors.data = t('dataIsNotAHexString');
+  if (!to) {
+    errors.to = t('addressIsRequired');
+  } else if (!isAddress(to)) {
+    errors.to = t('invalidAddress');
   }
-
-  if (!errors.to && !to) errors.to = t('addressIsRequired');
-  if (!errors.to && !isAddress(to)) errors.to = t('invalidAddress');
 
   return {
     errors: Object.entries(errors).reduce((acc, [key, value]) => {
