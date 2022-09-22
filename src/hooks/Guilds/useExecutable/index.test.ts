@@ -17,7 +17,6 @@ let mockedData = {
     'DD.MM.YYYY HH:mm'
   ),
   endTime: jest.requireActual('moment')('01.01.2022 11:10', 'DD.MM.YYYY HH:mm'),
-  timeDetail: '',
   to: ['0x0', '0x0'],
   data: ['0x0', '0x0'],
   value: [BigNumber.from(0), BigNumber.from(0)],

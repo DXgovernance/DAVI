@@ -6,6 +6,7 @@ import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
+import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 
 interface ProposalCardWrapperProps {
   proposalId?: string;
@@ -19,6 +20,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
+  const endTime = useTimeDetail(guildId, status, proposal?.endTime);
 
   return withFilters(
     <ProposalCard
@@ -28,9 +30,8 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
       }
       statusProps={{
-        timeDetail: proposal?.timeDetail,
         status,
-        endTime: proposal?.endTime,
+        endTime: endTime,
       }}
       options={options}
     />
