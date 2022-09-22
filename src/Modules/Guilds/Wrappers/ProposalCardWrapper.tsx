@@ -8,7 +8,7 @@ import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
-
+import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 interface ProposalCardWrapperProps {
   proposalId?: string;
 }
@@ -27,6 +27,8 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
     proposalId,
     address
   );
+  const endTime = useTimeDetail(guildId, status, proposal?.endTime);
+
   return withFilters(
     <ProposalCard
       proposal={{
@@ -39,9 +41,8 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
         proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
       }
       statusProps={{
-        timeDetail: proposal?.timeDetail,
         status,
-        endTime: proposal?.endTime,
+        endTime: endTime,
       }}
       options={options}
       address={address}

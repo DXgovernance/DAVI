@@ -393,7 +393,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
@@ -906,7 +906,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
@@ -1435,7 +1435,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
