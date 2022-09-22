@@ -32,7 +32,7 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
       proposal={{
         ...proposal,
         id: proposalId,
-        votesOfVoters: proposalVotesOfVoter,
+        votesOfVoter: proposalVotesOfVoter,
       }}
       ensAvatar={ensAvatar}
       href={

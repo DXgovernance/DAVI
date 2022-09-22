@@ -58,7 +58,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
         <CardFooter>
           <ProposalCardWinningOption options={options} />
           <ProposalCardActions
-            votesOfVoters={proposal?.votesOfVoters}
+            votesOfVoter={proposal?.votesOfVoter}
             proposalCreator={proposal?.creator}
             userAddress={address}
           />

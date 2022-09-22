@@ -13,7 +13,7 @@ describe('ProposalCardActions', () => {
   it('renders properly and shows no icons if you have neither created the proposal nor voted', () => {
     const mockProps = {
       ...mockProposalCardActionsProps,
-      votesOfVoters: {
+      votesOfVoter: {
         action: null,
         votingPower: null,
         proposalCreated: false,

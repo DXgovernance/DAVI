@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
 
 export const mockProposalCardActionsProps = {
-  votesOfVoters: {
+  votesOfVoter: {
     action: '1',
     votingPower: BigNumber.from(0),
   },

@@ -17,7 +17,7 @@ export interface Proposal {
   contentHash: string;
   contractState: ContractState;
   totalVotes: BigNumber[];
-  votesOfVoters?: UseProposalVotesOfVoterReturn;
+  votesOfVoter?: UseProposalVotesOfVoterReturn;
 }
 
 export type InitialProposal = Partial<Proposal> & {

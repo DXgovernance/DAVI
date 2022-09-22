@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { ProposalCardActionsProps } from './types';
 
 const ProposalCardActions = ({
-  votesOfVoters,
+  votesOfVoter,
   proposalCreator,
   userAddress,
 }: ProposalCardActionsProps) => {
@@ -14,8 +14,8 @@ const ProposalCardActions = ({
     [userAddress, proposalCreator]
   );
   const hasVoted = useMemo(
-    () => votesOfVoters?.action !== null && votesOfVoters?.votingPower !== null,
-    [votesOfVoters?.votingPower, votesOfVoters?.action]
+    () => votesOfVoter?.action !== null && votesOfVoter?.votingPower !== null,
+    [votesOfVoter?.votingPower, votesOfVoter?.action]
   );
 
   return (
