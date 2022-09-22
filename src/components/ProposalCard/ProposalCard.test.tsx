@@ -10,6 +10,10 @@ import {
 import { BigNumber } from 'ethers';
 import { mockChain } from 'components/Web3Modals/fixtures';
 
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
+  useGuildConfig: () => jest.fn(),
+}));
+
 const mockBigNumber = BigNumber.from(100000000);
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
@@ -48,7 +52,6 @@ const invalidProps: ProposalCardProps = {
   ensAvatar: null,
   href: null,
   statusProps: {
-    timeDetail: null,
     status: null,
     endTime: null,
   },

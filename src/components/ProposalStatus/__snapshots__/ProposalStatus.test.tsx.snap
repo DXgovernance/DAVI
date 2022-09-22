@@ -181,7 +181,7 @@ exports[`ProposalStatus votes 1`] = `
         <span
           title="May 9th, 2022 - 8:00 am"
         >
-          Time
+          endedTimeAgo
         </span>
       </div>
       <div

@@ -3,6 +3,7 @@ import { Box } from 'components/primitives/Layout/Box';
 import { Loading } from 'components/primitives/Loading';
 import { ProposalState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
+import { TimeDetail } from './TimeDetail';
 
 const ProposalStatusWrapper = styled.div`
   display: flex;
@@ -51,23 +52,19 @@ const DetailText = styled(Box)`
     padding-right: 0.5rem;
   }
 `;
-
 export const ProposalStatus: React.FC<ProposalStatusProps> = ({
-  endTime,
   status,
+  endTime,
   bordered,
   hideTime,
-  timeDetail,
 }) => {
   return (
     <ProposalStatusWrapper>
       <Status test-id="proposal-status" bordered={hideTime ? false : bordered}>
         {!hideTime && (
           <DetailText>
-            {timeDetail ? (
-              <span title={endTime?.format('MMMM Do, YYYY - h:mm a')}>
-                {timeDetail}
-              </span>
+            {endTime ? (
+              <TimeDetail endTime={endTime} />
             ) : (
               <Loading
                 test-id="skeleton"
