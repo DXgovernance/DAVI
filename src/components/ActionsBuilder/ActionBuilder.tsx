@@ -8,6 +8,8 @@ import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useGetETHPermission } from 'Modules/Guilds/Hooks/useETHPermissions';
+import { SupportedAction } from './types';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 interface ActionsBuilderProps {
   options: Option[];
@@ -21,27 +23,52 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
   onChange,
 }) => {
   const { t } = useTranslation();
-
-  // Checks permission after we save the actions
-  const checkPermission = useGetETHPermission({
-    guildAddress: '',
-    from: '',
-    to: '',
-    funcSign: '',
-  });
-
+  const { guildId: guildAddress } = useTypedParams();
   const [isEditable, setIsEditable] = useState(editable);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editableOption, setEditableOption] = useState(null);
 
   const onEdit = () => setIsEditable(true);
-
+  console.log({ options });
   const onSave = useCallback(() => {
+    const decodedActions = options[0]?.decodedActions;
+    const permissionParameters = decodedActions.map(action => {
+      switch (action.decodedCall.callType) {
+        case SupportedAction.ERC20_TRANSFER:
+          return {
+            from: action.decodedCall.from,
+            to: action.decodedCall.to,
+            funcSign: action.decodedCall.args.functionSignature,
+          };
+        case SupportedAction.ENS_UPDATE_CONTENT:
+          return {};
+        case SupportedAction.GENERIC_CALL:
+          return {};
+        case SupportedAction.SET_PERMISSIONS:
+          return {};
+        case SupportedAction.REP_MINT:
+          return {};
+        case SupportedAction.NATIVE_TRANSFER:
+          return {};
+        default:
+          throw new Error('Unsupported action type');
+      }
+    });
+
+    permissionParameters.map(params =>
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useGetETHPermission({
+        guildAddress,
+        from: params.from,
+        to: params.to,
+        funcSign: params.funcSign,
+      })
+    );
+
     const encodedOptions = bulkEncodeCallsFromOptions(options);
-    console.log({ checkPermission });
     onChange(encodedOptions);
     setIsEditable(false);
-  }, [onChange, options, checkPermission]);
+  }, [onChange, options, guildAddress]);
 
   return (
     <SidebarCard
