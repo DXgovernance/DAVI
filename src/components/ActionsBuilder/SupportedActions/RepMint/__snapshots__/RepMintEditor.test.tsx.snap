@@ -60,7 +60,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   outline: 2px solid #fff;
 }
 
-.c13 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,7 +77,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   background-color: transparent;
 }
 
-.c13 input {
+.c12 input {
   color: #A1A6B0;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
@@ -85,27 +85,27 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   text-align: left;
 }
 
-.c13 input::-webkit-input-placeholder {
+.c12 input::-webkit-input-placeholder {
   color: #A1A6B0;
 }
 
-.c13 input::-moz-placeholder {
+.c12 input::-moz-placeholder {
   color: #A1A6B0;
 }
 
-.c13 input:-ms-input-placeholder {
+.c12 input:-ms-input-placeholder {
   color: #A1A6B0;
 }
 
-.c13 input::placeholder {
+.c12 input::placeholder {
   color: #A1A6B0;
 }
 
-.c13:hover {
+.c12:hover {
   outline: 1px solid inherit;
 }
 
-.c13:focus {
+.c12:focus {
   outline: 2px solid #fff;
 }
 
@@ -117,7 +117,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   margin-left: 0.3rem;
 }
 
-.c14 {
+.c15 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -143,17 +143,17 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   margin: 1rem 0 0;
 }
 
-.c14:disabled {
+.c15:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c14:hover:enabled {
+.c15:hover:enabled {
   border-color: #fff;
 }
 
-.c14:active:enabled {
+.c15:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -216,6 +216,18 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   align-items: stretch;
 }
 
+.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .c4 {
   margin: 0 8px;
   width: undefinedpx;
@@ -226,7 +238,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   fill: currentColor;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,7 +325,8 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c5"
         >
           <div
-            class="c6"
+            class="c12"
+            disabled=""
           >
             <div
               class="c7"
@@ -321,7 +334,8 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c10 c12"
+              class="c10 c13"
+              disabled=""
               inputmode="decimal"
               maxlength="79"
               minlength="1"
@@ -334,7 +348,36 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             />
             <div
               class="c11"
-            />
+            >
+              <div
+                aria-label="enable"
+                class="c0 c14"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="11"
+                    rx="2"
+                    ry="2"
+                    width="18"
+                    x="3"
+                    y="11"
+                  />
+                  <path
+                    d="M7 11V7a5 5 0 0 1 9.9-1"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -365,7 +408,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
           class="c0 c5"
         >
           <div
-            class="c13"
+            class="c12"
             disabled=""
           >
             <div
@@ -374,7 +417,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <input
               autocomplete="off"
               autocorrect="off"
-              class="c10 c12"
+              class="c10 c13"
               disabled=""
               inputmode="decimal"
               maxlength="79"
@@ -388,13 +431,42 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             />
             <div
               class="c11"
-            />
+            >
+              <div
+                aria-label="enable"
+                class="c0 c14"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    height="11"
+                    rx="2"
+                    ry="2"
+                    width="18"
+                    x="3"
+                    y="11"
+                  />
+                  <path
+                    d="M7 11V7a5 5 0 0 1 9.9-1"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <button
-      class="c14"
+      class="c15"
       type="submit"
     >
       saveAction

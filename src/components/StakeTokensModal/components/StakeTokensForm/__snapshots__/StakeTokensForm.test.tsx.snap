@@ -41,7 +41,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 }
 
 .c10 input {
-  color: #fff;
+  color: #A1A6B0;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -65,7 +65,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 }
 
 .c10:hover {
-  outline: 1px solid #fff;
+  outline: 1px solid inherit;
 }
 
 .c10:focus {
@@ -80,7 +80,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   margin-left: 0.3rem;
 }
 
-.c15 {
+.c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -105,18 +105,37 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   width: auto;
 }
 
-.c15:disabled {
+.c17:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c17:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c17:active:enabled {
   border: 1px solid #303338;
+}
+
+.c15 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .c0 {
@@ -235,7 +254,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   font-family: inherit;
 }
 
-.c16 {
+.c18 {
   width: 100%;
   margin-top: 22px;
   self-align: flex-end;
@@ -309,6 +328,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       >
         <div
           class="c10"
+          disabled=""
         >
           <div
             class="c11"
@@ -318,6 +338,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             autocorrect="off"
             class="c12 c13"
             data-testid="stake-amount-input"
+            disabled=""
             inputmode="decimal"
             maxlength="79"
             minlength="1"
@@ -329,10 +350,39 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           />
           <div
             class="c14"
-          />
+          >
+            <div
+              aria-label="enable"
+              class="c15 c16"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  height="11"
+                  rx="2"
+                  ry="2"
+                  width="18"
+                  x="3"
+                  y="11"
+                />
+                <path
+                  d="M7 11V7a5 5 0 0 1 9.9-1"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
         <button
-          class="c15"
+          class="c17"
           data-testid="stake-amount-max-button"
         >
           max
@@ -384,7 +434,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       </span>
     </div>
     <button
-      class="c15 c16"
+      class="c17 c18"
       data-testid="approve-token-spending"
       disabled=""
     >
