@@ -26,10 +26,15 @@ const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
 
-  const isNativeTransfer =
-    decodedCall?.callType === SupportedAction?.NATIVE_TRANSFER;
-  const isRawTransaction =
-    decodedCall?.callType === SupportedAction?.RAW_TRANSACTION;
+  const isNativeTransfer = useMemo(
+    () => decodedCall?.callType === SupportedAction.NATIVE_TRANSFER,
+    [decodedCall?.callType]
+  );
+
+  const isRawTransaction = useMemo(
+    () => decodedCall?.callType === SupportedAction.RAW_TRANSACTION,
+    [decodedCall?.callType]
+  );
 
   return (
     <>

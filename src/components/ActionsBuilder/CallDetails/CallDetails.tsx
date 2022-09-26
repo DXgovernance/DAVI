@@ -83,11 +83,20 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const ActionSummary = getSummaryView(decodedCall?.callType);
   const { functionData } = useRichContractData(decodedCall);
 
-  const isGenericCall = decodedCall.callType === SupportedAction.GENERIC_CALL;
-  const isRawTransaction =
-    decodedCall.callType === SupportedAction.RAW_TRANSACTION;
-  const isNativeTransfer =
-    decodedCall.callType === SupportedAction.NATIVE_TRANSFER;
+  const isGenericCall = useMemo(
+    () => decodedCall?.callType === SupportedAction.GENERIC_CALL,
+    [decodedCall?.callType]
+  );
+
+  const isRawTransaction = useMemo(
+    () => decodedCall?.callType === SupportedAction.RAW_TRANSACTION,
+    [decodedCall?.callType]
+  );
+
+  const isNativeTransfer = useMemo(
+    () => decodedCall?.callType === SupportedAction.NATIVE_TRANSFER,
+    [decodedCall?.callType]
+  );
 
   const genericParams: Param[] = useMemo(() => {
     if (
