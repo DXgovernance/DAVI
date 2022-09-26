@@ -23,7 +23,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
     if (!options) return null;
     return options?.reduce(
       (acc, option) =>
-        option.totalVotes?.toBigInt() > acc?.totalVotes.toBigInt()
+        option?.totalVotes?.toBigInt() > acc?.totalVotes.toBigInt()
           ? option
           : acc,
       options[0]

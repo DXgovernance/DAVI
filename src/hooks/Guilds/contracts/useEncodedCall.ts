@@ -1,4 +1,9 @@
-import { Call, DecodedCall, Option } from 'components/ActionsBuilder/types';
+import {
+  Call,
+  DecodedCall,
+  Option,
+  SupportedAction,
+} from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';
 import { utils, BigNumber } from 'ethers';
 
@@ -29,7 +34,7 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
     const encodedCalls: Call[] = decodedActions?.reduce(
       (acc, decodedAction) => {
         const data =
-          decodedAction.decodedCall.callType === 'RAW_TRANSACTION'
+          decodedAction.decodedCall.callType === SupportedAction.RAW_TRANSACTION
             ? decodedAction.decodedCall.optionalProps.data
             : encodeCall(decodedAction.decodedCall, decodedAction.contract);
 
