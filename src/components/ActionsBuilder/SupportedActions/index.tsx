@@ -7,6 +7,7 @@ import {
 } from 'components/ActionsBuilder/types';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 import ERC20 from 'contracts/ERC20.json';
+import ERC20Guild from 'contracts/ERC20Guild.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
@@ -19,6 +20,8 @@ import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
 import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
 import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
 import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
+import SetGuildConfigInfoLine from './SetGuildConfig/SetGuildConfigInfoLine';
+import SetGuildConfigEditor from './SetGuildConfig/SetGuildConfigEditor';
 import Summary from './common/Summary';
 export interface SupportedActionMetadata {
   title: string;
@@ -84,8 +87,15 @@ export const supportedActions: Record<
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
   },
+  [SupportedAction.SET_GUILD_CONFIG]: {
+    title: 'Set Guild Config',
+    infoLineView: SetGuildConfigInfoLine,
+    summaryView: Summary,
+    editor: SetGuildConfigEditor,
+  },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
+const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver.abi);
 const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
@@ -183,6 +193,32 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       optionalProps: {
         ensName: '',
         ipfsHash: '',
+      },
+    },
+  },
+  [SupportedAction.SET_GUILD_CONFIG]: {
+    id: '',
+    contract: ENSPublicResolverContract,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.ENS_UPDATE_CONTENT,
+      function: ERC20GuildContract.getFunction('setConfig'),
+      to: '',
+      value: BigNumber.from(0),
+      args: {
+        proposalTime: '',
+        timeForExecution: '',
+        votingPowerForProposalExecution: '',
+        votingPowerForProposalCreation: '',
+        voteGas: '',
+        maxGasPrice: '',
+        maxActiveProposals: '',
+        lockTime: '',
+        minimumMembersForProposalCreation: '',
+        minimumTokensLockedForProposalCreation: '',
+      },
+      optionalProps: {
+        updatedFields: {},
       },
     },
   },

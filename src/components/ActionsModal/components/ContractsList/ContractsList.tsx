@@ -4,6 +4,7 @@ import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { StyledIcon } from 'components/primitives/StyledIcon';
+import { MdOutlineSettings } from 'react-icons/md';
 import {
   ActionsButton,
   ButtonDetail,
@@ -83,6 +84,20 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonLabel>
           </ActionsButton>
         ) : null}
+        <ActionsButton
+          onClick={() =>
+            onSupportedActionSelect(SupportedAction.SET_GUILD_CONFIG)
+          }
+        >
+          <ButtonLabel>
+            {/* <StyledIcon
+              src={() => <MdOutlineSettings color="black" size={18} />}
+            /> */}
+            <StyledIcon src={MdOutlineSettings} />
+            {/* <MdOutlineSettings color="black" size={18} /> */}
+            {t('setGuildConfig')}
+          </ButtonLabel>
+        </ActionsButton>
       </SectionWrapper>
       <SectionWrapper>
         <SectionTitle>{t('externalContracts')}</SectionTitle>
