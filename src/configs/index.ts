@@ -1,1 +1,1 @@
-export const RICH_CONTRACT_DATA_REGISTRY = 'QmVnfCaowKgZrFV5vpx7w77GU7sxsPkgUrHeRbZZVpTtWi';
+export const RICH_CONTRACT_DATA_REGISTRY = 'Qmenf8PSva3VnMdDhhchKUrTsaoTB6nQMrhaYi9DxEMGu8';

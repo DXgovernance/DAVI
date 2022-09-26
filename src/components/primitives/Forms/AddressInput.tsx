@@ -4,7 +4,8 @@ import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
 import { Box } from 'components/primitives/Layout/Box';
-import { FiX } from 'react-icons/fi';
+import { IconRight } from './IconRight';
+import { useState } from 'react';
 
 export const ClickableIcon = styled(Box)`
   display: flex;
@@ -16,17 +17,25 @@ export const AddressInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   isInvalid,
-  disabled = false,
+  disabled = true,
   ...rest
 }) => {
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
   const shouldShowAvatar = !!isAddress(value) || value?.endsWith('.eth');
+  const [disabledState, setDisabled] = useState(value ? disabled : false);
+  const iconRightProps = {
+    disabled: disabledState,
+    value: value,
+    onChange: onChange,
+    setDisabled,
+    type: 'address',
+  };
 
   return (
     <Input
       {...rest}
       value={value}
-      disabled={disabled}
+      disabled={disabledState}
       icon={
         <div>
           {shouldShowAvatar && !isInvalid && (
@@ -34,18 +43,7 @@ export const AddressInput: React.FC<InputProps<string>> = ({
           )}
         </div>
       }
-      iconRight={
-        <>
-          {!disabled && value && (
-            <ClickableIcon
-              aria-label="clear address"
-              onClick={() => onChange('')}
-            >
-              <FiX size={18} />
-            </ClickableIcon>
-          )}
-        </>
-      }
+      iconRight={<IconRight {...iconRightProps} />}
       onChange={e => onChange(e.target.value)}
       isInvalid={isInvalid}
     />

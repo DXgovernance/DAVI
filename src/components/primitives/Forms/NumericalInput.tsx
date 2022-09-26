@@ -1,8 +1,9 @@
 // Based on https://github.com/levelkdev/dxswap-dapp/blob/master/src/components/Input/NumericalInput/index.tsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, InputProps } from 'components/primitives/Forms/Input';
 import { escapeRegExp } from 'utils';
+import { IconRight } from './IconRight';
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
 
@@ -10,12 +11,21 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   placeholder,
+  disabled = true,
   ...rest
 }) => {
   const enforcer = (nextUserInput: string) => {
     if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {
       onChange(nextUserInput);
     }
+  };
+  const [disabledState, setDisabled] = useState(disabled);
+  const iconRightProps = {
+    disabled: disabledState,
+    value: value,
+    onChange: onChange,
+    setDisabled,
+    type: 'number',
   };
 
   return (
@@ -37,6 +47,8 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       minLength={1}
       maxLength={79}
       spellCheck="false"
+      disabled={disabledState}
+      iconRight={<IconRight {...iconRightProps} />}
     />
   );
 };
