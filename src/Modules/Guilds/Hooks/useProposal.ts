@@ -32,7 +32,8 @@ const useProposal = (guildId: string, proposalId: string) => {
     addressOrName: guildId,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getProposal',
-    args: [proposalId],
+    args: proposalId,
+    watch: true,
   });
   const proposalData = data as unknown as InitialProposal;
 

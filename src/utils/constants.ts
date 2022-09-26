@@ -10,6 +10,7 @@ export const ANY_FUNC_SIGNATURE = '0xaaaaaaaa';
 export const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
 export const SET_PERMISSION_SIGNATURE = '0x6cfe0489';
 export const MINT_REP_SIGNATURE = '0x40c10f19';
+export const ENS_UPDATE_CONTENT_SIGNATURE = '0x304e6ade';
 
 export const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
 export const DEFAULT_TOKEN_DECIMALS = 18;

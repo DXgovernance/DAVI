@@ -34,8 +34,7 @@ export const ensAvatarMock: ENSAvatar = {
 
 export const proposalStatusPropsMock: ProposalStatusProps = {
   status: ProposalState.Active,
-  endTimeDetail: 'endedTimeAgo',
-  endTimeMoment: moment('2022-05-09T08:00:00'),
+  endTime: { detail: 'endedTimeAgo', moment: moment('2022-05-09T08:00:00') },
 };
 
 export const guildConfigMock: GuildConfigProps = {

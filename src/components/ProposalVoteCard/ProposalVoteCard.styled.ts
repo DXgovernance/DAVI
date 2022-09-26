@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 export const ButtonsContainer = styled.div`
   flex-direction: column;
   display: flex;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
 `;
 
 export const SmallButton = styled(Button)`

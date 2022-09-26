@@ -18,6 +18,7 @@ const useTotalLockedAt = ({
     contractInterface: SnapshotERC20Guild.abi,
     functionName: 'totalLockedAt',
     args: [snapshotId],
+    watch: true,
   });
 };
 

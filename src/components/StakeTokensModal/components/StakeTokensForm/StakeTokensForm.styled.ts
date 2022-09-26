@@ -78,7 +78,7 @@ export const InfoValue = styled.span`
 `;
 
 export const InfoOldValue = styled(InfoValue)`
-  color: ${({ theme }) => theme.colors.border1};
+  color: ${({ theme }) => theme.colors.grey};
   display: inline-flex;
   align-items: center;
 `;

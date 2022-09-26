@@ -53,8 +53,7 @@ const invalidProps: ProposalCardProps = {
   href: null,
   statusProps: {
     status: null,
-    endTimeDetail: null,
-    endTimeMoment: null,
+    endTime: null,
   },
   options: null,
 };

@@ -42,26 +42,26 @@ jest.mock('wagmi', () => ({
 describe('ProposalCardWinningOption', () => {
   it('renders properly with one action', () => {
     const { container } = render(
-      <ProposalCardWinningOption option={optionsMock} />
+      <ProposalCardWinningOption options={[optionsMock]} />
     );
     expect(container).toMatchSnapshot();
   });
 
   it('renders loading component when there are no options', () => {
-    const { container } = render(<ProposalCardWinningOption option={null} />);
+    const { container } = render(<ProposalCardWinningOption options={null} />);
     expect(container).toMatchSnapshot();
   });
 
   it('renders a loading component when the votes are not fetched yet', () => {
     const { container } = render(
-      <ProposalCardWinningOption option={optionWithoutVotes} />
+      <ProposalCardWinningOption options={[optionWithoutVotes]} />
     );
     expect(container).toMatchSnapshot();
   });
 
   it('renders an indicator of the number of actions if the option has more than one action', async () => {
     const { container, findByText } = render(
-      <ProposalCardWinningOption option={optionsWithSeveralActionsMock} />
+      <ProposalCardWinningOption options={[optionsWithSeveralActionsMock]} />
     );
 
     const numberOfActions = await findByText('2');
@@ -74,7 +74,7 @@ describe('ProposalCardWinningOption', () => {
 
   it('a tooltip shows after clicking in the action idicator when there are more than one action', async () => {
     const { container, findByLabelText } = render(
-      <ProposalCardWinningOption option={optionsWithSeveralActionsMock} />
+      <ProposalCardWinningOption options={[optionsWithSeveralActionsMock]} />
     );
 
     const expandActionsList: HTMLElement = await findByLabelText(
@@ -92,7 +92,7 @@ describe('ProposalCardWinningOption', () => {
 
   it('if the option has only one action, no tooltip shows after clicking it', async () => {
     const { container, findByLabelText, queryByLabelText } = render(
-      <ProposalCardWinningOption option={optionsMock} />
+      <ProposalCardWinningOption options={[optionsMock]} />
     );
 
     const expandActionsList: HTMLElement = await findByLabelText(

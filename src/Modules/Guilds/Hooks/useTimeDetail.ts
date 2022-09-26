@@ -1,8 +1,8 @@
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { useTranslation } from 'react-i18next';
 import { ProposalState } from 'types/types.guilds.d';
 import {
-  getTimeDifferenceFromCurrentTimeHumanized,
+  getTimeDifferenceHumanized,
   isBeforeCurrentTime,
 } from 'utils/time/time';
 import { useGuildConfig } from './useGuildConfig';
@@ -10,34 +10,28 @@ import { useGuildConfig } from './useGuildConfig';
 const useTimeDetail = (
   guildId: string,
   status: ProposalState,
-  endTime: moment.Moment
+  endTime: Moment
 ) => {
   const { t } = useTranslation();
   const { data: guildConfig } = useGuildConfig(guildId);
 
-  let endTimeDetail = null;
-  let endTimeMoment = null;
-
-  if (!endTime) return { endTimeMoment, endTimeDetail };
+  let endTimeDetail: string = null;
+  let endTimeMoment: Moment = null;
 
   // with states Executable and Failed we show the time difference with execution time. Otherwise, with ending time
-  if (
-    guildConfig &&
-    (status === ProposalState.Executable || status === ProposalState.Failed)
-  ) {
-    const { timeForExecution } = guildConfig;
+  if (status === ProposalState.Executable || status === ProposalState.Failed) {
+    endTimeMoment = moment(endTime).add(
+      guildConfig?.timeForExecution.toNumber(),
+      'seconds'
+    );
 
-    endTimeMoment = moment(endTime).add(timeForExecution.toNumber(), 'seconds');
-
-    const timeDifferenceHumanized =
-      getTimeDifferenceFromCurrentTimeHumanized(endTimeMoment);
+    const timeDifferenceHumanized = getTimeDifferenceHumanized(endTimeMoment);
 
     endTimeDetail = isBeforeCurrentTime(endTimeMoment)
       ? t('expiredTimeAgo', { timeDifferenceHumanized })
       : t('expiresInTimeDetail', { timeDifferenceHumanized });
   } else {
-    const timeDifferenceHumanized =
-      getTimeDifferenceFromCurrentTimeHumanized(endTime);
+    const timeDifferenceHumanized = getTimeDifferenceHumanized(endTime);
 
     endTimeDetail = isBeforeCurrentTime(endTime)
       ? t('endedTimeAgo', { timeDifferenceHumanized })
@@ -45,7 +39,7 @@ const useTimeDetail = (
     endTimeMoment = endTime;
   }
 
-  return { endTimeMoment, endTimeDetail };
+  return { detail: endTimeDetail, moment: endTimeMoment };
 };
 
 export default useTimeDetail;

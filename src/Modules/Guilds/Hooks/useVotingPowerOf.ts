@@ -25,6 +25,7 @@ export const useVotingPowerOf = ({
     contractInterface: ERC20GuildContract.abi,
     functionName: 'votingPowerOf',
     args: [userAddress],
+    watch: true,
   });
 
   const votingPowerAtSnapshotResponse = useVotingPowerOfAt({
@@ -34,7 +35,7 @@ export const useVotingPowerOf = ({
     fallbackSnapshotId,
   });
 
-  if (isSnapshotGuild) return votingPowerAtSnapshotResponse;
+  if (isSnapshotGuild && snapshotId) return votingPowerAtSnapshotResponse;
   return {
     data: votingPowerOfResponse
       ? BigNumber.from(votingPowerOfResponse)

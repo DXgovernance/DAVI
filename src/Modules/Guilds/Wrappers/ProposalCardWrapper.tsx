@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { ProposalCard } from 'components/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
@@ -7,8 +6,9 @@ import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
+import { useAccount } from 'wagmi';
+import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
-
 interface ProposalCardWrapperProps {
   proposalId?: string;
 }
@@ -21,40 +21,31 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   const status = useProposalState(proposal);
   const { withFilters } = useFilter();
   const { options } = useProposalCalls(guildId, proposalId);
-  const { endTimeMoment, endTimeDetail } = useTimeDetail(
+  const { address } = useAccount();
+  const { data: proposalVotesOfVoter } = useProposalVotesOfVoter(
     guildId,
-    status,
-    proposal?.endTime
+    proposalId,
+    address
   );
-
-  const sortedOptionsByWinningVotes = useMemo(() => {
-    if (options) {
-      const sortedOptionsByWiningVote: any = options?.sort((a, b) => {
-        const aVotes = a.totalVotes?.toBigInt();
-        const bVotes = b.totalVotes?.toBigInt();
-        if (aVotes === bVotes) return 0;
-        if (aVotes < bVotes) return 1;
-        return -1;
-      });
-      return sortedOptionsByWiningVote;
-    } else {
-      return [];
-    }
-  }, [options]);
+  const endTime = useTimeDetail(guildId, status, proposal?.endTime);
 
   return withFilters(
     <ProposalCard
-      proposal={{ ...proposal, id: proposalId }}
+      proposal={{
+        ...proposal,
+        id: proposalId,
+        votesOfVoter: proposalVotesOfVoter,
+      }}
       ensAvatar={ensAvatar}
       href={
         proposalId ? `/${chainName}/${guildId}/proposal/${proposalId}` : null
       }
       statusProps={{
         status,
-        endTimeMoment,
-        endTimeDetail,
+        endTime: endTime,
       }}
-      options={sortedOptionsByWinningVotes}
+      options={options}
+      address={address}
     />
   )(proposal, status, options);
 };

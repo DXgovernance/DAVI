@@ -1,13 +1,10 @@
 import moment from 'moment';
-import {
-  getTimeDifferenceFromCurrentTimeHumanized,
-  isBeforeCurrentTime,
-} from './time';
+import { getTimeDifferenceHumanized, isBeforeCurrentTime } from './time';
 
-describe('getTimeDifferenceFromCurrentTimeHumanized', () => {
+describe('getTimeDifferenceHumanized', () => {
   it('should return an hour if time is one hour from now ', () => {
     const time = moment().add(1, 'hour');
-    const result = getTimeDifferenceFromCurrentTimeHumanized(time);
+    const result = getTimeDifferenceHumanized(time);
 
     expect(result).toBe('an hour');
   });

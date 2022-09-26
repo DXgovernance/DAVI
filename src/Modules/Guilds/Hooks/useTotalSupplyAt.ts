@@ -19,6 +19,7 @@ const useTotalSupplyAt = ({
     contractInterface: ERC20SnapshotRep.abi,
     functionName: 'totalSupplyAt',
     args: [snapshotId],
+    watch: true,
   });
   return {
     data: data ? BigNumber.from(data) : undefined,

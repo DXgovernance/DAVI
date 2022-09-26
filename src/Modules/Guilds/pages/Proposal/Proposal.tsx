@@ -71,11 +71,7 @@ const ProposalPage: React.FC = () => {
   );
 
   const status = useProposalState(proposal);
-  const { endTimeMoment, endTimeDetail } = useTimeDetail(
-    guildId,
-    status,
-    proposal?.endTime
-  );
+  const endTime = useTimeDetail(guildId, status, proposal?.endTime);
 
   const {
     data: { executeProposal },
@@ -101,7 +97,7 @@ const ProposalPage: React.FC = () => {
       return (
         <Result
           state={ResultState.ERROR}
-          title={t('genericProposalError')}
+          title={t('errorMessage.genericProposalError')}
           subtitle={error.message}
         />
       );
@@ -120,11 +116,7 @@ const ProposalPage: React.FC = () => {
               </StyledIconButton>
             </UnstyledLink>
 
-            <ProposalStatus
-              status={status}
-              endTimeDetail={endTimeDetail}
-              endTimeMoment={endTimeMoment}
-            />
+            <ProposalStatus status={status} endTime={endTime} />
             {status === ProposalState.Executable && !isReadOnly(connector) && (
               <ExecuteButton executeProposal={executeProposal} />
             )}

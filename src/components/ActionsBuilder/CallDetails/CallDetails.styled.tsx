@@ -12,7 +12,7 @@ export const ParamTag = styled(MetadataTag)`
 `;
 
 export const ParamTitleRow = styled(DetailRow)`
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const ParamTitleTag = styled(MetadataTag)`

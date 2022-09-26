@@ -1,4 +1,3 @@
-import useCurrentSnapshotId from './useCurrentSnapshotId';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -11,18 +10,13 @@ import { BigNumber } from 'ethers';
 
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   // Hooks call
-  const { data: currentSnapshotId } = useCurrentSnapshotId({
-    contractAddress: guildAddress,
-  });
-
   const { proposalId } = useTypedParams();
   const { data: _snapshotId } = useSnapshotId({
     contractAddress: guildAddress,
     proposalId,
   });
 
-  const SNAPSHOT_ID =
-    snapshotId ?? _snapshotId?.toString() ?? currentSnapshotId?.toString();
+  const SNAPSHOT_ID = snapshotId ?? _snapshotId?.toString() ?? null;
 
   const { isSnapshotGuild, isRepGuild } =
     useGuildImplementationType(guildAddress);
@@ -31,6 +25,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     addressOrName: guildAddress,
     contractInterface: ERC20GuildContract.abi,
     functionName: 'getTotalLocked',
+    watch: true,
   });
 
   const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
@@ -62,11 +57,17 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   }
 
   if (isSnapshotGuild) {
-    return {
-      data: totalLockedAtProposalSnapshotResponse
-        ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
-        : undefined,
-    };
+    return SNAPSHOT_ID
+      ? {
+          data: totalLockedAtProposalSnapshotResponse
+            ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
+            : undefined,
+        }
+      : {
+          data: totalLockedResponse
+            ? BigNumber.from(totalLockedResponse)
+            : undefined,
+        };
   }
   return {
     data: totalLockedResponse ? BigNumber.from(totalLockedResponse) : undefined,

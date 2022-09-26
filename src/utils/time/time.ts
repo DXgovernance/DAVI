@@ -1,15 +1,15 @@
 import i18next from 'i18next';
 import moment, { Moment } from 'moment';
 
-export function getTimeDifferenceFromCurrentTimeHumanized(endTime: Moment) {
-  const differenceInMilliseconds = getTimeDifferenceFromCurrentTime(endTime);
+export function getTimeDifferenceHumanized(to: Moment, from = moment()) {
+  const differenceInMilliseconds = getTimeDifference(to, from);
   const timeDifferenceHumanized = getTimeHumanized(differenceInMilliseconds);
 
   return timeDifferenceHumanized;
 }
 
-export function getTimeDifferenceFromCurrentTime(time: Moment) {
-  return moment().diff(time);
+export function getTimeDifference(to: Moment, from: Moment = moment()) {
+  return from.diff(to);
 }
 
 export function getTimeHumanized(time: number) {
@@ -23,5 +23,5 @@ export function getTimeHumanized(time: number) {
 
 export function isBeforeCurrentTime(time: Moment) {
   const currentTime = moment();
-  return time.isBefore(currentTime);
+  return time?.isBefore(currentTime);
 }
