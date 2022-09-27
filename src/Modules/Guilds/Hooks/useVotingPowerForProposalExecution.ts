@@ -54,9 +54,9 @@ const getConfig = ({
     functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
     args: [_proposalId],
   };
-
-  if (isRepGuild && isSnapshotGuild) return snapshotRepConf;
-  if (isSnapshotGuild) return snapshotConfig;
+  // Validate args to avoid null values
+  if (isRepGuild && isSnapshotGuild && !!_proposalId) return snapshotRepConf;
+  if (isSnapshotGuild && !!snapshotId) return snapshotConfig;
   return baseErc20Config;
 };
 
