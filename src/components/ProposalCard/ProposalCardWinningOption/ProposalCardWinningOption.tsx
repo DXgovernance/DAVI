@@ -40,7 +40,6 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
       />
     );
   }
-
   const firstAction = option?.decodedActions[0];
   const allActions = option?.decodedActions;
   const numberOfActions = allActions?.length;
@@ -51,7 +50,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   };
 
   const InfoLine = getInfoLineView(firstAction?.decodedCall?.callType);
-
+  console.log(option?.votePercentage, 'option.votePercentage');
   return (
     <WinningOptionWrapper>
       <OptionVotesAndLabelWrapper>

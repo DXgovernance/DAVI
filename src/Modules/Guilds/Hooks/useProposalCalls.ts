@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { bulkDecodeCallsFromOptions } from 'hooks/Guilds/contracts/useDecodedCall';
 import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
-import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
+import { useVotingResults } from './useVotingResults';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { ZERO_HASH } from 'utils';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
