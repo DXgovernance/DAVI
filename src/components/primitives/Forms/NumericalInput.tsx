@@ -19,7 +19,9 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       onChange(nextUserInput);
     }
   };
-  const [disabledState, setDisabled] = useState(disabled);
+  const [disabledState, setDisabled] = useState(
+    value && value !== '0.0' ? disabled : false
+  );
   const iconRightProps = {
     disabled: disabledState,
     value: value,
