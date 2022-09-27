@@ -13,7 +13,7 @@ const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
     enabled: isSnapshotGuild,
     addressOrName: contractAddress,
     contractInterface: SnapshotERC20Guild.abi,
-    functionName: 'getProposalSnapshotId',
+    functionName: 'getProposalSnapshotId(bytes32)',
     args: [proposalId],
   });
 };
