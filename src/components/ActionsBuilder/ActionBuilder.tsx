@@ -29,7 +29,7 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
   const [editableOption, setEditableOption] = useState(null);
 
   const onEdit = () => setIsEditable(true);
-  console.log({ options });
+
   const onSave = useCallback(() => {
     const decodedActions = options[0]?.decodedActions;
     const permissionParameters = decodedActions.map(action => {
@@ -41,29 +41,56 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
             funcSign: action.decodedCall.args.functionSignature,
           };
         case SupportedAction.ENS_UPDATE_CONTENT:
-          return {};
+          return {
+            from: action.decodedCall.from,
+            to: action.decodedCall.to,
+            funcSign: action.decodedCall.args.functionSignature,
+          };
         case SupportedAction.GENERIC_CALL:
-          return {};
+          return {
+            from: action.decodedCall.from,
+            to: action.decodedCall.to,
+            funcSign: action.decodedCall.args.functionSignature,
+          };
         case SupportedAction.SET_PERMISSIONS:
-          return {};
+          return {
+            from: action.decodedCall.from,
+            to: action.decodedCall.to,
+            funcSign: action.decodedCall.args.functionSignature,
+          };
         case SupportedAction.REP_MINT:
-          return {};
-        case SupportedAction.NATIVE_TRANSFER:
-          return {};
+          return {
+            from: action.decodedCall.from,
+            to: action.decodedCall.to,
+            funcSign: action.decodedCall.args.functionSignature,
+          };
+          case SupportedAction.NATIVE_TRANSFER:
+            return true
         default:
           throw new Error('Unsupported action type');
       }
     });
 
-    permissionParameters.map(params =>
+
+    const permissions = permissionParameters.map(params => {
+      if(params === true) {
+        return true
+      }
       // eslint-disable-next-line react-hooks/rules-of-hooks
-      useGetETHPermission({
+      const ethPermission = useGetETHPermission({
         guildAddress,
         from: params.from,
         to: params.to,
         funcSign: params.funcSign,
       })
+      if(ethPermission.data === '0') {
+        return false
+      } else {
+        return true
+      }
+    }
     );
+    console.log({permissions})
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     onChange(encodedOptions);
