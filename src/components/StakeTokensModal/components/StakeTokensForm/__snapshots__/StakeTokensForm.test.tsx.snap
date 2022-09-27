@@ -41,7 +41,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 }
 
 .c10 input {
-  color: #A1A6B0;
+  color: #fff;
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -65,7 +65,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 }
 
 .c10:hover {
-  outline: 1px solid inherit;
+  outline: 1px solid #fff;
 }
 
 .c10:focus {
@@ -328,7 +328,6 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       >
         <div
           class="c10"
-          disabled=""
         >
           <div
             class="c11"
@@ -338,7 +337,6 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             autocorrect="off"
             class="c12 c13"
             data-testid="stake-amount-input"
-            disabled=""
             inputmode="decimal"
             maxlength="79"
             minlength="1"
@@ -352,7 +350,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             class="c14"
           >
             <div
-              aria-label="enable"
+              aria-label="clear number"
               class="c15 c16"
             >
               <svg
@@ -366,16 +364,17 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
                 width="18"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect
-                  height="11"
-                  rx="2"
-                  ry="2"
-                  width="18"
-                  x="3"
-                  y="11"
+                <line
+                  x1="18"
+                  x2="6"
+                  y1="6"
+                  y2="18"
                 />
-                <path
-                  d="M7 11V7a5 5 0 0 1 9.9-1"
+                <line
+                  x1="6"
+                  x2="18"
+                  y1="6"
+                  y2="18"
                 />
               </svg>
             </div>
