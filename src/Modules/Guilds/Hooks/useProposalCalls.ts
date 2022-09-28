@@ -13,6 +13,7 @@ import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 import { EMPTY_CALL } from 'Modules/Guilds/pages/CreateProposal';
+import useGuildImplementationTypeConfig from './useGuildImplementationType';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -27,7 +28,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
-
+  // Used to wait for the bytecode to be fetched
+  const { isSnapshotGuild } = useGuildImplementationTypeConfig(guildId);
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
 
@@ -151,7 +153,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       // Return options putting default against-call last
       setOptions([...options.slice(1), options[0]])
     );
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     guildId,
@@ -162,6 +163,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
+    isSnapshotGuild,
   ]);
 
   return {
