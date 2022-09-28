@@ -24,7 +24,7 @@ BigNumber.config({
 export const preventEmptyString = (
   value: EthersBigNumber | string
 ): EthersBigNumber => {
-  if (typeof value === 'string') return EthersBigNumber.from(0);
+  if (!value || typeof value === 'string') return EthersBigNumber.from(0);
   else return value;
 };
 
