@@ -148,7 +148,6 @@ const ProposalVoteCard = ({
                   <VoteOptionButton
                     key={optionKey}
                     optionKey={Number(optionKey)}
-                    // variant="minimal"
                     active={selectedAction && selectedAction.eq(bItem)}
                     onClick={() => {
                       setSelectedAction(
