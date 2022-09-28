@@ -1,15 +1,17 @@
+import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { BigNumber } from 'ethers';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import { useMemo } from 'react';
-import { ERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
+
 export interface VoteData {
-  options?: { [name: string]: BigNumber };
+  options: { [name: string]: BigNumber };
+  quorum: BigNumber;
   totalLocked: BigNumber;
-  quorum?: BigNumber;
-  token?: ERC20Info;
+  token: ERC20Info;
 }
 
 export const useVotingResults = (
@@ -18,20 +20,24 @@ export const useVotingResults = (
 ): VoteData => {
   const { guildId, proposalId } = useTypedParams();
 
+  // swr hooks
   const { data: proposal } = useProposal(
     optionalGuildId || guildId,
     optionalProposalId || proposalId
   );
 
+  const { data } = useGuildConfig(optionalGuildId || guildId);
+  const { data: tokenInfo } = useERC20Info(data?.token);
+
   const { data: snapshotId } = useSnapshotId({
-    contractAddress: optionalGuildId || guildId,
-    proposalId: optionalProposalId || proposalId,
+    contractAddress: guildId,
+    proposalId: proposal?.id,
   });
 
   const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
 
   const voteData = useMemo(() => {
-    if (!proposal) return undefined;
+    if (!proposal || !data || !tokenInfo) return undefined;
     const options = proposal?.totalVotes.reduce<Record<string, BigNumber>>(
       (acc, result, i) => {
         acc[i] = result;
@@ -42,9 +48,11 @@ export const useVotingResults = (
 
     return {
       options,
+      quorum: data?.votingPowerForProposalExecution,
       totalLocked,
+      token: tokenInfo,
     };
-  }, [proposal, totalLocked]);
+  }, [data, proposal, tokenInfo, totalLocked]);
 
   return voteData;
 };
