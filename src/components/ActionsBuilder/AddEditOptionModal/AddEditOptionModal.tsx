@@ -7,6 +7,8 @@ import { Button } from 'components/primitives/Button';
 import { Option } from '../types';
 import { Input } from 'components/primitives/Forms/Input';
 import { DeleteButton, Dot } from './AddEditOptionModal.styled';
+import { normalizeString } from 'utils';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 
 interface AddEditOptionModalProps {
   onDismiss: () => void;
@@ -24,10 +26,26 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   const defaultLabel = editableOption?.label ?? '';
   const isEditable = !!editableOption;
   const [label, setLabel] = React.useState<string>(defaultLabel);
+  const [error, setError] = React.useState<string>('');
   const theme = useTheme();
   const { t } = useTranslation();
 
+  const validate = (): boolean => {
+    if (
+      options.some(
+        option =>
+          normalizeString(option.label) === normalizeString(label) ||
+          normalizeString(label) === 'against'
+      )
+    ) {
+      setError(`Label "${label}" already exists`);
+      return false;
+    }
+    return true;
+  };
   const handleConfirmSave = () => {
+    const isValid = validate();
+    if (!isValid) return;
     isEditable
       ? editOption({ ...editableOption, label })
       : saveNewOption(label);
@@ -83,6 +101,12 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
             onChange={e => setLabel(e.target.value)}
           />
         </Box>
+
+        {error && (
+          <Box padding="0 0 1rem">
+            <ErrorLabel>{error}</ErrorLabel>
+          </Box>
+        )}
 
         {!!editableOption && (
           <Box padding="0 0 1rem 0">
