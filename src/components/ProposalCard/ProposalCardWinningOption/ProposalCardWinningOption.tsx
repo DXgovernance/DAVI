@@ -12,7 +12,8 @@ import { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ExpandedActionsList } from '../ExpandedActionsList';
 import { ProposalCardWinningOptionProps } from './types';
-
+import { BigNumber } from 'ethers';
+const bn = n => BigNumber.from(n ?? 0);
 const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   options,
 }) => {
@@ -23,9 +24,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
     if (!options) return null;
     return options?.reduce(
       (acc, option) =>
-        option.totalVotes?.toBigInt() > acc?.totalVotes.toBigInt()
-          ? option
-          : acc,
+        bn(option.totalVotes).gt(bn(acc?.totalVotes)) ? option : acc,
       options[0]
     );
   }, [options]);
