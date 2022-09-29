@@ -6,7 +6,7 @@ import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
 import { Call, Option } from 'components/ActionsBuilder/types';
-import { ZERO_HASH } from 'utils';
+import { preventEmptyString, ZERO_HASH } from 'utils';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import { useRichContractRegistry } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
@@ -95,7 +95,9 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       const encodedOptions: Option[] = await Promise.all(
         splitCalls.map(async (calls, index) => {
           const filteredActions = calls.filter(
-            call => !isZeroHash(call?.data) || !call.value?.isZero()
+            call =>
+              !isZeroHash(call?.data) ||
+              !preventEmptyString(call?.value).isZero()
           );
           const actions = await Promise.all(
             filteredActions.map(async call => {

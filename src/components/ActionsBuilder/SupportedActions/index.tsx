@@ -99,7 +99,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       callType: SupportedAction.NATIVE_TRANSFER,
       function: null,
       to: '',
-      value: BigNumber.from(0),
+      value: '',
       args: null,
     },
   },
@@ -114,7 +114,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       value: BigNumber.from(0),
       args: {
         _to: '',
-        _value: BigNumber.from(0),
+        _value: '',
       },
     },
   },
@@ -129,7 +129,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       value: BigNumber.from(0),
       args: {
         to: '',
-        amount: BigNumber.from(0),
+        amount: '',
       },
     },
   },
@@ -142,7 +142,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       function: null,
       to: '',
       args: {},
-      value: BigNumber.from(0),
+      value: '',
     },
   },
   [SupportedAction.SET_PERMISSIONS]: {
@@ -157,7 +157,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       args: {
         to: '',
         functionSignature: '',
-        valueAllowed: BigNumber.from(0),
+        valueAllowed: '',
         allowed: true,
       },
       optionalProps: {
