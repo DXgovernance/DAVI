@@ -89,5 +89,5 @@ export const useVotingPowerForProposalExecution = ({
       data: data ? BigNumber.from(data) : null,
       ...rest,
     };
-  }, [data, rest]); // eslint-disable-line
+  }, [data, rest]);
 };
