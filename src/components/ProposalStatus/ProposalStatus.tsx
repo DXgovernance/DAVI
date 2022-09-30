@@ -34,13 +34,33 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
   border-radius: 15px;
   border: 1px solid
     ${({ theme, statusDetail }) =>
-      statusDetail === ProposalState.Failed
+      statusDetail === ProposalState.Active
+        ? theme.colors.active
+        : statusDetail === ProposalState.Executable
+        ? theme.colors.primary1
+        : statusDetail === ProposalState.Executed
+        ? theme.colors.grey
+        : statusDetail === ProposalState.Rejected
+        ? theme.colors.red
+        : statusDetail === ProposalState.Failed
         ? theme.colors.failed
+        : statusDetail === ProposalState.Finished
+        ? theme.colors.grey
         : theme.colors.active};
   background-color: ${({ theme }) => theme.colors.bg1};
   color: ${({ theme, statusDetail }) =>
-    statusDetail === ProposalState.Failed
+    statusDetail === ProposalState.Active
+      ? theme.colors.active
+      : statusDetail === ProposalState.Executable
+      ? theme.colors.primary1
+      : statusDetail === ProposalState.Executed
+      ? theme.colors.grey
+      : statusDetail === ProposalState.Rejected
+      ? theme.colors.red
+      : statusDetail === ProposalState.Failed
       ? theme.colors.failed
+      : statusDetail === ProposalState.Finished
+      ? theme.colors.grey
       : theme.colors.active};
   padding: 0.25rem 0.4rem;
 `;

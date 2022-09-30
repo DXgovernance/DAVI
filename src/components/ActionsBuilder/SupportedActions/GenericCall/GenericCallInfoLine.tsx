@@ -13,6 +13,7 @@ import { FiArrowRight, FiCode } from 'react-icons/fi';
 import { ActionViewProps } from '..';
 import GenericCallParamsMatcher from './GenericCallParamsMatcher';
 import { useTranslation } from 'react-i18next';
+import { preventEmptyString } from 'utils';
 
 export interface FunctionParamWithValue extends RichContractFunctionParam {
   value: string;
@@ -26,7 +27,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
   const { t } = useTranslation();
   const { data: tokenInfo } = useERC20Info(approveSpendTokens?.token);
   const approvalAmount = useBigNumberToString(
-    approveSpendTokens?.amount,
+    preventEmptyString(approveSpendTokens?.amount),
     tokenInfo?.decimals
   );
   const { functionData } = useRichContractData(decodedCall);

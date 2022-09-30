@@ -280,5 +280,83 @@ describe(`Set Permissions editor`, () => {
         screen.getByRole('textbox', { name: /amount input/i })
       ).toBeInTheDocument();
     });
+
+    it(`Can switch back an forth a couple of times with data`, () => {
+      render(
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
+      );
+
+      const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      const assetTransferTab = screen.getByTestId(`asset-transfer-tab`);
+
+      fireEvent.click(functionsCallTab);
+      fireEvent.click(assetTransferTab);
+      fireEvent.click(functionsCallTab);
+
+      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /to address input/i,
+      });
+
+      const functionNameElement: HTMLInputElement = screen.getByRole(
+        'textbox',
+        { name: /function signature input/i }
+      );
+
+      const customAmountElement: HTMLInputElement = screen.getByRole(
+        'textbox',
+        {
+          name: /amount input/i,
+        }
+      );
+
+      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(functionNameElement.value).toBe(functionNameMock);
+      expect(customAmountElement.value).toBe('111.0');
+
+      expect(
+        screen.getByRole('textbox', { name: /to address input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /function signature input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /amount input/i })
+      ).toBeInTheDocument();
+    });
+
+    it(`Can switch back an forth a couple of times without data`, () => {
+      render(
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+      );
+
+      const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      const assetTransferTab = screen.getByTestId(`asset-transfer-tab`);
+
+      fireEvent.click(functionsCallTab);
+      fireEvent.click(assetTransferTab);
+
+      expect(
+        screen.getByRole('textbox', { name: /asset picker/i })
+      ).toBeInTheDocument();
+
+      fireEvent.click(functionsCallTab);
+
+      expect(
+        screen.getByRole('textbox', { name: /to address input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /function signature input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /amount input/i })
+      ).toBeInTheDocument();
+    });
   });
 });

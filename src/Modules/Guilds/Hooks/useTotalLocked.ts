@@ -42,7 +42,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
 
   // Return response based on implementation type
 
-  if (isRepGuild) {
+  if (isRepGuild && isSnapshotGuild) {
     return SNAPSHOT_ID
       ? {
           data: totalSupplyAtSnapshotResponse

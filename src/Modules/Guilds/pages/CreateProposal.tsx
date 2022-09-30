@@ -18,7 +18,7 @@ import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
-import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
+import { preventEmptyString, ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
 import { toast } from 'react-toastify';
@@ -159,7 +159,7 @@ const CreateProposalPage: React.FC = () => {
 
     const toArray = calls.map(call => call.to);
     const dataArray = calls.map(call => call.data);
-    const valueArray = calls.map(call => call.value);
+    const valueArray = calls.map(call => preventEmptyString(call.value));
 
     if (
       toArray.length === 0 &&

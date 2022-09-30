@@ -38,19 +38,28 @@ export const VoteActionButton = styled(Button)`
 export const VoteOptionButton = styled(VoteActionButton)<{
   active?: boolean;
   selected?: boolean;
+  optionKey?: number;
 }>`
   margin-bottom: 1rem;
-  background-color: ${({ theme }) => theme.colors.border1};
+  background-color: ${({ theme }) => theme.colors.bg1};
+  opacity: 0.9;
 
-  :active {
-    color: ${({ theme }) => theme.colors.bg1};
-    background-color: ${({ theme }) => theme.colors.border3};
+  border-color: ${({ theme, optionKey }) => theme.colors.votes[optionKey]};
+  color: ${({ theme, optionKey }) => theme.colors.votes[optionKey]};
+  :hover {
+    background-color: ${({ theme, optionKey }) =>
+      theme.colors.votes[optionKey]};
+    color: ${({ theme }) => theme.colors.white};
+    border-color: ${({ theme, optionKey }) =>
+      `${theme.colors.votes[optionKey]} !important`};
   }
 
-  ${({ active, selected }) =>
+  ${({ active, selected, optionKey }) =>
     (active || selected) &&
     css`
-      color: ${({ theme }) => theme.colors.bg1};
-      background-color: ${({ theme }) => theme.colors.border3};
+      background-color: ${({ theme }) => theme.colors.votes[optionKey]};
+      color: ${({ theme }) => theme.colors.white};
+      border-color: ${({ theme }) => theme.colors.white};
+      opacity: 1;
     `}
 `;

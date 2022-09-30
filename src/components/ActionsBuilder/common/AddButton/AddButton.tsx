@@ -19,7 +19,7 @@ export const AddButton: React.FC<ActionButtonProps> = ({
   ...rest
 }) => {
   return (
-    <StyledIconButton iconLeft onClick={onClick} {...rest}>
+    <StyledIconButton variant="secondary" iconLeft onClick={onClick} {...rest}>
       <AiOutlinePlus /> {label}
     </StyledIconButton>
   );
