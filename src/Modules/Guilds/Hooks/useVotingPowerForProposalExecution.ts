@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 import { useContractRead } from 'wagmi';
+import { ReadContractConfig } from '@wagmi/core';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
@@ -37,7 +38,7 @@ const getConfig = ({
   contractAddress,
   snapshotId,
   proposalId,
-}: GetConfigArgs) => {
+}: GetConfigArgs): ReadContractConfig => {
   const baseErc20Config = {
     enabled: !!contractAddress,
     addressOrName: contractAddress,
