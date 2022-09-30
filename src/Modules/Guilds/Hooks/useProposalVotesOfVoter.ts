@@ -24,8 +24,9 @@ const useProposalVotesOfVoter = (
   });
 
   const parsedData = useMemo<UseProposalVotesOfVoterReturn>(() => {
-    if (!data?.votingPower || !data?.action)
+    if (!data?.votingPower || !data?.action) {
       return { action: null, votingPower: null };
+    }
     if (
       BigNumber.from(data?.votingPower || 0).gt(0) &&
       BigNumber.isBigNumber(data?.action)

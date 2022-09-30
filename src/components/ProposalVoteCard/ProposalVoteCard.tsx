@@ -147,7 +147,7 @@ const ProposalVoteCard = ({
                 return (
                   <VoteOptionButton
                     key={optionKey}
-                    variant="secondary"
+                    optionKey={Number(optionKey)}
                     active={selectedAction && selectedAction.eq(bItem)}
                     onClick={() => {
                       setSelectedAction(

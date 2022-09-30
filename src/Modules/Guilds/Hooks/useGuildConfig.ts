@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
+import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
 
 export type GuildConfigProps = {
   name: string;
@@ -17,11 +18,12 @@ export type GuildConfigProps = {
   lockTime: BigNumber;
 };
 
-export const useGuildConfig = (guildAddress: string) => {
+export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
   const erc20GuildContract = {
     addressOrName: guildAddress,
     contractInterface: ERC20GuildContract.abi,
   };
+
   const { data, ...rest } = useContractReads({
     contracts: [
       {
@@ -50,10 +52,6 @@ export const useGuildConfig = (guildAddress: string) => {
       },
       {
         ...erc20GuildContract,
-        functionName: 'getVotingPowerForProposalExecution',
-      },
-      {
-        ...erc20GuildContract,
         functionName: 'getTokenVault', // Get the address of the token vault
       },
       {
@@ -63,6 +61,11 @@ export const useGuildConfig = (guildAddress: string) => {
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
+  const { data: votingPowerForProposalExecution } =
+    useVotingPowerForProposalExecution({
+      contractAddress: guildAddress,
+      proposalId,
+    });
   const transformedData = useMemo(() => {
     if (!data) return undefined;
 
@@ -73,7 +76,6 @@ export const useGuildConfig = (guildAddress: string) => {
       timeForExecution,
       maxActiveProposals,
       votingPowerForProposalCreation,
-      votingPowerForProposalExecution,
       tokenVault,
       lockTime,
     ] = data;
@@ -90,16 +92,15 @@ export const useGuildConfig = (guildAddress: string) => {
       votingPowerForProposalCreation: votingPowerForProposalCreation
         ? BigNumber.from(votingPowerForProposalCreation)
         : undefined,
-      votingPowerForProposalExecution: votingPowerForProposalExecution
-        ? BigNumber?.from(votingPowerForProposalExecution)
-        : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
     };
   }, [data]);
 
   return {
-    data: transformedData ? { ...transformedData, token } : undefined,
+    data: transformedData
+      ? { ...transformedData, votingPowerForProposalExecution, token }
+      : undefined,
     ...rest,
   };
 };

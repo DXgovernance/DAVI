@@ -18,7 +18,7 @@ export interface Call {
   from: string;
   to: string;
   data: string;
-  value: BigNumber;
+  value: BigNumber | string;
   approval?: ApproveSendTokens;
   functionName?: string;
   approvalCall?: Call;
@@ -28,7 +28,7 @@ export interface DecodedCall {
   callType: SupportedAction;
   from: string;
   to: string;
-  value: BigNumber;
+  value: BigNumber | string;
   function: utils.FunctionFragment;
   args: Record<string, any>;
   richData?: RichContractData;
@@ -56,6 +56,6 @@ export interface Option {
 }
 
 export interface ApproveSendTokens extends DecodedCall {
-  amount?: BigNumber;
+  amount?: BigNumber | string;
   token?: string;
 }

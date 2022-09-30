@@ -1,4 +1,4 @@
-import moment, { unix } from 'moment';
+import { unix } from 'moment';
 import ERC20GuildContract from 'contracts/ERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
@@ -23,15 +23,7 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
   if (data.endTime instanceof BigNumber) {
     clone.endTime = data.endTime ? unix(data.endTime.toNumber()) : null;
   }
-  // Add timeDetail
-  const currentTime = moment();
-  let differenceInMilliseconds = currentTime.diff(clone.endTime);
-  let timeDifference = moment.duration(differenceInMilliseconds).humanize();
-  if (clone.endTime.isBefore(currentTime)) {
-    clone.timeDetail = `ended ${timeDifference} ago`;
-  } else {
-    clone.timeDetail = `${timeDifference} left`;
-  }
+
   return clone as Proposal;
 };
 
@@ -44,6 +36,7 @@ const useProposal = (guildId: string, proposalId: string) => {
     watch: true,
   });
   const proposalData = data as unknown as InitialProposal;
+
   return {
     data: data
       ? formatterMiddleware({ ...proposalData, id: proposalId })

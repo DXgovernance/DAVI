@@ -266,7 +266,7 @@ async function main() {
       },
       {
         token: 'SWPR',
-        contractName: 'ERC20GuildUpgradeable',
+        contractName: 'SnapshotERC20Guild',
         name: 'SWPRGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(60, 'minutes').asSeconds(),

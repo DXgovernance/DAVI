@@ -2,12 +2,12 @@ import { Moment } from 'moment';
 import {
   BigNumber
 } from 'ethers';
+import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 export interface Proposal {
   id: string;
   creator: string; 
   startTime: Moment;
   endTime: Moment;
-  timeDetail: string | null;
   to: string[];
   data?: string[];
   value: BigNumber[];
@@ -16,6 +16,7 @@ export interface Proposal {
   contentHash: string;
   contractState: ContractState;
   totalVotes: BigNumber[];
+  votesOfVoter?: UseProposalVotesOfVoterReturn;
 }
 
 export type InitialProposal = Partial<Proposal> & {

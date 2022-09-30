@@ -8,4 +8,5 @@ export interface ProposalCardProps {
   href?: string;
   statusProps?: ProposalStatusProps;
   options?: Option[];
+  address?: string;
 }
