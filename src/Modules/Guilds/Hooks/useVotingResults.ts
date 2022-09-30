@@ -26,13 +26,17 @@ export const useVotingResults = (
     optionalProposalId || proposalId
   );
 
-  const { data } = useGuildConfig(optionalGuildId || guildId);
-  const { data: tokenInfo } = useERC20Info(data?.token);
-
   const { data: snapshotId } = useSnapshotId({
     contractAddress: guildId,
     proposalId: proposal?.id,
   });
+
+  const { data } = useGuildConfig(
+    optionalGuildId || guildId,
+    optionalProposalId || proposalId
+  );
+
+  const { data: tokenInfo } = useERC20Info(data?.token);
 
   const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
 

@@ -22,7 +22,6 @@ const VotesChart: React.FC<VoteChartProps> = ({ isPercent, voteData }) => {
     voteData?.quorum,
     voteData?.token?.decimals
   );
-
   const flagCheckered = useVotingPowerPercent(
     voteData?.quorum,
     voteData?.totalLocked
