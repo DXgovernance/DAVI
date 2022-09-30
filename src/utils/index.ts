@@ -17,3 +17,4 @@ export * from './votes';
 export * from './img';
 export * from './validations';
 export * from './strings';
+export * from './indexedDb';

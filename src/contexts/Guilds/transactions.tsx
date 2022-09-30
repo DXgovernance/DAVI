@@ -1,4 +1,4 @@
-import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
+// import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
 import {
   TransactionOutcome,
   TransactionPending,
@@ -6,6 +6,7 @@ import {
 import { TransactionModal } from 'components/Web3Modals';
 import { Transaction } from '../../types/types.guilds';
 import { providers } from 'ethers';
+import { useLiveQuery } from 'dexie-react-hooks';
 import {
   createContext,
   useCallback,
@@ -17,6 +18,7 @@ import {
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import { useAccount, useNetwork, useProvider } from 'wagmi';
+import { db } from 'utils';
 
 export interface TransactionState {
   [chainId: number]: {
@@ -48,17 +50,18 @@ export const TransactionsProvider = ({ children }) => {
   const chainId = useMemo(() => chain?.id, [chain]);
   const { address } = useAccount();
 
-  const [transactions, setTransactions] = useLocalStorage<TransactionState>(
-    `transactions/${address}`,
-    {}
-  );
+  const transactions = useLiveQuery(async () => {
+    try {
+      return await db.transactions
+        .where({ userAddress: address, chainId: chainId })
+        .toArray();
+    } catch (e) {
+      console.log(e);
+      return [];
+    }
+  });
   const [pendingTransaction, setPendingTransaction] =
     useState<PendingTransaction>(null);
-
-  // Get the transactions from the current chain
-  const allTransactions = useMemo(() => {
-    return transactions[chainId] ? Object.values(transactions[chainId]) : [];
-  }, [transactions, chainId]);
 
   const addTransaction = (
     txResponse: providers.TransactionResponse,
@@ -73,45 +76,33 @@ export const TransactionsProvider = ({ children }) => {
       addedTime: Date.now(),
     };
 
-    setTransactions(prevState => ({
-      ...prevState,
-      [chainId]: {
-        ...prevState[chainId],
-        [transaction.hash]: transaction,
-      },
-    }));
+    db.transactions.add({
+      ...transaction,
+      userAddress: address,
+      chainId,
+    });
   };
 
   const clearAllTransactions = () => {
-    setTransactions(prevState => ({
-      ...prevState,
-      [chainId]: {},
-    }));
+    db.transactions.clear();
   };
 
   const finalizeTransaction = useCallback(
-    (hash: string, receipt: providers.TransactionReceipt) => {
-      if (!transactions[chainId] || !transactions[chainId][hash]) {
-        return;
-      }
-
-      setTransactions(prevState => ({
-        ...prevState,
-        [chainId]: {
-          ...prevState[chainId],
-          [hash]: {
-            ...prevState[chainId][hash],
-            receipt: {
-              transactionHash: receipt.transactionHash,
-              blockNumber: receipt.blockNumber,
-              status: receipt.status,
-            },
-            confirmedTime: Date.now(),
+    (id: number, receipt: providers.TransactionReceipt) => {
+      try {
+        db.transactions.update(id, {
+          receipt: {
+            transactionHash: receipt.transactionHash,
+            blockNumber: receipt.blockNumber,
+            status: receipt.status,
           },
-        },
-      }));
+          confirmedTime: Date.now(),
+        });
+      } catch (e) {
+        // handle error
+      }
     },
-    [transactions, chainId, setTransactions]
+    []
   );
 
   // Mark the transactions as finalized when they are mined
@@ -119,55 +110,57 @@ export const TransactionsProvider = ({ children }) => {
   useEffect(() => {
     let isSubscribed = true;
 
-    allTransactions
-      .filter(transaction => !transaction.receipt)
-      .forEach(transaction => {
-        provider.waitForTransaction(transaction.hash).then(receipt => {
-          if (isSubscribed) finalizeTransaction(transaction.hash, receipt);
+    !!transactions &&
+      transactions
+        .filter(transaction => !transaction.receipt)
+        .forEach(transaction => {
+          provider.waitForTransaction(transaction.hash).then(receipt => {
+            if (isSubscribed) finalizeTransaction(transaction.id, receipt);
+          });
         });
-      });
 
     return () => {
       isSubscribed = false;
     };
-  }, [allTransactions, finalizeTransaction, provider]);
+  }, [transactions, finalizeTransaction, provider]);
 
   // Update the pending transaction notifications when finalized
   useEffect(() => {
-    allTransactions.forEach(transaction => {
-      if (transaction.receipt && toast.isActive(transaction.hash)) {
-        if (transaction.receipt.status === 1) {
-          toast.update(transaction.hash, {
-            isLoading: false,
-            render: (
-              <TransactionOutcome
-                summary={transaction.summary}
-                chainId={chainId}
-                transactionHash={transaction.hash}
-              />
-            ),
-            icon: <FiCheckCircle />,
-            type: toast.TYPE.SUCCESS,
-            autoClose: 15000,
-          });
-        } else {
-          toast.update(transaction.hash, {
-            isLoading: false,
-            render: (
-              <TransactionOutcome
-                summary={transaction.summary}
-                chainId={chainId}
-                transactionHash={transaction.hash}
-              />
-            ),
-            icon: <FiXCircle />,
-            type: toast.TYPE.ERROR,
-            autoClose: 15000,
-          });
+    !!transactions &&
+      transactions.forEach(transaction => {
+        if (transaction.receipt && toast.isActive(transaction.hash)) {
+          if (transaction.receipt.status === 1) {
+            toast.update(transaction.hash, {
+              isLoading: false,
+              render: (
+                <TransactionOutcome
+                  summary={transaction.summary}
+                  chainId={chainId}
+                  transactionHash={transaction.hash}
+                />
+              ),
+              icon: <FiCheckCircle />,
+              type: toast.TYPE.SUCCESS,
+              autoClose: 15000,
+            });
+          } else {
+            toast.update(transaction.hash, {
+              isLoading: false,
+              render: (
+                <TransactionOutcome
+                  summary={transaction.summary}
+                  chainId={chainId}
+                  transactionHash={transaction.hash}
+                />
+              ),
+              icon: <FiXCircle />,
+              type: toast.TYPE.ERROR,
+              autoClose: 15000,
+            });
+          }
         }
-      }
-    });
-  }, [allTransactions, chainId]);
+      });
+  }, [transactions, chainId]);
 
   // Trigger a new transaction request to the user wallet and track its progress
   const createTransaction = async (
@@ -210,7 +203,7 @@ export const TransactionsProvider = ({ children }) => {
   return (
     <TransactionsContext.Provider
       value={{
-        transactions: allTransactions,
+        transactions,
         pendingTransaction,
         createTransaction,
         clearAllTransactions,
