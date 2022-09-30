@@ -18,7 +18,7 @@ exports[`AddButton Should match snapshot 1`] = `
   cursor: pointer;
   font-size: 14px;
   border: 1px solid #303338;
-  background-color: #295FF4;
+  background-color: transparent;
   color: #fff;
   border-radius: 32px;
   padding: 0.5rem 0.8rem;
@@ -38,6 +38,10 @@ exports[`AddButton Should match snapshot 1`] = `
 
 .c0:active:enabled {
   border: 1px solid #303338;
+}
+
+.c0:disabled {
+  color: #303338;
 }
 
 .c1 svg,

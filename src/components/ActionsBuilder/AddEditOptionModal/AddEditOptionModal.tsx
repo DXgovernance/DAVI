@@ -24,7 +24,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   onChange,
 }) => {
   const defaultLabel = editableOption?.label ?? '';
-  const isEditable = !!editableOption;
+  const isEditing = !!editableOption;
   const [label, setLabel] = React.useState<string>(defaultLabel);
   const [error, setError] = React.useState<string>('');
   const theme = useTheme();
@@ -46,9 +46,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   const handleConfirmSave = () => {
     const isValid = validate();
     if (!isValid) return;
-    isEditable
-      ? editOption({ ...editableOption, label })
-      : saveNewOption(label);
+    isEditing ? editOption({ ...editableOption, label }) : saveNewOption(label);
   };
 
   const saveNewOption = (label: string) => {
@@ -80,7 +78,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   };
 
   const deleteOption = () => {
-    if (!isEditable) return;
+    if (!isEditing) return;
     const newOptions = options.filter(opt => opt.id !== editableOption.id);
     onChange(newOptions);
     onDismiss();
@@ -97,7 +95,15 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
           <Input
             value={label}
             placeholder={t('optionLabel')}
-            icon={<Dot color={theme?.colors?.votes?.[options.length + 1]} />}
+            icon={
+              <Dot
+                color={
+                  isEditing
+                    ? editableOption.color
+                    : theme?.colors?.votes?.[options.length + 1]
+                }
+              />
+            }
             onChange={e => setLabel(e.target.value)}
           />
         </Box>
