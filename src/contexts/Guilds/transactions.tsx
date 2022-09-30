@@ -1,4 +1,3 @@
-// import useLocalStorage from '../../hooks/Guilds/useLocalStorage';
 import {
   TransactionOutcome,
   TransactionPending,
@@ -99,7 +98,7 @@ export const TransactionsProvider = ({ children }) => {
           confirmedTime: Date.now(),
         });
       } catch (e) {
-        // handle error
+        // TODO: handle error
       }
     },
     []
