@@ -24,14 +24,20 @@ interface UseVotingPowerForProposalExecutionProps {
   contractAddress: string;
   proposalId?: string;
 }
-
+interface GetConfigArgs {
+  isRepGuild: boolean;
+  isSnapshotGuild: boolean;
+  contractAddress: string;
+  snapshotId: BigNumber;
+  proposalId: string;
+}
 const getConfig = ({
   isRepGuild,
   isSnapshotGuild,
   contractAddress,
   snapshotId,
-  _proposalId,
-}) => {
+  proposalId,
+}: GetConfigArgs) => {
   const baseErc20Config = {
     enabled: !!contractAddress,
     addressOrName: contractAddress,
@@ -48,31 +54,31 @@ const getConfig = ({
   };
 
   const snapshotRepConf = {
-    enabled: !!contractAddress && !!_proposalId,
+    enabled: !!contractAddress && !!proposalId,
     addressOrName: contractAddress,
     contractInterface: SnapshotRepERC20Guild.abi,
     functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
-    args: [_proposalId],
+    args: [proposalId],
   };
   // Validate args to avoid null values
-  if (isRepGuild && isSnapshotGuild && !!_proposalId) return snapshotRepConf;
+  if (isRepGuild && isSnapshotGuild && !!proposalId) return snapshotRepConf;
   if (isSnapshotGuild && !!snapshotId) return snapshotConfig;
   return baseErc20Config;
 };
 
 export const useVotingPowerForProposalExecution = ({
   contractAddress,
-  proposalId,
+  proposalId: proposalIdProp,
 }: UseVotingPowerForProposalExecutionProps): WagmiUseContractReadResponse<BigNumber> => {
   const { isSnapshotGuild, isRepGuild } =
     useGuildImplementationType(contractAddress);
 
   const { proposalId: FALLBACK_PROPOSAL_ID } = useTypedParams();
 
-  const _proposalId = proposalId ?? FALLBACK_PROPOSAL_ID;
+  const proposalId = proposalIdProp ?? FALLBACK_PROPOSAL_ID;
   const { data: snapshotId } = useSnapshotId({
     contractAddress,
-    proposalId: _proposalId,
+    proposalId,
   });
 
   const { data, ...rest } = useContractRead(
@@ -81,7 +87,7 @@ export const useVotingPowerForProposalExecution = ({
       isSnapshotGuild,
       contractAddress,
       snapshotId,
-      _proposalId,
+      proposalId,
     })
   );
   return useMemo(() => {
