@@ -79,4 +79,8 @@ jobs:
 
             🔨 Explore the source changes: ${{ steps.source-run-info.outputs.mergeCommitSha }}
 
-            😎 Browse the preview: https://${{ steps.web3.outputs.cid }}.ipfs.cf-ipfs.com
+            😎 Browse the preview at one of these gateways: 
+            - https://${{ steps.web3.outputs.cid }}.ipfs.cf-ipfs.com
+            - https://${{ steps.web3.outputs.cid }}.ipfs.dweb.link
+            - https://${{ steps.web3.outputs.cid }}.ipfs.ipfs-gateway.cloud
+
