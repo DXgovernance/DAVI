@@ -1,8 +1,3 @@
-// TODO: Rename this file.
-// Had to rename this so the tests are skipped for now.
-// `useRpcUrls` which is being used a few levels below ERC20TransferEditor consumes the legacy DXvote context,
-// which uses the IPFSService making this test fail.
-
 import { BigNumber } from 'ethers';
 import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
@@ -38,6 +33,8 @@ const mockAddress = ZERO_ADDRESS;
 jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ address: mockAddress }),
+  useEnsAddress: () => ({ data: '0x0000000000000000000000000000000000000000' }),
+  useEnsName: () => ({ data: 'test.eth' }),
 }));
 
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
@@ -94,9 +91,7 @@ describe('ERC20TransferEditor', () => {
       />
     );
 
-    const tokenAddress = await findByDisplayValue(
-      erc20TransferDecodedCallMock.args._to
-    );
+    const tokenAddress = await findByDisplayValue('test.eth');
 
     expect(tokenAddress).toBeInTheDocument();
   });

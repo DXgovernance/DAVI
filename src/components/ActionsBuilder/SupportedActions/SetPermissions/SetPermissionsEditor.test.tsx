@@ -25,6 +25,8 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useContractReads: () => ({ data: [] }),
   useBalance: () => ({ data: 0 }),
+  useEnsAddress: () => ({ data: '0x0000000000000000000000000000000000000000' }),
+  useEnsName: () => ({ data: 'test.eth' }),
 }));
 
 // Mocked variables
@@ -156,7 +158,7 @@ describe(`Set Permissions editor`, () => {
         name: /amount input/i,
       });
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe('test.eth');
       expect(amountInputElement.value).toBe('111.0');
     });
   });
@@ -215,7 +217,7 @@ describe(`Set Permissions editor`, () => {
         { name: /function signature input/i }
       );
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe('test.eth');
       expect(functionNameElement.value).toBe(functionNameMock);
     });
   });
