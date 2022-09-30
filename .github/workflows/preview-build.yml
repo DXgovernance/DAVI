@@ -38,7 +38,7 @@ jobs:
         env:
           ANALYTICS_DOMAIN: ${{ secrets.ANALYTICS_DOMAIN }}
           SITE_ID: ${{ secrets.SITE_ID }}
-        run: CI=false yarn build "$SITE_ID" "$ANALYTICS_DOMAIN"
+        run: CI=false yarn build
 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
