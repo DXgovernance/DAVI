@@ -27,7 +27,7 @@ export const AddressInput: React.FC<AddressInputProps> = ({
   ...rest
 }) => {
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
-  const shouldShowAvatar = !!isAddress(value) || value?.endsWith('.eth');
+  const shouldShowAvatar = !!isAddress(value);
 
   const { name: parsedName } = useENS(value);
 
@@ -47,10 +47,17 @@ export const AddressInput: React.FC<AddressInputProps> = ({
       {...rest}
       value={localValue}
       disabled={disabled}
+      data-testid="address input"
       icon={
         <div>
           {shouldShowAvatar && !isInvalid && (
-            <Avatar src={imageUrl} defaultSeed={value} size={24} />
+            <Avatar
+              src={imageUrl}
+              defaultSeed={value}
+              size={24}
+              aria-label="address avatar"
+              data-testid="address avatar"
+            />
           )}
         </div>
       }
@@ -59,6 +66,7 @@ export const AddressInput: React.FC<AddressInputProps> = ({
           {!disabled && value && (
             <ClickableIcon
               aria-label="clear address"
+              data-testid="clear address"
               onClick={() => setLocalValue('')}
             >
               <FiX size={18} />

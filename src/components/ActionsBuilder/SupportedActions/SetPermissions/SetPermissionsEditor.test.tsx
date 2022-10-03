@@ -275,7 +275,7 @@ describe(`Set Permissions editor`, () => {
         }
       );
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe('test.eth');
       expect(functionNameElement.value).toBe(functionNameMock);
       expect(customAmountElement.value).toBe('111.0');
 

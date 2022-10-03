@@ -213,6 +213,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
             <input
               aria-label="recipient address input"
               class="c8"
+              data-testid="address input"
               name="recipient-address"
               placeholder="ethereumAddress"
               value="test.eth"
@@ -223,6 +224,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               <div
                 aria-label="clear address"
                 class="c0 c10"
+                data-testid="clear address"
               >
                 <svg
                   fill="none"
@@ -540,6 +542,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
             <input
               aria-label="recipient address input"
               class="c6"
+              data-testid="address input"
               name="recipient-address"
               placeholder="ethereumAddress"
               value="test.eth"
