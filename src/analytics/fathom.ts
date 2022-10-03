@@ -8,6 +8,8 @@ export function loadFathom(
   siteId: string,
   scriptURL = 'https://cdn.usefathom.com/script.js'
 ) {
+  console.log({ siteId });
+  console.log({ scriptURL });
   return new Promise<void>(resolve => {
     const prevScript = document.querySelector(`script[src="${scriptURL}"]`);
 
