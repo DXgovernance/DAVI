@@ -76,6 +76,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
     <FormElement
       value={value}
       onChange={onChange}
+      defaultValue={param.defaultValue}
       {...props}
       {...remainingProps}
     />

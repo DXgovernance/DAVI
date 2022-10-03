@@ -11,7 +11,8 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   placeholder,
-  disabled = true,
+  disabled = false,
+  defaultValue,
   ...rest
 }) => {
   const enforcer = (nextUserInput: string) => {
@@ -19,13 +20,13 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       onChange(nextUserInput);
     }
   };
-  const [disabledState, setDisabled] = useState(
-    value && value !== '0.0' ? disabled : false
-  );
+
+  const [disabledState, setDisabled] = useState(defaultValue ? true : disabled);
   const iconRightProps = {
     disabled: disabledState,
-    value: value,
+    value,
     onChange: onChange,
+    defaultValue,
     setDisabled,
     type: 'number',
   };

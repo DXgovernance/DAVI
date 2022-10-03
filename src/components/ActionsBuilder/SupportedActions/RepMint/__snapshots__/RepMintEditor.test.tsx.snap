@@ -117,7 +117,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   margin-left: 0.3rem;
 }
 
-.c15 {
+.c14 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -143,17 +143,17 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   margin: 1rem 0 0;
 }
 
-.c15:disabled {
+.c14:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c14:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c14:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -214,18 +214,6 @@ exports[`RepMintEditor Should match snapshot 1`] = `
   -webkit-box-align: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
-}
-
-.c14 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
 }
 
 .c4 {
@@ -400,42 +388,13 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             />
             <div
               class="c11"
-            >
-              <div
-                aria-label="enable"
-                class="c0 c14"
-              >
-                <svg
-                  fill="none"
-                  height="18"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="18"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    height="11"
-                    rx="2"
-                    ry="2"
-                    width="18"
-                    x="3"
-                    y="11"
-                  />
-                  <path
-                    d="M7 11V7a5 5 0 0 1 9.9-1"
-                  />
-                </svg>
-              </div>
-            </div>
+            />
           </div>
         </div>
       </div>
     </div>
     <button
-      class="c15"
+      class="c14"
       type="submit"
     >
       saveAction

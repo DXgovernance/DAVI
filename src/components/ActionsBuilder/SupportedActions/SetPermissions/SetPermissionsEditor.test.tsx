@@ -134,49 +134,11 @@ describe(`Set Permissions editor`, () => {
       });
       fireEvent.change(toAddressElement, { target: { value: toAddressMock } });
 
-      const enableInputIcon = screen.getByLabelText('enable');
-
-      fireEvent.click(enableInputIcon);
-
       const clearInputIcon = screen.getByLabelText('clear address');
 
       fireEvent.click(clearInputIcon);
 
       expect(toAddressElement.value).toBe('');
-    });
-
-    it(`To address disabled by default when receiving data`, () => {
-      render(
-        <Permissions
-          decodedCall={completeDecodedCallMock}
-          onSubmit={jest.fn()}
-        />
-      );
-      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
-        name: /to address input/i,
-      });
-      fireEvent.change(toAddressElement, { target: { value: toAddressMock } });
-
-      expect(toAddressElement).toBeDisabled();
-    });
-
-    it(`Clicking the lock button enables the to address`, () => {
-      render(
-        <Permissions
-          decodedCall={completeDecodedCallMock}
-          onSubmit={jest.fn()}
-        />
-      );
-      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
-        name: /to address input/i,
-      });
-      fireEvent.change(toAddressElement, { target: { value: toAddressMock } });
-
-      const enableInputIcon = screen.getByLabelText('enable');
-
-      fireEvent.click(enableInputIcon);
-
-      expect(toAddressElement).toBeEnabled();
     });
 
     it(`Displays decodedCall information properly`, () => {
