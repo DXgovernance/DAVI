@@ -35,7 +35,10 @@ moment.updateLocale('en', {
 
 const Root = () => {
   useEffect(() => {
-    loadFathom(process.env.SITE_ID, process.env.ANALYTICS_DOMAIN)
+    loadFathom(
+      process.env.REACT_APP_SITE_ID,
+      process.env.REACT_APP_ANALYTICS_DOMAIN
+    )
       .then(() => {
         console.log('loadFathom: Fathom loaded.');
       })
