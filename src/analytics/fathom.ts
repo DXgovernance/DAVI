@@ -6,7 +6,7 @@
  */
 export function loadFathom(
   siteId: string,
-  scriptURL = 'https://cdn.usefathom.com/script.js'
+  scriptURL = 'https://right-secure.project-davi.dev/script.js'
 ) {
   return new Promise<void>(resolve => {
     const prevScript = document.querySelector(`script[src="${scriptURL}"]`);

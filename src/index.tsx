@@ -12,6 +12,7 @@ import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnec
 import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
 import { useEffect } from 'react';
 import { loadFathom } from 'analytics/fathom';
+import { SITE_ID } from 'configs';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -35,10 +36,7 @@ moment.updateLocale('en', {
 
 const Root = () => {
   useEffect(() => {
-    loadFathom(
-      process.env.REACT_APP_SITE_ID,
-      process.env.REACT_APP_ANALYTICS_DOMAIN
-    )
+    loadFathom(SITE_ID)
       .then(() => {
         console.log('loadFathom: Fathom loaded.');
       })
