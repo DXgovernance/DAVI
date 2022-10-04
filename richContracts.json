@@ -94,7 +94,9 @@
     "title": "DXdao Voting",
     "tags": ["DXgov", "Guilds", "DXdao"],
     "networks": {
+      "1": "0x332B8C9734b4097dE50f302F7D9F273FFdB45B84",
       "5": "0xC284e9F6aBc7c65C277244895CAae401e643E4b6",
+      "100": "0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF",
       "1337": "0x0000000000000000000000000000000000000000"
     },
     "functions": [
