@@ -89,5 +89,57 @@
         "spendsTokens": false
       }
     ]
+  },
+  {
+    "title": "DXdao Voting",
+    "tags": ["DXgov", "Guilds", "DXdao"],
+    "networks": {
+      "5": "0xC284e9F6aBc7c65C277244895CAae401e643E4b6",
+      "1337": "0x0000000000000000000000000000000000000000"
+    },
+    "functions": [
+      {
+        "title": "Vote on a proposal",
+        "functionName": "vote",
+        "params": [
+          {
+            "type": "bytes32",
+            "component": "address",
+            "name": "proposalId",
+            "title": "Proposal ID",
+            "defaultValue": "",
+            "description": "Proposal ID - found from the URL of proposal"
+          },
+          {
+            "type": "uint256",
+            "component": "integer",
+            "name": "vote",
+            "title": "Vote decision",
+            "defaultValue": "",
+            "description": "Vote decision (NO(2) or YES(1))"
+          },
+          {
+            "type": "uint256",
+            "component": "integer",
+            "name": "amount",
+            "title": "Amount to vote with",
+            "defaultValue": "",
+            "description": "Amount of REP to vote with"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "voter",
+            "title": "Voter",
+            "defaultValue": "",
+            "description": "The guild's address"
+          }
+        ],
+        "shortDescription": "Votes on a proposal with the guild's power",
+        "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
+        "templateLiteral": "Vote {proposalId}",
+        "spendsTokens": false
+      }
+    ]
   }
 ]
