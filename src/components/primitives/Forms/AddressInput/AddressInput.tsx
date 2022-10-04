@@ -1,22 +1,12 @@
-import styled from 'styled-components';
-import { Input, InputProps } from 'components/primitives/Forms/Input';
+import { Input } from 'components/primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
-import { Box } from 'components/primitives/Layout/Box';
 import { FiX } from 'react-icons/fi';
 import useENS from 'hooks/Guilds/ens/useENS';
 import { useEffect, useState } from 'react';
-
-export const ClickableIcon = styled(Box)`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-interface AddressInputProps extends InputProps<string> {
-  enableENSName?: boolean;
-}
+import { ClickableIcon } from './AddressInput.styled';
+import { AddressInputProps } from './types';
 
 export const AddressInput: React.FC<AddressInputProps> = ({
   value,
