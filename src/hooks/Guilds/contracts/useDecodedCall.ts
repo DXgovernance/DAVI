@@ -9,6 +9,8 @@ import ERC20 from 'contracts/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
+import ERC20Guild from 'contracts/ERC20Guild.json';
+
 import {
   ApproveSendTokens,
   Call,
@@ -22,6 +24,7 @@ import {
   SET_PERMISSION_SIGNATURE,
   MINT_REP_SIGNATURE,
   ENS_UPDATE_CONTENT_SIGNATURE,
+  SET_GUILD_CONFIG_SIGNATURE,
 } from 'utils';
 import { lookUpContractWithSourcify } from 'utils/sourcify';
 
@@ -47,6 +50,10 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
       callType: SupportedAction.ENS_UPDATE_CONTENT,
       ABI: ENSPublicResolver.abi,
     },
+    [SET_GUILD_CONFIG_SIGNATURE]: {
+      callType: SupportedAction.SET_GUILD_CONFIG,
+      ABI: ERC20Guild.abi,
+    },
   };
 
 const decodeCallUsingEthersInterface = (
@@ -59,6 +66,7 @@ const decodeCallUsingEthersInterface = (
 
   // Find the ABI function fragment for the sighash.
   const functionFragment = contractInterface.getFunction(sigHash);
+
   if (!functionFragment) return null;
 
   // Decode the function parameters.
@@ -116,7 +124,6 @@ export const decodeCall = async (
   chainId: number
 ) => {
   let decodedCall: DecodedCall = null;
-
   // Detect native asset transfer
   if (!call.data || utils.hexValue(call.data) === utils.hexValue(0)) {
     decodedCall = {
@@ -144,6 +151,7 @@ export const decodeCall = async (
   let matchedContract = matchedRichContractData
     ? getContractInterfaceFromRichContractData(matchedRichContractData)
     : getContractFromKnownSighashes(call.data);
+
   if (!matchedContract) {
     const abi = await lookUpContractWithSourcify({ chainId, address: call.to });
     if (abi)
@@ -216,9 +224,9 @@ export const useDecodedCall = (call: Call) => {
 
   useEffect(() => {
     if (call && !isCancelled.current) {
-      decodeCall(call, contracts, chain?.id).then(decodedData =>
-        setDecodedCall(decodedData)
-      );
+      decodeCall(call, contracts, chain?.id).then(decodedData => {
+        setDecodedCall(decodedData);
+      });
     } else if (!call) {
       setDecodedCall(null);
     }

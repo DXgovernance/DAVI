@@ -18,7 +18,10 @@ import { Controller, useForm } from 'react-hook-form';
 
 const bn = (n: string | number | BigNumber) => BigNumber.from(n);
 
-const pickValue = (current: BigNumber, modifyed: BigNumber): BigNumber => {
+export const pickValue = (
+  current: BigNumber,
+  modifyed: BigNumber
+): BigNumber => {
   if (!!current && BigNumber.isBigNumber(current)) {
     if (
       !!modifyed &&
@@ -34,24 +37,7 @@ const pickValue = (current: BigNumber, modifyed: BigNumber): BigNumber => {
   return BigNumber.from(0);
 };
 
-const getUpdatedValues = (current, modifyed) => {
-  if (!current || !modifyed) return {};
-  return Object.keys(current).reduce((acc, key) => {
-    if (!fields.map(f => f.name).includes(key)) return acc;
-    const currValue = bn(current[key] || 0);
-    const newValue = bn(modifyed[key] || 0);
-
-    if (!currValue.eq(newValue)) {
-      return {
-        ...acc,
-        [key]: newValue,
-      };
-    }
-    return acc;
-  }, {});
-};
-
-interface Data {
+export interface Data {
   proposalTime: BigNumber;
   timeForExecution: BigNumber;
   votingPowerForProposalExecution: BigNumber;
@@ -75,7 +61,7 @@ type ControlField =
   | 'timeForExecution'
   | 'lockTime';
 
-const fields = [
+export const fields = [
   { name: 'votingPowerForProposalExecution', type: 'number' },
   { name: 'votingPowerForProposalCreation', type: 'number' },
   { name: 'voteGas', type: 'number' },
@@ -99,18 +85,19 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
   const parsedData = useMemo<Data>(() => {
     if (!decodedCall) return null;
     const {
-      proposalTime: decodedCallProposalTime,
-      timeForExecution: decodedCallTimeForExecution,
-      votingPowerForProposalExecution:
+      _proposalTime: decodedCallProposalTime,
+      _timeForExecution: decodedCallTimeForExecution,
+      _votingPowerForProposalExecution:
         decodedCallVotingPowerForProposalExecution,
-      votingPowerForProposalCreation: decodedCallVotingPowerForProposalCreation,
-      voteGas: decodedCallVoteGas,
-      maxGasPrice: decodedCallMaxGasPrice,
-      maxActiveProposals: decodedCallMaxActiveProposals,
-      lockTime: decodedCallLockTime,
-      minimumMembersForProposalCreation:
+      _votingPowerForProposalCreation:
+        decodedCallVotingPowerForProposalCreation,
+      _voteGas: decodedCallVoteGas,
+      _maxGasPrice: decodedCallMaxGasPrice,
+      _maxActiveProposals: decodedCallMaxActiveProposals,
+      _lockTime: decodedCallLockTime,
+      _minimumMembersForProposalCreation:
         decodedCallMinimumMembersForProposalCreation,
-      minimumTokensLockedForProposalCreation:
+      _minimumTokensLockedForProposalCreation:
         decodedCallMinimumTokensLockedForProposalCreation,
     } = decodedCall.args;
 
@@ -191,6 +178,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
       votingPowerForProposalCreation,
       voteGas,
       maxGasPrice,
+      maxActiveProposals,
       lockTime,
       minimumMembersForProposalCreation,
       minimumTokensLockedForProposalCreation,
@@ -198,21 +186,22 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     const call = {
       ...decodedCall,
       args: {
-        proposalTime,
-        timeForExecution,
-        votingPowerForProposalExecution,
-        votingPowerForProposalCreation,
-        voteGas,
-        maxGasPrice,
-        lockTime,
-        minimumMembersForProposalCreation,
-        minimumTokensLockedForProposalCreation,
+        _proposalTime: proposalTime,
+        _timeForExecution: timeForExecution,
+        _votingPowerForProposalExecution: votingPowerForProposalExecution,
+        _votingPowerForProposalCreation: votingPowerForProposalCreation,
+        _voteGas: voteGas,
+        _maxGasPrice: maxGasPrice,
+        _maxActiveProposals: maxActiveProposals,
+        _lockTime: lockTime,
+        _minimumMembersForProposalCreation: minimumMembersForProposalCreation,
+        _minimumTokensLockedForProposalCreation:
+          minimumTokensLockedForProposalCreation,
       },
-      optionalProps: {
-        updatedFields: getUpdatedValues(currentGuildConfig, values),
-      },
+      // optionalProps: {
+      //   updatedFields: getUpdatedValues(currentGuildConfig, values),
+      // },
     };
-    console.log('updatedfields', getUpdatedValues(currentGuildConfig, values));
     onSubmit(call);
   };
 
@@ -242,7 +231,9 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                           <DurationInput
                             {...field}
                             aria-label={field.name}
-                            value={BigNumber.from(field.value ?? 0).toNumber()}
+                            value={Number(
+                              BigNumber.from(field.value ?? 0).toString()
+                            )}
                             onChange={onChange}
                           />
                         ) : (
@@ -273,4 +264,3 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
 };
 
 export default SetGuildConfigEditor;
-

@@ -199,6 +199,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
         defaultDecodedAction.decodedCall.args.from = guildId;
         defaultDecodedAction.decodedCall.to = guildConfig?.permissionRegistry;
         break;
+      case SupportedAction.SET_GUILD_CONFIG:
+        defaultDecodedAction.decodedCall.to = guildId;
     }
     setData(defaultDecodedAction.decodedCall);
     setSelectedAction(action);
@@ -206,7 +208,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
 
   function saveSupportedAction(call?: DecodedCall) {
     const decodedCall = call ?? data;
-
     const defaultDecodedAction = defaultValues[decodedCall.callType];
 
     if (!selectedAction || !decodedCall) return;
