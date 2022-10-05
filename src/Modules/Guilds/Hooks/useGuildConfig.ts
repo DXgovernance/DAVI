@@ -16,6 +16,8 @@ export type GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
+  lockTvotingPowerPercentageForProposalExecutionime: BigNumber;
+  votingPowerPercentageForProposalCreation: BigNumber;
 };
 
 export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
@@ -60,11 +62,11 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       },
       {
         ...erc20GuildContract,
-        functionName: 'votingPowerForProposalExecution', // percentage. change to votingPowerPercentageForProposalExecution
+        functionName: 'votingPowerPercentageForProposalExecution',
       },
       {
         ...erc20GuildContract,
-        functionName: 'votingPowerForProposalCreation', // percentage. change to votingPowerPercentageForProposalCreation
+        functionName: 'votingPowerPercentageForProposalCreation',
       },
     ],
   });
@@ -90,14 +92,6 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerPercentageForProposalCreation,
     ] = data;
 
-    console.log(
-      'votingPowerPercentageForProposalExecution',
-      votingPowerPercentageForProposalExecution?.toString()
-    );
-    console.log(
-      'votingPowerPercentageForProposalCreation',
-      votingPowerPercentageForProposalCreation?.toString()
-    );
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),
@@ -113,6 +107,12 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      votingPowerPercentageForProposalExecution: lockTime
+        ? BigNumber?.from(votingPowerPercentageForProposalExecution)
+        : undefined,
+      votingPowerPercentageForProposalCreation: lockTime
+        ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+        : undefined,
     };
   }, [data]);
 
