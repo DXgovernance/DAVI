@@ -58,6 +58,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         ...erc20GuildContract,
         functionName: 'getLockTime', // Get the lockTime (seconds)
       },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerForProposalExecution', // percentage. change to votingPowerPercentageForProposalExecution
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerForProposalCreation', // percentage. change to votingPowerPercentageForProposalCreation
+      },
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
@@ -78,7 +86,18 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation,
       tokenVault,
       lockTime,
+      votingPowerPercentageForProposalExecution,
+      votingPowerPercentageForProposalCreation,
     ] = data;
+
+    console.log(
+      'votingPowerPercentageForProposalExecution',
+      votingPowerPercentageForProposalExecution?.toString()
+    );
+    console.log(
+      'votingPowerPercentageForProposalCreation',
+      votingPowerPercentageForProposalCreation?.toString()
+    );
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),

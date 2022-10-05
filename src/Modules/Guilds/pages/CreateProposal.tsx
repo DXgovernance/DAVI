@@ -137,7 +137,7 @@ const CreateProposalPage: React.FC = () => {
     setIsIpfsErrorModalOpen(false);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
-    const totalActions = encodedOptions.length;
+    const totalOptions = encodedOptions.length;
     const maxActionsPerOption = encodedOptions.reduce(
       (acc, cur) => (acc < cur.actions.length ? cur.actions.length : acc),
       0
@@ -175,7 +175,7 @@ const CreateProposalPage: React.FC = () => {
       toArray,
       dataArray,
       valueArray,
-      totalActions,
+      totalOptions,
       title,
     });
 
@@ -189,7 +189,7 @@ const CreateProposalPage: React.FC = () => {
             toArray,
             dataArray,
             valueArray,
-            totalActions,
+            totalOptions,
             title,
             `0x${contentHash}`
           );

@@ -5,7 +5,7 @@ import { useMemo } from 'react';
 import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
 
 export interface UseProposalVotesOfVoterReturn {
-  action: string;
+  option: string;
   votingPower: BigNumber;
 }
 
@@ -24,20 +24,20 @@ const useProposalVotesOfVoter = (
   });
 
   const parsedData = useMemo<UseProposalVotesOfVoterReturn>(() => {
-    if (!data?.votingPower || !data?.action) {
-      return { action: null, votingPower: null };
+    if (!data?.votingPower || !data?.option) {
+      return { option: null, votingPower: null };
     }
     if (
       BigNumber.from(data?.votingPower || 0).gt(0) &&
-      BigNumber.isBigNumber(data?.action)
+      BigNumber.isBigNumber(data?.option)
     ) {
       return {
-        action: data.action.toString(),
+        option: data.option.toString(),
         votingPower: data?.votingPower,
       };
     }
-    return { action: null, votingPower: null };
-  }, [data?.action, data?.votingPower]); // eslint-disable-line
+    return { option: null, votingPower: null };
+  }, [data?.option, data?.votingPower]); // eslint-disable-line
 
   return {
     data: parsedData,

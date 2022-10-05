@@ -22,7 +22,7 @@ const UserVote: React.FC<UserVoteProps> = ({
     voteData?.token?.symbol
   }`;
 
-  return userVote.action ? (
+  return userVote.option ? (
     <Container>
       {t('youVotedForOption', { optionLabel: votedOptionLabel })} {t('with')}{' '}
       {isPercent ? `${votingPowerPercent}%` : voting}

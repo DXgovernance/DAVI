@@ -23,7 +23,7 @@ export const proposalMock: Proposal = {
   startTime: moment(),
   endTime: moment(),
   contractState: ContractState.Active,
-  totalActions: BigNumber.from(0),
+  totalOptions: BigNumber.from(0),
   totalVotes: [],
 };
 
