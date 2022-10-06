@@ -15,6 +15,7 @@ const useTotalSupplyAt = ({
   snapshotId,
 }: useTotalSupplyAtProps) => {
   const { data, ...rest } = useContractRead({
+    enabled: !!contractAddress && !!snapshotId,
     addressOrName: contractAddress,
     contractInterface: ERC20SnapshotRep.abi,
     functionName: 'totalSupplyAt',

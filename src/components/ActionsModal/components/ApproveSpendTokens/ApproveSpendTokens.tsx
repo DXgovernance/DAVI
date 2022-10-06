@@ -23,9 +23,10 @@ import {
   ControlLabel,
   ControlRow,
 } from 'components/primitives/Forms/Control';
+import { preventEmptyString } from 'utils';
 
 export interface TokenSpendApproval {
-  amount?: BigNumber;
+  amount?: BigNumber | string;
   token?: string;
 }
 
@@ -56,7 +57,7 @@ const ApproveSpendTokens: React.FC<ApproveSpendTokensProps> = ({
 
   useEffect(() => {
     if (defaultValue) {
-      setAmount(defaultValue.amount);
+      setAmount(preventEmptyString(defaultValue.amount));
       setToken(defaultValue.token);
     }
   }, [defaultValue]);

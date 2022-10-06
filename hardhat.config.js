@@ -118,7 +118,7 @@ module.exports = {
       initialDate: moment.unix(0).toDate().toString(),
       mining: {
         auto: true,
-        interval: 500,
+        interval: 5000,
       },
     },
     mainnet: {

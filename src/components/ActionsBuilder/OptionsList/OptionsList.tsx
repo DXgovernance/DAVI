@@ -379,7 +379,11 @@ export const OptionsList: React.FC<OptionsListProps> = ({
         <>
           <Divider />
           <AddOptionWrapper>
-            <AddButton label={t('addOption')} onClick={addOption} />
+            <AddButton
+              disabled={options.length >= 9} // Disable button when we have 10 options ("against" + 9)
+              label={t('addOption')}
+              onClick={addOption}
+            />
             <SimulationButton
               variant="secondary"
               data-testid="simulate-transaction-button"
