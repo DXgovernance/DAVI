@@ -9,6 +9,7 @@ import {
 } from './fixtures';
 
 const mockBigNumber = BigNumber.from(100000000);
+let mockUseENSNameReturn = { data: 'test.eth' };
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
@@ -34,7 +35,7 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ address: mockAddress }),
   useEnsAddress: () => ({ data: '0x0000000000000000000000000000000000000000' }),
-  useEnsName: () => ({ data: 'test.eth' }),
+  useEnsName: () => mockUseENSNameReturn,
 }));
 
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
@@ -59,6 +60,19 @@ describe('ERC20TransferEditor', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('Should match snapshot with an address without ENS name', () => {
+    mockUseENSNameReturn = { data: null };
+    const { container } = render(
+      <ERC20TransferEditor
+        decodedCall={erc20TransferDecodedCallMock}
+        onSubmit={jest.fn()}
+      />
+    );
+    expect(container).toMatchSnapshot();
+    mockUseENSNameReturn = { data: 'test.eth' };
+  });
+
   it('Should match snapshot with default values', () => {
     const { container } = render(
       <ERC20TransferEditor

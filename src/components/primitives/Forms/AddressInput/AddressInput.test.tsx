@@ -4,30 +4,20 @@ import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
 import { AddressInput } from './AddressInput';
 
-let mockUseENSAddressValue = MOCK_ADDRESS;
-
-jest.mock('wagmi', () => ({
-  useEnsAddress: () => ({ data: mockUseENSAddressValue }),
-  useEnsName: () => ({ data: MOCK_ENS_NAME }),
-  useEnsResolver: () => ({
-    data: {
-      name: MOCK_ENS_NAME,
-      address: MOCK_ADDRESS,
-    },
-  }),
-  useContractReads: () => ({ data: [] }),
-  useContractRead: () => ({
-    data: 'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be',
-  }),
-}));
-
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
-    avatarUri: 'test',
-    imageUrl: 'test',
-    ensName: 'test.eth',
+    avatarUri: 'wagmi',
+    imageUrl: 'wagmi',
+    ensName: 'wagmi.eth',
   }),
+}));
+
+let mockReturnENS = { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
+
+jest.mock('hooks/Guilds/ens/useENS', () => ({
+  __esModule: true,
+  default: () => mockReturnENS,
 }));
 
 describe(`AddressInput`, () => {
@@ -121,9 +111,23 @@ describe(`AddressInput`, () => {
       expect(mockOnChange).toHaveBeenCalledWith(MOCK_ADDRESS);
     });
 
-    it(`should return null if ENSName is ENABLED and the ENS name doesn't exist`, async () => {
+    it(`should return an address value if ENSName is ENABLED and inputs an ENS name without it finishing in '.eth'`, async () => {
       const mockOnChange = jest.fn();
-      mockUseENSAddressValue = null;
+
+      const { findByTestId } = render(
+        <AddressInput value={''} onChange={mockOnChange} />
+      );
+
+      const addressField = await findByTestId('address input');
+      fireEvent.change(addressField, { target: { value: 'wagmi' } });
+
+      expect(mockOnChange).toHaveBeenCalledWith(MOCK_ADDRESS);
+    });
+
+    it(`should return null if ENSName is ENABLED and the ENS name doesn't exist`, async () => {
+      mockReturnENS.address = null;
+
+      const mockOnChange = jest.fn();
 
       const { findByTestId } = render(
         <AddressInput value={''} onChange={mockOnChange} />
@@ -133,6 +137,7 @@ describe(`AddressInput`, () => {
       fireEvent.change(addressField, { target: { value: 'wrongENS.eth' } });
 
       expect(mockOnChange).toHaveBeenCalledWith('wrongENS.eth');
+      mockReturnENS.address = MOCK_ADDRESS;
     });
 
     it(`should return an address if ENSName is DISABLED and it inputs an address`, async () => {

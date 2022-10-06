@@ -20,13 +20,15 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
+let mockUseENSNameReturn = { data: 'test.eth' };
+
 jest.mock('wagmi', () => ({
   useAccount: () => ({ isConnected: false }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useContractReads: () => ({ data: [] }),
   useBalance: () => ({ data: 0 }),
   useEnsAddress: () => ({ data: '0x0000000000000000000000000000000000000000' }),
-  useEnsName: () => ({ data: 'test.eth' }),
+  useEnsName: () => mockUseENSNameReturn,
 }));
 
 // Mocked variables
@@ -160,6 +162,31 @@ describe(`Set Permissions editor`, () => {
 
       expect(toAddressElement.value).toBe('test.eth');
       expect(amountInputElement.value).toBe('111.0');
+    });
+
+    it(`Displays decodedCall information properly from an address without ENS name`, () => {
+      const newAddressValue = '0xD899Be87df2076e0Be28486b60dA406Be6750000';
+      mockUseENSNameReturn = { data: null };
+      const otherValues = {
+        ...completeDecodedCallMock,
+        args: {
+          ...completeDecodedCallMock.args,
+          to: newAddressValue,
+        },
+      };
+      render(<Permissions decodedCall={otherValues} onSubmit={jest.fn()} />);
+
+      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /to address input/i,
+      });
+
+      const amountInputElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /amount input/i,
+      });
+
+      expect(toAddressElement.value).toBe(newAddressValue);
+      expect(amountInputElement.value).toBe('111.0');
+      mockUseENSNameReturn = { data: 'test.eth' };
     });
   });
 

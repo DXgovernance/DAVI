@@ -253,7 +253,7 @@ exports[`AddressInput Snapshots should match snapshot with ENS disabled 1`] = `
           class="c2 c3"
           data-testid="avatar"
           size="24"
-          src="test"
+          src="wagmi"
         />
       </div>
     </div>
@@ -413,7 +413,7 @@ exports[`AddressInput Snapshots should match snapshot with address 1`] = `
           class="c2 c3"
           data-testid="avatar"
           size="24"
-          src="test"
+          src="wagmi"
         />
       </div>
     </div>
