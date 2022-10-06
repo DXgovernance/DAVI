@@ -48,6 +48,8 @@ export const guildConfigMock: GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber.from(3000000000000000),
   tokenVault: '0xEE945a0fa35b2B9046D244e465861221c766069F',
   lockTime: BigNumber.from(300),
+  votingPowerPercentageForProposalExecution: BigNumber.from(500000000000000),
+  votingPowerPercentageForProposalCreation: BigNumber.from(3000000000000000),
 };
 
 export const actionMock: Call = {
