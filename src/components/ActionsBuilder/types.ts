@@ -51,6 +51,7 @@ export interface Option {
   color: string;
   actions?: Call[];
   decodedActions?: DecodedAction[];
+  permissions?: Permissions[];
   totalVotes?: BigNumber;
   votePercentage?: number;
 }
@@ -58,4 +59,10 @@ export interface Option {
 export interface ApproveSendTokens extends DecodedCall {
   amount?: BigNumber;
   token?: string;
+}
+
+export interface Permissions {
+  from: string;
+  to: string;
+  functionSignature: string; 
 }

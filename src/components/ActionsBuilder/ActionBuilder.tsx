@@ -7,10 +7,8 @@ import { AddEditOptionModal } from './AddEditOptionModal';
 import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGetETHPermission } from 'Modules/Guilds/Hooks/useETHPermissions';
 import { SupportedAction } from './types';
-import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import Web3 from "web3";
+import Web3 from 'web3';
 
 interface ActionsBuilderProps {
   options: Option[];
@@ -23,80 +21,83 @@ export const ActionsBuilder: React.FC<ActionsBuilderProps> = ({
   options,
   onChange,
 }) => {
-  const web3 = new Web3()
+  const web3 = new Web3();
   const { t } = useTranslation();
-  const { guildId: guildAddress } = useTypedParams();
   const [isEditable, setIsEditable] = useState(editable);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editableOption, setEditableOption] = useState(null);
   const [permissions, setPermissions] = useState([]);
-
-  const ethPermission = useGetETHPermission({
-    guildAddress,
-    from: permissions[0]?.from,
-    to: permissions[0]?.to,
-    funcSign: permissions[0]?.funcSign,
-  })
-  console.log({ ethPermission})
+  const [optionsWithPermissions, setOptionsWithPermissions] = useState([]);
+  console.log({ permissions })
+  console.log({ optionsWithPermissions })
   const onEdit = () => setIsEditable(true);
 
   const onSave = useCallback(() => {
-    const decodedActions = options[0]?.decodedActions;
-    const permissionParameters = decodedActions.map(action => {
-      const functionInputs = action?.decodedCall?.function?.inputs?.map(input => input.type)
-      const functionName = action?.decodedCall?.function?.name
-      const functionSignature = web3.eth.abi.encodeFunctionSignature(`${functionName}(${functionInputs.join(',')})`)
-      switch (action.decodedCall.callType) {
+    const decodedActions = options?.flatMap(option => option?.decodedActions);
+    const permissionParameters = decodedActions.map(decodedAction => {
+      const functionInputs = decodedAction?.decodedCall?.function?.inputs?.map(
+        input => input.type
+      );
+      const functionName = decodedAction?.decodedCall?.function?.name;
+      const functionSignature = web3.eth.abi.encodeFunctionSignature(
+        `${functionName}(${functionInputs.join(',')})`
+      );
+      console.log({ functionSignature })
+      switch (decodedAction.decodedCall.callType) {
         case SupportedAction.ERC20_TRANSFER:
           return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
+            from: decodedAction.decodedCall.from,
+            to: decodedAction.decodedCall.to,
             funcSign: functionSignature,
           };
         case SupportedAction.ENS_UPDATE_CONTENT:
           return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
+            from: decodedAction.decodedCall.from,
+            to: decodedAction.decodedCall.to,
             funcSign: functionSignature,
           };
         case SupportedAction.GENERIC_CALL:
           return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
+            from: decodedAction.decodedCall.from,
+            to: decodedAction.decodedCall.to,
             funcSign: functionSignature,
           };
         case SupportedAction.SET_PERMISSIONS:
           return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
+            from: decodedAction.decodedCall.from,
+            to: decodedAction.decodedCall.to,
             funcSign: functionSignature,
           };
         case SupportedAction.REP_MINT:
           return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
+            from: decodedAction.decodedCall.from,
+            to: decodedAction.decodedCall.to,
             funcSign: functionSignature,
           };
-          case SupportedAction.NATIVE_TRANSFER:
-            return {
-            from: action.decodedCall.from,
-            to: action.decodedCall.to,
-            funcSign: "",
-            };
+        case SupportedAction.NATIVE_TRANSFER:
+          return true;
         default:
           throw new Error('Unsupported action type');
       }
-    
     });
 
-    Promise.all(permissionParameters).then(() => setPermissions(permissions))
-    
+    Promise.all(permissionParameters)
+      .then(() => setPermissions(permissionParameters))
+      .then(() => {
+        const newOptions = options.map(option => ({
+          ...option, permissions: permissionParameters
+        }));
+        setOptionsWithPermissions(newOptions)
+      })
+
     const encodedOptions = bulkEncodeCallsFromOptions(options);
     onChange(encodedOptions);
     setIsEditable(false);
-  }, [options, permissions, onChange, web3.eth.abi]);
+  }, [options, onChange, web3.eth.abi]);
+  console.log({ permissions})
 
   return (
+
     <SidebarCard
       header={
         <SidebarCardHeaderSpaced>

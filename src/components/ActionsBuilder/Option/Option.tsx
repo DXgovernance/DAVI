@@ -17,7 +17,6 @@ import {
   OptionWrapper,
 } from './Option.styled';
 import { useTranslation } from 'react-i18next';
-
 interface OptionRowProps {
   option: Option;
   isEditable?: boolean;
