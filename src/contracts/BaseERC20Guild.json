@@ -9,7 +9,7 @@
         {
           "indexed": true,
           "internalType": "bytes32",
-          "name": "proposalIdssssssssssssss",
+          "name": "proposalId",
           "type": "bytes32"
         },
         {
@@ -1105,4 +1105,3 @@
   "linkReferences": {},
   "deployedLinkReferences": {}
 }
-
