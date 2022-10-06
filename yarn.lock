@@ -12564,7 +12564,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
 
 "dxdao-contracts@https://github.com/DXgovernance/dxdao-contracts.git#develop":
   version "1.0.0"
-  resolved "https://github.com/DXgovernance/dxdao-contracts.git#048aafe24400ac173e6f46f9b24e1d3290d59ad6"
+  resolved "https://github.com/DXgovernance/dxdao-contracts.git#50db3f0754b5ea1a46342857b9520fa0c5250221"
   dependencies:
     "@maticnetwork/eth-decoder" "^0.0.4"
     "@openzeppelin/contracts" "4.4.0"

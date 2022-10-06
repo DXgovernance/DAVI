@@ -16,7 +16,7 @@ export type GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
-  lockTvotingPowerPercentageForProposalExecutionime: BigNumber;
+  votingPowerPercentageForProposalExecution: BigNumber;
   votingPowerPercentageForProposalCreation: BigNumber;
 };
 
@@ -107,12 +107,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
-      votingPowerPercentageForProposalExecution: lockTime
-        ? BigNumber?.from(votingPowerPercentageForProposalExecution)
-        : undefined,
-      votingPowerPercentageForProposalCreation: lockTime
-        ? BigNumber?.from(votingPowerPercentageForProposalCreation)
-        : undefined,
+      votingPowerPercentageForProposalExecution:
+        votingPowerPercentageForProposalExecution
+          ? BigNumber?.from(votingPowerPercentageForProposalExecution)
+          : undefined,
+      votingPowerPercentageForProposalCreation:
+        votingPowerPercentageForProposalCreation
+          ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
     };
   }, [data]);
 

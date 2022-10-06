@@ -286,16 +286,6 @@ async function main() {
 
   const actions = [
     {
-      type: 'raw',
-      transaction: {
-        to: networkContracts.addresses.RGT,
-        from: accounts[0],
-        data: new web3.eth.Contract(PermissionRegistry.abi).methods
-          .transferOwnership(networkContracts.addresses.REPGuild)
-          .encodeABI(),
-      },
-    },
-    {
       type: 'transfer',
       // We use this to reset to local time, in future we should ensure the automatic process works
       timestamp: moment().subtract(46, 'minutes').unix(),
