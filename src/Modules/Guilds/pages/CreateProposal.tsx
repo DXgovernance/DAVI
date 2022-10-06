@@ -51,6 +51,7 @@ const CreateProposalPage: React.FC = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
+  const [isCreatingProposal, setIsCreatingProposal] = useState(false);
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState<Option[]>([
     {
@@ -123,6 +124,7 @@ const CreateProposalPage: React.FC = () => {
 
   const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
+    setIsCreatingProposal(true);
     if (!skipUploadToIPFs) {
       try {
         contentHash = await uploadToIPFS();
@@ -196,6 +198,7 @@ const CreateProposalPage: React.FC = () => {
         },
         true,
         err => {
+          setIsCreatingProposal(false);
           if (!err) {
             editMode && clear();
             navigate(`/${chain}/${guildId}`);
@@ -272,7 +275,7 @@ const CreateProposalPage: React.FC = () => {
           <StyledButton
             onClick={handleCreateProposal}
             variant="secondary"
-            disabled={!isValid}
+            disabled={!isValid || isCreatingProposal}
             data-testid="create-proposal-action-button"
           >
             {t('createProposal')}
