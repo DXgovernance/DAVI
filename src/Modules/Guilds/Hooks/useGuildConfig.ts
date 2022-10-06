@@ -16,6 +16,8 @@ export type GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
+  votingPowerPercentageForProposalExecution: BigNumber;
+  votingPowerPercentageForProposalCreation: BigNumber;
 };
 
 export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
@@ -58,6 +60,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         ...erc20GuildContract,
         functionName: 'getLockTime', // Get the lockTime (seconds)
       },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalExecution',
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalCreation',
+      },
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
@@ -78,7 +88,10 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation,
       tokenVault,
       lockTime,
+      votingPowerPercentageForProposalExecution,
+      votingPowerPercentageForProposalCreation,
     ] = data;
+
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),
@@ -94,6 +107,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      votingPowerPercentageForProposalExecution:
+        votingPowerPercentageForProposalExecution
+          ? BigNumber?.from(votingPowerPercentageForProposalExecution)
+          : undefined,
+      votingPowerPercentageForProposalCreation:
+        votingPowerPercentageForProposalCreation
+          ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
     };
   }, [data]);
 

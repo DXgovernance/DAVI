@@ -40,7 +40,7 @@ const ProposalVoteCard = ({
   const { t } = useTranslation();
 
   const [isPercent, setIsPercent] = useState(true);
-  const [selectedAction, setSelectedAction] = useState<BigNumber>();
+  const [selectedOption, setSelectedOption] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
   const isOpen = useMemo(
     () => proposal?.endTime?.isAfter(moment(timestamp)),
@@ -48,13 +48,13 @@ const ProposalVoteCard = ({
   );
 
   const votedOptionLabel = useMemo(() => {
-    if (!userVote?.action) return null;
+    if (!userVote?.option) return null;
     return getOptionLabel({
       metadata: proposal?.metadata,
-      optionKey: userVote?.action,
+      optionKey: userVote?.option,
       t,
     });
-  }, [userVote?.action, proposal?.metadata, t]);
+  }, [userVote?.option, proposal?.metadata, t]);
 
   const toastError = (msg: string) =>
     toast.error(msg, {
@@ -86,7 +86,6 @@ const ProposalVoteCard = ({
 
     return setModalOpen(true);
   };
-
   return (
     <SidebarCard
       header={
@@ -130,7 +129,7 @@ const ProposalVoteCard = ({
           votedOptionLabel={votedOptionLabel}
         />
         {/* Hide voting options if user has already voted */}
-        {isOpen && !userVote?.action && voteData?.options && (
+        {isOpen && !userVote?.option && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 
@@ -148,10 +147,10 @@ const ProposalVoteCard = ({
                   <VoteOptionButton
                     key={optionKey}
                     optionKey={Number(optionKey)}
-                    active={selectedAction && selectedAction.eq(bItem)}
+                    active={selectedOption && selectedOption.eq(bItem)}
                     onClick={() => {
-                      setSelectedAction(
-                        selectedAction && selectedAction.eq(bItem)
+                      setSelectedOption(
+                        selectedOption && selectedOption.eq(bItem)
                           ? null
                           : bItem
                       );
@@ -164,7 +163,7 @@ const ProposalVoteCard = ({
             )}
 
             <VoteActionButton
-              disabled={!selectedAction}
+              disabled={!selectedOption}
               onClick={() =>
                 handleVoteOnProposal({
                   hasNoVotingPower,
@@ -185,21 +184,21 @@ const ProposalVoteCard = ({
           confirmVoteProposal({
             proposal,
             contract,
-            selectedAction,
+            selectedOption,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,
           });
           setModalOpen(false);
-          setSelectedAction(null);
+          setSelectedOption(null);
         }}
-        selectedAction={getOptionLabel({
+        selectedOption={getOptionLabel({
           metadata: proposal?.metadata,
-          optionKey: selectedAction?.toNumber(),
+          optionKey: selectedOption?.toNumber(),
           t,
         })}
         votingPower={votingPower?.percent}
         currentVoteAmount={useVotingPowerPercent(
-          voteData?.options?.[selectedAction?.toNumber()],
+          voteData?.options?.[selectedOption?.toNumber()],
           voteData?.totalLocked
         )}
       />
