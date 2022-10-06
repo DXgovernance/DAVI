@@ -19,18 +19,19 @@ export const AddressInput: React.FC<AddressInputProps> = ({
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
   const shouldShowAvatar = !!isAddress(value);
 
-  const { name: parsedName } = useENS(value);
+  const { name: parsedENSName } = useENS(value);
 
   const [localValue, setLocalValue] = useState(
-    (enableENSName && parsedName) || value
+    (enableENSName && parsedENSName) || value
   );
-  const { address: addressFromLocalValue } = useENS(localValue);
+  const { address: addressFromLocalValue } = useENS(
+    localValue.endsWith('.eth') ? localValue : `${localValue}.eth`
+  );
 
   useEffect(() => {
     if (enableENSName && addressFromLocalValue) onChange(addressFromLocalValue);
     else onChange(localValue);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [localValue, enableENSName, addressFromLocalValue]);
+  }, [localValue, enableENSName, addressFromLocalValue, onChange]);
 
   return (
     <Input
