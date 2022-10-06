@@ -19,7 +19,7 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "postinstall": "yarn run updateBytecodes",
+    "postinstall": "yarn hardhat compile && yarn run updateBytecodes",
     "pre-commit": "lint-staged"
   },
   "engines": {
@@ -202,3 +202,4 @@
     ]
   }
 }
+
