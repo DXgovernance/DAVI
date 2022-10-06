@@ -32,11 +32,13 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
 
   const validate = (): boolean => {
     if (
-      options.some(
-        option =>
-          normalizeString(option.label) === normalizeString(label) ||
-          normalizeString(label) === 'against'
-      )
+      options
+        .filter(option => option.id !== editableOption?.id)
+        .some(
+          option =>
+            normalizeString(option.label) === normalizeString(label) ||
+            normalizeString(label) === 'against'
+        )
     ) {
       setError(`Label "${label}" already exists`);
       return false;

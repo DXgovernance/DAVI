@@ -86,7 +86,6 @@ const ProposalVoteCard = ({
 
     return setModalOpen(true);
   };
-
   return (
     <SidebarCard
       header={
