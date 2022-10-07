@@ -100,7 +100,7 @@ exports[`AddressInput Snapshots should match snapshot isInvalid 1`] = `
     <input
       class="c2"
       data-testid="address input"
-      value="wagmi.eth"
+      value="0xinvalidAddress"
     />
     <div
       class="c3"

@@ -7,17 +7,19 @@ import { AddressInput } from './AddressInput';
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
-    avatarUri: 'wagmi',
     imageUrl: 'wagmi',
-    ensName: 'wagmi.eth',
   }),
 }));
 
-let mockReturnENS = { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
-
 jest.mock('hooks/Guilds/ens/useENS', () => ({
   __esModule: true,
-  default: () => mockReturnENS,
+  default: (value: string) => {
+    if (value === MOCK_ENS_NAME || value === MOCK_ADDRESS) {
+      return { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
+    } else {
+      return { name: null, address: value };
+    }
+  },
 }));
 
 describe(`AddressInput`, () => {
@@ -125,8 +127,6 @@ describe(`AddressInput`, () => {
     });
 
     it(`should return null if ENSName is ENABLED and the ENS name doesn't exist`, async () => {
-      mockReturnENS.address = null;
-
       const mockOnChange = jest.fn();
 
       const { findByTestId } = render(
@@ -137,7 +137,6 @@ describe(`AddressInput`, () => {
       fireEvent.change(addressField, { target: { value: 'wrongENS.eth' } });
 
       expect(mockOnChange).toHaveBeenCalledWith('wrongENS.eth');
-      mockReturnENS.address = MOCK_ADDRESS;
     });
 
     it(`should return an address if ENSName is DISABLED and it inputs an address`, async () => {
