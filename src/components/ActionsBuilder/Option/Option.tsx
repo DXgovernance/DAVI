@@ -31,7 +31,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   editOption,
 }) => {
   const { t } = useTranslation();
-
   const {
     attributes,
     listeners,
@@ -41,7 +40,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     isDragging,
   } = useSortable({ id: option.id });
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false);
-
   function addAction(action: DecodedAction) {
     onChange({
       ...option,
@@ -53,7 +51,10 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     const updatedActions = option?.decodedActions.map((a, i) =>
       index === i ? action : a
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions,
+    });
   }
 
   function removeAction(action: DecodedAction) {
@@ -67,7 +68,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     transform: CSS.Translate.toString(transform),
     transition,
   };
-
   return (
     <OptionWrapper
       dragging={isDragging}

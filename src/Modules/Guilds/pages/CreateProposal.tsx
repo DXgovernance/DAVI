@@ -58,6 +58,7 @@ const CreateProposalPage: React.FC = () => {
       label: t('for', { defaultValue: 'For' }),
       color: theme?.colors?.votes?.[1],
       decodedActions: [],
+      permissions: [],
     },
   ]);
   const {

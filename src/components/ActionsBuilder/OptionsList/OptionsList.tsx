@@ -51,7 +51,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
   const recentlyMovedToNewContainer = useRef(false);
   const theme = useTheme();
-
   useEffect(() => {
     requestAnimationFrame(() => {
       recentlyMovedToNewContainer.current = false;

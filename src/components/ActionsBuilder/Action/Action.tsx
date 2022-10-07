@@ -24,11 +24,12 @@ import {
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
-
+import { Permission } from 'components/ActionsBuilder/types';
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
+  permission?: boolean | Permission;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }

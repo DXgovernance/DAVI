@@ -129,7 +129,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             : index === 0
             ? t('against', { defaultValue: 'Against' })
             : null;
-
           return {
             id: `option-${index}`,
             label: optionLabel || `Option ${index}`,
@@ -151,7 +150,6 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       // Return options putting default against-call last
       setOptions([...options.slice(1), options[0]])
     );
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     guildId,
