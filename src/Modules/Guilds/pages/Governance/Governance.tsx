@@ -118,11 +118,6 @@ const Governance = ({ guildId }) => {
             </UnstyledLink>
           </>
         )}
-        <UnstyledLink to={`/${chainName}/${guildId}/create`}>
-          <Button variant="secondary" data-testid="create-discussion-button">
-            {t('forum.createDiscussion')}
-          </Button>
-        </UnstyledLink>
         <Button onClick={openVoteCart} variant="secondary">
           <AiOutlineShoppingCart size={20} />
         </Button>

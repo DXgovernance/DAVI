@@ -21,7 +21,7 @@ export const mockProposalVoteCardProps = {
     title: 'SWPR single reward campaign',
     to: [],
     value: [],
-    totalActions: BigNumber.from(0),
+    totalOptions: BigNumber.from(0),
     contentHash: '0x1234567890123456789012345678901234567890',
     contractState: ContractState.Active,
     totalVotes: [],

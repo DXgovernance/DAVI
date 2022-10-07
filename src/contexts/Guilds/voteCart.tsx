@@ -1,19 +1,25 @@
 import { createContext, useContext, useState } from 'react';
+import MerkleTree from 'merkletreejs';
 import { BigNumber } from 'ethers';
-import { useTransactions } from 'contexts/Guilds/transactions';
 import { Proposal } from 'types/types.guilds.d';
+// import { ERC20Guild } from 'types/contracts';
+import { utils } from 'ethers';
+import { Buffer } from 'buffer';
+import { useSignMessage } from 'wagmi';
+
 // import { voteOnProposal, confirmVoteProposal } from './utils';
-import ERC20Guild from 'contracts/BaseERC20Guild.json';
+// import ERC20Guild from 'contracts/BaseERC20Guild.json';
 // import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { toast } from 'react-toastify';
-import { Multicall } from 'ethereum-multicall';
-import { useProvider } from 'wagmi';
-import config from 'configs/localhost/config.json';
+// import { Multicall } from 'ethereum-multicall';
+// import { useProvider } from 'wagmi';
+// import config from 'configs/localhost/config.json';
 import { Modal } from 'components/primitives/Modal';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 import { Button } from 'components/primitives/Button';
 
 interface Vote {
+  voter: string;
   proposal: Proposal;
   selectedOption: BigNumber;
   votingPower: BigNumber;
@@ -34,12 +40,17 @@ const VoteCartContext = createContext<VoteCartContextReturn>(null);
 export const VoteCartProvider = ({ children }) => {
   const [votes, setVotes] = useState<any[]>([]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
+  const [voteData, setVoteData] = useState(null);
 
-  const { createTransaction } = useTransactions();
-
-  const provider = useProvider();
+  const { signMessage } = useSignMessage({
+    onSuccess: sig => {
+      executeSignedVotes(sig);
+    },
+  });
+  // const provider = useProvider();
 
   const addVote = ({
+    voter,
     proposal,
     selectedOption,
     votingPower,
@@ -51,6 +62,7 @@ export const VoteCartProvider = ({ children }) => {
       return;
     }
     const newVote = {
+      voter,
       proposal,
       selectedOption,
       votingPower,
@@ -74,55 +86,60 @@ export const VoteCartProvider = ({ children }) => {
     setVotes(newVotes);
   };
 
-  const confirmVote = async () => {
+  const setData = () => {
     if (votes.length === 0) {
       toast.error('No votes in cart');
     }
 
-    const contractCall = {
-      reference: 'upV2Controller',
-      contractAddress: '0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2', //guild
-      abi: ERC20Guild.abi,
-      calls: votes.map(
-        ({ proposal, selectedOption, votingPower, contractAddress }) => {
-          return {
-            contractAddress,
-            reference: 'setVote',
-            methodName: 'setVote',
-            methodParameters: [
-              proposal.id,
-              selectedOption.toString(),
-              votingPower.toString(),
-            ],
-          };
-        }
-      ),
+    const _votes = votes.map(
+      ({ voter, proposal, selectedOption, votingPower }) => {
+        const str = JSON.stringify({
+          voter,
+          proposalId: proposal.id,
+          option: selectedOption.toString(),
+          votingPower: votingPower.toString(),
+        });
+        const hash = utils.keccak256(Buffer.from(str));
+
+        return {
+          voteInfo: {
+            voter,
+            proposalId: proposal.id,
+            option: selectedOption.toString(),
+            votingPower: votingPower.toString(),
+          },
+          hash,
+        };
+      }
+    );
+
+    const leaves = _votes.map(vote => vote.hash);
+    const tree = new MerkleTree(leaves, utils.keccak256);
+    const root = tree.getRoot().toString('hex');
+
+    const result = {
+      root,
+      data: _votes.map((vote, idx) => {
+        const proof = tree.getProof(leaves[idx]);
+        console.log('proof', proof);
+        return {
+          ...vote,
+          proof,
+        };
+      }),
     };
-
-    try {
-      const multicall = new Multicall({
-        ethersProvider: provider,
-        tryAggregate: false,
-        multicallCustomContractAddress: config.contracts.utils.multicall,
-      });
-
-      console.info({ multicall, contractCall });
-      const results = await multicall.call(contractCall);
-      console.log('contractCall success', results);
-    } catch (e) {
-      console.log('contractCall error', e);
-    }
+    setVoteData(result);
   };
 
-  const confirmVote2 = async () => {
-    createTransaction(
-      `MultiVote`,
-      async () =>
-        new Promise(res => {
-          setTimeout(res, 2000);
-        }),
-      true
-    );
+  const executeSignedVotes = sig => {
+    console.log({
+      ...voteData,
+      signature: sig,
+    });
+  };
+  const confirmVote = async () => {
+    setData();
+    signMessage({ message: voteData?.root });
   };
   return (
     <VoteCartContext.Provider
@@ -189,7 +206,7 @@ export const VoteCartProvider = ({ children }) => {
               <Button variant="secondary" onClick={() => setVotes([])}>
                 Clear all votes
               </Button>
-              <Button variant="primary" onClick={confirmVote2}>
+              <Button variant="primary" onClick={confirmVote}>
                 Confirm MultiVote
               </Button>
             </div>

@@ -4,6 +4,7 @@ import {
   SidebarCardHeaderSpaced,
 } from 'components/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
+import { useAccount } from 'wagmi';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
 import { UserVote } from './components/UserVote';
 import VoteResults from './components/VoteResults/VoteResults';
@@ -39,6 +40,8 @@ const ProposalVoteCard = ({
   userVote,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
+  const { address: voter } = useAccount();
+
   const { t } = useTranslation();
   const { addVote, votes } = useVoteCart();
   const [isPercent, setIsPercent] = useState(true);
@@ -209,6 +212,7 @@ const ProposalVoteCard = ({
         }}
         onAddToVoteCart={() => {
           addVote({
+            voter,
             proposal,
             selectedOption,
             votingPower: votingPower.userVotingPower,
