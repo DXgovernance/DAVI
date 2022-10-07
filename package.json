@@ -16,10 +16,11 @@
     "test": "react-app-rewired test --watchAll=false --verbose --testTimeout=10000",
     "test:coverage": "yarn run test --coverage",
     "updateBytecodes": "node scripts/updateDeployedBytecodes.js",
+    "updateContracts": "yarn hardhat compile && node scripts/updateContracts.js",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "postinstall": "yarn run updateBytecodes",
+    "postinstall": "yarn hardhat compile && yarn run updateBytecodes",
     "pre-commit": "lint-staged"
   },
   "engines": {
@@ -202,3 +203,4 @@
     ]
   }
 }
+

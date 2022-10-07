@@ -6,12 +6,12 @@ import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementat
 import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import SnapshotRepERC20Guild from 'contracts/SnapshotRepERC20Guild.json';
 
 /**
- * -  ERC20GuildContract
+ * -  BaseERC20GuildContract
  *    function getVotingPowerForProposalExecution() public view virtual returns (uint256) {}
  *
  * -  SnapshotERC20Guild:
@@ -42,7 +42,7 @@ const getConfig = ({
   const baseErc20Config = {
     enabled: !!contractAddress,
     addressOrName: contractAddress,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
     functionName: 'getVotingPowerForProposalExecution',
   };
 

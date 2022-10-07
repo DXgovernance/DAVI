@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
 import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
@@ -23,7 +23,7 @@ export type GuildConfigProps = {
 export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
   const erc20GuildContract = {
     addressOrName: guildAddress,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
   };
 
   const { data, ...rest } = useContractReads({

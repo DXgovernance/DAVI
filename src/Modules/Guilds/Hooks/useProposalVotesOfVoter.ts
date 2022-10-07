@@ -1,4 +1,4 @@
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
@@ -17,7 +17,7 @@ const useProposalVotesOfVoter = (
   const { data, ...rest } = useContractRead({
     enabled: !!guildAddress && !!proposalId && !!userAddress,
     addressOrName: guildAddress,
-    contractInterface: ERC20Guild.abi,
+    contractInterface: BaseERC20Guild.abi,
     functionName: 'getProposalVotesOfVoter',
     args: [proposalId, userAddress],
     watch: true,
