@@ -6,22 +6,33 @@ interface useGetETHPermissionProps {
   guildAddress: string;
   from: string;
   to: string;
-  funcSign: string;
+  functionSignature: string;
 }
 
 export const useGetETHPermission = ({
   guildAddress,
   from,
   to,
-  funcSign,
+  functionSignature,
 }: useGetETHPermissionProps) => {
   const { data, ...rest } = useContractRead({
     addressOrName: guildAddress,
     contractInterface: PermissionRegistry.abi,
     functionName: 'getETHPermission',
-    args: [from, to, funcSign],
+    args: [from, to, functionSignature],
+    onSuccess(data) {
+      console.log('data', data);
+    },
+    onError(error) {
+      console.log('error', error);
+    },
+    onSettled(data, error) {
+      console.log('data', data);
+      console.log('error', error);
+    },
     watch: true,
   });
+  console.log({ data })
   const parsed = useMemo(() => {
     if (!data) return null;
     return {

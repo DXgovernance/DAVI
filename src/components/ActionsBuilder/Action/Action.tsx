@@ -25,11 +25,12 @@ import {
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
 import { Permission } from 'components/ActionsBuilder/types';
+import { useGetETHPermission } from 'Modules/Guilds/Hooks/useETHPermissions';
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  permission?: boolean | Permission;
+  permission?: Permission;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
@@ -43,6 +44,7 @@ export enum CardStatus {
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
+  permission,
   decodedAction,
   isEditable,
   onEdit,
@@ -58,7 +60,10 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
   } = useSortable({ id: decodedAction?.id, disabled: !isEditable });
   const action = useDecodedCall(call);
-
+  const permissionCheck = useGetETHPermission(
+    {...permission, guildAddress: call?.from
+    })
+  console.log(permissionCheck?.data, "permissionCheck")
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
 

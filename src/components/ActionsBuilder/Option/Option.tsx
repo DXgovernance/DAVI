@@ -61,7 +61,10 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     const updatedActions = option?.decodedActions.filter(
       a => a.id !== action.id
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions
+    });
   }
 
   const dndStyles = {
@@ -102,9 +105,9 @@ export const OptionRow: React.FC<OptionRowProps> = ({
 
       <ActionsWrapper indented={isEditable}>
         {!isEditable &&
-          option?.actions?.map((action, index) => (
-            <ActionRow key={index} call={action} isEditable={false} />
-          ))}
+          option?.actions?.map((action, index) => {
+            const permission = option?.permissions?.[index];
+            return ( <ActionRow key={index} call={action} isEditable={false} permission={permission}/> )})}
 
         {isEditable && (
           <SortableContext
