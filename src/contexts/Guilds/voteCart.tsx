@@ -114,20 +114,23 @@ export const VoteCartProvider = ({ children }) => {
     );
 
     const leaves = _votes.map(vote => vote.hash);
-    const tree = new MerkleTree(leaves, utils.keccak256);
-    const root = tree.getRoot().toString('hex');
+    const tree = new MerkleTree(leaves, utils.keccak256, { sort: true });
+    const root = tree.getHexRoot();
 
     const result = {
       root,
       data: _votes.map((vote, idx) => {
-        const proof = tree.getProof(leaves[idx]);
-        console.log('proof', proof);
+        const proof = tree.getHexProof(leaves[idx]);
+        // console.log('proof', proof);
+        // console.log('verified? ', tree.verify(proof, vote.hash, root));
         return {
           ...vote,
           proof,
         };
       }),
     };
+
+    console.log(result);
     setVoteData(result);
   };
 
