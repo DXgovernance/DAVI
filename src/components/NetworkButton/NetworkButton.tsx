@@ -23,8 +23,8 @@ const NetworkButton = () => {
     } else if (isConnected) {
       return (
         <IconButton onClick={toggleNetworkModal} iconLeft>
-          <ButtonIcon src={getChainIcon(chain.id)} alt={'Icon'} />
-          {chain.name}
+          <ButtonIcon src={getChainIcon(chain?.id)} alt={'Icon'} />
+          {chain?.name}
         </IconButton>
       );
     } else {
