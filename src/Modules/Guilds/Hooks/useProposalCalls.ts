@@ -6,13 +6,14 @@ import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
 import { Call, Option } from 'components/ActionsBuilder/types';
-import { ZERO_HASH } from 'utils';
+import { preventEmptyString, ZERO_HASH } from 'utils';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import { useRichContractRegistry } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { ERC20_APPROVE_SIGNATURE } from 'utils';
 import { useNetwork } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 import { EMPTY_CALL } from 'Modules/Guilds/pages/CreateProposal';
+import useGuildImplementationTypeConfig from './useGuildImplementationType';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -27,7 +28,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
-
+  // Used to wait for the bytecode to be fetched
+  const { isSnapshotGuild } = useGuildImplementationTypeConfig(guildId);
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
 
@@ -93,7 +95,9 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
       const encodedOptions: Option[] = await Promise.all(
         splitCalls.map(async (calls, index) => {
           const filteredActions = calls.filter(
-            call => !isZeroHash(call?.data) || !call.value?.isZero()
+            call =>
+              !isZeroHash(call?.data) ||
+              !preventEmptyString(call?.value).isZero()
           );
           const actions = await Promise.all(
             filteredActions.map(async call => {
@@ -160,6 +164,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
+    isSnapshotGuild,
   ]);
 
   return {

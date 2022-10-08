@@ -1,3 +1,4 @@
+import { BigNumber } from 'ethers';
 import { render } from 'utils/tests';
 import { CallDetails } from './CallDetails';
 import {
@@ -5,6 +6,8 @@ import {
   decodedCallMock,
   emptyDecodedCallMock,
 } from './fixtures';
+
+const mockBigNumber = BigNumber.from(0);
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
@@ -21,6 +24,7 @@ jest.mock('utils', () => ({
       symbol: 'TST',
     },
   }),
+  preventEmptyString: () => mockBigNumber,
 }));
 
 jest.mock('wagmi', () => ({
