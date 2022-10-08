@@ -7,7 +7,6 @@ import { ActionEditorProps } from '..';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID } from 'utils';
 import { ReactComponent as Info } from 'assets/images/info.svg';
-import useBigNumberToNumber from 'hooks/Guilds/conversions/useBigNumberToNumber';
 import { useTotalSupply } from 'Modules/Guilds/Hooks/useTotalSupply';
 import { useTokenData } from 'Modules/Guilds/Hooks/useTokenData';
 import { Tooltip } from 'components/Tooltip';
@@ -34,7 +33,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
   const { data } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
   const [recipient, setRecipient] = useState<string>(data?.toAddress);
-  const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
   const { imageUrl } = useENSAvatar(data?.toAddress, MAINNET_ID);
 
   const { control, handleSubmit, setValue } = useForm<RepMintFormValues>({
@@ -48,7 +46,10 @@ export const Mint: React.FC<ActionEditorProps> = ({
       setRepAmount(initialRepAmount);
       setValue(
         'repPercent',
-        String((Number(initialRepAmount) * 100) / totalSupply || 0)
+        String(
+          (Number(initialRepAmount) * 100) /
+            tokenData?.totalSupply.toNumber() || 0
+        )
       );
     }
   }, [data?.amount]); //eslint-disable-line
@@ -57,7 +58,9 @@ export const Mint: React.FC<ActionEditorProps> = ({
     if (!value) {
       setRepAmount('0');
     } else {
-      const amount = String((Number(value) / 100) * totalSupply);
+      const amount = String(
+        (Number(value) / 100) * tokenData?.totalSupply.toNumber()
+      );
       setRepAmount(amount);
     }
   };

@@ -51,6 +51,7 @@ export default function useGuildImplementationTypeConfig(
     const getBytecode = async () => {
       const btcode = await provider.getCode(guildAddress);
       const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
+      console.log({ hashedBytecode });
       setGuildBytecode(hashedBytecode);
     };
     getBytecode();
