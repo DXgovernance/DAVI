@@ -48,7 +48,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
         'repPercent',
         String(
           (Number(initialRepAmount) * 100) /
-            tokenData?.totalSupply.toNumber() || 0
+            tokenData?.totalSupply?.toNumber() || 0
         )
       );
     }
@@ -59,7 +59,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
       setRepAmount('0');
     } else {
       const amount = String(
-        (Number(value) / 100) * tokenData?.totalSupply.toNumber()
+        (Number(value) / 100) * tokenData?.totalSupply?.toNumber()
       );
       setRepAmount(amount);
     }
