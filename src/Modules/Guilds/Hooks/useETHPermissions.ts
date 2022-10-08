@@ -3,22 +3,28 @@ import { useContractRead } from 'wagmi';
 import { useMemo } from 'react';
 
 interface useGetETHPermissionProps {
-  guildAddress: string;
+  permissionRegistryAddress: string;
   from: string;
   to: string;
   functionSignature: string;
 }
 
 export const useGetETHPermission = ({
-  guildAddress,
+  permissionRegistryAddress,
   from,
   to,
   functionSignature,
 }: useGetETHPermissionProps) => {
+  console.log({
+    permissionRegistryAddress,
+    from,
+    to,
+    functionSignature,
+  });
   const { data, ...rest } = useContractRead({
-    addressOrName: guildAddress,
+    addressOrName: permissionRegistryAddress,
     contractInterface: PermissionRegistry.abi,
-    functionName: 'getETHPermission',
+    functionName: 'getETHPermission(address,address,bytes4)',
     args: [from, to, functionSignature],
     onSuccess(data) {
       console.log('data', data);
@@ -32,7 +38,6 @@ export const useGetETHPermission = ({
     },
     watch: true,
   });
-  console.log({ data })
   const parsed = useMemo(() => {
     if (!data) return null;
     return {

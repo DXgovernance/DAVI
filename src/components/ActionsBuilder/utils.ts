@@ -4,7 +4,7 @@ import Web3 from 'web3';
 
 const web3 = new Web3();
 
-export const permissionChecks = (
+export const getPermissionArgs = (
   decodedActions: DecodedAction[]
 ): Permission[] => {
   const permissions = decodedActions.map(decodedAction => {
