@@ -16,7 +16,7 @@ const NetworkButton = () => {
   };
 
   function getNetworkStatus() {
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain?.unsupported) {
       return (
         <Button onClick={toggleNetworkModal}>{t('unsupportedNetwork')}</Button>
       );
