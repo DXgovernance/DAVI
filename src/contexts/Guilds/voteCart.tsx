@@ -53,11 +53,12 @@ export const VoteCartProvider = ({ children }) => {
     onSuccess: signedMessage => {
       toast.success('votes signed');
 
-      arrayOfVotes.forEach(async vote => {
-        let result = await { ...vote, signature: signedMessage };
+      for (let i = 0; i < arrayOfVotes.length; i++) {
+        let result = { ...arrayOfVotes[i], signature: signedMessage };
         console.log(result);
-        await createNewVote(result);
-      });
+        debugger;
+        createNewVote(result);
+      }
     },
   });
 
@@ -147,13 +148,6 @@ export const VoteCartProvider = ({ children }) => {
 
     // setVoteData(arrayOfVotes);
   };
-
-  // const executeSignedVotes = sig => {
-  //   console.log({
-  //     ...voteData,
-  //     signature: sig,
-  //   });
-  // };
 
   useEffect(() => {
     isConnected(orbis).then(res => {

@@ -12564,7 +12564,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
 
 "dxdao-contracts@https://github.com/MiltonTulli/dxdao-contracts#execute-signed-votes":
   version "1.0.0"
-  resolved "https://github.com/MiltonTulli/dxdao-contracts#cf7977ed53dde8eb772477daec49a13dd22497a9"
+  resolved "https://github.com/MiltonTulli/dxdao-contracts#22e59c02dd290ef737736eda6df958d76bfb53b7"
   dependencies:
     "@maticnetwork/eth-decoder" "^0.0.4"
     "@openzeppelin/contracts" "4.4.0"
