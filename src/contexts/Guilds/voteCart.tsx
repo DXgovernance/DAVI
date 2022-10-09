@@ -18,6 +18,7 @@ import { MultiVoteModal } from 'components/MultiVoteModal';
 import { OrbisContext } from './orbis';
 
 import { connect, isConnected } from 'components/Forum';
+import { useSignMessage } from 'wagmi';
 
 export interface Vote {
   voter: string;
@@ -46,12 +47,21 @@ export const VoteCartProvider = ({ children }) => {
 
   const { orbis } = useContext(OrbisContext);
 
-  // const { signMessage } = useSignMessage({
-  //   onSuccess: sig => {
-  //     executeSignedVotes(sig);
-  //   },
-  // });
   // const provider = useProvider();
+
+  const { signMessage } = useSignMessage({
+    onSuccess: signedMessage => {
+      toast.success('votes signed');
+
+      arrayOfVotes.forEach(async vote => {
+        let result = await { ...vote, signature: signedMessage };
+        console.log(result);
+        await createNewVote(result);
+      });
+    },
+  });
+
+  const [arrayOfVotes, setArrayOfVotes] = useState([]);
 
   const addVote = ({
     voter,
@@ -95,7 +105,7 @@ export const VoteCartProvider = ({ children }) => {
     setVotes(newVotes);
   };
 
-  const populateData = () => {
+  const populateData = async () => {
     if (votes.length === 0) {
       toast.error('No votes in cart');
     }
@@ -117,7 +127,7 @@ export const VoteCartProvider = ({ children }) => {
     const tree = new MerkleTree(leaves, utils.keccak256, { sort: true });
     const root = tree.getHexRoot();
 
-    const arrayOfVotes = votes.map(
+    const arrayOfVotes2 = votes.map(
       ({ voter, proposal, selectedOption, votingPower }, index) => {
         let currentVoteHash = arrayOfVoteHashes[index];
         let result = {
@@ -133,9 +143,12 @@ export const VoteCartProvider = ({ children }) => {
       }
     );
 
-    arrayOfVotes.forEach(vote => {
-      createNewVote(vote);
-    });
+    setArrayOfVotes(arrayOfVotes2);
+
+    signMessage({ message: root });
+    // arrayOfVotes.forEach(vote => {
+    //   createNewVote(vote);
+    // });
 
     // setVoteData(arrayOfVotes);
   };
@@ -170,7 +183,6 @@ export const VoteCartProvider = ({ children }) => {
     // send to orbis
     populateData();
     setVotes([]);
-    toast.success('votes signed');
   };
   return (
     <VoteCartContext.Provider

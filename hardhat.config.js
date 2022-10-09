@@ -114,7 +114,7 @@ module.exports = {
       accounts: { mnemonic: MNEMONIC },
       throwOnTransactionFailures: true,
       throwOnCallFailures: true,
-      allowUnlimitedContractSize: false,
+      allowUnlimitedContractSize: true,
       initialDate: moment.unix(0).toDate().toString(),
       mining: {
         auto: true,

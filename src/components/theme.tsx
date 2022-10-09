@@ -49,6 +49,7 @@ export interface GuildsTheme extends ThemeBase {
     };
 
     votes: { [key: number]: string };
+    votesLight: { [key: number]: string };
   };
   fonts?: {
     body: string;

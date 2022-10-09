@@ -88,26 +88,27 @@ const ProposalVoteCard = ({
 
   const executeOffChainVotes = async () => {
     if (offChainVotes) {
-      offChainVotes.forEach(async post => {
+      let votesToExecute = offChainVotes.map(async post => {
         let { root, voter, voteHash, proof, proposalId, option, votingPower } =
           post.content.data;
 
         let signedVoteExecuted: boolean = await guildContract.getSignedVote(
           voteHash
         );
+
         if (!signedVoteExecuted) {
-          guildContract.executeSignedVote(
+          return {
             root,
             voter,
             voteHash,
             proof,
             proposalId,
             option,
-            votingPower
-          );
+            votingPower,
+          };
+        } else {
+          return;
         }
-
-        // if(executedSignedVotes) includes voteData.voteHash => return
       });
     }
   };
