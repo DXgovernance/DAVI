@@ -166,6 +166,8 @@ export const VoteCartProvider = ({ children }) => {
   const confirmVote = async () => {
     // send to orbis
     populateData();
+    setVotes([]);
+    toast.success('votes signed');
   };
   return (
     <VoteCartContext.Provider

@@ -78,6 +78,36 @@ const ProposalVoteCard = ({
     votingPowerAtProposalCurrentSnapshot: votingPower?.atCurrentSnapshot,
   });
 
+  //   const [executedSignedVotes, setExecutedSignedVotes] = useState(null)
+  //   useEffect(()=> {
+  // // parse the contract to get the list of executed signed votes
+  //   },[])
+
+  const executeOffChainVotes = () => {
+    if (offChainVotes) {
+      offChainVotes.forEach(post => {
+        let { root, voter, voteHash, proof, proposalId, option, votingPower } =
+          post.data;
+        let voteData = {
+          root,
+          voter,
+          voteHash,
+          proof,
+          proposalId,
+          option,
+          votingPower,
+        };
+        console.log(voteData);
+
+        // if(executedSignedVotes) includes voteData.voteHash => return
+
+        // send this voteData to the contract to vote... somehow
+      });
+    }
+    console.log(offChainVotes);
+    debugger;
+  };
+
   const handleVoteOnProposal = ({
     hasNoVotingPower,
     hasVotingPowerAtCurrentSnapshot,
@@ -194,6 +224,12 @@ const ProposalVoteCard = ({
               }
             >
               {t('vote')}
+            </VoteActionButton>
+            <VoteActionButton
+              variant="secondary"
+              onClick={executeOffChainVotes}
+            >
+              Execute off-chain Votes
             </VoteActionButton>
           </ButtonsContainer>
         )}

@@ -84,7 +84,7 @@ const VotesChart: React.FC<VoteChartProps> = ({
                   color={theme?.colors?.votes?.[idx]}
                 />
                 <ChartBar
-                  key={idx}
+                  key={`${idx}-2`}
                   percent={signedPercent}
                   color={theme?.colors?.grey}
                 />
