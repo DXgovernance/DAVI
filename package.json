@@ -64,7 +64,7 @@
     "copy-to-clipboard": "^3.3.1",
     "crypto-js": "^4.1.1",
     "diff": "^5.1.0",
-    "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#develop",
+    "dxdao-contracts": "https://github.com/MiltonTulli/dxdao-contracts#execute-signed-votes",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-cypress": "^2.12.1",
     "ethereum-multicall": "^2.15.0",
@@ -205,3 +205,4 @@
     ]
   }
 }
+

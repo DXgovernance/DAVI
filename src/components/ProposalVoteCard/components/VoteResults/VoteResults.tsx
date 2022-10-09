@@ -28,7 +28,6 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
 }) => {
   const theme = useTheme();
   const { t } = useTranslation();
-  console.log('option key: ', optionKey);
 
   const isReady = optionKey !== undefined;
 
@@ -56,7 +55,6 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
       });
     }
 
-    console.log(magicHappens);
     setFilteredData(magicHappens);
   }, [offChainVotes]);
 
@@ -90,44 +88,47 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
         )}
       </VotesRowWrapper>
       <VotesRowWrapper>
-        {Object.entries(voteData.options).map(([idx, item]) => {
-          if (parseInt(idx) === optionKey) {
-            const percentBN = BigNumber.from(
-              voteData?.totalLocked || 0
-            ).isZero()
-              ? BigNumber.from(0)
-              : item.mul(100).mul(Math.pow(10, 2)).div(voteData?.totalLocked);
-            const percent = Math.round(percentBN.toNumber()) / Math.pow(10, 2);
+        {voteData &&
+          voteData.options &&
+          Object.entries(voteData.options).map(([idx, item]) => {
+            if (parseInt(idx) === optionKey) {
+              const percentBN = BigNumber.from(
+                voteData?.totalLocked || 0
+              ).isZero()
+                ? BigNumber.from(0)
+                : item.mul(100).mul(Math.pow(10, 2)).div(voteData?.totalLocked);
+              const percent =
+                Math.round(percentBN.toNumber()) / Math.pow(10, 2);
 
-            const signedPercentBN = BigNumber.from(
-              filteredData[idx] || 0
-            ).isZero()
-              ? BigNumber.from(0)
-              : filteredData[idx]
-                  .mul(100)
-                  .mul(Math.pow(10, 2))
-                  .div(voteData?.totalLocked);
-            const signedPercent =
-              Math.round(signedPercentBN.toNumber()) / Math.pow(10, 2);
+              const signedPercentBN = BigNumber.from(
+                filteredData[idx] || 0
+              ).isZero()
+                ? BigNumber.from(0)
+                : filteredData[idx]
+                    .mul(100)
+                    .mul(Math.pow(10, 2))
+                    .div(voteData?.totalLocked);
+              const signedPercent =
+                Math.round(signedPercentBN.toNumber()) / Math.pow(10, 2);
 
-            return (
-              <VotesChartRow>
-                <ChartBar
-                  key={idx}
-                  percent={percent}
-                  color={theme?.colors?.votes?.[idx]}
-                />
-                <ChartBar
-                  key={`${idx}-2`}
-                  percent={signedPercent}
-                  color={theme?.colors?.grey}
-                />
-              </VotesChartRow>
-            );
-          } else {
-            return <></>;
-          }
-        })}
+              return (
+                <VotesChartRow>
+                  <ChartBar
+                    key={idx}
+                    percent={percent}
+                    color={theme?.colors?.votes?.[idx]}
+                  />
+                  <ChartBar
+                    key={`${idx}-2`}
+                    percent={signedPercent}
+                    color={theme?.colors?.grey}
+                  />
+                </VotesChartRow>
+              );
+            } else {
+              return <></>;
+            }
+          })}
       </VotesRowWrapper>
     </>
   );

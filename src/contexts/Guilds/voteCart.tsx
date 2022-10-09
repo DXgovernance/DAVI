@@ -159,7 +159,6 @@ export const VoteCartProvider = ({ children }) => {
       context: `signed-votes-${vote.proposalId}`,
       data: vote,
     });
-    console.log('post created? i guess');
     console.log(result);
   };
 
