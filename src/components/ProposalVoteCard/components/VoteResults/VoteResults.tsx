@@ -18,6 +18,8 @@ import {
 import { BigNumber } from 'ethers';
 import { useEffect, useState } from 'react';
 import { ChartBar, VotesChartRow } from '../VoteChart/VoteChart.styled';
+import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 
 const VoteResultRow: React.FC<ResultRowProps> = ({
   isPercent,
@@ -28,6 +30,8 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
 }) => {
   const theme = useTheme();
   const { t } = useTranslation();
+  const { guildId } = useTypedParams();
+  const guildContract = useERC20Guild(guildId);
 
   const isReady = optionKey !== undefined;
 
@@ -44,19 +48,26 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
     let magicHappens = [];
 
     if (offChainVotes && offChainVotes.length > 0) {
-      offChainVotes.forEach(vote => {
+      offChainVotes.forEach(async vote => {
+        let isVoteExecuted = await guildContract.getSignedVote(
+          vote.content.data.voteHash
+        );
         let option = parseInt(vote.content.data.option._hex, 16);
         let currentOptionVotes = magicHappens[option];
 
-        if (!currentOptionVotes) magicHappens[option] = BigNumber.from(0);
-        magicHappens[option] = magicHappens[option].add(
-          vote.content.data.votingPower
-        );
+        if (isVoteExecuted) {
+          return;
+        } else {
+          if (!currentOptionVotes) magicHappens[option] = BigNumber.from(0);
+          magicHappens[option] = magicHappens[option].add(
+            vote.content.data.votingPower
+          );
+        }
       });
     }
 
     setFilteredData(magicHappens);
-  }, [offChainVotes]);
+  }, [offChainVotes, guildContract]);
 
   return (
     <>
