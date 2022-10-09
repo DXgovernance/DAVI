@@ -75,9 +75,12 @@
   "assetTransfer": "Asset Transfer",
   "functionCall": "Function Call",
   "functionCalls": "Function Calls",
-  "permission": "Permission",
-  "setPermissions": "Set Permissions",
-  "setPermissionsFor": "Set permissions for",
+  "permissions": {
+    "setPermissions": "Set Permissions",
+    "setPermissionsFor": "Set permissions for",
+    "permissionDenied": "Permission denied",
+    "permissionDeniedMessage": "You do not have permission to perform this action."
+  },
   "unknownAction": "Unknown Action",
   "default": "Default",
   "edit": "Edit",

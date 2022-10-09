@@ -32,7 +32,7 @@ interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  permission?: Permission;
+  permissionArgs?: Permission;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
@@ -42,11 +42,12 @@ export enum CardStatus {
   normal,
   simulationFailed,
   warning,
+  permissionDenied,
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
-  permission,
+  permissionArgs,
   decodedAction,
   isEditable,
   onEdit,
@@ -64,14 +65,13 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const action = useDecodedCall(call);
   const permissionRegistryAddress = useGuildConfig(call?.from)?.data
     ?.permissionRegistry;
-  const permissions = useGetETHPermission({
+  const permission = useGetETHPermission({
     permissionRegistryAddress,
-    from: permission?.from,
-    to: permission?.to,
-    functionSignature: permission?.functionSignature,
+    from: permissionArgs?.from,
+    to: permissionArgs?.to,
+    functionSignature: permissionArgs?.functionSignature,
   })?.data;
-
-  console.log({ permissions });
+  const permissionValues = permission?.split(',');
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
 
@@ -91,10 +91,11 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
-
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
-
+    if (permissionValues?.includes('0')) {
+      return CardStatus.permissionDenied;
+    }
     if (!decodedCall || hasValueTransferOnContractCall)
       return CardStatus.warning;
 
@@ -103,10 +104,14 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     if (decodedAction?.simulationResult.simulation.status === false) {
       return CardStatus.simulationFailed;
     }
-
     return CardStatus.normal; // default return so ESLint doesn't complain
-  }, [decodedCall, decodedAction?.simulationResult, isEditable, isDragging]);
-
+  }, [
+    decodedCall,
+    decodedAction?.simulationResult,
+    isEditable,
+    isDragging,
+    permissionValues,
+  ]);
   return (
     <CardWrapperWithMargin
       cardStatus={cardStatus}
@@ -159,6 +164,19 @@ export const ActionRow: React.FC<ActionViewProps> = ({
                 </SectionHeader>
                 <SectionBody>
                   {decodedAction.simulationResult.transaction.error_message}
+                </SectionBody>
+              </DetailWrapper>
+              <Separator />
+            </>
+          )}
+          {cardStatus === CardStatus.permissionDenied && (
+            <>
+              <DetailWrapper>
+                <SectionHeader>
+                  {t('permissions.permissionDenied')}
+                </SectionHeader>
+                <SectionBody>
+                  {t('permissions.permissionDeniedMessage')}
                 </SectionBody>
               </DetailWrapper>
               <Separator />

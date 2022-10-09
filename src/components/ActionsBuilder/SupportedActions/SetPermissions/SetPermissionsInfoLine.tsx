@@ -48,7 +48,7 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <BiCheckShield size={16} />
       </Segment>
-      <Segment>{t('setPermissionsFor')}</Segment>
+      <Segment>{t('permissions.setPermissionsFor')}</Segment>
       <Segment>
         {currentToken && currentToken.address ? (
           <>

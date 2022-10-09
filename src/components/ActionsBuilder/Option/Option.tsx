@@ -63,7 +63,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     );
     onChange({
       ...option,
-      decodedActions: updatedActions
+      decodedActions: updatedActions,
     });
   }
 
@@ -106,8 +106,16 @@ export const OptionRow: React.FC<OptionRowProps> = ({
       <ActionsWrapper indented={isEditable}>
         {!isEditable &&
           option?.actions?.map((action, index) => {
-            const permission = option?.permissions?.[index];
-            return ( <ActionRow key={index} call={action} isEditable={false} permission={permission}/> )})}
+            const permissionArgs = option?.permissions?.[index];
+            return (
+              <ActionRow
+                key={index}
+                call={action}
+                isEditable={false}
+                permissionArgs={permissionArgs}
+              />
+            );
+          })}
 
         {isEditable && (
           <SortableContext

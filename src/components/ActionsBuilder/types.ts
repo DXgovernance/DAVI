@@ -51,7 +51,7 @@ export interface Option {
   color: string;
   actions?: Call[];
   decodedActions?: DecodedAction[];
-  permissions?:  Permission[];
+  permissions?: Permission[];
   totalVotes?: BigNumber;
   votePercentage?: number;
 }

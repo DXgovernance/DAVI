@@ -15,27 +15,11 @@ export const useGetETHPermission = ({
   to,
   functionSignature,
 }: useGetETHPermissionProps) => {
-  console.log({
-    permissionRegistryAddress,
-    from,
-    to,
-    functionSignature,
-  });
   const { data, ...rest } = useContractRead({
     addressOrName: permissionRegistryAddress,
     contractInterface: PermissionRegistry.abi,
     functionName: 'getETHPermission(address,address,bytes4)',
     args: [from, to, functionSignature],
-    onSuccess(data) {
-      console.log('data', data);
-    },
-    onError(error) {
-      console.log('error', error);
-    },
-    onSettled(data, error) {
-      console.log('data', data);
-      console.log('error', error);
-    },
     watch: true,
   });
   const parsed = useMemo(() => {
