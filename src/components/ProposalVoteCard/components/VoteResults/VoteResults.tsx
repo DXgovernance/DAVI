@@ -132,7 +132,7 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
                   <ChartBar
                     key={`${idx}-2`}
                     percent={signedPercent}
-                    color={theme?.colors?.grey}
+                    color={theme?.colors?.votesLight?.[idx]}
                   />
                 </VotesChartRow>
               );
