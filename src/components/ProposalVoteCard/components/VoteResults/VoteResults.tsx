@@ -15,15 +15,20 @@ import {
   VoteOption,
   OptionBullet,
 } from './VoteResults.styled';
+import { BigNumber } from 'ethers';
+import { useEffect, useState } from 'react';
+import { ChartBar, VotesChartRow } from '../VoteChart/VoteChart.styled';
 
 const VoteResultRow: React.FC<ResultRowProps> = ({
   isPercent,
   optionKey,
   voteData,
   proposalMetadata,
+  offChainVotes,
 }) => {
   const theme = useTheme();
   const { t } = useTranslation();
+  console.log('option key: ', optionKey);
 
   const isReady = optionKey !== undefined;
 
@@ -33,34 +38,98 @@ const VoteResultRow: React.FC<ResultRowProps> = ({
     2
   );
   const label = getOptionLabel({ metadata: proposalMetadata, optionKey, t });
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    let magicHappens = [];
+
+    if (offChainVotes && offChainVotes.length > 0) {
+      offChainVotes.forEach(vote => {
+        let option = parseInt(vote.content.data.option._hex, 16);
+        let currentOptionVotes = magicHappens[option];
+
+        if (!currentOptionVotes) magicHappens[option] = BigNumber.from(0);
+        magicHappens[option] = magicHappens[option].add(
+          vote.content.data.votingPower
+        );
+      });
+    }
+
+    console.log(magicHappens);
+    setFilteredData(magicHappens);
+  }, [offChainVotes]);
+
   return (
-    <VotesRowWrapper>
-      <VoteOption>
-        <OptionBullet>
-          {isReady ? (
-            <Bullet color={theme?.colors?.votes?.[optionKey]} size={8} />
-          ) : (
-            <Loading
-              loading
-              text
-              skeletonProps={{ circle: true, height: 16, width: 16 }}
-            />
-          )}
-        </OptionBullet>
-        {isReady ? label : <Loading loading text />}
-      </VoteOption>
-      {isReady && voteData ? (
-        <span>
-          {isPercent
-            ? `${votingPowerPercent}%`
-            : `${formatUnits(voteData?.options?.[optionKey] || 0)} ${
-                voteData?.token?.symbol
-              }`}
-        </span>
-      ) : (
-        <Loading loading text skeletonProps={{ width: 50 }} />
-      )}
-    </VotesRowWrapper>
+    <>
+      <VotesRowWrapper>
+        <VoteOption>
+          <OptionBullet>
+            {isReady ? (
+              <Bullet color={theme?.colors?.votes?.[optionKey]} size={8} />
+            ) : (
+              <Loading
+                loading
+                text
+                skeletonProps={{ circle: true, height: 16, width: 16 }}
+              />
+            )}
+          </OptionBullet>
+          {isReady ? label : <Loading loading text />}
+        </VoteOption>
+        {isReady && voteData ? (
+          <span>
+            {isPercent
+              ? `${votingPowerPercent}%`
+              : `${formatUnits(voteData?.options?.[optionKey] || 0)} ${
+                  voteData?.token?.symbol
+                }`}
+          </span>
+        ) : (
+          <Loading loading text skeletonProps={{ width: 50 }} />
+        )}
+      </VotesRowWrapper>
+      <VotesRowWrapper>
+        {Object.entries(voteData.options).map(([idx, item]) => {
+          if (parseInt(idx) === optionKey) {
+            const percentBN = BigNumber.from(
+              voteData?.totalLocked || 0
+            ).isZero()
+              ? BigNumber.from(0)
+              : item.mul(100).mul(Math.pow(10, 2)).div(voteData?.totalLocked);
+            const percent = Math.round(percentBN.toNumber()) / Math.pow(10, 2);
+
+            const signedPercentBN = BigNumber.from(
+              filteredData[idx] || 0
+            ).isZero()
+              ? BigNumber.from(0)
+              : filteredData[idx]
+                  .mul(100)
+                  .mul(Math.pow(10, 2))
+                  .div(voteData?.totalLocked);
+            const signedPercent =
+              Math.round(signedPercentBN.toNumber()) / Math.pow(10, 2);
+
+            return (
+              <VotesChartRow>
+                <ChartBar
+                  key={idx}
+                  percent={percent}
+                  color={theme?.colors?.votes?.[idx]}
+                />
+                <ChartBar
+                  key={`${idx}-2`}
+                  percent={signedPercent}
+                  color={theme?.colors?.grey}
+                />
+              </VotesChartRow>
+            );
+          } else {
+            return <></>;
+          }
+        })}
+      </VotesRowWrapper>
+    </>
   );
 };
 
@@ -68,6 +137,7 @@ const VoteResults: React.FC<VoteResultsProps> = ({
   isPercent,
   voteData,
   proposalMetadata,
+  offChainVotes,
 }) => {
   const orderedOptions = voteData?.options && [
     ...Object.keys(voteData.options).slice(1),
@@ -83,6 +153,7 @@ const VoteResults: React.FC<VoteResultsProps> = ({
           isPercent={isPercent}
           voteData={voteData}
           proposalMetadata={proposalMetadata}
+          offChainVotes={offChainVotes}
         />
       ))}
     </>

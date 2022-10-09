@@ -3,7 +3,7 @@ import {
   SidebarCardContent,
   SidebarCardHeaderSpaced,
 } from 'components/SidebarCard';
-import VotesChart from './components/VoteChart/VoteChart';
+// import VotesChart from './components/VoteChart/VoteChart';
 import { useAccount } from 'wagmi';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
 import { UserVote } from './components/UserVote';
@@ -155,12 +155,13 @@ const ProposalVoteCard = ({
             isPercent={isPercent}
             voteData={voteData}
             proposalMetadata={proposal?.metadata}
+            offChainVotes={offChainVotes}
           />
-          <VotesChart
+          {/* <VotesChart
             isPercent={isPercent}
             voteData={voteData}
             offChainVotes={offChainVotes}
-          />
+          /> */}
         </VotesContainer>
 
         <UserVote

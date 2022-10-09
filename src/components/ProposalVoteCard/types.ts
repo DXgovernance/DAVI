@@ -58,6 +58,7 @@ export interface ResultRowProps {
   optionKey?: number;
   voteData: VoteData;
   proposalMetadata: ProposalMetadata;
+  offChainVotes?: any;
 }
 
 export interface VoteChartProps {
