@@ -50,6 +50,7 @@ export interface ProposalVoteCardProps {
     txFunction: () => Promise<providers.TransactionResponse>
   ) => void;
   userVote?: UseProposalVotesOfVoterReturn;
+  offChainVotes: any;
 }
 
 export interface ResultRowProps {
@@ -62,6 +63,7 @@ export interface ResultRowProps {
 export interface VoteChartProps {
   isPercent: boolean;
   voteData: VoteData;
+  offChainVotes: any;
 }
 
 export interface Voter {

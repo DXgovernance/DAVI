@@ -38,6 +38,7 @@ const ProposalVoteCard = ({
   contract,
   createTransaction,
   userVote,
+  offChainVotes,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { address: voter } = useAccount();
@@ -125,7 +126,11 @@ const ProposalVoteCard = ({
             voteData={voteData}
             proposalMetadata={proposal?.metadata}
           />
-          <VotesChart isPercent={isPercent} voteData={voteData} />
+          <VotesChart
+            isPercent={isPercent}
+            voteData={voteData}
+            offChainVotes={offChainVotes}
+          />
         </VotesContainer>
 
         <UserVote
@@ -151,7 +156,6 @@ const ProposalVoteCard = ({
         {isOpen && !userVote?.option && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
-
             {/* Getting the full option keys list but displaying default 0 index option at the bottom */}
             {[...Object.keys(voteData?.options).slice(1), '0'].map(
               optionKey => {
@@ -180,7 +184,6 @@ const ProposalVoteCard = ({
                 );
               }
             )}
-
             <VoteActionButton
               disabled={!selectedOption}
               onClick={() =>

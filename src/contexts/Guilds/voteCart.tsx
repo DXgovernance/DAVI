@@ -1,11 +1,10 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import MerkleTree from 'merkletreejs';
 import { BigNumber } from 'ethers';
 import { Proposal } from 'types/types.guilds.d';
 // import { ERC20Guild } from 'types/contracts';
 import { utils } from 'ethers';
-import { Buffer } from 'buffer';
-import { useSignMessage } from 'wagmi';
+// import { useSignMessage } from 'wagmi';
 
 // import { voteOnProposal, confirmVoteProposal } from './utils';
 // import ERC20Guild from 'contracts/BaseERC20Guild.json';
@@ -17,6 +16,9 @@ import { toast } from 'react-toastify';
 import { Modal } from 'components/primitives/Modal';
 import { RiDeleteBin2Line } from 'react-icons/ri';
 import { Button } from 'components/primitives/Button';
+import { OrbisContext } from './orbis';
+
+import { connect, isConnected } from 'components/Forum';
 
 interface Vote {
   voter: string;
@@ -40,13 +42,15 @@ const VoteCartContext = createContext<VoteCartContextReturn>(null);
 export const VoteCartProvider = ({ children }) => {
   const [votes, setVotes] = useState<any[]>([]);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
-  const [voteData, setVoteData] = useState(null);
+  // const [voteData, setVoteData] = useState(null);
 
-  const { signMessage } = useSignMessage({
-    onSuccess: sig => {
-      executeSignedVotes(sig);
-    },
-  });
+  const { orbis } = useContext(OrbisContext);
+
+  // const { signMessage } = useSignMessage({
+  //   onSuccess: sig => {
+  //     executeSignedVotes(sig);
+  //   },
+  // });
   // const provider = useProvider();
 
   const addVote = ({
@@ -86,63 +90,82 @@ export const VoteCartProvider = ({ children }) => {
     setVotes(newVotes);
   };
 
-  const setData = () => {
+  const populateData = () => {
     if (votes.length === 0) {
       toast.error('No votes in cart');
     }
 
-    const _votes = votes.map(
+    // Make array of vote hashes
+    let arrayOfVoteHashes = votes.map(
       ({ voter, proposal, selectedOption, votingPower }) => {
-        const str = JSON.stringify({
-          voter,
-          proposalId: proposal.id,
-          option: selectedOption.toString(),
-          votingPower: votingPower.toString(),
-        });
-        const hash = utils.keccak256(Buffer.from(str));
+        const dataToHash = [voter, proposal.id, selectedOption, votingPower];
 
-        return {
-          voteInfo: {
-            voter,
-            proposalId: proposal.id,
-            option: selectedOption.toString(),
-            votingPower: votingPower.toString(),
-          },
-          hash,
-        };
+        const hash = utils.solidityKeccak256(
+          ['address', 'bytes32', 'uint256', 'uint256'],
+          dataToHash
+        );
+        return hash;
       }
     );
 
-    const leaves = _votes.map(vote => vote.hash);
+    const leaves = arrayOfVoteHashes.map(voteHash => voteHash);
     const tree = new MerkleTree(leaves, utils.keccak256, { sort: true });
     const root = tree.getHexRoot();
 
-    const result = {
-      root,
-      data: _votes.map((vote, idx) => {
-        const proof = tree.getHexProof(leaves[idx]);
-        // console.log('proof', proof);
-        // console.log('verified? ', tree.verify(proof, vote.hash, root));
-        return {
-          ...vote,
-          proof,
+    const arrayOfVotes = votes.map(
+      ({ voter, proposal, selectedOption, votingPower }, index) => {
+        let currentVoteHash = arrayOfVoteHashes[index];
+        let result = {
+          root: root,
+          voter: voter,
+          voteHash: currentVoteHash,
+          proof: tree.getHexProof(currentVoteHash),
+          proposalId: proposal.id,
+          option: selectedOption,
+          votingPower: votingPower,
         };
-      }),
-    };
+        console.log(result);
+        return result;
+      }
+    );
 
-    console.log(result);
-    setVoteData(result);
-  };
-
-  const executeSignedVotes = sig => {
-    console.log({
-      ...voteData,
-      signature: sig,
+    arrayOfVotes.forEach(vote => {
+      createNewVote(vote);
     });
+
+    // setVoteData(arrayOfVotes);
   };
+
+  // const executeSignedVotes = sig => {
+  //   console.log({
+  //     ...voteData,
+  //     signature: sig,
+  //   });
+  // };
+
+  useEffect(() => {
+    isConnected(orbis).then(res => {
+      if (res) {
+        console.log('Already connected with: ', res);
+      } else {
+        connect(orbis);
+      }
+    });
+  }, [orbis]);
+
+  const createNewVote = async vote => {
+    let result = await orbis.createPost({
+      body: 'hope this works',
+      context: `signed-votes-${vote.proposalId}`,
+      data: vote,
+    });
+    console.log('post created? i guess');
+    console.log(result);
+  };
+
   const confirmVote = async () => {
-    setData();
-    signMessage({ message: voteData?.root });
+    // send to orbis
+    populateData();
   };
   return (
     <VoteCartContext.Provider

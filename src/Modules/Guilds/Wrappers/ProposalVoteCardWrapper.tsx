@@ -12,7 +12,7 @@ import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 
-const ProposalVoteCardWrapper = () => {
+const ProposalVoteCardWrapper = ({ offChainVotes }) => {
   const { guildId, proposalId } = useTypedParams();
   const { address: userAddress } = useAccount();
   const { data: proposal } = useProposal(guildId, proposalId);
@@ -73,6 +73,7 @@ const ProposalVoteCardWrapper = () => {
       contract={contract}
       createTransaction={createTransaction}
       userVote={userVote}
+      offChainVotes={offChainVotes}
     />
   );
 };
