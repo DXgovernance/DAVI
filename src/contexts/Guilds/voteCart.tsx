@@ -13,14 +13,13 @@ import { toast } from 'react-toastify';
 // import { Multicall } from 'ethereum-multicall';
 // import { useProvider } from 'wagmi';
 // import config from 'configs/localhost/config.json';
-import { Modal } from 'components/primitives/Modal';
-import { RiDeleteBin2Line } from 'react-icons/ri';
-import { Button } from 'components/primitives/Button';
+// import { RiDeleteBin2Line } from 'react-icons/ri';
+import { MultiVoteModal } from 'components/MultiVoteModal';
 import { OrbisContext } from './orbis';
 
 import { connect, isConnected } from 'components/Forum';
 
-interface Vote {
+export interface Vote {
   voter: string;
   proposal: Proposal;
   selectedOption: BigNumber;
@@ -35,6 +34,7 @@ interface VoteCartContextReturn {
   confirmVote: () => void;
   openVoteCart: () => void;
   closeVoteCart: () => void;
+  removeVote: (vote: Vote) => void;
 }
 
 const VoteCartContext = createContext<VoteCartContextReturn>(null);
@@ -82,9 +82,14 @@ export const VoteCartProvider = ({ children }) => {
     }, 2000);
   };
 
-  const removeVote = voteToDelete => {
+  const removeVote = (voteToDelete: Vote) => {
     const newVotes = votes.reduce((accumulator, vote) => {
-      if (voteToDelete.proposal.id === vote.proposal.id) return accumulator;
+      if (
+        voteToDelete.proposal.id === vote.proposal.id &&
+        voteToDelete.voter === vote.voter &&
+        voteToDelete.optionLabel === vote.optionLabel
+      )
+        return accumulator;
       return [...accumulator, vote];
     }, []);
     setVotes(newVotes);
@@ -124,7 +129,6 @@ export const VoteCartProvider = ({ children }) => {
           option: selectedOption,
           votingPower: votingPower,
         };
-        console.log(result);
         return result;
       }
     );
@@ -176,70 +180,18 @@ export const VoteCartProvider = ({ children }) => {
         confirmVote,
         openVoteCart: () => setModalOpen(true),
         closeVoteCart: () => setModalOpen(false),
+        removeVote,
       }}
     >
       {children}
-      <Modal
-        isOpen={isModalOpen}
-        onDismiss={() => setModalOpen(false)}
-        header="Vote Cart Modal"
-        // hideHeader?: boolean;
-        // confirmText?: string;
-        // cancelText?: string;
-        // onConfirm?: () => void;
-        // onCancel?: () => void;
-        // maxWidth?: number;
-        cross
-        // zIndex?: number;
-        // backnCross?: boolean;
-        // prevContent?: () => void;
-        // leftIcon?: boolean;
-        // dataTestId?: string;
-      >
-        <div
-          style={{
-            margin: 16,
-          }}
-        >
-          {!votes.length && <div>No votes added to the cart. Start voting</div>}
-          {votes.length > 0 &&
-            votes?.map(vote => {
-              return (
-                <div
-                  style={{
-                    padding: 10,
-                    border: '1px solid #2f3136',
-                    borderRadius: 4,
-                    position: 'relative',
-                  }}
-                >
-                  <h3>Proposal: "{vote.proposal.title}"</h3>
-                  <p>Voted for option "{vote.optionLabel}"</p>
-                  <RiDeleteBin2Line
-                    size={18}
-                    style={{
-                      position: 'absolute',
-                      top: 10,
-                      right: 10,
-                      cursor: 'pointer',
-                    }}
-                    onClick={() => removeVote(vote)}
-                  />
-                </div>
-              );
-            })}
-          {votes.length > 0 && (
-            <div>
-              <Button variant="secondary" onClick={() => setVotes([])}>
-                Clear all votes
-              </Button>
-              <Button variant="primary" onClick={confirmVote}>
-                Confirm MultiVote
-              </Button>
-            </div>
-          )}
-        </div>
-      </Modal>
+      <MultiVoteModal
+        isModalOpen={isModalOpen}
+        setModalOpen={setModalOpen}
+        votes={votes}
+        confirmVote={confirmVote}
+        setVotes={setVotes}
+        removeVote={removeVote}
+      />
     </VoteCartContext.Provider>
   );
 };

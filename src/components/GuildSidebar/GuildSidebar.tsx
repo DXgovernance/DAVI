@@ -17,7 +17,12 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarWrapper,
+  OffChainVotesIcon,
+  IconsRow,
 } from './GuildSidebar.styled';
+import { BsClipboardCheck } from 'react-icons/bs';
+import { useVoteCart } from 'contexts/Guilds/voteCart';
+import { Button } from 'components/primitives/Button';
 
 export interface GuildSidebarProps {
   guildName?: string;
@@ -34,6 +39,8 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
   let { chainName, guildId } = useTypedParams();
   const { pathname } = useLocation();
 
+  const { votes: cartVotes, openVoteCart } = useVoteCart();
+
   const locations = {
     governance: `/${chainName}/${guildId}`,
     allProposals: `/${chainName}/${guildId}/all-proposals`,
@@ -41,16 +48,28 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
   return (
     <SidebarWrapper data-testid="sidebar">
       <DaoInfoPanel>
-        <DaoMemberCount>
-          {numberOfMembers != null ? (
-            <MemberIconWrapper>
-              <MdOutlinePeopleAlt size={26} />
-              <Label>{numberOfMembers.toString()}</Label>
-            </MemberIconWrapper>
-          ) : (
-            <Loading loading text />
-          )}
-        </DaoMemberCount>
+        <IconsRow>
+          <DaoMemberCount>
+            {numberOfMembers != null ? (
+              <MemberIconWrapper>
+                <MdOutlinePeopleAlt size={26} />
+                <Label>{numberOfMembers.toString()}</Label>
+              </MemberIconWrapper>
+            ) : (
+              <Loading loading text />
+            )}
+          </DaoMemberCount>
+          <OffChainVotesIcon>
+            {!!cartVotes.length && (
+              <Button variant="minimal" onClick={openVoteCart}>
+                <MemberIconWrapper>
+                  <BsClipboardCheck size={20} />
+                  <Label>{cartVotes.length}</Label>
+                </MemberIconWrapper>
+              </Button>
+            )}
+          </OffChainVotesIcon>
+        </IconsRow>
         <DaoInfo>
           <DaoBrand>
             <DaoIcon src={dxIcon} alt={guildName} />

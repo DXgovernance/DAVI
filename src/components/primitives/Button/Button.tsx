@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 type ButtonProps = {
-  variant?: 'primary' | 'secondary' | 'minimal';
+  variant?: 'primary' | 'secondary' | 'minimal' | 'tertiary';
   fullWidth?: boolean;
   m?: string | number;
 };
@@ -75,6 +75,34 @@ const variantStyles = (variant = 'primary') =>
       :hover:enabled {
         color: ${({ theme }) => theme.colors.border1};
       }
+    `,
+    tertiary: css<{
+      padding?: string;
+      margin?: string;
+      active?: boolean;
+      selected?: boolean;
+    }>`
+      border: 1px solid ${({ theme }) => theme.colors.border1};
+      background-color: ${({ theme }) => theme.colors.bg5};
+      color: ${({ theme }) => theme.colors.text};
+      border-radius: ${({ theme }) => theme.radii.pill};
+      padding: ${({ padding }) => (padding ? padding : ' 0.5rem 0.8rem')};
+      margin: ${({ margin }) => (margin ? margin : '0.2rem')};
+
+      :hover:enabled {
+        border-color: ${({ theme }) => theme.colors.border3};
+      }
+
+      :active:enabled {
+        border: 1px solid ${({ theme }) => theme.colors.border1};
+      }
+
+      ${({ active, selected }) =>
+        (active || selected) &&
+        css`
+          background-color: ${({ theme }) => theme.colors.primary1};
+          color: ${({ theme }) => theme.colors.bg1};
+        `}
     `,
   }[variant]);
 

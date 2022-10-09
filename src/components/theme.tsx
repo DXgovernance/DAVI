@@ -26,6 +26,7 @@ export interface GuildsTheme extends ThemeBase {
     bg2: string;
     bg3: string;
     bg4: string;
+    bg5: string;
 
     border1: string;
     border2: string;

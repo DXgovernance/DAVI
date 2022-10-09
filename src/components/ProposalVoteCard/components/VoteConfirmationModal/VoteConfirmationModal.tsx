@@ -10,12 +10,13 @@ import {
   CancelButton,
   ConfirmButton,
 } from './VoteConfirmationModal.styled';
+import { Button } from 'components/primitives/Button';
 import { Modal } from 'components/primitives/Modal';
 import React from 'react';
 import { VoteConfirmationModalProps } from '../../types';
 import { useTranslation } from 'react-i18next';
 
-import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { AiOutlineInfoCircle } from 'react-icons/ai';
 
 const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
   isOpen,
@@ -61,13 +62,15 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
           <CancelButton onClick={onDismiss}>{t('cancel')}</CancelButton>
           <ConfirmButton onClick={onConfirm}>{t('vote')} now</ConfirmButton>
         </ActionWrapper>
-        <ConfirmButton
+        <Button
+          variant="tertiary"
           onClick={onAddToVoteCart}
           style={{ margin: '1rem 0' }}
           fullWidth
         >
-          Add to vote cart <AiOutlineShoppingCart style={{ marginLeft: 4 }} />
-        </ConfirmButton>
+          Add to MultiVote{' '}
+          <AiOutlineInfoCircle size={14} style={{ marginLeft: 4 }} />
+        </Button>
       </Container>
     </Modal>
   );
