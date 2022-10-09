@@ -81,7 +81,7 @@ export const MultiVoteModal = ({
             <Button variant="primary" onClick={confirmVote}>
               Vote On-Chain
             </Button>
-            <Button variant="secondary" onClick={() => {}}>
+            <Button variant="secondary" onClick={confirmVote}>
               Vote Off-Chain
             </Button>
           </ButtonsWrapper>

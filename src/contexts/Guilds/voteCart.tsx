@@ -52,13 +52,17 @@ export const VoteCartProvider = ({ children }) => {
   const { signMessage } = useSignMessage({
     onSuccess: signedMessage => {
       toast.success('votes signed');
+      createNewVote(arrayOfVotes, signedMessage);
 
-      for (let i = 0; i < arrayOfVotes.length; i++) {
-        let result = { ...arrayOfVotes[i], signature: signedMessage };
-        console.log(result);
-        debugger;
-        createNewVote(result);
-      }
+      // const create = async () => {
+      //   for (let i = 0; i < arrayOfVotes.length; i++) {
+      //     let result = { ...arrayOfVotes[i], signature: signedMessage };
+      //     console.log(result);
+      //     await createNewVote(result);
+      //   }
+      // };
+
+      // create();
     },
   });
 
@@ -147,11 +151,6 @@ export const VoteCartProvider = ({ children }) => {
     setArrayOfVotes(arrayOfVotes2);
 
     signMessage({ message: root });
-    // arrayOfVotes.forEach(vote => {
-    //   createNewVote(vote);
-    // });
-
-    // setVoteData(arrayOfVotes);
   };
 
   useEffect(() => {
@@ -164,13 +163,19 @@ export const VoteCartProvider = ({ children }) => {
     });
   }, [orbis]);
 
-  const createNewVote = async vote => {
-    let result = await orbis.createPost({
-      body: 'hope this works',
-      context: `signed-votes-${vote.proposalId}`,
-      data: vote,
-    });
-    console.log(result);
+  const createNewVote = async (arrayOfVotes, signedMessage) => {
+    for (let i = 0; i < arrayOfVotes.length; i++) {
+      console.log('loop');
+      let voteData = { ...arrayOfVotes[i], signature: signedMessage };
+      console.log(voteData);
+      let result = await orbis.createPost({
+        body: 'hope this works',
+        context: `signed-votes-${arrayOfVotes[i].proposalId}`,
+        data: voteData,
+      });
+
+      console.log(result);
+    }
   };
 
   const confirmVote = async () => {

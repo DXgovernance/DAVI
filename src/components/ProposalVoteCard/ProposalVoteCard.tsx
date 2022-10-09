@@ -81,11 +81,6 @@ const ProposalVoteCard = ({
 
   const guildContract = useERC20Guild(guildId);
 
-  //   const [executedSignedVotes, setExecutedSignedVotes] = useState(null)
-  //   useEffect(()=> {
-  // // parse the contract to get the list of executed signed votes
-  //   },[])
-
   const executeOffChainVotes = async () => {
     if (offChainVotes) {
       let roots = [];
@@ -126,7 +121,7 @@ const ProposalVoteCard = ({
         return;
       });
 
-      guildContract.executeSignedVotesBatches(
+      let result = await guildContract.executeSignedVotesBatches(
         roots,
         voters,
         voteHashes,
@@ -136,6 +131,8 @@ const ProposalVoteCard = ({
         votingPowers,
         signatures
       );
+
+      console.log(result);
     }
   };
 
