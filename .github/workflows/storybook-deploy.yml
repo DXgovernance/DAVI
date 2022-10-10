@@ -36,6 +36,18 @@ jobs:
           web3_token: ${{ secrets.WEB3_STORAGE_TOKEN }}
           path_to_add: 'storybook-static'
 
+      - name: Update DNS record for Develop branch
+        run: npx dnslink-cloudflare --domain project-davi.dev --record _dnslink.storybook --link /ipfs/${{ steps.web3.outputs.cid }}
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        if: steps.source-run-info.outputs.sourceHeadRepo == 'DXgovernance/DAVI' && steps.source-run-info.outputs.sourceHeadBranch == 'develop'
+
+      - name: Update DNS record for Master branch
+        run: npx dnslink-cloudflare --domain project-davi.dev --record _dnslink.storybook-prod --link /ipfs/${{ steps.web3.outputs.cid }}
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        if: steps.source-run-info.outputs.sourceHeadRepo == 'DXgovernance/DAVI' && steps.source-run-info.outputs.sourceHeadBranch == 'master'
+
       - name: Create comment with status
         uses: peter-evans/create-or-update-comment@v1
         if: ${{ steps.source-run-info.outputs.pullRequestNumber }}
@@ -44,4 +56,7 @@ jobs:
           body: |
             ✔️ Storybook deployment is ready!
 
-            😎 Browse Storybook: https://${{ steps.web3.outputs.cid }}.ipfs.cf-ipfs.com
+            😎 Browse the storybook at one of these gateways:
+            - https://${{ steps.web3.outputs.cid }}.ipfs.cf-ipfs.com
+            - https://${{ steps.web3.outputs.cid }}.ipfs.dweb.link
+            - https://${{ steps.web3.outputs.cid }}.ipfs.ipfs-gateway.cloud

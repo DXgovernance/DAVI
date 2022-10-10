@@ -2,6 +2,11 @@ name: Storybook Build
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - master
+      - develop
+      - release/*
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -28,9 +33,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn
-
-      - name: Build dapp
-        run: CI=false yarn build
 
       - name: Build storybook
         run: CI=false yarn build-storybook
