@@ -38,7 +38,7 @@ jobs:
             cypress-cache
 
       - name: Install dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile
 
       - name: Disable Cypress warnings
         run: |
