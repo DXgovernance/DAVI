@@ -23,12 +23,14 @@ export const AddressInput: React.FC<InputProps<string>> = ({
 }) => {
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
   const shouldShowAvatar = !!isAddress(value) || value?.endsWith('.eth');
-  const [disabledState, setDisabled] = useState(defaultValue ? true : disabled);
+  const [disabledState, setDisabledState] = useState(
+    defaultValue ? true : disabled
+  );
   const iconRightProps = {
     disabled: disabledState,
     value,
     onChange,
-    setDisabled,
+    setDisabledState,
     defaultValue,
     type: 'address',
   };

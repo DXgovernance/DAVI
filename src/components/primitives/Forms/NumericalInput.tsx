@@ -21,13 +21,15 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
     }
   };
 
-  const [disabledState, setDisabled] = useState(defaultValue ? true : disabled);
+  const [disabledState, setDisabledState] = useState(
+    defaultValue ? true : disabled
+  );
   const iconRightProps = {
     disabled: disabledState,
     value,
     onChange: onChange,
     defaultValue,
-    setDisabled,
+    setDisabledState,
     type: 'number',
   };
 

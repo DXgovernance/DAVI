@@ -6,7 +6,7 @@ export const IconRight = ({
   value,
   onChange,
   defaultValue,
-  setDisabled,
+  setDisabledState,
   type,
 }) => {
   if (defaultValue) {
@@ -14,7 +14,7 @@ export const IconRight = ({
       <ClickableIcon
         aria-label="enable"
         onClick={() => {
-          setDisabled(false);
+          setDisabledState(false);
         }}
       >
         <FiUnlock size={18} />
