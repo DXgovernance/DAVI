@@ -21,12 +21,11 @@ const RepMintInfoLine: React.FC<ActionViewProps> = ({
   const { data } = useTotalSupply({ decodedCall });
   const { tokenData } = useTokenData();
 
-  const totalSupply = useBigNumberToNumber(tokenData?.totalSupply, 18);
-
   const { ensName, imageUrl } = useENSAvatar(data?.toAddress, MAINNET_ID);
 
   const roundedRepAmount = useBigNumberToNumber(data?.amount, 16, 3);
-  const roundedRepPercent = roundedRepAmount / totalSupply;
+  const roundedRepPercent =
+    roundedRepAmount / tokenData?.totalSupply?.toNumber();
 
   return (
     <>
