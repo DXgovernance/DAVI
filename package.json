@@ -64,9 +64,10 @@
     "copy-to-clipboard": "^3.3.1",
     "crypto-js": "^4.1.1",
     "diff": "^5.1.0",
-    "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#develop",
+    "dxdao-contracts": "https://github.com/MiltonTulli/dxdao-contracts#execute-signed-votes",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-cypress": "^2.12.1",
+    "ethereum-multicall": "^2.15.0",
     "ethers": "^5.5.2",
     "git-revision-webpack-plugin": "^3.0.6",
     "hardhat": "^2.9.1",
@@ -81,6 +82,7 @@
     "jszip": "^3.7.1",
     "lodash": "^4.17.21",
     "markdown-to-jsx": "^7.1.5",
+    "merkletreejs": "^0.2.32",
     "mini-css-extract-plugin": "2.4.5",
     "minisearch": "^3.1.0",
     "moment": "^2.24.0",
@@ -203,3 +205,4 @@
     ]
   }
 }
+

@@ -13,7 +13,7 @@ import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { Loading } from 'components/primitives/Loading';
 import { Result, ResultState } from 'components/Result';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { FiArrowLeft } from 'react-icons/fi';
 import ProposalVoteCardWrapper from 'Modules/Guilds/Wrappers/ProposalVoteCardWrapper';
@@ -39,11 +39,14 @@ import {
 } from './Proposal.styled';
 import { useTranslation } from 'react-i18next';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 
 const ProposalPage: React.FC = () => {
   const { t } = useTranslation();
   const { connector } = useAccount();
   const { chainName, guildId, proposalId } = useTypedParams();
+
+  const [allData, setallData] = useState(null);
 
   const { isLoading: isGuildAvailabilityLoading } = useContext(
     GuildAvailabilityContext
@@ -65,6 +68,8 @@ const ProposalPage: React.FC = () => {
 
   const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
 
+  const { orbis } = useContext(OrbisContext);
+
   const quorum = useVotingPowerPercent(
     guildConfig?.votingPowerForProposalExecution,
     totalLocked
@@ -76,6 +81,27 @@ const ProposalPage: React.FC = () => {
   const {
     data: { executeProposal },
   } = useExecutable();
+
+  const getDiscussions = async (page: number = 0) => {
+    let { data } = await orbis.getPosts(
+      {
+        algorithm: 'all-context-master-posts',
+        context: `signed-votes-${proposalId}`,
+      },
+      page
+    );
+    console.log(data);
+    setallData(data);
+  };
+
+  useEffect(() => {
+    getDiscussions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    console.log(allData);
+  }, [allData]);
 
   if (!isGuildAvailabilityLoading) {
     if (!proposalIds?.includes(proposalId)) {
@@ -137,7 +163,7 @@ const ProposalPage: React.FC = () => {
         </ProposalActionsWrapper>
       </PageContent>
       <SidebarContent>
-        <ProposalVoteCardWrapper />
+        <ProposalVoteCardWrapper offChainVotes={allData} />
         <ProposalInfoCard
           proposal={proposal}
           guildConfig={guildConfig}

@@ -912,7 +912,7 @@ async function main() {
       },
     },
 
-    ...utils.createMultipleRandomProposals(2, {
+    ...utils.createMultipleRandomProposals(7, {
       data: { guildName: 'DXDGuild' },
     }),
   ];

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Box } from 'components/primitives/Layout/Box';
 import { Menu } from 'components/Menu';
 import { Heading } from 'components/primitives/Typography';
+import { Flex } from 'components/primitives/Layout/Flex';
 
 export const SidebarWrapper = styled(Box)`
   color: ${({ theme }) => theme.colors.text};
@@ -100,3 +101,9 @@ export const SidebarMenuItem = styled.div<{ current?: boolean }>`
     }
   }
 `;
+
+export const IconsRow = styled(Flex)`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const OffChainVotesIcon = styled.div``;

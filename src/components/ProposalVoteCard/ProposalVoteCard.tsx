@@ -3,7 +3,8 @@ import {
   SidebarCardContent,
   SidebarCardHeaderSpaced,
 } from 'components/SidebarCard';
-import VotesChart from './components/VoteChart/VoteChart';
+// import VotesChart from './components/VoteChart/VoteChart';
+import { useAccount } from 'wagmi';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
 import { UserVote } from './components/UserVote';
 import VoteResults from './components/VoteResults/VoteResults';
@@ -26,6 +27,9 @@ import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
+import { useVoteCart } from 'contexts/Guilds/voteCart';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 
 const ProposalVoteCard = ({
   voteData,
@@ -35,13 +39,17 @@ const ProposalVoteCard = ({
   contract,
   createTransaction,
   userVote,
+  offChainVotes,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
-  const { t } = useTranslation();
+  const { address: voter } = useAccount();
 
+  const { t } = useTranslation();
+  const { addVote, votes } = useVoteCart();
   const [isPercent, setIsPercent] = useState(true);
   const [selectedOption, setSelectedOption] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
+  const { guildId } = useTypedParams();
   const isOpen = useMemo(
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
@@ -70,6 +78,63 @@ const ProposalVoteCard = ({
     votingPowerAtProposalSnapshot: votingPower?.atSnapshot,
     votingPowerAtProposalCurrentSnapshot: votingPower?.atCurrentSnapshot,
   });
+
+  const guildContract = useERC20Guild(guildId);
+
+  const executeOffChainVotes = async () => {
+    if (offChainVotes) {
+      let roots = [];
+      let voters = [];
+      let voteHashes = [];
+      let proofs = [];
+      let proposalIds = [];
+      let options = [];
+      let votingPowers = [];
+      let signatures = [];
+
+      await offChainVotes.forEach(async post => {
+        let {
+          root,
+          voter,
+          voteHash,
+          proof,
+          proposalId,
+          option,
+          votingPower,
+          signature,
+        } = post.content.data;
+
+        let signedVoteExecuted: boolean = await guildContract.getSignedVote(
+          voteHash
+        );
+
+        if (!signedVoteExecuted) {
+          roots.push(root);
+          voters.push(voter);
+          voteHashes.push(voteHash);
+          proofs.push(proof);
+          proposalIds.push(proposalId);
+          options.push(option);
+          votingPowers.push(votingPower);
+          signatures.push(signature);
+        }
+        return;
+      });
+
+      let result = await guildContract.executeSignedVotesBatches(
+        roots,
+        voters,
+        voteHashes,
+        proofs,
+        proposalIds,
+        options,
+        votingPowers,
+        signatures
+      );
+
+      console.log(result);
+    }
+  };
 
   const handleVoteOnProposal = ({
     hasNoVotingPower,
@@ -118,8 +183,13 @@ const ProposalVoteCard = ({
             isPercent={isPercent}
             voteData={voteData}
             proposalMetadata={proposal?.metadata}
+            offChainVotes={offChainVotes}
           />
-          <VotesChart isPercent={isPercent} voteData={voteData} />
+          {/* <VotesChart
+            isPercent={isPercent}
+            voteData={voteData}
+            offChainVotes={offChainVotes}
+          /> */}
         </VotesContainer>
 
         <UserVote
@@ -128,11 +198,23 @@ const ProposalVoteCard = ({
           userVote={userVote}
           votedOptionLabel={votedOptionLabel}
         />
+        {votes.some(v => v.proposal.id === proposal.id) && (
+          <div
+            style={{
+              marginTop: 16,
+              background: '#303338',
+              padding: 6,
+              borderRadius: 4,
+              fontSize: 12,
+            }}
+          >
+            You have vote stored in vote cart for this proposal
+          </div>
+        )}
         {/* Hide voting options if user has already voted */}
         {isOpen && !userVote?.option && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
-
             {/* Getting the full option keys list but displaying default 0 index option at the bottom */}
             {[...Object.keys(voteData?.options).slice(1), '0'].map(
               optionKey => {
@@ -161,7 +243,6 @@ const ProposalVoteCard = ({
                 );
               }
             )}
-
             <VoteActionButton
               disabled={!selectedOption}
               onClick={() =>
@@ -172,6 +253,12 @@ const ProposalVoteCard = ({
               }
             >
               {t('vote')}
+            </VoteActionButton>
+            <VoteActionButton
+              variant="secondary"
+              onClick={executeOffChainVotes}
+            >
+              Execute off-chain Votes
             </VoteActionButton>
           </ButtonsContainer>
         )}
@@ -187,6 +274,22 @@ const ProposalVoteCard = ({
             selectedOption,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,
+          });
+          setModalOpen(false);
+          setSelectedOption(null);
+        }}
+        onAddToVoteCart={() => {
+          addVote({
+            voter,
+            proposal,
+            selectedOption,
+            votingPower: votingPower.userVotingPower,
+            contractAddress: guildId,
+            optionLabel: getOptionLabel({
+              metadata: proposal?.metadata,
+              optionKey: selectedOption?.toNumber(),
+              t,
+            }),
           });
           setModalOpen(false);
           setSelectedOption(null);

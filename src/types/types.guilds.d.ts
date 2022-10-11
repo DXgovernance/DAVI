@@ -17,6 +17,7 @@ export interface Proposal {
   contractState: ContractState;
   totalVotes: BigNumber[];
   votesOfVoter?: UseProposalVotesOfVoterReturn;
+  metadata?: ProposalMetadata;
 }
 
 export type InitialProposal = Partial<Proposal> & {
