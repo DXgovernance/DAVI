@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useNetwork, useProvider } from 'wagmi';
 import { SHA256, enc } from 'crypto-js';
 import { GuildImplementationType } from 'types/types.guilds.d';
@@ -23,6 +23,7 @@ interface ImplementationTypeConfig {
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
+  loading?: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
@@ -46,15 +47,19 @@ export default function useGuildImplementationTypeConfig(
   const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
 
   const [guildBytecode, setGuildBytecode] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(true);
   const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
+      setLoading(true);
       const btcode = await provider.getCode(guildAddress);
       const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
       setGuildBytecode(hashedBytecode);
+      setLoading(false);
     };
     getBytecode();
-  }, [guildAddress, provider]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [guildAddress]);
 
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
     if (!guildBytecode) return defaultImplementation;
@@ -66,5 +71,5 @@ export default function useGuildImplementationTypeConfig(
     return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode, isLocalhost]);
 
-  return parseConfig(implementationTypeConfig);
+  return { ...parseConfig(implementationTypeConfig), loading };
 }

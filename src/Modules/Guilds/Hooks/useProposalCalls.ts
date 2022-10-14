@@ -29,8 +29,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { chain } = useNetwork();
   const { t } = useTranslation();
   // Used to wait for the bytecode to be fetched
-  const { isSnapshotGuild, isRepGuild } =
-    useGuildImplementationTypeConfig(guildId);
+  const { loading } = useGuildImplementationTypeConfig(guildId);
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
 
@@ -166,8 +165,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
-    isSnapshotGuild,
-    isRepGuild,
+    loading,
   ]);
 
   return {
