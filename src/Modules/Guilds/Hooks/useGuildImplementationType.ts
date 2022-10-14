@@ -23,7 +23,7 @@ interface ImplementationTypeConfig {
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
-  loading?: boolean;
+  loaded?: boolean;
 }
 const parseConfig = (
   config: ImplementationTypeConfig
@@ -47,15 +47,14 @@ export default function useGuildImplementationTypeConfig(
   const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
 
   const [guildBytecode, setGuildBytecode] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loaded, setLoaded] = useState<boolean>(false);
   const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
-      setLoading(true);
       const btcode = await provider.getCode(guildAddress);
       const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
       setGuildBytecode(hashedBytecode);
-      setLoading(false);
+      setLoaded(true);
     };
     getBytecode();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -71,5 +70,5 @@ export default function useGuildImplementationTypeConfig(
     return match ?? defaultImplementation; // default to IERC20Guild
   }, [guildBytecode, isLocalhost]);
 
-  return { ...parseConfig(implementationTypeConfig), loading };
+  return { ...parseConfig(implementationTypeConfig), loaded };
 }

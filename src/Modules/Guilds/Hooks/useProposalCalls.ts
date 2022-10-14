@@ -25,11 +25,12 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
   const votingResults = useVotingResults(guildId, proposalId);
+  console.log({ votingResults });
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
   // Used to wait for the bytecode to be fetched
-  const { loading } = useGuildImplementationTypeConfig(guildId);
+  const { loaded } = useGuildImplementationTypeConfig(guildId);
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
 
@@ -165,9 +166,11 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
-    loading,
+    votingResults.totalLocked,
+    // votingResults.options,
+    loaded,
   ]);
-
+  console.log({ options });
   return {
     options,
   };

@@ -18,7 +18,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
 
   const SNAPSHOT_ID = snapshotId ?? _snapshotId?.toString() ?? null;
 
-  const { isSnapshotGuild, isRepGuild } =
+  const { isSnapshotGuild, isRepGuild, loaded } =
     useGuildImplementationType(guildAddress);
 
   const { data: totalLockedResponse } = useContractRead({
@@ -39,9 +39,13 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     contractAddress: guildTokenAddress,
     snapshotId: SNAPSHOT_ID,
   });
-
+  console.log({ loaded });
   // Return response based on implementation type
-
+  if (!loaded) {
+    return {
+      data: undefined,
+    };
+  }
   if (isRepGuild && isSnapshotGuild) {
     return SNAPSHOT_ID
       ? {
