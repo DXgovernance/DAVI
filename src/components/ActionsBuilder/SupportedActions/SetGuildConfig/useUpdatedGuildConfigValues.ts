@@ -6,7 +6,7 @@ import { fields } from './SetGuildConfigEditor';
 
 const bn = (n: string | number | BigNumber) => BigNumber.from(n);
 
-export const getUpdatedValues = (current, modifyed) => {
+export const getUpdatedValues = (current, modifyed): {} => {
   if (!current || !modifyed) return {};
   return Object.keys(current).reduce((acc, key) => {
     if (!fields.map(f => f.name).includes(key)) return acc;
@@ -22,6 +22,7 @@ export const getUpdatedValues = (current, modifyed) => {
     return acc;
   }, {});
 };
+
 export const useUpdatedGuildConfigValues = newValues => {
   const { guildId } = useTypedParams();
   const { data: currentGuildConfig } = useGuildConfig(guildId);
@@ -30,8 +31,10 @@ export const useUpdatedGuildConfigValues = newValues => {
     const {
       _proposalTime: proposalTime,
       _timeForExecution: timeForExecution,
-      _votingPowerForProposalExecution: votingPowerForProposalExecution,
-      _votingPowerForProposalCreation: votingPowerForProposalCreation,
+      _votingPowerPercentageForProposalExecution:
+        votingPowerPercentageForProposalExecution,
+      _votingPowerPercentageForProposalCreation:
+        votingPowerPercentageForProposalCreation,
       _voteGas: voteGas,
       _maxGasPrice: maxGasPrice,
       _maxActiveProposals: maxActiveProposals,
@@ -44,8 +47,8 @@ export const useUpdatedGuildConfigValues = newValues => {
     return getUpdatedValues(currentGuildConfig, {
       proposalTime,
       timeForExecution,
-      votingPowerForProposalExecution,
-      votingPowerForProposalCreation,
+      votingPowerPercentageForProposalExecution,
+      votingPowerPercentageForProposalCreation,
       voteGas,
       maxGasPrice,
       maxActiveProposals,

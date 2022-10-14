@@ -9,14 +9,12 @@ const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { args } = decodedCall;
 
   const updatedValues = useUpdatedGuildConfigValues(args);
-  console.log({ updatedValues });
   return (
     <div>
       Set Guild Config{' -> '}
       {Object.keys(updatedValues ?? {})?.map((key, idx, arr) => {
         const field = fields.find(f => f.name === key);
         const type = field?.type;
-        console.log(type);
         const value =
           type === 'number'
             ? BigNumber.from(updatedValues[key] ?? 0).toNumber()

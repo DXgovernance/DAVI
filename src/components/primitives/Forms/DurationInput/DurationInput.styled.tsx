@@ -41,10 +41,11 @@ export const StyledButton = styled(Button)`
   width: 150px;
 `;
 
-export const TransparentButton = styled(Button)`
+export const TransparentButton = styled(Button)<{ isInvalid?: boolean }>`
   width: 100%;
   min-height: 37px;
   background-color: transparent;
-  justify-content: flex-start;
+  justify-content: space-between;
   text-align: left;
+  border: 1px solid ${({ isInvalid }) => (isInvalid ? 'red' : 'inherit')};
 `;

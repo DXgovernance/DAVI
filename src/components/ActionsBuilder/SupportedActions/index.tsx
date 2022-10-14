@@ -7,7 +7,7 @@ import {
 } from 'components/ActionsBuilder/types';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 import ERC20 from 'contracts/ERC20.json';
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
@@ -95,7 +95,7 @@ export const supportedActions: Record<
   },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
-const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
+const BaseERC20GuildContract = new utils.Interface(BaseERC20Guild.abi);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver.abi);
 const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
@@ -198,18 +198,18 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
   },
   [SupportedAction.SET_GUILD_CONFIG]: {
     id: '',
-    contract: ERC20GuildContract,
+    contract: BaseERC20GuildContract,
     decodedCall: {
       from: '',
       callType: SupportedAction.SET_GUILD_CONFIG,
-      function: ERC20GuildContract.getFunction('setConfig'),
+      function: BaseERC20GuildContract.getFunction('setConfig'),
       to: '',
       value: BigNumber.from(0),
       args: {
         _proposalTime: '',
         _timeForExecution: '',
-        _votingPowerForProposalExecution: '',
-        _votingPowerForProposalCreation: '',
+        _votingPowerPercentageForProposalExecution: '',
+        _votingPowerPercentageForProposalCreation: '',
         _voteGas: '',
         _maxGasPrice: '',
         _maxActiveProposals: '',

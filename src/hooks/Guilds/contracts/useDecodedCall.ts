@@ -9,7 +9,7 @@ import ERC20 from 'contracts/ERC20.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 
 import {
   ApproveSendTokens,
@@ -52,7 +52,7 @@ const knownSigHashes: Record<string, { callType: SupportedAction; ABI: any }> =
     },
     [SET_GUILD_CONFIG_SIGNATURE]: {
       callType: SupportedAction.SET_GUILD_CONFIG,
-      ABI: ERC20Guild.abi,
+      ABI: BaseERC20Guild.abi,
     },
   };
 

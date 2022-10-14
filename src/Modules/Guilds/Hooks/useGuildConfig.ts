@@ -109,8 +109,6 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
     };
   }, [data]);
 
-  console.log({ lockTime: transformedData?.lockTime?.toString() });
-
   return {
     data: transformedData
       ? { ...transformedData, votingPowerForProposalExecution, token }
