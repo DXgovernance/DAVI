@@ -4,7 +4,7 @@ import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { StyledIcon } from 'components/primitives/StyledIcon';
-import { MdOutlineSettings } from 'react-icons/md';
+import { AiFillSetting } from 'react-icons/ai';
 import {
   ActionsButton,
   ButtonDetail,
@@ -90,11 +90,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
           }
         >
           <ButtonLabel>
-            {/* <StyledIcon
-              src={() => <MdOutlineSettings color="black" size={18} />}
-            /> */}
-            <StyledIcon src={MdOutlineSettings} />
-            {/* <MdOutlineSettings color="black" size={18} /> */}
+            <StyledIcon src={() => <AiFillSetting size={20} />} />
             {t('setGuildConfig')}
           </ButtonLabel>
         </ActionsButton>
