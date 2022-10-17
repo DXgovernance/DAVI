@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers';
 import { ActionViewProps } from '..';
 import { duration } from 'moment';
 import { useUpdatedGuildConfigValues } from './useUpdatedGuildConfigValues';
-import { fields } from './SetGuildConfigEditor';
+import { FIELDS } from './constants';
 
 const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
   const { args } = decodedCall;
@@ -13,7 +13,7 @@ const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
     <div>
       Set Guild Config{' -> '}
       {Object.keys(updatedValues ?? {})?.map((key, idx, arr) => {
-        const field = fields.find(f => f.name === key);
+        const field = FIELDS.find(f => f.name === key);
         const type = field?.type;
         const value =
           type === 'number'
@@ -23,12 +23,12 @@ const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
                 'seconds'
               ).humanize();
         return (
-          <>
+          <div key={key}>
             <span>
               {key} {'='} {value}
             </span>
             {idx !== arr.length - 1 && <span> / </span>}
-          </>
+          </div>
         );
       })}
     </div>

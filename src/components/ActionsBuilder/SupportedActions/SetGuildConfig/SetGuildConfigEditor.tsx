@@ -3,7 +3,6 @@ import { ActionEditorProps } from '..';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { Input } from 'components/primitives/Forms/Input';
-import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
 import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { MdCached } from 'react-icons/md';
@@ -16,81 +15,13 @@ import {
 import { useTranslation } from 'react-i18next';
 import { ErrorLabel as Error } from 'components/primitives/Forms/ErrorLabel';
 import { Controller, useForm } from 'react-hook-form';
-import { getUpdatedValues } from './useUpdatedGuildConfigValues';
-
-export const bn = (n: string | number | BigNumber) => BigNumber.from(n);
-
-export const pickValue = (
-  current: BigNumber,
-  modifyed: BigNumber
-): BigNumber => {
-  if (!!current && BigNumber.isBigNumber(current)) {
-    if (
-      !!modifyed &&
-      BigNumber.isBigNumber(modifyed) &&
-      !bn(modifyed).eq(current)
-    ) {
-      return bn(modifyed);
-    }
-    return bn(current);
-  } else if (!!modifyed && BigNumber.isBigNumber(modifyed)) {
-    return bn(modifyed);
-  }
-  return BigNumber.from(0);
-};
-
-export interface Data {
-  proposalTime: BigNumber;
-  timeForExecution: BigNumber;
-  votingPowerPercentageForProposalExecution: BigNumber;
-  votingPowerPercentageForProposalCreation: BigNumber;
-  voteGas: BigNumber;
-  maxGasPrice: BigNumber;
-  maxActiveProposals: BigNumber;
-  lockTime: BigNumber;
-  minimumMembersForProposalCreation: BigNumber;
-  minimumTokensLockedForProposalCreation: BigNumber;
-}
-type ControlField =
-  | 'votingPowerPercentageForProposalExecution'
-  | 'votingPowerPercentageForProposalCreation'
-  | 'voteGas'
-  | 'maxGasPrice'
-  | 'maxActiveProposals'
-  | 'minimumMembersForProposalCreation'
-  | 'minimumTokensLockedForProposalCreation'
-  | 'proposalTime'
-  | 'timeForExecution'
-  | 'lockTime';
-
-export const fields = [
-  { name: 'proposalTime', label: 'Proposal time', type: 'duration' },
-  { name: 'timeForExecution', label: 'Time for execution', type: 'duration' },
-  {
-    name: 'votingPowerPercentageForProposalExecution',
-    label: 'Voting power percentage for proposal execution',
-    type: 'number',
-  }, // porcentage
-  {
-    name: 'votingPowerPercentageForProposalCreation',
-    label: 'Voting power percentage for proposal creation',
-    type: 'number',
-  },
-  { name: 'voteGas', label: 'Vote gas', type: 'number' },
-  { name: 'maxGasPrice', label: 'Max gas price', type: 'number' },
-  { name: 'maxActiveProposals', label: 'Max active proposals', type: 'number' },
-  { name: 'lockTime', label: 'Lock time', type: 'duration' },
-  {
-    name: 'minimumMembersForProposalCreation',
-    label: 'Minimum members for proposal creation',
-    type: 'number',
-  },
-  {
-    name: 'minimumTokensLockedForProposalCreation',
-    label: 'Minimum tokens locked for proposal creation',
-    type: 'number',
-  },
-];
+import {
+  bn,
+  pickUpdatedOrDefaultValue as pickValue,
+  getUpdatedValues,
+} from './utils';
+import { FIELDS } from './constants';
+import { SetGuildConfigFields, ControlField } from './types';
 
 const SetGuildConfigEditor: FC<ActionEditorProps> = ({
   decodedCall,
@@ -101,7 +32,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
   const { t } = useTranslation();
   const [noValueUpdatedError, setNoValueUpdatedError] = useState(false);
 
-  const parsedData = useMemo<Data>(() => {
+  const parsedData = useMemo<SetGuildConfigFields>(() => {
     if (!decodedCall) return null;
     const {
       _proposalTime: decodedCallProposalTime,
@@ -168,9 +99,14 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     };
   }, [decodedCall, currentGuildConfig]);
 
-  const { control, handleSubmit, setValue } = useForm({
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     resolver: validateSetGuildConfig,
-    // context: { t, activeTab },
+    context: { t },
     defaultValues: {
       proposalTime: parsedData.proposalTime,
       timeForExecution: parsedData.timeForExecution,
@@ -189,7 +125,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     },
   });
 
-  const submitAction = (values: Data) => {
+  const submitAction = (values: SetGuildConfigFields) => {
     const {
       proposalTime,
       timeForExecution,
@@ -240,14 +176,17 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
 
   return (
     <form onSubmit={handleSubmit(submitAction, console.error)}>
-      {fields.map(f => {
+      {FIELDS.map(f => {
         return (
           <div key={f.name}>
             <Controller
               name={f.name as ControlField}
               control={control}
-              render={({ field: { ref, ...field }, fieldState }) => {
-                const { invalid, error } = fieldState;
+              render={({
+                field: { ref, ...field },
+                fieldState: { invalid },
+              }) => {
+                const error = errors[f.name];
                 const valueChanged = !bn(field.value).eq(
                   bn(currentGuildConfig[f.name])
                 );
@@ -267,7 +206,10 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                               valueChanged ? (
                                 <Button
                                   variant="minimal"
-                                  onClick={() => restoreInputValue(field.name)}
+                                  onClick={e => {
+                                    e.stopPropagation();
+                                    restoreInputValue(field.name);
+                                  }}
                                 >
                                   <MdCached size={20} />
                                 </Button>
@@ -295,8 +237,8 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                             }
                           />
                         )}
-                        {invalid && !!error && <Error>{error.message}</Error>}
                       </ControlRow>
+                      {invalid && !!error && <Error>{error}</Error>}
                     </Control>
                   </>
                 );
@@ -306,7 +248,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
         );
       })}
       {noValueUpdatedError && (
-        <Error>No value has been updated from default config</Error>
+        <Error>{t('noValueHasBeenUpdatedFromCurrentGuildConfig')}</Error>
       )}
       <Button m="1rem 0 0" fullWidth type="submit">
         {t('saveAction')}

@@ -1,21 +1,23 @@
-import { Data, bn } from './SetGuildConfigEditor';
-interface SetGuildConfigValues extends Data {}
+import { TFunction } from 'react-i18next';
+import { SetGuildConfigFields } from './types';
+import { bn } from './utils';
+import { removeNullValues } from 'utils/object';
+
+interface Context {
+  t: TFunction;
+}
+
+interface SetGuildConfigValues extends SetGuildConfigFields {}
 
 const validateSetGuildConfig = (
-  values: SetGuildConfigValues
-  // { t }: Context
+  values: SetGuildConfigValues,
+  { t }: Context
 ) => {
   const {
     proposalTime,
-    // timeForExecution,
     votingPowerPercentageForProposalExecution,
-    // votingPowerPercentageForProposalCreation,
     voteGas,
-    // maxGasPrice,
-    // maxActiveProposals,
     lockTime,
-    // minimumMembersForProposalCreation,
-    // minimumTokensLockedForProposalCreation,
   } = values;
 
   let errors = {
@@ -31,30 +33,25 @@ const validateSetGuildConfig = (
     minimumTokensLockedForProposalCreation: null,
   };
   if (bn(proposalTime).toNumber() <= 0) {
-    errors.proposalTime = 'proposal time has to be more than 0';
+    errors.proposalTime = t('proposalTimeHasToBeMoreThanZero');
   }
+
   if (bn(lockTime).lt(bn(proposalTime))) {
-    errors.lockTime =
-      'ERC20Guild: lockTime has to be higher or equal to proposalTime';
+    errors.lockTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
   }
 
   if (bn(votingPowerPercentageForProposalExecution).lte(bn(0))) {
-    errors.votingPowerPercentageForProposalExecution =
-      'ERC20Guild: voting power for execution has to be more than 0';
+    errors.votingPowerPercentageForProposalExecution = t(
+      'votingPowerPercentageForProposalExecutionHasToBeMoreThanZero'
+    );
   }
 
   if (bn(voteGas).gte(117001)) {
-    errors.voteGas =
-      'ERC20Guild: vote gas has to be equal or lower than 117000';
+    errors.voteGas = t('voteGasHasToBeEqualOrLowerThan117000');
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };

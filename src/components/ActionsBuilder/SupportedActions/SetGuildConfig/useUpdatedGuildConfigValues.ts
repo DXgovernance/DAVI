@@ -1,29 +1,23 @@
 import { useMemo } from 'react';
-import { BigNumber } from 'ethers';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { fields } from './SetGuildConfigEditor';
+import { getUpdatedValues } from './utils';
+import { BigNumber } from 'ethers';
 
-const bn = (n: string | number | BigNumber) => BigNumber.from(n);
+interface ArgConfigValues {
+  _proposalTime?: BigNumber;
+  _timeForExecution?: BigNumber;
+  _votingPowerPercentageForProposalExecution?: BigNumber;
+  _votingPowerPercentageForProposalCreation?: BigNumber;
+  _voteGas?: BigNumber;
+  _maxGasPrice?: BigNumber;
+  _maxActiveProposals?: BigNumber;
+  _lockTime?: BigNumber;
+  _minimumMembersForProposalCreation?: BigNumber;
+  _minimumTokensLockedForProposalCreation?: BigNumber;
+}
 
-export const getUpdatedValues = (current, modifyed): {} => {
-  if (!current || !modifyed) return {};
-  return Object.keys(current).reduce((acc, key) => {
-    if (!fields.map(f => f.name).includes(key)) return acc;
-    const currValue = bn(current[key] || 0);
-    const newValue = bn(modifyed[key] || 0);
-
-    if (!currValue.eq(newValue)) {
-      return {
-        ...acc,
-        [key]: newValue,
-      };
-    }
-    return acc;
-  }, {});
-};
-
-export const useUpdatedGuildConfigValues = newValues => {
+export const useUpdatedGuildConfigValues = (newValues: ArgConfigValues) => {
   const { guildId } = useTypedParams();
   const { data: currentGuildConfig } = useGuildConfig(guildId);
   const parsedData = useMemo(() => {
