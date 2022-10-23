@@ -100,7 +100,7 @@
     "functions": [
       {
         "title": "Vote For proposal",
-        "functionName": "vote",
+        "functionName": "voteFor",
         "params": [
           {
             "type": "bytes32",
@@ -143,7 +143,7 @@
       },
       {
         "title": "Vote Against proposal",
-        "functionName": "vote",
+        "functionName": "voteAgainst",
         "params": [
           {
             "type": "bytes32",
