@@ -9,7 +9,7 @@ export const IconRight = ({
   setDisabledState,
   type,
 }) => {
-  if (defaultValue) {
+  if (defaultValue && disabled) {
     return (
       <ClickableIcon
         aria-label="enable"
