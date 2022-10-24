@@ -24,6 +24,7 @@ import {
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
+import { preventEmptyString } from 'utils';
 
 interface ActionViewProps {
   call?: Call;
@@ -78,8 +79,9 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
 
-    const hasValueTransferOnContractCall =
-      decodedCall?.args && decodedCall?.value?.gt(0);
+    let hasValueTransferOnContractCall: boolean =
+      decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
+
     if (!decodedCall || hasValueTransferOnContractCall)
       return CardStatus.warning;
 

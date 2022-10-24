@@ -18,7 +18,7 @@ import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
-import { ZERO_ADDRESS, ZERO_HASH } from 'utils';
+import { preventEmptyString, ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'styled-components';
 import { toast } from 'react-toastify';
@@ -51,6 +51,7 @@ const CreateProposalPage: React.FC = () => {
   const { t } = useTranslation();
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
+  const [isCreatingProposal, setIsCreatingProposal] = useState(false);
   const [title, setTitle] = useState('');
   const [options, setOptions] = useState<Option[]>([
     {
@@ -123,6 +124,7 @@ const CreateProposalPage: React.FC = () => {
 
   const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
+    setIsCreatingProposal(true);
     if (!skipUploadToIPFs) {
       try {
         contentHash = await uploadToIPFS();
@@ -137,7 +139,7 @@ const CreateProposalPage: React.FC = () => {
     setIsIpfsErrorModalOpen(false);
 
     const encodedOptions = bulkEncodeCallsFromOptions(options);
-    const totalActions = encodedOptions.length;
+    const totalOptions = encodedOptions.length;
     const maxActionsPerOption = encodedOptions.reduce(
       (acc, cur) => (acc < cur.actions.length ? cur.actions.length : acc),
       0
@@ -159,7 +161,7 @@ const CreateProposalPage: React.FC = () => {
 
     const toArray = calls.map(call => call.to);
     const dataArray = calls.map(call => call.data);
-    const valueArray = calls.map(call => call.value);
+    const valueArray = calls.map(call => preventEmptyString(call.value));
 
     if (
       toArray.length === 0 &&
@@ -175,7 +177,7 @@ const CreateProposalPage: React.FC = () => {
       toArray,
       dataArray,
       valueArray,
-      totalActions,
+      totalOptions,
       title,
     });
 
@@ -189,13 +191,14 @@ const CreateProposalPage: React.FC = () => {
             toArray,
             dataArray,
             valueArray,
-            totalActions,
+            totalOptions,
             title,
             `0x${contentHash}`
           );
         },
         true,
         err => {
+          setIsCreatingProposal(false);
           if (!err) {
             editMode && clear();
             navigate(`/${chain}/${guildId}`);
@@ -272,7 +275,7 @@ const CreateProposalPage: React.FC = () => {
           <StyledButton
             onClick={handleCreateProposal}
             variant="secondary"
-            disabled={!isValid}
+            disabled={!isValid || isCreatingProposal}
             data-testid="create-proposal-action-button"
           >
             {t('createProposal')}

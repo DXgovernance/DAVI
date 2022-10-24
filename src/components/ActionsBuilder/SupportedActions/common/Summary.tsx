@@ -3,7 +3,7 @@ import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getNetworkById, MAINNET_ID } from 'utils';
+import { getNetworkById, MAINNET_ID, preventEmptyString } from 'utils';
 import { useNetwork } from 'wagmi';
 import { Segment } from './infoLine';
 import {
@@ -19,7 +19,11 @@ import { SupportedAction } from 'components/ActionsBuilder/types';
 
 const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
   const { t } = useTranslation();
-  const parsedValueToString = useBigNumberToString(decodedCall?.value, 18);
+
+  const parsedValueToString = useBigNumberToString(
+    preventEmptyString(decodedCall?.value),
+    18
+  );
   const { ensName, imageUrl } = useENSAvatar(decodedCall.to, MAINNET_ID);
   const { chain } = useNetwork();
   const nativeTokenSymbol = useMemo(() => {

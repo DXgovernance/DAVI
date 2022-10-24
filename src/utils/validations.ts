@@ -6,13 +6,13 @@ export const isValidProposal = ({
   toArray,
   dataArray,
   valueArray,
-  totalActions,
+  totalOptions,
   title,
 }: {
   toArray: string[];
   dataArray: string[];
   valueArray: BigNumber[];
-  totalActions: number;
+  totalOptions: number;
   title: string;
 }): { isValid: boolean; error?: string } => {
   if (!title) {
@@ -21,7 +21,7 @@ export const isValidProposal = ({
       error: 'Title is required',
     };
   }
-  if (totalActions === 0) {
+  if (totalOptions === 0) {
     return {
       isValid: false,
       error: 'At least one Option is required',

@@ -6,7 +6,7 @@
   },
   {
     "type": "SnapshotRepERC20Guild",
-    "bytecode_hash": "0x2ba1d432b391691984f2eed298f159ee3c5236776ed0e0992f5d67bad2a597f4",
+    "bytecode_hash": "0xb33418b664bfb6eba3ea37a77429d95daee4f0ab24f47ee63c4669340c4aae5a",
     "features": [
       "REP",
       "SNAPSHOT"
@@ -14,7 +14,7 @@
   },
   {
     "type": "SnapshotERC20Guild",
-    "bytecode_hash": "0xe278389dd87699aee2978512d057820b158ce85405656f4b16ed5ae18c30ea4d",
+    "bytecode_hash": "0x6805b93ccc51bb989622d59a092a552a1d86e11cc0df3740354dfbfa714cb837",
     "features": [
       "SNAPSHOT"
     ]

@@ -1,8 +1,9 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
+import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
 
 export type GuildConfigProps = {
   name: string;
@@ -15,13 +16,16 @@ export type GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
+  votingPowerPercentageForProposalExecution: BigNumber;
+  votingPowerPercentageForProposalCreation: BigNumber;
 };
 
-export const useGuildConfig = (guildAddress: string) => {
+export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
   const erc20GuildContract = {
     addressOrName: guildAddress,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
   };
+
   const { data, ...rest } = useContractReads({
     contracts: [
       {
@@ -50,19 +54,28 @@ export const useGuildConfig = (guildAddress: string) => {
       },
       {
         ...erc20GuildContract,
-        functionName: 'getVotingPowerForProposalExecution',
-      },
-      {
-        ...erc20GuildContract,
         functionName: 'getTokenVault', // Get the address of the token vault
       },
       {
         ...erc20GuildContract,
         functionName: 'getLockTime', // Get the lockTime (seconds)
       },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalExecution',
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalCreation',
+      },
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
+  const { data: votingPowerForProposalExecution } =
+    useVotingPowerForProposalExecution({
+      contractAddress: guildAddress,
+      proposalId,
+    });
   const transformedData = useMemo(() => {
     if (!data) return undefined;
 
@@ -73,10 +86,12 @@ export const useGuildConfig = (guildAddress: string) => {
       timeForExecution,
       maxActiveProposals,
       votingPowerForProposalCreation,
-      votingPowerForProposalExecution,
       tokenVault,
       lockTime,
+      votingPowerPercentageForProposalExecution,
+      votingPowerPercentageForProposalCreation,
     ] = data;
+
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),
@@ -90,16 +105,23 @@ export const useGuildConfig = (guildAddress: string) => {
       votingPowerForProposalCreation: votingPowerForProposalCreation
         ? BigNumber.from(votingPowerForProposalCreation)
         : undefined,
-      votingPowerForProposalExecution: votingPowerForProposalExecution
-        ? BigNumber?.from(votingPowerForProposalExecution)
-        : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      votingPowerPercentageForProposalExecution:
+        votingPowerPercentageForProposalExecution
+          ? BigNumber?.from(votingPowerPercentageForProposalExecution)
+          : undefined,
+      votingPowerPercentageForProposalCreation:
+        votingPowerPercentageForProposalCreation
+          ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
     };
   }, [data]);
 
   return {
-    data: transformedData ? { ...transformedData, token } : undefined,
+    data: transformedData
+      ? { ...transformedData, votingPowerForProposalExecution, token }
+      : undefined,
     ...rest,
   };
 };

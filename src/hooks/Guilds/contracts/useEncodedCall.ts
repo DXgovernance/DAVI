@@ -6,6 +6,7 @@ import {
 } from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';
 import { utils, BigNumber } from 'ethers';
+import { preventEmptyString } from 'utils';
 
 export const encodeCall = (
   decodedCall: DecodedCall,
@@ -50,7 +51,7 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
             to: decodedAction.approval?.token, // Token address
             data: encodeApprovalCall(
               decodedAction.decodedCall.to, // Spender: Contract we are doing the actual spending call to
-              decodedAction.approval?.amount // Value: Amount of tokens to approve
+              preventEmptyString(decodedAction.approval?.amount) // Value: Amount of tokens to approve
             ),
             value: BigNumber.from('0'), // No native tokens to send on approval call
           };

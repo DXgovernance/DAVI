@@ -1,4 +1,5 @@
 import { Loading } from 'components/primitives/Loading';
+import { BigNumber } from 'ethers';
 import {
   ActionCount,
   ActionCountWrapper,
@@ -13,6 +14,8 @@ import { useTranslation } from 'react-i18next';
 import { ExpandedActionsList } from '../ExpandedActionsList';
 import { ProposalCardWinningOptionProps } from './types';
 
+const bn = (n?: string | number | BigNumber) => BigNumber.from(n ?? 0);
+
 const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
   options,
 }) => {
@@ -23,9 +26,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
     if (!options) return null;
     return options?.reduce(
       (acc, option) =>
-        option?.totalVotes?.toBigInt() > acc?.totalVotes.toBigInt()
-          ? option
-          : acc,
+        bn(option?.totalVotes).gt(bn(acc?.totalVotes)) ? option : acc,
       options[0]
     );
   }, [options]);

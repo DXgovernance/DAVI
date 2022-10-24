@@ -3,7 +3,7 @@ import Permissions from './SetPermissionsEditor';
 import { render } from 'utils/tests.js';
 import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
@@ -29,7 +29,7 @@ jest.mock('wagmi', () => ({
 
 // Mocked variables
 
-const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
+const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 const functionNameMock = 'test';
 const functionSignatureMock = '0x9c22ff5f';
@@ -40,7 +40,7 @@ const tokenAddresMock = '0xD899Be87df2076e0Be28486b60dA406Be6757AfC';
 const emptyDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
-  function: ERC20GuildContract.getFunction('setPermission'),
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
   to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
   value: BigNumber.from(0),
   args: {
@@ -59,7 +59,7 @@ const emptyDecodedCallMock: DecodedCall = {
 const completeDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
-  function: ERC20GuildContract.getFunction('setPermission'),
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
   to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
   value: BigNumber.from(0),
   args: {
@@ -227,6 +227,84 @@ describe(`Set Permissions editor`, () => {
       );
 
       const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      fireEvent.click(functionsCallTab);
+
+      expect(
+        screen.getByRole('textbox', { name: /to address input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /function signature input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /amount input/i })
+      ).toBeInTheDocument();
+    });
+
+    it(`Can switch back an forth a couple of times with data`, () => {
+      render(
+        <Permissions
+          decodedCall={completeDecodedCallMock}
+          onSubmit={jest.fn()}
+        />
+      );
+
+      const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      const assetTransferTab = screen.getByTestId(`asset-transfer-tab`);
+
+      fireEvent.click(functionsCallTab);
+      fireEvent.click(assetTransferTab);
+      fireEvent.click(functionsCallTab);
+
+      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /to address input/i,
+      });
+
+      const functionNameElement: HTMLInputElement = screen.getByRole(
+        'textbox',
+        { name: /function signature input/i }
+      );
+
+      const customAmountElement: HTMLInputElement = screen.getByRole(
+        'textbox',
+        {
+          name: /amount input/i,
+        }
+      );
+
+      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(functionNameElement.value).toBe(functionNameMock);
+      expect(customAmountElement.value).toBe('111.0');
+
+      expect(
+        screen.getByRole('textbox', { name: /to address input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /function signature input/i })
+      ).toBeInTheDocument();
+
+      expect(
+        screen.getByRole('textbox', { name: /amount input/i })
+      ).toBeInTheDocument();
+    });
+
+    it(`Can switch back an forth a couple of times without data`, () => {
+      render(
+        <Permissions decodedCall={emptyDecodedCallMock} onSubmit={jest.fn()} />
+      );
+
+      const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      const assetTransferTab = screen.getByTestId(`asset-transfer-tab`);
+
+      fireEvent.click(functionsCallTab);
+      fireEvent.click(assetTransferTab);
+
+      expect(
+        screen.getByRole('textbox', { name: /asset picker/i })
+      ).toBeInTheDocument();
+
       fireEvent.click(functionsCallTab);
 
       expect(

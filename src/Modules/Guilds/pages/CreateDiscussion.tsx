@@ -42,11 +42,11 @@ const CreateDiscussionPage: React.FC = () => {
   const [title, setTitle] = useState('');
 
   useEffect(() => {
-    isConnected(orbis.current).then(res => {
+    isConnected(orbis).then(res => {
       if (res) {
-        console.log('Already connected with: ', res.did);
+        console.log('Already connected with: ', res);
       } else {
-        connect(orbis.current).then(did => {
+        connect(orbis).then(did => {
           setUser(did);
         });
       }
@@ -74,7 +74,7 @@ const CreateDiscussionPage: React.FC = () => {
 
   const handleCreateDiscussion = async (post: DiscussionContent) => {
     if (postTemplate(post)) {
-      const res = await createPost(orbis.current, post);
+      const res = await createPost(orbis, post);
       handleBack();
       return {
         res,
