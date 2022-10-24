@@ -20,7 +20,7 @@ export const MAX_BLOCKS_PER_EVENTS_FETCH: number = 1000000;
 
 export const CACHE_METADATA_ENS = 'cache.dxvote.eth';
 
-const defaultAlchemyKey = '7i7fiiOx1b7bGmgWY_oI9twyQBCsuXKC';
+const defaultAlchemyKey = 'FvNKXPCxtzFYrtP4r45pmtxOR0AMCtQv';
 
 export const DISCOURSE_URL_ROOT = 'https://daotalk.org';
 

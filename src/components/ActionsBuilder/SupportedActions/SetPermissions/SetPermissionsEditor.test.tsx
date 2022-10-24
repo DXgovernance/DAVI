@@ -3,7 +3,7 @@ import Permissions from './SetPermissionsEditor';
 import { render } from 'utils/tests.js';
 import { DecodedCall } from '../../types';
 import { SupportedAction } from '../../types';
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
@@ -39,7 +39,7 @@ jest.mock('wagmi', () => ({
 
 // Mocked variables
 
-const ERC20GuildContract = new utils.Interface(ERC20Guild.abi);
+const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 const functionNameMock = 'test';
 const functionSignatureMock = '0x9c22ff5f';
@@ -50,7 +50,7 @@ const tokenAddresMock = '0xD899Be87df2076e0Be28486b60dA406Be6757AfC';
 const emptyDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
-  function: ERC20GuildContract.getFunction('setPermission'),
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
   to: tokenAddresMock,
   value: BigNumber.from(0),
   args: {
@@ -69,7 +69,7 @@ const emptyDecodedCallMock: DecodedCall = {
 const completeDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
-  function: ERC20GuildContract.getFunction('setPermission'),
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
   to: tokenAddresMock,
   value: BigNumber.from(0),
   args: {
@@ -88,7 +88,7 @@ const completeDecodedCallMock: DecodedCall = {
 const decodedCallMockWithoutENSName: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
-  function: ERC20GuildContract.getFunction('setPermission'),
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
   to: tokenAddresMock,
   value: BigNumber.from(0),
   args: {

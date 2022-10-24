@@ -14,8 +14,8 @@ const ProposalCardActions = ({
     [userAddress, proposalCreator]
   );
   const hasVoted = useMemo(
-    () => votesOfVoter?.action !== null && votesOfVoter?.votingPower !== null,
-    [votesOfVoter?.votingPower, votesOfVoter?.action]
+    () => votesOfVoter?.option !== null && votesOfVoter?.votingPower !== null,
+    [votesOfVoter?.votingPower, votesOfVoter?.option]
   );
 
   return (

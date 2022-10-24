@@ -35,9 +35,6 @@ jobs:
         run: yarn
 
       - name: Build dapp
-        env:
-          REACT_APP_ANALYTICS_DOMAIN: ${{ secrets.ANALYTICS_DOMAIN }}
-          REACT_APP_SITE_ID: ${{ secrets.SITE_ID }}
         run: CI=false yarn build
 
       - name: Archive artifacts
