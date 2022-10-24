@@ -244,7 +244,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         {...field}
                         isInvalid={invalid && !!error}
                         name="to-address"
-                        aria-label="to address input"
+                        ariaLabel="to address input"
                         placeholder={t('ethereumAddress')}
                       />
                     </ControlRow>

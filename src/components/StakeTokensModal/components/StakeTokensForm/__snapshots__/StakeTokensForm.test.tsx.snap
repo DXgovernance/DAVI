@@ -80,6 +80,25 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   margin-left: 0.3rem;
 }
 
+.c15 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -117,25 +136,6 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 
 .c17:active:enabled {
   border: 1px solid #303338;
-}
-
-.c15 {
-  box-sizing: 'border-box';
-  min-width: 0;
-  margin: 0;
-  padding: 0;
-}
-
-.c16 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  cursor: pointer;
 }
 
 .c0 {

@@ -77,6 +77,7 @@ export interface InputProps<T>
   textAlign?: string;
   muted?: boolean;
   defaultValue?: string;
+  ariaLabel?: string;
 }
 
 export const Input: React.FC<InputProps<any>> = ({

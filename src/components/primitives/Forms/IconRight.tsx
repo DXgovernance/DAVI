@@ -1,5 +1,12 @@
+import styled from 'styled-components';
 import { FiUnlock, FiX } from 'react-icons/fi';
-import { ClickableIcon } from './AddressInput';
+import { Box } from 'components/primitives/Layout/Box';
+
+const ClickableIcon = styled(Box)`
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+`;
 
 export const IconRight = ({
   disabled,

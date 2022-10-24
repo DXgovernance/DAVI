@@ -1,24 +1,17 @@
-import styled from 'styled-components';
 import { Input, InputProps } from 'components/primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
-import { Box } from 'components/primitives/Layout/Box';
-import { IconRight } from './IconRight';
+import { IconRight } from '../IconRight';
 import { useState } from 'react';
 
-export const ClickableIcon = styled(Box)`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
-
-export const AddressInput: React.FC<InputProps<string>> = ({
+const AddressInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   isInvalid,
   disabled = false,
   defaultValue,
+  ariaLabel,
   ...rest
 }) => {
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
@@ -50,6 +43,9 @@ export const AddressInput: React.FC<InputProps<string>> = ({
       iconRight={<IconRight {...iconRightProps} />}
       onChange={e => onChange(e.target.value)}
       isInvalid={isInvalid}
+      aria-label={ariaLabel ? ariaLabel : 'address input'}
     />
   );
 };
+
+export default AddressInput;
