@@ -1,5 +1,4 @@
 import { BigNumber } from 'ethers';
-import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
 import { fireEvent } from '@testing-library/react';
 import ERC20TransferEditor from './ERC20TransferEditor';
@@ -7,16 +6,14 @@ import {
   erc20TransferDecodedCallMock,
   erc20TransferEmptyDecodedCallMock,
 } from './fixtures';
+import { MOCK_ADDRESS, MOCK_ENS_NAME } from 'hooks/Guilds/ens/fixtures';
 
 const mockBigNumber = BigNumber.from(100000000);
-let mockUseENSNameReturn = { data: 'test.eth' };
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
-    avatarUri: 'test',
-    imageUrl: 'test',
-    ensName: 'test.eth',
+    imageUrl: 'wagmi',
   }),
 }));
 
@@ -30,12 +27,9 @@ jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
 }));
 
 const mockChainId = 123456;
-const mockAddress = ZERO_ADDRESS;
 jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: { id: mockChainId } }),
-  useAccount: () => ({ address: mockAddress }),
-  useEnsAddress: () => ({ data: '0x0000000000000000000000000000000000000000' }),
-  useEnsName: () => mockUseENSNameReturn,
+  useAccount: () => ({ address: MOCK_ADDRESS }),
 }));
 
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
@@ -50,6 +44,17 @@ jest.mock('hooks/Guilds/erc20/useAllERC20Balances', () => ({
   }),
 }));
 
+jest.mock('hooks/Guilds/ens/useENS', () => ({
+  __esModule: true,
+  default: (value: string) => {
+    if (value === MOCK_ENS_NAME || value === MOCK_ADDRESS) {
+      return { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
+    } else {
+      return { name: null, address: value };
+    }
+  },
+}));
+
 describe('ERC20TransferEditor', () => {
   it('Should match snapshot', () => {
     const { container } = render(
@@ -62,7 +67,6 @@ describe('ERC20TransferEditor', () => {
   });
 
   it('Should match snapshot with an address without ENS name', () => {
-    mockUseENSNameReturn = { data: null };
     const { container } = render(
       <ERC20TransferEditor
         decodedCall={erc20TransferDecodedCallMock}
@@ -70,7 +74,6 @@ describe('ERC20TransferEditor', () => {
       />
     );
     expect(container).toMatchSnapshot();
-    mockUseENSNameReturn = { data: 'test.eth' };
   });
 
   it('Should match snapshot with default values', () => {
@@ -105,7 +108,7 @@ describe('ERC20TransferEditor', () => {
       />
     );
 
-    const tokenAddress = await findByDisplayValue('test.eth');
+    const tokenAddress = await findByDisplayValue(MOCK_ENS_NAME);
 
     expect(tokenAddress).toBeInTheDocument();
   });

@@ -206,7 +206,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
                   class="c6 c7"
                   data-testid="avatar"
                   size="24"
-                  src="test"
+                  src="wagmi"
                 />
               </div>
             </div>
@@ -216,7 +216,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
               data-testid="address input"
               name="recipient-address"
               placeholder="ethereumAddress"
-              value="test.eth"
+              value="wagmi.eth"
             />
             <div
               class="c9"
@@ -566,7 +566,7 @@ exports[`ERC20TransferEditor Should match snapshot with an address without ENS n
                   class="c6 c7"
                   data-testid="avatar"
                   size="24"
-                  src="test"
+                  src="wagmi"
                 />
               </div>
             </div>
@@ -576,7 +576,7 @@ exports[`ERC20TransferEditor Should match snapshot with an address without ENS n
               data-testid="address input"
               name="recipient-address"
               placeholder="ethereumAddress"
-              value="0xaF8eB8C3A5d9d900AA0B98e3Df0bcC17d3C5F698"
+              value="wagmi.eth"
             />
             <div
               class="c9"
@@ -905,7 +905,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
               data-testid="address input"
               name="recipient-address"
               placeholder="ethereumAddress"
-              value="test.eth"
+              value=""
             />
             <div
               class="c7"
