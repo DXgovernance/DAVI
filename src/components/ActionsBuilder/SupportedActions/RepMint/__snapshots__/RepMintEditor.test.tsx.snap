@@ -319,6 +319,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c10 c12"
@@ -372,6 +373,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c10 c12"

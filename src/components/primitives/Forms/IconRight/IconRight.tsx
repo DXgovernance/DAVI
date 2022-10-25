@@ -8,7 +8,7 @@ const ClickableIcon = styled(Box)`
   cursor: pointer;
 `;
 
-export const IconRight = ({
+const IconRight = ({
   disabled,
   value,
   onChange,
@@ -36,3 +36,5 @@ export const IconRight = ({
     );
   } else return null;
 };
+
+export default IconRight;

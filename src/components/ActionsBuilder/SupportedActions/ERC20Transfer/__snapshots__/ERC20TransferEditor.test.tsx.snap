@@ -284,6 +284,7 @@ exports[`ERC20TransferEditor Should match snapshot 1`] = `
                 class="c5"
               />
               <input
+                aria-label="numerical input"
                 autocomplete="off"
                 autocorrect="off"
                 class="c8"
@@ -641,6 +642,7 @@ exports[`ERC20TransferEditor Should match snapshot with default values 1`] = `
                 class="c5"
               />
               <input
+                aria-label="numerical input"
                 autocomplete="off"
                 autocorrect="off"
                 class="c8"

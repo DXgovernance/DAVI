@@ -1,8 +1,9 @@
-import AddressInput from './AddressInput';
+import { AddressInput } from '../AddressInput';
 import { render } from 'utils/tests';
 import { fireEvent } from '@testing-library/react';
 // import { DURATION_LIMITS } from 'constants/Duration';
 import { MOCK_ADDRESS } from './fixtures';
+import { NumericalInput } from '../NumericalInput';
 
 jest.mock('wagmi', () => ({
   useEnsAddress: () => ({
@@ -35,7 +36,15 @@ const AddressInputWithoutDefaultValue = () => {
   return <AddressInput value={MOCK_ADDRESS} />;
 };
 
-describe('Address Input', () => {
+const NumericalInputWithDefaultValue = () => {
+  return <NumericalInput value={MOCK_ADDRESS} defaultValue={MOCK_ADDRESS} />;
+};
+
+const NumericalInputWithoutDefaultValue = () => {
+  return <NumericalInput value={MOCK_ADDRESS} />;
+};
+
+describe('Icon Right on Address Input', () => {
   let getByLabelText;
 
   describe('Address Input with default value', () => {
@@ -77,6 +86,53 @@ describe('Address Input', () => {
 
     it('should show the clear input icon when it has a value', () => {
       const clearInputIcon = getByLabelText('clear address');
+      expect(clearInputIcon).toBeDefined();
+    });
+  });
+});
+
+describe('Icon Right on Numerical Input', () => {
+  let getByLabelText;
+
+  describe('Numerical Input with default value', () => {
+    beforeEach(() => {
+      let result = render(<NumericalInputWithDefaultValue />);
+      getByLabelText = result.getByLabelText;
+    });
+
+    it('should show unlock icon', () => {
+      const unlockIconButton = getByLabelText('enable');
+      expect(unlockIconButton).toBeDefined();
+    });
+
+    it('should be disabled', () => {
+      const addressInput = getByLabelText('numerical input');
+      expect(addressInput).toBeDisabled();
+    });
+
+    it('should remove unlock icon when clicked', () => {
+      const unlockIconButton = getByLabelText('enable');
+      fireEvent.click(unlockIconButton);
+      const clearInputIcon = getByLabelText('clear number');
+      expect(clearInputIcon).toBeDefined();
+    });
+
+    it('should be enabled when clicked', () => {
+      const unlockIconButton = getByLabelText('enable');
+      const addressInput = getByLabelText('numerical input');
+      fireEvent.click(unlockIconButton);
+      expect(addressInput).toBeEnabled();
+    });
+  });
+
+  describe('Numerical Input without default value', () => {
+    beforeEach(() => {
+      let result = render(<NumericalInputWithoutDefaultValue />);
+      getByLabelText = result.getByLabelText;
+    });
+
+    it('should show the clear input icon when it has a value', () => {
+      const clearInputIcon = getByLabelText('clear number');
       expect(clearInputIcon).toBeDefined();
     });
   });

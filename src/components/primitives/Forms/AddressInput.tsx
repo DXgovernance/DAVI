@@ -2,10 +2,10 @@ import { Input, InputProps } from 'components/primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
-import { IconRight } from '../IconRight';
+import { IconRight } from './IconRight';
 import { useState } from 'react';
 
-const AddressInput: React.FC<InputProps<string>> = ({
+export const AddressInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   isInvalid,
@@ -47,5 +47,3 @@ const AddressInput: React.FC<InputProps<string>> = ({
     />
   );
 };
-
-export default AddressInput;

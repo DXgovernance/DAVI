@@ -333,6 +333,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             class="c11"
           />
           <input
+            aria-label="numerical input"
             autocomplete="off"
             autocorrect="off"
             class="c12 c13"
