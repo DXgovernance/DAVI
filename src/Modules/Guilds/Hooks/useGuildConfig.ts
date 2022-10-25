@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
 import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
@@ -16,12 +16,14 @@ export type GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
+  votingPowerPercentageForProposalExecution: BigNumber;
+  votingPowerPercentageForProposalCreation: BigNumber;
 };
 
 export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
   const erc20GuildContract = {
     addressOrName: guildAddress,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
   };
 
   const { data, ...rest } = useContractReads({
@@ -58,6 +60,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         ...erc20GuildContract,
         functionName: 'getLockTime', // Get the lockTime (seconds)
       },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalExecution',
+      },
+      {
+        ...erc20GuildContract,
+        functionName: 'votingPowerPercentageForProposalCreation',
+      },
     ],
   });
   const { data: token } = useGuildToken(guildAddress);
@@ -78,7 +88,10 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation,
       tokenVault,
       lockTime,
+      votingPowerPercentageForProposalExecution,
+      votingPowerPercentageForProposalCreation,
     ] = data;
+
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),
@@ -94,6 +107,14 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      votingPowerPercentageForProposalExecution:
+        votingPowerPercentageForProposalExecution
+          ? BigNumber?.from(votingPowerPercentageForProposalExecution)
+          : undefined,
+      votingPowerPercentageForProposalCreation:
+        votingPowerPercentageForProposalCreation
+          ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
     };
   }, [data]);
 

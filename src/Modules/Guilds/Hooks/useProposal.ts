@@ -1,5 +1,5 @@
 import { unix } from 'moment';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
@@ -30,7 +30,7 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
 const useProposal = (guildId: string, proposalId: string) => {
   const { data, ...rest } = useContractRead({
     addressOrName: guildId,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
     functionName: 'getProposal',
     args: proposalId,
     watch: true,

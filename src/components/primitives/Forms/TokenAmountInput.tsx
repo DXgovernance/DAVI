@@ -8,7 +8,7 @@ import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
 
 export interface TokenAmountInputProps extends InputProps<BigNumber> {
   decimals?: number;
-  ariaLabel: string;
+  ariaLabel?: string;
 }
 
 export const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
