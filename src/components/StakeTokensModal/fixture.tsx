@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 import { GuildConfigProps } from 'Modules/Guilds/Hooks/useGuildConfig';
-import { ERC20 } from 'types/contracts';
+import { IERC20 } from 'types/contracts';
 import { ERC20Guild } from 'types/contracts/ERC20Guild';
 import { StakeTokensModalProps } from './types';
 
@@ -19,7 +19,7 @@ export const mockStakeTokensFormProps = {
     info: mockERC20Info,
     contract: {
       approve: () => {},
-    } as unknown as ERC20,
+    } as unknown as IERC20,
   },
   userVotingPower: BigNumber.from(0),
   guild: {

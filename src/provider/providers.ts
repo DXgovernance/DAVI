@@ -28,7 +28,7 @@ export const providers: ChainProviderFn[] = [pokt, alchemy, fallback];
 if (process.env.NODE_ENV === 'development') {
   const localhost = jsonRpcProvider({
     rpc(chain) {
-      return chain.id === 1337 ? { http: chain.rpcUrls.default } : null;
+      return chain.id === 31337 ? { http: chain.rpcUrls.default } : null;
     },
     priority: 1,
   });

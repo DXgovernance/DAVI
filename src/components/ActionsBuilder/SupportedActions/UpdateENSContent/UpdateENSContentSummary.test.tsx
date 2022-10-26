@@ -40,7 +40,7 @@ jest.mock('wagmi', () => ({
     data: [{}],
   }),
   chainId: {
-    localhost: 1337,
+    localhost: 31337,
   },
 }));
 

@@ -33,7 +33,7 @@ export const useSwaprFetchPairs = async (
     1: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-mainnet-v2', //mainnet
     5: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-goerli', // goerly
     100: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', // gnosis
-    1337: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', //localhost
+    31337: 'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-xdai-v2', //localhost
     42161:
       'https://api.thegraph.com/subgraphs/name/dxgraphs/swapr-arbitrum-one-v3', //arbitrum
   };

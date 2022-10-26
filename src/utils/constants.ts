@@ -25,7 +25,7 @@ const defaultAlchemyKey = 'FvNKXPCxtzFYrtP4r45pmtxOR0AMCtQv';
 export const DISCOURSE_URL_ROOT = 'https://daotalk.org';
 
 export const MAINNET_ID = 1;
-export const LOCALHOST_ID = 1337;
+export const LOCALHOST_ID = 31337;
 export const GOERLI_ID = 5;
 export const ARBITRUM_ID = 42161;
 export const ARBITRUM_TESTNET_ID = 421611;
@@ -108,7 +108,7 @@ export const NETWORKS: ChainConfig[] =
           blockExplorer: 'https://rinkeby-explorer.arbitrum.io/',
         },
         {
-          id: 1337,
+          id: 31337,
           name: 'localhost',
           displayName: 'Localhost',
           defaultRpc: `http://127.0.0.1:8545`,

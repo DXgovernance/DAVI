@@ -6,7 +6,7 @@ export const data = [
     symbol: 'SWPR',
     fetchPrice: true,
     logoURI: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png',
-    chainId: 1337,
+    chainId: 31337,
     balance: {
       type: 'BigNumber',
       hex: '0x8ac7230489e80000',
@@ -19,7 +19,7 @@ export const data = [
     symbol: 'DXD',
     fetchPrice: true,
     logoURI: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png',
-    chainId: 1337,
+    chainId: 31337,
     balance: {
       type: 'BigNumber',
       hex: '0x00',
@@ -32,7 +32,7 @@ export const data = [
     symbol: 'RGT',
     fetchPrice: true,
     logoURI: 'https://s2.coinmarketcap.com/static/img/coins/200x200/5589.png',
-    chainId: 1337,
+    chainId: 31337,
     balance: {
       type: 'BigNumber',
       hex: '0x00',

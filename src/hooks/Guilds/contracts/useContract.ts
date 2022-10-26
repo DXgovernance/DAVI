@@ -2,7 +2,7 @@ import { Contract } from 'ethers';
 import BaseERC20GuildContract from '../../../contracts/BaseERC20Guild.json';
 import { ERC20Guild } from '../../../types/contracts/ERC20Guild';
 import ERC20_ABI from '../../../contracts/ERC20.json';
-import { ERC20 } from '../../../types/contracts/ERC20';
+import { IERC20 } from '../../../types/contracts/IERC20';
 import { useProvider, useSigner } from 'wagmi';
 import { useMemo } from 'react';
 import { getContract } from '@wagmi/core';
@@ -58,7 +58,7 @@ export function useERC20(
   chainId?: number,
   withSignerIfPossible?: boolean
 ) {
-  return useContract<ERC20>(
+  return useContract<IERC20>(
     tokenAddress,
     ERC20_ABI.abi,
     chainId,

@@ -23,7 +23,7 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
     if (chains?.length === 0) return null;
 
     // Localhost is only available on development environments.
-    const localhost = chains.find(chain => chain.id === 1337);
+    const localhost = chains.find(chain => chain.id === 31337);
     return localhost || chains[0];
   }, [chains]);
 

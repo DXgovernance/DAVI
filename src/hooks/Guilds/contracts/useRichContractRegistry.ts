@@ -45,20 +45,20 @@ export const useRichContractRegistry = (chainId?: number) => {
 
   const registryContracts: RichContractData[] = useMemo(() => {
     if (error || !data) return null;
-    if (activeChain?.id === 1337) {
+    if (activeChain?.id === 31337) {
       // Add runtime determined localhost addresses
       const localhost = require('../../../configs/localhost/config.json');
       // Update vesting factory address
       data.find(
         contract => contract.title === 'Vesting contract for DXD token'
-      ).networks[1337] = localhost.contracts.utils.dxdVestingFactory;
+      ).networks[31337] = localhost.contracts.utils.dxdVestingFactory;
       // Add NFT factory
       if (!data.find(contract => contract.title === 'NFT Factory')) {
         data[data.length] = {
           title: 'NFT Factory',
           tags: ['NFT', 'DXdao', 'factory'],
           networks: {
-            '1337': localhost.contracts.utils.dxDaoNFT,
+            '31337': localhost.contracts.utils.dxDaoNFT,
           },
           functions: [
             {

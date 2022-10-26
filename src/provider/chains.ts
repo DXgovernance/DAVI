@@ -29,7 +29,7 @@ export const chains: Chain[] = [
 
 if (process.env.NODE_ENV === 'development') {
   const localhost: Chain = {
-    id: 1337,
+    id: 31337,
     name: 'Localhost',
     network: 'localhost',
     nativeCurrency: {

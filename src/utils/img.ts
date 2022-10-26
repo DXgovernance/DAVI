@@ -8,7 +8,7 @@ const iconsByChain = {
   100: gnosisIcon,
   42161: arbitrumIcon,
   421611: arbitrumIcon,
-  1337: ethereumIcon,
+  31337: ethereumIcon,
 };
 
 export const getChainIcon = (chainId: number) => {

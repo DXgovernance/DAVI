@@ -15,12 +15,12 @@ export const fullParameters: DiscussionCardProps = {
       mentions: [],
     },
     context: '0xCC88B92dcBA3003d717050dC67dDce4CBD1a3CE4',
-    creator: 'did:pkh:eip155:1337:0xc5b20ade9c9cd5e0cc087c62b26b815a4bc1881f',
+    creator: 'did:pkh:eip155:31337:0xc5b20ade9c9cd5e0cc087c62b26b815a4bc1881f',
     creator_details: {
-      did: 'did:pkh:eip155:1337:0xc5b20ade9c9cd5e0cc087c62b26b815a4bc1881f',
+      did: 'did:pkh:eip155:31337:0xc5b20ade9c9cd5e0cc087c62b26b815a4bc1881f',
       profile: null,
       metadata: {
-        chain: 'eip155:1337',
+        chain: 'eip155:31337',
         address: '0xc5b20ade9c9cd5e0cc087c62b26b815a4bc1881f',
         ensName: null,
       },
