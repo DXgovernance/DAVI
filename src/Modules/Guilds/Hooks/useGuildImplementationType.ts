@@ -51,9 +51,18 @@ export default function useGuildImplementationTypeConfig(
   const provider = useProvider();
   useEffect(() => {
     const getBytecode = async () => {
-      const btcode = await provider.getCode(guildAddress);
-      const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
-      setGuildBytecode(hashedBytecode);
+      const localBtcode = localStorage.getItem(
+        `hashed-bytecode-${guildAddress}`
+      );
+      if (!localBtcode) {
+        const btcode = await provider.getCode(guildAddress);
+        const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
+        setGuildBytecode(hashedBytecode);
+        localStorage.setItem(`hashed-bytecode-${guildAddress}`, hashedBytecode);
+        setLoaded(true);
+        return;
+      }
+      setGuildBytecode(localBtcode);
       setLoaded(true);
     };
     getBytecode();

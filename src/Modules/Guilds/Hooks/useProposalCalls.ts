@@ -25,7 +25,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
   const votingResults = useVotingResults(guildId, proposalId);
-  console.log({ votingResults });
+
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
@@ -88,7 +88,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   }, [calls, callsPerOption, totalOptionsNum]);
 
   useEffect(() => {
-    if (!guildId || !proposalId || !splitCalls) {
+    if (!guildId || !proposalId || !splitCalls || !loaded) {
       setOptions([]);
       return;
     }
@@ -166,11 +166,10 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
-    votingResults.totalLocked,
-    // votingResults.options,
+    votingResults?.totalLocked,
     loaded,
   ]);
-  console.log({ options });
+
   return {
     options,
   };

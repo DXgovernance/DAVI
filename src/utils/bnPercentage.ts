@@ -6,9 +6,6 @@ export function getBigNumberPercentage(
   totalAmount: BigNumber,
   precision: number = 2
 ) {
-  // console.log({ amount, totalAmount });
-  // console.log(amount?.toString());
-  // console.log(totalAmount?.toString());
   if (!amount || !totalAmount) return null;
 
   if (totalAmount.isZero()) return 0;

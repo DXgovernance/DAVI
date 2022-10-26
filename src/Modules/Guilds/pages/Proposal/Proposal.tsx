@@ -80,7 +80,7 @@ const ProposalPage: React.FC = () => {
   } = useExecutable();
 
   if (!loaded) {
-    return <h1>yo</h1>;
+    return <></>;
   } else {
     if (!isGuildAvailabilityLoading) {
       if (!proposalIds?.includes(proposalId)) {

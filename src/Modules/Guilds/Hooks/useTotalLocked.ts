@@ -39,7 +39,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     contractAddress: guildTokenAddress,
     snapshotId: SNAPSHOT_ID,
   });
-  console.log({ loaded });
+
   // Return response based on implementation type
   if (!loaded) {
     return {
