@@ -49,3 +49,7 @@ cypress/videos
 
 # storybook
 storybook-static
+
+# contracts
+contracts
+deployments
