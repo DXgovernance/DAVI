@@ -1,10 +1,10 @@
-const moment = require('moment');
+require("dotenv").config();
 require('@nomiclabs/hardhat-truffle5');
-require('hardhat-dependency-compiler');
-require('./node_modules/dxdao-contracts/scripts/deploy-dxdao-contracts');
-require('./node_modules/dxdao-contracts/scripts/actions-dxdao-contracts');
 require('@typechain/hardhat');
 require('hardhat-ethernal');
+require("hardhat-deploy");
+
+const moment = require('moment');
 
 const MNEMONIC =
   'cream core pear sure dinner indoor citizen divorce sudden captain subject remember';
@@ -51,36 +51,13 @@ const ALCHEMY_API_KEY = process.env.REACT_APP_KEY_ALCHEMY_API_KEY || '';
 
 module.exports = {
   paths: {
-    sources: './src', // Use src folder instead of contracts to avoid having empty contracts folder
+    sources: 'contracts', 
   },
-  dependencyCompiler: {
-    paths: [
-      'dxdao-contracts/contracts/dxdao/DxAvatar.sol',
-      'dxdao-contracts/contracts/dxdao/DxController.sol',
-      'dxdao-contracts/contracts/dxdao/DxReputation.sol',
-      'dxdao-contracts/contracts/dxdao/DxToken.sol',
-      'dxdao-contracts/contracts/dxvote/DXDVotingMachine.sol',
-      'dxdao-contracts/contracts/dxvote/WalletScheme.sol',
-      'dxdao-contracts/contracts/dxvote/utils/ERC20VestingFactory.sol',
-      'dxdao-contracts/contracts/dxvote/utils/ERC721Factory.sol',
-      'dxdao-contracts/contracts/utils/PermissionRegistry.sol',
-      'dxdao-contracts/contracts/utils/Multicall.sol',
-      'dxdao-contracts/contracts/test/ERC20Mock.sol',
-      'dxdao-contracts/contracts/daostack/universalSchemes/ContributionReward.sol',
-      'dxdao-contracts/contracts/daostack/universalSchemes/SchemeRegistrar.sol',
-      'dxdao-contracts/contracts/daostack/utils/Redeemer.sol',
-      'dxdao-contracts/contracts/daostack/votingMachines/GenesisProtocol.sol',
-      'dxdao-contracts/contracts/erc20guild/ERC20Guild.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol',
-      'dxdao-contracts/contracts/erc20guild/utils/GuildRegistry.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol',
-    ],
-  },
+
   solidity: {
     compilers: [
       {
-        version: '0.5.17',
+        version: "0.4.25",
         settings: {
           optimizer: {
             enabled: true,
@@ -89,7 +66,7 @@ module.exports = {
         },
       },
       {
-        version: '0.7.6',
+        version: "0.5.17",
         settings: {
           optimizer: {
             enabled: true,
@@ -98,7 +75,25 @@ module.exports = {
         },
       },
       {
-        version: '0.8.8',
+        version: "0.6.8",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.7.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
+      },
+      {
+        version: "0.8.8",
         settings: {
           optimizer: {
             enabled: true,
@@ -110,11 +105,12 @@ module.exports = {
   },
   networks: {
     hardhat: {
-      chainId: 1337,
       accounts: { mnemonic: MNEMONIC },
       throwOnTransactionFailures: true,
       throwOnCallFailures: true,
-      allowUnlimitedContractSize: false,
+      allowUnlimitedContractSize: true,
+      gasLimit: 9000000,
+      gasPrice: 10000000000, // 10 gwei
       initialDate: moment.unix(0).toDate().toString(),
       mining: {
         auto: true,
@@ -174,5 +170,28 @@ module.exports = {
     disabled: !process.env.ETHERNAL_PASSWORD && !process.env.ETHERNAL_EMAIL, // If set to true, the plugin will be disabled, nohting will be synced, ethernal.push won't do anything either
     resetOnStart: 'localhost', // Pass a workspace name to reset it automatically when restarting the node, note that if the workspace doesn't exist it won't error
   },
+
+  external: {
+    contracts: [
+      {
+        artifacts: "artifacts",
+        deploy: "node_modules/dxdao-contracts/deploy"
+      }
+    ]
+  },
+
+  namedAccounts: {
+    deployer: 0,
+    tokenHolder: 1,
+  },
+
+  deterministicDeployment: {
+    31337: {
+      factory: "0x4e59b44847b379578588920ca78fbf26c0b4956c",
+      deployer: "0x3fab184622dc19b6109349b94811493bf2a45362",
+      funding: "1000000000000000000000",
+      signedTx: "0xf8a58085174876e800830186a08080b853604580600e600039806000f350fe7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe03601600081602082378035828234f58015156039578182fd5b8082525050506014600cf31ba02222222222222222222222222222222222222222222222222222222222222222a02222222222222222222222222222222222222222222222222222222222222222",
+    }
+  }
 };
 
