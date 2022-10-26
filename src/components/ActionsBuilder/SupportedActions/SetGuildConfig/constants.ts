@@ -4,12 +4,12 @@ export const FIELDS = [
   {
     name: 'votingPowerPercentageForProposalExecution',
     label: 'Voting power percentage for proposal execution',
-    type: 'number',
-  }, // porcentage
+    type: 'percentage',
+  },
   {
     name: 'votingPowerPercentageForProposalCreation',
     label: 'Voting power percentage for proposal creation',
-    type: 'number',
+    type: 'percentage',
   },
   { name: 'voteGas', label: 'Vote gas', type: 'number' },
   { name: 'maxGasPrice', label: 'Max gas price', type: 'number' },

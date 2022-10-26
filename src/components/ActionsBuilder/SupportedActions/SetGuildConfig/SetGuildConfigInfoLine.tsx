@@ -1,36 +1,50 @@
 import React from 'react';
-import { BigNumber } from 'ethers';
 import { ActionViewProps } from '..';
 import { duration } from 'moment';
 import { useUpdatedGuildConfigValues } from './useUpdatedGuildConfigValues';
 import { FIELDS } from './constants';
+import { bn } from './utils';
+import { useTranslation } from 'react-i18next';
 
-const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({ decodedCall }) => {
+const getDisplayValue = (value, type) => {
+  return type === 'number'
+    ? bn(value).toNumber()
+    : duration(bn(value).toNumber(), 'seconds').humanize();
+};
+
+const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({
+  decodedCall,
+  compact,
+}) => {
+  const { t } = useTranslation();
   const { args } = decodedCall;
-
   const updatedValues = useUpdatedGuildConfigValues(args);
   return (
     <div>
-      Set Guild Config{' -> '}
-      {Object.keys(updatedValues ?? {})?.map((key, idx, arr) => {
-        const field = FIELDS.find(f => f.name === key);
-        const type = field?.type;
-        const value =
-          type === 'number'
-            ? BigNumber.from(updatedValues[key] ?? 0).toNumber()
-            : duration(
-                BigNumber.from(updatedValues[key] ?? 0).toNumber(),
-                'seconds'
-              ).humanize();
-        return (
-          <div key={key}>
-            <span>
-              {key} {'='} {value}
-            </span>
-            {idx !== arr.length - 1 && <span> / </span>}
-          </div>
-        );
-      })}
+      {t('setGuildConfig')}
+      {!compact && (
+        <>
+          {' :: '}
+          {Object.keys(updatedValues ?? {})?.map((key, idx, arr) => {
+            const field = FIELDS.find(f => f.name === key);
+            const type = field?.type;
+            const current = getDisplayValue(
+              updatedValues[key].currentValue,
+              type
+            );
+            const newValue = getDisplayValue(updatedValues[key].newValue, type);
+
+            return (
+              <div key={key}>
+                <span>
+                  {key}: {current} {' -> '} {newValue}
+                </span>
+                {idx !== arr.length - 1 && <span> / </span>}
+              </div>
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };

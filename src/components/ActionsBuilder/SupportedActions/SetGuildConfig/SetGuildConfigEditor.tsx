@@ -7,6 +7,7 @@ import { Button } from 'components/primitives/Button';
 import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { MdCached } from 'react-icons/md';
 import validateSetGuildConfig from './validateSetGuildConfig';
+import { Flex } from 'components/primitives/Layout/Flex';
 import {
   Control,
   ControlLabel,
@@ -39,7 +40,8 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
       _timeForExecution: decodedCallTimeForExecution,
       _votingPowerPercentageForProposalExecution:
         decodedCallVotingPowerPercentageForProposalExecution,
-      _r: decodedCallVotingPowerPercentageForProposalCreation,
+      _votingPowerPercentageForProposalCreation:
+        decodedCallVotingPowerPercentageForProposalCreation,
       _voteGas: decodedCallVoteGas,
       _maxGasPrice: decodedCallMaxGasPrice,
       _maxActiveProposals: decodedCallMaxActiveProposals,
@@ -220,20 +222,26 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                           <Input
                             {...field}
                             value={bn(field.value).toString()}
+                            placeholder="%"
                             aria-label={field.name}
                             isInvalid={invalid && !!error}
                             onChange={e =>
                               field.onChange(bn(e.target.value).toString())
                             }
                             iconRight={
-                              valueChanged ? (
-                                <Button
-                                  variant="minimal"
-                                  onClick={() => restoreInputValue(field.name)}
-                                >
-                                  <MdCached size={20} />
-                                </Button>
-                              ) : null
+                              <Flex direction="row">
+                                {f.type === 'percentage' && '%'}
+                                {valueChanged && (
+                                  <Button
+                                    variant="minimal"
+                                    onClick={() =>
+                                      restoreInputValue(field.name)
+                                    }
+                                  >
+                                    <MdCached size={20} />
+                                  </Button>
+                                )}
+                              </Flex>
                             }
                           />
                         )}
