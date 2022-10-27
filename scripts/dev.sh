@@ -21,11 +21,10 @@ start-hardhat_node() {
 
   rm -r contracts
   cp -r node_modules/dxdao-contracts/contracts ./contracts
-  rm -r contracts/utils/GnosisSafe
 
   yarn hardhat compile
   
-  yarn hardhat node --no-deploy > /dev/null &
+  yarn hardhat node > /dev/null &
 
   hardhat_pid=$!
 
@@ -45,7 +44,5 @@ fi
 
 echo "Starting our own hardhat node instance"
 start-hardhat_node
-
-DEPLOY_SALT="0x597fe520ef4c65015e0532273879fe955f79a4ff059b4f30d40aff43dda27a45" yarn hardhat --network localhost run scripts/deployGuilds.js
 
 FORCE_COLOR=true GENERATE_SOURCEMAP=false yarn react-app-rewired start | cat
