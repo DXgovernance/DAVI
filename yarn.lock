@@ -12709,7 +12709,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
 
 "dxdao-contracts@https://github.com/AugustoL/dxdao-contracts.git#feat/deploy-dxdao-guilds":
   version "1.0.0"
-  resolved "https://github.com/AugustoL/dxdao-contracts.git#c749166adbabd5d41cd8ea9b82c65cc96afe5a2b"
+  resolved "https://github.com/AugustoL/dxdao-contracts.git#ce373446ae7227017799d6d581d9b7d00929b4ff"
   dependencies:
     "@maticnetwork/eth-decoder" "^0.0.4"
     "@openzeppelin/contracts" "4.4.0"
