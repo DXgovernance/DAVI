@@ -98,21 +98,24 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
               )}
             </span>
           </ContentItem>
-
-          <ContentItem>
-            {isUnlockable ? t('unlocked') : t('unlockedIn')}{' '}
-            <span>
-              {unlockedAt ? (
-                isUnlockable ? (
-                  unlockedAt?.fromNow()
+          {isRepGuild ? (
+            <></>
+          ) : (
+            <ContentItem>
+              {isUnlockable ? t('unlocked') : t('unlockedIn')}{' '}
+              <span>
+                {unlockedAt ? (
+                  isUnlockable ? (
+                    unlockedAt?.fromNow()
+                  ) : (
+                    unlockedAt?.toNow(true)
+                  )
                 ) : (
-                  unlockedAt?.toNow(true)
-                )
-              ) : (
-                <Loading loading text skeletonProps={{ width: '40px' }} />
-              )}
-            </span>
-          </ContentItem>
+                  <Loading loading text skeletonProps={{ width: '40px' }} />
+                )}
+              </span>
+            </ContentItem>
+          )}
 
           <LockButton onClick={showStakeModal}>
             {t('increaseVotingPower')}
