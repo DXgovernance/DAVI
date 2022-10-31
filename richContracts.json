@@ -108,10 +108,8 @@
             "type": "bytes32",
             "component": "address",
             "name": "proposalId",
-            "title": "Proposal ID - found from the URL of proposal",
-            "defaultValue": "0x00",
-            "description": "Pool pair to set fee on",
-            "disabled": true
+            "title": "Proposal ID",
+            "description": "Pool pair to set fee on"
           },
           {
             "type": "uint256",
