@@ -39,6 +39,7 @@ import {
 } from './Proposal.styled';
 import { useTranslation } from 'react-i18next';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 
 const ProposalPage: React.FC = () => {
   const { t } = useTranslation();
@@ -52,6 +53,7 @@ const ProposalPage: React.FC = () => {
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
+  const { loaded } = useGuildImplementationTypeConfig(guildId);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
@@ -77,75 +79,80 @@ const ProposalPage: React.FC = () => {
     data: { executeProposal },
   } = useExecutable();
 
-  if (!isGuildAvailabilityLoading) {
-    if (!proposalIds?.includes(proposalId)) {
-      return (
-        <Result
-          state={ResultState.ERROR}
-          title="We couldn't find that proposal."
-          subtitle="It probably doesn't exist."
-          extra={
-            <UnstyledLink to={`/${chainName}/${guildId}`}>
-              <IconButton iconLeft>
-                <FiArrowLeft /> See all proposals
-              </IconButton>
-            </UnstyledLink>
-          }
-        />
-      );
-    } else if (error) {
-      return (
-        <Result
-          state={ResultState.ERROR}
-          title={t('errorMessage.genericProposalError')}
-          subtitle={error.message}
-        />
-      );
+  if (!loaded) {
+    return <></>;
+  } else {
+    if (!isGuildAvailabilityLoading) {
+      if (!proposalIds?.includes(proposalId)) {
+        return (
+          <Result
+            state={ResultState.ERROR}
+            title="We couldn't find that proposal."
+            subtitle="It probably doesn't exist."
+            extra={
+              <UnstyledLink to={`/${chainName}/${guildId}`}>
+                <IconButton iconLeft>
+                  <FiArrowLeft /> See all proposals
+                </IconButton>
+              </UnstyledLink>
+            }
+          />
+        );
+      } else if (error) {
+        return (
+          <Result
+            state={ResultState.ERROR}
+            title={t('errorMessage.genericProposalError')}
+            subtitle={error.message}
+          />
+        );
+      }
     }
+
+    return (
+      <PageContainer>
+        <PageContent>
+          <PageHeader>
+            <HeaderTopRow>
+              <UnstyledLink to={`/${chainName}/${guildId}`}>
+                <StyledIconButton variant="secondary" iconLeft>
+                  <FaChevronLeft style={{ marginRight: '15px' }} />{' '}
+                  {guildConfig?.name}
+                </StyledIconButton>
+              </UnstyledLink>
+
+              <ProposalStatus status={status} endTime={endTime} />
+              {status === ProposalState.Executable &&
+                !isReadOnly(connector) && (
+                  <ExecuteButton executeProposal={executeProposal} />
+                )}
+            </HeaderTopRow>
+            <PageTitle>
+              {proposal?.title || (
+                <Loading loading text skeletonProps={{ width: '800px' }} />
+              )}
+            </PageTitle>
+          </PageHeader>
+
+          <AddressButton address={proposal?.creator} />
+
+          <ProposalDescription metadata={metadata} error={metadataError} />
+
+          <ProposalActionsWrapper>
+            <ActionsBuilder options={options} editable={false} />
+          </ProposalActionsWrapper>
+        </PageContent>
+        <SidebarContent>
+          <ProposalVoteCardWrapper />
+          <ProposalInfoCard
+            proposal={proposal}
+            guildConfig={guildConfig}
+            quorum={quorum}
+          />
+        </SidebarContent>
+      </PageContainer>
+    );
   }
-
-  return (
-    <PageContainer>
-      <PageContent>
-        <PageHeader>
-          <HeaderTopRow>
-            <UnstyledLink to={`/${chainName}/${guildId}`}>
-              <StyledIconButton variant="secondary" iconLeft>
-                <FaChevronLeft style={{ marginRight: '15px' }} />{' '}
-                {guildConfig?.name}
-              </StyledIconButton>
-            </UnstyledLink>
-
-            <ProposalStatus status={status} endTime={endTime} />
-            {status === ProposalState.Executable && !isReadOnly(connector) && (
-              <ExecuteButton executeProposal={executeProposal} />
-            )}
-          </HeaderTopRow>
-          <PageTitle>
-            {proposal?.title || (
-              <Loading loading text skeletonProps={{ width: '800px' }} />
-            )}
-          </PageTitle>
-        </PageHeader>
-
-        <AddressButton address={proposal?.creator} />
-
-        <ProposalDescription metadata={metadata} error={metadataError} />
-
-        <ProposalActionsWrapper>
-          <ActionsBuilder options={options} editable={false} />
-        </ProposalActionsWrapper>
-      </PageContent>
-      <SidebarContent>
-        <ProposalVoteCardWrapper />
-        <ProposalInfoCard
-          proposal={proposal}
-          guildConfig={guildConfig}
-          quorum={quorum}
-        />
-      </SidebarContent>
-    </PageContainer>
-  );
 };
 
 export default ProposalPage;
