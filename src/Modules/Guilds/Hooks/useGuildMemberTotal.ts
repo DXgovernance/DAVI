@@ -1,4 +1,4 @@
-import ERC20Guild from 'contracts/ERC20Guild.json';
+import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import { useContractRead } from 'wagmi';
 
@@ -7,7 +7,9 @@ const useGuildMemberTotal = (
   guildToken: string,
   isRepGuild: boolean
 ) => {
-  const contractInterface = isRepGuild ? ERC20SnapshotRep.abi : ERC20Guild.abi;
+  const contractInterface = isRepGuild
+    ? ERC20SnapshotRep.abi
+    : BaseERC20Guild.abi;
   const functionName = isRepGuild ? 'getTotalHolders' : 'getTotalMembers';
   const addressOrName = isRepGuild ? guildToken : guildAddress;
 

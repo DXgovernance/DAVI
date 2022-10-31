@@ -1,6 +1,6 @@
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import useVotingPowerOfAt from 'Modules/Guilds/Hooks/useVotingPowerOfAt';
-import ERC20GuildContract from 'contracts/ERC20Guild.json';
+import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
@@ -22,7 +22,7 @@ export const useVotingPowerOf = ({
   const { isSnapshotGuild } = useGuildImplementationType(contractAddress);
   const { data: votingPowerOfResponse, ...rest } = useContractRead({
     addressOrName: contractAddress,
-    contractInterface: ERC20GuildContract.abi,
+    contractInterface: BaseERC20GuildContract.abi,
     functionName: 'votingPowerOf',
     args: [userAddress],
     watch: true,

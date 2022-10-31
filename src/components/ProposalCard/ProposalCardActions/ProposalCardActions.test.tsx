@@ -14,7 +14,7 @@ describe('ProposalCardActions', () => {
     const mockProps = {
       ...mockProposalCardActionsProps,
       votesOfVoter: {
-        action: null,
+        option: null,
         votingPower: null,
         proposalCreated: false,
       },

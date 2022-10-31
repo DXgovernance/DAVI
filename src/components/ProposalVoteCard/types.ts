@@ -9,7 +9,7 @@ import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalV
 export interface VoteConfirmationModalProps {
   isOpen: boolean;
   onDismiss: () => void;
-  selectedAction?: string;
+  selectedOption?: string;
   onConfirm: () => void;
   votingPower?: number;
   currentVoteAmount?: number;
@@ -70,7 +70,7 @@ export interface Voter {
 export interface ConfirmVoteProposalProps {
   proposal: Proposal;
   contract: ERC20Guild;
-  selectedAction: BigNumber;
+  selectedOption: BigNumber;
   userVotingPower: BigNumber;
   createTransaction: (
     summary: string,

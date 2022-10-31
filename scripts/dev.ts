@@ -244,8 +244,8 @@ async function main() {
         name: 'DXDGuild',
         proposalTime: moment.duration(10, 'minutes').asSeconds(),
         timeForExecution: moment.duration(50, 'minutes').asSeconds(),
-        votingPowerForProposalExecution: '30',
-        votingPowerForProposalCreation: '1',
+        votingPowerPercentageForProposalExecution: '30',
+        votingPowerPercentageForProposalCreation: '1',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '9999',
@@ -257,8 +257,8 @@ async function main() {
         name: 'REPGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(2, 'minutes').asSeconds(),
-        votingPowerForProposalExecution: '50',
-        votingPowerForProposalCreation: '5',
+        votingPowerPercentageForProposalExecution: '50',
+        votingPowerPercentageForProposalCreation: '5',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '5',
@@ -270,8 +270,8 @@ async function main() {
         name: 'SWPRGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(60, 'minutes').asSeconds(),
-        votingPowerForProposalExecution: '30',
-        votingPowerForProposalCreation: '5',
+        votingPowerPercentageForProposalExecution: '30',
+        votingPowerPercentageForProposalCreation: '5',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '999',
@@ -285,16 +285,6 @@ async function main() {
   });
 
   const actions = [
-    {
-      type: 'raw',
-      transaction: {
-        to: networkContracts.addresses.RGT,
-        from: accounts[0],
-        data: new web3.eth.Contract(PermissionRegistry.abi).methods
-          .transferOwnership(networkContracts.addresses.REPGuild)
-          .encodeABI(),
-      },
-    },
     {
       type: 'transfer',
       // We use this to reset to local time, in future we should ensure the automatic process works
@@ -610,7 +600,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0'],
-        totalActions: '1',
+        totalOptions: '1',
         title: '#0 Set Permissions',
         description: 'Allow call any address',
       },
@@ -650,7 +640,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0', '0'],
-        totalActions: '1',
+        totalOptions: '1',
         title: '#1 Mint to equal all address REP',
         description: `Mint and burn REP to address ${accounts[0]} and ${accounts[2]} so all rep holders have 50 REP`,
       },
@@ -687,7 +677,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0'],
-        totalActions: '1',
+        totalOptions: '1',
         title: '#1 Mint to me and take control',
         description: ``,
       },
@@ -793,7 +783,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0'],
-        totalActions: '1',
+        totalOptions: '1',
         title: 'Proposal Test #0',
         description:
           'Allow call any address and function and send a max of 5 ETH per proposal',
@@ -836,7 +826,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0x6A94D74F430000'],
-        totalActions: '1',
+        totalOptions: '1',
         title: 'Proposal with value',
         description: 'Proposal with value > 1',
       },
@@ -879,7 +869,7 @@ async function main() {
             .encodeABI(),
         ],
         value: ['0'],
-        totalActions: '1',
+        totalOptions: '1',
         title: 'Allow Swapr guild to transfer SWPR tokens',
         description: 'Allow the guild to transfer swpr tokens',
         voteOptions: ['For'],

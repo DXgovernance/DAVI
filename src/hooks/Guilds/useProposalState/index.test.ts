@@ -19,7 +19,7 @@ const proposal: Proposal = {
   to: ['0x0', '0x0'],
   data: ['0x0', '0x0'],
   value: [BigNumber.from(0), BigNumber.from(0)],
-  totalActions: BigNumber.from(0),
+  totalOptions: BigNumber.from(0),
   title: 'Proposal Title',
   contentHash: '0x0',
   contractState: ContractState.Active,
