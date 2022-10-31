@@ -1,7 +1,6 @@
 import { GOERLI_ID, LOCALHOST_ID } from 'utils';
 import {
   convertToNameHash,
-  convertToContentHash,
   isSupportedChainId,
   getIpfsUrl,
   convertToIpfsHash,
@@ -36,16 +35,6 @@ describe('utils', () => {
       const { nameHash } = convertToNameHash(name);
 
       expect(nameHash).toBeNull();
-    });
-  });
-
-  describe('convertToContentHash', () => {
-    it('should return an error if the IPFS hash is invalid', () => {
-      let ipfsHash = 'QmInvalidIPFSHash';
-      const { contentHash, error } = convertToContentHash(ipfsHash);
-
-      expect(contentHash).toBeNull();
-      expect(error).toBe('ens.validation.ipfsHashNotValid');
     });
   });
 
