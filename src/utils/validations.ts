@@ -86,10 +86,7 @@ export const isIpfsHash = (
   let isValid = true;
   let validationError = null;
 
-  // if (!isIPFS.cid(hash)) {
-  //   validationError = i18next.t('ens.validation.ipfsHashNotValid');
-  //   isValid = false;
-  // }
+  // Removed validation due to library not supporting cid v1
 
   return { isValid, validationError };
 };
