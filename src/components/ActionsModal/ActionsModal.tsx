@@ -71,7 +71,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
   function getHeader() {
     if (selectedFunction) {
       return selectedContract.functions.find(
-        fn => fn.functionName === selectedFunction
+        fn => fn.title === selectedFunction
       )?.title;
     }
 
@@ -91,7 +91,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
       const contractInterface = selectedContract.contractInterface;
       const contractId = selectedContract.contractAddress;
       const fn = selectedContract.functions.find(
-        fn => fn.functionName === selectedFunction
+        fn => fn.title === selectedFunction
       );
       const isPayable: boolean = fn?.spendsTokens;
       // Return approval form if function is marked with spendsTokens=true
