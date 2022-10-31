@@ -452,7 +452,8 @@
     "reputation": "0x7a927a93f221976aae26d5d077477307170f0b7c",
     "token": "0x643b14f6ea235668278da5974930105852f2b7c4",
     "utils": {
-      "multicall": "0x742121cD0BB9784c1f17f25B8da1bF3445b93ED4"
+      "multicall": "0x742121cD0BB9784c1f17f25B8da1bF3445b93ED4",
+      "guildRegistry": "0xc74a2306504a39fad0117d732ed8e9efc64dbe85"
     },
     "votingMachines": {
       "0x1C18bAd5a3ee4e96611275B13a8ed062B4a13055": {
