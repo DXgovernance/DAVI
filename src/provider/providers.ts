@@ -6,10 +6,9 @@ import { publicProvider } from 'wagmi/providers/public';
 const ALCHEMY_KEY = 'FvNKXPCxtzFYrtP4r45pmtxOR0AMCtQv';
 
 const POKT_NETWORK_URLS = {
-  '1': 'https://eth-mainnet.gateway.pokt.network/v1/lb/61f86d630d66d80038fb8c38',
-  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/6229f9b8abc11f0039cb2d2c',
-  '100':
-    'https://gnosischain-mainnet.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
+  '1': 'https://eth-mainnet.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
+  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
+  '100': 'https://poa-xdai.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
 };
 
 const pokt = jsonRpcProvider({
