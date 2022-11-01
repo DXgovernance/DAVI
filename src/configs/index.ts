@@ -1,2 +1,2 @@
-export const RICH_CONTRACT_DATA_REGISTRY = 'QmUk5zdt2ZtkPNfNQMujkeNvZbd9ga9Y1mBMzXoGvg1vZW';
+export const RICH_CONTRACT_DATA_REGISTRY = 'QmWGvaTEGuDdADcyNxMvS7FFKiq5DQSBrShiq1NYL8rApu';
 export const SITE_ID = 'NYKJUYYQ'

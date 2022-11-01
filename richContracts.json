@@ -109,7 +109,7 @@
             "component": "address",
             "name": "proposalId",
             "title": "Proposal ID",
-            "description": "Pool pair to set fee on"
+            "description": "Proposal ID - found from the URL of proposal"
           },
           {
             "type": "uint256",
@@ -149,9 +149,8 @@
             "type": "bytes32",
             "component": "address",
             "name": "proposalId",
-            "title": "Proposal ID - found from the URL of proposal",
-            "defaultValue": "",
-            "description": "Pool pair to set fee on"
+            "title": "Proposal ID",
+            "description": "Proposal ID - found from the URL of proposal"
           },
           {
             "type": "uint256",
