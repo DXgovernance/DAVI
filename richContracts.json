@@ -138,7 +138,7 @@
         ],
         "shortDescription": "Votes on a proposal with the guild's power",
         "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
-        "templateLiteral": "Vote {proposalId}",
+        "templateLiteral": "Vote ${vote} with ${amount} REP on ${proposalId}",
         "spendsTokens": false
       },
       {
@@ -179,7 +179,7 @@
         ],
         "shortDescription": "Votes on a proposal with the guild's power",
         "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
-        "templateLiteral": "Vote voteonproposal{proposalId}",
+        "templateLiteral": "Vote ${vote} with ${amount} REP on ${proposalId}",
         "spendsTokens": false
       }
     ]
