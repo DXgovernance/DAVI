@@ -121,7 +121,7 @@
           },
           {
             "type": "uint256",
-            "component": "integer",
+            "component": "tokenAmount",
             "name": "amount",
             "title": "Amount to vote with",
             "defaultValue": "",
@@ -162,7 +162,7 @@
           },
           {
             "type": "uint256",
-            "component": "integer",
+            "component": "tokenAmount",
             "name": "amount",
             "title": "Amount of REP to vote with",
             "defaultValue": "",

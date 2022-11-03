@@ -9,10 +9,11 @@ import {
   SectionWrapper,
   Wrapper,
 } from '../../ActionsModal.styled';
+import { SelectedFunction } from 'components/ActionsModal/types';
 
 interface ContractActionsListProps {
   contract: RichContractData;
-  onSelect: (functionName: string) => void;
+  onSelect: (selectedFunction: SelectedFunction) => void;
 }
 
 const ContractActionsList: React.FC<ContractActionsListProps> = ({
@@ -32,7 +33,12 @@ const ContractActionsList: React.FC<ContractActionsListProps> = ({
         {contract.functions.map(contractFunction => (
           <ActionsButton
             vertical
-            onClick={() => onSelect(contractFunction.title)}
+            onClick={() => {
+              onSelect({
+                functionName: contractFunction.functionName,
+                title: contractFunction.title,
+              });
+            }}
             key={contractFunction.title}
           >
             <ButtonLabel>{contractFunction.title}</ButtonLabel>
