@@ -203,7 +203,8 @@
     "token": "0xf255B9d83db924820ee23A7dCC30b7542e201Bb1",
     "utils": {
       "dxdVestingFactory": "0x45734dB5C3342c66932db308Dbb23a5e2B159561",
-      "multicall": "0xDD032cd0dfCB54050E1FA30Be59056403e292700"
+      "multicall": "0xDD032cd0dfCB54050E1FA30Be59056403e292700",
+      "guildRegistry": "0xc74a2306504a39fad0117d732ed8e9efc64dbe85"
     },
     "votingMachines": {
       "0x053f406aD40c9Eb8eB43aFf28DA0D0EC17dF8e44": {

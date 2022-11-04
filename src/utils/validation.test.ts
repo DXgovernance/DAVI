@@ -1,5 +1,4 @@
-import { isEnsName, isIpfsHash } from './validations';
-import isIPFS from 'is-ipfs';
+import { isEnsName } from './validations';
 
 jest.mock('i18next', () => {
   return {
@@ -54,38 +53,6 @@ describe('ENS update validations', () => {
         expect(validationError).toBe(
           'ens.validation.domainCannotBeMoreThanThreeLevels'
         );
-      });
-    });
-  });
-
-  describe('isIpfsHash validation', () => {
-    describe('should return true', () => {
-      it('should return true if the hash is valid', () => {
-        // I mocked this return value because in the tests
-        // it always returns false. Checked the same hash
-        // in the UI and returned valid
-        jest.spyOn(isIPFS, 'cid').mockReturnValue(true);
-        const ipfsHash = 'QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4';
-        const { isValid, validationError } = isIpfsHash(ipfsHash);
-        expect(isValid).toBe(true);
-        expect(validationError).toBeNull();
-      });
-    });
-
-    describe('should catch validation errors', () => {
-      it('should return an error if its not an IPFS hash', () => {
-        const ipfsHash = 'QmWrongIPFShash';
-        const { isValid, validationError } = isIpfsHash(ipfsHash);
-        expect(isValid).toBe(false);
-        expect(validationError).toBe('ens.validation.ipfsHashNotValid');
-      });
-
-      it('should return an error if its not CID v0', () => {
-        const ipfsHash =
-          'bafybeidwasglq7az7eltms4tlwiptyggm2mjzfkd37hpbkyymaub3rm63m';
-        const { isValid, validationError } = isIpfsHash(ipfsHash);
-        expect(isValid).toBe(false);
-        expect(validationError).toBe('ens.validation.onlyCidV0Supported');
       });
     });
   });

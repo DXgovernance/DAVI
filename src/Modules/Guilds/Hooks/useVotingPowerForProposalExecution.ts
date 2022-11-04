@@ -28,6 +28,7 @@ interface UseVotingPowerForProposalExecutionProps {
 interface GetConfigArgs {
   isRepGuild: boolean;
   isSnapshotGuild: boolean;
+  loaded: boolean;
   contractAddress: string;
   snapshotId: BigNumber;
   proposalId: string;
@@ -35,6 +36,7 @@ interface GetConfigArgs {
 const getConfig = ({
   isRepGuild,
   isSnapshotGuild,
+  loaded,
   contractAddress,
   snapshotId,
   proposalId,
@@ -61,7 +63,17 @@ const getConfig = ({
     functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
     args: [proposalId],
   };
+
+  const stillLoadingConf = {
+    enabled: false,
+    addressOrName: null,
+    contractInterface: SnapshotRepERC20Guild.abi,
+    functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
+    args: [proposalId],
+  };
+
   // Validate args to avoid null values
+  if (!loaded) return stillLoadingConf;
   if (isRepGuild && isSnapshotGuild && !!proposalId) return snapshotRepConf;
   if (isSnapshotGuild && !!snapshotId) return snapshotConfig;
   return baseErc20Config;
@@ -71,7 +83,7 @@ export const useVotingPowerForProposalExecution = ({
   contractAddress,
   proposalId: proposalIdProp,
 }: UseVotingPowerForProposalExecutionProps): WagmiUseContractReadResponse<BigNumber> => {
-  const { isSnapshotGuild, isRepGuild } =
+  const { isSnapshotGuild, isRepGuild, loaded } =
     useGuildImplementationType(contractAddress);
 
   const { proposalId: FALLBACK_PROPOSAL_ID } = useTypedParams();
@@ -86,6 +98,7 @@ export const useVotingPowerForProposalExecution = ({
     getConfig({
       isRepGuild,
       isSnapshotGuild,
+      loaded,
       contractAddress,
       snapshotId,
       proposalId,
