@@ -35,8 +35,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
 
   const parsedData = useMemo(() => {
     if (!decodedCall) return null;
-    console.log('decoded call: ');
-    console.log(decodedCall);
 
     return {
       recipient: decodedCall.args.to,
@@ -69,7 +67,7 @@ export const Mint: React.FC<ActionEditorProps> = ({
     }
   };
 
-  const submitAction = values => {
+  const submitAction = (values: RepMintFormValues) => {
     onSubmit({
       ...decodedCall,
       args: {
