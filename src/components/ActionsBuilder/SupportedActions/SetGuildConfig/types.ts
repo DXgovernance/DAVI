@@ -23,6 +23,17 @@ export interface SetGuildConfigFields {
   minimumTokensLockedForProposalCreation: BigNumber;
 }
 
+export enum FieldType {
+  duration = 'duration',
+  number = 'number',
+  percentage = 'percentage',
+}
+export interface Field {
+  name: string;
+  label: string;
+  type: FieldType;
+}
+
 export type ControlField =
   | 'votingPowerPercentageForProposalExecution'
   | 'votingPowerPercentageForProposalCreation'

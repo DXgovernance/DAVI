@@ -16,6 +16,7 @@ const validateSetGuildConfig = (
   const {
     proposalTime,
     votingPowerPercentageForProposalExecution,
+    votingPowerPercentageForProposalCreation,
     voteGas,
     lockTime,
   } = values;
@@ -38,6 +39,7 @@ const validateSetGuildConfig = (
 
   if (bn(lockTime).lt(bn(proposalTime))) {
     errors.lockTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
+    errors.proposalTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
   }
 
   if (bn(votingPowerPercentageForProposalExecution).lte(bn(0))) {
@@ -48,6 +50,15 @@ const validateSetGuildConfig = (
 
   if (bn(voteGas).gte(117001)) {
     errors.voteGas = t('voteGasHasToBeEqualOrLowerThan117000');
+  }
+
+  if (bn(votingPowerPercentageForProposalExecution).gt(100)) {
+    errors.votingPowerPercentageForProposalExecution = t(
+      'cantBeGreaterThan100'
+    );
+  }
+  if (bn(votingPowerPercentageForProposalCreation).gt(100)) {
+    errors.votingPowerPercentageForProposalCreation = t('cantBeGreaterThan100');
   }
 
   return {

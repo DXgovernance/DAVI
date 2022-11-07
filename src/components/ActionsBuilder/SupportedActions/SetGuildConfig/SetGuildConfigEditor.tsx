@@ -2,12 +2,12 @@ import { FC, useMemo, useState } from 'react';
 import { ActionEditorProps } from '..';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { Input } from 'components/primitives/Forms/Input';
+import { NumericalInput as Input } from 'components/primitives/Forms/NumericalInput';
 import { Button } from 'components/primitives/Button';
 import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { MdCached } from 'react-icons/md';
 import validateSetGuildConfig from './validateSetGuildConfig';
-import { Flex } from 'components/primitives/Layout/Flex';
+// import { Flex } from 'components/primitives/Layout/Flex';
 import {
   Control,
   ControlLabel,
@@ -22,7 +22,12 @@ import {
   getUpdatedValues,
 } from './utils';
 import { FIELDS } from './constants';
-import { SetGuildConfigFields, ControlField } from './types';
+import { SetGuildConfigFields, ControlField, FieldType } from './types';
+
+const getComponent = type => {
+  if (type === FieldType.duration) return DurationInput;
+  return Input;
+};
 
 const SetGuildConfigEditor: FC<ActionEditorProps> = ({
   decodedCall,
@@ -106,6 +111,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     handleSubmit,
     setValue,
     formState: { errors },
+    trigger,
   } = useForm({
     resolver: validateSetGuildConfig,
     context: { t },
@@ -172,85 +178,66 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     return setNoValueUpdatedError(true);
   };
 
-  const restoreInputValue = fieldName => {
+  const restoreInputValue = (fieldName: ControlField) => {
     setValue(fieldName, currentGuildConfig[fieldName]);
   };
 
   return (
     <form onSubmit={handleSubmit(submitAction, console.error)}>
       {FIELDS.map(f => {
+        const Component = getComponent(f.type);
         return (
           <div key={f.name}>
             <Controller
               name={f.name as ControlField}
               control={control}
-              render={({
-                field: { ref, ...field },
-                fieldState: { invalid },
-              }) => {
+              render={({ field: { ref, ...field } }) => {
                 const error = errors[f.name];
                 const valueChanged = !bn(field.value).eq(
                   bn(currentGuildConfig[f.name])
                 );
+                const handleChange = (v: string | number) => {
+                  if (f.type === FieldType.duration) {
+                    field.onChange(bn(v || '0').toNumber());
+                  } else {
+                    field.onChange(v || '0');
+                  }
+                  trigger();
+                };
+                const value =
+                  f.type === FieldType.duration
+                    ? bn(field.value ?? 0).toNumber()
+                    : bn(field.value ?? 0).toString();
+
                 return (
-                  <>
-                    <Control>
-                      <ControlLabel>{f.label}</ControlLabel>
-                      <ControlRow>
-                        {f.type === 'duration' ? (
-                          <DurationInput
-                            {...field}
-                            aria-label={field.name}
-                            value={bn(field.value ?? 0).toNumber()}
-                            onChange={v => {
-                              console.log(v);
-                              field.onChange(bn(v || '0').toNumber());
-                            }}
-                            isInvalid={invalid && !!error}
-                            iconRight={
-                              valueChanged ? (
-                                <Button
-                                  variant="minimal"
-                                  onClick={e => {
-                                    e.stopPropagation();
-                                    restoreInputValue(field.name);
-                                  }}
-                                >
-                                  <MdCached size={16} />
-                                </Button>
-                              ) : null
-                            }
-                          />
-                        ) : (
-                          <Input
-                            {...field}
-                            value={bn(field.value).toString()}
-                            aria-label={field.name}
-                            isInvalid={invalid && !!error}
-                            onChange={e => {
-                              field.onChange(e.target.value || '0');
-                            }}
-                            iconRight={
-                              <Flex direction="row">
-                                {f.type === 'percentage' && '%'}
-                                {valueChanged && (
-                                  <Button
-                                    variant="minimal"
-                                    onClick={() =>
-                                      restoreInputValue(field.name)
-                                    }
-                                  >
-                                    <MdCached size={16} />
-                                  </Button>
-                                )}
-                              </Flex>
-                            }
-                          />
-                        )}
-                      </ControlRow>
-                      {invalid && !!error && <Error>{error}</Error>}
-                    </Control>
-                  </>
+                  <Control>
+                    <ControlLabel>{f.label}</ControlLabel>
+                    <ControlRow>
+                      <Component
+                        {...field}
+                        aria-label={field.name}
+                        value={value as never}
+                        onChange={handleChange}
+                        isInvalid={!!error}
+                        icon={f.type === FieldType.percentage && <>%</>}
+                        iconRight={
+                          valueChanged && (
+                            <Button
+                              variant="minimal"
+                              onClick={e => {
+                                e.stopPropagation();
+                                restoreInputValue(field.name);
+                                trigger();
+                              }}
+                            >
+                              <MdCached size={16} />
+                            </Button>
+                          )
+                        }
+                      />
+                    </ControlRow>
+                    {!!error && <Error>{error}</Error>}
+                  </Control>
                 );
               }}
             />

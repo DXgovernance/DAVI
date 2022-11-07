@@ -1,28 +1,37 @@
-export const FIELDS = [
-  { name: 'proposalTime', label: 'Proposal time', type: 'duration' },
-  { name: 'timeForExecution', label: 'Time for execution', type: 'duration' },
+import { Field, FieldType } from './types';
+export const FIELDS: Field[] = [
+  { name: 'proposalTime', label: 'Proposal time', type: FieldType.duration },
+  {
+    name: 'timeForExecution',
+    label: 'Time for execution',
+    type: FieldType.duration,
+  },
   {
     name: 'votingPowerPercentageForProposalExecution',
     label: 'Voting power percentage for proposal execution',
-    type: 'percentage',
+    type: FieldType.percentage,
   },
   {
     name: 'votingPowerPercentageForProposalCreation',
     label: 'Voting power percentage for proposal creation',
-    type: 'percentage',
+    type: FieldType.percentage,
   },
-  { name: 'voteGas', label: 'Vote gas', type: 'number' },
-  { name: 'maxGasPrice', label: 'Max gas price', type: 'number' },
-  { name: 'maxActiveProposals', label: 'Max active proposals', type: 'number' },
-  { name: 'lockTime', label: 'Lock time', type: 'duration' },
+  { name: 'voteGas', label: 'Vote gas', type: FieldType.number },
+  { name: 'maxGasPrice', label: 'Max gas price', type: FieldType.number },
+  {
+    name: 'maxActiveProposals',
+    label: 'Max active proposals',
+    type: FieldType.number,
+  },
+  { name: 'lockTime', label: 'Lock time', type: FieldType.duration },
   {
     name: 'minimumMembersForProposalCreation',
     label: 'Minimum members for proposal creation',
-    type: 'number',
+    type: FieldType.number,
   },
   {
     name: 'minimumTokensLockedForProposalCreation',
     label: 'Minimum tokens locked for proposal creation',
-    type: 'number',
+    type: FieldType.number,
   },
 ];
