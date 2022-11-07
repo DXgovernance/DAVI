@@ -202,7 +202,10 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                             {...field}
                             aria-label={field.name}
                             value={bn(field.value ?? 0).toNumber()}
-                            onChange={v => field.onChange(bn(v).toNumber())}
+                            onChange={v => {
+                              console.log(v);
+                              field.onChange(bn(v || '0').toNumber());
+                            }}
                             isInvalid={invalid && !!error}
                             iconRight={
                               valueChanged ? (
@@ -213,7 +216,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                                     restoreInputValue(field.name);
                                   }}
                                 >
-                                  <MdCached size={20} />
+                                  <MdCached size={16} />
                                 </Button>
                               ) : null
                             }
@@ -222,12 +225,11 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                           <Input
                             {...field}
                             value={bn(field.value).toString()}
-                            placeholder="%"
                             aria-label={field.name}
                             isInvalid={invalid && !!error}
-                            onChange={e =>
-                              field.onChange(bn(e.target.value).toString())
-                            }
+                            onChange={e => {
+                              field.onChange(e.target.value || '0');
+                            }}
                             iconRight={
                               <Flex direction="row">
                                 {f.type === 'percentage' && '%'}
@@ -238,7 +240,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                                       restoreInputValue(field.name)
                                     }
                                   >
-                                    <MdCached size={20} />
+                                    <MdCached size={16} />
                                   </Button>
                                 )}
                               </Flex>
