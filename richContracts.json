@@ -106,7 +106,7 @@
         "params": [
           {
             "type": "bytes32",
-            "component": "address",
+            "component": "string",
             "name": "proposalId",
             "title": "Proposal ID",
             "description": "Proposal ID - found from the URL of proposal"
@@ -147,7 +147,7 @@
         "params": [
           {
             "type": "bytes32",
-            "component": "address",
+            "component": "string",
             "name": "proposalId",
             "title": "Proposal ID",
             "description": "Proposal ID - found from the URL of proposal"
