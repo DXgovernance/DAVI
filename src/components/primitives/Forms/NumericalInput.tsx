@@ -10,6 +10,7 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   placeholder,
+  isInvalid = false,
   ...rest
 }) => {
   const enforcer = (nextUserInput: string) => {
@@ -37,6 +38,7 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       minLength={1}
       maxLength={79}
       spellCheck="false"
+      isInvalid={isInvalid}
     />
   );
 };
