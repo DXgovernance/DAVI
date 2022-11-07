@@ -87,9 +87,6 @@ export const Mint: React.FC<ActionEditorProps> = ({
           render={({ field: { ref, ...field }, fieldState }) => {
             const { error } = fieldState;
 
-            console.log('here');
-            console.log(error);
-
             return (
               <Control>
                 <ControlLabel>
