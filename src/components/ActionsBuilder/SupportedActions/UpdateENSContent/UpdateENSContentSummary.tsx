@@ -1,10 +1,5 @@
 import { diffLines } from 'diff';
-import {
-  DetailBody,
-  DetailHeader,
-  DetailRow,
-  StyledSegmentLink,
-} from '../common/Summary.styled';
+import { DetailBody, DetailHeader, DetailRow } from '../common/Summary.styled';
 import Summary from '../common/Summary';
 import { useUpdateEnsContent } from 'hooks/Guilds/useUpdateEnsContent';
 import { useEnsName, useNetwork } from 'wagmi';
@@ -12,13 +7,13 @@ import { convertToIpfsHash, getIpfsUrl, isSupportedChainId } from 'utils/ipfs';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
 import { useENSContentHash } from 'hooks/Guilds/ens/useENSPublicResolverContract';
-import { BiLinkExternal } from 'react-icons/bi';
 import { getBlockExplorerUrl } from 'provider/chains';
 import useIPFSFileMetadata from 'hooks/Guilds/ipfs/useIPFSFileMetadata';
 import { useMemo } from 'react';
 import { DiffView } from 'components/ActionsBuilder/DiffView';
 import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
 import { DiffContainer, DiffDetail, DiffStat } from './styles';
+import { ExternalLink } from 'components/primitives/Links/ExternalLink';
 
 const MAX_FILE_DIFF_BYTES = 64000; // 64kb
 
@@ -89,28 +84,18 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
       <DetailHeader>{t('ens.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <StyledSegmentLink
-            href={blockExplorerUrl}
-            target="_blank"
-            rel="noopener"
-          >
+          <ExternalLink href={blockExplorerUrl}>
             {ensName || parsedData?.from}
-            <BiLinkExternal />
-          </StyledSegmentLink>
+          </ExternalLink>
         </DetailBody>
       </DetailRow>
       <DetailHeader>{t('ens.currentContent')}</DetailHeader>
       <DetailRow>
         <DetailBody>
           {currentIpfsUrl ? (
-            <StyledSegmentLink
-              href={currentIpfsUrl || ''}
-              target="_blank"
-              rel="noopener"
-            >
+            <ExternalLink href={currentIpfsUrl || ''}>
               {currentIpfsUrl || ''}
-              <BiLinkExternal />
-            </StyledSegmentLink>
+            </ExternalLink>
           ) : (
             t('none')
           )}
@@ -122,15 +107,9 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
           {newFile ? (
             <DiffContainer>
               <DiffDetail>
-                <StyledSegmentLink
-                  href={newIpfsUrl || ''}
-                  target="_blank"
-                  rel="noopener"
-                >
+                <ExternalLink href={newIpfsUrl || ''}>
                   {newIpfsUrl || ''}
-                  <BiLinkExternal />
-                </StyledSegmentLink>
-
+                </ExternalLink>
                 <DiffStat removed>---{numChanges?.removed}</DiffStat>
                 <DiffStat>+++{numChanges?.added}</DiffStat>
               </DiffDetail>
@@ -142,18 +121,13 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
               />
             </DiffContainer>
           ) : (
-            <StyledSegmentLink
-              href={newIpfsUrl || ''}
-              target="_blank"
-              rel="noopener"
-            >
+            <ExternalLink href={newIpfsUrl || ''}>
               {newIpfsUrl || ''}
-              <BiLinkExternal />
-            </StyledSegmentLink>
+            </ExternalLink>
           )}
         </DetailBody>
       </DetailRow>
-      <Summary decodedCall={decodedCall} blockExplorerUrl={blockExplorerUrl} />
+      <Summary decodedCall={decodedCall} />
     </>
   );
 };

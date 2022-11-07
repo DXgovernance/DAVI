@@ -63,12 +63,6 @@ exports[`CallDetails Should match 1`] = `
   padding: 0;
 }
 
-.c7 {
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
-}
-
 .c5 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
@@ -91,28 +85,10 @@ exports[`CallDetails Should match 1`] = `
   border-radius: 10px;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c3 {
-  color: #fff;
-  margin-top: 0;
-  white-space: pre-wrap;
-}
-
-.c4 {
-  color: #A1A6B0;
-  margin: 0;
+.c7 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
 }
 
 .c8 {
@@ -137,6 +113,30 @@ exports[`CallDetails Should match 1`] = `
 .c8:hover {
   cursor: pointer;
   color: #fff;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  color: #fff;
+  margin-top: 0;
+  white-space: pre-wrap;
+}
+
+.c4 {
+  color: #A1A6B0;
+  margin: 0;
 }
 
 .c13 {
@@ -320,19 +320,6 @@ exports[`CallDetails Should match with empty data 1`] = `
   padding: 0;
 }
 
-.c14 {
-  width: 100%;
-  min-width: 200px;
-  height: 1px;
-  background-color: #303338;
-}
-
-.c7 {
-  border-radius: 50%;
-  height: 24px;
-  width: 24px;
-}
-
 .c5 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
@@ -355,28 +342,10 @@ exports[`CallDetails Should match with empty data 1`] = `
   border-radius: 10px;
 }
 
-.c2 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c3 {
-  color: #fff;
-  margin-top: 0;
-  white-space: pre-wrap;
-}
-
-.c4 {
-  color: #A1A6B0;
-  margin: 0;
+.c7 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
 }
 
 .c8 {
@@ -401,6 +370,37 @@ exports[`CallDetails Should match with empty data 1`] = `
 .c8:hover {
   cursor: pointer;
   color: #fff;
+}
+
+.c14 {
+  width: 100%;
+  min-width: 200px;
+  height: 1px;
+  background-color: #303338;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c3 {
+  color: #fff;
+  margin-top: 0;
+  white-space: pre-wrap;
+}
+
+.c4 {
+  color: #A1A6B0;
+  margin: 0;
 }
 
 .c13 {
