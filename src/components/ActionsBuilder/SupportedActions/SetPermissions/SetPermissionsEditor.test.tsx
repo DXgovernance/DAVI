@@ -8,16 +8,26 @@ import { BigNumber, utils } from 'ethers';
 import { ANY_FUNC_SIGNATURE, ANY_ADDRESS } from 'utils';
 import { fireEvent, screen } from '@testing-library/react';
 import { mockChain } from 'components/Web3Modals/fixtures';
+import { MOCK_ADDRESS, MOCK_ENS_NAME } from 'hooks/Guilds/ens/fixtures';
 
 // Mocked hooks
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
-    avatarUri: 'test',
-    imageUrl: 'test',
-    ensName: 'test.eth',
+    imageUrl: 'wagmi',
   }),
+}));
+
+jest.mock('hooks/Guilds/ens/useENS', () => ({
+  __esModule: true,
+  default: (value: string) => {
+    if (value === MOCK_ENS_NAME || value === MOCK_ADDRESS) {
+      return { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
+    } else {
+      return { name: null, address: value };
+    }
+  },
 }));
 
 jest.mock('wagmi', () => ({
@@ -33,7 +43,7 @@ const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
 
 const functionNameMock = 'test';
 const functionSignatureMock = '0x9c22ff5f';
-const toAddressMock = '0x79706C8e413CDaeE9E63f282507287b9Ea9C0928';
+const toAddressMock = MOCK_ADDRESS;
 const customAmountMock = 111;
 const tokenAddresMock = '0xD899Be87df2076e0Be28486b60dA406Be6757AfC';
 
@@ -41,7 +51,7 @@ const emptyDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
   function: PermissionRegistryContract.getFunction('setETHPermission'),
-  to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
+  to: tokenAddresMock,
   value: BigNumber.from(0),
   args: {
     to: ANY_ADDRESS,
@@ -60,10 +70,29 @@ const completeDecodedCallMock: DecodedCall = {
   from: '',
   callType: SupportedAction.REP_MINT,
   function: PermissionRegistryContract.getFunction('setETHPermission'),
-  to: '0xD899Be87df2076e0Be28486b60dA406Be6757AfC',
+  to: tokenAddresMock,
   value: BigNumber.from(0),
   args: {
     to: toAddressMock,
+    functionSignature: functionSignatureMock,
+    valueAllowed: BigNumber.from('111000000000000000000'),
+    allowance: 'true',
+  },
+  optionalProps: {
+    asset: tokenAddresMock,
+    functionName: functionNameMock,
+    tab: 1,
+  },
+};
+
+const decodedCallMockWithoutENSName: DecodedCall = {
+  from: '',
+  callType: SupportedAction.REP_MINT,
+  function: PermissionRegistryContract.getFunction('setETHPermission'),
+  to: tokenAddresMock,
+  value: BigNumber.from(0),
+  args: {
+    to: '0x0100000000000000000000000000000000000001',
     functionSignature: functionSignatureMock,
     valueAllowed: BigNumber.from('111000000000000000000'),
     allowance: 'true',
@@ -157,7 +186,30 @@ describe(`Set Permissions editor`, () => {
         name: /amount input/i,
       });
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe(MOCK_ENS_NAME);
+      expect(amountInputElement.value).toBe('111.0');
+    });
+
+    it(`Displays decodedCall information properly from an address without ENS name`, () => {
+      const newAddressValue = '0xD899Be87df2076e0Be28486b60dA406Be6750000';
+      const otherValues = {
+        ...completeDecodedCallMock,
+        args: {
+          ...completeDecodedCallMock.args,
+          to: newAddressValue,
+        },
+      };
+      render(<Permissions decodedCall={otherValues} onSubmit={jest.fn()} />);
+
+      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /to address input/i,
+      });
+
+      const amountInputElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /amount input/i,
+      });
+
+      expect(toAddressElement.value).toBe(newAddressValue);
       expect(amountInputElement.value).toBe('111.0');
     });
   });
@@ -216,7 +268,32 @@ describe(`Set Permissions editor`, () => {
         { name: /function signature input/i }
       );
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe(MOCK_ENS_NAME);
+      expect(functionNameElement.value).toBe(functionNameMock);
+    });
+
+    it(`Displays decodedCall information properly with an address without ENS name`, () => {
+      render(
+        <Permissions
+          decodedCall={decodedCallMockWithoutENSName}
+          onSubmit={jest.fn()}
+        />
+      );
+      const functionsCallTab = screen.getByTestId(`functions-call-tab`);
+      fireEvent.click(functionsCallTab);
+
+      const toAddressElement: HTMLInputElement = screen.getByRole('textbox', {
+        name: /to address input/i,
+      });
+
+      const functionNameElement: HTMLInputElement = screen.getByRole(
+        'textbox',
+        { name: /function signature input/i }
+      );
+
+      expect(toAddressElement.value).toBe(
+        decodedCallMockWithoutENSName.args.to
+      );
       expect(functionNameElement.value).toBe(functionNameMock);
     });
   });
@@ -274,7 +351,7 @@ describe(`Set Permissions editor`, () => {
         }
       );
 
-      expect(toAddressElement.value).toBe(completeDecodedCallMock.args.to);
+      expect(toAddressElement.value).toBe(MOCK_ENS_NAME);
       expect(functionNameElement.value).toBe(functionNameMock);
       expect(customAmountElement.value).toBe('111.0');
 

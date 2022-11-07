@@ -14,6 +14,7 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   disabled = false,
   defaultValue,
   ariaLabel,
+  isInvalid = false,
   ...rest
 }) => {
   const enforcer = (nextUserInput: string) => {
@@ -56,6 +57,7 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       disabled={disabledState}
       iconRight={<IconRight {...iconRightProps} />}
       aria-label={ariaLabel ? ariaLabel : 'numerical input'}
+      isInvalid={isInvalid}
     />
   );
 };

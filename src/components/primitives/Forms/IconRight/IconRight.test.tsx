@@ -1,7 +1,6 @@
 import { AddressInput } from '../AddressInput';
 import { render } from 'utils/tests';
 import { fireEvent } from '@testing-library/react';
-// import { DURATION_LIMITS } from 'constants/Duration';
 import { MOCK_ADDRESS } from './fixtures';
 import { NumericalInput } from '../NumericalInput';
 
@@ -29,11 +28,17 @@ jest.mock('wagmi', () => ({
 }));
 
 const AddressInputWithDefaultValue = () => {
-  return <AddressInput value={MOCK_ADDRESS} defaultValue={MOCK_ADDRESS} />;
+  return (
+    <AddressInput
+      value={MOCK_ADDRESS}
+      defaultValue={MOCK_ADDRESS}
+      onChange={jest.fn()}
+    />
+  );
 };
 
 const AddressInputWithoutDefaultValue = () => {
-  return <AddressInput value={MOCK_ADDRESS} />;
+  return <AddressInput value={MOCK_ADDRESS} onChange={jest.fn()} />;
 };
 
 const NumericalInputWithDefaultValue = () => {

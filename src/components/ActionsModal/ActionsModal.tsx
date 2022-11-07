@@ -28,7 +28,6 @@ import {
 import { EditorWrapper } from './ActionsModal.styled';
 import { ActionModalProps, SelectedFunction } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
-import { useAccount } from 'wagmi';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 const ActionModal: React.FC<ActionModalProps> = ({
@@ -39,7 +38,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
-  const { address: walletAddress } = useAccount();
   const { data: guildConfig } = useGuildConfig(guildId);
   // Supported Actions
   const [selectedAction, setSelectedAction] =
@@ -215,7 +213,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
     defaultDecodedAction.decodedCall.callType = action;
     switch (action) {
       case SupportedAction.REP_MINT:
-        defaultDecodedAction.decodedCall.args.to = walletAddress;
         defaultDecodedAction.decodedCall.to = guildConfig?.token;
         break;
       case SupportedAction.SET_PERMISSIONS:

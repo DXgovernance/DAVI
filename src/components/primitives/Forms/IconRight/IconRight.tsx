@@ -30,7 +30,13 @@ const IconRight = ({
   } else if (!disabled && value) {
     const clearLabel = `clear ${type}`;
     return (
-      <ClickableIcon aria-label={clearLabel} onClick={() => onChange('')}>
+      <ClickableIcon
+        aria-label={clearLabel}
+        data-testid={clearLabel}
+        onClick={() => {
+          onChange('');
+        }}
+      >
         <FiX size={18} />
       </ClickableIcon>
     );
