@@ -1,6 +1,5 @@
 import { BigNumber } from 'ethers';
 import i18next from 'i18next';
-import isIPFS from 'is-ipfs';
 
 export const isValidProposal = ({
   toArray,
@@ -87,16 +86,7 @@ export const isIpfsHash = (
   let isValid = true;
   let validationError = null;
 
-  if (hash.substring(0, 2) !== 'Qm') {
-    validationError = i18next.t('ens.validation.onlyCidV0Supported');
-    isValid = false;
-    return { isValid, validationError };
-  }
-
-  if (!isIPFS.cid(hash)) {
-    validationError = i18next.t('ens.validation.ipfsHashNotValid');
-    isValid = false;
-  }
+  // Removed validation due to library not supporting cid v1
 
   return { isValid, validationError };
 };

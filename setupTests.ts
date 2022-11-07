@@ -11,3 +11,14 @@ jest.mock('react-i18next', () => {
   };
 });
 
+jest.mock('@ensdomains/content-hash', () => {
+  return {
+    fromIpfs: () => {
+      return 'ipfs://';
+    },
+    decode: () => {
+      return 'QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4';
+    },
+  };
+});
+

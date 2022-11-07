@@ -1,6 +1,6 @@
 {
   "name": "davi",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Decentralized Autonomous Voting Interface",
   "scripts": {
     "dev": "./scripts/dev.sh",
@@ -39,6 +39,7 @@
     "@dnd-kit/modifiers": "^5.0.0",
     "@dnd-kit/sortable": "^6.0.1",
     "@dnd-kit/utilities": "^3.1.0",
+    "@ensdomains/content-hash": "^2.5.7",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-truffle5": "^2.0.5",
     "@nomiclabs/hardhat-web3": "^2.0.0",
@@ -60,7 +61,6 @@
     "babel-loader": "8.1.0",
     "bignumber.js": "^9.0.2",
     "buffer": "^6.0.3",
-    "content-hash": "^2.5.2",
     "copy-to-clipboard": "^3.3.1",
     "crypto-js": "^4.1.1",
     "diff": "^5.1.0",
