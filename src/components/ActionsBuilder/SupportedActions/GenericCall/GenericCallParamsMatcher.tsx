@@ -2,13 +2,9 @@ import { BigNumber } from 'ethers';
 import { formatUnits } from 'ethers/lib/utils';
 import { ChildrenNode, Matcher, MatchResponse, Node } from 'interweave';
 import moment from 'moment';
-import { FiExternalLink } from 'react-icons/fi';
-import { UnstyledLink } from 'components/primitives/Links';
+import { BlockExplorerLink } from 'components/primitives/Links';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
-import { ENSAvatar } from 'components/Avatar';
 import { capitalizeFirstLetter } from 'utils';
-import { ParamDetail } from 'components/ActionsBuilder/CallDetails/CallDetails.styled';
-
 interface MatcherOptions {
   params: FunctionParamWithValue[];
 }
@@ -25,19 +21,13 @@ export const renderGenericCallParamValue = (
   switch (param.component) {
     case 'address':
       return (
-        <>
-          <UnstyledLink to="#">
-            <ParamDetail>
-              <ENSAvatar
-                address={param.value}
-                size={16}
-                displayEnsOrAddress
-                shortAddress
-              />{' '}
-              <FiExternalLink size={16} />
-            </ParamDetail>
-          </UnstyledLink>
-        </>
+        <BlockExplorerLink
+          address={param.value}
+          unstyled
+          showAvatar
+          shortAddress
+          avatarSize={16}
+        />
       );
     case 'integer':
     case 'decimal':

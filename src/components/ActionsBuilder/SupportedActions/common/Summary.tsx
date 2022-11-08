@@ -46,7 +46,7 @@ const Summary = ({ decodedCall }: SummaryProps) => {
 
       <DetailRow>
         <DetailBody>
-          <BlockExplorerLink decodedCall={decodedCall} showAvatar />
+          <BlockExplorerLink address={decodedCall?.to} showAvatar />
         </DetailBody>
       </DetailRow>
     </>

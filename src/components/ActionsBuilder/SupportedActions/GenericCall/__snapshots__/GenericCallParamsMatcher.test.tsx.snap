@@ -1,117 +1,131 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 1`] = `
-.c0 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #fff;
+.c1 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c0:focus,
-.c0:hover,
-.c0:visited,
-.c0:link,
-.c0:active {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4 {
+.c2 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c5 {
+.c3 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 50%;
-  line-height: 0;
-}
-
-.c6 {
-  margin-left: 6px;
-}
-
-.c1 {
+.c5 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c6 {
   color: #A1A6B0;
   overflow-wrap: break-word;
 }
 
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.c4:focus,
+.c4:hover,
+.c4:visited,
+.c4:link,
+.c4:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 <div>
    
-  <a
+  <div
     class="c0"
-    href="/"
   >
-    <div
-      class="c1 c2"
+    <span
+      class="c1"
     >
-      <span
-        class="c3"
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="16"
+        src="test"
+      />
+    </span>
+    <a
+      class="c4"
+      rel="noopener"
+      target="_blank"
+    >
+      <div
+        class="c5 c6"
       >
-        <img
-          alt="Avatar"
-          class="c4 c5"
-          data-testid="avatar"
-          size="16"
-          src="test"
-        />
-        <span
-          class="c6"
+        0x3f94...4351
+        <svg
+          fill="none"
+          height="14"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="14"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          0x3f94...4351
-        </span>
-      </span>
-       
-      <svg
-        fill="none"
-        height="16"
-        stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        viewBox="0 0 24 24"
-        width="16"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-        />
-        <polyline
-          points="15 3 21 3 21 9"
-        />
-        <line
-          x1="10"
-          x2="21"
-          y1="14"
-          y2="3"
-        />
-      </svg>
-    </div>
-  </a>
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
+      </div>
+    </a>
+  </div>
    
 </div>
 `;
@@ -181,63 +195,77 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 `;
 
 exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
-.c0 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #fff;
+.c1 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c0:focus,
-.c0:hover,
-.c0:visited,
-.c0:link,
-.c0:active {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4 {
+.c2 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c5 {
+.c3 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 50%;
-  line-height: 0;
-}
-
-.c6 {
-  margin-left: 6px;
-}
-
-.c1 {
+.c5 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c6 {
   color: #A1A6B0;
   overflow-wrap: break-word;
+}
+
+.c4 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.c4:focus,
+.c4:hover,
+.c4:visited,
+.c4:link,
+.c4:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 <div>
@@ -246,56 +274,56 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
     matchedparam="addressParam"
     style="display: inline-block;"
   >
-    <a
+    <div
       class="c0"
-      href="/"
     >
-      <div
-        class="c1 c2"
+      <span
+        class="c1"
       >
-        <span
-          class="c3"
+        <img
+          alt="Avatar"
+          class="c2 c3"
+          data-testid="avatar"
+          size="16"
+          src="test"
+        />
+      </span>
+      <a
+        class="c4"
+        rel="noopener"
+        target="_blank"
+      >
+        <div
+          class="c5 c6"
         >
-          <img
-            alt="Avatar"
-            class="c4 c5"
-            data-testid="avatar"
-            size="16"
-            src="test"
-          />
-          <span
-            class="c6"
+          0x3f94...4351
+          <svg
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            0x3f94...4351
-          </span>
-        </span>
-         
-        <svg
-          fill="none"
-          height="16"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="16"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-          />
-          <polyline
-            points="15 3 21 3 21 9"
-          />
-          <line
-            x1="10"
-            x2="21"
-            y1="14"
-            y2="3"
-          />
-        </svg>
-      </div>
-    </a>
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline
+              points="15 3 21 3 21 9"
+            />
+            <line
+              x1="10"
+              x2="21"
+              y1="14"
+              y2="3"
+            />
+          </svg>
+        </div>
+      </a>
+    </div>
   </span>
    
 </div>

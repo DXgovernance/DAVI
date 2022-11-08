@@ -4,8 +4,6 @@ import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
 import { Box } from 'components/primitives/Layout/Box';
 import { Flex } from 'components/primitives/Layout/Flex';
-import { UnstyledLink } from 'components/primitives/Links';
-import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
 import { Divider } from 'components/Divider';
 import { getSummaryView } from '../SupportedActions';
@@ -23,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
+import { BlockExplorerLink } from 'components/primitives/Links/BlockExplorerLink';
 
 type Param = Partial<FunctionParamWithValue>;
 
@@ -39,13 +38,7 @@ function renderDefaultParamValue(param: Param) {
   if (!param) return null;
 
   if (param.type === 'address') {
-    return (
-      <UnstyledLink to="#">
-        <ParamDetail>
-          {param.value} <FiExternalLink size={16} />
-        </ParamDetail>
-      </UnstyledLink>
-    );
+    return <BlockExplorerLink address={param.value} unstyled />;
   }
 
   if (param.type.startsWith('uint') || param.type.startsWith('int')) {

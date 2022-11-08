@@ -1,12 +1,13 @@
 import { Segment } from 'components/ActionsBuilder/SupportedActions/common/infoLine';
 import { Avatar } from 'components/Avatar';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import { useUpdateEnsContent } from 'hooks/Guilds/useUpdateEnsContent';
-import { MAINNET_ID } from 'utils';
+import { MAINNET_ID, shortenAddress } from 'utils';
 import { Chain, useNetwork } from 'wagmi';
 import { ExternalLink } from './ExternalLink';
+import { BlockExplorerLinkContainer } from './styles';
 import { BlockExplorerLinkProps } from './types';
 
+// this code is duplicated from provider/chain.ts because there was a circular dependency when testing
 const getBlockExplorerUrl = (
   chain: Chain,
   address: string,
@@ -18,29 +19,28 @@ const getBlockExplorerUrl = (
 };
 
 export const BlockExplorerLink: React.FC<BlockExplorerLinkProps> = ({
-  decodedCall,
+  address,
   showAvatar,
+  unstyled,
+  shortAddress,
+  avatarSize = 24,
 }) => {
   const { chain } = useNetwork();
-  const { parsedData } = useUpdateEnsContent({ decodedCall });
-  const { ensName, imageUrl } = useENSAvatar(decodedCall.to, MAINNET_ID);
+  const { ensName, imageUrl } = useENSAvatar(address, MAINNET_ID);
+  if (!address) return null;
 
-  const blockExplorerUrl = getBlockExplorerUrl(
-    chain,
-    parsedData?.from,
-    'address'
-  );
+  const blockExplorerUrl = getBlockExplorerUrl(chain, address, 'address');
 
   return (
-    <>
+    <BlockExplorerLinkContainer>
       {showAvatar && (
         <Segment>
-          <Avatar defaultSeed={decodedCall.to} src={imageUrl} size={24} />
+          <Avatar defaultSeed={address} src={imageUrl} size={avatarSize} />
         </Segment>
       )}
-      <ExternalLink href={blockExplorerUrl}>
-        {ensName || decodedCall.to}
+      <ExternalLink href={blockExplorerUrl} unstyled={unstyled}>
+        {ensName || shortAddress ? shortenAddress(address) : address}
       </ExternalLink>
-    </>
+    </BlockExplorerLinkContainer>
   );
 };

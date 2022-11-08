@@ -27,19 +27,43 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   align-items: center;
 }
 
-.c6 {
+.c8 {
+  color: #A1A6B0;
+  overflow-wrap: break-word;
+}
+
+.c7 {
   -webkit-text-decoration: none;
   text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #fff;
 }
 
-.c6:focus,
-.c6:hover,
-.c6:visited,
-.c6:link,
-.c6:active {
+.c7:focus,
+.c7:hover,
+.c7:visited,
+.c7:link,
+.c7:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c3 {
@@ -52,19 +76,19 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   color: #9575CD;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #F06292;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #4DB6AC;
 }
 
-.c10 {
+.c12 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #64B5F6;
@@ -74,7 +98,7 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c7 {
+.c11 {
   color: #A1A6B0;
   overflow-wrap: break-word;
 }
@@ -94,41 +118,45 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
         from
       </span>
     </div>
-    <a
+    <div
       class="c6"
-      href="/"
     >
-      <div
-        class="c0 c7"
+      <a
+        class="c7"
+        rel="noopener"
+        target="_blank"
       >
-        0x0000000000000000000000000000000000000000
-         
-        <svg
-          fill="none"
-          height="16"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="16"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          class="c0 c8"
         >
-          <path
-            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-          />
-          <polyline
-            points="15 3 21 3 21 9"
-          />
-          <line
-            x1="10"
-            x2="21"
-            y1="14"
-            y2="3"
-          />
-        </svg>
-      </div>
-    </a>
+          0x0000...0000
+          <svg
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline
+              points="15 3 21 3 21 9"
+            />
+            <line
+              x1="10"
+              x2="21"
+              y1="14"
+              y2="3"
+            />
+          </svg>
+        </div>
+      </a>
+    </div>
   </div>
   <div
     class="c0 c1"
@@ -137,7 +165,7 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c8"
+        class="c4 c9"
         color="#F06292"
       >
         to
@@ -151,14 +179,14 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c9"
+        class="c4 c10"
         color="#4DB6AC"
       >
         data
       </span>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c11"
     >
       0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
     </div>
@@ -170,14 +198,14 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c10"
+        class="c4 c12"
         color="#64B5F6"
       >
         value
       </span>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c11"
     >
       1000000000000000000
     </div>
@@ -213,19 +241,43 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   align-items: center;
 }
 
-.c6 {
+.c8 {
+  color: #A1A6B0;
+  overflow-wrap: break-word;
+}
+
+.c7 {
   -webkit-text-decoration: none;
   text-decoration: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #fff;
 }
 
-.c6:focus,
-.c6:hover,
-.c6:visited,
-.c6:link,
-.c6:active {
+.c7:focus,
+.c7:hover,
+.c7:visited,
+.c7:link,
+.c7:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+}
+
+.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .c3 {
@@ -238,19 +290,19 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   color: #9575CD;
 }
 
-.c8 {
+.c9 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #F06292;
 }
 
-.c9 {
+.c10 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #4DB6AC;
 }
 
-.c10 {
+.c12 {
   display: inline-block;
   padding: 0.375rem 0.5rem;
   color: #64B5F6;
@@ -260,7 +312,7 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   margin-bottom: 1.5rem;
 }
 
-.c7 {
+.c11 {
   color: #A1A6B0;
   overflow-wrap: break-word;
 }
@@ -280,41 +332,45 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
         from
       </span>
     </div>
-    <a
+    <div
       class="c6"
-      href="/"
     >
-      <div
-        class="c0 c7"
+      <a
+        class="c7"
+        rel="noopener"
+        target="_blank"
       >
-        0x0000000000000000000000000000000000000000
-         
-        <svg
-          fill="none"
-          height="16"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="16"
-          xmlns="http://www.w3.org/2000/svg"
+        <div
+          class="c0 c8"
         >
-          <path
-            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-          />
-          <polyline
-            points="15 3 21 3 21 9"
-          />
-          <line
-            x1="10"
-            x2="21"
-            y1="14"
-            y2="3"
-          />
-        </svg>
-      </div>
-    </a>
+          0x0000...0000
+          <svg
+            fill="none"
+            height="14"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="14"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline
+              points="15 3 21 3 21 9"
+            />
+            <line
+              x1="10"
+              x2="21"
+              y1="14"
+              y2="3"
+            />
+          </svg>
+        </div>
+      </a>
+    </div>
   </div>
   <div
     class="c0 c1"
@@ -323,7 +379,7 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c8"
+        class="c4 c9"
         color="#F06292"
       >
         to
@@ -337,14 +393,14 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c9"
+        class="c4 c10"
         color="#4DB6AC"
       >
         data
       </span>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c11"
     >
       0x2e1a7d4d00000000000000000000000000000000000000000000000001aa0b0f33c98800
     </div>
@@ -356,14 +412,14 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
       class="c0 c2 c3"
     >
       <span
-        class="c4 c10"
+        class="c4 c12"
         color="#64B5F6"
       >
         value
       </span>
     </div>
     <div
-      class="c0 c7"
+      class="c0 c11"
     >
       1000000000000000000
     </div>
