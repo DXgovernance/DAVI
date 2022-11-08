@@ -1,21 +1,20 @@
 import { FC, useMemo, useState } from 'react';
-import { ActionEditorProps } from '..';
+import { MdCached } from 'react-icons/md';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { NumericalInput as Input } from 'components/primitives/Forms/NumericalInput';
-import { Button } from 'components/primitives/Button';
-import { DurationInput } from 'components/primitives/Forms/DurationInput';
-import { MdCached } from 'react-icons/md';
-import validateSetGuildConfig from './validateSetGuildConfig';
-// import { Flex } from 'components/primitives/Layout/Flex';
 import {
   Control,
   ControlLabel,
   ControlRow,
 } from 'components/primitives/Forms/Control';
-import { useTranslation } from 'react-i18next';
+import { ActionEditorProps } from '..';
+import { NumericalInput as Input } from 'components/primitives/Forms/NumericalInput';
+import { Button } from 'components/primitives/Button';
+import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { ErrorLabel as Error } from 'components/primitives/Forms/ErrorLabel';
-import { Controller, useForm } from 'react-hook-form';
+import validateSetGuildConfig from './validateSetGuildConfig';
 import {
   bn,
   pickUpdatedOrDefaultValue as pickValue,
@@ -24,7 +23,7 @@ import {
 import { FIELDS } from './constants';
 import { SetGuildConfigFields, ControlField, FieldType } from './types';
 
-const getComponent = type => {
+const getComponent = (type: FieldType) => {
   if (type === FieldType.duration) return DurationInput;
   return Input;
 };
@@ -215,7 +214,8 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                     <ControlRow>
                       <Component
                         {...field}
-                        aria-label={field.name}
+                        aria-label={f.label}
+                        name={f.name}
                         value={value as never}
                         onChange={handleChange}
                         isInvalid={!!error}

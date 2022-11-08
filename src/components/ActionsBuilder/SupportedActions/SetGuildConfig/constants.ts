@@ -1,4 +1,5 @@
 import { Field, FieldType } from './types';
+
 export const FIELDS: Field[] = [
   { name: 'proposalTime', label: 'Proposal time', type: FieldType.duration },
   {
