@@ -28,6 +28,14 @@ jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
 }));
 
 jest.mock('wagmi', () => ({
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 

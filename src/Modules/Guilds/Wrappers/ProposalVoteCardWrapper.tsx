@@ -11,6 +11,7 @@ import { ProposalVoteCard } from 'components/ProposalVoteCard';
 import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
+import useGuildImplementationTypeConfig from '../Hooks/useGuildImplementationType';
 
 const ProposalVoteCardWrapper = () => {
   const { guildId, proposalId } = useTypedParams();
@@ -25,6 +26,8 @@ const ProposalVoteCardWrapper = () => {
   );
 
   const timestamp = useTimedRerender(10000);
+
+  const { isSnapshotGuild } = useGuildImplementationTypeConfig(guildId);
 
   const { data: userVotingPower } = useVotingPowerOf({
     contractAddress: guildId,
@@ -65,9 +68,10 @@ const ProposalVoteCardWrapper = () => {
       proposal={{ ...proposal, id: proposalId, metadata: proposalMetadata }}
       timestamp={timestamp}
       votingPower={{
-        userVotingPower,
+        userVotingPower: isSnapshotGuild
+          ? votingPowerAtProposalSnapshot
+          : userVotingPower,
         percent: votingPowerPercent,
-        atSnapshot: votingPowerAtProposalSnapshot,
         atCurrentSnapshot: votingPowerAtProposalCurrentSnapshot,
       }}
       contract={contract}

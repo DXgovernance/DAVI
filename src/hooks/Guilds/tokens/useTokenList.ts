@@ -5,9 +5,7 @@ import useNetworkConfig from 'hooks/Guilds/useNetworkConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { getChainIcon } from 'utils';
 import { useNetwork } from 'wagmi';
-
-// TODO: Update to the DXgov curated token list once its ready
-const SWAPR_TOKEN_LIST = 'QmSbyVo6Kz5BuqyAHYcN7UkeCk5cALFp6QmPUN6NtPpDWL';
+import { useENSContentHash } from '../ens/useENSPublicResolverContract';
 
 export enum TokenType {
   NATIVE = 'NATIVE',
@@ -20,7 +18,9 @@ export const useTokenList = (
   chainId?: number,
   includeNativeToken: boolean = false
 ) => {
-  const tokenList = useIPFSFile<TokenList>(SWAPR_TOKEN_LIST);
+  const { ipfsHash } = useENSContentHash('tokens.projectdavi.eth', 1);
+  const tokenList = useIPFSFile<TokenList>(ipfsHash);
+
   const { chainName } = useTypedParams();
   const config = useNetworkConfig(chainId);
   const { chains } = useNetwork();
@@ -69,5 +69,5 @@ export const useTokenList = (
     return null;
   }, [chains, chainId, includeNativeToken]);
 
-  return { tokens: nativeToken ? [...tokens, nativeToken] : tokens };
+  return { tokens: nativeToken ? [nativeToken, ...tokens] : tokens };
 };
