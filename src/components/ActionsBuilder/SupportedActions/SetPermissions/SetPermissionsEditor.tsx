@@ -144,9 +144,9 @@ const Permissions: React.FC<ActionEditorProps> = ({
     };
 
     const newApprovalAssetCall = {
-      ...decodedCall,
+      ...baseCall,
       args: {
-        ...decodedCall.args,
+        ...baseCall.args,
         functionSignature: ERC20_APPROVE_SIGNATURE,
       },
       optionalProps: {
