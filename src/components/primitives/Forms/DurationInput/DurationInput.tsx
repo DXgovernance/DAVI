@@ -47,7 +47,7 @@ const DurationInput: React.FC<DurationInputProps> = ({
         isInvalid={isInvalid}
       >
         {!durationString.length ? '' : durationString}
-        {iconRight && <div style={{ zIndex: 999 }}>{iconRight}</div>}
+        {iconRight && <div>{iconRight}</div>}
       </TransparentButton>
       <Modal
         isOpen={isOpen}

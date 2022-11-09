@@ -47,5 +47,6 @@ export const TransparentButton = styled(Button)<{ isInvalid?: boolean }>`
   background-color: transparent;
   justify-content: space-between;
   text-align: left;
-  border: 1px solid ${({ isInvalid }) => (isInvalid ? 'red' : 'inherit')};
+  border: 1px solid
+    ${({ isInvalid, theme }) => (isInvalid ? theme.colors.red : 'inherit')};
 `;
