@@ -265,5 +265,7 @@
   "goToAllProposalsPage": "Go to all proposals page",
   "reload": "Reload",
   "reportABug": "Report a bug",
-  "suggestAFeature": "Suggest a feature"
+  "suggestAFeature": "Suggest a feature",
+  "youAreNotOnline": "You are not Online",
+  "pleaseCheckYourInternetConnection": "Please check your internet connection"
 }
