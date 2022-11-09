@@ -16,22 +16,6 @@ jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
 
 const mockBigNumber = BigNumber.from(100000000);
 
-// jest.mock('wagmi', () => ({
-//   __esModule: true,
-//   useEnsResolver: () => ({
-//     data: {
-//       name: 'name.eth',
-//       address: '0x0000000000000000000000000000000000000000',
-//       contentHash: '0x0',
-//     },
-//   }),
-//   useNetwork: () => ({
-//     chain: {
-//       id: 1,
-//     },
-//   }),
-// }));
-
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({

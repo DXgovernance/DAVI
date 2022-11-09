@@ -19,9 +19,8 @@ export const useTokenList = (
   includeNativeToken: boolean = false
 ) => {
   const { ipfsHash } = useENSContentHash('tokens.projectdavi.eth', 1);
-  console.log({ ipfsHash });
   const tokenList = useIPFSFile<TokenList>(ipfsHash);
-  console.log({ tokenList });
+
   const { chainName } = useTypedParams();
   const config = useNetworkConfig(chainId);
   const { chains } = useNetwork();
