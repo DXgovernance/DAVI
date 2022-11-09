@@ -12,13 +12,13 @@ type UpdatedValuesReturn = {
 };
 export const getUpdatedValues = (
   current: SetGuildConfigFields,
-  modifyed: SetGuildConfigFields
+  modified: SetGuildConfigFields
 ): UpdatedValuesReturn | {} => {
-  if (!current || !modifyed) return {};
+  if (!current || !modified) return {};
   return Object.keys(current).reduce((acc, key) => {
     if (!FIELDS.map(f => f.name).includes(key)) return acc;
     const currentValue = bn(current[key] || 0);
-    const newValue = bn(modifyed[key] || 0);
+    const newValue = bn(modified[key] || 0);
 
     if (!currentValue.eq(newValue)) {
       return {
@@ -32,15 +32,15 @@ export const getUpdatedValues = (
 
 export const pickUpdatedOrDefaultValue = (
   current: BigNumber,
-  modifyed: BigNumber
+  modified: BigNumber
 ): BigNumber => {
   if (BigNumber.isBigNumber(current)) {
-    if (BigNumber.isBigNumber(modifyed) && !bn(modifyed).eq(current)) {
-      return bn(modifyed);
+    if (BigNumber.isBigNumber(modified) && !bn(modified).eq(current)) {
+      return bn(modified);
     }
     return bn(current);
-  } else if (BigNumber.isBigNumber(modifyed)) {
-    return bn(modifyed);
+  } else if (BigNumber.isBigNumber(modified)) {
+    return bn(modified);
   }
   return bn(0);
 };

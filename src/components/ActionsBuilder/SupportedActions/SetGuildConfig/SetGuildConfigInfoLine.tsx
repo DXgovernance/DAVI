@@ -3,7 +3,6 @@ import { BigNumber } from 'ethers';
 import { AiFillSetting } from 'react-icons/ai';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 import { ActionViewProps } from '..';
-import { duration } from 'moment';
 import { useUpdatedGuildConfigValues } from './useUpdatedGuildConfigValues';
 import { FIELDS } from './constants';
 import { bn } from './utils';
@@ -15,12 +14,13 @@ import {
   InfoLineConfigItem,
 } from './SetGuildConfigEditor.styled';
 import { Flex } from 'components/primitives/Layout/Flex';
+import { getDurationData } from 'hooks/Guilds/useDuration/getDurationData';
 
 const getDisplayValue = (value: BigNumber, type: FieldType) => {
   if (type === FieldType.number) return bn(value).toNumber();
   if (type === FieldType.percentage) return `${bn(value).toNumber()}%`;
   if (type === FieldType.duration)
-    return duration(bn(value).toNumber(), 'seconds').humanize();
+    return getDurationData(bn(value).toNumber()).string;
   return bn(value).toNumber();
 };
 
@@ -51,7 +51,10 @@ const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({
 
             return (
               <InfoLineConfigItem key={key}>
-                {key}: {current} <IoIosArrowRoundForward size={24} /> {newValue}
+                <>
+                  {key}: {current} <IoIosArrowRoundForward size={24} />{' '}
+                  {newValue}
+                </>
               </InfoLineConfigItem>
             );
           })}

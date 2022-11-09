@@ -69,7 +69,7 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
     >
       proposalTime
       : 
-      3 years
+      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
        
       <svg
         fill="currentColor"
@@ -85,14 +85,13 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-      a few seconds
     </span>
     <span
       class="c2"
     >
       timeForExecution
       : 
-      3 years
+      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
        
       <svg
         fill="currentColor"
@@ -108,7 +107,6 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-      a few seconds
     </span>
     <span
       class="c2"
@@ -138,7 +136,7 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
     >
       lockTime
       : 
-      3 years
+      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
        
       <svg
         fill="currentColor"
@@ -154,7 +152,6 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-      a few seconds
     </span>
     <span
       class="c2"

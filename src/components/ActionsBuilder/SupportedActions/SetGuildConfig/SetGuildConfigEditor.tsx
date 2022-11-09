@@ -1,6 +1,7 @@
 import { FC, useMemo, useState } from 'react';
 import { MdCached } from 'react-icons/md';
 import { Controller, useForm } from 'react-hook-form';
+import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -36,6 +37,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
   const { data: currentGuildConfig } = useGuildConfig(guildId);
   const { t } = useTranslation();
   const [noValueUpdatedError, setNoValueUpdatedError] = useState(false);
+  const theme = useTheme();
 
   const parsedData = useMemo<SetGuildConfigFields>(() => {
     if (!decodedCall) return null;
@@ -230,7 +232,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                                 trigger();
                               }}
                             >
-                              <MdCached size={16} />
+                              <MdCached size={16} color={theme.colors.white} />
                             </Button>
                           )
                         }
