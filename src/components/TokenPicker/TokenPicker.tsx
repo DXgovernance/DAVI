@@ -81,7 +81,7 @@ const TokenPicker: React.FC<TokenPickerProps> = ({
           />
         </SearchWrapper>
         <TokenList>
-          {(searchQuery ? searchResults : tokens)?.slice(0, 4).map(token => (
+          {(searchQuery ? searchResults : tokens)?.map(token => (
             <TokenListItem
               key={token.id}
               token={token}

@@ -21,6 +21,14 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
 }));
 
 jest.mock('wagmi', () => ({
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useAccount: () => ({ isConnected: false }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useContractReads: () => ({ data: [] }),
