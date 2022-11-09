@@ -19,7 +19,7 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
   isOpen,
   onDismiss,
   onConfirm,
-  selectedAction,
+  selectedOption,
   votingPower,
   currentVoteAmount,
 }) => {
@@ -34,13 +34,13 @@ const VoteConfirmationModal: React.FC<VoteConfirmationModalProps> = ({
       maxWidth={380}
     >
       <Container>
-        <Title>{t('voteQuestion', { action: selectedAction })}</Title>
+        <Title>{t('voteQuestion', { action: selectedOption })}</Title>
         <InfoItem>{t('noRevertAction')}</InfoItem>
 
         <Widget>
           <InfoRow>
             <InfoLabel>{t('option', { optionKey: '' })}</InfoLabel>
-            <InfoValue>{selectedAction}</InfoValue>
+            <InfoValue>{selectedOption}</InfoValue>
           </InfoRow>
           <InfoRow>
             <InfoLabel>{t('votingPower')}</InfoLabel>

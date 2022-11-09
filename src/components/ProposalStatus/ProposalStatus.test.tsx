@@ -4,14 +4,16 @@ import { ProposalStatusProps } from './types';
 import { ProposalState } from 'types/types.guilds.d';
 import moment from 'moment';
 
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
+  useGuildConfig: () => jest.fn(),
+}));
+
 const validProps: ProposalStatusProps = {
-  timeDetail: 'Time',
   status: ProposalState.Active,
-  endTime: moment('2022-05-09T08:00:00'),
+  endTime: { detail: 'endedTimeAgo', moment: moment('2022-05-09T08:00:00') },
 };
 
 const invalidProps: ProposalStatusProps = {
-  timeDetail: null,
   status: null,
   endTime: null,
 };

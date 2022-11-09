@@ -3,6 +3,7 @@ import { Box } from 'components/primitives/Layout/Box';
 import { Loading } from 'components/primitives/Loading';
 import { ProposalState } from 'types/types.guilds.d';
 import { ProposalStatusProps } from './types';
+import { TimeDetail } from './TimeDetail';
 
 const ProposalStatusWrapper = styled.div`
   display: flex;
@@ -33,13 +34,33 @@ const ProposalStatusDetail = styled(Box)<{ statusDetail?: ProposalState }>`
   border-radius: 15px;
   border: 1px solid
     ${({ theme, statusDetail }) =>
-      statusDetail === ProposalState.Failed
+      statusDetail === ProposalState.Active
+        ? theme.colors.active
+        : statusDetail === ProposalState.Executable
+        ? theme.colors.primary1
+        : statusDetail === ProposalState.Executed
+        ? theme.colors.grey
+        : statusDetail === ProposalState.Rejected
+        ? theme.colors.red
+        : statusDetail === ProposalState.Failed
         ? theme.colors.failed
+        : statusDetail === ProposalState.Finished
+        ? theme.colors.grey
         : theme.colors.active};
   background-color: ${({ theme }) => theme.colors.bg1};
   color: ${({ theme, statusDetail }) =>
-    statusDetail === ProposalState.Failed
+    statusDetail === ProposalState.Active
+      ? theme.colors.active
+      : statusDetail === ProposalState.Executable
+      ? theme.colors.primary1
+      : statusDetail === ProposalState.Executed
+      ? theme.colors.grey
+      : statusDetail === ProposalState.Rejected
+      ? theme.colors.red
+      : statusDetail === ProposalState.Failed
       ? theme.colors.failed
+      : statusDetail === ProposalState.Finished
+      ? theme.colors.grey
       : theme.colors.active};
   padding: 0.25rem 0.4rem;
 `;
@@ -51,23 +72,19 @@ const DetailText = styled(Box)`
     padding-right: 0.5rem;
   }
 `;
-
 export const ProposalStatus: React.FC<ProposalStatusProps> = ({
-  endTime,
   status,
+  endTime,
   bordered,
   hideTime,
-  timeDetail,
 }) => {
   return (
     <ProposalStatusWrapper>
       <Status test-id="proposal-status" bordered={hideTime ? false : bordered}>
         {!hideTime && (
           <DetailText>
-            {timeDetail ? (
-              <span title={endTime?.format('MMMM Do, YYYY - h:mm a')}>
-                {timeDetail}
-              </span>
+            {endTime ? (
+              <TimeDetail endTime={endTime} />
             ) : (
               <Loading
                 test-id="skeleton"

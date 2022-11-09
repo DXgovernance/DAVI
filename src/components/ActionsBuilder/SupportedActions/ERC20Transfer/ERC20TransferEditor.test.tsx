@@ -1,10 +1,4 @@
-// TODO: Rename this file.
-// Had to rename this so the tests are skipped for now.
-// `useRpcUrls` which is being used a few levels below ERC20TransferEditor consumes the legacy DXvote context,
-// which uses the IPFSService making this test fail.
-
 import { BigNumber } from 'ethers';
-import { ZERO_ADDRESS } from 'utils';
 import { render } from 'utils/tests';
 import { fireEvent } from '@testing-library/react';
 import ERC20TransferEditor from './ERC20TransferEditor';
@@ -12,15 +6,14 @@ import {
   erc20TransferDecodedCallMock,
   erc20TransferEmptyDecodedCallMock,
 } from './fixtures';
+import { MOCK_ADDRESS, MOCK_ENS_NAME } from 'hooks/Guilds/ens/fixtures';
 
 const mockBigNumber = BigNumber.from(100000000);
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   __esModule: true,
   default: () => ({
-    avatarUri: 'test',
-    imageUrl: 'test',
-    ensName: 'test.eth',
+    imageUrl: 'wagmi',
   }),
 }));
 
@@ -34,10 +27,9 @@ jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
 }));
 
 const mockChainId = 123456;
-const mockAddress = ZERO_ADDRESS;
 jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: { id: mockChainId } }),
-  useAccount: () => ({ address: mockAddress }),
+  useAccount: () => ({ address: MOCK_ADDRESS }),
 }));
 
 jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
@@ -52,6 +44,17 @@ jest.mock('hooks/Guilds/erc20/useAllERC20Balances', () => ({
   }),
 }));
 
+jest.mock('hooks/Guilds/ens/useENS', () => ({
+  __esModule: true,
+  default: (value: string) => {
+    if (value === MOCK_ENS_NAME || value === MOCK_ADDRESS) {
+      return { name: MOCK_ENS_NAME, address: MOCK_ADDRESS };
+    } else {
+      return { name: null, address: value };
+    }
+  },
+}));
+
 describe('ERC20TransferEditor', () => {
   it('Should match snapshot', () => {
     const { container } = render(
@@ -62,6 +65,17 @@ describe('ERC20TransferEditor', () => {
     );
     expect(container).toMatchSnapshot();
   });
+
+  it('Should match snapshot with an address without ENS name', () => {
+    const { container } = render(
+      <ERC20TransferEditor
+        decodedCall={erc20TransferDecodedCallMock}
+        onSubmit={jest.fn()}
+      />
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('Should match snapshot with default values', () => {
     const { container } = render(
       <ERC20TransferEditor
@@ -94,9 +108,7 @@ describe('ERC20TransferEditor', () => {
       />
     );
 
-    const tokenAddress = await findByDisplayValue(
-      erc20TransferDecodedCallMock.args._to
-    );
+    const tokenAddress = await findByDisplayValue(MOCK_ENS_NAME);
 
     expect(tokenAddress).toBeInTheDocument();
   });

@@ -94,23 +94,28 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
+          <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
+            <StyledButton
+              variant="secondary"
+              data-testid="create-proposal-button"
+            >
+              {t('createProposal')}
+            </StyledButton>
+          </UnstyledLink>
+        )}
+        {process.env.NODE_ENV !== 'production' && (
           <>
-            <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
-              <StyledButton
-                variant="secondary"
-                data-testid="create-proposal-button"
-              >
-                {t('createProposal')}
-              </StyledButton>
-            </UnstyledLink>
             /
+            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+              <Button
+                variant="secondary"
+                data-testid="create-discussion-button"
+              >
+                {t('forum.createDiscussion')}
+              </Button>
+            </UnstyledLink>
           </>
         )}
-        <UnstyledLink to={`/${chainName}/${guildId}/create`}>
-          <Button variant="secondary" data-testid="create-discussion-button">
-            {t('forum.createDiscussion')}
-          </Button>
-        </UnstyledLink>
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
@@ -138,10 +143,12 @@ const Governance = ({ guildId }) => {
           </>
         )}
       </ProposalsList>
-      <ProposalsList>
-        <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
-        <Discussions />
-      </ProposalsList>
+      {process.env.NODE_ENV !== 'production' && (
+        <ProposalsList>
+          <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
+          <Discussions />
+        </ProposalsList>
+      )}
     </>
   );
 };

@@ -1,0 +1,462 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressInput Snapshots should match snapshot isInvalid 1`] = `
+.c2 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #E75C5C;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c0 input {
+  color: #E75C5C;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c0 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c0:hover {
+  outline: 1px solid #E75C5C;
+}
+
+.c0:focus {
+  outline: 2px solid #E75C5C;
+}
+
+.c1 {
+  margin-right: 0.3rem;
+}
+
+.c3 {
+  margin-left: 0.3rem;
+}
+
+.c4 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+<div>
+   
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div />
+    </div>
+    <input
+      class="c2"
+      data-testid="address input"
+      value="0xinvalidAddress"
+    />
+    <div
+      class="c3"
+    >
+      <div
+        aria-label="clear address"
+        class="c4 c5"
+        data-testid="clear address"
+      >
+        <svg
+          fill="none"
+          height="18"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="18"
+            x2="6"
+            y1="6"
+            y2="18"
+          />
+          <line
+            x1="6"
+            x2="18"
+            y1="6"
+            y2="18"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`AddressInput Snapshots should match snapshot with ENS disabled 1`] = `
+.c4 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #303338;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c0 input {
+  color: #fff;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c0 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c0:hover {
+  outline: 1px solid #fff;
+}
+
+.c0:focus {
+  outline: 2px solid #fff;
+}
+
+.c1 {
+  margin-right: 0.3rem;
+}
+
+.c5 {
+  margin-left: 0.3rem;
+}
+
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c6 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+<div>
+   
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div>
+        <img
+          alt="Avatar"
+          class="c2 c3"
+          data-testid="avatar"
+          size="24"
+          src="wagmi"
+        />
+      </div>
+    </div>
+    <input
+      class="c4"
+      data-testid="address input"
+      value="0x0000000000000000000000000000000000000000"
+    />
+    <div
+      class="c5"
+    >
+      <div
+        aria-label="clear address"
+        class="c6 c7"
+        data-testid="clear address"
+      >
+        <svg
+          fill="none"
+          height="18"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="18"
+            x2="6"
+            y1="6"
+            y2="18"
+          />
+          <line
+            x1="6"
+            x2="18"
+            y1="6"
+            y2="18"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;
+
+exports[`AddressInput Snapshots should match snapshot with address 1`] = `
+.c4 {
+  border: none;
+  background: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #303338;
+  border-radius: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background-color: transparent;
+}
+
+.c0 input {
+  color: #fff;
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.c0 input::-webkit-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::-moz-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input:-ms-input-placeholder {
+  color: #A1A6B0;
+}
+
+.c0 input::placeholder {
+  color: #A1A6B0;
+}
+
+.c0:hover {
+  outline: 1px solid #fff;
+}
+
+.c0:focus {
+  outline: 2px solid #fff;
+}
+
+.c1 {
+  margin-right: 0.3rem;
+}
+
+.c5 {
+  margin-left: 0.3rem;
+}
+
+.c2 {
+  height: 1.6rem;
+  width: 1.6rem;
+}
+
+.c3 {
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+
+.c6 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+<div>
+   
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div>
+        <img
+          alt="Avatar"
+          class="c2 c3"
+          data-testid="avatar"
+          size="24"
+          src="wagmi"
+        />
+      </div>
+    </div>
+    <input
+      class="c4"
+      data-testid="address input"
+      value="wagmi.eth"
+    />
+    <div
+      class="c5"
+    >
+      <div
+        aria-label="clear address"
+        class="c6 c7"
+        data-testid="clear address"
+      >
+        <svg
+          fill="none"
+          height="18"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="18"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="18"
+            x2="6"
+            y1="6"
+            y2="18"
+          />
+          <line
+            x1="6"
+            x2="18"
+            y1="6"
+            y2="18"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+   
+</div>
+`;

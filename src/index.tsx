@@ -10,6 +10,9 @@ import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
 import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnection';
 import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
+import { useEffect } from 'react';
+import { loadFathom } from 'analytics/fathom';
+import { SITE_ID } from 'configs';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -32,6 +35,16 @@ moment.updateLocale('en', {
 });
 
 const Root = () => {
+  useEffect(() => {
+    loadFathom(SITE_ID)
+      .then(() => {
+        console.log('loadFathom: Fathom loaded.');
+      })
+      .catch(error => {
+        console.error('Error loading Fathom analytics', error);
+      });
+  }, []);
+
   return (
     <WagmiConfig client={client}>
       <HashRouter>

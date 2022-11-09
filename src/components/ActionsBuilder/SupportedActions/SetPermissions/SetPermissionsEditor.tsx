@@ -10,6 +10,7 @@ import {
   ANY_FUNC_SIGNATURE,
   ERC20_TRANSFER_SIGNATURE,
   ERC20_APPROVE_SIGNATURE,
+  preventEmptyString,
 } from 'utils';
 import { resolveUri } from 'utils/url';
 import { ActionEditorProps } from '..';
@@ -203,7 +204,10 @@ const Permissions: React.FC<ActionEditorProps> = ({
     const initTab = id === Number(parsedData.tab);
     // reset values
     setValue('toAddress', initTab ? parsedData.to : '');
-    setValue('amount', BigNumber.from(initTab ? parsedData?.valueAllowed : 0));
+    setValue(
+      'amount',
+      BigNumber.from(initTab ? preventEmptyString(parsedData?.valueAllowed) : 0)
+    );
     setValue('functionName', initTab ? parsedData.functionName : '');
     setValue('tokenAddress', initTab ? parsedData.asset : '');
     setValue('functionSignature', initTab ? parsedData.functionSignature : '');

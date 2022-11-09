@@ -32,22 +32,22 @@ class Utils {
   }
 
   createProposal(attrs) {
-    let totalActions = randomInt(3) || 1;
+    let totalOptions = randomInt(3) || 1;
     const defaultProposal = {
       type: 'guild-createProposal',
       from: this.accounts[randomInt(2)], // only accounts with voting power
       data: {
         guildName: this.getRandomGuildName(),
-        to: Array.from(Array(totalActions))
+        to: Array.from(Array(totalOptions))
           .fill()
           .map(() => pickOne(this.accounts)),
-        callData: Array.from(Array(totalActions))
+        callData: Array.from(Array(totalOptions))
           .fill()
           .map(() => this.getRandomCallData()),
-        value: Array.from(Array(totalActions))
+        value: Array.from(Array(totalOptions))
           .fill()
           .map(() => randomInt(30)),
-        totalActions: `${totalActions}`,
+        totalOptions: `${totalOptions}`,
         title: chance.sentence(),
         description: chance.paragraph(),
       },
