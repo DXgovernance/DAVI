@@ -2,7 +2,7 @@ import { utils } from 'ethers';
 import { useMemo } from 'react';
 import { useNetwork } from 'wagmi';
 import useIPFSFile from '../ipfs/useIPFSFile';
-import { RICH_CONTRACT_DATA_REGISTRY } from 'configs';
+import { useENSContentHash } from '../ens/useENSPublicResolverContract';
 
 export interface RichContractFunctionParam {
   type: string;
@@ -39,9 +39,9 @@ export type IPFSRichContractData = Omit<
 export const useRichContractRegistry = (chainId?: number) => {
   const { chain: activeChain } = useNetwork();
 
-  const { data, error } = useIPFSFile<IPFSRichContractData[]>(
-    RICH_CONTRACT_DATA_REGISTRY
-  );
+  const { ipfsHash } = useENSContentHash('contracts.projectdavi.eth', 1);
+
+  const { data, error } = useIPFSFile<IPFSRichContractData[]>(ipfsHash);
 
   const registryContracts: RichContractData[] = useMemo(() => {
     if (error || !data) return null;
