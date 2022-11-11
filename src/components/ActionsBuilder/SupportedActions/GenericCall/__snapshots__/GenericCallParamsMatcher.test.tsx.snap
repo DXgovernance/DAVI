@@ -35,6 +35,25 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   padding: 0;
 }
 
+.c0 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c4 {
   color: #A1A6B0;
   margin-right: 0.5rem;
@@ -60,13 +79,6 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   color: #fff;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c6 {
   margin-right: 0.5rem;
   overflow-wrap: break-word;
@@ -76,6 +88,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
    
   <div
     class="c0"
+    direction="row"
   >
     <span
       class="c1"
@@ -227,6 +240,25 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   padding: 0;
 }
 
+.c0 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c4 {
   color: #A1A6B0;
   margin-right: 0.5rem;
@@ -252,13 +284,6 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   color: #fff;
 }
 
-.c0 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c6 {
   margin-right: 0.5rem;
   overflow-wrap: break-word;
@@ -272,6 +297,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   >
     <div
       class="c0"
+      direction="row"
     >
       <span
         class="c1"

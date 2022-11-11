@@ -63,6 +63,25 @@ exports[`CallDetails Should match 1`] = `
   padding: 0;
 }
 
+.c5 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c8 {
   border-radius: 50%;
   height: 24px;
@@ -157,13 +176,6 @@ exports[`CallDetails Should match 1`] = `
   color: #fff;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c10 {
   margin-right: 0.5rem;
   overflow-wrap: break-word;
@@ -194,6 +206,7 @@ exports[`CallDetails Should match 1`] = `
       >
         <div
           class="c5"
+          direction="row"
         >
           <span
             class="c6"
@@ -347,6 +360,25 @@ exports[`CallDetails Should match with empty data 1`] = `
   padding: 0;
 }
 
+.c5 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c16 {
   width: 100%;
   min-width: 200px;
@@ -448,13 +480,6 @@ exports[`CallDetails Should match with empty data 1`] = `
   color: #fff;
 }
 
-.c5 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c10 {
   margin-right: 0.5rem;
   overflow-wrap: break-word;
@@ -485,6 +510,7 @@ exports[`CallDetails Should match with empty data 1`] = `
       >
         <div
           class="c5"
+          direction="row"
         >
           <span
             class="c6"

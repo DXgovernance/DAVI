@@ -59,6 +59,25 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
   width: 24px;
 }
 
+.c4 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
 .c5 {
   color: #A1A6B0;
   margin-right: 0.5rem;
@@ -84,13 +103,6 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
   color: #fff;
 }
 
-.c4 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .c6 {
   margin-right: 0.5rem;
   overflow-wrap: break-word;
@@ -111,6 +123,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
     >
       <div
         class="c4"
+        direction="row"
       >
         <a
           class="c5"
@@ -269,6 +282,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
     >
       <div
         class="c4"
+        direction="row"
       >
         <span
           class="c7"
