@@ -16,15 +16,15 @@ const NetworkButton = () => {
   };
 
   function getNetworkStatus() {
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain?.unsupported) {
       return (
         <Button onClick={toggleNetworkModal}>{t('unsupportedNetwork')}</Button>
       );
     } else if (isConnected) {
       return (
         <IconButton onClick={toggleNetworkModal} iconLeft>
-          <ButtonIcon src={getChainIcon(chain.id)} alt={'Icon'} />
-          {chain.name}
+          <ButtonIcon src={getChainIcon(chain?.id)} alt={'Icon'} />
+          {chain?.name}
         </IconButton>
       );
     } else {
