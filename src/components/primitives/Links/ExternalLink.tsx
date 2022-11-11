@@ -6,17 +6,7 @@ import { ExternalLinkProps } from './types';
 export const ExternalLink: React.FC<ExternalLinkProps> = ({
   href,
   children,
-  unstyled,
 }) => {
-  if (unstyled) {
-    return (
-      <StyledSegmentLink href={href} target="_blank" rel="noopener">
-        <LinkDetail>{children}</LinkDetail>
-        <FiExternalLink />
-      </StyledSegmentLink>
-    );
-  }
-
   return (
     <StyledSegmentLink href={href} target="_blank" rel="noopener">
       <LinkDetail>{children}</LinkDetail>

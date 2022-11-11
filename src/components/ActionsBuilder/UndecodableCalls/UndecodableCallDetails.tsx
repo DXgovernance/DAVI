@@ -32,7 +32,7 @@ const UndecodableCallDetails: React.FC<{ call: Call }> = ({ call }) => {
     if (!key || !value) return null;
 
     if (key === 'to' || key === 'from') {
-      return <BlockExplorerLink address={value} unstyled avatarSize={16} />;
+      return <BlockExplorerLink address={value} avatarSize={16} />;
     }
 
     if (key === 'value') {

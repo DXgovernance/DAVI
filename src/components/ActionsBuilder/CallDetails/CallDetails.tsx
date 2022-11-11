@@ -38,7 +38,7 @@ function renderDefaultParamValue(param: Param) {
   if (!param) return null;
 
   if (param.type === 'address') {
-    return <BlockExplorerLink address={param.value} unstyled />;
+    return <BlockExplorerLink address={param.value} />;
   }
 
   if (param.type.startsWith('uint') || param.type.startsWith('int')) {

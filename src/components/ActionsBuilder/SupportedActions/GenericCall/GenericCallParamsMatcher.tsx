@@ -23,7 +23,6 @@ export const renderGenericCallParamValue = (
       return (
         <BlockExplorerLink
           address={param.value}
-          unstyled
           showAvatar
           shortAddress
           avatarSize={16}
