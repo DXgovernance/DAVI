@@ -23,7 +23,5 @@ export const emptyDecodedCall = {
     _minimumMembersForProposalCreation: '',
     _minimumTokensLockedForProposalCreation: '',
   },
-  optionalProps: {
-    updatedFields: {},
-  },
+  optionalProps: {},
 };

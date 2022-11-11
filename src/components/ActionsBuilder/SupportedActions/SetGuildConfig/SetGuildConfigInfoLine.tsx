@@ -52,7 +52,7 @@ const SetGuildConfigInfoLine: React.FC<ActionViewProps> = ({
             return (
               <InfoLineConfigItem key={key}>
                 <>
-                  {key}: {current} <IoIosArrowRoundForward size={24} />{' '}
+                  {field.label}: {current} <IoIosArrowRoundForward size={24} />{' '}
                   {newValue}
                 </>
               </InfoLineConfigItem>

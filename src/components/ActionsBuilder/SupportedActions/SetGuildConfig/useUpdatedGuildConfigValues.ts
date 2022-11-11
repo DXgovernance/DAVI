@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { getUpdatedValues } from './utils';
+import { getUpdatedValues, UpdatedValuesReturn } from './utils';
 import { BigNumber } from 'ethers';
 
 interface ArgConfigValues {
@@ -17,7 +17,9 @@ interface ArgConfigValues {
   _minimumTokensLockedForProposalCreation?: BigNumber;
 }
 
-export const useUpdatedGuildConfigValues = (newValues: ArgConfigValues) => {
+export const useUpdatedGuildConfigValues = (
+  newValues: ArgConfigValues
+): UpdatedValuesReturn | {} => {
   const { guildId } = useTypedParams();
   const { data: currentGuildConfig } = useGuildConfig(guildId);
   const parsedData = useMemo(() => {

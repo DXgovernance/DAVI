@@ -11,111 +11,111 @@ export class SafeBN {
   }
 
   fromTwos(value: number): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   toTwos(value: number): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   abs(): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   add(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   sub(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   div(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   mul(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   mod(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   pow(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   and(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   or(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   xor(other: BigNumberish): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   mask(value: number): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   shl(value: number): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   shr(value: number): BigNumber {
-    return null as never;
+    return '' as never;
   }
 
   eq(other: BigNumberish): boolean {
-    return null as never;
+    return '' as never;
   }
 
   lt(other: BigNumberish): boolean {
-    return null as never;
+    return '' as never;
   }
 
   lte(other: BigNumberish): boolean {
-    return null as never;
+    return '' as never;
   }
 
   gt(other: BigNumberish): boolean {
-    return null as never;
+    return '' as never;
   }
 
   gte(other: BigNumberish): boolean {
-    return null as never;
+    return '' as never;
   }
 
   isNegative(): boolean {
-    return null as never;
+    return '' as never;
   }
 
   isZero(): boolean {
-    return null as never;
+    return '' as never;
   }
 
   toNumber(): number {
-    return null as never;
+    return '' as never;
   }
 
   toBigInt(): bigint {
-    return null as never;
+    return '' as never;
   }
 
   toString(): string {
-    return null as never;
+    return '' as never;
   }
 
   toHexString(): string {
-    return null as never;
+    return '' as never;
   }
 
   toJSON(key?: string): any {
-    return null as never;
+    return '' as never;
   }
 }
 
@@ -135,9 +135,4 @@ export const bn = (
   } catch (e) {
     return new SafeBN();
   }
-};
-
-export const tryDiv = (value: BigNumber, div: BigNumberish) => {
-  if (!BigNumber.isBigNumber(value) || isNullOrUndefined(div)) return value;
-  return value.div(div);
 };

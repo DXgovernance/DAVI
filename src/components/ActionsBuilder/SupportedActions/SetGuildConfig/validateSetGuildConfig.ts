@@ -21,7 +21,7 @@ const validateSetGuildConfig = (
     lockTime,
   } = values;
 
-  let errors = {
+  const errors = {
     proposalTime: null,
     timeForExecution: null,
     votingPowerPercentageForProposalExecution: null,

@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers';
 import { SetGuildConfigFields, ControlField } from './types';
 import { bn } from 'utils/safeBn';
 
-type UpdatedValuesReturn = {
+export type UpdatedValuesReturn = {
   [key in ControlField]: {
     newValue: BigNumber;
     currentValue: BigNumber;

@@ -217,9 +217,7 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
         _minimumMembersForProposalCreation: '',
         _minimumTokensLockedForProposalCreation: '',
       },
-      optionalProps: {
-        updatedFields: {},
-      },
+      optionalProps: {},
     },
   },
 };

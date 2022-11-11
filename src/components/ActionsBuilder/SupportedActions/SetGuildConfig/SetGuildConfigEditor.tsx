@@ -20,7 +20,7 @@ import {
   pickUpdatedOrDefaultValue as pickValue,
   getUpdatedValues,
 } from './utils';
-import { bn, tryDiv } from 'utils/safeBn';
+import { bn } from 'utils/safeBn';
 import { FIELDS } from './constants';
 import { SetGuildConfigFields, ControlField, FieldType } from './types';
 
@@ -54,15 +54,13 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
         decodedCallMinimumTokensLockedForProposalCreation,
     } = decodedCall.args;
 
-    const decodedCallVotingPowerPercentageForProposalExecution = tryDiv(
-      bn(decodedCall.args._votingPowerPercentageForProposalExecution),
-      100
-    );
+    const decodedCallVotingPowerPercentageForProposalExecution = bn(
+      decodedCall.args._votingPowerPercentageForProposalExecution
+    ).div(100);
 
-    const decodedCallVotingPowerPercentageForProposalCreation = tryDiv(
-      bn(decodedCall.args._votingPowerPercentageForProposalCreation),
-      100
-    );
+    const decodedCallVotingPowerPercentageForProposalCreation = bn(
+      decodedCall.args._votingPowerPercentageForProposalCreation
+    ).div(100);
 
     const {
       proposalTime: currentProposalTime,
@@ -77,15 +75,13 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
         currentMinimumTokensLockedForProposalCreation,
     } = currentGuildConfig;
 
-    const currentVotingPowerPercentageForProposalExecution = tryDiv(
-      bn(currentGuildConfig.votingPowerPercentageForProposalExecution),
-      100
-    );
+    const currentVotingPowerPercentageForProposalExecution = bn(
+      currentGuildConfig.votingPowerPercentageForProposalExecution
+    ).div(100);
 
-    const currentvotingPowerPercentageForProposalCreation = tryDiv(
-      bn(currentGuildConfig.votingPowerPercentageForProposalCreation),
-      100
-    );
+    const currentvotingPowerPercentageForProposalCreation = bn(
+      currentGuildConfig.votingPowerPercentageForProposalCreation
+    ).div(100);
 
     return {
       proposalTime: pickValue(currentProposalTime, decodedCallProposalTime),
@@ -200,8 +196,6 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
       minimumTokensLockedForProposalCreation,
     });
 
-    console.log({ updatedValues });
-
     if (Object.keys(updatedValues).length > 0) {
       return onSubmit(call);
     }
@@ -212,7 +206,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     switch (fieldName) {
       case 'votingPowerPercentageForProposalExecution':
       case 'votingPowerPercentageForProposalCreation':
-        return tryDiv(currentGuildConfig[fieldName], 100);
+        return bn(currentGuildConfig[fieldName]).div(100);
       default:
         return currentGuildConfig[fieldName];
     }
