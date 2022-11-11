@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CallDetails Should match 1`] = `
-.c11 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -26,21 +26,21 @@ exports[`CallDetails Should match 1`] = `
   width: auto;
 }
 
-.c11:disabled {
+.c12:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c11:hover:enabled {
+.c12:hover:enabled {
   border-color: #fff;
 }
 
-.c11:active:enabled {
+.c12:active:enabled {
   border: 1px solid #303338;
 }
 
-.c11:disabled {
+.c12:disabled {
   color: #303338;
 }
 
@@ -85,7 +85,7 @@ exports[`CallDetails Should match 1`] = `
   align-items: center;
 }
 
-.c13 {
+.c14 {
   padding: 0.125rem 0.375rem;
   background-color: #303338;
   border-radius: 10px;
@@ -115,18 +115,18 @@ exports[`CallDetails Should match 1`] = `
   margin: 0;
 }
 
-.c14 {
+.c15 {
   margin: 0;
   padding: 0;
   color: #fff;
   background-color: transparent;
 }
 
-.c10 {
+.c11 {
   padding-top: 0.75rem;
 }
 
-.c12 {
+.c13 {
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
@@ -162,6 +162,11 @@ exports[`CallDetails Should match 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -206,20 +211,31 @@ exports[`CallDetails Should match 1`] = `
             rel="noopener"
             target="_blank"
           >
+            <div
+              class="c1 c10"
+            />
             <svg
-              fill="currentColor"
+              fill="none"
               height="1em"
               stroke="currentColor"
-              stroke-width="0"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
               viewBox="0 0 24 24"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
               />
-              <path
-                d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+              <polyline
+                points="15 3 21 3 21 9"
+              />
+              <line
+                x1="10"
+                x2="21"
+                y1="14"
+                y2="3"
               />
             </svg>
           </a>
@@ -228,16 +244,16 @@ exports[`CallDetails Should match 1`] = `
     </div>
   </div>
   <div
-    class="c1 c10"
+    class="c1 c11"
   >
     <button
-      class="c11 c12"
+      class="c12 c13"
     >
       transfer
        (
       <span>
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           address
@@ -248,7 +264,7 @@ exports[`CallDetails Should match 1`] = `
           , 
         </span>
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           uint256
@@ -262,7 +278,7 @@ exports[`CallDetails Should match 1`] = `
 `;
 
 exports[`CallDetails Should match with empty data 1`] = `
-.c11 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -287,21 +303,21 @@ exports[`CallDetails Should match with empty data 1`] = `
   width: auto;
 }
 
-.c11:disabled {
+.c12:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c11:hover:enabled {
+.c12:hover:enabled {
   border-color: #fff;
 }
 
-.c11:active:enabled {
+.c12:active:enabled {
   border: 1px solid #303338;
 }
 
-.c11:disabled {
+.c12:disabled {
   color: #303338;
 }
 
@@ -324,14 +340,14 @@ exports[`CallDetails Should match with empty data 1`] = `
   padding: 0;
 }
 
-.c16 {
+.c17 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 1rem 0 0;
   padding: 0;
 }
 
-.c15 {
+.c16 {
   width: 100%;
   min-width: 200px;
   height: 1px;
@@ -360,7 +376,7 @@ exports[`CallDetails Should match with empty data 1`] = `
   align-items: center;
 }
 
-.c13 {
+.c14 {
   padding: 0.125rem 0.375rem;
   background-color: #303338;
   border-radius: 10px;
@@ -390,18 +406,18 @@ exports[`CallDetails Should match with empty data 1`] = `
   margin: 0;
 }
 
-.c14 {
+.c15 {
   margin: 0;
   padding: 0;
   color: #fff;
   background-color: transparent;
 }
 
-.c10 {
+.c11 {
   padding-top: 0.75rem;
 }
 
-.c12 {
+.c13 {
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
@@ -437,6 +453,11 @@ exports[`CallDetails Should match with empty data 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -481,20 +502,31 @@ exports[`CallDetails Should match with empty data 1`] = `
             rel="noopener"
             target="_blank"
           >
+            <div
+              class="c1 c10"
+            />
             <svg
-              fill="currentColor"
+              fill="none"
               height="1em"
               stroke="currentColor"
-              stroke-width="0"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
               viewBox="0 0 24 24"
               width="1em"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
               />
-              <path
-                d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+              <polyline
+                points="15 3 21 3 21 9"
+              />
+              <line
+                x1="10"
+                x2="21"
+                y1="14"
+                y2="3"
               />
             </svg>
           </a>
@@ -502,22 +534,22 @@ exports[`CallDetails Should match with empty data 1`] = `
       </div>
     </div>
     <div
-      class="c1 c10"
+      class="c1 c11"
     >
       <button
-        class="c11 c12"
+        class="c12 c13"
       >
         approve (
          
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           address
         </span>
         , 
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           uint256
@@ -528,10 +560,10 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="c15"
+    class="c16"
   />
   <div
-    class="c16"
+    class="c17"
   >
     <div
       class="c1 c2 c3"
@@ -554,16 +586,16 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="c1 c10"
+    class="c1 c11"
   >
     <button
-      class="c11 c12"
+      class="c12 c13"
     >
       transfer
        (
       <span>
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           address
@@ -574,7 +606,7 @@ exports[`CallDetails Should match with empty data 1`] = `
           , 
         </span>
         <span
-          class="c13 c14"
+          class="c14 c15"
           color="#fff"
         >
           uint256

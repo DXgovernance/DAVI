@@ -32,7 +32,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
   margin: 0;
 }
 
-.c6 {
+.c7 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -48,18 +48,18 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
   align-items: center;
 }
 
-.c7 {
+.c8 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c8 {
+.c9 {
   border-radius: 50%;
   height: 24px;
   width: 24px;
 }
 
-.c4 {
+.c5 {
   color: #A1A6B0;
   margin-right: 0.5rem;
   display: -webkit-box;
@@ -79,16 +79,21 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
   overflow-wrap: break-word;
 }
 
-.c4:hover {
+.c5:hover {
   cursor: pointer;
   color: #fff;
 }
 
-.c5 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -104,30 +109,46 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
     <div
       class="c0 c1 c3"
     >
-      <a
+      <div
         class="c4"
-        href="https://etherscan.io/address/0x0000000000000000000000000000000000000000"
-        rel="noopener"
-        target="_blank"
       >
-        name.eth
-        <svg
-          fill="currentColor"
-          height="1em"
-          stroke="currentColor"
-          stroke-width="0"
-          viewBox="0 0 24 24"
-          width="1em"
-          xmlns="http://www.w3.org/2000/svg"
+        <a
+          class="c5"
+          href="https://etherscan.io/address/0x0000000000000000000000000000000000000000"
+          rel="noopener"
+          target="_blank"
         >
-          <path
-            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
-          />
-          <path
-            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-          />
-        </svg>
-      </a>
+          <div
+            class="c0 c6"
+          >
+            0x0000...0000
+          </div>
+          <svg
+            fill="none"
+            height="1em"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+            />
+            <polyline
+              points="15 3 21 3 21 9"
+            />
+            <line
+              x1="10"
+              x2="21"
+              y1="14"
+              y2="3"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
   <div
@@ -142,26 +163,38 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
       class="c0 c1 c3"
     >
       <a
-        class="c4"
+        class="c5"
         href="ipfs://e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be"
         rel="noopener"
         target="_blank"
       >
-        ipfs://e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be
+        <div
+          class="c0 c6"
+        >
+          ipfs://e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be
+        </div>
         <svg
-          fill="currentColor"
+          fill="none"
           height="1em"
           stroke="currentColor"
-          stroke-width="0"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
           viewBox="0 0 24 24"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
           />
-          <path
-            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
           />
         </svg>
       </a>
@@ -179,26 +212,38 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
       class="c0 c1 c3"
     >
       <a
-        class="c4"
+        class="c5"
         href="ipfs://QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4"
         rel="noopener"
         target="_blank"
       >
-        ipfs://QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
+        <div
+          class="c0 c6"
+        >
+          ipfs://QmRAQB6YaCyidP37UdDnjFY5vQuiBrcqdyoW1CuDgwxkD4
+        </div>
         <svg
-          fill="currentColor"
+          fill="none"
           height="1em"
           stroke="currentColor"
-          stroke-width="0"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
           viewBox="0 0 24 24"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
           />
-          <path
-            d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
           />
         </svg>
       </a>
@@ -223,40 +268,52 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
       class="c0 c1 c3"
     >
       <div
-        class="c5"
+        class="c4"
       >
         <span
-          class="c6"
+          class="c7"
         >
           <img
             alt="Avatar"
-            class="c7 c8"
+            class="c8 c9"
             data-testid="avatar"
             size="24"
             src="https://metadata.ens.domains/mainnet/avatar/name.eth"
           />
         </span>
         <a
-          class="c4"
+          class="c5"
           href="https://etherscan.io/address/0x3f943f38b2fbe1ee5daf0516cecfe4e0f8734351"
           rel="noopener"
           target="_blank"
         >
-          0x3f94...4351
+          <div
+            class="c0 c6"
+          >
+            0x3f94...4351
+          </div>
           <svg
-            fill="currentColor"
+            fill="none"
             height="1em"
             stroke="currentColor"
-            stroke-width="0"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
             viewBox="0 0 24 24"
             width="1em"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
             />
-            <path
-              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
+            <polyline
+              points="15 3 21 3 21 9"
+            />
+            <line
+              x1="10"
+              x2="21"
+              y1="14"
+              y2="3"
             />
           </svg>
         </a>

@@ -27,14 +27,9 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   align-items: center;
 }
 
-.c8 {
-  color: #A1A6B0;
-  overflow-wrap: break-word;
-}
-
 .c7 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
+  color: #A1A6B0;
+  margin-right: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,16 +42,14 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #fff;
-}
-
-.c7:focus,
-.c7:hover,
-.c7:visited,
-.c7:link,
-.c7:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c7:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .c6 {
@@ -64,6 +57,11 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c8 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .c3 {
@@ -130,31 +128,31 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
           class="c0 c8"
         >
           0x0000...0000
-          <svg
-            fill="none"
-            height="14"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-            />
-            <polyline
-              points="15 3 21 3 21 9"
-            />
-            <line
-              x1="10"
-              x2="21"
-              y1="14"
-              y2="3"
-            />
-          </svg>
         </div>
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
       </a>
     </div>
   </div>
@@ -241,14 +239,9 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   align-items: center;
 }
 
-.c8 {
-  color: #A1A6B0;
-  overflow-wrap: break-word;
-}
-
 .c7 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
+  color: #A1A6B0;
+  margin-right: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -261,16 +254,14 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #fff;
-}
-
-.c7:focus,
-.c7:hover,
-.c7:visited,
-.c7:link,
-.c7:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c7:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .c6 {
@@ -278,6 +269,11 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c8 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .c3 {
@@ -344,31 +340,31 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
           class="c0 c8"
         >
           0x0000...0000
-          <svg
-            fill="none"
-            height="14"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-            />
-            <polyline
-              points="15 3 21 3 21 9"
-            />
-            <line
-              x1="10"
-              x2="21"
-              y1="14"
-              y2="3"
-            />
-          </svg>
         </div>
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
       </a>
     </div>
   </div>

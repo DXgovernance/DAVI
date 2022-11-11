@@ -35,14 +35,9 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   padding: 0;
 }
 
-.c6 {
-  color: #A1A6B0;
-  overflow-wrap: break-word;
-}
-
 .c4 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
+  color: #A1A6B0;
+  margin-right: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -55,16 +50,14 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #fff;
-}
-
-.c4:focus,
-.c4:hover,
-.c4:visited,
-.c4:link,
-.c4:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c4:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .c0 {
@@ -72,6 +65,11 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -99,31 +97,31 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
         class="c5 c6"
       >
         0x3f94...4351
-        <svg
-          fill="none"
-          height="14"
-          stroke="currentColor"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          viewBox="0 0 24 24"
-          width="14"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-          />
-          <polyline
-            points="15 3 21 3 21 9"
-          />
-          <line
-            x1="10"
-            x2="21"
-            y1="14"
-            y2="3"
-          />
-        </svg>
       </div>
+      <svg
+        fill="none"
+        height="1em"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+        />
+        <polyline
+          points="15 3 21 3 21 9"
+        />
+        <line
+          x1="10"
+          x2="21"
+          y1="14"
+          y2="3"
+        />
+      </svg>
     </a>
   </div>
    
@@ -229,14 +227,9 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   padding: 0;
 }
 
-.c6 {
-  color: #A1A6B0;
-  overflow-wrap: break-word;
-}
-
 .c4 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
+  color: #A1A6B0;
+  margin-right: 0.5rem;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -249,16 +242,14 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #fff;
-}
-
-.c4:focus,
-.c4:hover,
-.c4:visited,
-.c4:link,
-.c4:active {
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c4:hover {
+  cursor: pointer;
+  color: #fff;
 }
 
 .c0 {
@@ -266,6 +257,11 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+
+.c6 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -297,31 +293,31 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
           class="c5 c6"
         >
           0x3f94...4351
-          <svg
-            fill="none"
-            height="14"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="14"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
-            />
-            <polyline
-              points="15 3 21 3 21 9"
-            />
-            <line
-              x1="10"
-              x2="21"
-              y1="14"
-              y2="3"
-            />
-          </svg>
         </div>
+        <svg
+          fill="none"
+          height="1em"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          />
+          <polyline
+            points="15 3 21 3 21 9"
+          />
+          <line
+            x1="10"
+            x2="21"
+            y1="14"
+            y2="3"
+          />
+        </svg>
       </a>
     </div>
   </span>
