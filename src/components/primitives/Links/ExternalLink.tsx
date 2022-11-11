@@ -1,9 +1,7 @@
-import { ParamDetail } from 'components/ActionsBuilder/CallDetails/CallDetails.styled';
-import { BiLinkExternal } from 'react-icons/bi';
+import {} from 'components/ActionsBuilder/CallDetails/CallDetails.styled';
 import { FiExternalLink } from 'react-icons/fi';
-import { StyledSegmentLink } from './styles';
+import { StyledSegmentLink, LinkDetail } from './styles';
 import { ExternalLinkProps } from './types';
-import { UnstyledExternalLink } from './styles';
 
 export const ExternalLink: React.FC<ExternalLinkProps> = ({
   href,
@@ -12,19 +10,17 @@ export const ExternalLink: React.FC<ExternalLinkProps> = ({
 }) => {
   if (unstyled) {
     return (
-      <UnstyledExternalLink href={href} target="_blank" rel="noopener">
-        <ParamDetail>
-          {children}
-          <FiExternalLink size={14} />
-        </ParamDetail>
-      </UnstyledExternalLink>
+      <StyledSegmentLink href={href} target="_blank" rel="noopener">
+        <LinkDetail>{children}</LinkDetail>
+        <FiExternalLink />
+      </StyledSegmentLink>
     );
   }
 
   return (
     <StyledSegmentLink href={href} target="_blank" rel="noopener">
-      {children}
-      <BiLinkExternal />
+      <LinkDetail>{children}</LinkDetail>
+      <FiExternalLink />
     </StyledSegmentLink>
   );
 };

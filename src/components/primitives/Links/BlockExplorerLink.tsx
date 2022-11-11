@@ -4,7 +4,7 @@ import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID, shortenAddress } from 'utils';
 import { Chain, useNetwork } from 'wagmi';
 import { ExternalLink } from './ExternalLink';
-import { BlockExplorerLinkContainer } from './styles';
+import { FlexContainer } from './styles';
 import { BlockExplorerLinkProps } from './types';
 
 // this code is duplicated from provider/chain.ts because there was a circular dependency when testing
@@ -32,7 +32,7 @@ export const BlockExplorerLink: React.FC<BlockExplorerLinkProps> = ({
   const blockExplorerUrl = getBlockExplorerUrl(chain, address, 'address');
 
   return (
-    <BlockExplorerLinkContainer>
+    <FlexContainer>
       {showAvatar && (
         <Segment>
           <Avatar defaultSeed={address} src={imageUrl} size={avatarSize} />
@@ -41,6 +41,6 @@ export const BlockExplorerLink: React.FC<BlockExplorerLinkProps> = ({
       <ExternalLink href={blockExplorerUrl} unstyled={unstyled}>
         {ensName || shortAddress ? shortenAddress(address) : address}
       </ExternalLink>
-    </BlockExplorerLinkContainer>
+    </FlexContainer>
   );
 };

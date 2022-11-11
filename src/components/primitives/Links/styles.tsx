@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Box } from '../Layout';
 
 export const StyledSegmentLink = styled.a`
   color: ${({ theme }) => theme.colors.grey};
@@ -14,21 +15,11 @@ export const StyledSegmentLink = styled.a`
   }
 `;
 
-export const UnstyledExternalLink = styled.a`
-  text-decoration: none;
+export const FlexContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: ${({ theme }) => theme.colors.text};
-  &:focus,
-  &:hover,
-  &:visited,
-  &:link,
-  &:active {
-    text-decoration: none;
-  }
 `;
 
-export const BlockExplorerLinkContainer = styled.div`
-  display: flex;
+export const LinkDetail = styled(Box)`
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 `;

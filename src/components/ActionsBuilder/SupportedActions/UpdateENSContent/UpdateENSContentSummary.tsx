@@ -7,13 +7,13 @@ import { convertToIpfsHash, getIpfsUrl, isSupportedChainId } from 'utils/ipfs';
 import { useTranslation } from 'react-i18next';
 import { ActionViewProps } from '..';
 import { useENSContentHash } from 'hooks/Guilds/ens/useENSPublicResolverContract';
-import { getBlockExplorerUrl } from 'provider/chains';
 import useIPFSFileMetadata from 'hooks/Guilds/ipfs/useIPFSFileMetadata';
 import { useMemo } from 'react';
 import { DiffView } from 'components/ActionsBuilder/DiffView';
 import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
 import { DiffContainer, DiffDetail, DiffStat } from './styles';
 import { ExternalLink } from 'components/primitives/Links/ExternalLink';
+import { BlockExplorerLink } from 'components/primitives/Links';
 
 const MAX_FILE_DIFF_BYTES = 64000; // 64kb
 
@@ -73,20 +73,12 @@ const UpdateENSContentSummary: React.FC<ActionViewProps> = ({
     );
   }, [currentFile, newFile]);
 
-  const blockExplorerUrl = getBlockExplorerUrl(
-    chain,
-    parsedData?.from,
-    'address'
-  );
-
   return (
     <>
       <DetailHeader>{t('ens.domain')}</DetailHeader>
       <DetailRow>
         <DetailBody>
-          <ExternalLink href={blockExplorerUrl}>
-            {ensName || parsedData?.from}
-          </ExternalLink>
+          <BlockExplorerLink address={parsedData?.from} />
         </DetailBody>
       </DetailRow>
       <DetailHeader>{t('ens.currentContent')}</DetailHeader>
