@@ -1,6 +1,6 @@
 import { TFunction } from 'react-i18next';
 import { SetGuildConfigFields } from './types';
-import { bn } from './utils';
+import { bn } from 'utils/safeBn';
 import { removeNullValues } from 'utils/object';
 
 interface Context {

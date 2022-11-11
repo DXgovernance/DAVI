@@ -17,10 +17,10 @@ import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { ErrorLabel as Error } from 'components/primitives/Forms/ErrorLabel';
 import validateSetGuildConfig from './validateSetGuildConfig';
 import {
-  bn,
   pickUpdatedOrDefaultValue as pickValue,
   getUpdatedValues,
 } from './utils';
+import { bn, tryDiv } from 'utils/safeBn';
 import { FIELDS } from './constants';
 import { SetGuildConfigFields, ControlField, FieldType } from './types';
 
@@ -44,10 +44,6 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     const {
       _proposalTime: decodedCallProposalTime,
       _timeForExecution: decodedCallTimeForExecution,
-      _votingPowerPercentageForProposalExecution:
-        decodedCallVotingPowerPercentageForProposalExecution,
-      _votingPowerPercentageForProposalCreation:
-        decodedCallVotingPowerPercentageForProposalCreation,
       _voteGas: decodedCallVoteGas,
       _maxGasPrice: decodedCallMaxGasPrice,
       _maxActiveProposals: decodedCallMaxActiveProposals,
@@ -58,13 +54,19 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
         decodedCallMinimumTokensLockedForProposalCreation,
     } = decodedCall.args;
 
+    const decodedCallVotingPowerPercentageForProposalExecution = tryDiv(
+      bn(decodedCall.args._votingPowerPercentageForProposalExecution),
+      100
+    );
+
+    const decodedCallVotingPowerPercentageForProposalCreation = tryDiv(
+      bn(decodedCall.args._votingPowerPercentageForProposalCreation),
+      100
+    );
+
     const {
       proposalTime: currentProposalTime,
       timeForExecution: currentTimeForExecution,
-      votingPowerPercentageForProposalExecution:
-        currentVotingPowerPercentageForProposalExecution,
-      votingPowerPercentageForProposalCreation:
-        currentvotingPowerPercentageForProposalCreation,
       voteGas: currentVoteGas,
       maxGasPrice: currentMaxGasPrice,
       maxActiveProposals: currentmaxActiveProposals,
@@ -74,6 +76,16 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
       minimumTokensLockedForProposalCreation:
         currentMinimumTokensLockedForProposalCreation,
     } = currentGuildConfig;
+
+    const currentVotingPowerPercentageForProposalExecution = tryDiv(
+      bn(currentGuildConfig.votingPowerPercentageForProposalExecution),
+      100
+    );
+
+    const currentvotingPowerPercentageForProposalCreation = tryDiv(
+      bn(currentGuildConfig.votingPowerPercentageForProposalCreation),
+      100
+    );
 
     return {
       proposalTime: pickValue(currentProposalTime, decodedCallProposalTime),
@@ -154,10 +166,10 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
         _timeForExecution: bn(timeForExecution),
         _votingPowerPercentageForProposalExecution: bn(
           votingPowerPercentageForProposalExecution
-        ),
+        ).mul(100),
         _votingPowerPercentageForProposalCreation: bn(
           votingPowerPercentageForProposalCreation
-        ),
+        ).mul(100),
         _voteGas: bn(voteGas),
         _maxGasPrice: bn(maxGasPrice),
         _maxActiveProposals: bn(maxActiveProposals),
@@ -171,7 +183,24 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
       },
     };
 
-    const updatedValues = getUpdatedValues(currentGuildConfig, values);
+    const updatedValues = getUpdatedValues(currentGuildConfig, {
+      proposalTime,
+      timeForExecution,
+      votingPowerPercentageForProposalExecution: bn(
+        votingPowerPercentageForProposalExecution
+      ).mul(100),
+      votingPowerPercentageForProposalCreation: bn(
+        votingPowerPercentageForProposalCreation
+      ).mul(100),
+      voteGas,
+      maxGasPrice,
+      maxActiveProposals,
+      lockTime,
+      minimumMembersForProposalCreation,
+      minimumTokensLockedForProposalCreation,
+    });
+
+    console.log({ updatedValues });
 
     if (Object.keys(updatedValues).length > 0) {
       return onSubmit(call);
@@ -179,8 +208,22 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     return setNoValueUpdatedError(true);
   };
 
+  const getCurrentConfigValue = (fieldName: ControlField) => {
+    switch (fieldName) {
+      case 'votingPowerPercentageForProposalExecution':
+      case 'votingPowerPercentageForProposalCreation':
+        return tryDiv(currentGuildConfig[fieldName], 100);
+      default:
+        return currentGuildConfig[fieldName];
+    }
+  };
+
+  const fieldValueHasChanged = (fieldName: ControlField, value) => {
+    return !bn(value).eq(bn(getCurrentConfigValue(fieldName)));
+  };
+
   const restoreInputValue = (fieldName: ControlField) => {
-    setValue(fieldName, currentGuildConfig[fieldName]);
+    setValue(fieldName, getCurrentConfigValue(fieldName));
   };
 
   return (
@@ -194,8 +237,9 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
               control={control}
               render={({ field: { ref, ...field } }) => {
                 const error = errors[f.name];
-                const valueChanged = !bn(field.value).eq(
-                  bn(currentGuildConfig[f.name])
+                const valueChanged = fieldValueHasChanged(
+                  f.name as ControlField,
+                  field.value
                 );
                 const handleChange = (v: string | number) => {
                   if (f.type === FieldType.duration) {

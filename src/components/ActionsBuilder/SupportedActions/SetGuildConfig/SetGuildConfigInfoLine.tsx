@@ -5,7 +5,7 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import { ActionViewProps } from '..';
 import { useUpdatedGuildConfigValues } from './useUpdatedGuildConfigValues';
 import { FIELDS } from './constants';
-import { bn } from './utils';
+import { bn } from 'utils/safeBn';
 import { useTranslation } from 'react-i18next';
 import { FieldType } from './types';
 import {
@@ -18,7 +18,7 @@ import { getDurationData } from 'hooks/Guilds/useDuration/getDurationData';
 
 const getDisplayValue = (value: BigNumber, type: FieldType) => {
   if (type === FieldType.number) return bn(value).toNumber();
-  if (type === FieldType.percentage) return `${bn(value).toNumber()}%`;
+  if (type === FieldType.percentage) return `${bn(value).div(100).toNumber()}%`;
   if (type === FieldType.duration)
     return getDurationData(bn(value).toNumber()).string;
   return bn(value).toNumber();

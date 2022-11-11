@@ -1,8 +1,7 @@
 import { FIELDS } from './constants';
 import { BigNumber } from 'ethers';
 import { SetGuildConfigFields, ControlField } from './types';
-
-export const bn = (n: string | number | BigNumber) => BigNumber.from(n);
+import { bn } from 'utils/safeBn';
 
 type UpdatedValuesReturn = {
   [key in ControlField]: {
@@ -10,6 +9,7 @@ type UpdatedValuesReturn = {
     currentValue: BigNumber;
   };
 };
+
 export const getUpdatedValues = (
   current: SetGuildConfigFields,
   modified: SetGuildConfigFields
@@ -17,8 +17,8 @@ export const getUpdatedValues = (
   if (!current || !modified) return {};
   return Object.keys(current).reduce((acc, key) => {
     if (!FIELDS.map(f => f.name).includes(key)) return acc;
-    const currentValue = bn(current[key] || 0);
-    const newValue = bn(modified[key] || 0);
+    const currentValue = bn(current[key], true);
+    const newValue = bn(modified[key], true);
 
     if (!currentValue.eq(newValue)) {
       return {

@@ -287,7 +287,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               placeholder="0.0"
               spellcheck="false"
               type="text"
-              value="100000000"
+              value="1000000"
             />
             <div
               class="c9"
@@ -329,7 +329,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               placeholder="0.0"
               spellcheck="false"
               type="text"
-              value="100000000"
+              value="1000000"
             />
             <div
               class="c9"

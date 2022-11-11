@@ -69,7 +69,7 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
     >
       proposalTime
       : 
-      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
+      2 hours
        
       <svg
         fill="currentColor"
@@ -85,149 +85,14 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-    </span>
-    <span
-      class="c2"
-    >
-      timeForExecution
-      : 
-      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-    </span>
-    <span
-      class="c2"
-    >
-      maxActiveProposals
-      : 
-      100000000
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-      0
-    </span>
-    <span
-      class="c2"
-    >
-      lockTime
-      : 
-      3 years, 2 months, 17 days, 9 hours, 46 minutes and 40 seconds
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-    </span>
-    <span
-      class="c2"
-    >
-      voteGas
-      : 
-      100000000
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-      0
-    </span>
-    <span
-      class="c2"
-    >
-      maxGasPrice
-      : 
-      100000000
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-      0
-    </span>
-    <span
-      class="c2"
-    >
-      votingPowerPercentageForProposalExecution
-      : 
-      100000000%
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-      0%
+      4 hours
     </span>
     <span
       class="c2"
     >
       votingPowerPercentageForProposalCreation
       : 
-      100000000%
+      5%
        
       <svg
         fill="currentColor"
@@ -243,14 +108,14 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-      0%
+      50%
     </span>
     <span
       class="c2"
     >
       minimumMembersForProposalCreation
       : 
-      100000000
+      0
        
       <svg
         fill="currentColor"
@@ -266,30 +131,7 @@ exports[`SetGuildConfigInfoLine Should match snapshot 1`] = `
         />
       </svg>
        
-      0
-    </span>
-    <span
-      class="c2"
-    >
-      minimumTokensLockedForProposalCreation
-      : 
-      100000000
-       
-      <svg
-        fill="currentColor"
-        height="24"
-        stroke="currentColor"
-        stroke-width="0"
-        viewBox="0 0 512 512"
-        width="24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M295.6 163.7c-5.1 5-5.1 13.3-.1 18.4l60.8 60.9H124.9c-7.1 0-12.9 5.8-12.9 13s5.8 13 12.9 13h231.3l-60.8 60.9c-5 5.1-4.9 13.3.1 18.4 5.1 5 13.2 5 18.3-.1l82.4-83c1.1-1.2 2-2.5 2.7-4.1.7-1.6 1-3.3 1-5 0-3.4-1.3-6.6-3.7-9.1l-82.4-83c-4.9-5.2-13.1-5.3-18.2-.3z"
-        />
-      </svg>
-       
-      0
+      3
     </span>
   </div>
    
