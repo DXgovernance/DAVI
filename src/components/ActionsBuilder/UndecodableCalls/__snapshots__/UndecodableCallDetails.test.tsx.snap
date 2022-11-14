@@ -130,6 +130,7 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
     </div>
     <div
       class="c6"
+      data-testid="block-explorer-container"
       direction="row"
     >
       <a
@@ -140,7 +141,7 @@ exports[`UndecodableCallDetails Should match snapshot 1`] = `
         <div
           class="c0 c8"
         >
-          0x0000...0000
+          name.eth
         </div>
         <svg
           fill="none"
@@ -355,6 +356,7 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
     </div>
     <div
       class="c6"
+      data-testid="block-explorer-container"
       direction="row"
     >
       <a
@@ -365,7 +367,7 @@ exports[`UndecodableCallDetails Should match snapshot with approval call 1`] = `
         <div
           class="c0 c8"
         >
-          0x0000...0000
+          name.eth
         </div>
         <svg
           fill="none"

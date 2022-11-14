@@ -22,7 +22,7 @@ const getBlockExplorerUrl = (
 export const BlockExplorerLink: React.FC<BlockExplorerLinkProps> = ({
   address,
   showAvatar,
-  shortAddress,
+  shortAddress = false,
   avatarSize = 24,
 }) => {
   const { chain } = useNetwork();
@@ -32,14 +32,23 @@ export const BlockExplorerLink: React.FC<BlockExplorerLinkProps> = ({
   const blockExplorerUrl = getBlockExplorerUrl(chain, address, 'address');
 
   return (
-    <Flex direction="row" justifyContent="left">
+    <Flex
+      direction="row"
+      justifyContent="left"
+      data-testid="block-explorer-container"
+    >
       {showAvatar && (
         <Segment>
-          <Avatar defaultSeed={address} src={imageUrl} size={avatarSize} />
+          <Avatar
+            defaultSeed={address}
+            src={imageUrl}
+            size={avatarSize}
+            data-testid="avatar"
+          />
         </Segment>
       )}
-      <ExternalLink href={blockExplorerUrl}>
-        {ensName || shortAddress ? shortenAddress(address) : address}
+      <ExternalLink href={blockExplorerUrl} data-testid="external-link">
+        {ensName || (shortAddress ? shortenAddress(address) : address)}
       </ExternalLink>
     </Flex>
   );

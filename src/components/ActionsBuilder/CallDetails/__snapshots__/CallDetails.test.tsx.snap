@@ -206,6 +206,7 @@ exports[`CallDetails Should match 1`] = `
       >
         <div
           class="c5"
+          data-testid="block-explorer-container"
           direction="row"
         >
           <span
@@ -226,7 +227,9 @@ exports[`CallDetails Should match 1`] = `
           >
             <div
               class="c1 c10"
-            />
+            >
+              test.eth
+            </div>
             <svg
               fill="none"
               height="1em"
@@ -510,6 +513,7 @@ exports[`CallDetails Should match with empty data 1`] = `
       >
         <div
           class="c5"
+          data-testid="block-explorer-container"
           direction="row"
         >
           <span
@@ -530,7 +534,9 @@ exports[`CallDetails Should match with empty data 1`] = `
           >
             <div
               class="c1 c10"
-            />
+            >
+              test.eth
+            </div>
             <svg
               fill="none"
               height="1em"

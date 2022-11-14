@@ -123,6 +123,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
     >
       <div
         class="c4"
+        data-testid="block-explorer-container"
         direction="row"
       >
         <a
@@ -134,7 +135,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
           <div
             class="c0 c6"
           >
-            0x0000...0000
+            name.eth
           </div>
           <svg
             fill="none"
@@ -282,6 +283,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
     >
       <div
         class="c4"
+        data-testid="block-explorer-container"
         direction="row"
       >
         <span
@@ -304,7 +306,7 @@ exports[`UpdateENSNameSummary Should match snapshot 1`] = `
           <div
             class="c0 c6"
           >
-            0x3f94...4351
+            name.eth
           </div>
           <svg
             fill="none"

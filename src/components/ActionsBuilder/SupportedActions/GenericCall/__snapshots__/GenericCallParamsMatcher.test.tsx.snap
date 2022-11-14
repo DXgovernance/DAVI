@@ -88,6 +88,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
    
   <div
     class="c0"
+    data-testid="block-explorer-container"
     direction="row"
   >
     <span
@@ -109,7 +110,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
       <div
         class="c5 c6"
       >
-        0x3f94...4351
+        test.eth
       </div>
       <svg
         fill="none"
@@ -297,6 +298,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
   >
     <div
       class="c0"
+      data-testid="block-explorer-container"
       direction="row"
     >
       <span
@@ -318,7 +320,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
         <div
           class="c5 c6"
         >
-          0x3f94...4351
+          test.eth
         </div>
         <svg
           fill="none"
