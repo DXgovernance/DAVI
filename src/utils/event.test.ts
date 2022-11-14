@@ -1,11 +1,9 @@
-import { getProposalIdFromEvent } from './event';
+import { BigNumber } from 'ethers';
+import { getProposalIdFromEvent, getProposalStateFromEvent } from './event';
 
 const proposalStateChangedEvent = [
   '0xbb7e28ec3f4e267db67c250efe01929f47b94228ac1ddc87e0d7a04b9355e7b0',
-  {
-    type: 'BigNumber',
-    hex: '0x01',
-  },
+  BigNumber.from(1),
   {
     blockNumber: 337,
     blockHash:
@@ -26,25 +24,17 @@ const proposalStateChangedEvent = [
     args: {
       proposalId:
         '0xbb7e28ec3f4e267db67c250efe01929f47b94228ac1ddc87e0d7a04b9355e7b0',
-      newState: {
-        type: 'BigNumber',
-        hex: '0x01',
-      },
+      newState: BigNumber.from(1),
     },
   },
 ];
 
 const voteAddedEvent = [
   '0xbb7e28ec3f4e267db67c250efe01929f47b94228ac1ddc87e0d7a04b9355e7b0',
-  {
-    type: 'BigNumber',
-    hex: '0x01',
-  },
+  BigNumber.from(1),
   '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
-  {
-    type: 'BigNumber',
-    hex: '0x02b5e3af16b1880000',
-  },
+  BigNumber.from('50000000000000000000'),
+
   {
     blockNumber: 350,
     blockHash:
@@ -66,15 +56,9 @@ const voteAddedEvent = [
     args: {
       proposalId:
         '0xbb7e28ec3f4e267db67c250efe01929f47b94228ac1ddc87e0d7a04b9355e7b0',
-      option: {
-        type: 'BigNumber',
-        hex: '0x01',
-      },
+      option: BigNumber.from(1),
       voter: '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
-      votingPower: {
-        type: 'BigNumber',
-        hex: '0x02b5e3af16b1880000',
-      },
+      votingPower: BigNumber.from('50000000000000000000'),
     },
   },
 ];
@@ -94,6 +78,16 @@ describe('event', () => {
     it('should get the proposalId from the VoteAdded event', () => {
       const proposalIdFromEvent = getProposalIdFromEvent(voteAddedEvent);
       expect(proposalIdFromEvent).toBe(proposalId);
+    });
+  });
+
+  describe('getProposalStateFromEvent', () => {
+    it('should get the proposal state', () => {
+      const proposalStateFromEvent = getProposalStateFromEvent(
+        proposalStateChangedEvent
+      );
+
+      expect(proposalStateFromEvent).toBe('Active');
     });
   });
 });
