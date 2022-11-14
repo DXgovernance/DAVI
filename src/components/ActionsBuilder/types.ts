@@ -43,6 +43,7 @@ export interface DecodedAction {
   contract: utils.Interface;
   approval?: ApproveSendTokens;
   simulationResult?: any;
+  actionDenied?: boolean;
 }
 
 export interface Option {
@@ -64,5 +65,6 @@ export interface ApproveSendTokens extends DecodedCall {
 export interface Permission {
   from: string;
   to: string;
+  callType?: string;
   functionSignature: string;
 }

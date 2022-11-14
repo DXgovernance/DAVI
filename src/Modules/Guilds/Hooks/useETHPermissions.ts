@@ -6,6 +6,7 @@ interface useGetETHPermissionProps {
   permissionRegistryAddress: string;
   from: string;
   to: string;
+  callType: string;
   functionSignature: string;
 }
 
@@ -13,6 +14,7 @@ export const useGetETHPermission = ({
   permissionRegistryAddress,
   from,
   to,
+  callType,
   functionSignature,
 }: useGetETHPermissionProps) => {
   const { data, ...rest } = useContractRead({
@@ -24,10 +26,16 @@ export const useGetETHPermission = ({
   });
   const parsed = useMemo(() => {
     if (!data) return null;
+    if (callType === 'NATIVE_TRANSFER') {
+      return {
+        data: 'true',
+        ...rest,
+      };
+    }
     return {
       data: data.toString(),
       ...rest,
     };
-  }, [data, rest]);
+  }, [data, rest, callType]);
   return parsed;
 };

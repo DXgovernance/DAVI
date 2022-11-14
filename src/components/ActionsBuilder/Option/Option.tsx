@@ -111,8 +111,10 @@ export const OptionRow: React.FC<OptionRowProps> = ({
               <ActionRow
                 key={index}
                 call={action}
+                decodedAction={option?.decodedActions?.[index]}
                 isEditable={false}
                 permissionArgs={permissionArgs}
+                onEdit={updatedAction => updateAction(index, updatedAction)}
               />
             );
           })}

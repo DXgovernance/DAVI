@@ -7,7 +7,7 @@ import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
   CardActions,
@@ -69,6 +69,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     permissionRegistryAddress,
     from: permissionArgs?.from,
     to: permissionArgs?.to,
+    callType: permissionArgs?.callType,
     functionSignature: permissionArgs?.functionSignature,
   })?.data;
   const permissionValues = permission?.split(',');
@@ -112,6 +113,25 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
     permissionValues,
   ]);
+
+  useEffect(() => {
+    if (!onEdit || !decodedAction) return;
+    if (
+      cardStatus === CardStatus.permissionDenied &&
+      decodedAction.actionDenied === true
+    )
+      return;
+    if (
+      cardStatus !== CardStatus.permissionDenied &&
+      decodedAction.actionDenied === false
+    )
+      return;
+
+    onEdit({
+      ...decodedAction,
+      actionDenied: cardStatus === CardStatus.permissionDenied,
+    });
+  }, [cardStatus, onEdit, decodedAction]);
   return (
     <CardWrapperWithMargin
       cardStatus={cardStatus}

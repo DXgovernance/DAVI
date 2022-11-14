@@ -46,13 +46,13 @@ const CreateProposalPage: React.FC = () => {
   const { isLoading: isGuildAvailabilityLoading } = useContext(
     GuildAvailabilityContext
   );
-
   const navigate = useNavigate();
   const { t } = useTranslation();
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
   const [isCreatingProposal, setIsCreatingProposal] = useState(false);
   const [title, setTitle] = useState('');
+  const [ignoreWarning, setIgnoreWarning] = useState(false);
   const [options, setOptions] = useState<Option[]>([
     {
       id: `option-1-For`,
@@ -62,6 +62,8 @@ const CreateProposalPage: React.FC = () => {
       permissions: [],
     },
   ]);
+  const [isPermissionWarningModalOpen, setIsPermissionWarningModalOpen] =
+    useState(false);
   const {
     Editor,
     EditorConfig,
@@ -78,6 +80,11 @@ const CreateProposalPage: React.FC = () => {
   const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
   const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
 
+  const isActionDenied = useMemo(() => {
+    return !!options.find(option =>
+      option.decodedActions.find(action => action.actionDenied === true)
+    );
+  }, [options]);
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;
@@ -124,6 +131,12 @@ const CreateProposalPage: React.FC = () => {
   const guildContract = useERC20Guild(guildAddress);
 
   const handleCreateProposal = async () => {
+    console.log('isActionDenied', isActionDenied);
+    console.log('ignoreWarning', ignoreWarning);
+    if (!ignoreWarning && isActionDenied) {
+      setIsPermissionWarningModalOpen(true);
+      return;
+    }
     let contentHash: Promise<string>;
     setIsCreatingProposal(true);
     if (!skipUploadToIPFs) {
@@ -274,7 +287,9 @@ const CreateProposalPage: React.FC = () => {
         </Box>
         <Box margin="16px 0px">
           <StyledButton
-            onClick={handleCreateProposal}
+            onClick={() => {
+              handleCreateProposal();
+            }}
             variant="secondary"
             disabled={!isValid || isCreatingProposal}
             data-testid="create-proposal-action-button"
@@ -308,6 +323,44 @@ const CreateProposalPage: React.FC = () => {
             </StyledButton>
             <StyledButton
               onClick={() => setIsIpfsErrorModalOpen(false)}
+              variant="secondary"
+            >
+              {t('close')}
+            </StyledButton>
+          </Flex>
+        </Flex>
+      </Modal>
+      <Modal
+        isOpen={isPermissionWarningModalOpen}
+        onDismiss={() => setIsPermissionWarningModalOpen(false)}
+        header={
+          "WARNING: This proposal can't be executed. Are you sure you want to continue"
+        }
+        maxWidth={390}
+      >
+        <Flex padding={'1.5rem'}>
+          <Flex>
+            <WarningCircle>
+              <FiX size={40} />
+            </WarningCircle>
+            <Flex padding={'1.5rem 0'}>
+              {
+                "WARNING: This proposal can't be executed. Are you sure you want to continue"
+              }
+            </Flex>
+          </Flex>
+          <Flex direction="row" style={{ columnGap: '1rem' }}>
+            <StyledButton
+              onClick={() => {
+                setIgnoreWarning(true);
+                handleCreateProposal();
+              }}
+              variant="secondary"
+            >
+              {t('createAnyway')}
+            </StyledButton>
+            <StyledButton
+              onClick={() => setIsPermissionWarningModalOpen(false)}
               variant="secondary"
             >
               {t('close')}
