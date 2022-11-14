@@ -1,7 +1,7 @@
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import useVotingPowerOfAt from 'Modules/Guilds/Hooks/useVotingPowerOfAt';
 import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
-import { useContractRead } from 'wagmi';
+import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
 interface UseVotingPowerOfProps {
@@ -20,12 +20,33 @@ export const useVotingPowerOf = ({
   fallbackSnapshotId = true,
 }: UseVotingPowerOfProps) => {
   const { isSnapshotGuild } = useGuildImplementationType(contractAddress);
-  const { data: votingPowerOfResponse, ...rest } = useContractRead({
+  const {
+    data: votingPowerOfResponse,
+    refetch,
+    ...rest
+  } = useContractRead({
     addressOrName: contractAddress,
     contractInterface: BaseERC20GuildContract.abi,
     functionName: 'votingPowerOf',
     args: [userAddress],
-    watch: true,
+  });
+
+  useContractEvent({
+    addressOrName: contractAddress,
+    contractInterface: BaseERC20GuildContract.abi,
+    eventName: 'TokensLocked',
+    listener() {
+      refetch();
+    },
+  });
+
+  useContractEvent({
+    addressOrName: contractAddress,
+    contractInterface: BaseERC20GuildContract.abi,
+    eventName: 'TokensWithdrawn',
+    listener() {
+      refetch();
+    },
   });
 
   const votingPowerAtSnapshotResponse = useVotingPowerOfAt({
