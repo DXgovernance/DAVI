@@ -3,6 +3,7 @@ import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
+import { getProposalIdFromEvent } from 'utils/event';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
@@ -26,8 +27,6 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
 
   return clone as Proposal;
 };
-
-const getProposalIdFromEvent = event => event[0];
 
 const useProposal = (guildId: string, proposalId: string) => {
   const { data, refetch, ...rest } = useContractRead({
