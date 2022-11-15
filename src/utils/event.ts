@@ -22,3 +22,10 @@ export const getProposalStateFromEvent = (event): string => {
 
   return contractStatesMapping[stateNumber];
 };
+
+export const getVoterFromEvent = (event): string => {
+  if (!event.length) return null;
+
+  const params = event[event.length - 1].args;
+  return params.voter;
+};

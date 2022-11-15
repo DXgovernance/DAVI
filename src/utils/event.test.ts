@@ -1,5 +1,9 @@
 import { BigNumber } from 'ethers';
-import { getProposalIdFromEvent, getProposalStateFromEvent } from './event';
+import {
+  getProposalIdFromEvent,
+  getProposalStateFromEvent,
+  getVoterFromEvent,
+} from './event';
 
 const proposalStateChangedEvent = [
   '0xbb7e28ec3f4e267db67c250efe01929f47b94228ac1ddc87e0d7a04b9355e7b0',
@@ -63,6 +67,32 @@ const voteAddedEvent = [
   },
 ];
 
+const tokensLockedEvent = [
+  '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
+  BigNumber.from('30000000000000000000'),
+  {
+    blockNumber: 534,
+    blockHash:
+      '0x39ba11395f4139fb8289c18d42628fd81875b849e1ede56a0ad719de6ccc7e10',
+    transactionIndex: 0,
+    removed: false,
+    address: '0xBF81De2C44B15e0d2c7AEaa0FBba4f1Dd02E3570',
+    data: '0x000000000000000000000000c5b20ade9c9cd5e0cc087c62b26b815a4bc1881f000000000000000000000000000000000000000000000001a055690d9db80000',
+    topics: [
+      '0xac87f20a77d28ee8bbb58ec87ea8fa968b3393efae1a368fd50b767c2847391c',
+    ],
+    transactionHash:
+      '0x7dcc585500ae4cb3a15b3714fcd43b77a8919f526bbb376c985482839eeb9f6c',
+    logIndex: 2,
+    event: 'TokensLocked',
+    eventSignature: 'TokensLocked(address,uint256)',
+    args: {
+      voter: '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f',
+      value: BigNumber.from('30000000000000000000'),
+    },
+  },
+];
+
 describe('event', () => {
   describe('getProposalIdFromEvent', () => {
     const proposalId =
@@ -88,6 +118,19 @@ describe('event', () => {
       );
 
       expect(proposalStateFromEvent).toBe('Active');
+    });
+  });
+
+  describe('getVoterFromEvent', () => {
+    const voter = '0xC5B20AdE9c9Cd5e0CC087C62b26B815A4bc1881f';
+    it('should get the voter from VoteAdded', () => {
+      const voterFromEvent = getVoterFromEvent(voteAddedEvent);
+      expect(voterFromEvent).toBe(voter);
+    });
+
+    it('should get the voter from TokensLocked', () => {
+      const voterFromEvent = getVoterFromEvent(tokensLockedEvent);
+      expect(voterFromEvent).toBe(voter);
     });
   });
 });
