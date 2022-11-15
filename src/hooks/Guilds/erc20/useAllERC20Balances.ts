@@ -31,9 +31,9 @@ export const useAllERC20Balances = (
       contractInterface: ERC20.abi,
       functionName: 'balanceOf',
       args: [walletAddress],
-      watch: true,
     })),
   });
+
   const erc20TokensWithBalance: TokenWithBalance[] = useMemo(() => {
     if (!erc20Balances) return null;
 
