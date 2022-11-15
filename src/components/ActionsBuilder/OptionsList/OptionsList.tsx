@@ -58,7 +58,9 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   }, [options]);
 
   function updateOption(index: number, option: Option) {
-    onChange(options.map((o, i) => (i === index ? option : o)));
+    if (onChange) {
+      onChange(options.map((o, i) => (i === index ? option : o)));
+    }
   }
 
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));

@@ -2,7 +2,7 @@ import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapp
 import { Input } from 'components/primitives/Forms/Input';
 import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import contentHash from '@ensdomains/content-hash';
+import ensContentHash from '@ensdomains/content-hash';
 import { useTransactions } from 'contexts/Guilds';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { BigNumber } from 'ethers';
@@ -13,7 +13,13 @@ import { ActionsBuilder } from 'components/ActionsBuilder';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+} from 'react';
 import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -96,21 +102,6 @@ const CreateProposalPage: React.FC = () => {
   const ipfs = useIPFSNode();
   const { pinToPinata } = usePinataIPFS();
 
-  const uploadToIPFS = async () => {
-    const content = {
-      description: proposalBodyHTML,
-      voteOptions: ['', ...options.map(({ label }) => label)],
-    };
-    const cid = await ipfs.add(JSON.stringify(content));
-    await ipfs.pin(cid);
-    const pinataPinResult = await pinToPinata(cid, content);
-
-    if (pinataPinResult.IpfsHash !== `${cid}`) {
-      throw new Error(t('ipfs.hashNotTheSame'));
-    }
-    return contentHash.fromIpfs(cid);
-  };
-
   const handleSkipUploadToIPFS = () => {
     setIsIpfsErrorModalOpen(false);
     setSkipUploadToIPFs(true);
@@ -130,10 +121,31 @@ const CreateProposalPage: React.FC = () => {
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
 
-  const handleCreateProposal = async () => {
-    if (!ignoreWarning && isActionDenied) {
-      return setIsPermissionWarningModalOpen(true);
+  const uploadToIPFS = async () => {
+    const content = {
+      description: proposalBodyHTML,
+      voteOptions: ['', ...options.map(({ label }) => label)],
+    };
+    const cid = await ipfs.add(JSON.stringify(content));
+    await ipfs.pin(cid);
+    const pinataPinResult = await pinToPinata(cid, content);
+
+    if (pinataPinResult.IpfsHash !== `${cid}`) {
+      throw new Error(t('ipfs.hashNotTheSame'));
     }
+    return ensContentHash.fromIpfs(cid);
+  };
+
+  const checkIfWarningIgnored = useCallback(async () => {
+    if (!ignoreWarning && isActionDenied) {
+      setIsPermissionWarningModalOpen(true);
+      return;
+    }
+    handleCreateProposal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ignoreWarning, isActionDenied]);
+
+  const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
     setIsCreatingProposal(true);
     if (!skipUploadToIPFs) {
@@ -218,6 +230,9 @@ const CreateProposalPage: React.FC = () => {
       );
     }
   };
+  useEffect(() => {
+    if (ignoreWarning) checkIfWarningIgnored();
+  }, [ignoreWarning, checkIfWarningIgnored]);
 
   const isValid = useMemo(() => {
     if (!title) return false;
@@ -285,7 +300,11 @@ const CreateProposalPage: React.FC = () => {
         <Box margin="16px 0px">
           <StyledButton
             onClick={() => {
-              handleCreateProposal();
+              if (isActionDenied) {
+                checkIfWarningIgnored();
+              } else {
+                handleCreateProposal();
+              }
             }}
             variant="secondary"
             disabled={!isValid || isCreatingProposal}
@@ -319,7 +338,9 @@ const CreateProposalPage: React.FC = () => {
               {t('createAnyway')}
             </StyledButton>
             <StyledButton
-              onClick={() => setIsIpfsErrorModalOpen(false)}
+              onClick={() => {
+                setIsIpfsErrorModalOpen(false);
+              }}
               variant="secondary"
             >
               {t('close')}
@@ -346,7 +367,6 @@ const CreateProposalPage: React.FC = () => {
             <StyledButton
               onClick={() => {
                 setIgnoreWarning(true);
-                handleCreateProposal();
               }}
               variant="secondary"
             >
