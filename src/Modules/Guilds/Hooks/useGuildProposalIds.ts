@@ -16,10 +16,7 @@ export const useGuildProposalIds = (guildId: string) => {
     eventName: 'ProposalStateChanged',
     listener(event) {
       const proposalState = getProposalStateFromEvent(event);
-      if (proposalState === ContractState.Active) {
-        console.log('refetch!');
-        refetch();
-      }
+      if (proposalState === ContractState.Active) refetch();
     },
   });
 

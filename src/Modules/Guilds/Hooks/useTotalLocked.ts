@@ -5,7 +5,7 @@ import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import { useContractRead } from 'wagmi';
+import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
@@ -21,11 +21,28 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   const { isSnapshotGuild, isRepGuild, loaded } =
     useGuildImplementationType(guildAddress);
 
-  const { data: totalLockedResponse } = useContractRead({
+  const { data: totalLockedResponse, refetch } = useContractRead({
     addressOrName: guildAddress,
     contractInterface: BaseERC20GuildContract.abi,
     functionName: 'getTotalLocked',
-    watch: true,
+  });
+
+  useContractEvent({
+    addressOrName: guildAddress,
+    contractInterface: BaseERC20GuildContract.abi,
+    eventName: 'TokensLocked',
+    listener() {
+      refetch();
+    },
+  });
+
+  useContractEvent({
+    addressOrName: guildAddress,
+    contractInterface: BaseERC20GuildContract.abi,
+    eventName: 'TokensWithdrawn',
+    listener() {
+      refetch();
+    },
   });
 
   const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
