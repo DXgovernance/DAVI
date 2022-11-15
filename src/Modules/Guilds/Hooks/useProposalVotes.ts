@@ -1,14 +1,24 @@
 import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
-import { useContractRead } from 'wagmi';
+import { useContractEvent, useContractRead } from 'wagmi';
 
 const useProposalVotes = (guildId: string, proposalId: string) => {
-  return useContractRead({
+  const { data, refetch, ...rest } = useContractRead({
     addressOrName: guildId,
     contractInterface: BaseERC20GuildContract.abi,
     functionName: 'proposalVotes',
     args: [proposalId],
-    watch: true,
   });
+
+  useContractEvent({
+    addressOrName: guildId,
+    contractInterface: BaseERC20GuildContract.abi,
+    eventName: 'VoteAdded',
+    listener() {
+      refetch();
+    },
+  });
+
+  return { data, refetch, ...rest };
 };
 
 export default useProposalVotes;
