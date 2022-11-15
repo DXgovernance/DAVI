@@ -80,15 +80,6 @@ export const isEnsName = (
   return { isValid, validationError };
 };
 
-export const isPermitted = permissionValues => {
-  let isValid = true;
-  let validationError = null;
-  if (permissionValues.includes('0')) {
-    isValid = false;
-  }
-  return { isValid, validationError };
-};
-
 export const isIpfsHash = (
   hash: string
 ): { isValid: boolean; validationError: string } => {

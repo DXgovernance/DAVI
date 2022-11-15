@@ -2,6 +2,7 @@ import { DecodedAction } from './types';
 import { Permission } from './types';
 import Web3 from 'web3';
 import { NULL_SIGNATURE } from 'utils';
+import { SupportedAction } from './types';
 
 const web3 = new Web3();
 
@@ -10,7 +11,9 @@ export const getPermissionArgs = (
 ): Permission[] => {
   const permissions = decodedActions.map(decodedAction => {
     // Native transfer of ETH does not have a function
-    if (decodedAction?.decodedCall?.callType === 'NATIVE_TRANSFER') {
+    if (
+      decodedAction?.decodedCall?.callType === SupportedAction.NATIVE_TRANSFER
+    ) {
       return {
         from: decodedAction?.decodedCall?.from,
         to: decodedAction?.decodedCall?.to,
@@ -28,6 +31,7 @@ export const getPermissionArgs = (
     return {
       from: decodedAction?.decodedCall?.from,
       to: decodedAction?.decodedCall?.to,
+      callType: decodedAction?.decodedCall?.callType,
       functionSignature,
     };
   });

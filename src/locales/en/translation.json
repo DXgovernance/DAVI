@@ -79,7 +79,9 @@
     "setPermissions": "Set Permissions",
     "setPermissionsFor": "Set permissions for",
     "permissionDenied": "Permission denied",
-    "permissionDeniedMessage": "You do not have permission to perform this action."
+    "permissionDeniedMessage": "You do not have permission to perform this action.",
+    "warningMessage": "Warning",
+    "proposalNotExecuted": "This proposal can't be executed. Are you sure you want to continue?"
   },
   "unknownAction": "Unknown Action",
   "default": "Default",

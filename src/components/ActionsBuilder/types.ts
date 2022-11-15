@@ -29,7 +29,7 @@ export interface DecodedCall {
   from: string;
   to: string;
   value: BigNumber | string;
-  function: utils.FunctionFragment;
+  function?: utils.FunctionFragment;
   args: Record<string, any>;
   richData?: RichContractData;
   richFunctionData?: RichContractFunction;

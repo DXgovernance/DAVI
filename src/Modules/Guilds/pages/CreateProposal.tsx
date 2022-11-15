@@ -131,11 +131,8 @@ const CreateProposalPage: React.FC = () => {
   const guildContract = useERC20Guild(guildAddress);
 
   const handleCreateProposal = async () => {
-    console.log('isActionDenied', isActionDenied);
-    console.log('ignoreWarning', ignoreWarning);
     if (!ignoreWarning && isActionDenied) {
-      setIsPermissionWarningModalOpen(true);
-      return;
+      return setIsPermissionWarningModalOpen(true);
     }
     let contentHash: Promise<string>;
     setIsCreatingProposal(true);
@@ -333,9 +330,7 @@ const CreateProposalPage: React.FC = () => {
       <Modal
         isOpen={isPermissionWarningModalOpen}
         onDismiss={() => setIsPermissionWarningModalOpen(false)}
-        header={
-          "WARNING: This proposal can't be executed. Are you sure you want to continue"
-        }
+        header={t('permissions.warningMessage')}
         maxWidth={390}
       >
         <Flex padding={'1.5rem'}>
@@ -344,9 +339,7 @@ const CreateProposalPage: React.FC = () => {
               <FiX size={40} />
             </WarningCircle>
             <Flex padding={'1.5rem 0'}>
-              {
-                "WARNING: This proposal can't be executed. Are you sure you want to continue"
-              }
+              {t('permissions.proposalNotExecuted')}
             </Flex>
           </Flex>
           <Flex direction="row" style={{ columnGap: '1rem' }}>
