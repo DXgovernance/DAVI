@@ -134,6 +134,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
             : index === 0
             ? t('against', { defaultValue: 'Against' })
             : null;
+
           return {
             id: `option-${index}`,
             label: optionLabel || `Option ${index}`,

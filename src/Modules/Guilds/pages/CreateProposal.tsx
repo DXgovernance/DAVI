@@ -102,6 +102,21 @@ const CreateProposalPage: React.FC = () => {
   const ipfs = useIPFSNode();
   const { pinToPinata } = usePinataIPFS();
 
+  const uploadToIPFS = async () => {
+    const content = {
+      description: proposalBodyHTML,
+      voteOptions: ['', ...options.map(({ label }) => label)],
+    };
+    const cid = await ipfs.add(JSON.stringify(content));
+    await ipfs.pin(cid);
+    const pinataPinResult = await pinToPinata(cid, content);
+
+    if (pinataPinResult.IpfsHash !== `${cid}`) {
+      throw new Error(t('ipfs.hashNotTheSame'));
+    }
+    return ensContentHash.fromIpfs(cid);
+  };
+
   const handleSkipUploadToIPFS = () => {
     setIsIpfsErrorModalOpen(false);
     setSkipUploadToIPFs(true);
@@ -120,21 +135,6 @@ const CreateProposalPage: React.FC = () => {
   const { createTransaction } = useTransactions();
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
-
-  const uploadToIPFS = async () => {
-    const content = {
-      description: proposalBodyHTML,
-      voteOptions: ['', ...options.map(({ label }) => label)],
-    };
-    const cid = await ipfs.add(JSON.stringify(content));
-    await ipfs.pin(cid);
-    const pinataPinResult = await pinToPinata(cid, content);
-
-    if (pinataPinResult.IpfsHash !== `${cid}`) {
-      throw new Error(t('ipfs.hashNotTheSame'));
-    }
-    return ensContentHash.fromIpfs(cid);
-  };
 
   const checkIfWarningIgnored = useCallback(async () => {
     if (!ignoreWarning && isActionDenied) {

@@ -21,7 +21,6 @@ export const CardWrapperWithMargin = styled(CardWrapper)<{
       : cardStatus === CardStatus.permissionDenied
       ? theme.colors.border2
       : theme.colors.border1};
-
   z-index: ${({ cardStatus }) =>
     cardStatus === CardStatus.dragging ? 999 : 'initial'};
   box-shadow: ${({ cardStatus }) =>
