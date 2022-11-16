@@ -13,6 +13,7 @@ jest.mock('wagmi', () => ({
     isLoading: false,
     isError: false,
   }),
+  useContractEvent: () => jest.fn(),
 }));
 
 describe('useGuildMemberTotal', () => {
