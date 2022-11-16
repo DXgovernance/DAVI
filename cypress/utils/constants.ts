@@ -34,3 +34,19 @@ export const ACCOUNTS = [
 ];
 
 export const DXDGuildAddress = '0x140d68e4E3f80cdCf7036De007b3bCEC54D38b1f';
+
+export const NETWORK_OPTIONS = {
+  ethereum: 'Ethereum',
+  REPGuild: 'Goerli',
+  arbitrumOne: 'Arbitrum One',
+  arbitrumRinkeby: 'Arbitrum Rinkeby',
+  gnosis: 'Gnosis',
+  localhost: 'Localhost',
+};
+
+export const WALLET_OPTIONS = {
+//TODO: atm getting values injected instead of Metamask
+  metamask: 'Injected',
+  walletConnect: 'WalletConnect',
+  coinbaseWallet: 'Coinbase Wallet',
+};

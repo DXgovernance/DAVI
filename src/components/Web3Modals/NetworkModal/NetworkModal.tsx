@@ -27,7 +27,7 @@ const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <Modal
-      header={<div data-testid="switchNetworkModal">{t('switchNetwork')}</div>}
+      header={<div>{t('switchNetwork')}</div>}
       isOpen={isOpen}
       onDismiss={onClose}
       maxWidth={380}
@@ -38,7 +38,6 @@ const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
             <OptionGrid>
               {chains.map(chain => (
                 <Option
-                  dataTestId={`network-option-${chain.id}`}
                   onClick={() => handleNetworkSwitch(chain.id)}
                   key={chain.name}
                   icon={getChainIcon(chain.id)}

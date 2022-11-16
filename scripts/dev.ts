@@ -1014,6 +1014,19 @@ async function main() {
       networkContracts.addresses.REPGuild,
       networkContracts.addresses.SWPRGuild,
     ],
+    networkOptions: [
+      "Ethereum",
+      "Goerli",
+      "Arbitrum One",
+      "Arbitrum Rinkeby",
+      "Gnosis",
+      "Localhost"
+],
+    walletOptions: [
+      "MetaMask",
+      "WalletConnect",
+      "Coinbase Wallet"
+],
   };
 
   await hre.run('actions-dxdao-contracts', {

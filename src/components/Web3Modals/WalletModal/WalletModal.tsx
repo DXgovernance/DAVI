@@ -42,7 +42,6 @@ export const WalletModal: React.FC<WalletModalProps> = ({
       .map(connector => {
         return (
           <Option
-            dataTestId={`wallet-option-${connector.id}`}
             disabled={!connector.ready}
             key={connector.id}
             onClick={() =>

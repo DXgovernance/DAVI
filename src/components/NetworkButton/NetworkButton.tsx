@@ -23,7 +23,7 @@ const NetworkButton = () => {
     } else if (isConnected) {
       return (
         <IconButton
-          data-testid="changeNetworkBtn"
+          data-testid="change-network-btn"
           onClick={toggleNetworkModal}
           iconLeft
         >

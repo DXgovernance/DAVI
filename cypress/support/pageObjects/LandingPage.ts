@@ -2,62 +2,60 @@
 // Filename: LandingPage.ts
 // 
 
-export class LandingPage {
-  static getProjectName() {
-    return cy.get('[data-testid="projectName"]')
-  }
-  static getSWPRGuildCard() {
-    return cy.get('[data-testid=guildCard]').eq(2)
+import localhostConfigJSON from '../../../src/configs/localhost/config.json';
+
+class LandingPage  {
+  public projectNameText: string;
+  public networkModalBtn: string;
+  public networkModalTitle: string;
+  public networkModalOptionId: string;
+  public networkModalOptions: string[];
+  public walletModalBtn: string;
+  public walletModalTitle: string;
+  public walletModalOptionId: string;
+  public walletModalOptions: string[];
+  public SWPRGuildName: string;
+
+  constructor() {
+    this.projectNameText = 'project-name';
+    this.networkModalBtn = 'change-network-btn';
+    this.networkModalTitle = 'modal-title';
+    this.networkModalOptionId = '';
+    this.networkModalOptions = localhostConfigJSON.networkOptions;
+    this.walletModalBtn = 'connect-wallet-btn';
+    this.walletModalTitle = 'modal-title';
+    this.walletModalOptionId = '';
+    this.walletModalOptions = localhostConfigJSON.walletOptions;
+    this.SWPRGuildName = 'guild-name'
   }
 
-  static getDXDGuildCard() {
-      return cy.get('[data-testid=guildCard]').eq(1)
+  projectName() {
+    cy.findByTestId(this.projectNameText).should('be.visible')
   }
 
-  static getREPGuildCard() {
-      return cy.get('[data-testid=guildCard]').eq(0)
+  openNetworkModal() {
+    cy.findByTestId(this.networkModalBtn)
+      .should('be.visible') 
+      .click()
+    cy.findByTestId(this.networkModalTitle)
+      .contains('Switch Network')
   }
 
-  static getNetworkButton() {
-    return cy.get('[data-testid="changeNetworkBtn"]')
+  openWalletModal() {
+    cy.findByTestId(this.walletModalBtn)
+      .should('be.visible') 
+      .click()
+    cy.findByTestId(this.walletModalTitle)
+      .contains('Connect to a wallet')
   }
 
-  static getNetworkModal() {
-    return cy.get('[data-testid="switchNetworkModal"]')
-  }
-
-  static checkNetworkOptions() {
-    cy.get('[data-testid="network-option-1"]')
-      .should('be.visible')
-      .contains('Ethereum')
-    cy.get('[data-testid="network-option-5"]')
-      .should('be.visible')
-      .contains('Goerli')
-    cy.get('[data-testid="network-option-42161"]')
-      .should('be.visible')
-      .contains('Arbitrum One')
-    cy.get('[data-testid="network-option-421611"]')
-      .should('be.visible')
-      .contains('Arbitrum Rinkeby')
-    cy.get('[data-testid="network-option-100"]')
-      .should('be.visible')
-      .contains('Gnosis')
-    cy.get('[data-testid="network-option-1337"]')
-      .should('be.visible')
-      .contains('Localhost')
-  }
-
-  static getConnectWalletButton() {
-    return cy.get('[data-testid="connectWalletBtn"]')
-  }
-
-  static getWalletModal() {
-    return cy.get('[data-testid="wallet-modal"]')
-  }
-
-  static checkWalletOptions() {
-    cy.get('[data-testid="wallet-option-injected"]').should('be.visible')
-    cy.get('[data-testid="wallet-option-walletConnect"]').should('be.visible')
-    cy.get('[data-testid="wallet-option-coinbaseWallet"]').should('be.visible')
+  goToSWPRGuildPage() {
+    cy.findAllByTestId(this.SWPRGuildName).eq(2)
+      .contains('SWPRGuild')
+      .click()
   }
 }
+
+const landingPage = new LandingPage();
+
+export default landingPage;
