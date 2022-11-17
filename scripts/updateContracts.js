@@ -15,23 +15,23 @@ const CONTRACTS = {
 
 const artifactsPath = {
   [CONTRACTS.BaseERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/BaseERC20Guild.sol/BaseERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/BaseERC20Guild.sol/BaseERC20Guild.json',
   [CONTRACTS.ERC20GuildUpgradeable]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/ERC20GuildUpgradeable.sol/ERC20GuildUpgradeable.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/ERC20GuildUpgradeable.sol/ERC20GuildUpgradeable.json',
   [CONTRACTS.SnapshotERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
   [CONTRACTS.SnapshotRepERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol/SnapshotRepERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol/SnapshotRepERC20Guild.json',
   [CONTRACTS.DXDGuild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
   [CONTRACTS.DxAvatar]:
-    '../artifacts/dxdao-contracts/contracts/dxdao/DxAvatar.sol/DxAvatar.json',
+    'dxdao-contracts/artifacts/contracts/dxdao/DxAvatar.sol/DxAvatar.json',
   [CONTRACTS.DxController]:
-    '../artifacts/dxdao-contracts/contracts/dxdao/DxController.sol/DxController.json',
+    'dxdao-contracts/artifacts/contracts/dxdao/DxController.sol/DxController.json',
   [CONTRACTS.DXDVotingMachine]:
-    '../artifacts/dxdao-contracts/contracts/dxvote/DXDVotingMachine.sol/DXDVotingMachine.json',
+    'dxdao-contracts/artifacts/contracts/dxvote/DXDVotingMachine.sol/DXDVotingMachine.json',
   [CONTRACTS.DxReputation]:
-    '../artifacts/dxdao-contracts/contracts/dxdao/DxReputation.sol/DxReputation.json',
+    'dxdao-contracts/artifacts/contracts/dxdao/DxReputation.sol/DxReputation.json',
 };
 
 const contractsPath = {

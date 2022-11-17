@@ -6,34 +6,34 @@
 # Executes cleanup function at script exit.
 # trap cleanup EXIT
 
-cleanup() {
-  # Kill the hardhat instance that we started (if we started one and if it's still running).
-  if [ -n "$hardhat_pid" ] && ps -p $hardhat_pid > /dev/null; then
-    kill -9 $hardhat_pid
-  fi
-}
-mnemonic="cream core pear sure dinner indoor citizen divorce sudden captain subject remember"
+# cleanup() {
+#   # Kill the hardhat instance that we started (if we started one and if it's still running).
+#   if [ -n "$hardhat_pid" ] && ps -p $hardhat_pid > /dev/null; then
+#     kill -9 $hardhat_pid
+#   fi
+# }
+# mnemonic="cream core pear sure dinner indoor citizen divorce sudden captain subject remember"
 
-hardhat_running() {
-  nc -z localhost 8545
-}
+# hardhat_running() {
+#   nc -z localhost 8545
+# }
 
-start-hardhat_node() {
+# start-hardhat_node() {
 
-  yarn hardhat compile
+#   yarn hardhat compile
 
-  npx hardhat node > /dev/null &
+#   npx hardhat node > /dev/null &
 
-  hardhat_pid=$!
+#   hardhat_pid=$!
 
-  echo "Waiting for hardhat to launch..."
+#   echo "Waiting for hardhat to launch..."
 
-  while ! hardhat_running; do
-    sleep 0.1 # wait for 1/10 of the second before check again
-  done
+#   while ! hardhat_running; do
+#     sleep 0.1 # wait for 1/10 of the second before check again
+#   done
 
-  echo "Harhat node launched!"
-}
+#   echo "Harhat node launched!"
+# }
 
 # if hardhat_running; then
 #   echo "Killing existent hardhat"

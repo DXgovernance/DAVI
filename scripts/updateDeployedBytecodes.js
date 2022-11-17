@@ -16,13 +16,13 @@ const FEATURES = {
 
 const paths = {
   [GUILD_TYPES.ERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/ERC20Guild.sol/ERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/ERC20Guild.sol/ERC20Guild.json',
   [GUILD_TYPES.SnapshotRepERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol/SnapshotRepERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol/SnapshotRepERC20Guild.json',
   [GUILD_TYPES.SnapshotERC20Guild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol/SnapshotERC20Guild.json',
   [GUILD_TYPES.DXDGuild]:
-    '../artifacts/dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
+    'dxdao-contracts/artifacts/contracts/erc20guild/implementations/DXDGuild.sol/DXDGuild.json',
 };
 
 const getGuildFeatures = guildType => {
