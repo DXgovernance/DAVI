@@ -53,30 +53,6 @@ module.exports = {
   paths: {
     sources: './src', // Use src folder instead of contracts to avoid having empty contracts folder
   },
-  dependencyCompiler: {
-    paths: [
-      'dxdao-contracts/contracts/dxdao/DxAvatar.sol',
-      'dxdao-contracts/contracts/dxdao/DxController.sol',
-      'dxdao-contracts/contracts/dxdao/DxReputation.sol',
-      'dxdao-contracts/contracts/dxdao/DxToken.sol',
-      'dxdao-contracts/contracts/dxvote/DXDVotingMachine.sol',
-      'dxdao-contracts/contracts/dxvote/WalletScheme.sol',
-      'dxdao-contracts/contracts/dxvote/utils/ERC20VestingFactory.sol',
-      'dxdao-contracts/contracts/dxvote/utils/ERC721Factory.sol',
-      'dxdao-contracts/contracts/utils/PermissionRegistry.sol',
-      'dxdao-contracts/contracts/utils/Multicall.sol',
-      'dxdao-contracts/contracts/test/ERC20Mock.sol',
-      'dxdao-contracts/contracts/daostack/universalSchemes/ContributionReward.sol',
-      'dxdao-contracts/contracts/daostack/universalSchemes/SchemeRegistrar.sol',
-      'dxdao-contracts/contracts/daostack/utils/Redeemer.sol',
-      'dxdao-contracts/contracts/daostack/votingMachines/GenesisProtocol.sol',
-      'dxdao-contracts/contracts/erc20guild/ERC20Guild.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/DXDGuild.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/SnapshotRepERC20Guild.sol',
-      'dxdao-contracts/contracts/erc20guild/utils/GuildRegistry.sol',
-      'dxdao-contracts/contracts/erc20guild/implementations/SnapshotERC20Guild.sol',
-    ],
-  },
   solidity: {
     compilers: [
       {
@@ -158,11 +134,6 @@ module.exports = {
       chainId: 421611,
       timeout: 60000,
     },
-  },
-  typechain: {
-    outDir: 'src/types/contracts',
-    target: 'ethers-v5',
-    alwaysGenerateOverloads: false, // should overloads with full signatures like deposit(uint256) be generated always, even if there are no overloads?
   },
   ethernal: {
     email: process.env.ETHERNAL_EMAIL,

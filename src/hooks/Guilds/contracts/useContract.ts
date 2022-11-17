@@ -1,8 +1,8 @@
 import { Contract } from 'ethers';
 import BaseERC20GuildContract from '../../../contracts/BaseERC20Guild.json';
-import { ERC20Guild } from '../../../types/contracts/ERC20Guild';
+import { ERC20Guild } from 'dxdao-contracts/types/ERC20Guild';
 import ERC20_ABI from '../../../contracts/ERC20.json';
-import { ERC20 } from '../../../types/contracts/ERC20';
+import { ERC20 } from 'dxdao-contracts/types/ERC20';
 import { useProvider, useSigner } from 'wagmi';
 import { useMemo } from 'react';
 import { getContract } from '@wagmi/core';
