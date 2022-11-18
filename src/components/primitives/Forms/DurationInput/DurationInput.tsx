@@ -15,7 +15,12 @@ import { DurationInputProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { DURATION_IN_SECONDS } from 'constants/Duration';
 
-const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
+const DurationInput: React.FC<DurationInputProps> = ({
+  value,
+  onChange,
+  iconRight,
+  isInvalid,
+}) => {
   const {
     durationObject,
     durationString,
@@ -39,8 +44,10 @@ const DurationInput: React.FC<DurationInputProps> = ({ value, onChange }) => {
         onClick={() => setIsOpen(true)}
         aria-label="Duration picker button"
         type="button"
+        isInvalid={isInvalid}
       >
         {!durationString.length ? '' : durationString}
+        {iconRight && <div>{iconRight}</div>}
       </TransparentButton>
       <Modal
         isOpen={isOpen}

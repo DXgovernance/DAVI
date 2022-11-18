@@ -411,6 +411,11 @@ exports[`Filter Should match snapshot 1`] = `
               >
                 Ens Update Content
               </a>
+              <a
+                class="c12 c13"
+              >
+                Set Guild Config
+              </a>
             </div>
           </div>
         </div>
