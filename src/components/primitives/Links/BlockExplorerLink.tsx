@@ -5,10 +5,8 @@ import { MAINNET_ID, shortenAddress } from 'utils';
 import { Chain, useNetwork } from 'wagmi';
 import { Flex } from '../Layout';
 import { ExternalLink } from './ExternalLink';
-// import { FlexContainer } from './styles';
 import { BlockExplorerLinkProps } from './types';
 
-// this code is duplicated from provider/chain.ts because there was a circular dependency when testing
 const getBlockExplorerUrl = (
   chain: Chain,
   address: string,
