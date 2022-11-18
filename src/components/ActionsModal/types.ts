@@ -8,6 +8,6 @@ export interface ActionModalProps {
 }
 
 export interface SelectedFunction {
-  functionName: string;
+  name: string;
   title: string;
 }

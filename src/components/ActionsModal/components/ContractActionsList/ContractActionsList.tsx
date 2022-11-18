@@ -35,7 +35,7 @@ const ContractActionsList: React.FC<ContractActionsListProps> = ({
             vertical
             onClick={() => {
               onSelect({
-                functionName: contractFunction.functionName,
+                name: contractFunction.functionName,
                 title: contractFunction.title,
               });
             }}

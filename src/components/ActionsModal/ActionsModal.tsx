@@ -61,7 +61,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
     if (action.decodedCall.callType === SupportedAction.GENERIC_CALL) {
       setSelectedContract(action.decodedCall.richData);
       setSelectedFunction({
-        functionName: action.decodedCall.function.name,
+        name: action.decodedCall.function.name,
         title: action.decodedCall.functionTitle,
       });
     } else {
@@ -78,7 +78,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
     selectedFunction: SelectedFunction
   ) {
     return (
-      fn.functionName === selectedFunction.functionName &&
+      fn.functionName === selectedFunction.name &&
       (selectedFunction.title === '' || fn.title === selectedFunction.title)
     );
   }
@@ -134,9 +134,7 @@ const ActionModal: React.FC<ActionModalProps> = ({
                 callType: SupportedAction.GENERIC_CALL,
                 from: guildId,
                 to: contractId,
-                function: contractInterface.getFunction(
-                  selectedFunction.functionName
-                ),
+                function: contractInterface.getFunction(selectedFunction.name),
                 value: BigNumber.from(0),
                 args,
                 richData: selectedContract,
