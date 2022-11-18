@@ -110,6 +110,36 @@ exports[`CallDetails Should match 1`] = `
   border-radius: 10px;
 }
 
+.c9 {
+  color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c9:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
+}
+
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -149,36 +179,6 @@ exports[`CallDetails Should match 1`] = `
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
-}
-
-.c9 {
-  color: #A1A6B0;
-  margin-right: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-
-.c9:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.c10 {
-  margin-right: 0.5rem;
-  overflow-wrap: break-word;
 }
 
 <div>
@@ -417,6 +417,36 @@ exports[`CallDetails Should match with empty data 1`] = `
   border-radius: 10px;
 }
 
+.c9 {
+  color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c9:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
+}
+
 .c2 {
   display: -webkit-box;
   display: -webkit-flex;
@@ -456,36 +486,6 @@ exports[`CallDetails Should match with empty data 1`] = `
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
-}
-
-.c9 {
-  color: #A1A6B0;
-  margin-right: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow-wrap: break-word;
-}
-
-.c9:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.c10 {
-  margin-right: 0.5rem;
-  overflow-wrap: break-word;
 }
 
 <div>
