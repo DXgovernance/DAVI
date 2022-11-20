@@ -154,8 +154,8 @@ exports[`Header Should match snapshot 1`] = `
           notConnected
         </button>
         <button
-          class="c7"
-          data-testid="connectWalletBtn"
+          class="c8"
+          data-testid="connect-wallet-btn"
         >
           connectWallet
         </button>
