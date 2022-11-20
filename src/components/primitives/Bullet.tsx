@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-interface ButtonProps {
+export interface ButtonProps {
   size?: number;
   color?: string;
 }
 
-export const Bullet: React.FC<ButtonProps> = styled.span<{ size: number }>`
+export const Bullet: React.FC<ButtonProps> = styled.span<ButtonProps>`
   display: inline-flex;
   height: ${props => `${props.size}px`};
   width: ${props => `${props.size}px`};

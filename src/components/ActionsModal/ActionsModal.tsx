@@ -8,9 +8,7 @@ import {
   defaultValues,
   getEditor,
   supportedActions,
-  displaySubmit,
 } from 'components/ActionsBuilder/SupportedActions';
-import { Button } from 'components/primitives/Button';
 
 import {
   DecodedAction,
@@ -27,8 +25,7 @@ import {
 import { EditorWrapper } from './ActionsModal.styled';
 import { ActionModalProps } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
-import { useAccount } from 'wagmi';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 const ActionModal: React.FC<ActionModalProps> = ({
   action,
@@ -38,7 +35,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
 }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
-  const { address: walletAddress } = useAccount();
   const { data: guildConfig } = useGuildConfig(guildId);
   // Supported Actions
   const [selectedAction, setSelectedAction] =
@@ -164,15 +160,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
             updateCall={setData}
             onSubmit={saveSupportedAction}
           />
-          {displaySubmit(selectedAction) && (
-            <Button
-              m="1rem 0 0"
-              fullWidth
-              onClick={() => saveSupportedAction()}
-            >
-              {t('saveAction')}
-            </Button>
-          )}
         </EditorWrapper>
       );
     }
@@ -206,13 +193,14 @@ const ActionModal: React.FC<ActionModalProps> = ({
     defaultDecodedAction.decodedCall.callType = action;
     switch (action) {
       case SupportedAction.REP_MINT:
-        defaultDecodedAction.decodedCall.args.to = walletAddress;
         defaultDecodedAction.decodedCall.to = guildConfig?.token;
         break;
       case SupportedAction.SET_PERMISSIONS:
         defaultDecodedAction.decodedCall.args.from = guildId;
         defaultDecodedAction.decodedCall.to = guildConfig?.permissionRegistry;
         break;
+      case SupportedAction.SET_GUILD_CONFIG:
+        defaultDecodedAction.decodedCall.to = guildId;
     }
     setData(defaultDecodedAction.decodedCall);
     setSelectedAction(action);
@@ -220,7 +208,6 @@ const ActionModal: React.FC<ActionModalProps> = ({
 
   function saveSupportedAction(call?: DecodedCall) {
     const decodedCall = call ?? data;
-
     const defaultDecodedAction = defaultValues[decodedCall.callType];
 
     if (!selectedAction || !decodedCall) return;

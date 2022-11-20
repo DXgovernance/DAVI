@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
-.c15 {
+.c16 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -26,17 +26,17 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   width: auto;
 }
 
-.c15:disabled {
+.c16:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c16:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c16:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -47,7 +47,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   padding: 0;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -61,7 +61,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   justify-content: flex-end;
 }
 
-.c7 {
+.c8 {
   font-size: 0.8rem;
   font-weight: 600;
   display: -webkit-box;
@@ -77,7 +77,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   align-items: center;
 }
 
-.c9 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -98,7 +98,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   padding: 0.25rem 0.4rem;
 }
 
-.c8 {
+.c9 {
   padding: 0 0.2rem;
 }
 
@@ -117,7 +117,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   text-decoration: none;
 }
 
-.c11 {
+.c12 {
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 20px;
   line-height: 1.2;
@@ -127,17 +127,20 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 .c2 {
   border: 1px solid #303338;
   border-radius: 10px;
+}
+
+.c3 {
   margin-bottom: 1rem;
   padding: 1rem;
   color: #BDC0C7;
 }
 
-.c2:hover {
+.c3:hover {
   border-color: #fff;
   color: #fff;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -151,11 +154,11 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   justify-content: space-between;
 }
 
-.c10 {
+.c11 {
   margin: 1rem 0;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -173,13 +176,13 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   align-items: flex-end;
 }
 
-.c12 {
+.c13 {
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -196,13 +199,13 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   flex: 1;
 }
 
-.c5 {
+.c6 {
   font-size: 0.95rem;
   font-weight: 600;
   margin-left: 0.5rem;
 }
 
-.c14 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -221,7 +224,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   padding: 0 12px;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -245,12 +248,12 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   color: #A1A6B0;
 }
 
-.c16:hover {
+.c17:hover {
   color: #fff;
   cursor: default;
 }
 
-.c17 {
+.c18 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -266,14 +269,27 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
   align-items: center;
 }
 
+.c19 {
+  width: 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 @media only screen and (min-width:768px) {
-  .c8 {
+  .c9 {
     padding-right: 0.5rem;
   }
 }
 
 @media only screen and (max-width:524px) {
-  .c13 {
+  .c14 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -285,7 +301,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c12 {
+  .c13 {
     font-size: 1.25rem;
   }
 }
@@ -298,13 +314,13 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
     href="/testUrl"
   >
     <div
-      class="c1 c2"
+      class="c1 c2 c3"
     >
       <div
-        class="c1 c3"
+        class="c1 c4"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
             class="paper"
@@ -360,28 +376,28 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             </svg>
           </div>
           <div
-            class="c1 c5"
+            class="c1 c6"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="c6"
+          class="c7"
         >
           <div
-            class="c7"
+            class="c8"
           >
             <div
-              class="c1 c8"
+              class="c1 c9"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
-              class="c1 c9"
+              class="c1 c10"
             >
                
               Active
@@ -390,10 +406,10 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </div>
       </div>
       <div
-        class="c1 c10"
+        class="c1 c11"
       >
         <h2
-          class="c11 c12"
+          class="c12 c13"
           size="2"
         >
           <strong>
@@ -402,13 +418,13 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
         </h2>
       </div>
       <div
-        class="c1 c13"
+        class="c1 c14"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
-            class="c1 c4 c14"
+            class="c1 c5 c15"
           >
             50
             % - 
@@ -416,10 +432,10 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
           </div>
           <button
             aria-label="action details button"
-            class="c15 c16"
+            class="c16 c17"
           >
             <span
-              class="c17"
+              class="c18"
             >
               <svg
                 fill="currentColor"
@@ -436,13 +452,13 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </span>
             <span
-              class="c17"
+              class="c18"
             >
                
                
             </span>
             <span
-              class="c17"
+              class="c18"
             >
               <svg
                 fill="none"
@@ -467,11 +483,28 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
               </svg>
             </span>
             <span
-              class="c17"
+              class="c18"
             >
               test.eth
             </span>
           </button>
+        </div>
+        <div
+          class="c19"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M170.718 216.482L141.6 245.6l93.6 93.6 208-208-29.118-29.118L235.2 279.918l-64.482-63.436zM422.4 256c0 91.518-74.883 166.4-166.4 166.4S89.6 347.518 89.6 256 164.482 89.6 256 89.6c15.6 0 31.2 2.082 45.764 6.241L334 63.6C310.082 53.2 284.082 48 256 48 141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208h-41.6z"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -481,7 +514,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
 `;
 
 exports[`ProposalCard ProposalCard Renders properly with more than one option  1`] = `
-.c15 {
+.c16 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -506,17 +539,17 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   width: auto;
 }
 
-.c15:disabled {
+.c16:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c16:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c16:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -527,7 +560,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   padding: 0;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -541,7 +574,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   justify-content: flex-end;
 }
 
-.c7 {
+.c8 {
   font-size: 0.8rem;
   font-weight: 600;
   display: -webkit-box;
@@ -557,7 +590,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   align-items: center;
 }
 
-.c9 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -578,7 +611,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   padding: 0.25rem 0.4rem;
 }
 
-.c8 {
+.c9 {
   padding: 0 0.2rem;
 }
 
@@ -597,7 +630,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   text-decoration: none;
 }
 
-.c11 {
+.c12 {
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 20px;
   line-height: 1.2;
@@ -607,17 +640,20 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
 .c2 {
   border: 1px solid #303338;
   border-radius: 10px;
+}
+
+.c3 {
   margin-bottom: 1rem;
   padding: 1rem;
   color: #BDC0C7;
 }
 
-.c2:hover {
+.c3:hover {
   border-color: #fff;
   color: #fff;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -631,11 +667,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   justify-content: space-between;
 }
 
-.c10 {
+.c11 {
   margin: 1rem 0;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -653,13 +689,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   align-items: flex-end;
 }
 
-.c12 {
+.c13 {
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -676,13 +712,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   flex: 1;
 }
 
-.c5 {
+.c6 {
   font-size: 0.95rem;
   font-weight: 600;
   margin-left: 0.5rem;
 }
 
-.c14 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -701,7 +737,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   padding: 0 12px;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -725,12 +761,12 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   color: #A1A6B0;
 }
 
-.c16:hover {
+.c17:hover {
   color: #fff;
   cursor: default;
 }
 
-.c17 {
+.c18 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -746,14 +782,27 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
   align-items: center;
 }
 
+.c19 {
+  width: 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 @media only screen and (min-width:768px) {
-  .c8 {
+  .c9 {
     padding-right: 0.5rem;
   }
 }
 
 @media only screen and (max-width:524px) {
-  .c13 {
+  .c14 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -765,7 +814,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
 }
 
 @media only screen and (min-width:768px) {
-  .c12 {
+  .c13 {
     font-size: 1.25rem;
   }
 }
@@ -778,13 +827,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
     href="/testUrl"
   >
     <div
-      class="c1 c2"
+      class="c1 c2 c3"
     >
       <div
-        class="c1 c3"
+        class="c1 c4"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
             class="paper"
@@ -840,28 +889,28 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
             </svg>
           </div>
           <div
-            class="c1 c5"
+            class="c1 c6"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="c6"
+          class="c7"
         >
           <div
-            class="c7"
+            class="c8"
           >
             <div
-              class="c1 c8"
+              class="c1 c9"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
-              class="c1 c9"
+              class="c1 c10"
             >
                
               Active
@@ -870,10 +919,10 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
         </div>
       </div>
       <div
-        class="c1 c10"
+        class="c1 c11"
       >
         <h2
-          class="c11 c12"
+          class="c12 c13"
           size="2"
         >
           <strong>
@@ -882,13 +931,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
         </h2>
       </div>
       <div
-        class="c1 c13"
+        class="c1 c14"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
-            class="c1 c4 c14"
+            class="c1 c5 c15"
           >
             50
             % - 
@@ -896,10 +945,10 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
           </div>
           <button
             aria-label="action details button"
-            class="c15 c16"
+            class="c16 c17"
           >
             <span
-              class="c17"
+              class="c18"
             >
               <svg
                 fill="currentColor"
@@ -916,13 +965,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
               </svg>
             </span>
             <span
-              class="c17"
+              class="c18"
             >
                
                
             </span>
             <span
-              class="c17"
+              class="c18"
             >
               <svg
                 fill="none"
@@ -947,11 +996,28 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
               </svg>
             </span>
             <span
-              class="c17"
+              class="c18"
             >
               test.eth
             </span>
           </button>
+        </div>
+        <div
+          class="c19"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M170.718 216.482L141.6 245.6l93.6 93.6 208-208-29.118-29.118L235.2 279.918l-64.482-63.436zM422.4 256c0 91.518-74.883 166.4-166.4 166.4S89.6 347.518 89.6 256 164.482 89.6 256 89.6c15.6 0 31.2 2.082 45.764 6.241L334 63.6C310.082 53.2 284.082 48 256 48 141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208h-41.6z"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -961,7 +1027,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
 `;
 
 exports[`ProposalCard ProposalCard Renders properly with more than one option containing more than one action 1`] = `
-.c15 {
+.c16 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -986,17 +1052,17 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   width: auto;
 }
 
-.c15:disabled {
+.c16:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c16:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c16:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -1007,7 +1073,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   padding: 0;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1021,7 +1087,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   justify-content: flex-end;
 }
 
-.c7 {
+.c8 {
   font-size: 0.8rem;
   font-weight: 600;
   display: -webkit-box;
@@ -1037,7 +1103,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   align-items: center;
 }
 
-.c9 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1058,7 +1124,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   padding: 0.25rem 0.4rem;
 }
 
-.c8 {
+.c9 {
   padding: 0 0.2rem;
 }
 
@@ -1077,7 +1143,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   text-decoration: none;
 }
 
-.c11 {
+.c12 {
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 20px;
   line-height: 1.2;
@@ -1087,17 +1153,20 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
 .c2 {
   border: 1px solid #303338;
   border-radius: 10px;
+}
+
+.c3 {
   margin-bottom: 1rem;
   padding: 1rem;
   color: #BDC0C7;
 }
 
-.c2:hover {
+.c3:hover {
   border-color: #fff;
   color: #fff;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1111,11 +1180,11 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   justify-content: space-between;
 }
 
-.c10 {
+.c11 {
   margin: 1rem 0;
 }
 
-.c13 {
+.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1133,13 +1202,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   align-items: flex-end;
 }
 
-.c12 {
+.c13 {
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1156,13 +1225,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   flex: 1;
 }
 
-.c5 {
+.c6 {
   font-size: 0.95rem;
   font-weight: 600;
   margin-left: 0.5rem;
 }
 
-.c14 {
+.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1181,7 +1250,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   padding: 0 12px;
 }
 
-.c16 {
+.c17 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1205,12 +1274,12 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   color: #A1A6B0;
 }
 
-.c16:hover {
+.c17:hover {
   color: #fff;
   cursor: pointer;
 }
 
-.c17 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1222,7 +1291,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   font-weight: 600;
 }
 
-.c18 {
+.c19 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1242,14 +1311,27 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
   margin-right: 8px;
 }
 
+.c20 {
+  width: 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 @media only screen and (min-width:768px) {
-  .c8 {
+  .c9 {
     padding-right: 0.5rem;
   }
 }
 
 @media only screen and (max-width:524px) {
-  .c13 {
+  .c14 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1261,7 +1343,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
 }
 
 @media only screen and (min-width:768px) {
-  .c12 {
+  .c13 {
     font-size: 1.25rem;
   }
 }
@@ -1274,13 +1356,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
     href="/testUrl"
   >
     <div
-      class="c1 c2"
+      class="c1 c2 c3"
     >
       <div
-        class="c1 c3"
+        class="c1 c4"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
             class="paper"
@@ -1336,28 +1418,28 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
             </svg>
           </div>
           <div
-            class="c1 c5"
+            class="c1 c6"
           >
             venky0x.eth
           </div>
         </div>
         <div
-          class="c6"
+          class="c7"
         >
           <div
-            class="c7"
+            class="c8"
           >
             <div
-              class="c1 c8"
+              class="c1 c9"
             >
               <span
                 title="May 9th, 2022 - 8:00 am"
               >
-                Time
+                endedTimeAgo
               </span>
             </div>
             <div
-              class="c1 c9"
+              class="c1 c10"
             >
                
               Active
@@ -1366,10 +1448,10 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
         </div>
       </div>
       <div
-        class="c1 c10"
+        class="c1 c11"
       >
         <h2
-          class="c11 c12"
+          class="c12 c13"
           size="2"
         >
           <strong>
@@ -1378,13 +1460,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
         </h2>
       </div>
       <div
-        class="c1 c13"
+        class="c1 c14"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
-            class="c1 c4 c14"
+            class="c1 c5 c15"
           >
             50
             % - 
@@ -1392,13 +1474,13 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
           </div>
           <button
             aria-label="action details button"
-            class="c15 c16"
+            class="c16 c17"
           >
             <div
-              class="c17"
+              class="c18"
             >
               <div
-                class="c18"
+                class="c19"
               >
                 2
               </div>
@@ -1406,6 +1488,23 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
               actions_other
             </div>
           </button>
+        </div>
+        <div
+          class="c20"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M170.718 216.482L141.6 245.6l93.6 93.6 208-208-29.118-29.118L235.2 279.918l-64.482-63.436zM422.4 256c0 91.518-74.883 166.4-166.4 166.4S89.6 347.518 89.6 256 164.482 89.6 256 89.6c15.6 0 31.2 2.082 45.764 6.241L334 63.6C310.082 53.2 284.082 48 256 48 141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208h-41.6z"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -1422,7 +1521,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   padding: 0;
 }
 
-.c6 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1436,7 +1535,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   justify-content: flex-end;
 }
 
-.c7 {
+.c8 {
   font-size: 0.8rem;
   font-weight: 600;
   display: -webkit-box;
@@ -1452,7 +1551,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   align-items: center;
 }
 
-.c8 {
+.c9 {
   padding: 0 0.2rem;
 }
 
@@ -1471,7 +1570,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   text-decoration: none;
 }
 
-.c10 {
+.c11 {
   font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
   font-size: 20px;
   line-height: 1.2;
@@ -1481,16 +1580,19 @@ exports[`ProposalCard ProposalCard loading 1`] = `
 .c2 {
   border: 1px solid #303338;
   border-radius: 10px;
+}
+
+.c3 {
   margin-bottom: 1rem;
   padding: 1rem;
   color: #BDC0C7;
 }
 
-.c2:hover {
+.c3:hover {
   cursor: default;
 }
 
-.c3 {
+.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1504,11 +1606,11 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   justify-content: space-between;
 }
 
-.c9 {
+.c10 {
   margin: 1rem 0;
 }
 
-.c12 {
+.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1526,13 +1628,13 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   align-items: flex-end;
 }
 
-.c11 {
+.c12 {
   font-size: 1rem;
   font-weight: 700;
   color: #fff;
 }
 
-.c4 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1549,20 +1651,33 @@ exports[`ProposalCard ProposalCard loading 1`] = `
   flex: 1;
 }
 
-.c5 {
+.c6 {
   font-size: 0.95rem;
   font-weight: 600;
   margin-left: 0.5rem;
 }
 
+.c14 {
+  width: 5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
 @media only screen and (min-width:768px) {
-  .c8 {
+  .c9 {
     padding-right: 0.5rem;
   }
 }
 
 @media only screen and (max-width:524px) {
-  .c12 {
+  .c13 {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -1574,7 +1689,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
 }
 
 @media only screen and (min-width:768px) {
-  .c11 {
+  .c12 {
     font-size: 1.25rem;
   }
 }
@@ -1587,14 +1702,14 @@ exports[`ProposalCard ProposalCard loading 1`] = `
     href="/"
   >
     <div
-      class="c1 c2"
+      class="c1 c2 c3"
       disabled=""
     >
       <div
-        class="c1 c3"
+        class="c1 c4"
       >
         <div
-          class="c1 c4"
+          class="c1 c5"
         >
           <div
             class=""
@@ -1613,7 +1728,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
             </span>
           </div>
           <div
-            class="c1 c5"
+            class="c1 c6"
           >
             <div
               class=""
@@ -1635,13 +1750,13 @@ exports[`ProposalCard ProposalCard loading 1`] = `
           </div>
         </div>
         <div
-          class="c6"
+          class="c7"
         >
           <div
-            class="c7"
+            class="c8"
           >
             <div
-              class="c1 c8"
+              class="c1 c9"
             >
               <div
                 class=""
@@ -1680,10 +1795,10 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </div>
       </div>
       <div
-        class="c1 c9"
+        class="c1 c10"
       >
         <h2
-          class="c10 c11"
+          class="c11 c12"
           size="2"
         >
           <strong>
@@ -1708,8 +1823,59 @@ exports[`ProposalCard ProposalCard loading 1`] = `
         </h2>
       </div>
       <div
-        class="c1 c12"
-      />
+        class="c1 c13"
+      >
+        <div
+          class=""
+          style="margin: 0px;"
+        >
+          <span
+            aria-busy="true"
+            aria-live="polite"
+          >
+            <span
+              class="react-loading-skeleton"
+              style="width: 200px; --base-color: #333; --highlight-color: #555;"
+            >
+              ‌
+            </span>
+            <br />
+          </span>
+        </div>
+        <div
+          class="c14"
+        >
+          <svg
+            fill="currentColor"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 512 512"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M170.718 216.482L141.6 245.6l93.6 93.6 208-208-29.118-29.118L235.2 279.918l-64.482-63.436zM422.4 256c0 91.518-74.883 166.4-166.4 166.4S89.6 347.518 89.6 256 164.482 89.6 256 89.6c15.6 0 31.2 2.082 45.764 6.241L334 63.6C310.082 53.2 284.082 48 256 48 141.6 48 48 141.6 48 256s93.6 208 208 208 208-93.6 208-208h-41.6z"
+            />
+          </svg>
+          <svg
+            fill="none"
+            height="20"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
   </a>
    

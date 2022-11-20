@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers';
 import moment from 'moment';
 import { Proposal, ContractState, ProposalState } from 'types/types.guilds.d';
 import { ENSAvatar } from 'types/types.guilds';
-import { GuildConfigProps } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { GuildConfigProps } from 'Modules/Guilds/Hooks/useGuildConfig';
 import {
   Call,
   DecodedAction,
@@ -22,9 +22,8 @@ export const proposalMock: Proposal = {
   value: [],
   startTime: moment(),
   endTime: moment(),
-  timeDetail: '',
   contractState: ContractState.Active,
-  totalActions: BigNumber.from(0),
+  totalOptions: BigNumber.from(0),
   totalVotes: [],
 };
 
@@ -34,9 +33,8 @@ export const ensAvatarMock: ENSAvatar = {
 };
 
 export const proposalStatusPropsMock: ProposalStatusProps = {
-  timeDetail: 'Time',
   status: ProposalState.Active,
-  endTime: moment('2022-05-09T08:00:00'),
+  endTime: { detail: 'endedTimeAgo', moment: moment('2022-05-09T08:00:00') },
 };
 
 export const guildConfigMock: GuildConfigProps = {
@@ -50,6 +48,12 @@ export const guildConfigMock: GuildConfigProps = {
   votingPowerForProposalExecution: BigNumber.from(3000000000000000),
   tokenVault: '0xEE945a0fa35b2B9046D244e465861221c766069F',
   lockTime: BigNumber.from(300),
+  votingPowerPercentageForProposalExecution: BigNumber.from(500000000000000),
+  votingPowerPercentageForProposalCreation: BigNumber.from(3000000000000000),
+  voteGas: BigNumber.from(10),
+  maxGasPrice: BigNumber.from(1000),
+  minimumMembersForProposalCreation: BigNumber.from(1000),
+  minimumTokensLockedForProposalCreation: BigNumber.from(1000),
 };
 
 export const actionMock: Call = {

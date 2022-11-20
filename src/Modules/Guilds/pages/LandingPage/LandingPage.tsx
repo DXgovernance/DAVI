@@ -1,14 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useGuildRegistry } from 'hooks/Guilds/ether-swr/guild/useGuildRegistry';
+import { useGuildRegistry } from 'Modules/Guilds/Hooks/useGuildRegistry';
 import { GuildCard } from 'components/GuildCard/GuildCard';
 
-import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
-import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
+import useGuildMemberTotal from 'Modules/Guilds/Hooks/useGuildMemberTotal';
+import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals';
 import useENSNameFromAddress from 'hooks/Guilds/ens/useENSNameFromAddress';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 import { CardsContainer } from './LandingPage.styled';
+import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 
 const GuildCardLoader = () => {
   return (
@@ -25,7 +26,13 @@ const GuildCardLoader = () => {
 };
 
 const GuildCardWithContent = ({ guildAddress, t }) => {
-  const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
+  const { data: guildConfig } = useGuildConfig(guildAddress);
+  const { isRepGuild } = useGuildImplementationType(guildAddress);
+  const { data: numberOfMembers } = useGuildMemberTotal(
+    guildAddress,
+    guildConfig?.token,
+    isRepGuild
+  );
   const { data: numberOfActiveProposals } = useActiveProposalsNow(guildAddress);
   const ensName = useENSNameFromAddress(guildAddress)?.ensName?.split('.')[0];
   const { data } = useGuildConfig(guildAddress);
@@ -44,7 +51,7 @@ const GuildCardWithContent = ({ guildAddress, t }) => {
 
 const LandingPage: React.FC = () => {
   const { t } = useTranslation();
-  const { data: allGuilds, error, isValidating } = useGuildRegistry();
+  const { data: allGuilds, error, isLoading } = useGuildRegistry();
 
   const EmptyGuilds = () => {
     return <h1>{t('noGuildsRegistered')}</h1>;
@@ -54,7 +61,7 @@ const LandingPage: React.FC = () => {
     return <EmptyGuilds />;
   }
 
-  if (isValidating) {
+  if (isLoading) {
     return (
       <CardsContainer>
         <GuildCardLoader />

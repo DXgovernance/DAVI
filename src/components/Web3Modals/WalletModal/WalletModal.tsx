@@ -57,7 +57,7 @@ export const WalletModal: React.FC<WalletModalProps> = ({
   }
 
   function getModalContent() {
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain?.unsupported) {
       return <Container>{t('pleaseSwitchNetwork')}</Container>;
     }
 
@@ -111,7 +111,7 @@ export const WalletModal: React.FC<WalletModalProps> = ({
   }
 
   const getHeader = () => {
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain?.unsupported) {
       return t('unsupportedNetwork');
     }
 

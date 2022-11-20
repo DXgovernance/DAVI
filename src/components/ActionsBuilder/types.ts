@@ -12,13 +12,14 @@ export enum SupportedAction {
   GENERIC_CALL = 'GENERIC_CALL',
   SET_PERMISSIONS = 'SET_PERMISSIONS',
   ENS_UPDATE_CONTENT = 'ENS_UPDATE_CONTENT',
+  SET_GUILD_CONFIG = 'SET_GUILD_CONFIG',
 }
 
 export interface Call {
   from: string;
   to: string;
   data: string;
-  value: BigNumber;
+  value: BigNumber | string;
   approval?: ApproveSendTokens;
   functionName?: string;
   approvalCall?: Call;
@@ -28,7 +29,7 @@ export interface DecodedCall {
   callType: SupportedAction;
   from: string;
   to: string;
-  value: BigNumber;
+  value: BigNumber | string;
   function: utils.FunctionFragment;
   args: Record<string, any>;
   richData?: RichContractData;
@@ -56,6 +57,6 @@ export interface Option {
 }
 
 export interface ApproveSendTokens extends DecodedCall {
-  amount?: BigNumber;
+  amount?: BigNumber | string;
   token?: string;
 }

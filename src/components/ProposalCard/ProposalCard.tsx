@@ -6,7 +6,7 @@ import { UnstyledLink } from 'components/primitives/Links';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { shortenAddress } from 'utils';
 import {
-  CardWrapper,
+  ProposalCardWrapper,
   CardHeader,
   IconDetailWrapper,
   Detail,
@@ -15,6 +15,7 @@ import {
   CardFooter,
 } from './ProposalCard.styled';
 import ProposalCardWinningOption from './ProposalCardWinningOption/ProposalCardWinningOption';
+import ProposalCardActions from './ProposalCardActions/ProposalCardActions';
 
 export const ProposalCard: React.FC<ProposalCardProps> = ({
   proposal,
@@ -22,10 +23,11 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
   href,
   statusProps,
   options,
+  address,
 }) => {
   return (
     <UnstyledLink to={href || '#'} data-testid="proposal-card">
-      <CardWrapper disabled={!href}>
+      <ProposalCardWrapper disabled={!href}>
         <CardHeader>
           <IconDetailWrapper>
             <Avatar
@@ -54,9 +56,14 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           </CardTitle>
         </CardContent>
         <CardFooter>
-          {options && <ProposalCardWinningOption option={options[0]} />}
+          <ProposalCardWinningOption options={options} />
+          <ProposalCardActions
+            votesOfVoter={proposal?.votesOfVoter}
+            proposalCreator={proposal?.creator}
+            userAddress={address}
+          />
         </CardFooter>
-      </CardWrapper>
+      </ProposalCardWrapper>
     </UnstyledLink>
   );
 };

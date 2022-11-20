@@ -2,7 +2,6 @@ import App from './App';
 import initializeI18Next from './i18n';
 import * as serviceWorker from './serviceWorker';
 import moment from 'moment';
-import { EtherSWRManager } from 'components/EtherSWRManager';
 import * as ReactDOMClient from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
@@ -11,6 +10,9 @@ import { chains, providers } from 'provider';
 import { getConnectors } from 'provider/wallets';
 import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnection';
 import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
+import { useEffect } from 'react';
+import { loadFathom } from 'analytics/fathom';
+import { SITE_ID } from 'configs';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -33,16 +35,24 @@ moment.updateLocale('en', {
 });
 
 const Root = () => {
+  useEffect(() => {
+    loadFathom(SITE_ID)
+      .then(() => {
+        console.log('loadFathom: Fathom loaded.');
+      })
+      .catch(error => {
+        console.error('Error loading Fathom analytics', error);
+      });
+  }, []);
+
   return (
     <WagmiConfig client={client}>
       <HashRouter>
         <SyncRouterWithWagmi>
-          <EtherSWRManager>
-            <>
-              <App />
-              <EnsureReadOnlyConnection />
-            </>
-          </EtherSWRManager>
+          <>
+            <App />
+            <EnsureReadOnlyConnection />
+          </>
         </SyncRouterWithWagmi>
       </HashRouter>
     </WagmiConfig>

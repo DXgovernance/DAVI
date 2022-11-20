@@ -2,9 +2,7 @@ import useSWRImmutable from 'swr/immutable';
 
 async function ipfsContentFetcher<T>(hash: string) {
   async function fetcher(url: string): Promise<T> {
-    const response = await fetch(url, {
-      headers: { 'content-type': 'application/json' },
-    });
+    const response = await fetch(url);
     if (response.ok) {
       return response.json() as Promise<T>;
     } else {
@@ -13,12 +11,13 @@ async function ipfsContentFetcher<T>(hash: string) {
   }
 
   const response = await Promise.any([
+    fetcher('https://davi.mypinata.cloud/ipfs/' + hash),
+    fetcher('https://gateway.pinata.cloud/ipfs/' + hash),
     fetcher('https://ipfs.io/ipfs/' + hash),
     fetcher('https://gateway.ipfs.io/ipfs/' + hash),
     fetcher('https://cloudflare-ipfs.com/ipfs/' + hash),
-    fetcher('https://gateway.pinata.cloud/ipfs/' + hash),
     fetcher('https://dweb.link/ipfs/' + hash),
-    fetcher('https://dxgov.mypinata.cloud/ipfs/' + hash),
+    fetcher('https://ipfs.fleek.co/ipfs/' + hash),
   ]);
 
   return response;

@@ -32,6 +32,14 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
     return urlChain;
   }, [chains, hash]);
 
+  const lastConnectedChain = useMemo(() => {
+    const lastConnectedChainId = chain?.id;
+    const lastConnected = chains.find(
+      chain => chain.id === lastConnectedChainId
+    );
+    return lastConnected;
+  }, [chain, chains]);
+
   // Handle initial load
   useEffect(() => {
     if (isInitialLoadDone) return;
@@ -39,20 +47,22 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
     if (connector) {
       // Connector initialized.
 
-      if (urlChain && urlChain?.id === chain?.id) {
-        // No chain name in the URL. Nothing to do here.
+      if (!urlChain || urlChain?.id === chain?.id) {
+        // No chain name in the URL / chain in URL is the same as the connected chain.
+        // Nothing to do here.
         setIsInitialLoadDone(true);
         return;
       }
 
-      const chainToConnect = urlChain || defaultChain;
+      const chainToConnect = urlChain || lastConnectedChain || defaultChain;
       if (isReadOnly(connector)) {
-        // We're connected to the network connector. Switch to the correct chain.
+        // We're connected to the read-only connector. Switch to the correct chain.
         switchNetworkAsync(chainToConnect.id).then(() =>
           setIsInitialLoadDone(true)
         );
       } else {
-        // We're connected to a connector on a different chain. Disconnect and switch to the correct chain.
+        // We're connected to a wallet connector on a chain other than the one we wanted to connect.
+        // Disconnect and switch to the correct chain.
         const readOnlyConnector = connectors.find(isReadOnly);
         connectAsync({
           connector: readOnlyConnector,
@@ -70,6 +80,7 @@ const SyncRouterWithWagmi: React.FC<SyncRouterWithWagmiProps> = ({
     chain,
     connectors,
     defaultChain,
+    lastConnectedChain,
   ]);
 
   // Keep the URL in sync with the connected chain after initial load

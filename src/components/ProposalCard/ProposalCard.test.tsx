@@ -10,9 +10,9 @@ import {
 import { BigNumber } from 'ethers';
 import { mockChain } from 'components/Web3Modals/fixtures';
 
-jest.mock('ipfs', () => jest.fn());
-jest.mock('cids', () => jest.fn());
-jest.mock('axios', () => jest.fn());
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
+  useGuildConfig: () => jest.fn(),
+}));
 
 const mockBigNumber = BigNumber.from(100000000);
 
@@ -36,6 +36,14 @@ jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
 
 jest.mock('wagmi', () => ({
   chain: {},
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
@@ -52,7 +60,6 @@ const invalidProps: ProposalCardProps = {
   ensAvatar: null,
   href: null,
   statusProps: {
-    timeDetail: null,
     status: null,
     endTime: null,
   },

@@ -2,7 +2,7 @@ import SidebarInfoCard from './SidebarInfoCard';
 import { render } from 'utils/tests';
 import { BigNumber } from 'ethers';
 
-jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
   useGuildConfig: () => jest.fn(),
 }));
 

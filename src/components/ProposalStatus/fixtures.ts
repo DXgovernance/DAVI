@@ -3,7 +3,6 @@ import moment from 'moment';
 import { ProposalStatusProps } from './types';
 
 export const proposalStatusMock: ProposalStatusProps = {
-  endTime: moment(),
   status: ProposalState.Active,
-  timeDetail: '1 minute ago',
+  endTime: { detail: '1 hour ago', moment: moment().add(1, 'hour') },
 };

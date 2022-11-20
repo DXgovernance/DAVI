@@ -7,6 +7,8 @@ import { Button } from 'components/primitives/Button';
 import { Option } from '../types';
 import { Input } from 'components/primitives/Forms/Input';
 import { DeleteButton, Dot } from './AddEditOptionModal.styled';
+import { normalizeString } from 'utils';
+import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 
 interface AddEditOptionModalProps {
   onDismiss: () => void;
@@ -22,15 +24,31 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   onChange,
 }) => {
   const defaultLabel = editableOption?.label ?? '';
-  const isEditable = !!editableOption;
+  const isEditing = !!editableOption;
   const [label, setLabel] = React.useState<string>(defaultLabel);
+  const [error, setError] = React.useState<string>('');
   const theme = useTheme();
   const { t } = useTranslation();
 
+  const validate = (): boolean => {
+    if (
+      options
+        .filter(option => option.id !== editableOption?.id)
+        .some(
+          option =>
+            normalizeString(option.label) === normalizeString(label) ||
+            normalizeString(label) === 'against'
+        )
+    ) {
+      setError(`Label "${label}" already exists`);
+      return false;
+    }
+    return true;
+  };
   const handleConfirmSave = () => {
-    isEditable
-      ? editOption({ ...editableOption, label })
-      : saveNewOption(label);
+    const isValid = validate();
+    if (!isValid) return;
+    isEditing ? editOption({ ...editableOption, label }) : saveNewOption(label);
   };
 
   const saveNewOption = (label: string) => {
@@ -62,7 +80,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
   };
 
   const deleteOption = () => {
-    if (!isEditable) return;
+    if (!isEditing) return;
     const newOptions = options.filter(opt => opt.id !== editableOption.id);
     onChange(newOptions);
     onDismiss();
@@ -79,10 +97,24 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
           <Input
             value={label}
             placeholder={t('optionLabel')}
-            icon={<Dot color={theme?.colors?.votes?.[options.length + 1]} />}
+            icon={
+              <Dot
+                color={
+                  isEditing
+                    ? editableOption.color
+                    : theme?.colors?.votes?.[options.length + 1]
+                }
+              />
+            }
             onChange={e => setLabel(e.target.value)}
           />
         </Box>
+
+        {error && (
+          <Box padding="0 0 1rem">
+            <ErrorLabel>{error}</ErrorLabel>
+          </Box>
+        )}
 
         {!!editableOption && (
           <Box padding="0 0 1rem 0">

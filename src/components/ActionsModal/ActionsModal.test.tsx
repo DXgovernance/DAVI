@@ -2,7 +2,7 @@ import React from 'react';
 import ActionsModal from './ActionsModal';
 import { render } from 'utils/tests';
 
-jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
+jest.mock('Modules/Guilds/Hooks/useGuildImplementationType', () => ({
   __esModule: true,
   default: () => ({
     type: 'SnapshotERC20Guild',
@@ -13,7 +13,7 @@ jest.mock('hooks/Guilds/guild/useGuildImplementationType', () => ({
     isSnapshotGuild: false,
   }),
 }));
-jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
+jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
   useGuildConfig: () => ({
     data: {
       permissionRegistry: '0x0000000000000000000000000000000000000000',
@@ -24,6 +24,14 @@ jest.mock('hooks/Guilds/ether-swr/guild/useGuildConfig', () => ({
 const mockChainId = 123456;
 
 jest.mock('wagmi', () => ({
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ isConnected: true }),
   chain: {

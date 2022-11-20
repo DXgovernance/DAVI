@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
@@ -7,8 +7,6 @@ import { Input } from 'components/primitives/Forms/Input';
 import { FilterMenu, FilterButton } from './components';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useFilter } from 'contexts/Guilds/filters';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
 import {
   FilterContainer,
   FilterRow,
@@ -17,8 +15,8 @@ import {
   StyledInputWrapper,
   FilterBadge,
 } from './Filter.styled';
-import { useAccount } from 'wagmi';
 import { UnstyledLink } from 'components/primitives/Links';
+import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
 
 interface FilterProps {
   openSearchBar: boolean;
@@ -33,22 +31,7 @@ export const Filter: React.FC<FilterProps> = ({
   const { chainName, guildId } = useTypedParams();
   const [viewFilter, setViewFilter] = useState(false);
   const { totalFilters, searchQuery, setSearchQuery } = useFilter();
-
-  const { address } = useAccount();
-  const { data: votingPower } = useVotingPowerOf({
-    contractAddress: guildId,
-    userAddress: address,
-  });
-  const { data: guildConfig } = useGuildConfig(guildId);
-  const isProposalCreationAllowed = useMemo(() => {
-    if (!guildConfig || !votingPower) {
-      return false;
-    }
-    if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
-      return true;
-    }
-    return false;
-  }, [votingPower, guildConfig]);
+  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   return (
     <FilterContainer>

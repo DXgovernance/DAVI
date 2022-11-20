@@ -10,6 +10,8 @@ export const ANY_FUNC_SIGNATURE = '0xaaaaaaaa';
 export const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
 export const SET_PERMISSION_SIGNATURE = '0x6cfe0489';
 export const MINT_REP_SIGNATURE = '0x40c10f19';
+export const ENS_UPDATE_CONTENT_SIGNATURE = '0x304e6ade';
+export const SET_GUILD_CONFIG_SIGNATURE = '0x123f6d67';
 
 export const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
 export const DEFAULT_TOKEN_DECIMALS = 18;
@@ -19,7 +21,7 @@ export const MAX_BLOCKS_PER_EVENTS_FETCH: number = 1000000;
 
 export const CACHE_METADATA_ENS = 'cache.dxvote.eth';
 
-const defaultAlchemyKey = '7i7fiiOx1b7bGmgWY_oI9twyQBCsuXKC';
+const defaultAlchemyKey = 'FvNKXPCxtzFYrtP4r45pmtxOR0AMCtQv';
 
 export const DISCOURSE_URL_ROOT = 'https://daotalk.org';
 
@@ -33,10 +35,10 @@ export const DEFAULT_CHAIN_ID =
   process.env.NODE_ENV === 'development' ? LOCALHOST_ID : MAINNET_ID;
 
 export const POKT_NETWORK_URLS = {
-  '1': 'https://eth-archival.gateway.pokt.network/v1/lb/61f86d630d66d80038fb8c38',
-  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/6229f9b8abc11f0039cb2d2c',
+  '1': 'https://eth-archival.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
+  '5': 'https://eth-goerli.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
   '100':
-    'https://poa-xdai-archival.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
+    'https://poa-xdai-archival.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
 };
 
 export const NETWORKS: ChainConfig[] =
@@ -46,7 +48,7 @@ export const NETWORKS: ChainConfig[] =
           id: 1,
           name: 'mainnet',
           displayName: 'Ethereum Mainnet',
-          defaultRpc: `https://eth-mainnet.alchemyapi.io/v2/${defaultAlchemyKey}`,
+          defaultRpc: POKT_NETWORK_URLS[1],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',
@@ -78,8 +80,8 @@ export const NETWORKS: ChainConfig[] =
             symbol: 'xDAI',
             decimals: 18,
           },
-          blockExplorer: 'https://blockscout.com/xdai/mainnet/',
-          api: 'https://blockscout.com/xdai/mainnet/api',
+          blockExplorer: 'https://gnosisscan.io/',
+          api: 'https://api.gnosisscan.io/api/',
         },
         {
           id: 42161,
@@ -123,7 +125,7 @@ export const NETWORKS: ChainConfig[] =
           id: 1,
           name: 'mainnet',
           displayName: 'Ethereum Mainnet',
-          defaultRpc: `https://eth-mainnet.alchemyapi.io/v2/${defaultAlchemyKey}`,
+          defaultRpc: POKT_NETWORK_URLS[1],
           nativeAsset: {
             name: 'Ethereum',
             symbol: 'ETH',

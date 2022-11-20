@@ -6,6 +6,7 @@ import { RegisterOptions } from 'react-hook-form';
 import { RichContractFunctionParam } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { isAddress } from 'utils';
 import { AddressInput } from 'components/primitives/Forms/AddressInput';
+import { IntegerInput } from 'components/primitives/Forms/IntegerInput';
 import { FormElementProps } from 'components/primitives/Forms/types';
 import { DateInput, InputType } from 'components/primitives/Forms/DateInput';
 import { Input } from 'components/primitives/Forms/Input';
@@ -30,6 +31,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
       case 'address':
         return AddressInput;
       case 'integer':
+        return IntegerInput;
       case 'decimal':
         return NumericalInput;
       case 'date':

@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiscussionCard should render with full parameters 1`] = `
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c6 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c7 {
+  display: Flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c0 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.c0:focus,
+.c0:hover,
+.c0:visited,
+.c0:link,
+.c0:active {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c2 {
+  border: 1px solid #303338;
+  border-radius: 10px;
+}
+
+.c4 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.c4 strong,
+.c4 b {
+  font-weight: 600;
+}
+
+.c5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 12px;
+}
+
+.c8 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-column-gap: 10px;
+  column-gap: 10px;
+  margin-right: 18px;
+  font-weight: 600;
+}
+
+.c3 {
+  margin-bottom: 1rem;
+  padding: 20px 24px;
+  color: #BDC0C7;
+}
+
+.c3:hover {
+  border-color: #fff;
+  color: #fff;
+}
+
+@media only screen and (min-width:768px) {
+  .c5 {
+    font-size: 1.25rem;
+  }
+}
+
+<div>
+   
+  <a
+    class="c0"
+    data-testid="discussion-card"
+    href="/"
+  >
+    <div
+      class="c1 c2 c3"
+    >
+      <h2
+        class="c4 c5"
+      >
+        Title of the discussion
+      </h2>
+      <div
+        class="c6"
+        direction="row"
+      >
+        <div
+          class="c7 c8"
+        >
+          test.eth
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="20px"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="20px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 4.595a5.904 5.904 0 0 0-3.996-1.558 5.942 5.942 0 0 0-4.213 1.758c-2.353 2.363-2.352 6.059.002 8.412l7.332 7.332c.17.299.498.492.875.492a.99.99 0 0 0 .792-.409l7.415-7.415c2.354-2.354 2.354-6.049-.002-8.416a5.938 5.938 0 0 0-4.209-1.754A5.906 5.906 0 0 0 12 4.595zm6.791 1.61c1.563 1.571 1.564 4.025.002 5.588L12 18.586l-6.793-6.793c-1.562-1.563-1.561-4.017-.002-5.584.76-.756 1.754-1.172 2.799-1.172s2.035.416 2.789 1.17l.5.5a.999.999 0 0 0 1.414 0l.5-.5c1.512-1.509 4.074-1.505 5.584-.002z"
+            />
+          </svg>
+           
+          7
+        </div>
+        <div
+          class="c7 c8"
+        >
+          <svg
+            fill="currentColor"
+            height="20px"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 24 24"
+            width="20px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 0h24v24H0z"
+              fill="none"
+            />
+            <path
+              d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"
+            />
+          </svg>
+           
+          3
+        </div>
+      </div>
+    </div>
+  </a>
+   
+</div>
+`;

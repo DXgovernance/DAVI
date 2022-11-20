@@ -4,6 +4,7 @@ import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { StyledIcon } from 'components/primitives/StyledIcon';
+import { AiFillSetting } from 'react-icons/ai';
 import {
   ActionsButton,
   ButtonDetail,
@@ -13,7 +14,7 @@ import {
   Wrapper,
 } from '../../ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useGuildImplementationTypeConfig from 'hooks/Guilds/guild/useGuildImplementationType';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import React from 'react';
 import {
   RichContractData,
@@ -58,10 +59,10 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            Set Permissions
+            {t('setPermissions')}
           </ButtonLabel>
         </ActionsButton>
-        {!isRepGuild ? (
+        {!!isRepGuild ? (
           <ActionsButton
             onClick={() => onSupportedActionSelect(SupportedAction.REP_MINT)}
           >
@@ -83,6 +84,16 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonLabel>
           </ActionsButton>
         ) : null}
+        <ActionsButton
+          onClick={() =>
+            onSupportedActionSelect(SupportedAction.SET_GUILD_CONFIG)
+          }
+        >
+          <ButtonLabel>
+            <StyledIcon src={() => <AiFillSetting size={20} />} />
+            {t('setGuildConfig')}
+          </ButtonLabel>
+        </ActionsButton>
       </SectionWrapper>
       <SectionWrapper>
         <SectionTitle>{t('externalContracts')}</SectionTitle>

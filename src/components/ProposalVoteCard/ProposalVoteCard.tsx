@@ -5,6 +5,7 @@ import {
 } from 'components/SidebarCard';
 import VotesChart from './components/VoteChart/VoteChart';
 import { VoteConfirmationModal } from './components/VoteConfirmationModal';
+import { UserVote } from './components/UserVote';
 import VoteResults from './components/VoteResults/VoteResults';
 import { BigNumber } from 'ethers';
 import moment from 'moment';
@@ -24,7 +25,7 @@ import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 
 const ProposalVoteCard = ({
   voteData,
@@ -33,17 +34,27 @@ const ProposalVoteCard = ({
   timestamp,
   contract,
   createTransaction,
+  userVote,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
 
   const [isPercent, setIsPercent] = useState(true);
-  const [selectedAction, setSelectedAction] = useState<BigNumber>();
+  const [selectedOption, setSelectedOption] = useState<BigNumber>();
   const [modalOpen, setModalOpen] = useState<boolean>();
   const isOpen = useMemo(
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
   );
+
+  const votedOptionLabel = useMemo(() => {
+    if (!userVote?.option) return null;
+    return getOptionLabel({
+      metadata: proposal?.metadata,
+      optionKey: userVote?.option,
+      t,
+    });
+  }, [userVote?.option, proposal?.metadata, t]);
 
   const toastError = (msg: string) =>
     toast.error(msg, {
@@ -75,7 +86,6 @@ const ProposalVoteCard = ({
 
     return setModalOpen(true);
   };
-
   return (
     <SidebarCard
       header={
@@ -94,9 +104,9 @@ const ProposalVoteCard = ({
             {!voteData ? (
               <Loading loading text skeletonProps={{ width: 40 }} />
             ) : isPercent ? (
-              voteData?.token?.symbol
-            ) : (
               '%'
+            ) : (
+              voteData?.token?.symbol
             )}
           </SmallButton>
         </SidebarCardHeaderSpaced>
@@ -112,7 +122,14 @@ const ProposalVoteCard = ({
           <VotesChart isPercent={isPercent} voteData={voteData} />
         </VotesContainer>
 
-        {isOpen && voteData?.options && (
+        <UserVote
+          isPercent={isPercent}
+          voteData={voteData}
+          userVote={userVote}
+          votedOptionLabel={votedOptionLabel}
+        />
+        {/* Hide voting options if user has already voted */}
+        {isOpen && !userVote?.option && voteData?.options && (
           <ButtonsContainer>
             <VoteOptionsLabel>{t('options')}</VoteOptionsLabel>
 
@@ -129,11 +146,11 @@ const ProposalVoteCard = ({
                 return (
                   <VoteOptionButton
                     key={optionKey}
-                    variant="secondary"
-                    active={selectedAction && selectedAction.eq(bItem)}
+                    optionKey={Number(optionKey)}
+                    active={selectedOption && selectedOption.eq(bItem)}
                     onClick={() => {
-                      setSelectedAction(
-                        selectedAction && selectedAction.eq(bItem)
+                      setSelectedOption(
+                        selectedOption && selectedOption.eq(bItem)
                           ? null
                           : bItem
                       );
@@ -146,7 +163,7 @@ const ProposalVoteCard = ({
             )}
 
             <VoteActionButton
-              disabled={!selectedAction}
+              disabled={!selectedOption}
               onClick={() =>
                 handleVoteOnProposal({
                   hasNoVotingPower,
@@ -167,21 +184,21 @@ const ProposalVoteCard = ({
           confirmVoteProposal({
             proposal,
             contract,
-            selectedAction,
+            selectedOption,
             userVotingPower: votingPower.userVotingPower,
             createTransaction,
           });
           setModalOpen(false);
-          setSelectedAction(null);
+          setSelectedOption(null);
         }}
-        selectedAction={getOptionLabel({
+        selectedOption={getOptionLabel({
           metadata: proposal?.metadata,
-          optionKey: selectedAction?.toNumber(),
+          optionKey: selectedOption?.toNumber(),
           t,
         })}
         votingPower={votingPower?.percent}
         currentVoteAmount={useVotingPowerPercent(
-          voteData?.options?.[selectedAction?.toNumber()],
+          voteData?.options?.[selectedOption?.toNumber()],
           voteData?.totalLocked
         )}
       />

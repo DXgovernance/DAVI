@@ -5,3 +5,8 @@ export type UpdateENSContentDecodedCall = Pick<DecodedCall, 'from' | 'to'> & {
   contentHash: string;
   optionalProps?: Record<string, string>;
 };
+
+export interface ENSContentForm {
+  ensName: string;
+  ipfsHash: string;
+}

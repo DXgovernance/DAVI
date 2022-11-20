@@ -1,20 +1,20 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import useGuildMemberTotal from 'hooks/Guilds/ether-swr/guild/useGuildMemberTotal';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import useGuildMemberTotal from 'Modules/Guilds/Hooks/useGuildMemberTotal';
+import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import { GuildSidebar } from 'components/GuildSidebar';
 import { MemberActions } from 'components/GuildSidebar/MemberActions';
 import { GuestActions } from 'components/GuildSidebar/GuestActions';
 import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
-import { useVoterLockTimestamp } from 'hooks/Guilds/ether-swr/guild/useVoterLockTimestamp';
-import useGuildImplementationType from 'hooks/Guilds/guild/useGuildImplementationType';
+import { useVoterLockTimestamp } from 'Modules/Guilds/Hooks/useVoterLockTimestamp';
+import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useTransactions } from 'contexts/Guilds';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { formatUnits } from 'ethers/lib/utils';
-import useVotingPowerPercent from 'hooks/Guilds/guild/useVotingPowerPercent';
+import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { useState } from 'react';
 import { WalletModal } from 'components/Web3Modals';
-import useTotalLocked from 'hooks/Guilds/ether-swr/guild/useTotalLocked';
+import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import StakeTokensModalWrapper from './StakeTokensModalWrapper';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
@@ -28,7 +28,11 @@ const GuildSidebarWrapper = () => {
   const { data: guildConfig } = useGuildConfig(guildAddress);
   const { isRepGuild } = useGuildImplementationType(guildAddress);
   const { data: guildToken } = useERC20Info(guildConfig?.token);
-  const { data: numberOfMembers } = useGuildMemberTotal(guildAddress);
+  const { data: numberOfMembers } = useGuildMemberTotal(
+    guildAddress,
+    guildConfig?.token,
+    isRepGuild
+  );
   const { address: userAddress, connector } = useAccount();
   const { ensName, imageUrl } = useENSAvatar(userAddress);
   const { data: unlockedAt } = useVoterLockTimestamp(guildAddress, userAddress);
@@ -43,6 +47,7 @@ const GuildSidebarWrapper = () => {
   );
 
   const { createTransaction } = useTransactions();
+
   const guildContract = useERC20Guild(guildAddress);
   const withdrawTokens = async () => {
     createTransaction(

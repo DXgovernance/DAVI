@@ -4,7 +4,7 @@ export interface ParsedDataInterface {
   asset: string;
   to: string;
   functionSignature: string;
-  valueAllowed: BigNumber;
+  valueAllowed: BigNumber | string;
   allowance: boolean;
   functionName: string;
   tab?: number;

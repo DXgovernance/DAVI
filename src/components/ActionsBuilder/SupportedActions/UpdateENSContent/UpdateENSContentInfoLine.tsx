@@ -1,7 +1,7 @@
 import { Segment } from '../common/infoLine';
 import { MdArrowRightAlt } from 'react-icons/md';
 import ENSIcon from 'assets/images/ens.svg';
-import { useUpdateEnsContent } from 'hooks/Guilds/guild/useUpdateEnsContent';
+import { useUpdateEnsContent } from 'hooks/Guilds/useUpdateEnsContent';
 import { StyledENSIcon } from './styles';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { MAINNET_ID } from 'utils';
@@ -24,7 +24,7 @@ const UpdateENSContentInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <StyledENSIcon src={ENSIcon} />
       </Segment>
-      <Segment>{!compact ? t('ens.updateContent') : ''}</Segment>
+      <Segment>{t('ens.updateContentCoreAction')}</Segment>
       <Segment>
         <MdArrowRightAlt />
       </Segment>

@@ -4,26 +4,24 @@ import { useContext, useEffect, useMemo } from 'react';
 import { Result, ResultState } from 'components/Result';
 import { Flex } from 'components/primitives/Layout';
 import ProposalCardWrapper from '../../Wrappers/ProposalCardWrapper';
-import { useGuildProposalIds } from 'hooks/Guilds/ether-swr/guild/useGuildProposalIds';
+import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
 import { useFilter } from 'contexts/Guilds';
 import { Input } from 'components/primitives/Forms/Input';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useTranslation } from 'react-i18next';
-import useActiveProposalsNow from 'hooks/Guilds/ether-swr/guild/useGuildActiveProposals';
+import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals';
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import { useGuildConfig } from 'hooks/Guilds/ether-swr/guild/useGuildConfig';
-import { useVotingPowerOf } from 'hooks/Guilds/ether-swr/guild/useVotingPowerOf';
-import { ProposalState } from 'types/types.guilds.d';
-import { useAccount } from 'wagmi';
 import {
-  ProposalListWrapper,
   ProposalsList,
   StyledButton,
   StyledHeading,
   StyledLink,
 } from './Governance.styled';
+import { ProposalState } from 'types/types.guilds.d';
+import Discussions from 'Modules/Social/Discussions';
+import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
 
 const Governance = ({ guildId }) => {
   const { isLoading } = useContext(GuildAvailabilityContext);
@@ -31,22 +29,7 @@ const Governance = ({ guildId }) => {
   const { t } = useTranslation();
   const { data: activeProposals } = useActiveProposalsNow(guildId);
   const { chainName } = useTypedParams();
-  const { address } = useAccount();
-  const { data: guildConfig } = useGuildConfig(guildId);
-  const { data: votingPower } = useVotingPowerOf({
-    contractAddress: guildId,
-    userAddress: address,
-  });
-
-  const isProposalCreationAllowed = useMemo(() => {
-    if (!guildConfig || !votingPower) {
-      return false;
-    }
-    if (votingPower.gte(guildConfig.votingPowerForProposalCreation)) {
-      return true;
-    }
-    return false;
-  }, [votingPower, guildConfig]);
+  const isProposalCreationAllowed = useIsProposalCreationAllowed();
 
   /*
   Since filters are a global state, we need to reset all of them
@@ -93,7 +76,7 @@ const Governance = ({ guildId }) => {
     return (
       <Result
         state={ResultState.ERROR}
-        title={t('genericProposalError')}
+        title={t('errorMessage.genericProposalError')}
         subtitle={error.message}
       />
     );
@@ -111,15 +94,17 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
+          <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
+            <StyledButton
+              variant="secondary"
+              data-testid="create-proposal-button"
+            >
+              {t('createProposal')}
+            </StyledButton>
+          </UnstyledLink>
+        )}
+        {process.env.NODE_ENV !== 'production' && (
           <>
-            <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
-              <StyledButton
-                variant="secondary"
-                data-testid="create-proposal-button"
-              >
-                {t('createProposal')}
-              </StyledButton>
-            </UnstyledLink>
             /
             <UnstyledLink to={`/${chainName}/${guildId}/create`}>
               <Button
@@ -134,22 +119,20 @@ const Governance = ({ guildId }) => {
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
-
         {activeProposals && activeProposals._hex === '0x00' && (
           <div>
-            There are no active proposals.{' '}
+            {t('noActiveProposalsMessage')}.{' '}
             <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
-              Go to all proposals page.
+              {t('goToAllProposalsPage')}.
             </StyledLink>
           </div>
         )}
-
         {proposalIds ? (
-          <ProposalListWrapper>
+          <>
             {revertedProposals.map(proposal => (
               <ProposalCardWrapper key={proposal} proposalId={proposal} />
             ))}
-          </ProposalListWrapper>
+          </>
         ) : (
           <>
             <ProposalCardWrapper />
@@ -160,6 +143,12 @@ const Governance = ({ guildId }) => {
           </>
         )}
       </ProposalsList>
+      {process.env.NODE_ENV !== 'production' && (
+        <ProposalsList>
+          <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
+          <Discussions />
+        </ProposalsList>
+      )}
     </>
   );
 };

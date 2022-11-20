@@ -31,6 +31,7 @@ export const useAllERC20Balances = (
       contractInterface: ERC20.abi,
       functionName: 'balanceOf',
       args: [walletAddress],
+      watch: true,
     })),
   });
   const erc20TokensWithBalance: TokenWithBalance[] = useMemo(() => {
@@ -38,7 +39,9 @@ export const useAllERC20Balances = (
 
     return erc20Tokens.map((token, index) => ({
       ...token,
-      balance: BigNumber.from(erc20Balances[index]),
+      balance: erc20Balances[index]
+        ? BigNumber.from(erc20Balances[index])
+        : null,
     }));
   }, [erc20Balances, erc20Tokens]);
 
@@ -63,7 +66,7 @@ export const useAllERC20Balances = (
     if (!erc20TokensWithBalance) return tokens || undefined;
 
     const tokensWithBalances = nativeTokenWithBalance
-      ? [...erc20TokensWithBalance, nativeTokenWithBalance]
+      ? [nativeTokenWithBalance, ...erc20TokensWithBalance]
       : erc20TokensWithBalance;
 
     return tokensWithBalances.sort((a, b) => {
