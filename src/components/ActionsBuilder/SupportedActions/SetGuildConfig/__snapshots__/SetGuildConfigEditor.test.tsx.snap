@@ -112,6 +112,18 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
   margin-left: 0.3rem;
 }
 
+.c10 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
 .c4 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -155,7 +167,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
   color: #303338;
 }
 
-.c10 {
+.c11 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -181,17 +193,17 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
   margin: 1rem 0 0;
 }
 
-.c10:disabled {
+.c11:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c10:hover:enabled {
+.c11:hover:enabled {
   border-color: #fff;
 }
 
-.c10:active:enabled {
+.c11:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -275,7 +287,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               %
             </div>
             <input
-              aria-label="Voting power percentage for proposal execution"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -291,7 +303,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -317,7 +360,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               %
             </div>
             <input
-              aria-label="Voting power percentage for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -333,7 +376,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -357,7 +431,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Vote gas"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -373,7 +447,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -397,7 +502,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Max gas price"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -413,7 +518,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -437,7 +573,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Max active proposals"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -453,7 +589,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -499,7 +666,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Minimum members for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -515,7 +682,38 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -539,7 +737,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Minimum tokens locked for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -555,13 +753,44 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <button
-      class="c10"
+      class="c11"
       type="submit"
     >
       saveAction
