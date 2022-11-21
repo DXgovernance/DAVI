@@ -14,7 +14,7 @@ const gnosisChain: Chain = {
       'https://poa-xdai-archival.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
   },
   blockExplorers: {
-    default: { name: 'Blockscout', url: 'https://blockscout.com/xdai/mainnet' },
+    default: { name: 'Gnosis', url: 'https://gnosisscan.io' },
   },
   testnet: false,
 };
