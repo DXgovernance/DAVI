@@ -123,7 +123,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     trigger,
   } = useForm({
     resolver: validateSetGuildConfig,
-    context: { t },
+    context: { t, currentGuildConfig },
     defaultValues: {
       proposalTime: parsedData.proposalTime,
       timeForExecution: parsedData.timeForExecution,
