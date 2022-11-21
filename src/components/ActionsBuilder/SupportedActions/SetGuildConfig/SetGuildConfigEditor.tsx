@@ -260,6 +260,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                         onChange={handleChange}
                         isInvalid={!!error}
                         icon={f.type === FieldType.percentage && <>%</>}
+                        displayClearIcon={false}
                         iconRight={
                           valueChanged && (
                             <Button

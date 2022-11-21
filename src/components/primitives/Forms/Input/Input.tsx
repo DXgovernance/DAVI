@@ -78,6 +78,7 @@ export interface InputProps<T>
   muted?: boolean;
   defaultValue?: string;
   ariaLabel?: string;
+  displayClearIcon?: boolean;
 }
 
 export const Input: React.FC<InputProps<any>> = ({
