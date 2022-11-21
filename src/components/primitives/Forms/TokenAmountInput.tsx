@@ -8,12 +8,14 @@ import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
 
 export interface TokenAmountInputProps extends InputProps<BigNumber> {
   decimals?: number;
+  ariaLabel?: string;
 }
 
 export const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   value,
   onChange,
   decimals = 18,
+  ariaLabel,
   ...rest
 }) => {
   const [localAmount, setLocalAmount] = useState<string>('');
@@ -45,6 +47,7 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
     <NumericalInput
       value={localAmount}
       onChange={setAmountEnforceDecimals}
+      ariaLabel={ariaLabel}
       {...rest}
     />
   );

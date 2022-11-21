@@ -81,6 +81,25 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
 }
 
 .c15 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.c17 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -105,17 +124,17 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   width: auto;
 }
 
-.c15:disabled {
+.c17:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c15:hover:enabled {
+.c17:hover:enabled {
   border-color: #fff;
 }
 
-.c15:active:enabled {
+.c17:active:enabled {
   border: 1px solid #303338;
 }
 
@@ -235,7 +254,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
   font-family: inherit;
 }
 
-.c16 {
+.c18 {
   width: 100%;
   margin-top: 22px;
   self-align: flex-end;
@@ -314,6 +333,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
             class="c11"
           />
           <input
+            aria-label="numerical input"
             autocomplete="off"
             autocorrect="off"
             class="c12 c13"
@@ -329,10 +349,41 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
           />
           <div
             class="c14"
-          />
+          >
+            <div
+              aria-label="clear number"
+              class="c15 c16"
+              data-testid="clear number"
+            >
+              <svg
+                fill="none"
+                height="18"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="18"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <line
+                  x1="18"
+                  x2="6"
+                  y1="6"
+                  y2="18"
+                />
+                <line
+                  x1="6"
+                  x2="18"
+                  y1="6"
+                  y2="18"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
         <button
-          class="c15"
+          class="c17"
           data-testid="stake-amount-max-button"
         >
           max
@@ -384,7 +435,7 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
       </span>
     </div>
     <button
-      class="c15 c16"
+      class="c17 c18"
       data-testid="approve-token-spending"
       disabled=""
     >
