@@ -11,7 +11,7 @@ const gnosisChain: Chain = {
   },
   rpcUrls: {
     default:
-      'https://poa-xdai-archival.gateway.pokt.network/v1/lb/61d897d4a065f5003a113d9a',
+      'https://poa-xdai-archival.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
   },
   blockExplorers: {
     default: { name: 'Gnosis', url: 'https://gnosisscan.io' },
@@ -20,7 +20,13 @@ const gnosisChain: Chain = {
 };
 
 export const chains: Chain[] = [
-  chain.mainnet,
+  {
+    ...chain.mainnet,
+    rpcUrls: {
+      default:
+        'https://eth-mainnet.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
+    },
+  },
   chain.goerli,
   chain.arbitrum,
   chain.arbitrumRinkeby,
