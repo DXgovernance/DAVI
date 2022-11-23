@@ -436,14 +436,12 @@ exports[`StakeTokensForm StakeTokensForm renders properly 1`] = `
     </div>
     <button
       class="c17 c18"
-      data-testid="approve-token-spending"
+      data-testid="lock-token-spending"
       disabled=""
     >
-      approve
+      Lock
        
       REP
-       
-      spending
     </button>
   </div>
    
