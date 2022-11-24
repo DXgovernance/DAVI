@@ -2,7 +2,6 @@ import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapp
 import { Input } from 'components/primitives/Forms/Input';
 import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import contentHash from '@ensdomains/content-hash';
 import { useTransactions } from 'contexts/Guilds';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { BigNumber } from 'ethers';
@@ -97,10 +96,12 @@ const CreateProposalPage: React.FC = () => {
     await ipfs.pin(cid);
     const pinataPinResult = await pinToPinata(cid, content);
 
-    if (pinataPinResult.IpfsHash !== `${cid}`) {
+    if (!pinataPinResult.IpfsHash) {
+      // TODO: change error msg
       throw new Error(t('ipfs.hashNotTheSame'));
     }
-    return contentHash.fromIpfs(cid);
+
+    return `ipfs://${pinataPinResult.IpfsHash}`;
   };
 
   const handleSkipUploadToIPFS = () => {
@@ -123,7 +124,7 @@ const CreateProposalPage: React.FC = () => {
   const guildContract = useERC20Guild(guildAddress);
 
   const handleCreateProposal = async () => {
-    let contentHash: Promise<string>;
+    let contentHash: string;
     setIsCreatingProposal(true);
     if (!skipUploadToIPFs) {
       try {

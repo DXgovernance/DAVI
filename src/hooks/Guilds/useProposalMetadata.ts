@@ -1,28 +1,36 @@
 import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
-import { useMemo } from 'react';
 import { ProposalMetadata } from 'types/types.guilds';
-import contentHash from '@ensdomains/content-hash';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
 
 function useProposalMetadata(guildId: string, proposalId: string) {
   const { data: proposal, error } = useProposal(guildId, proposalId);
 
-  const { decodedContentHash, decodeError } = useMemo(() => {
-    if (!proposal?.contentHash) return {};
+  // const { decodedContentHash, decodeError } = useMemo(() => {
+  //   if (!proposal?.contentHash) return {};
 
-    try {
-      return { decodedContentHash: contentHash.decode(proposal.contentHash) };
-    } catch (e) {
-      console.error(e);
-      return { decodeError: e };
-    }
-  }, [proposal]);
+  //   try {
+  //     return { decodedContentHash: contentHash.decode(proposal.contentHash) };
+  //   } catch (e) {
+  //     console.error(e);
+  //     return { decodeError: e };
+  //   }
+  // }, [proposal]);
 
   const { data: metadata, error: metadataError } =
-    useIPFSFile<ProposalMetadata>(decodedContentHash);
+    useIPFSFile<ProposalMetadata>(
+      proposal?.contentHash?.substring(7, proposal?.contentHash?.length + 1)
+    );
 
-  if (error || decodeError || metadataError) {
-    return { error: error || decodeError || metadataError };
+  console.log(`contentHash: ${proposal?.contentHash}`);
+  console.log(
+    `contentHash con substring: ${proposal?.contentHash?.substring(
+      7,
+      proposal?.contentHash?.length + 1
+    )}`
+  );
+
+  if (error || metadataError) {
+    return { error: error || metadataError };
   } else if (!proposal || !metadata) {
     return { error: undefined, data: undefined };
   }
