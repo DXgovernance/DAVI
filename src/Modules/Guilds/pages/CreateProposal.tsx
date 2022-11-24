@@ -194,7 +194,7 @@ const CreateProposalPage: React.FC = () => {
             valueArray,
             totalOptions,
             title,
-            `0x${contentHash}`
+            contentHash
           );
         },
         true,
