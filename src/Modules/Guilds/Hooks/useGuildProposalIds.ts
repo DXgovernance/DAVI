@@ -1,22 +1,19 @@
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
-import { ContractState } from 'types/types.guilds.d';
-import { getProposalStateFromEvent } from 'utils/event';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { useContractEvent, useContractRead } from 'wagmi';
 
 export const useGuildProposalIds = (guildId: string) => {
   const { data, refetch, ...rest } = useContractRead({
-    addressOrName: guildId,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildId,
+    abi: BaseERC20Guild.abi,
     functionName: 'getProposalsIds',
   });
 
   useContractEvent({
-    addressOrName: guildId,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildId,
+    abi: BaseERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener(event) {
-      const proposalState = getProposalStateFromEvent(event);
-      if (proposalState === ContractState.Active) refetch();
+    listener() {
+      refetch();
     },
   });
 

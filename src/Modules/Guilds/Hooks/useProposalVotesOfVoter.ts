@@ -1,9 +1,8 @@
-import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
 import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
-import { getProposalIdFromEvent } from 'utils/event';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 export interface UseProposalVotesOfVoterReturn {
   option: string;
@@ -11,25 +10,27 @@ export interface UseProposalVotesOfVoterReturn {
 }
 
 const useProposalVotesOfVoter = (
-  guildAddress: string,
-  proposalId: string,
-  userAddress: string
+  guildAddress: `0x${string}`,
+  proposalId: `0x${string}`,
+  userAddress: `0x${string}`
 ): WagmiUseContractReadResponse<UseProposalVotesOfVoterReturn> => {
+  const abi = BaseERC20Guild.abi;
+
   const { data, refetch, ...rest } = useContractRead({
     enabled: !!guildAddress && !!proposalId && !!userAddress,
-    addressOrName: guildAddress,
-    contractInterface: BaseERC20Guild.abi,
+    address: guildAddress,
+    abi: abi,
     functionName: 'getProposalVotesOfVoter',
     args: [proposalId, userAddress],
   });
 
   useContractEvent({
-    addressOrName: guildAddress,
-    contractInterface: BaseERC20Guild.abi,
+    address:
+      !!guildAddress && !!proposalId && !!userAddress ? guildAddress : null,
+    abi: BaseERC20Guild.abi,
     eventName: 'VoteAdded',
-    listener(event) {
-      const eventProposalId = getProposalIdFromEvent(event);
-      if (proposalId === eventProposalId) refetch();
+    listener() {
+      refetch();
     },
   });
 

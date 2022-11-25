@@ -13,7 +13,7 @@ export type TokenWithBalance = TokenInfoWithType & {
 };
 
 export const useAllERC20Balances = (
-  walletAddress: string,
+  walletAddress: `0x${string}`,
   includeNativeToken?: boolean
 ) => {
   const { chain } = useNetwork();
@@ -27,8 +27,8 @@ export const useAllERC20Balances = (
   const { data: erc20Balances, ...rest } = useContractReads({
     enabled: erc20Tokens?.length > 0 && !!walletAddress,
     contracts: erc20Tokens.map(token => ({
-      addressOrName: token.address,
-      contractInterface: ERC20.abi,
+      address: token.address,
+      abi: ERC20.abi,
       functionName: 'balanceOf',
       args: [walletAddress],
     })),
@@ -47,7 +47,7 @@ export const useAllERC20Balances = (
 
   // Get Native token balance
   const { data: nativeTokenBalance } = useBalance({
-    addressOrName: walletAddress,
+    address: walletAddress,
   });
   const nativeTokenWithBalance = useMemo(() => {
     if (!nativeTokenBalance) return null;

@@ -1,7 +1,6 @@
 import { unix } from 'moment';
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import { useContractEvent, useContractRead } from 'wagmi';
-import { getVoterFromEvent } from 'utils/event';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 /**
  * Get the locked timestamp of a voter tokens
  * @param contractAddress address of the contract
@@ -9,42 +8,39 @@ import { getVoterFromEvent } from 'utils/event';
  */
 export const useVoterLockTimestamp = (
   contractAddress: string,
-  userAddress: string
+  userAddress: `0x${string}`
 ) => {
   const { data, refetch, ...rest } = useContractRead({
-    addressOrName: contractAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: contractAddress,
+    abi: BaseERC20Guild.abi,
     functionName: 'getVoterLockTimestamp',
     args: [userAddress],
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: contractAddress,
+    abi: BaseERC20Guild.abi,
     eventName: 'TokensLocked',
-    listener(event) {
-      const voter = getVoterFromEvent(event);
-      if (voter === userAddress) refetch();
+    listener() {
+      refetch();
     },
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: contractAddress,
+    abi: BaseERC20Guild.abi,
     eventName: 'TokensWithdrawn',
-    listener(event) {
-      const voter = getVoterFromEvent(event);
-      if (voter === userAddress) refetch();
+    listener() {
+      refetch();
     },
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: contractAddress,
+    abi: BaseERC20Guild.abi,
     eventName: 'VoteAdded',
-    listener(event) {
-      const voter = getVoterFromEvent(event);
-      if (voter === userAddress) refetch();
+    listener() {
+      refetch();
     },
   });
 

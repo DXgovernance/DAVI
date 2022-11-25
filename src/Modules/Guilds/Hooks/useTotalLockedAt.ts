@@ -1,4 +1,5 @@
-import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
+import { BigNumber } from 'ethers';
 import { useContractEvent, useContractRead } from 'wagmi';
 
 interface useTotalLockedAtProps {
@@ -15,15 +16,15 @@ const useTotalLockedAt = ({
 }: useTotalLockedAtProps) => {
   const { data, refetch, ...rest } = useContractRead({
     enabled: !!contractAddress && !!snapshotId,
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
     functionName: 'totalLockedAt',
-    args: [snapshotId],
+    args: [BigNumber.from(snapshotId ? snapshotId : '0')],
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
     eventName: 'TokensLocked',
     listener() {
       refetch();
@@ -31,8 +32,8 @@ const useTotalLockedAt = ({
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
     eventName: 'TokensWithdrawn',
     listener() {
       refetch();

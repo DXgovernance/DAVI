@@ -1,29 +1,32 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
 import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 export type GuildConfigProps = {
   name: string;
-  token: string;
+  token: `0x${string}`;
   permissionRegistry: string;
   proposalTime: BigNumber;
   timeForExecution: BigNumber;
   maxActiveProposals: BigNumber;
   votingPowerForProposalCreation: BigNumber;
   votingPowerForProposalExecution: BigNumber;
-  tokenVault: string;
+  tokenVault: `0x${string}`;
   lockTime: BigNumber;
   votingPowerPercentageForProposalExecution: BigNumber;
   votingPowerPercentageForProposalCreation: BigNumber;
 };
 
-export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
+export const useGuildConfig = (
+  guildAddress: string,
+  proposalId?: `0x${string}`
+): { data: GuildConfigProps; [rest: string]: any } => {
   const erc20GuildContract = {
-    addressOrName: guildAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildAddress,
+    abi: BaseERC20Guild.abi,
   };
 
   const { data, ...rest } = useContractReads({
@@ -105,7 +108,7 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation: votingPowerForProposalCreation
         ? BigNumber.from(votingPowerForProposalCreation)
         : undefined,
-      tokenVault: tokenVault?.toString(),
+      tokenVault: tokenVault,
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
       votingPowerPercentageForProposalExecution:
         votingPowerPercentageForProposalExecution

@@ -10,7 +10,7 @@ import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 interface ProposalCardWrapperProps {
-  proposalId?: string;
+  proposalId?: `0x${string}`;
 }
 const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,

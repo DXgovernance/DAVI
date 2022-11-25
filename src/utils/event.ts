@@ -1,14 +1,16 @@
 import { ContractState } from 'types/types.guilds.d';
 
 export const getProposalIdFromEvent = (event): string => {
-  if (!event.length) return null;
+  if (!event || !event.length) return null;
+
+  debugger;
 
   const params = event[event.length - 1].args;
   return params.proposalId;
 };
 
-export const getProposalStateFromEvent = (event): string => {
-  if (!event.length) return null;
+export const getProposalStateFromEvent = (event): ContractState => {
+  if (!event || !event.length) return null;
 
   const params = event[event.length - 1].args;
   const stateNumber = params.newState.toNumber();
@@ -24,7 +26,7 @@ export const getProposalStateFromEvent = (event): string => {
 };
 
 export const getVoterFromEvent = (event): string => {
-  if (!event.length) return null;
+  if (!event || !event.length) return null;
 
   const params = event[event.length - 1].args;
   return params.voter;

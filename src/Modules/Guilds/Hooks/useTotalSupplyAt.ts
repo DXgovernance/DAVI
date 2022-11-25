@@ -1,4 +1,4 @@
-import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
+import { ERC20SnapshotRep } from 'contracts/ts-files/ERC20SnapshotRep';
 import { BigNumber } from 'ethers';
 import { useContractEvent, useContractRead } from 'wagmi';
 
@@ -16,15 +16,15 @@ const useTotalSupplyAt = ({
 }: useTotalSupplyAtProps) => {
   const { data, refetch, ...rest } = useContractRead({
     enabled: !!contractAddress && !!snapshotId,
-    addressOrName: contractAddress,
-    contractInterface: ERC20SnapshotRep.abi,
+    address: contractAddress,
+    abi: ERC20SnapshotRep.abi,
     functionName: 'totalSupplyAt',
-    args: [snapshotId],
+    args: [BigNumber.from(snapshotId ? snapshotId : '0')],
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: ERC20SnapshotRep.abi,
+    address: contractAddress,
+    abi: ERC20SnapshotRep.abi,
     eventName: 'Transfer',
     listener() {
       refetch();

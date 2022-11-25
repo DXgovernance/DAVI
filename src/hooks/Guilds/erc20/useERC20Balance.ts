@@ -7,15 +7,15 @@ export const useERC20Balance = (
   walletAddress: string
 ) => {
   const { data, refetch, ...rest } = useContractRead({
-    addressOrName: contractAddress,
-    contractInterface: ERC20.abi,
+    address: contractAddress,
+    abi: ERC20.abi,
     functionName: 'balanceOf',
     args: [walletAddress],
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: ERC20.abi,
+    address: contractAddress,
+    abi: ERC20.abi,
     eventName: 'Transfer',
     listener() {
       refetch();

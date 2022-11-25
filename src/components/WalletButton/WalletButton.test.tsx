@@ -1,7 +1,6 @@
 import WalletButton from './WalletButton';
 import { render } from 'utils/tests';
 import { ZERO_ADDRESS } from 'utils';
-import { mockChain } from 'components/Web3Modals/fixtures';
 import wagmi from 'wagmi';
 
 jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
@@ -26,13 +25,23 @@ jest.mock('provider/ReadOnlyConnector', () => ({
 }));
 
 const mockAddress = ZERO_ADDRESS;
+const mockChainId = 123456;
+
 jest.mock('wagmi', () => ({
   chain: {},
   useAccount: () => jest.fn(),
-  useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
+  useNetwork: () => ({ chain: { id: mockChainId } }),
   useSwitchNetwork: () => ({ switchNetwork: jest.fn() }),
   useConnect: () => ({ connect: jest.fn(), connectors: [] }),
   useDisconnect: () => ({ disconnect: jest.fn() }),
+}));
+
+jest.mock('provider', () => ({
+  getBlockExplorerUrl: () => null,
+}));
+
+jest.mock('provider/wallets', () => ({
+  isReadOnly: () => false,
 }));
 
 describe('WalletButton', () => {

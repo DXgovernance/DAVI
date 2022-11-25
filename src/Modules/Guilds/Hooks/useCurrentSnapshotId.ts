@@ -1,8 +1,6 @@
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import { useContractEvent, useContractRead } from 'wagmi';
-import { getProposalStateFromEvent } from 'utils/event';
-import { ContractState } from 'types/types.guilds.d';
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 
 interface useCurrentSnapshotIdProps {
   contractAddress: string;
@@ -14,18 +12,18 @@ const useCurrentSnapshotId = ({
   const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
   const { data, refetch, ...rest } = useContractRead({
     enabled: isSnapshotGuild,
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
     functionName: 'getCurrentSnapshotId',
   });
 
   useContractEvent({
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: isSnapshotGuild ? contractAddress : null,
+    abi: SnapshotERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener(event) {
-      const proposalState = getProposalStateFromEvent(event);
-      if (proposalState === ContractState.Active) refetch();
+    listener(node, label, owner) {
+      debugger;
+      refetch();
     },
   });
 

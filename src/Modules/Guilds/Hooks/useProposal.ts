@@ -1,9 +1,8 @@
 import { unix } from 'moment';
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import { Proposal, ContractState, InitialProposal } from 'types/types.guilds.d';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { getProposalIdFromEvent } from 'utils/event';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 export const formatterMiddleware = (data: InitialProposal): Proposal => {
   const clone = { ...data };
@@ -28,32 +27,30 @@ export const formatterMiddleware = (data: InitialProposal): Proposal => {
   return clone as Proposal;
 };
 
-const useProposal = (guildId: string, proposalId: string) => {
+const useProposal = (guildId: string, proposalId: `0x${string}`) => {
   const { data, refetch, ...rest } = useContractRead({
-    addressOrName: guildId,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildId,
+    abi: BaseERC20Guild.abi,
     functionName: 'getProposal',
-    args: proposalId,
+    args: [proposalId],
   });
   const proposalData = data as unknown as InitialProposal;
 
   useContractEvent({
-    addressOrName: guildId,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildId,
+    abi: BaseERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener(event) {
-      const eventProposalId = getProposalIdFromEvent(event);
-      if (proposalId === eventProposalId) refetch();
+    listener() {
+      refetch();
     },
   });
 
   useContractEvent({
-    addressOrName: guildId,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: guildId,
+    abi: BaseERC20Guild.abi,
     eventName: 'VoteAdded',
-    listener(event) {
-      const eventProposalId = getProposalIdFromEvent(event);
-      if (proposalId === eventProposalId) refetch();
+    listener() {
+      refetch();
     },
   });
 

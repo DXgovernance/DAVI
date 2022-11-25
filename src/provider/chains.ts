@@ -23,7 +23,7 @@ export const chains: Chain[] = [
   chain.mainnet,
   chain.goerli,
   chain.arbitrum,
-  chain.arbitrumRinkeby,
+  chain.arbitrumGoerli,
   gnosisChain,
 ];
 

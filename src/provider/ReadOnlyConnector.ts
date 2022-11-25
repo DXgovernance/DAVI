@@ -43,7 +43,7 @@ export class ReadOnlyConnector extends Connector<
       provider.on('chainChanged', this.onChainChanged);
       provider.on('disconnect', this.onDisconnect);
 
-      const account = ZERO_ADDRESS;
+      const account: `0x${string}` = ZERO_ADDRESS;
       const id = await this.getChainId();
       const unsupported = this.isChainUnsupported(id);
 
@@ -65,7 +65,7 @@ export class ReadOnlyConnector extends Connector<
     provider.removeListener('disconnect', this.onDisconnect);
   }
 
-  async getAccount() {
+  async getAccount(): Promise<`0x${string}`> {
     return ZERO_ADDRESS;
   }
 

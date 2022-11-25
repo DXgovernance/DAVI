@@ -8,7 +8,7 @@ import { getBigNumberPercentage } from 'utils/bnPercentage';
 // Gets vote summary as array of percentages
 export default function useVoteSummary(
   guildId: string,
-  proposalId: string
+  proposalId: `0x${string}`
 ): number[] {
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 
