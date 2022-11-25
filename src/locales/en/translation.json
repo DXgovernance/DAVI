@@ -267,5 +267,12 @@
   "reportABug": "Report a bug",
   "suggestAFeature": "Suggest a feature",
   "youAreNotOnline": "You are not Online",
-  "pleaseCheckYourInternetConnection": "Please check your internet connection"
+  "pleaseCheckYourInternetConnection": "Please check your internet connection",
+  "noValueHasBeenUpdatedFromCurrentGuildConfig": "No value has been updated from current guild config",
+  "proposalTimeHasToBeMoreThanZero": "Proposal time has to be more than 0",
+  "lockTimeHasToBeHigherOrEqualToProposalTime": "Lock time has to be higher or equal to proposal time",
+  "votingPowerPercentageForProposalExecutionHasToBeMoreThanZero": "Voting power percentage for execution has to be more than 0",
+  "voteGasHasToBeEqualOrLowerThan117000": "vote gas has to be equal or lower than 117000",
+  "setGuildConfig": "Set Guild Config",
+  "cantBeGreaterThan100": "Can't be greater than 100%"
 }

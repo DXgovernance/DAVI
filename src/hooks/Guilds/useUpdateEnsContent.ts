@@ -14,14 +14,15 @@ export const useUpdateEnsContent = ({
 }): { parsedData: UpdateENSContentDecodedCall } | null => {
   const parsedData = useMemo<UpdateENSContentDecodedCall>(() => {
     if (!decodedCall) return null;
+    if (!decodedCall.args) return null;
     return {
       from: decodedCall.from,
       to: decodedCall.to,
       node: decodedCall.args.node,
       contentHash: decodedCall.args.hash,
       optionalProps: {
-        ensName: decodedCall.optionalProps.ensName,
-        ipfsHash: decodedCall.optionalProps.ipfsHash,
+        ensName: decodedCall.optionalProps?.ensName,
+        ipfsHash: decodedCall.optionalProps?.ipfsHash,
       },
     };
   }, [decodedCall]);

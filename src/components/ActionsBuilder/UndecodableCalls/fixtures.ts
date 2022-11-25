@@ -1,6 +1,9 @@
 import { BigNumber } from 'ethers';
 import { Call, SupportedAction } from '../types';
 
+export const MOCK_ADDRESS = '0x0000000000000000000000000000000000000000';
+export const MOCK_ENS_NAME = 'name.eth';
+
 export const callMock: Call = {
   from: '0x0000000000000000000000000000000000000000',
   to: '',

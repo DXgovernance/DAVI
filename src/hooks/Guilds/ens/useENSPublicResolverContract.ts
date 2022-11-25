@@ -34,6 +34,7 @@ export function useENSContentHash(ensName: string, chainId?: number) {
   const { data } = useContractRead({
     enabled: !error,
     address: resolver?.address,
+    chainId: supportedChainId,
     abi: ensPublicResolver.abi,
     functionName: 'contenthash',
     args: [nameHash],

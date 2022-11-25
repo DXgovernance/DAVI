@@ -10,6 +10,13 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: 1 } }),
+  chain: {
+    mainnet: {},
+  },
+}));
+
 describe('DiscussionCard', () => {
   it('should render with full parameters', async () => {
     const { container } = render(<DiscussionCard {...fullParameters} />);

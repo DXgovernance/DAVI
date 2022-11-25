@@ -10,6 +10,12 @@ jest.mock('Modules/Guilds/Hooks/useTypedParams', () => ({
   }),
 }));
 
+jest.mock('wagmi', () => ({
+  useEnsAddress: () => ({
+    data: '0x0000000000000000000000000000000000000000',
+  }),
+}));
+
 describe('GuildSidebar', () => {
   it(`Should render without data`, async () => {
     const { container } = render(<GuildSidebar />);

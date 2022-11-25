@@ -1,8 +1,9 @@
 // Based on https://github.com/levelkdev/dxswap-dapp/blob/master/src/components/Input/NumericalInput/index.tsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, InputProps } from 'components/primitives/Forms/Input';
 import { escapeRegExp } from 'utils';
+import { IconRight } from './IconRight';
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
 
@@ -10,6 +11,9 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   placeholder,
+  disabled = false,
+  defaultValue,
+  ariaLabel,
   isInvalid = false,
   ...rest
 }) => {
@@ -17,6 +21,18 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
     if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {
       onChange(nextUserInput);
     }
+  };
+
+  const [disabledState, setDisabledState] = useState(
+    defaultValue ? true : disabled
+  );
+  const iconRightProps = {
+    disabled: disabledState,
+    value,
+    onChange: onChange,
+    defaultValue,
+    setDisabledState,
+    type: 'number',
   };
 
   return (
@@ -38,6 +54,9 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       minLength={1}
       maxLength={79}
       spellCheck="false"
+      disabled={disabledState}
+      iconRight={<IconRight {...iconRightProps} />}
+      aria-label={ariaLabel ? ariaLabel : 'numerical input'}
       isInvalid={isInvalid}
     />
   );

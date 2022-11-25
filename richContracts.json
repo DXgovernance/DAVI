@@ -59,7 +59,7 @@
     "tags": ["DXgov", "Guilds", "permissions"],
     "networks": {
       "5": "0x885b28d6b93087623483af5e5f7362bd6d8a0a6b",
-      "1337": "0x0000000000000000000000000000000000000000"
+      "1337": "0x885b28d6b93087623483af5e5f7362bd6d8a0a6b"
     },
     "functions": [
       {
@@ -97,7 +97,7 @@
       "1": "0x332B8C9734b4097dE50f302F7D9F273FFdB45B84",
       "5": "0xC284e9F6aBc7c65C277244895CAae401e643E4b6",
       "100": "0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF",
-      "1337": "0x0000000000000000000000000000000000000000"
+      "1337": "0x332B8C9734b4097dE50f302F7D9F273FFdB45B84"
     },
     "functions": [
       {
@@ -175,11 +175,40 @@
             "title": "Voter",
             "defaultValue": "0x99Fa013188d5f1dB6836Ee8805Ef37BE70ff10BE",
             "description": "The guild's address"
-          } 
+          }
         ],
         "shortDescription": "Votes on a proposal with the guild's power",
         "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
         "templateLiteral": "Vote ${vote} with ${amount} REP on ${proposalId}",
+        "spendsTokens": false
+      }
+    ]
+  },
+  {
+    "title": "ENS Reverse resolver",
+    "tags": ["ens"],
+    "networks": {
+      "1": "0x084b1c3c81545d370f3634392de611caabff8148"
+    },
+    "functions": [
+      {
+        "title": "Set main ENS name for address",
+        "functionName": "setName",
+        "params": [
+          {
+            "type": "string",
+            "component": "text",
+
+            "name": "name",
+            "title": "ENS name",
+
+            "defaultValue": "",
+            "description": "Name of ENS name to set (e.g. davi.eth)"
+          }
+        ],
+        "shortDescription": "Sets the main ENS name for an account",
+        "longDescription": "Sets the main ENS name of an account that is what users see when viewing this address",
+        "templateLiteral": "Set main ENS to ${name}",
         "spendsTokens": false
       }
     ]
@@ -304,3 +333,4 @@
     ]
   }
 ]
+

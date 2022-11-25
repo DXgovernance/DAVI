@@ -32,8 +32,12 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
   );
   const { functionData } = useRichContractData(decodedCall);
 
-  function getStringForParam(type: string, value: any) {
+  function getReadableStringForParam(type: string, value: any, name: string) {
     if (!type || !value) return null;
+
+    if (name === 'proposalId') {
+      return `${value.substring(0, 6)}...${value.substring(value.length - 4)}`;
+    }
 
     if (type.startsWith('uint') || type.startsWith('int')) {
       return BigNumber.from(value).toString();
@@ -47,7 +51,11 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
     return functionData.params
       .map(param => ({
         ...param,
-        value: getStringForParam(param.type, decodedCall.args[param.name]),
+        value: getReadableStringForParam(
+          param.type,
+          decodedCall.args[param.name],
+          param.name
+        ),
       }))
       .concat(getTokenInfoParsedParams(tokenInfo));
   }, [functionData, decodedCall, tokenInfo]);
