@@ -14,14 +14,9 @@
   },
   {
     "type": "SnapshotERC20Guild",
-    "bytecode_hash": "0x6805b93ccc51bb989622d59a092a552a1d86e11cc0df3740354dfbfa714cb837",
+    "bytecode_hash": "0xcfe42d56f58ab49603c49e6c7ca4bd3d2260cec51d296e4a5cfa2a407e299b6c",
     "features": [
       "SNAPSHOT"
     ]
-  },
-  {
-    "type": "DXDGuild",
-    "bytecode_hash": "",
-    "features": []
   }
 ]

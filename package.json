@@ -1,6 +1,6 @@
 {
   "name": "davi",
-  "version": "2.0.1",
+  "version": "2.1.1",
   "description": "Decentralized Autonomous Voting Interface",
   "scripts": {
     "dev": "./scripts/dev.sh",
@@ -203,3 +203,4 @@
     ]
   }
 }
+

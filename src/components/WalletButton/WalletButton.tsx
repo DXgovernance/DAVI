@@ -23,7 +23,7 @@ const WalletButton = () => {
   };
 
   function getWalletStatus() {
-    if (isConnected && chain.unsupported) {
+    if (isConnected && chain?.unsupported) {
       const firstSupported = chains && chains?.length > 0 ? chains[0] : null;
 
       return (

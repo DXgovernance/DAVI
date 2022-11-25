@@ -6,69 +6,48 @@ import { useContractReads } from 'wagmi';
 import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
 
 export type GuildConfigProps = {
-  name: string;
-  token: string;
   permissionRegistry: string;
+  name: string;
   proposalTime: BigNumber;
   timeForExecution: BigNumber;
   maxActiveProposals: BigNumber;
   votingPowerForProposalCreation: BigNumber;
-  votingPowerForProposalExecution: BigNumber;
   tokenVault: string;
   lockTime: BigNumber;
+  voteGas: BigNumber;
+  maxGasPrice: BigNumber;
   votingPowerPercentageForProposalExecution: BigNumber;
   votingPowerPercentageForProposalCreation: BigNumber;
+  minimumMembersForProposalCreation: BigNumber;
+  minimumTokensLockedForProposalCreation: BigNumber;
+  votingPowerForProposalExecution: BigNumber;
+  token: string;
 };
 
-export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
-  const erc20GuildContract = {
-    addressOrName: guildAddress,
-    contractInterface: BaseERC20GuildContract.abi,
-  };
+const GETTER_FUNCTIONS = [
+  'getPermissionRegistry',
+  'getName',
+  'getProposalTime',
+  'getTimeForExecution',
+  'getMaxActiveProposals',
+  'getVotingPowerForProposalCreation',
+  'getTokenVault',
+  'getLockTime',
+  'getVoteGas',
+  'getMaxGasPrice',
+  'votingPowerPercentageForProposalExecution',
+  'votingPowerPercentageForProposalCreation',
+  'getMinimumMembersForProposalCreation',
+  'getMinimumTokensLockedForProposalCreation',
+];
 
+export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
   const { data, ...rest } = useContractReads({
-    contracts: [
-      {
-        ...erc20GuildContract,
-        functionName: 'getPermissionRegistry', // Get the address of the permission registry contract
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getName', // Get the name of the ERC20Guild
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getProposalTime', // Get the proposalTime (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getTimeForExecution', // Get the timeForExecution (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getMaxActiveProposals', // Get the maxActiveProposals
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getVotingPowerForProposalCreation',
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getTokenVault', // Get the address of the token vault
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getLockTime', // Get the lockTime (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'votingPowerPercentageForProposalExecution',
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'votingPowerPercentageForProposalCreation',
-      },
-    ],
+    contracts: GETTER_FUNCTIONS.map(functionName => ({
+      addressOrName: guildAddress,
+      contractInterface: BaseERC20GuildContract.abi,
+      functionName,
+    })),
   });
   const { data: token } = useGuildToken(guildAddress);
   const { data: votingPowerForProposalExecution } =
@@ -78,7 +57,6 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
     });
   const transformedData = useMemo(() => {
     if (!data) return undefined;
-
     const [
       permissionRegistry,
       name,
@@ -88,8 +66,12 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation,
       tokenVault,
       lockTime,
+      voteGas,
+      maxGasPrice,
       votingPowerPercentageForProposalExecution,
       votingPowerPercentageForProposalCreation,
+      minimumMembersForProposalCreation,
+      minimumTokensLockedForProposalCreation,
     ] = data;
 
     return {
@@ -107,6 +89,8 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
         : undefined,
       tokenVault: tokenVault?.toString(),
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      voteGas: voteGas ? BigNumber?.from(voteGas) : undefined,
+      maxGasPrice: maxGasPrice ? BigNumber?.from(maxGasPrice) : undefined,
       votingPowerPercentageForProposalExecution:
         votingPowerPercentageForProposalExecution
           ? BigNumber?.from(votingPowerPercentageForProposalExecution)
@@ -114,6 +98,13 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerPercentageForProposalCreation:
         votingPowerPercentageForProposalCreation
           ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
+      minimumMembersForProposalCreation: minimumMembersForProposalCreation
+        ? BigNumber?.from(minimumMembersForProposalCreation)
+        : undefined,
+      minimumTokensLockedForProposalCreation:
+        minimumTokensLockedForProposalCreation
+          ? BigNumber?.from(minimumTokensLockedForProposalCreation)
           : undefined,
     };
   }, [data]);

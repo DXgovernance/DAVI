@@ -6,3 +6,8 @@ export interface ActionModalProps {
   onAddAction: (action: DecodedAction) => void;
   action?: DecodedAction;
 }
+
+export interface SelectedFunction {
+  name: string;
+  title: string;
+}

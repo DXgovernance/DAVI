@@ -59,7 +59,7 @@
     "tags": ["DXgov", "Guilds", "permissions"],
     "networks": {
       "5": "0x885b28d6b93087623483af5e5f7362bd6d8a0a6b",
-      "1337": "0x0000000000000000000000000000000000000000"
+      "1337": "0x885b28d6b93087623483af5e5f7362bd6d8a0a6b"
     },
     "functions": [
       {
@@ -97,19 +97,18 @@
       "1": "0x332B8C9734b4097dE50f302F7D9F273FFdB45B84",
       "5": "0xC284e9F6aBc7c65C277244895CAae401e643E4b6",
       "100": "0xDA309aDF1c84242Bb446F7CDBa96B570E901D4CF",
-      "1337": "0x0000000000000000000000000000000000000000"
+      "1337": "0x332B8C9734b4097dE50f302F7D9F273FFdB45B84"
     },
     "functions": [
       {
-        "title": "Vote on a proposal",
+        "title": "Vote For proposal",
         "functionName": "vote",
         "params": [
           {
             "type": "bytes32",
-            "component": "address",
+            "component": "string",
             "name": "proposalId",
             "title": "Proposal ID",
-            "defaultValue": "",
             "description": "Proposal ID - found from the URL of proposal"
           },
           {
@@ -117,12 +116,12 @@
             "component": "integer",
             "name": "vote",
             "title": "Vote decision",
-            "defaultValue": "",
+            "defaultValue": "1",
             "description": "Vote decision (NO(2) or YES(1))"
           },
           {
             "type": "uint256",
-            "component": "integer",
+            "component": "tokenAmount",
             "name": "amount",
             "title": "Amount to vote with",
             "defaultValue": "",
@@ -133,15 +132,205 @@
             "component": "address",
             "name": "voter",
             "title": "Voter",
-            "defaultValue": "",
+            "defaultValue": "0x99Fa013188d5f1dB6836Ee8805Ef37BE70ff10BE",
             "description": "The guild's address"
           }
         ],
         "shortDescription": "Votes on a proposal with the guild's power",
         "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
-        "templateLiteral": "Vote {proposalId}",
+        "templateLiteral": "Vote ${vote} with ${amount} REP on ${proposalId}",
+        "spendsTokens": false
+      },
+      {
+        "title": "Vote Against proposal",
+        "functionName": "vote",
+        "params": [
+          {
+            "type": "bytes32",
+            "component": "string",
+            "name": "proposalId",
+            "title": "Proposal ID",
+            "description": "Proposal ID - found from the URL of proposal"
+          },
+          {
+            "type": "uint256",
+            "component": "integer",
+            "name": "vote",
+            "title": "Vote decision",
+            "defaultValue": "2",
+            "description": "Vote decision (NO(2) or YES(1))"
+          },
+          {
+            "type": "uint256",
+            "component": "tokenAmount",
+            "name": "amount",
+            "title": "Amount of REP to vote with",
+            "defaultValue": "",
+            "description": "Amount to vote with"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "voter",
+            "title": "Voter",
+            "defaultValue": "0x99Fa013188d5f1dB6836Ee8805Ef37BE70ff10BE",
+            "description": "The guild's address"
+          }
+        ],
+        "shortDescription": "Votes on a proposal with the guild's power",
+        "longDescription": "Creates a mirror proposal to use this guild's power to vote on a DXdao proposal. Care needs to be taken to finish this proposal before the DXdao proposal finishes.",
+        "templateLiteral": "Vote ${vote} with ${amount} REP on ${proposalId}",
+        "spendsTokens": false
+      }
+    ]
+  },
+  {
+    "title": "ENS Reverse resolver",
+    "tags": ["ens"],
+    "networks": {
+      "1": "0x084b1c3c81545d370f3634392de611caabff8148"
+    },
+    "functions": [
+      {
+        "title": "Set main ENS name for address",
+        "functionName": "setName",
+        "params": [
+          {
+            "type": "string",
+            "component": "text",
+
+            "name": "name",
+            "title": "ENS name",
+
+            "defaultValue": "",
+            "description": "Name of ENS name to set (e.g. davi.eth)"
+          }
+        ],
+        "shortDescription": "Sets the main ENS name for an account",
+        "longDescription": "Sets the main ENS name of an account that is what users see when viewing this address",
+        "templateLiteral": "Set main ENS to ${name}",
+        "spendsTokens": false
+      }
+    ]
+  },
+  {
+    "title": "ENS Registry",
+    "tags": ["ens"],
+    "networks": {
+      "1": "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e"
+    },
+    "functions": [
+      {
+        "title": "Create subdomain",
+        "functionName": "setSubnodeRecord",
+        "params": [
+          {
+            "type": "bytes32",
+            "component": "text",
+            "name": "node",
+            "title": "Subdomain node",
+            "defaultValue": "",
+            "description": "Name of parent ENS to set (e.g. projectdavi.eth)"
+          },
+          {
+            "type": "bytes32",
+            "component": "text",
+            "name": "label",
+            "title": "Subdomain label",
+            "defaultValue": "",
+            "description": "Name of new subdomain label"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "owner",
+            "title": "ENS owner (the guild)",
+            "defaultValue": "",
+            "description": "Address of ENS owner"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "resolver",
+            "title": "ENS Resolver",
+            "defaultValue": "0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41",
+            "description": "Address of ENS resolver"
+          },
+          {
+            "type": "uint64",
+            "component": "integer",
+            "name": "ttl",
+            "title": "Time to live",
+            "defaultValue": "0",
+            "description": "Time to live"
+          }
+        ],
+        "shortDescription": "Creates a subdomain",
+        "longDescription": "Creates a subdomain from an ENS name the guild is controller of",
+        "templateLiteral": "Create an ENS subdomain",
+        "spendsTokens": false
+      },
+      {
+        "title": "Transfer subdomain",
+        "functionName": "setSubnodeOwner",
+        "params": [
+          {
+            "type": "bytes32",
+            "component": "text",
+            "name": "node",
+            "title": "Subdomain node",
+            "defaultValue": "",
+            "description": "Name of parent ENS to set (e.g. projectdavi.eth)"
+          },
+          {
+            "type": "bytes32",
+            "component": "text",
+            "name": "label",
+            "title": "Subdomain label",
+            "defaultValue": "",
+            "description": "Name of subdomain label"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "owner",
+            "title": "ENS owner (the guild)",
+            "defaultValue": "",
+            "description": "Address of new ENS owner"
+          }
+        ],
+        "shortDescription": "Transfers ENS subdomain",
+        "longDescription": "Transfers ENS subdomain",
+        "templateLiteral": "Transfer ENS subdomain to ${owner}",
+        "spendsTokens": false
+      },
+      {
+        "title": "Transfer ENS",
+        "functionName": "setOwner",
+        "params": [
+          {
+            "type": "bytes32",
+            "component": "text",
+            "name": "node",
+            "title": "Subdomain node",
+            "defaultValue": "",
+            "description": "Name of parent ENS to set (e.g. projectdavi.eth)"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "owner",
+            "title": "ENS owner (the guild)",
+            "defaultValue": "",
+            "description": "Address of new ENS owner"
+          }
+        ],
+        "shortDescription": "Transfers a root ENS domain",
+        "longDescription": "Transfers a root ENS domain",
+        "templateLiteral": "Transfer ENS to ${owner}",
         "spendsTokens": false
       }
     ]
   }
 ]
+

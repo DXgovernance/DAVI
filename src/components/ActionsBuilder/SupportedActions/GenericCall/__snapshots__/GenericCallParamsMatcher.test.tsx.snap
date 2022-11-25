@@ -1,100 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 1`] = `
-.c0 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #fff;
+.c1 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c0:focus,
-.c0:hover,
-.c0:visited,
-.c0:link,
-.c0:active {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4 {
+.c2 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c5 {
+.c3 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 50%;
-  line-height: 0;
-}
-
-.c6 {
-  margin-left: 6px;
-}
-
-.c1 {
+.c5 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c0 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
   color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c4:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c6 {
+  margin-right: 0.5rem;
   overflow-wrap: break-word;
 }
 
 <div>
    
-  <a
+  <div
     class="c0"
-    href="/"
+    data-testid="block-explorer-container"
+    direction="row"
   >
-    <div
-      class="c1 c2"
+    <span
+      class="c1"
     >
-      <span
-        class="c3"
+      <img
+        alt="Avatar"
+        class="c2 c3"
+        data-testid="avatar"
+        size="16"
+        src="test"
+      />
+    </span>
+    <a
+      class="c4"
+      rel="noopener"
+      target="_blank"
+    >
+      <div
+        class="c5 c6"
       >
-        <img
-          alt="Avatar"
-          class="c4 c5"
-          data-testid="avatar"
-          size="16"
-          src="test"
-        />
-        <span
-          class="c6"
-        >
-          0x3f94...4351
-        </span>
-      </span>
-       
+        test.eth
+      </div>
       <svg
         fill="none"
-        height="16"
+        height="1em"
         stroke="currentColor"
         stroke-linecap="round"
         stroke-linejoin="round"
         stroke-width="2"
         viewBox="0 0 24 24"
-        width="16"
+        width="1em"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -110,8 +136,8 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
           y2="3"
         />
       </svg>
-    </div>
-  </a>
+    </a>
+  </div>
    
 </div>
 `;
@@ -181,62 +207,86 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 `;
 
 exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
-.c0 {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  color: #fff;
+.c1 {
+  margin-right: 0.5rem;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.c0:focus,
-.c0:hover,
-.c0:visited,
-.c0:link,
-.c0:active {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c4 {
+.c2 {
   height: 1.6rem;
   width: 1.6rem;
 }
 
-.c5 {
+.c3 {
   border-radius: 50%;
   height: 16px;
   width: 16px;
 }
 
-.c3 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 50%;
-  line-height: 0;
-}
-
-.c6 {
-  margin-left: 6px;
-}
-
-.c1 {
+.c5 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c0 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
   color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c4:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c6 {
+  margin-right: 0.5rem;
   overflow-wrap: break-word;
 }
 
@@ -246,39 +296,41 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
     matchedparam="addressParam"
     style="display: inline-block;"
   >
-    <a
+    <div
       class="c0"
-      href="/"
+      data-testid="block-explorer-container"
+      direction="row"
     >
-      <div
-        class="c1 c2"
+      <span
+        class="c1"
       >
-        <span
-          class="c3"
+        <img
+          alt="Avatar"
+          class="c2 c3"
+          data-testid="avatar"
+          size="16"
+          src="test"
+        />
+      </span>
+      <a
+        class="c4"
+        rel="noopener"
+        target="_blank"
+      >
+        <div
+          class="c5 c6"
         >
-          <img
-            alt="Avatar"
-            class="c4 c5"
-            data-testid="avatar"
-            size="16"
-            src="test"
-          />
-          <span
-            class="c6"
-          >
-            0x3f94...4351
-          </span>
-        </span>
-         
+          test.eth
+        </div>
         <svg
           fill="none"
-          height="16"
+          height="1em"
           stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
           viewBox="0 0 24 24"
-          width="16"
+          width="1em"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
@@ -294,8 +346,8 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 1`] = `
             y2="3"
           />
         </svg>
-      </div>
-    </a>
+      </a>
+    </div>
   </span>
    
 </div>

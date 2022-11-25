@@ -1,6 +1,7 @@
 import { DecodedCall, SupportedAction } from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';
 import { BigNumber, utils } from 'ethers';
+import { MOCK_ADDRESS } from 'hooks/Guilds/ens/fixtures';
 
 const ERC20Contract = new utils.Interface(ERC20.abi);
 
@@ -23,7 +24,7 @@ export const erc20TransferDecodedCallMock: DecodedCall = {
   to: '0xfFb1cd0F95368DDd06D556161c5D3d9f0f4Fe6d2',
   value: BigNumber.from(0),
   args: {
-    _to: '0xaF8eB8C3A5d9d900AA0B98e3Df0bcC17d3C5F698',
+    _to: MOCK_ADDRESS,
     _value: BigNumber.from('5000000000000000000'),
   },
 };
