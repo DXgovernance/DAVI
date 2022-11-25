@@ -78,6 +78,13 @@ export const useGuildConfig = (
       minimumTokensLockedForProposalCreation,
     ] = data;
 
+    // Made to prevent
+    // "Type '{} & readonly unknown[]' is not assignable to type '`0x${string}`'"
+    // doesn't accept ternary operator
+    let safeTokenVault;
+    if (!tokenVault) safeTokenVault = undefined;
+    else safeTokenVault = tokenVault;
+
     return {
       permissionRegistry: permissionRegistry?.toString(),
       name: name?.toString(),
@@ -91,7 +98,7 @@ export const useGuildConfig = (
       votingPowerForProposalCreation: votingPowerForProposalCreation
         ? BigNumber.from(votingPowerForProposalCreation)
         : undefined,
-      tokenVault: tokenVault,
+      tokenVault: safeTokenVault,
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
       voteGas: voteGas ? BigNumber?.from(voteGas) : undefined,
       maxGasPrice: maxGasPrice ? BigNumber?.from(maxGasPrice) : undefined,
