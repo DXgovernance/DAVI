@@ -3,7 +3,10 @@ import { BigNumber } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { RichContractData } from 'hooks/Guilds/contracts/useRichContractRegistry';
+import {
+  RichContractData,
+  RichContractFunction,
+} from 'hooks/Guilds/contracts/useRichContractRegistry';
 import {
   defaultValues,
   getEditor,
@@ -23,7 +26,7 @@ import {
   ParamsForm,
 } from './components';
 import { EditorWrapper } from './ActionsModal.styled';
-import { ActionModalProps } from './types';
+import { ActionModalProps, SelectedFunction } from './types';
 import { TokenSpendApproval } from './components/ApproveSpendTokens/ApproveSpendTokens';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 
@@ -45,7 +48,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
   // Generic calls
   const [selectedContract, setSelectedContract] =
     React.useState<RichContractData>(null);
-  const [selectedFunction, setSelectedFunction] = React.useState<string>(null);
+  const [selectedFunction, setSelectedFunction] =
+    React.useState<SelectedFunction>(null);
 
   const [data, setData] = React.useState<DecodedCall>(null);
   const [showTokenApprovalForm, setShowTokenApprovalForm] =
@@ -58,7 +62,10 @@ const ActionModal: React.FC<ActionModalProps> = ({
 
     if (action.decodedCall.callType === SupportedAction.GENERIC_CALL) {
       setSelectedContract(action.decodedCall.richData);
-      setSelectedFunction(action.decodedCall.function.name);
+      setSelectedFunction({
+        name: action.decodedCall.function.name,
+        title: action.decodedCall.functionTitle,
+      });
     } else {
       setSelectedAction(action.decodedCall.callType);
     }
@@ -68,10 +75,20 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setShowTokenApprovalForm(action.approval ? true : false);
   }, [action]);
 
+  function isSelectedFunction(
+    fn: RichContractFunction,
+    selectedFunction: SelectedFunction
+  ) {
+    return (
+      fn.functionName === selectedFunction.name &&
+      (selectedFunction.title === '' || fn.title === selectedFunction.title)
+    );
+  }
+
   function getHeader() {
     if (selectedFunction) {
-      return selectedContract.functions.find(
-        fn => fn.functionName === selectedFunction
+      return selectedContract.functions.find(fn =>
+        isSelectedFunction(fn, selectedFunction)
       )?.title;
     }
 
@@ -90,8 +107,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
     if (selectedFunction) {
       const contractInterface = selectedContract.contractInterface;
       const contractId = selectedContract.contractAddress;
-      const fn = selectedContract.functions.find(
-        fn => fn.functionName === selectedFunction
+      const fn = selectedContract.functions.find(fn =>
+        isSelectedFunction(fn, selectedFunction)
       );
       const isPayable: boolean = fn?.spendsTokens;
       // Return approval form if function is marked with spendsTokens=true
@@ -122,10 +139,11 @@ const ActionModal: React.FC<ActionModalProps> = ({
                 callType: SupportedAction.GENERIC_CALL,
                 from: guildId,
                 to: contractId,
-                function: contractInterface.getFunction(selectedFunction),
+                function: contractInterface.getFunction(selectedFunction.name),
                 value: BigNumber.from(0),
                 args,
                 richData: selectedContract,
+                functionTitle: selectedFunction.title,
               },
               ...(isPayable &&
                 !!payableFnData && {
@@ -207,6 +225,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
         defaultDecodedAction.decodedCall.args.from = guildId;
         defaultDecodedAction.decodedCall.to = guildConfig?.permissionRegistry;
         break;
+      case SupportedAction.SET_GUILD_CONFIG:
+        defaultDecodedAction.decodedCall.to = guildId;
     }
     setData(defaultDecodedAction.decodedCall);
     setSelectedAction(action);

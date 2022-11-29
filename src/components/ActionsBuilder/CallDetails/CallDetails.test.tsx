@@ -25,6 +25,7 @@ jest.mock('utils', () => ({
     },
   }),
   preventEmptyString: () => mockBigNumber,
+  shortenAddress: () => {},
 }));
 
 jest.mock('wagmi', () => ({

@@ -12592,7 +12592,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-"dxdao-contracts@https://github.com/DXgovernance/dxdao-contracts.git#develop":
+"dxdao-contracts@https://github.com/DXgovernance/dxdao-contracts.git#50db3f0754b5ea1a46342857b9520fa0c5250221":
   version "1.0.0"
   resolved "https://github.com/DXgovernance/dxdao-contracts.git#50db3f0754b5ea1a46342857b9520fa0c5250221"
   dependencies:

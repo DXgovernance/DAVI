@@ -8,3 +8,8 @@ export interface ActionModalProps {
   action?: DecodedAction;
   isEditing?: boolean;
 }
+
+export interface SelectedFunction {
+  name: string;
+  title: string;
+}

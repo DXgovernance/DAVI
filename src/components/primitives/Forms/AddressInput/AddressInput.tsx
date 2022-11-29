@@ -2,11 +2,10 @@ import { Input } from 'components/primitives/Forms/Input';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { isAddress, MAINNET_ID } from 'utils';
-import { FiX } from 'react-icons/fi';
 import useENS from 'hooks/Guilds/ens/useENS';
 import { useEffect, useState } from 'react';
-import { ClickableIcon } from './AddressInput.styled';
 import { AddressInputProps } from './types';
+import { IconRight } from '../IconRight';
 
 export const AddressInput: React.FC<AddressInputProps> = ({
   value,
@@ -14,6 +13,8 @@ export const AddressInput: React.FC<AddressInputProps> = ({
   isInvalid,
   disabled = false,
   enableENSName = true,
+  defaultValue,
+  ariaLabel,
   ...rest
 }) => {
   const { imageUrl } = useENSAvatar(value, MAINNET_ID);
@@ -24,9 +25,26 @@ export const AddressInput: React.FC<AddressInputProps> = ({
   const [localValue, setLocalValue] = useState(
     (enableENSName && parsedENSName) || value
   );
+
+  const [disabledState, setDisabledState] = useState(
+    defaultValue ? true : disabled
+  );
+
   const { address: addressFromLocalValue } = useENS(
     localValue.endsWith('.eth') ? localValue : `${localValue}.eth`
   );
+  const handleChange = value => {
+    setLocalValue(value);
+  };
+
+  const iconRightProps = {
+    disabled: disabledState,
+    value,
+    onChange: handleChange,
+    setDisabledState,
+    defaultValue,
+    type: 'address',
+  };
 
   useEffect(() => {
     if (enableENSName && addressFromLocalValue) onChange(addressFromLocalValue);
@@ -37,7 +55,7 @@ export const AddressInput: React.FC<AddressInputProps> = ({
     <Input
       {...rest}
       value={localValue}
-      disabled={disabled}
+      disabled={disabledState}
       data-testid="address input"
       icon={
         <div>
@@ -52,21 +70,10 @@ export const AddressInput: React.FC<AddressInputProps> = ({
           )}
         </div>
       }
-      iconRight={
-        <>
-          {!disabled && value && (
-            <ClickableIcon
-              aria-label="clear address"
-              data-testid="clear address"
-              onClick={() => setLocalValue('')}
-            >
-              <FiX size={18} />
-            </ClickableIcon>
-          )}
-        </>
-      }
-      onChange={e => setLocalValue(e.target.value)}
+      iconRight={<IconRight {...iconRightProps} />}
+      onChange={e => handleChange(e.target.value)}
       isInvalid={isInvalid}
+      aria-label={ariaLabel ? ariaLabel : 'address input'}
     />
   );
 };

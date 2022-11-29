@@ -24,6 +24,14 @@ jest.mock('Modules/Guilds/Hooks/useGuildConfig', () => ({
 const mockChainId = 123456;
 
 jest.mock('wagmi', () => ({
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useNetwork: () => ({ chain: { id: mockChainId } }),
   useAccount: () => ({ isConnected: true }),
   chain: {

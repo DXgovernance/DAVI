@@ -66,7 +66,7 @@ export const useAllERC20Balances = (
     if (!erc20TokensWithBalance) return tokens || undefined;
 
     const tokensWithBalances = nativeTokenWithBalance
-      ? [...erc20TokensWithBalance, nativeTokenWithBalance]
+      ? [nativeTokenWithBalance, ...erc20TokensWithBalance]
       : erc20TokensWithBalance;
 
     return tokensWithBalances.sort((a, b) => {

@@ -3,8 +3,7 @@ import { DetailRow } from '../SupportedActions/common/Summary.styled';
 import { Call } from '../types';
 import { BigNumber } from 'ethers';
 import { Box } from 'components/primitives/Layout/Box';
-import { UnstyledLink } from 'components/primitives/Links';
-import { FiExternalLink } from 'react-icons/fi';
+import { BlockExplorerLink } from 'components/primitives/Links';
 import styled, { useTheme } from 'styled-components';
 
 const ParamTitleRow = styled(DetailRow)`
@@ -33,13 +32,7 @@ const UndecodableCallDetails: React.FC<{ call: Call }> = ({ call }) => {
     if (!key || !value) return null;
 
     if (key === 'to' || key === 'from') {
-      return (
-        <UnstyledLink to="#">
-          <ParamDetail>
-            {value} <FiExternalLink size={16} />
-          </ParamDetail>
-        </UnstyledLink>
-      );
+      return <BlockExplorerLink address={value} avatarSize={16} />;
     }
 
     if (key === 'value') {

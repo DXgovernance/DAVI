@@ -98,6 +98,7 @@ exports[`AddressInput Snapshots should match snapshot isInvalid 1`] = `
       <div />
     </div>
     <input
+      aria-label="address input"
       class="c2"
       data-testid="address input"
       value="0xinvalidAddress"
@@ -258,6 +259,7 @@ exports[`AddressInput Snapshots should match snapshot with ENS disabled 1`] = `
       </div>
     </div>
     <input
+      aria-label="address input"
       class="c4"
       data-testid="address input"
       value="0x0000000000000000000000000000000000000000"
@@ -418,6 +420,7 @@ exports[`AddressInput Snapshots should match snapshot with address 1`] = `
       </div>
     </div>
     <input
+      aria-label="address input"
       class="c4"
       data-testid="address input"
       value="wagmi.eth"

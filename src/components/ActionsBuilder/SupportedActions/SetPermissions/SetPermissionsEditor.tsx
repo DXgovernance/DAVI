@@ -294,7 +294,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         {...field}
                         isInvalid={invalid && !!error}
                         name="to-address"
-                        aria-label="to address input"
+                        ariaLabel="to address input"
                         placeholder={t('ethereumAddress')}
                       />
                     </ControlRow>
@@ -357,7 +357,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         const newValue = BigNumber.from(value || '0');
                         field.onChange(newValue);
                       }}
-                      aria-label="amount input"
+                      ariaLabel="amount input"
                       decimals={token?.decimals}
                       value={BigNumber.from(
                         activeTab === TABS.ASSET_TRANSFER ? 0 : field.value || 0
