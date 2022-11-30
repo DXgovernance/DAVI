@@ -127,7 +127,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     )
       return;
 
-    onEdit({
+    return onEdit({
       ...decodedAction,
       actionDenied: cardStatus === CardStatus.permissionDenied,
     });

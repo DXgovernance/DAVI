@@ -86,11 +86,13 @@ const CreateProposalPage: React.FC = () => {
   const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
   const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
 
-  const isActionDenied = useMemo(() => {
-    return !!options.find(option =>
-      option.decodedActions.find(action => action.actionDenied === true)
-    );
-  }, [options]);
+  const isActionDenied = useMemo(
+    () =>
+      options.some(({ decodedActions }) =>
+        decodedActions.some(({ actionDenied }) => !!actionDenied)
+      ),
+    [options]
+  );
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;
