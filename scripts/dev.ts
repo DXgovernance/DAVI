@@ -256,7 +256,7 @@ async function main() {
         contractName: 'SnapshotRepERC20Guild',
         name: 'REPGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
-        timeForExecution: moment.duration(2, 'minutes').asSeconds(),
+        timeForExecution: moment.duration(5, 'minutes').asSeconds(),
         votingPowerPercentageForProposalExecution: '5000',
         votingPowerPercentageForProposalCreation: '500',
         voteGas: '0',
@@ -288,7 +288,7 @@ async function main() {
     {
       type: 'transfer',
       // We use this to reset to local time, in future we should ensure the automatic process works
-      timestamp: moment().subtract(46, 'minutes').unix(),
+      timestamp: moment().subtract(49, 'minutes').unix(),
       from: accounts[0],
       data: {
         asset: ZERO_ADDRESS,
@@ -612,7 +612,7 @@ async function main() {
         guildName: 'REPGuild',
         proposal: 0,
         action: '1',
-        votingPower: web3.utils.toWei('100').toString(),
+        votingPower: web3.utils.toWei('81000').toString(),
       },
     },
     {
@@ -652,7 +652,7 @@ async function main() {
         guildName: 'REPGuild',
         proposal: 1,
         action: '1',
-        votingPower: web3.utils.toWei('100').toString(),
+        votingPower: web3.utils.toWei('81000').toString(),
       },
     },
     {
@@ -689,7 +689,7 @@ async function main() {
         guildName: 'REPGuild',
         proposal: 2,
         action: '1',
-        votingPower: web3.utils.toWei('50').toString(),
+        votingPower: web3.utils.toWei('81000').toString(),
       },
     },
     {

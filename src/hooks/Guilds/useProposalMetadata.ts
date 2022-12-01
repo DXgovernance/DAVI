@@ -21,14 +21,6 @@ function useProposalMetadata(guildId: string, proposalId: string) {
       proposal?.contentHash?.substring(7, proposal?.contentHash?.length + 1)
     );
 
-  console.log(`contentHash: ${proposal?.contentHash}`);
-  console.log(
-    `contentHash con substring: ${proposal?.contentHash?.substring(
-      7,
-      proposal?.contentHash?.length + 1
-    )}`
-  );
-
   if (error || metadataError) {
     return { error: error || metadataError };
   } else if (!proposal || !metadata) {
