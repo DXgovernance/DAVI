@@ -40,8 +40,9 @@ const useProposal = (guildId: string, proposalId: `0x${string}`) => {
     address: guildId,
     abi: BaseERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      const eventProposalId = eventDetails.args[0];
+      if (eventProposalId === proposalId) refetch();
     },
   });
 
@@ -49,8 +50,8 @@ const useProposal = (guildId: string, proposalId: `0x${string}`) => {
     address: guildId,
     abi: BaseERC20Guild.abi,
     eventName: 'VoteAdded',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      if (node === proposalId) refetch();
     },
   });
 

@@ -29,8 +29,8 @@ const useProposalVotesOfVoter = (
       !!guildAddress && !!proposalId && !!userAddress ? guildAddress : null,
     abi: BaseERC20Guild.abi,
     eventName: 'VoteAdded',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      if (node === proposalId) refetch();
     },
   });
 

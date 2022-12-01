@@ -12,8 +12,9 @@ export const useGuildProposalIds = (guildId: string) => {
     address: guildId,
     abi: BaseERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      const newState = eventDetails.args[1].toNumber();
+      if (newState === 1) refetch();
     },
   });
 

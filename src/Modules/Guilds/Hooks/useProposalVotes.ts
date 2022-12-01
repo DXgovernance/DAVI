@@ -13,8 +13,8 @@ const useProposalVotes = (guildId: string, proposalId: string) => {
     address: guildId,
     abi: BaseERC20GuildContract.abi,
     eventName: 'VoteAdded',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      if (node === proposalId) refetch();
     },
   });
 

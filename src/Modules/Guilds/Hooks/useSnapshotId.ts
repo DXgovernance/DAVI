@@ -23,8 +23,9 @@ const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
     address: isSnapshotGuild ? contractAddress : null,
     abi: SnapshotERC20Guild.abi,
     eventName: 'ProposalStateChanged',
-    listener() {
-      refetch();
+    listener(node, label, eventDetails) {
+      const eventProposalId = eventDetails.args[0];
+      if (eventProposalId === proposalId) refetch();
     },
   });
 
