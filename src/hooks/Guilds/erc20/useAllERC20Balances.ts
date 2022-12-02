@@ -47,7 +47,7 @@ export const useAllERC20Balances = (
 
   // Get Native token balance
   const { data: nativeTokenBalance } = useBalance({
-    address: walletAddress,
+    addressOrName: walletAddress,
   });
   const nativeTokenWithBalance = useMemo(() => {
     if (!nativeTokenBalance) return null;
