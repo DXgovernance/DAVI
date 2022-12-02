@@ -3,8 +3,6 @@ import { ContractState } from 'types/types.guilds.d';
 export const getProposalIdFromEvent = (event): string => {
   if (!event || !event.length) return null;
 
-  debugger;
-
   const params = event[event.length - 1].args;
   return params.proposalId;
 };

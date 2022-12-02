@@ -22,7 +22,6 @@ const useCurrentSnapshotId = ({
     abi: SnapshotERC20Guild.abi,
     eventName: 'ProposalStateChanged',
     listener(node, label, owner) {
-      debugger;
       refetch();
     },
   });
