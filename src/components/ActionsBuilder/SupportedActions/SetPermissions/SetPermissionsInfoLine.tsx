@@ -9,7 +9,11 @@ import { Flex } from 'components/primitives/Layout';
 import { useNetwork } from 'wagmi';
 import { useTokenList } from 'hooks/Guilds/tokens/useTokenList';
 import { resolveUri } from 'utils/url';
-import { shortenAddress } from 'utils';
+import {
+  shortenAddress,
+  ERC20_TRANSFER_SIGNATURE,
+  ERC20_APPROVE_SIGNATURE,
+} from 'utils';
 
 const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
   decodedCall,
@@ -48,7 +52,15 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <BiCheckShield size={16} />
       </Segment>
-      <Segment>{t('setPermissionsFor')}</Segment>
+      <Segment>
+        {t(
+          parsedData?.functionSignature === ERC20_APPROVE_SIGNATURE
+            ? 'setApprovalPermissionsFor'
+            : parsedData?.functionSignature === ERC20_TRANSFER_SIGNATURE
+            ? 'setTransferPermissionsFor'
+            : 'setPermissionsFor'
+        )}
+      </Segment>
       <Segment>
         {currentToken && currentToken.address ? (
           <>

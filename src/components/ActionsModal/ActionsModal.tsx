@@ -34,7 +34,9 @@ const ActionModal: React.FC<ActionModalProps> = ({
   action,
   isOpen,
   setIsOpen,
-  onAddAction,
+  onAddActions,
+  onEditAction,
+  isEditing,
 }) => {
   const { t } = useTranslation();
   const { guildId } = useTypedParams();
@@ -127,8 +129,11 @@ const ActionModal: React.FC<ActionModalProps> = ({
           fn={fn}
           defaultValues={data?.args}
           onSubmit={args => {
-            onAddAction({
-              id: `action-${Math.random()}`,
+            const submitAction = {
+              id:
+                isEditing && !!action?.id
+                  ? action.id
+                  : `action-${Math.random()}`,
               contract: contractInterface,
               decodedCall: {
                 callType: SupportedAction.GENERIC_CALL,
@@ -152,7 +157,9 @@ const ActionModal: React.FC<ActionModalProps> = ({
                     ...payableFnData,
                   },
                 }),
-            });
+            };
+            if (isEditing && onEditAction) onEditAction(submitAction);
+            else if (onAddActions) onAddActions([submitAction]);
             handleClose();
           }}
         />
@@ -176,7 +183,8 @@ const ActionModal: React.FC<ActionModalProps> = ({
           <Editor
             decodedCall={data}
             updateCall={setData}
-            onSubmit={saveSupportedAction}
+            onSubmit={handleEditorSubmit}
+            isEdit={isEditing}
           />
         </EditorWrapper>
       );
@@ -224,19 +232,22 @@ const ActionModal: React.FC<ActionModalProps> = ({
     setSelectedAction(action);
   }
 
-  function saveSupportedAction(call?: DecodedCall) {
-    const decodedCall = call ?? data;
+  function buildAction(decodedCall: DecodedCall): DecodedAction {
+    if (!decodedCall) return null;
     const defaultDecodedAction = defaultValues[decodedCall.callType];
 
-    if (!selectedAction || !decodedCall) return;
-
     const decodedAction: DecodedAction = {
-      id: `action-${Math.random()}`,
+      id: isEditing && !!action?.id ? action.id : `action-${Math.random()}`, // Mantain id if is edit mode & id is exists
       decodedCall,
       contract: defaultDecodedAction.contract,
     };
+    return decodedAction;
+  }
 
-    onAddAction(decodedAction);
+  function handleEditorSubmit(calls?: DecodedCall[]) {
+    if (!calls) return;
+    if (isEditing && onEditAction) onEditAction(buildAction(calls[0]));
+    else onAddActions(calls.map(buildAction));
     handleClose();
   }
 

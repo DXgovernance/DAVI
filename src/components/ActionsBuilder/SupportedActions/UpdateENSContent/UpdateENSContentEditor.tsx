@@ -56,20 +56,22 @@ const UpdateENSContentEditor: React.FC<ActionEditorProps> = ({
     const { nameHash } = convertToNameHash(fullEnsName);
     const { contentHash } = convertToContentHash(values.ipfsHash);
 
-    onSubmit({
-      ...decodedCall,
-      to: resolver?.address,
-      args: {
-        ...decodedCall.args,
-        node: nameHash,
-        hash: contentHash,
+    onSubmit([
+      {
+        ...decodedCall,
+        to: resolver?.address,
+        args: {
+          ...decodedCall.args,
+          node: nameHash,
+          hash: contentHash,
+        },
+        optionalProps: {
+          ...decodedCall.optionalProps,
+          ensName: values.ensName,
+          ipfsHash: values.ipfsHash,
+        },
       },
-      optionalProps: {
-        ...decodedCall.optionalProps,
-        ensName: values.ensName,
-        ipfsHash: values.ipfsHash,
-      },
-    });
+    ]);
   };
 
   if (chain.id === LOCALHOST_ID)

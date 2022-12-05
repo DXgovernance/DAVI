@@ -197,7 +197,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     });
 
     if (Object.keys(updatedValues).length > 0) {
-      return onSubmit(call);
+      return onSubmit([call]);
     }
     return setNoValueUpdatedError(true);
   };
