@@ -8,12 +8,26 @@ import RawTransactionEditor from './RawTransactionEditor';
 
 jest.mock('wagmi', () => ({
   __esModule: true,
-  useEnsResolver: () => ({
-    data: {
-      name: MOCK_ENS_NAME,
-      address: MOCK_ADDRESS,
-    },
-  }),
+  useEnsResolver: ({ name, chainId }) => {
+    console.log(`useENSResolver input: ${name}`);
+    if (!name || name === '.eth') {
+      console.log(`useENSResolver output: null`);
+      return {
+        data: {
+          name: null,
+          address: null,
+        },
+      };
+    } else {
+      console.log(`useENSResolver output: data`);
+      return {
+        data: {
+          name: MOCK_ENS_NAME,
+          address: MOCK_ADDRESS,
+        },
+      };
+    }
+  },
   useNetwork: () => ({
     chain: {
       id: 1,
@@ -24,12 +38,35 @@ jest.mock('wagmi', () => ({
       },
     },
   }),
-  useEnsName: () => ({
-    data: MOCK_ENS_NAME,
-  }),
-  useEnsAddress: () => ({
-    data: MOCK_ADDRESS,
-  }),
+  useEnsName: ({ address, chainId }) => {
+    console.log(`useENSName input: ${address}`);
+
+    if (!address) {
+      console.log(`useENSName output: null`);
+      return {
+        data: null,
+      };
+    } else {
+      console.log(`useENSName output: data`);
+      return {
+        data: MOCK_ENS_NAME,
+      };
+    }
+  },
+  useEnsAddress: ({ name, chainId }) => {
+    console.log(`useEnsAddress input: ${name}`);
+    if (!name || name === '.eth' || name === 'invalidAddress.eth') {
+      console.log(`useEnsAddress output: null`);
+      return {
+        data: null,
+      };
+    } else {
+      console.log(`useEnsAddress output: data`);
+      return {
+        data: MOCK_ADDRESS,
+      };
+    }
+  },
   useContractRead: () => ({
     data: 'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be',
   }),

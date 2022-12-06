@@ -20,16 +20,17 @@ const isApprovalData = (data: string) =>
 const isApprovalCall = (call: Call) => isApprovalData(call?.data);
 const isZeroHash = (data: string) => data === ZERO_HASH;
 
-const useProposalCalls = (guildId: string, proposalId: string) => {
+const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
   const votingResults = useVotingResults(guildId, proposalId);
+
   const { contracts } = useRichContractRegistry();
   const { chain } = useNetwork();
   const { t } = useTranslation();
   // Used to wait for the bytecode to be fetched
-  const { isSnapshotGuild } = useGuildImplementationTypeConfig(guildId);
+  const { loaded } = useGuildImplementationTypeConfig(guildId);
   const theme = useTheme();
   const [options, setOptions] = useState<Option[]>([]);
 
@@ -87,7 +88,7 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
   }, [calls, callsPerOption, totalOptionsNum]);
 
   useEffect(() => {
-    if (!guildId || !proposalId || !splitCalls) {
+    if (!guildId || !proposalId || !splitCalls || !loaded) {
       setOptions([]);
       return;
     }
@@ -165,7 +166,8 @@ const useProposalCalls = (guildId: string, proposalId: string) => {
     theme,
     optionLabels,
     totalOptionsNum,
-    isSnapshotGuild,
+    votingResults?.totalLocked,
+    loaded,
   ]);
 
   return {

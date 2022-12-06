@@ -1,7 +1,6 @@
 import { ActionEditorProps } from '..';
 import { Button } from 'components/primitives/Button';
 import { Controller, useForm } from 'react-hook-form';
-import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
 import { Avatar } from 'components/Avatar';
 import { TokenPicker } from 'components/TokenPicker';
 import { Input } from 'components/primitives/Forms/Input';
@@ -14,9 +13,8 @@ import {
   useTokenList,
 } from 'hooks/Guilds/tokens/useTokenList';
 import { useMemo, useState } from 'react';
-import { FiChevronDown, FiX } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 import styled from 'styled-components';
-import { MAINNET_ID } from 'utils';
 import { resolveUri } from 'utils/url';
 import {
   Control,
@@ -30,6 +28,7 @@ import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import ERC20 from 'contracts/ERC20.json';
+import { AddressInput } from 'components/primitives/Forms/AddressInput';
 
 const Error = styled(ErrorLabel)`
   margin-top: 0.5rem;
@@ -39,11 +38,6 @@ const Spacer = styled(Box)`
   margin-right: 1rem;
 `;
 
-const ClickableIcon = styled(Box)`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-`;
 interface TransferValues {
   token: TokenInfoWithType;
   amount: BigNumber;
@@ -85,44 +79,42 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     }
   }, [decodedCall, tokens]);
 
-  const { control, handleSubmit, getValues } = useForm({
+  const { control, handleSubmit } = useForm({
     resolver: validateERC20Transfer,
     context: { t },
     defaultValues: parsedData,
   });
 
-  const { recipientAddress } = getValues();
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
-
-  const { imageUrl: destinationAvatarUrl } = useENSAvatar(
-    recipientAddress,
-    MAINNET_ID
-  );
 
   const submitAction = (values: TransferValues) => {
     if (values.token.type === TokenType.ERC20) {
       const ERC20Contract = new utils.Interface(ERC20.abi);
 
-      onSubmit({
-        ...decodedCall,
-        callType: SupportedAction.ERC20_TRANSFER,
-        to: values.token.address,
-        value: BigNumber.from(0),
-        function: ERC20Contract.getFunction('transfer'),
-        args: {
-          _value: values.amount,
-          _to: values.recipientAddress,
+      onSubmit([
+        {
+          ...decodedCall,
+          callType: SupportedAction.ERC20_TRANSFER,
+          to: values.token.address,
+          value: BigNumber.from(0),
+          function: ERC20Contract.getFunction('transfer'),
+          args: {
+            _value: values.amount,
+            _to: values.recipientAddress,
+          },
         },
-      });
+      ]);
     } else {
-      onSubmit({
-        ...decodedCall,
-        callType: SupportedAction.NATIVE_TRANSFER,
-        to: values.recipientAddress,
-        value: values.amount,
-        function: null,
-        args: null,
-      });
+      onSubmit([
+        {
+          ...decodedCall,
+          callType: SupportedAction.NATIVE_TRANSFER,
+          to: values.recipientAddress,
+          value: values.amount,
+          function: null,
+          args: null,
+        },
+      ]);
     }
   };
 
@@ -133,38 +125,21 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
           name="recipientAddress"
           control={control}
           render={({ field: { ref, ...field }, fieldState }) => {
-            const { invalid, error } = fieldState;
+            const { error } = fieldState;
 
             return (
               <Control>
                 <ControlLabel>{t('recipient')}</ControlLabel>
                 <ControlRow>
-                  <Input
+                  <AddressInput
                     {...field}
+                    isInvalid={!!error}
+                    name="recipient-address"
+                    aria-label="recipient address input"
                     placeholder={t('ethereumAddress')}
-                    isInvalid={invalid && !!error}
-                    onChange={e => field.onChange(e.target.value)}
-                    icon={
-                      <div>
-                        {!invalid && !error && (
-                          <Avatar
-                            src={destinationAvatarUrl}
-                            defaultSeed={field.value}
-                            size={24}
-                          />
-                        )}
-                      </div>
-                    }
-                    iconRight={
-                      field.value ? (
-                        <ClickableIcon onClick={() => field.onChange('')}>
-                          <FiX size={18} />
-                        </ClickableIcon>
-                      ) : null
-                    }
                   />
                 </ControlRow>
-                {invalid && !!error && <Error>{error.message}</Error>}
+                {!!error && <Error>{error.message}</Error>}
               </Control>
             );
           }}
@@ -175,7 +150,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
             name="amount"
             control={control}
             render={({ field: { ref, ...field }, fieldState }) => {
-              const { invalid, error } = fieldState;
+              const { error } = fieldState;
 
               return (
                 <Control>
@@ -184,11 +159,11 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                     <TokenAmountInput
                       {...field}
                       decimals={field.value?.decimals}
-                      isInvalid={invalid && !!error}
+                      isInvalid={!!error}
                     />
                   </ControlRow>
 
-                  {invalid && !!error && <Error>{error.message}</Error>}
+                  {!!error && <Error>{error.message}</Error>}
                 </Control>
               );
             }}
@@ -200,7 +175,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
             name="token"
             control={control}
             render={({ field: { ref, ...field }, fieldState }) => {
-              const { invalid, error } = fieldState;
+              const { error } = fieldState;
               return (
                 <>
                   <Control>
@@ -210,7 +185,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                         {...field}
                         value={field.value?.symbol}
                         placeholder={t('token')}
-                        isInvalid={invalid && !!error}
+                        isInvalid={!!error}
                         icon={
                           <div>
                             {field.value && (
@@ -226,7 +201,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                         readOnly
                       />
                     </ControlRow>
-                    {invalid && !!error && <Error>{error.message}</Error>}
+                    {!!error && <Error>{error.message}</Error>}
                   </Control>
 
                   <TokenPicker

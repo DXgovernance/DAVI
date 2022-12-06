@@ -24,9 +24,9 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
 
   const option = useMemo(() => {
     if (!options) return null;
-    return options?.reduce(
+    return options.reduce(
       (acc, option) =>
-        bn(option?.totalVotes).gt(bn(acc?.totalVotes)) ? option : acc,
+        bn(option.totalVotes).gt(bn(acc.totalVotes)) ? option : acc,
       options[0]
     );
   }, [options]);

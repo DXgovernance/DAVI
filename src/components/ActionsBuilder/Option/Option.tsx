@@ -43,16 +43,16 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   } = useSortable({ id: option.id });
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false);
 
-  function addAction(action: DecodedAction) {
+  function addActions(actions: DecodedAction[]) {
     onChange({
       ...option,
-      decodedActions: [...option.decodedActions, action],
+      decodedActions: [...option.decodedActions, ...actions],
     });
   }
 
-  function updateAction(index: number, action: DecodedAction) {
-    const updatedActions = option?.decodedActions.map((a, i) =>
-      index === i ? action : a
+  function updateAction(action: DecodedAction) {
+    const updatedActions = option?.decodedActions.map(a =>
+      a.id === action.id ? action : a
     );
     onChange({ ...option, decodedActions: updatedActions });
   }
@@ -118,7 +118,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
                   key={index}
                   isEditable={true}
                   decodedAction={action}
-                  onEdit={updatedAction => updateAction(index, updatedAction)}
+                  onEdit={updateAction}
                   onRemove={targetAction => removeAction(targetAction)}
                 />
               );
@@ -137,10 +137,12 @@ export const OptionRow: React.FC<OptionRowProps> = ({
       <ActionModal
         isOpen={isActionsModalOpen}
         setIsOpen={setIsActionsModalOpen}
-        onAddAction={action => {
-          addAction(action);
+        onAddActions={action => {
+          addActions(action);
           setIsActionsModalOpen(false);
         }}
+        onEditAction={updateAction}
+        isEditing={false}
       />
     </OptionWrapper>
   );

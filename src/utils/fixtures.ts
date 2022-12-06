@@ -50,6 +50,10 @@ export const guildConfigMock: GuildConfigProps = {
   lockTime: BigNumber.from(300),
   votingPowerPercentageForProposalExecution: BigNumber.from(500000000000000),
   votingPowerPercentageForProposalCreation: BigNumber.from(3000000000000000),
+  voteGas: BigNumber.from(10),
+  maxGasPrice: BigNumber.from(1000),
+  minimumMembersForProposalCreation: BigNumber.from(1000),
+  minimumTokensLockedForProposalCreation: BigNumber.from(1000),
 };
 
 export const actionMock: Call = {

@@ -222,11 +222,12 @@ exports[`RawTransactionEditor valid inputs should match snapshot 1`] = `
               </div>
             </div>
             <input
+              aria-label="address input"
               class="c8"
-              data-testid="input-to"
+              data-testid="address input"
               name="to"
               placeholder="ethereumAddress"
-              value="0x0000000000000000000000000000000000000000"
+              value="wagmi.eth"
             />
             <div
               class="c9"
@@ -234,6 +235,7 @@ exports[`RawTransactionEditor valid inputs should match snapshot 1`] = `
               <div
                 aria-label="clear address"
                 class="c0 c10"
+                data-testid="clear address"
               >
                 <svg
                   fill="none"
@@ -282,6 +284,7 @@ exports[`RawTransactionEditor valid inputs should match snapshot 1`] = `
               class="c5"
             />
             <input
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -298,7 +301,38 @@ exports[`RawTransactionEditor valid inputs should match snapshot 1`] = `
             />
             <div
               class="c9"
-            />
+            >
+              <div
+                aria-label="clear number"
+                class="c0 c10"
+                data-testid="clear number"
+              >
+                <svg
+                  fill="none"
+                  height="18"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  width="18"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <line
+                    x1="18"
+                    x2="6"
+                    y1="6"
+                    y2="18"
+                  />
+                  <line
+                    x1="6"
+                    x2="18"
+                    y1="6"
+                    y2="18"
+                  />
+                </svg>
+              </div>
+            </div>
           </div>
         </div>
       </div>

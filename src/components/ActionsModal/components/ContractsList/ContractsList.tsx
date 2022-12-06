@@ -4,6 +4,7 @@ import { ReactComponent as Vector } from 'assets/images/vector.svg';
 import ENSIcon from 'assets/images/ens.svg';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { StyledIcon } from 'components/primitives/StyledIcon';
+import { AiFillSetting } from 'react-icons/ai';
 import {
   ActionsButton,
   ButtonDetail,
@@ -88,6 +89,16 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonLabel>
           </ActionsButton>
         ) : null}
+        <ActionsButton
+          onClick={() =>
+            onSupportedActionSelect(SupportedAction.SET_GUILD_CONFIG)
+          }
+        >
+          <ButtonLabel>
+            <StyledIcon src={() => <AiFillSetting size={20} />} />
+            {t('setGuildConfig')}
+          </ButtonLabel>
+        </ActionsButton>
       </SectionWrapper>
       <SectionWrapper>
         <SectionTitle>{t('externalContracts')}</SectionTitle>

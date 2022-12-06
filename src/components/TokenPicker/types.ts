@@ -4,7 +4,7 @@ import { TokenInfoWithType } from 'hooks/Guilds/tokens/useTokenList';
 export type TokenWithBalanceIndexable = TokenWithBalance & { id: string };
 
 export interface TokenPickerProps {
-  walletAddress?: string;
+  walletAddress?: `0x${string}`;
   isOpen: boolean;
   onClose: () => void;
   onSelect: (token: TokenInfoWithType) => void;

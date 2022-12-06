@@ -1,4 +1,4 @@
-import contenthash from 'content-hash';
+import contenthash from '@ensdomains/content-hash';
 import { MAINNET_ID, LOCALHOST_ID } from 'utils';
 import { utils } from 'ethers';
 import { isEnsName, isIpfsHash } from './validations';

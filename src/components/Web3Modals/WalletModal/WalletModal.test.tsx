@@ -12,11 +12,35 @@ jest.mock('provider/ReadOnlyConnector', () => ({
 
 jest.mock('wagmi', () => ({
   chain: {},
-  useAccount: () => ({ isConnected: true }),
+  useAccount: () => ({ isConnected: true, connector: 'test' }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useSwitchNetwork: () => ({ switchNetwork: jest.fn() }),
   useConnect: () => ({ connect: jest.fn(), connectors: [] }),
   useDisconnect: () => ({ disconnect: jest.fn() }),
+  useEnsName: () => ({
+    data: 'name.eth',
+  }),
+  useEnsAddress: () => ({
+    data: '0x0000000000000000000000000000000000000000',
+  }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+    },
+  }),
+  useContractRead: () => ({
+    data: 'e30101701220e09973e8c9e391cb063bd6654356e64e0ceced7858a29a8c01b165e30a5eb5be',
+  }),
+  useContractReads: () => ({ data: [] }),
+}));
+
+jest.mock('provider', () => ({
+  getBlockExplorerUrl: () => null,
+}));
+
+jest.mock('provider/wallets', () => ({
+  isReadOnly: () => true,
 }));
 
 describe('WalletModal', () => {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CallDetails Should match 1`] = `
-.c10 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -26,25 +26,25 @@ exports[`CallDetails Should match 1`] = `
   width: auto;
 }
 
-.c10:disabled {
+.c12:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c10:hover:enabled {
+.c12:hover:enabled {
   border-color: #fff;
 }
 
-.c10:active:enabled {
+.c12:active:enabled {
   border: 1px solid #303338;
 }
 
-.c10:disabled {
+.c12:disabled {
   color: #303338;
 }
 
-.c6 {
+.c7 {
   height: 1.6rem;
   width: 1.6rem;
 }
@@ -63,13 +63,32 @@ exports[`CallDetails Should match 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c5 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c8 {
   border-radius: 50%;
   height: 24px;
   width: 24px;
 }
 
-.c5 {
+.c6 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -85,10 +104,40 @@ exports[`CallDetails Should match 1`] = `
   align-items: center;
 }
 
-.c12 {
+.c14 {
   padding: 0.125rem 0.375rem;
   background-color: #303338;
   border-radius: 10px;
+}
+
+.c9 {
+  color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c9:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .c2 {
@@ -115,42 +164,18 @@ exports[`CallDetails Should match 1`] = `
   margin: 0;
 }
 
-.c8 {
-  color: #A1A6B0;
-  margin-right: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c8:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.c13 {
+.c15 {
   margin: 0;
   padding: 0;
   color: #fff;
   background-color: transparent;
 }
 
-.c9 {
+.c11 {
   padding-top: 0.75rem;
 }
 
-.c11 {
+.c13 {
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
@@ -179,54 +204,72 @@ exports[`CallDetails Should match 1`] = `
       <div
         class="c1 c2 c4"
       >
-        <span
+        <div
           class="c5"
+          data-testid="block-explorer-container"
+          direction="row"
         >
-          <img
-            alt="Avatar"
-            class="c6 c7"
-            data-testid="avatar"
-            size="24"
-            src="test"
-          />
-        </span>
-        <a
-          class="c8"
-          rel="noopener"
-          target="_blank"
-        >
-          test.eth
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="c6"
           >
-            <path
-              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            <img
+              alt="Avatar"
+              class="c7 c8"
+              data-testid="avatar"
+              size="24"
+              src="test"
             />
-            <path
-              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-            />
-          </svg>
-        </a>
+          </span>
+          <a
+            class="c9"
+            rel="noopener"
+            target="_blank"
+          >
+            <div
+              class="c1 c10"
+            >
+              test.eth
+            </div>
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              />
+              <polyline
+                points="15 3 21 3 21 9"
+              />
+              <line
+                x1="10"
+                x2="21"
+                y1="14"
+                y2="3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
   <div
-    class="c1 c9"
+    class="c1 c11"
   >
     <button
-      class="c10 c11"
+      class="c12 c13"
     >
       transfer
        (
       <span>
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           address
@@ -237,7 +280,7 @@ exports[`CallDetails Should match 1`] = `
           , 
         </span>
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           uint256
@@ -251,7 +294,7 @@ exports[`CallDetails Should match 1`] = `
 `;
 
 exports[`CallDetails Should match with empty data 1`] = `
-.c10 {
+.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -276,25 +319,25 @@ exports[`CallDetails Should match with empty data 1`] = `
   width: auto;
 }
 
-.c10:disabled {
+.c12:disabled {
   color: initial;
   opacity: 0.4;
   cursor: auto;
 }
 
-.c10:hover:enabled {
+.c12:hover:enabled {
   border-color: #fff;
 }
 
-.c10:active:enabled {
+.c12:active:enabled {
   border: 1px solid #303338;
 }
 
-.c10:disabled {
+.c12:disabled {
   color: #303338;
 }
 
-.c6 {
+.c7 {
   height: 1.6rem;
   width: 1.6rem;
 }
@@ -313,27 +356,46 @@ exports[`CallDetails Should match with empty data 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c17 {
   box-sizing: 'border-box';
   min-width: 0;
   margin: 1rem 0 0;
   padding: 0;
 }
 
-.c14 {
+.c5 {
+  display: Flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.c16 {
   width: 100%;
   min-width: 200px;
   height: 1px;
   background-color: #303338;
 }
 
-.c7 {
+.c8 {
   border-radius: 50%;
   height: 24px;
   width: 24px;
 }
 
-.c5 {
+.c6 {
   margin-right: 0.5rem;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -349,10 +411,40 @@ exports[`CallDetails Should match with empty data 1`] = `
   align-items: center;
 }
 
-.c12 {
+.c14 {
   padding: 0.125rem 0.375rem;
   background-color: #303338;
   border-radius: 10px;
+}
+
+.c9 {
+  color: #A1A6B0;
+  margin-right: 0.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow-wrap: break-word;
+}
+
+.c9:hover {
+  cursor: pointer;
+  color: #fff;
+}
+
+.c10 {
+  margin-right: 0.5rem;
+  overflow-wrap: break-word;
 }
 
 .c2 {
@@ -379,42 +471,18 @@ exports[`CallDetails Should match with empty data 1`] = `
   margin: 0;
 }
 
-.c8 {
-  color: #A1A6B0;
-  margin-right: 0.5rem;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c8:hover {
-  cursor: pointer;
-  color: #fff;
-}
-
-.c13 {
+.c15 {
   margin: 0;
   padding: 0;
   color: #fff;
   background-color: transparent;
 }
 
-.c9 {
+.c11 {
   padding-top: 0.75rem;
 }
 
-.c11 {
+.c13 {
   font-size: 12px;
   margin: 0;
   padding: 4px 8px;
@@ -443,60 +511,78 @@ exports[`CallDetails Should match with empty data 1`] = `
       <div
         class="c1 c2 c4"
       >
-        <span
+        <div
           class="c5"
+          data-testid="block-explorer-container"
+          direction="row"
         >
-          <img
-            alt="Avatar"
-            class="c6 c7"
-            data-testid="avatar"
-            size="24"
-            src="test"
-          />
-        </span>
-        <a
-          class="c8"
-          rel="noopener"
-          target="_blank"
-        >
-          test.eth
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
+          <span
+            class="c6"
           >
-            <path
-              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
+            <img
+              alt="Avatar"
+              class="c7 c8"
+              data-testid="avatar"
+              size="24"
+              src="test"
             />
-            <path
-              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-            />
-          </svg>
-        </a>
+          </span>
+          <a
+            class="c9"
+            rel="noopener"
+            target="_blank"
+          >
+            <div
+              class="c1 c10"
+            >
+              test.eth
+            </div>
+            <svg
+              fill="none"
+              height="1em"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              />
+              <polyline
+                points="15 3 21 3 21 9"
+              />
+              <line
+                x1="10"
+                x2="21"
+                y1="14"
+                y2="3"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
     <div
-      class="c1 c9"
+      class="c1 c11"
     >
       <button
-        class="c10 c11"
+        class="c12 c13"
       >
         approve
          (
          
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           address
         </span>
         , 
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           uint256
@@ -507,10 +593,10 @@ exports[`CallDetails Should match with empty data 1`] = `
     </div>
   </div>
   <div
-    class="c14"
+    class="c16"
   />
   <div
-    class="c15"
+    class="c17"
   >
     <div
       class="c1 c2 c3"
@@ -529,55 +615,20 @@ exports[`CallDetails Should match with empty data 1`] = `
     >
       <div
         class="c1 c2 c4"
-      >
-        <span
-          class="c5"
-        >
-          <img
-            alt="Avatar"
-            class="c6 c7"
-            data-testid="avatar"
-            size="24"
-            src="test"
-          />
-        </span>
-        <a
-          class="c8"
-          rel="noopener"
-          target="_blank"
-        >
-          test.eth
-          <svg
-            fill="currentColor"
-            height="1em"
-            stroke="currentColor"
-            stroke-width="0"
-            viewBox="0 0 24 24"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="m13 3 3.293 3.293-7 7 1.414 1.414 7-7L21 11V3z"
-            />
-            <path
-              d="M19 19H5V5h7l-2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2v-5l-2-2v7z"
-            />
-          </svg>
-        </a>
-      </div>
+      />
     </div>
   </div>
   <div
-    class="c1 c9"
+    class="c1 c11"
   >
     <button
-      class="c10 c11"
+      class="c12 c13"
     >
       transfer
        (
       <span>
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           address
@@ -588,7 +639,7 @@ exports[`CallDetails Should match with empty data 1`] = `
           , 
         </span>
         <span
-          class="c12 c13"
+          class="c14 c15"
           color="#fff"
         >
           uint256

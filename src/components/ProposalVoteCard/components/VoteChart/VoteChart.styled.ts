@@ -71,7 +71,7 @@ export const VoteQuorumContainer = styled.div<{ quorum: number }>`
       ? `${quorum}%`
       : quorum > 90
       ? `calc(${quorum}% - 65px)`
-      : `calc(${quorum}% - 22px)`};
+      : `calc(${quorum}% - 32px)`};
 `;
 
 export const PaddedFlagCheckered = styled(FaFlagCheckered)`

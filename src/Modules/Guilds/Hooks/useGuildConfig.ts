@@ -1,75 +1,58 @@
 import { BigNumber } from 'ethers';
 import { useMemo } from 'react';
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import { useContractReads } from 'wagmi';
 import { useVotingPowerForProposalExecution } from 'Modules/Guilds/Hooks/useVotingPowerForProposalExecution';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 export type GuildConfigProps = {
   name: string;
-  token: string;
+  token: `0x${string}`;
   permissionRegistry: string;
   proposalTime: BigNumber;
   timeForExecution: BigNumber;
   maxActiveProposals: BigNumber;
   votingPowerForProposalCreation: BigNumber;
   votingPowerForProposalExecution: BigNumber;
-  tokenVault: string;
+  tokenVault: `0x${string}`;
   lockTime: BigNumber;
+  voteGas: BigNumber;
+  maxGasPrice: BigNumber;
   votingPowerPercentageForProposalExecution: BigNumber;
   votingPowerPercentageForProposalCreation: BigNumber;
+  minimumMembersForProposalCreation: BigNumber;
+  minimumTokensLockedForProposalCreation: BigNumber;
 };
 
-export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
-  const erc20GuildContract = {
-    addressOrName: guildAddress,
-    contractInterface: BaseERC20GuildContract.abi,
-  };
+const GETTER_FUNCTIONS = [
+  'getPermissionRegistry',
+  'getName',
+  'getProposalTime',
+  'getTimeForExecution',
+  'getMaxActiveProposals',
+  'getVotingPowerForProposalCreation',
+  'getTokenVault',
+  'getLockTime',
+  'getVoteGas',
+  'getMaxGasPrice',
+  'votingPowerPercentageForProposalExecution',
+  'votingPowerPercentageForProposalCreation',
+  'getMinimumMembersForProposalCreation',
+  'getMinimumTokensLockedForProposalCreation',
+];
 
+export const useGuildConfig = (
+  guildAddress: string,
+  proposalId?: `0x${string}`
+) => {
   const { data, ...rest } = useContractReads({
-    contracts: [
-      {
-        ...erc20GuildContract,
-        functionName: 'getPermissionRegistry', // Get the address of the permission registry contract
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getName', // Get the name of the ERC20Guild
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getProposalTime', // Get the proposalTime (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getTimeForExecution', // Get the timeForExecution (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getMaxActiveProposals', // Get the maxActiveProposals
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getVotingPowerForProposalCreation',
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getTokenVault', // Get the address of the token vault
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'getLockTime', // Get the lockTime (seconds)
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'votingPowerPercentageForProposalExecution',
-      },
-      {
-        ...erc20GuildContract,
-        functionName: 'votingPowerPercentageForProposalCreation',
-      },
-    ],
+    contracts: GETTER_FUNCTIONS.map(functionName => ({
+      address: guildAddress,
+      abi: BaseERC20Guild.abi,
+      functionName,
+    })),
   });
+
   const { data: token } = useGuildToken(guildAddress);
   const { data: votingPowerForProposalExecution } =
     useVotingPowerForProposalExecution({
@@ -78,7 +61,6 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
     });
   const transformedData = useMemo(() => {
     if (!data) return undefined;
-
     const [
       permissionRegistry,
       name,
@@ -88,9 +70,20 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation,
       tokenVault,
       lockTime,
+      voteGas,
+      maxGasPrice,
       votingPowerPercentageForProposalExecution,
       votingPowerPercentageForProposalCreation,
+      minimumMembersForProposalCreation,
+      minimumTokensLockedForProposalCreation,
     ] = data;
+
+    // Made to prevent
+    // "Type '{} & readonly unknown[]' is not assignable to type '`0x${string}`'"
+    // doesn't accept ternary operator
+    let safeTokenVault;
+    if (!tokenVault) safeTokenVault = undefined;
+    else safeTokenVault = tokenVault;
 
     return {
       permissionRegistry: permissionRegistry?.toString(),
@@ -105,8 +98,10 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerForProposalCreation: votingPowerForProposalCreation
         ? BigNumber.from(votingPowerForProposalCreation)
         : undefined,
-      tokenVault: tokenVault?.toString(),
+      tokenVault: safeTokenVault,
       lockTime: lockTime ? BigNumber?.from(lockTime) : undefined,
+      voteGas: voteGas ? BigNumber?.from(voteGas) : undefined,
+      maxGasPrice: maxGasPrice ? BigNumber?.from(maxGasPrice) : undefined,
       votingPowerPercentageForProposalExecution:
         votingPowerPercentageForProposalExecution
           ? BigNumber?.from(votingPowerPercentageForProposalExecution)
@@ -114,6 +109,13 @@ export const useGuildConfig = (guildAddress: string, proposalId?: string) => {
       votingPowerPercentageForProposalCreation:
         votingPowerPercentageForProposalCreation
           ? BigNumber?.from(votingPowerPercentageForProposalCreation)
+          : undefined,
+      minimumMembersForProposalCreation: minimumMembersForProposalCreation
+        ? BigNumber?.from(minimumMembersForProposalCreation)
+        : undefined,
+      minimumTokensLockedForProposalCreation:
+        minimumTokensLockedForProposalCreation
+          ? BigNumber?.from(minimumTokensLockedForProposalCreation)
           : undefined,
     };
   }, [data]);

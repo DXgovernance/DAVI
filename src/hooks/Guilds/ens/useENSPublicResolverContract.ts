@@ -15,8 +15,8 @@ export function useENSAvatarUri(ensName: string, chainId?: number) {
   const { nameHash, error } = convertToNameHash(ensName);
   const { data, ...rest } = useContractRead({
     enabled: !error,
-    addressOrName: resolver?.address,
-    contractInterface: ensPublicResolver.abi,
+    address: resolver?.address,
+    abi: ensPublicResolver.abi,
     functionName: 'text',
     args: [nameHash, 'avatar'],
     chainId: supportedChainId,
@@ -33,10 +33,11 @@ export function useENSContentHash(ensName: string, chainId?: number) {
   const { nameHash, error } = convertToNameHash(ensName);
   const { data } = useContractRead({
     enabled: !error,
-    addressOrName: resolver?.address,
-    contractInterface: ensPublicResolver.abi,
+    address: resolver?.address,
+    chainId: supportedChainId,
+    abi: ensPublicResolver.abi,
     functionName: 'contenthash',
-    args: nameHash,
+    args: [nameHash],
     select(data) {
       return convertToIpfsHash(data.toString());
     },

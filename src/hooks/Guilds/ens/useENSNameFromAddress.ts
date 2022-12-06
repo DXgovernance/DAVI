@@ -3,7 +3,7 @@ import { isAvailableOnENS } from './utils';
 import { MAINNET_ID } from 'utils';
 
 export default function useENSNameFromAddress(
-  ensAddress?: string,
+  ensAddress?: `0x${string}`,
   chainId?: number
 ) {
   const supportedChainId = isAvailableOnENS(chainId) ? chainId : MAINNET_ID;
