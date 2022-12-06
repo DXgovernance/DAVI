@@ -9,9 +9,7 @@ import RawTransactionEditor from './RawTransactionEditor';
 jest.mock('wagmi', () => ({
   __esModule: true,
   useEnsResolver: ({ name, chainId }) => {
-    console.log(`useENSResolver input: ${name}`);
     if (!name || name === '.eth') {
-      console.log(`useENSResolver output: null`);
       return {
         data: {
           name: null,
@@ -19,7 +17,6 @@ jest.mock('wagmi', () => ({
         },
       };
     } else {
-      console.log(`useENSResolver output: data`);
       return {
         data: {
           name: MOCK_ENS_NAME,
@@ -39,29 +36,22 @@ jest.mock('wagmi', () => ({
     },
   }),
   useEnsName: ({ address, chainId }) => {
-    console.log(`useENSName input: ${address}`);
-
     if (!address) {
-      console.log(`useENSName output: null`);
       return {
         data: null,
       };
     } else {
-      console.log(`useENSName output: data`);
       return {
         data: MOCK_ENS_NAME,
       };
     }
   },
   useEnsAddress: ({ name, chainId }) => {
-    console.log(`useEnsAddress input: ${name}`);
     if (!name || name === '.eth' || name === 'invalidAddress.eth') {
-      console.log(`useEnsAddress output: null`);
       return {
         data: null,
       };
     } else {
-      console.log(`useEnsAddress output: data`);
       return {
         data: MOCK_ADDRESS,
       };
@@ -132,11 +122,37 @@ describe('RawTransactionEditor', () => {
     });
 
     it('should submit if there is value and no data', async () => {
-      // TODO: make tests for input value field
+      const mockOnSubmit = jest.fn();
+      const data = {
+        ...rawDataCallMock,
+        value: BigNumber.from(111),
+        optionalProps: { data: '' },
+      };
+      const { findByTestId } = render(
+        <RawTransactionEditor decodedCall={data} onSubmit={mockOnSubmit} />
+      );
+      const submitButton = await findByTestId('submit-rawtransaction');
+      fireEvent.submit(submitButton);
+      await waitFor(() => {
+        expect(mockOnSubmit).toHaveBeenCalled();
+      });
     });
 
     it('should submit if there is value and data is zero', async () => {
-      // TODO: make tests for input value field
+      const mockOnSubmit = jest.fn();
+      const data = {
+        ...rawDataCallMock,
+        value: BigNumber.from(111),
+        optionalProps: { data: '0x00' },
+      };
+      const { findByTestId } = render(
+        <RawTransactionEditor decodedCall={data} onSubmit={mockOnSubmit} />
+      );
+      const submitButton = await findByTestId('submit-rawtransaction');
+      fireEvent.submit(submitButton);
+      await waitFor(() => {
+        expect(mockOnSubmit).toHaveBeenCalled();
+      });
     });
   });
 
