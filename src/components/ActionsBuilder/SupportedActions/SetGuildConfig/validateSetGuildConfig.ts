@@ -2,16 +2,18 @@ import { TFunction } from 'react-i18next';
 import { SetGuildConfigFields } from './types';
 import { bn } from 'utils/safeBn';
 import { removeNullValues } from 'utils/object';
+import { GuildConfigProps } from 'Modules/Guilds/Hooks/useGuildConfig';
 
 interface Context {
   t: TFunction;
+  currentGuildConfig: GuildConfigProps;
 }
 
 interface SetGuildConfigValues extends SetGuildConfigFields {}
 
 const validateSetGuildConfig = (
   values: SetGuildConfigValues,
-  { t }: Context
+  { t, currentGuildConfig }: Context
 ) => {
   const {
     proposalTime,
@@ -38,8 +40,12 @@ const validateSetGuildConfig = (
   }
 
   if (bn(lockTime).lt(bn(proposalTime))) {
-    errors.lockTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
-    errors.proposalTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
+    if (!bn(lockTime).eq(currentGuildConfig.lockTime)) {
+      errors.lockTime = t('lockTimeHasToBeHigherOrEqualToProposalTime');
+    }
+    if (!bn(proposalTime).eq(currentGuildConfig.proposalTime)) {
+      errors.proposalTime = t('proposalTimeHasToBeLowerOrEqualToLockTime');
+    }
   }
 
   if (bn(votingPowerPercentageForProposalExecution).lte(bn(0))) {

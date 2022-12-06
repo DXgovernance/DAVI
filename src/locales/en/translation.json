@@ -273,6 +273,7 @@
   "noValueHasBeenUpdatedFromCurrentGuildConfig": "No value has been updated from current guild config",
   "proposalTimeHasToBeMoreThanZero": "Proposal time has to be more than 0",
   "lockTimeHasToBeHigherOrEqualToProposalTime": "Lock time has to be higher or equal to proposal time",
+  "proposalTimeHasToBeLowerOrEqualToLockTime": "Proposal time has to be lower than or equal to the Lock time",
   "votingPowerPercentageForProposalExecutionHasToBeMoreThanZero": "Voting power percentage for execution has to be more than 0",
   "voteGasHasToBeEqualOrLowerThan117000": "vote gas has to be equal or lower than 117000",
   "setGuildConfig": "Set Guild Config",
