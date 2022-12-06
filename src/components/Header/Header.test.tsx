@@ -21,6 +21,14 @@ jest.mock('contexts/Guilds/transactions', () => ({
   useTransactions: () => ({ transactions: [] }),
 }));
 
+jest.mock('provider', () => ({
+  getBlockExplorerUrl: () => null,
+}));
+
+jest.mock('provider/wallets', () => ({
+  isReadOnly: () => true,
+}));
+
 describe('Header', () => {
   it('Should match snapshot', () => {
     const { container } = render(<Header />);

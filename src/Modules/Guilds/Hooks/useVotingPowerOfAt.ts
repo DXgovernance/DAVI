@@ -1,11 +1,11 @@
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 import { BigNumber } from 'ethers';
-import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
 import useCurrentSnapshotId from 'Modules/Guilds/Hooks/useCurrentSnapshotId';
-import { useContractRead } from 'wagmi';
+import { useContractEvent, useContractRead } from 'wagmi';
 
 interface useVotingPowerOfAtProps {
   contractAddress: string;
-  userAddress: string;
+  userAddress: `0x${string}`;
   snapshotId?: string;
   fallbackSnapshotId?: boolean;
 }
@@ -23,25 +23,44 @@ const useVotingPowerOfAt = ({
   const SNAPSHOT_ID = fallbackSnapshotId
     ? snapshotId ?? currentSnapshotId?.toString()
     : snapshotId;
-  const { data, ...rest } = useContractRead(
+
+  const { data, refetch, ...rest } = useContractRead(
     SNAPSHOT_ID
       ? {
-          addressOrName: contractAddress,
-          contractInterface: SnapshotERC20Guild.abi,
+          address: contractAddress,
+          abi: SnapshotERC20Guild.abi,
           functionName: 'votingPowerOfAt',
-          args: [userAddress, SNAPSHOT_ID],
-          watch: true,
+          args: [userAddress, BigNumber.from(SNAPSHOT_ID)],
         }
       : {
-          addressOrName: contractAddress,
-          contractInterface: SnapshotERC20Guild.abi,
+          address: contractAddress,
+          abi: SnapshotERC20Guild.abi,
           functionName: 'votingPowerOf',
           args: [userAddress],
-          watch: true,
         }
   );
+
+  useContractEvent({
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
+    eventName: 'TokensLocked',
+    listener() {
+      refetch();
+    },
+  });
+
+  useContractEvent({
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
+    eventName: 'TokensWithdrawn',
+    listener() {
+      refetch();
+    },
+  });
+
   return {
     data: data ? BigNumber.from(data) : undefined,
+    refetch,
     ...rest,
   };
 };

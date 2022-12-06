@@ -18,7 +18,7 @@ const pokt = jsonRpcProvider({
   priority: 1,
 });
 
-const alchemy = alchemyProvider({ alchemyId: ALCHEMY_KEY, priority: 2 });
+const alchemy = alchemyProvider({ apiKey: ALCHEMY_KEY, priority: 2 });
 
 const fallback = publicProvider({ priority: 3 });
 

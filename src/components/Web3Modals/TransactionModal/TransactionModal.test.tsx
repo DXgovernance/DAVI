@@ -11,6 +11,10 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: mockChain }),
 }));
 
+jest.mock('provider', () => ({
+  getBlockExplorerUrl: () => jest.fn(),
+}));
+
 describe('TransactionModal', () => {
   it('Should match snapshot', () => {
     console.error = jest.fn();
