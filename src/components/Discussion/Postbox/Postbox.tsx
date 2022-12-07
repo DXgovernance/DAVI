@@ -1,15 +1,34 @@
 import { useState, useRef, useContext, useEffect, KeyboardEvent } from 'react';
 import { debounce } from 'lodash';
 import { OrbisContext } from 'contexts/Guilds/orbis';
-import { Button } from 'components/primitives/Button';
-import { PostboxInput } from './Postbox.styled';
-import { getUsername, getBadgeContent, highlightMentions } from 'utils/orbis';
+import {
+  PostboxWrapper,
+  PostboxInput,
+  PostboxInputWrapper,
+  PostboxMentions,
+  PostboxUserMention,
+  PostboxShare,
+  ReplyTo,
+  ReplyToDetails,
+  ReplyToCancel,
+  PostboxEditMenu,
+} from './Postbox.styled';
+import {
+  didToAddress,
+  getUsername,
+  getBadgeContent,
+  highlightMentions,
+} from 'utils/orbis';
+import { Box } from 'components/primitives/Layout';
+import { useTranslation } from 'react-i18next';
 
 const Postbox = ({
   context,
   replyTo = null,
   editPost = null,
   enterToShare = false,
+  hideShareButton = false,
+  placeholder = 'Thoughts?...',
   callback,
   cancelEdit,
   cancelReplyTo,
@@ -18,10 +37,13 @@ const Postbox = ({
   replyTo?: any;
   editPost?: any;
   enterToShare?: boolean;
+  hideShareButton?: boolean;
+  placeholder?: string;
   callback: (value: any) => void;
   cancelEdit?: () => void;
   cancelReplyTo?: () => void;
 }) => {
+  const { t } = useTranslation();
   const { orbis, profile } = useContext(OrbisContext);
 
   const postboxArea = useRef<any>(null);
@@ -121,9 +143,10 @@ const Postbox = ({
 
     if (editPost) {
       const newContent = { ...editPost.content, body, mentions: _mentions };
-      if (callback) callback(newContent);
-
-      await orbis.editPost(editPost.stream_id, newContent);
+      const res = await orbis.editPost(editPost.stream_id, newContent);
+      if (res.status === 200 && callback) {
+        callback(newContent);
+      }
     } else {
       const content = {
         body,
@@ -270,40 +293,64 @@ const Postbox = ({
   }, [editPost]);
 
   return (
-    <>
+    <PostboxWrapper>
       {searchText && (
-        <div>
+        <PostboxMentions>
           {isSearching ? (
-            <div>Loading...</div>
+            <Box>{t('mentionsSearchLoading')}</Box>
           ) : (
             searchResults.map(p => (
-              <div key={p.did} onClick={() => addMention(p)}>
+              <PostboxUserMention key={p.did} onClick={() => addMention(p)}>
                 <span>{getUsername(p?.details)}</span>
                 <span className="badge">{getBadgeContent(p?.details)}</span>
-              </div>
+              </PostboxUserMention>
             ))
           )}
-        </div>
+        </PostboxMentions>
       )}
 
-      <PostboxInput
-        ref={postboxArea}
-        contentEditable={true}
-        data-placeholder="Thoughts?..."
-        onKeyDown={handleKeyDown}
-        onKeyUp={saveCaretPos}
-        onMouseUp={saveCaretPos}
-      />
+      {replyTo && (
+        <ReplyTo>
+          <ReplyToDetails>
+            {t('replyingTo')}{' '}
+            <strong>
+              {replyTo?.creator_details?.profile?.username ||
+                replyTo?.creator_details?.metadata?.ensName ||
+                didToAddress(replyTo?.creator_details?.did, true)}
+              :
+            </strong>{' '}
+            {replyTo.content?.body}
+          </ReplyToDetails>
+          {cancelReplyTo && (
+            <ReplyToCancel onClick={cancelReplyTo}>&times;</ReplyToCancel>
+          )}
+        </ReplyTo>
+      )}
+
+      <PostboxInputWrapper>
+        <PostboxInput
+          ref={postboxArea}
+          contentEditable={true}
+          data-placeholder={placeholder}
+          onKeyDown={handleKeyDown}
+          onKeyUp={saveCaretPos}
+          onMouseUp={saveCaretPos}
+        />
+
+        {!enterToShare && !hideShareButton && (
+          <PostboxShare onClick={share}>{t('postboxShare')}</PostboxShare>
+        )}
+      </PostboxInputWrapper>
 
       {editPost && (
-        <div className="postbox__editmenu">
-          <button onClick={() => cancelEdit && cancelEdit()}>Cancel</button>{' '}
-          &bull; Enter to <button onClick={share}>Save</button>
-        </div>
+        <PostboxEditMenu>
+          <button onClick={() => cancelEdit && cancelEdit()}>
+            {t('postboxEditCancel')}
+          </button>{' '}
+          &bull; <button onClick={share}>{t('postboxEditSave')}</button>
+        </PostboxEditMenu>
       )}
-
-      {!enterToShare && <Button onClick={share}>Share</Button>}
-    </>
+    </PostboxWrapper>
   );
 };
 

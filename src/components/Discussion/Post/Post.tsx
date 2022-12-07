@@ -1,45 +1,158 @@
+import { useState, useContext, useEffect } from 'react';
 import moment from 'moment';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 import { getUsername, getBadgeContent, formatMessage } from 'utils/orbis';
 import { Avatar } from 'components/Avatar';
 import {
   PostWrapper,
   PostHeader,
   PostBody,
+  PostEditedBadge,
+  PostMetadata,
+  PostMetadataImage,
+  PostMetadataContent,
   PostCreatorName,
   PostCreatorAddressBadge,
   PostTime,
   PostFooter,
 } from './Post.styled';
 import PostActions from './PostActions';
+import { Postbox } from '../Postbox';
+import { useTranslation } from 'react-i18next';
 
 const Post = ({
   post,
   replyTo = null,
+  showThreadButton = true,
   onClickReply,
   toggleThread,
+  onDeletion,
 }: {
   post: any;
   replyTo: any;
-  onClickReply: () => void;
+  showThreadButton?: boolean;
+  onClickReply: (value: any) => void;
   toggleThread?: () => void;
+  onDeletion: () => void;
 }) => {
+  const { t } = useTranslation();
+  const { orbis } = useContext(OrbisContext);
+
+  const [postClone, setPostClone] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const getPost = async () => {
+    const { data, error } = await orbis.getPost(post.stream_id);
+
+    if (error) {
+      setPostClone({ ...post });
+    }
+
+    if (data) {
+      if (data.count_replies > 0) {
+        const { data: threadData } = await orbis.getPosts(
+          {
+            context: data.context,
+            master: data.stream_id,
+          },
+          0
+        );
+
+        data.count_replies = threadData.length;
+      }
+      setPostClone(data);
+    }
+  };
+
+  const handleEdited = async (content: any) => {
+    setPostClone({
+      ...postClone,
+      content,
+      count_commits: postClone.count_commits + 1,
+    });
+    setIsEditing(false);
+  };
+
+  useEffect(() => {
+    if (post) getPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post]);
+
   return (
     <PostWrapper>
       <PostHeader>
         <Avatar
-          src={post.creator_details?.profile?.pfp}
-          defaultSeed={post.creator_details?.metadata?.address}
+          src={postClone?.creator_details?.profile?.pfp}
+          defaultSeed={postClone?.creator_details?.metadata?.address}
           size={24}
         />
-        <PostCreatorName>{getUsername(post.creator_details)}</PostCreatorName>
+        <PostCreatorName>
+          {getUsername(postClone?.creator_details)}
+        </PostCreatorName>
         <PostCreatorAddressBadge>
-          {getBadgeContent(post.creator_details)}
+          {getBadgeContent(postClone?.creator_details)}
         </PostCreatorAddressBadge>
-        <PostTime>{moment.duration(post.timestamp).humanize()}</PostTime>
+        <PostTime>{moment.duration(postClone?.timestamp).humanize()}</PostTime>
       </PostHeader>
-      <PostBody>{formatMessage(post.content)}</PostBody>
+      {!isEditing ? (
+        <>
+          <PostBody>
+            {formatMessage(postClone?.content)}
+            {postClone?.count_commits > 1 && (
+              <PostEditedBadge>({t('postEdited')})</PostEditedBadge>
+            )}
+          </PostBody>
+          {postClone?.indexing_metadata?.urlMetadata && (
+            <PostMetadata>
+              {postClone?.indexing_metadata?.urlMetadata?.image && (
+                <PostMetadataImage
+                  href={postClone?.indexing_metadata?.urlMetadata?.url}
+                  className="post__metadata__image"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    src={postClone?.indexing_metadata?.urlMetadata?.image}
+                    alt=""
+                  />
+                </PostMetadataImage>
+              )}
+              <PostMetadataContent>
+                <small>
+                  {postClone?.indexing_metadata?.urlMetadata?.source}
+                </small>
+                <h3>
+                  <a
+                    href={postClone?.indexing_metadata?.urlMetadata?.url}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {postClone?.indexing_metadata?.urlMetadata?.title}
+                  </a>
+                </h3>
+                <p>{postClone?.indexing_metadata?.urlMetadata?.description}</p>
+              </PostMetadataContent>
+            </PostMetadata>
+          )}
+        </>
+      ) : (
+        <Postbox
+          context={postClone.context}
+          editPost={postClone}
+          callback={handleEdited}
+          cancelEdit={() => setIsEditing(false)}
+          hideShareButton={true}
+        />
+      )}
       <PostFooter>
-        <PostActions post={post} toggleThread={toggleThread} />
+        <PostActions
+          post={postClone}
+          showThreadButton={showThreadButton}
+          toggleThread={toggleThread}
+          toggleReply={() => onClickReply(post)}
+          onClickDelete={onDeletion}
+          onClickEdit={() => setIsEditing(true)}
+        />
       </PostFooter>
     </PostWrapper>
   );

@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
-import { DiscussionMasterPostWrapper } from './Discussion.styled';
+import { DiscussionMasterPost } from './Discussion.styled';
 import { Post } from './Post';
 import { Thread } from './Thread';
 
-const DiscussionMasterPost = ({ post }) => {
+const MasterPost = ({ post, onDeletion }) => {
   const innerPostbox = useRef<any>(null);
+  const masterPost = useRef<any>(null);
   const [replyTo, setReplyTo] = useState<any>(null);
   const [showThread, setShowThread] = useState(false);
   const [scrollToEl, setScrollToEl] = useState<HTMLElement | string | null>(
@@ -16,24 +17,55 @@ const DiscussionMasterPost = ({ post }) => {
   };
 
   useEffect(() => {
-    console.log({ replyTo, showThread, scrollToEl });
-  }, [replyTo, showThread, scrollToEl]);
+    if (scrollToEl !== null && masterPost.current) {
+      if (scrollToEl === 'masterPost' && masterPost.current) {
+        setTimeout(() => {
+          masterPost.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }, 500);
+      } else if (scrollToEl === 'postbox' && innerPostbox.current) {
+        setTimeout(() => {
+          innerPostbox.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }, 500);
+      } else {
+        setTimeout(() => {
+          const _el = scrollToEl as HTMLElement;
+          _el.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          });
+        }, 500);
+      }
+    }
+
+    return () => {
+      setTimeout(() => {
+        setScrollToEl(null);
+      }, 500);
+    };
+  }, [scrollToEl, replyTo, showThread]);
 
   useEffect(() => {
     if (!showThread) setReplyTo(null);
   }, [showThread]);
 
   return (
-    <DiscussionMasterPostWrapper>
+    <DiscussionMasterPost ref={masterPost}>
       <Post
         post={post}
         replyTo={replyTo}
-        onClickReply={() => {
+        onClickReply={post => {
           setReplyTo(post);
           setShowThread(true);
           setScrollToEl('postbox');
         }}
         toggleThread={toggleThread}
+        onDeletion={onDeletion}
       />
       {showThread && (
         <Thread
@@ -48,8 +80,8 @@ const DiscussionMasterPost = ({ post }) => {
           onNewPost={(el: HTMLElement) => setScrollToEl(el)}
         />
       )}
-    </DiscussionMasterPostWrapper>
+    </DiscussionMasterPost>
   );
 };
 
-export default DiscussionMasterPost;
+export default MasterPost;

@@ -38,14 +38,66 @@ export const PostBody = styled.div`
   }
 `;
 
+export const PostEditedBadge = styled.span`
+  color: ${({ theme }) => theme.colors.grey};
+  font-size: ${({ theme }) => theme.fontSizes.label};
+  margin-left: 3px;
+`;
+
+export const PostMetadata = styled.div`
+  border: 1px solid ${({ theme }) => theme.colors.border1};
+  background-color: ${({ theme }) => theme.colors.bg2};
+  border-radius: ${({ theme }) => theme.radii.curved};
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  width: 100%;
+  max-width: 480px;
+`;
+
+export const PostMetadataImage = styled.a`
+  width: 100%;
+  padding-top: 56.25%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+`;
+
+export const PostMetadataContent = styled.div`
+  padding: 0.5rem;
+
+  small {
+    color: ${({ theme }) => theme.colors.grey2};
+  }
+
+  h3 {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    color: ${({ theme }) => theme.colors.active};
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export const PostFooter = styled.div`
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   gap: 1rem;
 `;
 
-export const PostActionButton = styled.button`
+type PostActionButtonProps = {
+  active?: boolean;
+};
+
+export const PostActionButton = styled.button<PostActionButtonProps>`
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,18 +107,62 @@ export const PostActionButton = styled.button`
   padding: 0;
   background: none;
   border: none;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${props =>
+    props.active
+      ? ({ theme }) => theme.colors.active
+      : ({ theme }) => theme.colors.grey};
   cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.grey2};
-  }
-
-  &[data-selected] {
-    color: ${({ theme }) => theme.colors.active};
+    color: ${props =>
+      props.active
+        ? ({ theme }) => theme.colors.active
+        : ({ theme }) => theme.colors.grey2};
   }
 `;
 
 export const PostActionCount = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.label};
+`;
+
+export const PostOptions = styled.div`
+  position: relative;
+`;
+
+export const PostPopover = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  bottom: 100%;
+  right: 0;
+  border: 1px solid ${({ theme }) => theme.colors.border1};
+  border-radius: ${({ theme }) => theme.radii.curved};
+  background: ${({ theme }) => theme.colors.bg1};
+  color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 20%);
+`;
+
+type PostOptionsButtonProps = {
+  danger?: boolean;
+};
+
+export const PostOptionsButton = styled.button<PostOptionsButtonProps>`
+  cursor: pointer;
+  color: ${props =>
+    props.danger
+      ? ({ theme }) => theme.colors.red
+      : ({ theme }) => theme.colors.white};
+  padding: 0.25rem 1rem;
+  background: none;
+  border: none;
+  border-radius: ${({ theme }) => theme.radii.curved};
+
+  &:hover {
+    background: ${props =>
+      props.danger
+        ? ({ theme }) => theme.colors.red
+        : ({ theme }) => theme.colors.bg2};
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;

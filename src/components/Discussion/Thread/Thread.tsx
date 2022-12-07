@@ -7,7 +7,7 @@ import {
   LegacyRef,
 } from 'react';
 import { OrbisContext } from 'contexts/Guilds/orbis';
-import { ThreadGroup } from './Thread.styled';
+import { MasterGroup, MasterGroupPostbox, ThreadGroup } from './Thread.styled';
 import { Post } from '../Post';
 import { Postbox } from '../Postbox';
 
@@ -16,11 +16,13 @@ const Group = ({
   replies,
   replyTo = null,
   onClickReply,
+  onDeletion,
 }: {
   items: any[];
   replies: Record<string, any[]>;
   replyTo: any;
   onClickReply: (value: any) => void;
+  onDeletion: (post: any) => void;
 }) => {
   return (
     <>
@@ -29,7 +31,9 @@ const Group = ({
           <Post
             post={item}
             replyTo={replyTo}
+            showThreadButton={false}
             onClickReply={() => onClickReply(item)}
+            onDeletion={() => onDeletion(item)}
           />
           {replies[item.stream_id] !== undefined && (
             <Group
@@ -37,6 +41,7 @@ const Group = ({
               replies={replies}
               replyTo={replyTo}
               onClickReply={onClickReply}
+              onDeletion={onDeletion}
             />
           )}
         </ThreadGroup>
@@ -100,7 +105,7 @@ const Thread = ({
     setIsLoading(false);
   };
 
-  const callback = newPost => {
+  const callback = (newPost: any) => {
     const _posts = [...posts, newPost];
     setPosts(_posts);
     onClickReply(null);
@@ -116,32 +121,48 @@ const Thread = ({
     }
   };
 
+  const handleDeletion = async (post: any) => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this post?\r\nIf you ask for deletion your post might be removed from the Ceramic nodes hosting it.'
+    );
+    if (confirmed) {
+      const res = await orbis.deletePost(post.stream_id);
+      if (res.status === 200) {
+        const _posts = posts.filter(o => o.stream_id !== post.stream_id);
+        setPosts(_posts);
+        console.log('deleted:', post);
+      }
+    }
+  };
+
   useEffect(() => {
     if (context && master) getPosts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context, master]);
 
   return (
-    <div ref={mainGroup}>
+    <MasterGroup ref={mainGroup}>
       {groups[master.stream_id] !== undefined && (
         <Group
           items={groups[master.stream_id]}
           replies={groups}
           replyTo={replyTo}
           onClickReply={onClickReply}
+          onDeletion={handleDeletion}
         />
       )}
       {replyTo && (
-        <div ref={innerPostbox}>
+        <MasterGroupPostbox ref={innerPostbox}>
           <Postbox
             context={context}
             replyTo={replyTo}
             cancelReplyTo={() => onClickReply(null)}
             callback={callback}
+            placeholder="Share your reply here..."
           />
-        </div>
+        </MasterGroupPostbox>
       )}
-    </div>
+    </MasterGroup>
   );
 };
 
