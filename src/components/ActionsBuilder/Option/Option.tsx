@@ -40,16 +40,17 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     isDragging,
   } = useSortable({ id: option.id });
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false);
-  function addAction(action: DecodedAction) {
+
+  function addActions(actions: DecodedAction[]) {
     onChange({
       ...option,
-      decodedActions: [...option.decodedActions, action],
+      decodedActions: [...option.decodedActions, ...actions],
     });
   }
 
-  function updateAction(index: number, action: DecodedAction) {
-    const updatedActions = option?.decodedActions.map((a, i) =>
-      index === i ? action : a
+  function updateAction(action: DecodedAction) {
+    const updatedActions = option?.decodedActions.map(a =>
+      a.id === action.id ? action : a
     );
     onChange({
       ...option,
@@ -114,7 +115,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
                 decodedAction={option?.decodedActions?.[index]}
                 isEditable={false}
                 permissionArgs={permissionArgs}
-                onEdit={updatedAction => updateAction(index, updatedAction)}
+                onEdit={updatedAction => updateAction(updatedAction)}
               />
             );
           })}
@@ -133,7 +134,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
                   isEditable={true}
                   decodedAction={option?.decodedActions?.[index]}
                   permissionArgs={permissionArgs}
-                  onEdit={updatedAction => updateAction(index, updatedAction)}
+                  onEdit={updatedAction => updateAction(updatedAction)}
                   onRemove={targetAction => removeAction(targetAction)}
                 />
               );
@@ -152,10 +153,12 @@ export const OptionRow: React.FC<OptionRowProps> = ({
       <ActionModal
         isOpen={isActionsModalOpen}
         setIsOpen={setIsActionsModalOpen}
-        onAddAction={action => {
-          addAction(action);
+        onAddActions={action => {
+          addActions(action);
           setIsActionsModalOpen(false);
         }}
+        onEditAction={updateAction}
+        isEditing={false}
       />
     </OptionWrapper>
   );

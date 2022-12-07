@@ -31,6 +31,14 @@ jest.mock('hooks/Guilds/ens/useENS', () => ({
 }));
 
 jest.mock('wagmi', () => ({
+  useContractRead: () => ({ data: '' }),
+  useEnsResolver: () => ({
+    data: {
+      name: 'name.eth',
+      address: '0x0000000000000000000000000000000000000000',
+      contentHash: '0x0',
+    },
+  }),
   useAccount: () => ({ isConnected: false }),
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
   useContractReads: () => ({ data: [] }),
@@ -164,6 +172,7 @@ describe(`Set Permissions editor`, () => {
       fireEvent.change(toAddressElement, { target: { value: toAddressMock } });
 
       const clearInputIcon = screen.getByLabelText('clear address');
+
       fireEvent.click(clearInputIcon);
 
       expect(toAddressElement.value).toBe('');

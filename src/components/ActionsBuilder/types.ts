@@ -12,6 +12,7 @@ export enum SupportedAction {
   GENERIC_CALL = 'GENERIC_CALL',
   SET_PERMISSIONS = 'SET_PERMISSIONS',
   ENS_UPDATE_CONTENT = 'ENS_UPDATE_CONTENT',
+  SET_GUILD_CONFIG = 'SET_GUILD_CONFIG',
 }
 
 export interface Call {
@@ -34,6 +35,7 @@ export interface DecodedCall {
   richData?: RichContractData;
   richFunctionData?: RichContractFunction;
   functionName?: string;
+  functionTitle?: string;
   optionalProps?: Record<string, any>;
 }
 

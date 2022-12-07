@@ -9,6 +9,7 @@ import { ParsedDataInterface, TABS } from './types';
 import {
   ANY_FUNC_SIGNATURE,
   ERC20_TRANSFER_SIGNATURE,
+  ERC20_APPROVE_SIGNATURE,
   preventEmptyString,
 } from 'utils';
 import { resolveUri } from 'utils/url';
@@ -49,6 +50,7 @@ interface FormValues {
 const Permissions: React.FC<ActionEditorProps> = ({
   decodedCall,
   onSubmit,
+  isEdit,
 }) => {
   const parsedData = useMemo<ParsedDataInterface>(() => {
     if (!decodedCall) return null;
@@ -115,28 +117,76 @@ const Permissions: React.FC<ActionEditorProps> = ({
     updateFunctionSignature(value);
   };
 
-  const submitAction = (values: FormValues) => {
-    const isAssetTransferCall = activeTab === TABS.ASSET_TRANSFER;
+  const submitAssetTransfer = (values: FormValues) => {
+    const baseCall = {
+      ...decodedCall,
+      args: {
+        ...decodedCall.args,
+        to: values.tokenAddress,
+        valueAllowed: BigNumber.from(0),
+        // "from" field set by default previously as guild id
+      },
+      optionalProps: {
+        asset: values.tokenAddress,
+        tab: TABS.ASSET_TRANSFER,
+      },
+    };
+    const newAssetTransferCall: DecodedCall = {
+      ...baseCall,
+      args: {
+        ...baseCall.args,
+        functionSignature: ERC20_TRANSFER_SIGNATURE,
+      },
+      optionalProps: {
+        ...baseCall.optionalProps,
+        functionName: '',
+      },
+    };
 
+    const newApprovalAssetCall = {
+      ...baseCall,
+      args: {
+        ...baseCall.args,
+        functionSignature: ERC20_APPROVE_SIGNATURE,
+      },
+      optionalProps: {
+        ...baseCall.optionalProps,
+        functionName: 'approve(address,uint256)',
+      },
+    };
+
+    if (isEdit) {
+      // in case of edit mode we submit only one action that is being edited
+      return parsedData?.functionSignature === ERC20_APPROVE_SIGNATURE
+        ? onSubmit([newApprovalAssetCall])
+        : onSubmit([newAssetTransferCall]);
+    }
+    return onSubmit([newAssetTransferCall, newApprovalAssetCall]);
+  };
+
+  const submitFunctionCall = (values: FormValues) => {
     const newCall: DecodedCall = {
       ...decodedCall,
       args: {
         ...decodedCall.args,
-        to: isAssetTransferCall ? values.tokenAddress : values.toAddress,
+        to: values.toAddress,
         // native value allowed
-        valueAllowed: isAssetTransferCall ? BigNumber.from(0) : values.amount,
-        functionSignature: isAssetTransferCall
-          ? ERC20_TRANSFER_SIGNATURE
-          : values.functionSignature,
+        valueAllowed: values.amount,
+        functionSignature: values.functionSignature,
         // "from" field set by default previously as guild id
       },
       optionalProps: {
-        functionName: isAssetTransferCall ? '' : values.functionName,
-        asset: isAssetTransferCall ? values.tokenAddress : '',
+        functionName: values.functionName,
+        asset: '',
         tab: activeTab,
       },
     };
-    onSubmit(newCall);
+    onSubmit([newCall]);
+  };
+
+  const submitAction = (values: FormValues) => {
+    const isAssetTransferCall = activeTab === TABS.ASSET_TRANSFER;
+    (isAssetTransferCall ? submitAssetTransfer : submitFunctionCall)(values);
   };
 
   const tabArray = [
@@ -244,7 +294,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         {...field}
                         isInvalid={invalid && !!error}
                         name="to-address"
-                        aria-label="to address input"
+                        ariaLabel="to address input"
                         placeholder={t('ethereumAddress')}
                       />
                     </ControlRow>
@@ -307,7 +357,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         const newValue = BigNumber.from(value || '0');
                         field.onChange(newValue);
                       }}
-                      aria-label="amount input"
+                      ariaLabel="amount input"
                       decimals={token?.decimals}
                       value={BigNumber.from(
                         activeTab === TABS.ASSET_TRANSFER ? 0 : field.value || 0

@@ -27,7 +27,7 @@ export interface hasVotingPowerProps {
 interface VotingPower {
   percent: number;
   userVotingPower: BigNumber;
-  atSnapshot: BigNumber;
+  atSnapshot?: BigNumber;
   atCurrentSnapshot: BigNumber;
 }
 
