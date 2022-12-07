@@ -4,7 +4,6 @@ import { ToastNotificationContainer } from 'components/ToastNotifications';
 import { Container } from 'components/primitives/Layout';
 import { GuildsPage } from './Modules/Guilds/pages/Guilds';
 import { ProposalPage } from './Modules/Guilds/pages/Proposal';
-import { DiscussionPage } from 'Modules/Guilds/pages/Discussion';
 import GlobalStyle from './theme/GlobalTheme';
 import { ProposalTypesConfig } from 'configs/proposalTypes';
 import { GuildsContextProvider, TransactionsProvider } from 'contexts/Guilds';
@@ -41,10 +40,6 @@ const App = () => {
                 <Route
                   path="/:chainName/:guildId/proposal/:proposalId"
                   element={<ProposalPage />}
-                />
-                <Route
-                  path="/:chainName/:guildId/proposal/:proposalId/discussion"
-                  element={<DiscussionPage />}
                 />
                 <Route
                   path="/:chainName/:guildId/create-proposal"
