@@ -109,7 +109,6 @@ const Post = ({
               {postClone?.indexing_metadata?.urlMetadata?.image && (
                 <PostMetadataImage
                   href={postClone?.indexing_metadata?.urlMetadata?.url}
-                  className="post__metadata__image"
                   target="_blank"
                   rel="noreferrer"
                 >
