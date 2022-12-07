@@ -4,9 +4,9 @@ import { useSigner } from 'wagmi';
 import { sleep } from 'utils';
 
 export const OrbisContext = createContext(null);
+const orbis = new Orbis();
 
 export const OrbisProvider = ({ children }) => {
-  const orbis = new Orbis();
   const { data: signer } = useSigner();
 
   const [profile, setProfile] = useState<any>(null);
