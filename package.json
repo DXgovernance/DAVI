@@ -62,7 +62,6 @@
     "bignumber.js": "^9.0.2",
     "buffer": "^6.0.3",
     "copy-to-clipboard": "^3.3.1",
-    "crypto-js": "^4.1.1",
     "diff": "^5.1.0",
     "dxdao-contracts": "https://github.com/DXgovernance/dxdao-contracts.git#develop",
     "eslint-config-react-app": "^7.0.1",
@@ -203,4 +202,3 @@
     ]
   }
 }
-
