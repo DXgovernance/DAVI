@@ -1,28 +1,31 @@
 import { resolveUri } from 'utils/url';
-import ERC1155 from 'contracts/ERC1155.json';
+import { ERC1155 } from 'contracts/ts-files/ERC1155';
 import { useContractReads } from 'wagmi';
+import { BigNumber } from 'ethers';
 
 export default function useERC1155NFT(
   contractId: string,
   tokenId: string,
-  ownerAddress: string,
+  ownerAddress: `0x${string}`,
   chainId?: number
 ) {
   const { data, isError, isLoading } = useContractReads({
     contracts: [
       {
-        addressOrName: contractId,
-        contractInterface: ERC1155.abi,
+        enabled: tokenId && contractId,
+        address: contractId,
+        abi: ERC1155.abi,
         functionName: 'balanceOf',
         chainId,
-        args: [ownerAddress, tokenId],
+        args: [ownerAddress, BigNumber.from(tokenId ? tokenId : '0')],
       },
       {
-        addressOrName: contractId,
-        contractInterface: ERC1155.abi,
+        enabled: tokenId && contractId,
+        address: contractId,
+        abi: ERC1155.abi,
         functionName: 'uri',
         chainId,
-        args: [tokenId],
+        args: [BigNumber.from(tokenId ? tokenId : '0')],
       },
     ],
   });

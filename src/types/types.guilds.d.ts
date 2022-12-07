@@ -4,7 +4,7 @@ import {
 } from 'ethers';
 import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 export interface Proposal {
-  id: string;
+  id: `0x${string}`;
   creator: string; 
   startTime: Moment;
   endTime: Moment;

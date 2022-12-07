@@ -10,7 +10,7 @@ module.exports = (config, env) => {
     type: 'javascript/auto',
     resolve: {
       fullySpecified: false,
-    }
+    },
   });
 
   config.plugins = [
@@ -20,7 +20,7 @@ module.exports = (config, env) => {
       process: 'process/browser',
       Buffer: ['buffer', 'Buffer'],
     }),
-  ]
+  ];
   if (env !== 'production') {
     return config;
   }
@@ -28,3 +28,4 @@ module.exports = (config, env) => {
   config.output.chunkFilename = `static/js/[name].chunk.js`;
   return config;
 };
+

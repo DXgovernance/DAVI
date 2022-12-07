@@ -29,7 +29,7 @@ export const chains: Chain[] = [
   },
   chain.goerli,
   chain.arbitrum,
-  chain.arbitrumRinkeby,
+  chain.arbitrumGoerli,
   gnosisChain,
 ];
 

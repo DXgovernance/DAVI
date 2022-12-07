@@ -4,7 +4,7 @@ import { ProposalMetadata } from 'types/types.guilds';
 import contentHash from '@ensdomains/content-hash';
 import useProposal from 'Modules/Guilds/Hooks/useProposal';
 
-function useProposalMetadata(guildId: string, proposalId: string) {
+function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
   const { data: proposal, error } = useProposal(guildId, proposalId);
 
   const { decodedContentHash, decodeError } = useMemo(() => {
