@@ -280,6 +280,7 @@
   "cantBeGreaterThan100": "Can't be greater than 100%",
   "discussionTitle": "Discussion",
   "discussionEmpty": "No comment yet",
+  "discussionLoadMore": "Load more comments",
   "mentionsSearchLoading": "Loading...",
   "replyingTo": "Replying to",
   "postEdited": "edited",

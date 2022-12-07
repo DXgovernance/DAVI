@@ -100,7 +100,7 @@ function Discussion({
         ) : (
           <DiscussionEmpty>
             <VscCommentDiscussion size={56} />
-            <Box>No post yet!</Box>
+            <Box>{t('discussionEmpty')}</Box>
           </DiscussionEmpty>
         )}
       </DiscussionMasterPosts>
@@ -108,7 +108,7 @@ function Discussion({
       {hasMore && (
         <DiscussionLoadMore>
           <LoadMoreButton onClick={getPosts}>
-            {t('discussionEmpty')}
+            {t('discussionLoadMore')}
           </LoadMoreButton>
         </DiscussionLoadMore>
       )}
