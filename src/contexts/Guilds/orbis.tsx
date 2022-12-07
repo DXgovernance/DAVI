@@ -1,21 +1,22 @@
-import { useState, useEffect, createContext } from 'react';
-import { useProvider } from 'wagmi';
 import { Orbis } from '@orbisclub/orbis-sdk';
+import { useState, useEffect, createContext } from 'react';
+import { useSigner } from 'wagmi';
 import { sleep } from 'utils';
 
 export const OrbisContext = createContext(null);
 
 export const OrbisProvider = ({ children }) => {
   const orbis = new Orbis();
-
-  const provider = useProvider();
+  const { data: signer } = useSigner();
 
   const [profile, setProfile] = useState<any>(null);
   const [hasLit, setHasLit] = useState(false);
 
   const connectOrbis = async () => {
     const res = await orbis.connect_v2({
-      provider,
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      provider: signer?.provider?.provider,
     });
 
     if (res.status !== 200) {
@@ -34,7 +35,9 @@ export const OrbisProvider = ({ children }) => {
   };
 
   const connectLit = async () => {
-    const res = await orbis.connectLit(provider);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const res = await orbis.connectLit(signer?.provider?.provider);
 
     setHasLit(res.status === 200);
   };
@@ -52,10 +55,10 @@ export const OrbisProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (provider) checkOrbisConnection(true);
-    else disconnectOrbis();
+    if (signer) checkOrbisConnection(true);
+    // else disconnectOrbis();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [provider]);
+  }, [signer]);
 
   return (
     <OrbisContext.Provider
