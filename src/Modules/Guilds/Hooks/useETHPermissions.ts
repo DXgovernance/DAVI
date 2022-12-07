@@ -18,8 +18,8 @@ export const useGetETHPermission = ({
   functionSignature,
 }: useGetETHPermissionProps) => {
   const { data, ...rest } = useContractRead({
-    addressOrName: permissionRegistryAddress,
-    contractInterface: PermissionRegistry.abi,
+    address: permissionRegistryAddress,
+    abi: PermissionRegistry.abi,
     functionName: 'getETHPermission(address,address,bytes4)',
     args: [from, to, functionSignature],
     watch: true,
