@@ -92,7 +92,9 @@ const Post = ({
         <PostCreatorAddressBadge>
           {getBadgeContent(postClone?.creator_details)}
         </PostCreatorAddressBadge>
-        <PostTime>{moment.duration(postClone?.timestamp).humanize()}</PostTime>
+        <PostTime>
+          {postClone?.timestamp && moment.unix(postClone.timestamp).fromNow()}
+        </PostTime>
       </PostHeader>
       {!isEditing ? (
         <>

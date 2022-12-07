@@ -73,6 +73,7 @@ export const formatMessage: (
   if (!content || !content.body) return null;
 
   let _body: any = content.body;
+  // _body = _body.trim();
 
   if (overflowLimit > 0 && hideOverflow && _body.length > overflowLimit) {
     _body = _body.substring(0, overflowLimit);

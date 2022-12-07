@@ -13,7 +13,7 @@ export const PostboxInputWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.border1};
   border-radius: ${({ theme }) => theme.radii.curved};
   padding: 3px;
-  background: ${({ theme }) => theme.colors.bg1};
+  background: ${({ theme }) => theme.colors.bg2};
 `;
 
 export const PostboxInput = styled.div`

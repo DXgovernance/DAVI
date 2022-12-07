@@ -1,25 +1,10 @@
 import styled, { css } from 'styled-components';
-import { Heading } from 'components/primitives/Typography';
 import { Box } from 'components/primitives/Layout';
 import { Button } from 'components/primitives/Button';
 
 export const DiscussionContainer = styled(Box)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
-  box-shadow: 0px 4px 8px 0px rgb(0 0 0 / 20%);
-`;
-
-export const DiscussionHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-export const DiscussionTitle = styled(Heading)`
-  font-weight: 600;
-  margin: 0.5rem;
-  color: ${({ theme }) => theme.colors.text};
 `;
 
 export const DiscussionPostboxWrapper = styled.div`

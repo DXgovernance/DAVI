@@ -40,6 +40,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
+import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
+import { Header as CardHeader } from 'components/Card';
 import { Discussion } from 'components/Discussion';
 import useDiscussionContext from 'Modules/Guilds/Hooks/useDiscussionContext';
 
@@ -145,14 +147,22 @@ const ProposalPage: React.FC = () => {
             <ActionsBuilder options={options} editable={false} />
           </ProposalActionsWrapper>
 
-          <Discussion
-            context={
-              process.env.NODE_ENV === 'development'
-                ? 'kjzl6cwe1jw146uz3jnbu4s0rhyhbakr4nkd1u68qxx6fyzba3w616b2tojr143'
-                : context
+          <SidebarCard
+            header={
+              <SidebarCardHeaderSpaced>
+                <CardHeader>{t('discussionTitle')}</CardHeader>
+              </SidebarCardHeaderSpaced>
             }
-            master={''}
-          />
+          >
+            <Discussion
+              context={
+                process.env.NODE_ENV === 'development'
+                  ? 'kjzl6cwe1jw145gun3sei0a4puw586yxa614le1tfh434y7quv2wsm0ivhbge7x'
+                  : context
+              }
+              master={''}
+            />
+          </SidebarCard>
         </PageContent>
         <SidebarContent>
           <ProposalVoteCardWrapper />

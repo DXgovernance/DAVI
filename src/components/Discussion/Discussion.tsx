@@ -3,14 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { VscCommentDiscussion } from 'react-icons/vsc';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 
-import { DiscussionCard } from './DiscussionCard';
 import { Postbox } from './Postbox';
 import { Divider } from 'components/Divider';
 import DiscussionMasterPost from './DiscussionMasterPost';
 import {
   DiscussionContainer,
-  DiscussionHeader,
-  DiscussionTitle,
   DiscussionMasterPosts,
   DiscussionPostboxWrapper,
   DiscussionLoadMore,
@@ -81,48 +78,40 @@ function Discussion({
 
   return (
     <DiscussionContainer>
-      <DiscussionCard
-        header={
-          <DiscussionHeader>
-            <DiscussionTitle>{t('discussionTitle')}</DiscussionTitle>
-          </DiscussionHeader>
-        }
-      >
-        <DiscussionPostboxWrapper>
-          <Postbox
-            context={context}
-            callback={onNewMasterPostCreated}
-            enterToShare={false}
-          />
-        </DiscussionPostboxWrapper>
+      <DiscussionPostboxWrapper>
+        <Postbox
+          context={context}
+          callback={onNewMasterPostCreated}
+          enterToShare={false}
+        />
+      </DiscussionPostboxWrapper>
 
-        <Divider />
+      <Divider />
 
-        <DiscussionMasterPosts>
-          {posts.length > 0 ? (
-            posts.map(post => (
-              <DiscussionMasterPost
-                key={post.stream_id}
-                post={post}
-                onDeletion={() => handleDeletion(post)}
-              />
-            ))
-          ) : (
-            <DiscussionEmpty>
-              <VscCommentDiscussion size={56} />
-              <Box>No post yet!</Box>
-            </DiscussionEmpty>
-          )}
-        </DiscussionMasterPosts>
-
-        {hasMore && (
-          <DiscussionLoadMore>
-            <LoadMoreButton onClick={getPosts}>
-              {t('discussionEmpty')}
-            </LoadMoreButton>
-          </DiscussionLoadMore>
+      <DiscussionMasterPosts>
+        {posts.length > 0 ? (
+          posts.map(post => (
+            <DiscussionMasterPost
+              key={post.stream_id}
+              post={post}
+              onDeletion={() => handleDeletion(post)}
+            />
+          ))
+        ) : (
+          <DiscussionEmpty>
+            <VscCommentDiscussion size={56} />
+            <Box>No post yet!</Box>
+          </DiscussionEmpty>
         )}
-      </DiscussionCard>
+      </DiscussionMasterPosts>
+
+      {hasMore && (
+        <DiscussionLoadMore>
+          <LoadMoreButton onClick={getPosts}>
+            {t('discussionEmpty')}
+          </LoadMoreButton>
+        </DiscussionLoadMore>
+      )}
     </DiscussionContainer>
   );
 }

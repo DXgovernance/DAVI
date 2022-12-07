@@ -32,6 +32,10 @@ export const PostBody = styled.div`
   overflow-wrap: break-word;
   white-space: pre-wrap;
   line-height: 1.5;
+  padding: 1rem;
+  background: ${({ theme }) => theme.colors.bg2};
+  border-radius: ${({ theme }) => theme.radii.curved};
+  border-top-left-radius: 0;
 
   a {
     color: ${({ theme }) => theme.colors.primary1};
@@ -82,6 +86,7 @@ export const PostMetadataContent = styled.div`
 
   p {
     color: ${({ theme }) => theme.colors.white};
+    line-height: ${({ theme }) => theme.lineHeights.header1};
   }
 `;
 
