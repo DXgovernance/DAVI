@@ -53,10 +53,28 @@ const PostActions = ({
   const react = async (type: 'like' | 'haha' | 'downvote') => {
     if (!type) return;
 
-    setLikes(prev => prev + 1);
+    const res = await orbis.react(post.stream_id, type);
+    if (res.status === 200) {
+      setReacted(type);
 
-    const res = await orbis.react(post.did, type);
-    if (res.status === 200) setLikes(prev => prev + 1);
+      // Decrement previous reaction
+      if (reacted === 'like') {
+        setLikes(prev => prev - 1);
+      } else if (reacted === 'haha') {
+        setHaha(prev => prev - 1);
+      } else if (reacted === 'downvote') {
+        setDownvotes(prev => prev - 1);
+      }
+
+      // Increment new reaction
+      if (type === 'like') {
+        setLikes(prev => prev + 1);
+      } else if (type === 'haha') {
+        setHaha(prev => prev + 1);
+      } else if (type === 'downvote') {
+        setDownvotes(prev => prev + 1);
+      }
+    }
   };
 
   useEffect(() => {
