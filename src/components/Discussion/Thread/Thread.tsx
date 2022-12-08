@@ -54,17 +54,19 @@ const Group = ({
 const Thread = ({
   context,
   master,
-  innerPostbox,
+  threadPostbox,
   replyTo,
   onClickReply,
   onNewPost,
+  onThreadUpdated,
 }: {
   context: string | undefined;
   master: any;
-  innerPostbox: LegacyRef<HTMLDivElement> | null;
+  threadPostbox: LegacyRef<HTMLDivElement> | null;
   replyTo: any;
   onClickReply: (value: any) => void;
   onNewPost: (el: HTMLElement) => void;
+  onThreadUpdated: (posts: any[]) => void;
 }) => {
   const { orbis } = useContext(OrbisContext);
 
@@ -123,6 +125,7 @@ const Thread = ({
     const _posts = [...posts, newPost];
     setPosts(_posts);
     onClickReply(null);
+    onThreadUpdated(_posts);
 
     // Try scroll to newly created post
     if (newPost.stream_id.startsWith('new_post-')) {
@@ -144,7 +147,7 @@ const Thread = ({
       if (res.status === 200) {
         const _posts = posts.filter(o => o.stream_id !== post.stream_id);
         setPosts(_posts);
-        console.log('deleted:', post);
+        onThreadUpdated(_posts);
       }
     }
   };
@@ -168,7 +171,7 @@ const Thread = ({
         />
       )}
       {replyTo && (
-        <MasterGroupPostbox ref={innerPostbox}>
+        <MasterGroupPostbox ref={threadPostbox}>
           <Postbox
             context={context}
             replyTo={replyTo}

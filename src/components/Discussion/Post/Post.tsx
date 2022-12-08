@@ -42,6 +42,7 @@ const Post = ({
   const [isEditing, setIsEditing] = useState(false);
 
   const getPost = async () => {
+    console.log('fetch post');
     const { data, error } = await orbis.getPost(post.stream_id);
 
     if (error) {
@@ -49,17 +50,6 @@ const Post = ({
     }
 
     if (data) {
-      if (data.count_replies > 0) {
-        const { data: threadData } = await orbis.getPosts(
-          {
-            context: data.context,
-            master: data.stream_id,
-          },
-          0
-        );
-
-        data.count_replies = threadData.length;
-      }
       setPostClone(data);
     }
   };
@@ -74,7 +64,12 @@ const Post = ({
   };
 
   useEffect(() => {
-    if (post) getPost();
+    if (!post?.reply_to && !post?.master) {
+      console.log('master post');
+      setPostClone({ ...post });
+    } else {
+      getPost();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post]);
 

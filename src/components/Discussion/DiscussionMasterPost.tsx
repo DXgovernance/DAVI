@@ -1,33 +1,71 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
+import { OrbisContext } from 'contexts/Guilds/orbis';
 import { DiscussionMasterPost } from './Discussion.styled';
 import { Post } from './Post';
 import { Thread } from './Thread';
 
 const MasterPost = ({ post, onDeletion }) => {
-  const innerPostbox = useRef<any>(null);
-  const masterPost = useRef<any>(null);
+  const { orbis } = useContext(OrbisContext);
+
+  const threadPostbox = useRef<any>(null);
+  const discussionMasterPost = useRef<any>(null);
+
+  const [masterPost, setMasterPost] = useState(null);
   const [replyTo, setReplyTo] = useState<any>(null);
   const [showThread, setShowThread] = useState(false);
   const [scrollToEl, setScrollToEl] = useState<HTMLElement | string | null>(
     null
   );
 
+  const getMasterPost = async () => {
+    const { data, error } = await orbis.getPost(post.stream_id);
+
+    if (error) console.log(error);
+
+    if (data) {
+      setMasterPost(data);
+      getActualReplies(data);
+    }
+  };
+
+  const getActualReplies = async (post: any) => {
+    const { data } = await orbis.getPosts(
+      {
+        context: post.context,
+        master: post.stream_id,
+      },
+      0
+    );
+    console.log(data);
+    setMasterPost({ ...post, count_replies: data.length });
+  };
+
   const toggleThread = () => {
     setShowThread(!showThread);
   };
 
+  const handleThreadUpdated = (posts: any[]) => {
+    console.log('thread updated');
+    setMasterPost({ ...masterPost, count_replies: posts.length });
+  };
+
   useEffect(() => {
-    if (scrollToEl !== null && masterPost.current) {
-      if (scrollToEl === 'masterPost' && masterPost.current) {
+    if (post) getMasterPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [post]);
+
+  useEffect(() => {
+    if (scrollToEl !== null && discussionMasterPost.current) {
+      if (scrollToEl === 'masterPost' && discussionMasterPost.current) {
         setTimeout(() => {
-          masterPost.current.scrollIntoView({
+          discussionMasterPost.current.scrollIntoView({
             behavior: 'smooth',
             block: 'center',
           });
         }, 500);
-      } else if (scrollToEl === 'postbox' && innerPostbox.current) {
+      } else if (scrollToEl === 'postbox' && threadPostbox.current) {
         setTimeout(() => {
-          innerPostbox.current.scrollIntoView({
+          threadPostbox.current.scrollIntoView({
             behavior: 'smooth',
             block: 'center',
           });
@@ -55,9 +93,9 @@ const MasterPost = ({ post, onDeletion }) => {
   }, [showThread]);
 
   return (
-    <DiscussionMasterPost ref={masterPost}>
+    <DiscussionMasterPost ref={discussionMasterPost}>
       <Post
-        post={post}
+        post={masterPost}
         replyTo={replyTo}
         onClickReply={post => {
           setReplyTo(post);
@@ -72,12 +110,13 @@ const MasterPost = ({ post, onDeletion }) => {
           context={post.context}
           master={post}
           replyTo={replyTo}
-          innerPostbox={innerPostbox}
+          threadPostbox={threadPostbox}
           onClickReply={post => {
             setReplyTo(post);
             setScrollToEl('postbox');
           }}
           onNewPost={(el: HTMLElement) => setScrollToEl(el)}
+          onThreadUpdated={handleThreadUpdated}
         />
       )}
     </DiscussionMasterPost>
