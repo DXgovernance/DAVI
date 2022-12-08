@@ -1,7 +1,7 @@
 import { JsonRpcProvider } from '@ethersproject/providers';
 import { Connector } from 'wagmi';
 import { normalizeChainId } from '@wagmi/core';
-import { ZERO_ADDRESS } from 'utils';
+import { MAINNET_ID, ZERO_ADDRESS } from 'utils';
 
 export const READ_ONLY_CONNECTOR_ID = 'readOnly';
 
@@ -24,16 +24,20 @@ export class ReadOnlyConnector extends Connector<
     console.log('Connecting to read-only mode', { chainId });
     try {
       let targetChainId = chainId;
+      let useDefaultChainId = false;
       if (!targetChainId) {
         try {
           const lastUsedChainId = await this.getChainId();
-          if (lastUsedChainId && !this.isChainUnsupported(lastUsedChainId))
+          if (lastUsedChainId && !this.isChainUnsupported(lastUsedChainId)) {
             targetChainId = lastUsedChainId;
+          } else {
+            useDefaultChainId = true;
+          }
         } catch (e) {
           console.error('Cannot get last used chain id');
+          useDefaultChainId = true;
         }
       }
-      if (!targetChainId) return null;
 
       const provider = await this.getProvider({
         chainId: targetChainId,
@@ -44,7 +48,8 @@ export class ReadOnlyConnector extends Connector<
       provider.on('disconnect', this.onDisconnect);
 
       const account = ZERO_ADDRESS;
-      const id = await this.getChainId();
+      const id = useDefaultChainId ? MAINNET_ID : await this.getChainId();
+
       const unsupported = this.isChainUnsupported(id);
 
       return {
