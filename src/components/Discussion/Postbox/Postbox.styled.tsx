@@ -75,6 +75,7 @@ export const ReplyToDetails = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: ${({ theme }) => theme.colors.grey2};
 `;
 
 export const ReplyToCancel = styled.button`
