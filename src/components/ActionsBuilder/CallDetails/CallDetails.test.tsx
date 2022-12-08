@@ -18,6 +18,21 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
+jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
+  useERC20Info: () => ({
+    name: 'Test ERC20',
+    symbol: 'TEST',
+    decimals: 18,
+    totalSupply: mockBigNumber,
+  }),
+}));
+
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => ({
+    tokens: [],
+  }),
+}));
+
 jest.mock('utils', () => ({
   getNetworkById: () => ({
     nativeAsset: {

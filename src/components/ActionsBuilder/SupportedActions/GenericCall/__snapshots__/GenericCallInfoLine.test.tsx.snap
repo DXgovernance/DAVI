@@ -44,7 +44,9 @@ exports[`GenericCallInfoLine Should match snapshot 1`] = `
   <span
     class="c0"
   >
-    <span>
+    <span
+      class="GenericCallMatcher"
+    >
       Test template 
       <span
         matchedparam="param1"
@@ -196,7 +198,9 @@ exports[`GenericCallInfoLine Should match snapshot with token approval 1`] = `
   <span
     class="c0"
   >
-    <span>
+    <span
+      class="GenericCallMatcher"
+    >
       Test template 
       <span
         matchedparam="param1"
