@@ -7,6 +7,7 @@ import {
   LegacyRef,
 } from 'react';
 import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useInterval } from 'utils';
 import { MasterGroup, MasterGroupPostbox, ThreadGroup } from './Thread.styled';
 import { Post } from '../Post';
 import { Postbox } from '../Postbox';
@@ -69,9 +70,10 @@ const Thread = ({
 
   const mainGroup = useRef<any>(null);
 
-  const [posts, setPosts] = useState<any[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [isFetching, setIsFetching] = useState(false);
+  const [pausePolling, setPausePolling] = useState(false);
 
   const groups = useMemo(() => {
     const grouped = posts.reduce((result, a) => {
@@ -81,28 +83,40 @@ const Thread = ({
     return grouped;
   }, [posts]);
 
-  const getPosts = async () => {
-    if (!orbis || !context || !master || isLoading) return;
+  const getPosts = async ({ polling = false, reset = false }) => {
+    if (!orbis || !context || !master || isFetching) return;
 
-    setIsLoading(true);
+    if (!polling) {
+      setIsFetching(true);
+      setPausePolling(true);
+    }
+
+    const _posts = reset ? [] : [...posts];
 
     const { data, error } = await orbis.getPosts(
       { context, master: master.stream_id },
-      currentPage
+      polling || reset ? 0 : page
     );
+
+    if (error) console.log(error);
 
     if (data) {
       data.reverse();
-      setPosts([...posts, ...data]);
-      setCurrentPage(prev => prev + 1);
-      // setHasMore(data.length >= 50)
+      if (!polling) {
+        const nextPage = reset ? 1 : page + 1;
+        setPage(nextPage);
+        setPosts([...data, ..._posts]);
+        setPausePolling(false);
+        setIsFetching(false);
+      } else {
+        const unique = data.filter(
+          (a: any) => !_posts.some(b => a.stream_id === b.stream_id)
+        );
+        if (unique.length > 0) {
+          setPosts([..._posts, ...unique]);
+        }
+      }
     }
-
-    if (error) {
-      console.error(error);
-    }
-
-    setIsLoading(false);
   };
 
   const callback = (newPost: any) => {
@@ -135,8 +149,10 @@ const Thread = ({
     }
   };
 
+  useInterval(() => getPosts({ polling: true }), !pausePolling ? 10000 : null);
+
   useEffect(() => {
-    if (context && master) getPosts();
+    if (context && master) getPosts({});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context, master]);
 

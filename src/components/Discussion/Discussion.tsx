@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VscCommentDiscussion } from 'react-icons/vsc';
 import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useInterval } from 'utils';
 
 import { Postbox } from './Postbox';
 import { Divider } from 'components/Divider';
@@ -29,25 +30,47 @@ function Discussion({
   const { orbis } = useContext(OrbisContext);
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(0);
+  const [isFetching, setIsFetching] = useState(false);
   const [hasMore, setHasMore] = useState(false);
+  const [pausePolling, setPausePolling] = useState(false);
 
-  const getPosts = async () => {
-    console.log('get posts');
+  const getPosts = async ({ polling = false, reset = false }) => {
+    if (isFetching || !context || !orbis) return;
+
+    if (!polling) {
+      setPausePolling(true);
+      setIsFetching(true);
+    }
+
+    const _posts = reset ? [] : [...posts];
+
     const { data, error } = await orbis.getPosts(
       {
         context,
         master,
         algorithm,
       },
-      page
+      polling || reset ? 0 : page
     );
 
     if (error) console.log(error);
 
     if (data) {
-      setHasMore(data.length >= 50);
-      setPosts([...posts, ...data]);
-      setPage(prev => prev + 1);
+      if (!polling) {
+        const nextPage = reset ? 1 : page + 1;
+        setPage(nextPage);
+        setPosts([..._posts, ...data]);
+        setHasMore(data.length >= 50);
+        setPausePolling(false);
+        setIsFetching(false);
+      } else {
+        const unique = data.filter(
+          (a: any) => !_posts.some(b => a.stream_id === b.stream_id)
+        );
+        if (unique.length > 0) {
+          setPosts([...unique, ..._posts]);
+        }
+      }
     }
   };
 
@@ -69,9 +92,11 @@ function Discussion({
     }
   };
 
+  useInterval(() => getPosts({ polling: true }), !pausePolling ? 10000 : null);
+
   useEffect(() => {
     if (context) {
-      getPosts();
+      getPosts({});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [context]);
@@ -107,7 +132,7 @@ function Discussion({
 
       {hasMore && (
         <DiscussionLoadMore>
-          <LoadMoreButton onClick={getPosts}>
+          <LoadMoreButton onClick={() => getPosts({})}>
             {t('discussionLoadMore')}
           </LoadMoreButton>
         </DiscussionLoadMore>
