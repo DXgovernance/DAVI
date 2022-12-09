@@ -313,6 +313,7 @@ const Permissions: React.FC<ActionEditorProps> = ({
                         activeTab === TABS.ASSET_TRANSFER ? 0 : field.value || 0
                       )}
                       disabled={activeTab === TABS.ASSET_TRANSFER}
+                      defaultValue={'0'}
                       isInvalid={invalid && !!error}
                     />
                     {activeTab === TABS.ASSET_TRANSFER && (
