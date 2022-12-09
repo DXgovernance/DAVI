@@ -81,7 +81,7 @@
     "setApprovalPermissionsFor": "Set approval permissions for",
     "setTransferPermissionsFor": "Set transfer permissions for",
     "permissionDenied": "Permission denied",
-    "permissionDeniedMessage": "You do not have permission to perform this action.",
+    "permissionDeniedMessage": "The DAO does not have permission to perform this action",
     "warningMessage": "Warning",
     "proposalNotExecuted": "This proposal can't be executed. Are you sure you want to continue?"
   },
