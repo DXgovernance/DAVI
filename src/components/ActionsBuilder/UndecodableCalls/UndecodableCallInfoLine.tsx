@@ -18,6 +18,7 @@ const UndecodableCallInfoLine = ({
     return {
       to: call?.to,
       value: call?.value,
+      data: call?.data,
     };
   }, [call]);
 
@@ -29,16 +30,34 @@ const UndecodableCallInfoLine = ({
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
 
+  const hasData = useMemo(() => {
+    if (!parsedData?.data || parsedData?.data.toString() === '0x00') {
+      return false;
+    }
+    return true;
+  }, [parsedData]);
+
+  const hasValue = useMemo(() => {
+    if (parsedData?.value && parsedData?.value.toString() === '0') {
+      return false;
+    }
+    return true;
+  }, [parsedData]);
+
   return (
     <RedWrapper>
+      {hasData && (
+        <Segment>
+          <FiAlertCircle size={16} />
+        </Segment>
+      )}
+
       <Segment>
-        <FiAlertCircle size={16} />
-      </Segment>
-      <Segment>
-        <Segment>{t('unknownAction')}</Segment>
-        {parsedData?.value?.toString() !== '0' && (
+        {hasData && <Segment>{t('unknownAction')}</Segment>}
+        {hasData && hasValue && <> + </>}
+        {hasValue && (
           <>
-            + {parsedValueToString} {nativeTokenSymbol}
+            {parsedValueToString} {nativeTokenSymbol}
           </>
         )}
       </Segment>

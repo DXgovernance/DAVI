@@ -82,7 +82,11 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
 
-    if (!decodedCall || hasValueTransferOnContractCall)
+    if (
+      !decodedCall ||
+      hasValueTransferOnContractCall ||
+      decodedCall.callType === 'RAW_TRANSACTION'
+    )
       return CardStatus.warning;
 
     if (!decodedAction?.simulationResult) return CardStatus.normal;
