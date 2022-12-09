@@ -59,6 +59,12 @@ describe('RawTransactionInfoLine', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should match snapshot with no data', () => {
+    const data = { ...rawDataCallMock, optionalProps: { data: '0x00' } };
+    const { container } = render(<RawTransactionInfoLine decodedCall={data} />);
+    expect(container).toMatchSnapshot();
+  });
+
   it('should match snapshot in compact mode', () => {
     const { container } = render(
       <RawTransactionInfoLine decodedCall={rawDataCallMock} compact />

@@ -78,7 +78,7 @@ exports[`UndecodableCallInfoLine Should match snapshot 1`] = `
       >
         unknownAction
       </span>
-      + 
+       + 
       1.0
        
       ETH
