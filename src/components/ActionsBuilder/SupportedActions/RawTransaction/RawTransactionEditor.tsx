@@ -43,16 +43,13 @@ const RawTransactionEditor: React.FC<ActionEditorProps> = ({
   });
 
   const submitAction = (values: RawTransactionValues) => {
-    if (!values.data) values.data = '0x00';
-    if (!values.value) values.value = BigNumber.from(0);
-
     onSubmit([
       {
         ...decodedCall,
         to: values.to,
-        value: values.value,
+        value: values.value ?? BigNumber.from(0),
         optionalProps: {
-          data: values.data,
+          data: values.data || '0x00',
         },
       },
     ]);

@@ -154,6 +154,53 @@ describe('RawTransactionEditor', () => {
         expect(mockOnSubmit).toHaveBeenCalled();
       });
     });
+
+    it('should fill data with 0x00 if value is present and data is empty', async () => {
+      const mockOnSubmit = jest.fn();
+      const data = {
+        ...rawDataCallMock,
+        value: BigNumber.from(111),
+        optionalProps: { data: '' },
+      };
+      const { findByTestId } = render(
+        <RawTransactionEditor decodedCall={data} onSubmit={mockOnSubmit} />
+      );
+      const submitButton = await findByTestId('submit-rawtransaction');
+      fireEvent.submit(submitButton);
+
+      const submittedData = [
+        {
+          ...data,
+          optionalProps: { data: '0x00' },
+        },
+      ];
+      await waitFor(() => {
+        expect(mockOnSubmit).toHaveBeenCalledWith(submittedData);
+      });
+    });
+
+    it('should fill value with BigNumber.from(0) if data is present and value is empty', async () => {
+      const mockOnSubmit = jest.fn();
+      const data = {
+        ...rawDataCallMock,
+        value: null,
+      };
+      const { findByTestId } = render(
+        <RawTransactionEditor decodedCall={data} onSubmit={mockOnSubmit} />
+      );
+      const submitButton = await findByTestId('submit-rawtransaction');
+      fireEvent.submit(submitButton);
+
+      const submittedData = [
+        {
+          ...data,
+          value: BigNumber.from(0),
+        },
+      ];
+      await waitFor(() => {
+        expect(mockOnSubmit).toHaveBeenCalledWith(submittedData);
+      });
+    });
   });
 
   describe('fail test', () => {
