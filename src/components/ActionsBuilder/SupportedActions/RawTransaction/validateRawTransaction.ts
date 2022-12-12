@@ -1,7 +1,7 @@
 import { BigNumber } from 'ethers';
-import { hexStripZeros, isHexString } from 'ethers/lib/utils';
 import { TFunction } from 'react-i18next';
-import { isAddress } from 'utils';
+import { hexStripZeros, isHexString } from 'ethers/lib/utils';
+import { isAddress, removeNullValues } from 'utils';
 import { RawTransactionValues } from './types';
 
 interface Context {
@@ -77,12 +77,7 @@ const validateRawTransaction = (
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that have no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };
