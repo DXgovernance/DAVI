@@ -5,7 +5,8 @@ exports[`ProposalDescription Should render an error 1`] = `
   margin: 1.5rem 0;
   line-height: 1.5;
   font-size: 16px;
-  text-align: justify;
+  word-break: break-word;
+  text-align: left;
   color: #BDC0C7;
 }
 
@@ -25,7 +26,8 @@ exports[`ProposalDescription Should render loading if it has no metadata 1`] = `
   margin: 1.5rem 0;
   line-height: 1.5;
   font-size: 16px;
-  text-align: justify;
+  word-break: break-word;
+  text-align: left;
   color: #BDC0C7;
 }
 
@@ -60,7 +62,8 @@ exports[`ProposalDescription Should render with description 1`] = `
   margin: 1.5rem 0;
   line-height: 1.5;
   font-size: 16px;
-  text-align: justify;
+  word-break: break-word;
+  text-align: left;
   color: #BDC0C7;
 }
 
