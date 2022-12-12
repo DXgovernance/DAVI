@@ -1,3 +1,9 @@
+import { useMemo } from 'react';
+import { BigNumber } from 'ethers';
+import { Controller, useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
+import { ActionEditorProps } from 'components/ActionsBuilder/SupportedActions';
 import { Button } from 'components/primitives/Button';
 import { AddressInput } from 'components/primitives/Forms/AddressInput';
 import {
@@ -7,14 +13,10 @@ import {
 } from 'components/primitives/Forms/Control';
 import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
-import { BigNumber } from 'ethers';
-import { useMemo } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import { ActionEditorProps } from 'components/ActionsBuilder/SupportedActions';
+import { TextArea } from 'components/primitives/Forms/TextArea';
+
 import validateRawTransaction from './validateRawTransaction';
 import { RawTransactionValues } from './types';
-import { TextArea } from 'components/primitives/Forms/TextArea';
 
 const RawTransactionEditor: React.FC<ActionEditorProps> = ({
   decodedCall,
