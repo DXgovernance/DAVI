@@ -27,7 +27,7 @@ const useENSAvatar = (nameOrAddress: string, chainId?: number) => {
 
 const useENSAvatarNFT = (
   nftUri: string,
-  ownerAddress: string,
+  ownerAddress: `0x${string}`,
   chainId?: number
 ) => {
   const decodedUrl = useMemo(() => {

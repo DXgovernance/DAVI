@@ -1,12 +1,12 @@
-import GuildRegistry from 'contracts/GuildsRegistry.json';
+import { GuildRegistry } from 'contracts/ts-files/GuildsRegistry';
 import useNetworkConfig from 'hooks/Guilds/useNetworkConfig';
 import { useContractRead } from 'wagmi';
 
 export const useGuildRegistry = (contractAddress?: string) => {
   const config = useNetworkConfig();
   return useContractRead({
-    addressOrName: contractAddress || config?.contracts?.utils.guildRegistry,
-    contractInterface: GuildRegistry.abi,
+    address: contractAddress || config?.contracts?.utils.guildRegistry,
+    abi: GuildRegistry.abi,
     functionName: 'getGuildsAddresses',
   });
 };

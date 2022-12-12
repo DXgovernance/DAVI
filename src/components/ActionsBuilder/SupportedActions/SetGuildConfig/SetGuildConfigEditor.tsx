@@ -123,7 +123,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     trigger,
   } = useForm({
     resolver: validateSetGuildConfig,
-    context: { t },
+    context: { t, currentGuildConfig },
     defaultValues: {
       proposalTime: parsedData.proposalTime,
       timeForExecution: parsedData.timeForExecution,
@@ -197,7 +197,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
     });
 
     if (Object.keys(updatedValues).length > 0) {
-      return onSubmit(call);
+      return onSubmit([call]);
     }
     return setNoValueUpdatedError(true);
   };
@@ -260,6 +260,7 @@ const SetGuildConfigEditor: FC<ActionEditorProps> = ({
                         onChange={handleChange}
                         isInvalid={!!error}
                         icon={f.type === FieldType.percentage && <>%</>}
+                        displayClearIcon={false}
                         iconRight={
                           valueChanged && (
                             <Button

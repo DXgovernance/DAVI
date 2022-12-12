@@ -10,15 +10,15 @@ export default function useERC721NFT(
   const { data, isError, isLoading } = useContractReads({
     contracts: [
       {
-        addressOrName: contractId,
-        contractInterface: ERC721.abi,
+        address: contractId,
+        abi: ERC721.abi,
         functionName: 'ownerOf',
         chainId,
         args: [tokenId],
       },
       {
-        addressOrName: contractId,
-        contractInterface: ERC721.abi,
+        address: contractId,
+        abi: ERC721.abi,
         functionName: 'tokenURI',
         chainId,
         args: [tokenId],

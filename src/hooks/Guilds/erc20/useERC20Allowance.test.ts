@@ -12,6 +12,7 @@ jest.mock('wagmi', () => ({
     isError: false,
     isLoading: false,
   }),
+  useContractEvent: () => jest.fn(),
 }));
 
 describe('useERC20Allowance', () => {

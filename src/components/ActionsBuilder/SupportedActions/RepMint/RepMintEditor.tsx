@@ -68,14 +68,16 @@ export const Mint: React.FC<ActionEditorProps> = ({
   };
 
   const submitAction = (values: RepMintFormValues) => {
-    onSubmit({
-      ...decodedCall,
-      args: {
-        ...decodedCall.args,
-        to: values.recipient,
-        amount: ethers.utils.parseUnits(repAmount.toString()),
+    onSubmit([
+      {
+        ...decodedCall,
+        args: {
+          ...decodedCall.args,
+          to: values.recipient,
+          amount: ethers.utils.parseUnits(repAmount.toString()),
+        },
       },
-    });
+    ]);
   };
 
   return (

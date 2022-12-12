@@ -65,7 +65,7 @@ export class ReadOnlyConnector extends Connector<
     provider.removeListener('disconnect', this.onDisconnect);
   }
 
-  async getAccount() {
+  async getAccount(): Promise<`0x${string}`> {
     return ZERO_ADDRESS;
   }
 
