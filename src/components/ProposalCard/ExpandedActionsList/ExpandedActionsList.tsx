@@ -26,7 +26,7 @@ const ExpandedActionsList: React.FC<ExpandedActionsListProps> = ({
               {!!InfoLine ? (
                 <InfoLine
                   decodedCall={decodedAction?.decodedCall}
-                  approveSpendTokens={decodedAction.approval}
+                  approveSpendTokens={decodedAction?.approval}
                   noAvatar
                   compact
                 />
