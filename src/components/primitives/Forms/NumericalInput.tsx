@@ -1,6 +1,6 @@
 // Based on https://github.com/levelkdev/dxswap-dapp/blob/master/src/components/Input/NumericalInput/index.tsx
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, InputProps } from 'components/primitives/Forms/Input';
 import { escapeRegExp } from 'utils';
 import { IconRight } from './IconRight';
@@ -22,6 +22,9 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       onChange(nextUserInput);
     }
   };
+  useEffect(() => {
+    setDisabledState(defaultValue ? true : disabled);
+  }, [disabled, defaultValue]);
 
   const [disabledState, setDisabledState] = useState(
     defaultValue ? true : disabled

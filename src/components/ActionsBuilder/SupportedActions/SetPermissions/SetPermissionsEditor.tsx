@@ -71,6 +71,13 @@ const Permissions: React.FC<ActionEditorProps> = ({
   const [activeTab, setActiveTab] = useState(parsedData.tab);
 
   const [isTokenPickerOpen, setIsTokenPickerOpen] = useState(false);
+  const [isAmountDisabled, setIsAmountDisabled] = useState(
+    activeTab === TABS.ASSET_TRANSFER
+  );
+  const [amountDefaultValue, setAmountDefaultValue] = useState(
+    activeTab === TABS.ASSET_TRANSFER ? null : '0'
+  );
+
   const { chain } = useNetwork();
 
   const { control, handleSubmit, getValues, setValue } = useForm<FormValues>({
@@ -154,6 +161,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
     const initTab = id === Number(parsedData.tab);
     // reset values
     setValue('toAddress', initTab ? parsedData.to : '');
+    setIsAmountDisabled(id === TABS.ASSET_TRANSFER);
+    setAmountDefaultValue(id === TABS.ASSET_TRANSFER ? null : '0');
     setValue(
       'amount',
       BigNumber.from(initTab ? preventEmptyString(parsedData?.valueAllowed) : 0)
@@ -312,8 +321,8 @@ const Permissions: React.FC<ActionEditorProps> = ({
                       value={BigNumber.from(
                         activeTab === TABS.ASSET_TRANSFER ? 0 : field.value || 0
                       )}
-                      disabled={activeTab === TABS.ASSET_TRANSFER}
-                      defaultValue={'0'}
+                      disabled={isAmountDisabled}
+                      defaultValue={amountDefaultValue}
                       isInvalid={invalid && !!error}
                     />
                     {activeTab === TABS.ASSET_TRANSFER && (
