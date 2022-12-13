@@ -1,5 +1,10 @@
 import { useState, useRef, useContext, useEffect, KeyboardEvent } from 'react';
 import { debounce } from 'lodash';
+import {
+  IOrbisPost,
+  IOrbisProfile,
+  IOrbisPostMention,
+} from 'types/types.orbis';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 import {
   PostboxWrapper,
@@ -36,12 +41,12 @@ const Postbox = ({
   cancelReplyTo,
 }: {
   context: string;
-  replyTo?: any;
-  editPost?: any;
+  replyTo?: IOrbisPost | null;
+  editPost?: IOrbisPost | null;
   enterToShare?: boolean;
   hideShareButton?: boolean;
   placeholder?: string;
-  callback: (value: any) => void;
+  callback: (value: IOrbisPost) => void;
   cancelEdit?: () => void;
   cancelReplyTo?: () => void;
 }) => {
@@ -49,14 +54,14 @@ const Postbox = ({
   const { orbis, profile, connectOrbis } = useContext(OrbisContext);
   const { isConnected, connector } = useAccount();
 
-  const postboxArea = useRef<any>(null);
+  const postboxArea = useRef<HTMLDivElement>(null);
 
   const [focusOffset, setFocusOffset] = useState<number>(0);
   const [focusNode, setFocusNode] = useState<Node | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [searchResults, setSearchResults] = useState<any[]>([]);
-  const [mentions, setMentions] = useState<any[]>([]);
+  const [searchResults, setSearchResults] = useState<IOrbisProfile[]>([]);
+  const [mentions, setMentions] = useState<IOrbisPostMention[]>([]);
 
   const saveCaretPos = () => {
     const sel = document.getSelection();
@@ -85,7 +90,7 @@ const Postbox = ({
     setIsSearching(false);
   }, 1000);
 
-  const addMention = (selected: any) => {
+  const addMention = (selected: IOrbisProfile) => {
     // Restore cursor position
     restoreCaretPos();
 
@@ -94,7 +99,7 @@ const Postbox = ({
 
     // Check if username already mentioned
     const hasBeenMentioned = mentions?.find(
-      (o: any) => username === o?.username
+      (o: IOrbisProfile['details']['profile']) => username === o?.username
     );
 
     // Save selected to mentions
@@ -148,7 +153,11 @@ const Postbox = ({
       const newContent = { ...editPost.content, body, mentions: _mentions };
       const res = await orbis.editPost(editPost.stream_id, newContent);
       if (res.status === 200 && callback) {
-        callback(newContent);
+        callback({
+          ...editPost,
+          content: newContent,
+          count_commits: editPost.count_commits + 1,
+        });
       }
     } else {
       const content = {

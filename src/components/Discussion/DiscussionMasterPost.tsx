@@ -3,15 +3,16 @@ import { OrbisContext } from 'contexts/Guilds/orbis';
 import { DiscussionMasterPost } from './Discussion.styled';
 import { Post } from './Post';
 import { Thread } from './Thread';
+import { IOrbisPost } from 'types/types.orbis';
 
 const MasterPost = ({ post, onDeletion }) => {
   const { orbis } = useContext(OrbisContext);
 
-  const threadPostbox = useRef<any>(null);
-  const discussionMasterPost = useRef<any>(null);
+  const threadPostbox = useRef<HTMLDivElement>(null);
+  const discussionMasterPost = useRef<HTMLDivElement>(null);
 
   const [masterPost, setMasterPost] = useState(null);
-  const [replyTo, setReplyTo] = useState<any>(null);
+  const [replyTo, setReplyTo] = useState<IOrbisPost | null>(null);
   const [showThread, setShowThread] = useState(false);
   const [scrollToEl, setScrollToEl] = useState<HTMLElement | string | null>(
     null
@@ -28,7 +29,7 @@ const MasterPost = ({ post, onDeletion }) => {
     }
   };
 
-  const getActualReplies = async (post: any) => {
+  const getActualReplies = async (post: IOrbisPost) => {
     const { data } = await orbis.getPosts(
       {
         context: post.context,
@@ -43,7 +44,7 @@ const MasterPost = ({ post, onDeletion }) => {
     setShowThread(!showThread);
   };
 
-  const handleThreadUpdated = (posts: any[]) => {
+  const handleThreadUpdated = (posts: IOrbisPost[]) => {
     setMasterPost({ ...masterPost, count_replies: posts.length });
   };
 

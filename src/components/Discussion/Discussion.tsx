@@ -16,6 +16,7 @@ import {
   DiscussionEmpty,
 } from './Discussion.styled';
 import { Box } from 'components/primitives/Layout';
+import { IOrbisPost } from 'types/types.orbis';
 
 function Discussion({
   context,
@@ -65,7 +66,7 @@ function Discussion({
         setIsFetching(false);
       } else {
         const unique = data.filter(
-          (a: any) => !_posts.some(b => a.stream_id === b.stream_id)
+          (a: IOrbisPost) => !_posts.some(b => a.stream_id === b.stream_id)
         );
         if (unique.length > 0) {
           setPosts([...unique, ..._posts]);
@@ -74,11 +75,11 @@ function Discussion({
     }
   };
 
-  const onNewMasterPostCreated = (newPost: any) => {
+  const onNewMasterPostCreated = (newPost: IOrbisPost) => {
     setPosts([newPost, ...posts]);
   };
 
-  const handleDeletion = async (post: any) => {
+  const handleDeletion = async (post: IOrbisPost) => {
     const confirmed = window.confirm(
       'Are you sure you want to delete this post?\r\nIf you ask for deletion your post might be removed from the Ceramic nodes hosting it.'
     );

@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import moment from 'moment';
+import { IOrbisPost } from 'types/types.orbis';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 import { getUsername, getBadgeContent, formatMessage } from 'utils/orbis';
 import { Avatar } from 'components/Avatar';
@@ -28,10 +29,10 @@ const Post = ({
   toggleThread,
   onDeletion,
 }: {
-  post: any;
-  replyTo: any;
+  post: IOrbisPost;
+  replyTo: IOrbisPost | null;
   showThreadButton?: boolean;
-  onClickReply: (value: any) => void;
+  onClickReply: (value: IOrbisPost | null) => void;
   toggleThread?: () => void;
   onDeletion: () => void;
 }) => {
@@ -53,12 +54,8 @@ const Post = ({
     }
   };
 
-  const handleEdited = async (content: any) => {
-    setPostClone({
-      ...postClone,
-      content,
-      count_commits: postClone.count_commits + 1,
-    });
+  const handleEdited = async (editedPost: IOrbisPost) => {
+    setPostClone(editedPost);
     setIsEditing(false);
   };
 

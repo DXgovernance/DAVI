@@ -24,6 +24,7 @@ import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
 import { useTranslation } from 'react-i18next';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
+import { IOrbisPost } from 'types/types.orbis';
 
 const PostActions = ({
   post,
@@ -33,7 +34,7 @@ const PostActions = ({
   onClickEdit,
   onClickDelete,
 }: {
-  post: any;
+  post: IOrbisPost;
   showThreadButton?: boolean;
   toggleThread: () => void;
   toggleReply: () => void;

@@ -11,6 +11,7 @@ import { useInterval } from 'utils';
 import { MasterGroup, MasterGroupPostbox, ThreadGroup } from './Thread.styled';
 import { Post } from '../Post';
 import { Postbox } from '../Postbox';
+import { IOrbisPost } from 'types/types.orbis';
 
 const Group = ({
   items,
@@ -19,11 +20,11 @@ const Group = ({
   onClickReply,
   onDeletion,
 }: {
-  items: any[];
-  replies: Record<string, any[]>;
-  replyTo: any;
-  onClickReply: (value: any) => void;
-  onDeletion: (post: any) => void;
+  items: IOrbisPost[];
+  replies: Record<string, IOrbisPost[]>;
+  replyTo: IOrbisPost;
+  onClickReply: (value: IOrbisPost) => void;
+  onDeletion: (post: IOrbisPost) => void;
 }) => {
   return (
     <>
@@ -61,18 +62,18 @@ const Thread = ({
   onThreadUpdated,
 }: {
   context: string | undefined;
-  master: any;
+  master: IOrbisPost;
   threadPostbox: LegacyRef<HTMLDivElement> | null;
-  replyTo: any;
-  onClickReply: (value: any) => void;
+  replyTo: IOrbisPost;
+  onClickReply: (value: IOrbisPost) => void;
   onNewPost: (el: HTMLElement) => void;
-  onThreadUpdated: (posts: any[]) => void;
+  onThreadUpdated: (posts: IOrbisPost[]) => void;
 }) => {
   const { orbis } = useContext(OrbisContext);
 
-  const mainGroup = useRef<any>(null);
+  const mainGroup = useRef<HTMLDivElement>(null);
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IOrbisPost[]>([]);
   const [page, setPage] = useState(0);
   const [isFetching, setIsFetching] = useState(false);
   const [pausePolling, setPausePolling] = useState(false);
@@ -112,7 +113,7 @@ const Thread = ({
         setIsFetching(false);
       } else {
         const unique = data.filter(
-          (a: any) => !_posts.some(b => a.stream_id === b.stream_id)
+          (a: IOrbisPost) => !_posts.some(b => a.stream_id === b.stream_id)
         );
         if (unique.length > 0) {
           setPosts([..._posts, ...unique]);
@@ -121,7 +122,7 @@ const Thread = ({
     }
   };
 
-  const callback = (newPost: any) => {
+  const callback = (newPost: IOrbisPost) => {
     const _posts = [...posts, newPost];
     setPosts(_posts);
     onClickReply(null);
@@ -138,7 +139,7 @@ const Thread = ({
     }
   };
 
-  const handleDeletion = async (post: any) => {
+  const handleDeletion = async (post: IOrbisPost) => {
     const confirmed = window.confirm(
       'Are you sure you want to delete this post?\r\nIf you ask for deletion your post might be removed from the Ceramic nodes hosting it.'
     );
