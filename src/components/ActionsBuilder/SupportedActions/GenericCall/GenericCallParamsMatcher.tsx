@@ -20,6 +20,7 @@ export const renderGenericCallParamValue = (
 
   switch (param.component) {
     case 'address':
+    case 'tokenPicker':
       return (
         <BlockExplorerLink
           address={param.value}

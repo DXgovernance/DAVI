@@ -1,3 +1,4 @@
+import { mockBigNumber } from 'components/ActionsBuilder/SupportedActions/SetGuildConfig/fixtures';
 import { render } from 'utils/tests';
 import { BlockExplorerLink } from './BlockExplorerLink';
 
@@ -29,6 +30,21 @@ jest.mock('wagmi', () => ({
   }),
   useContractReads: () => ({
     data: [{}],
+  }),
+}));
+
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => ({
+    tokens: [],
+  }),
+}));
+
+jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
+  useERC20Info: () => ({
+    name: 'Test ERC20',
+    symbol: 'TEST',
+    decimals: 18,
+    totalSupply: mockBigNumber,
   }),
 }));
 

@@ -18,7 +18,7 @@ const Header = () => {
     <HeaderWrapper as="header">
       <HeaderContainer>
         <ClickableHeading
-          onClick={() => navigate(`/${chain.network}`)}
+          onClick={() => navigate(`/${chain?.network}`)}
           size={2}
         >
           <TextLogo />
