@@ -36,7 +36,6 @@ const MasterPost = ({ post, onDeletion }) => {
       },
       0
     );
-    console.log(data);
     setMasterPost({ ...post, count_replies: data.length });
   };
 
@@ -45,7 +44,6 @@ const MasterPost = ({ post, onDeletion }) => {
   };
 
   const handleThreadUpdated = (posts: any[]) => {
-    console.log('thread updated');
     setMasterPost({ ...masterPost, count_replies: posts.length });
   };
 

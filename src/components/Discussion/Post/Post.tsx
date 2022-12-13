@@ -42,7 +42,6 @@ const Post = ({
   const [isEditing, setIsEditing] = useState(false);
 
   const getPost = async () => {
-    console.log('fetch post');
     const { data, error } = await orbis.getPost(post.stream_id);
 
     if (error) {
@@ -65,7 +64,6 @@ const Post = ({
 
   useEffect(() => {
     if (!post?.reply_to && !post?.master) {
-      console.log('master post');
       setPostClone({ ...post });
     } else {
       getPost();
