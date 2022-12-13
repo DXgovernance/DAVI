@@ -1,6 +1,6 @@
-const useDiscussionContext = (guildId: string, subId: string) => {
+const useDiscussionContext = (customContext: string) => {
   const prefix = 'projectDaviTest-';
-  const context = `${prefix}${guildId}-${subId}`;
+  const context = `${prefix}${customContext}`;
   return { context };
 };
 

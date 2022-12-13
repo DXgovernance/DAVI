@@ -58,7 +58,7 @@ const ProposalPage: React.FC = () => {
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
   const { loaded } = useGuildImplementationTypeConfig(guildId);
-  const { context } = useDiscussionContext(guildId, proposalId);
+  const { context } = useDiscussionContext(`${guildId}-${proposalId}`);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
@@ -154,14 +154,7 @@ const ProposalPage: React.FC = () => {
               </SidebarCardHeaderSpaced>
             }
           >
-            <Discussion
-              context={
-                process.env.NODE_ENV === 'development'
-                  ? 'kjzl6cwe1jw145gun3sei0a4puw586yxa614le1tfh434y7quv2wsm0ivhbge7x'
-                  : context
-              }
-              master={''}
-            />
+            <Discussion context={context} master={''} />
           </SidebarCard>
         </PageContent>
         <SidebarContent>
