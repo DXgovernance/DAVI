@@ -1,5 +1,5 @@
 import { Orbis } from '@orbisclub/orbis-sdk';
-import { useState, useEffect, createContext } from 'react';
+import { useState, createContext } from 'react';
 import { useSigner } from 'wagmi';
 import { sleep } from 'utils';
 
@@ -53,12 +53,6 @@ export const OrbisProvider = ({ children }) => {
       await connectOrbis();
     }
   };
-
-  useEffect(() => {
-    if (signer) checkOrbisConnection(true);
-    // else disconnectOrbis();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [signer]);
 
   return (
     <OrbisContext.Provider

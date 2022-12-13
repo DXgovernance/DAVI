@@ -118,11 +118,15 @@ export const PostActionButton = styled.button<PostActionButtonProps>`
       : ({ theme }) => theme.colors.grey};
   cursor: pointer;
 
-  &:hover {
+  &:not(:disabled):hover {
     color: ${props =>
       props.active
         ? ({ theme }) => theme.colors.active
         : ({ theme }) => theme.colors.grey2};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 

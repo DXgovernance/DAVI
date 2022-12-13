@@ -22,6 +22,8 @@ import {
 } from './Post.styled';
 import { useDetectBlur } from 'hooks/Guilds/useDetectBlur';
 import { useTranslation } from 'react-i18next';
+import { useAccount } from 'wagmi';
+import { isReadOnly } from 'provider/wallets';
 
 const PostActions = ({
   post,
@@ -39,7 +41,8 @@ const PostActions = ({
   onClickDelete: () => void;
 }) => {
   const { t } = useTranslation();
-  const { orbis, profile } = useContext(OrbisContext);
+  const { orbis, profile, checkOrbisConnection } = useContext(OrbisContext);
+  const { isConnected, connector } = useAccount();
 
   const [reacted, setReacted] = useState<string>(null);
   const [likes, setLikes] = useState<number>(0);
@@ -50,29 +53,42 @@ const PostActions = ({
   const postPopover = useRef(null);
   useDetectBlur(postPopover, () => setShowPopover(false));
 
+  const handleClickReply = async () => {
+    if (!profile) {
+      await checkOrbisConnection(true);
+    }
+
+    toggleReply();
+  };
+
   const react = async (type: 'like' | 'haha' | 'downvote') => {
     if (!type) return;
 
-    const res = await orbis.react(post.stream_id, type);
-    if (res.status === 200) {
-      setReacted(type);
+    if (!profile) {
+      await checkOrbisConnection(true);
+      await react(type);
+    } else {
+      const res = await orbis.react(post.stream_id, type);
+      if (res.status === 200) {
+        setReacted(type);
 
-      // Decrement previous reaction
-      if (reacted === 'like') {
-        setLikes(prev => prev - 1);
-      } else if (reacted === 'haha') {
-        setHaha(prev => prev - 1);
-      } else if (reacted === 'downvote') {
-        setDownvotes(prev => prev - 1);
-      }
+        // Decrement previous reaction
+        if (reacted === 'like') {
+          setLikes(prev => prev - 1);
+        } else if (reacted === 'haha') {
+          setHaha(prev => prev - 1);
+        } else if (reacted === 'downvote') {
+          setDownvotes(prev => prev - 1);
+        }
 
-      // Increment new reaction
-      if (type === 'like') {
-        setLikes(prev => prev + 1);
-      } else if (type === 'haha') {
-        setHaha(prev => prev + 1);
-      } else if (type === 'downvote') {
-        setDownvotes(prev => prev + 1);
+        // Increment new reaction
+        if (type === 'like') {
+          setLikes(prev => prev + 1);
+        } else if (type === 'haha') {
+          setHaha(prev => prev + 1);
+        } else if (type === 'downvote') {
+          setDownvotes(prev => prev + 1);
+        }
       }
     }
   };
@@ -93,10 +109,16 @@ const PostActions = ({
 
   return (
     <>
-      <PostActionButton title={t('postActions.reply')} onClick={toggleReply}>
+      {/* Reply to post button */}
+      <PostActionButton
+        title={t('postActions.reply')}
+        onClick={handleClickReply}
+        disabled={isConnected && isReadOnly(connector)}
+      >
         <IoArrowUndoOutline size={20} />
       </PostActionButton>
 
+      {/* Toggle Thread */}
       {showThreadButton && (
         <PostActionButton
           title={t('postActions.toggleThread')}
@@ -107,10 +129,12 @@ const PostActions = ({
         </PostActionButton>
       )}
 
+      {/* Reaction: Like */}
       <PostActionButton
         title={t('postActions.like')}
         active={reacted === 'like'}
         onClick={() => react('like')}
+        disabled={isConnected && isReadOnly(connector)}
       >
         {reacted === 'like' ? (
           <IoHeart size={20} />
@@ -120,10 +144,12 @@ const PostActions = ({
         <PostActionCount>{likes}</PostActionCount>
       </PostActionButton>
 
+      {/* Reaction: Haha */}
       <PostActionButton
         title={t('postActions.haha')}
         active={reacted === 'haha'}
         onClick={() => react('haha')}
+        disabled={isConnected && isReadOnly(connector)}
       >
         {reacted === 'haha' ? (
           <BsEmojiLaughingFill size={18} />
@@ -133,10 +159,12 @@ const PostActions = ({
         <PostActionCount>{haha}</PostActionCount>
       </PostActionButton>
 
+      {/* Reaction: Downvote */}
       <PostActionButton
         title={t('postActions.downvote')}
         active={reacted === 'downvote'}
         onClick={() => react('downvote')}
+        disabled={isConnected && isReadOnly(connector)}
       >
         {reacted === 'downvote' ? (
           <BsHandThumbsDownFill size={18} />

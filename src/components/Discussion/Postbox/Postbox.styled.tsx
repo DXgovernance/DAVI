@@ -47,7 +47,7 @@ export const PostboxUserMention = styled.div`
   padding: 0.5rem 1rem;
 `;
 
-export const PostboxShare = styled(Button)`
+export const PostboxButton = styled(Button)`
   border-radius: ${({ theme }) => theme.radii.curved};
   margin: 0;
 `;

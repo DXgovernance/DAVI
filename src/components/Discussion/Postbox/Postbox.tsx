@@ -7,7 +7,7 @@ import {
   PostboxInputWrapper,
   PostboxMentions,
   PostboxUserMention,
-  PostboxShare,
+  PostboxButton,
   ReplyTo,
   ReplyToDetails,
   ReplyToCancel,
@@ -21,6 +21,8 @@ import {
 } from 'utils/orbis';
 import { Box } from 'components/primitives/Layout';
 import { useTranslation } from 'react-i18next';
+import { useAccount } from 'wagmi';
+import { isReadOnly } from 'provider/wallets';
 
 const Postbox = ({
   context,
@@ -44,7 +46,8 @@ const Postbox = ({
   cancelReplyTo?: () => void;
 }) => {
   const { t } = useTranslation();
-  const { orbis, profile } = useContext(OrbisContext);
+  const { orbis, profile, connectOrbis } = useContext(OrbisContext);
+  const { isConnected, connector } = useAccount();
 
   const postboxArea = useRef<any>(null);
 
@@ -292,6 +295,37 @@ const Postbox = ({
     }
   }, [editPost]);
 
+  useEffect(() => {
+    console.log({
+      isConnected,
+      connector,
+      readOnlyConnector: isReadOnly(connector),
+    });
+  }, [isConnected, connector]);
+
+  if (isConnected && isReadOnly(connector)) {
+    return (
+      <PostboxWrapper>
+        <PostboxInputWrapper>
+          <PostboxInput data-placeholder={t('postboxConnectWallet')} />
+        </PostboxInputWrapper>
+      </PostboxWrapper>
+    );
+  }
+
+  if (!profile) {
+    return (
+      <PostboxWrapper>
+        <PostboxInputWrapper>
+          <PostboxInput data-placeholder={t('postboxConnectCeramic')} />
+          <PostboxButton onClick={connectOrbis}>
+            {t('postboxConnectCeramicButton')}
+          </PostboxButton>
+        </PostboxInputWrapper>
+      </PostboxWrapper>
+    );
+  }
+
   return (
     <PostboxWrapper>
       {searchText && (
@@ -338,7 +372,7 @@ const Postbox = ({
         />
 
         {!enterToShare && !hideShareButton && (
-          <PostboxShare onClick={share}>{t('postboxShare')}</PostboxShare>
+          <PostboxButton onClick={share}>{t('postboxShare')}</PostboxButton>
         )}
       </PostboxInputWrapper>
 

@@ -285,6 +285,9 @@
   "replyingTo": "Replying to",
   "postEdited": "edited",
   "postboxShare": "Share",
+  "postboxConnectWallet": "Connect wallet to start sharing comment",
+  "postboxConnectCeramic": "Generate a new Ceramic session to start sharing comment",
+  "postboxConnectCeramicButton": "Generate Ceramic Session",
   "postboxEditCancel": "Cancel",
   "postboxEditSave": "Save",
   "postActions": {
