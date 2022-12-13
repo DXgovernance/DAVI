@@ -308,7 +308,7 @@ const Postbox = ({
 
   useEffect(() => {
     if (!profile && isConnected && !isReadOnly(connector))
-      checkOrbisConnection(true);
+      checkOrbisConnection();
   }, [isConnected, connector, profile, checkOrbisConnection]);
 
   if (isConnected && isReadOnly(connector)) {
