@@ -11,7 +11,7 @@ const MasterPost = ({ post, onDeletion }) => {
   const threadPostbox = useRef<HTMLDivElement>(null);
   const discussionMasterPost = useRef<HTMLDivElement>(null);
 
-  const [masterPost, setMasterPost] = useState(null);
+  const [masterPost, setMasterPost] = useState<IOrbisPost | null>(null);
   const [replyTo, setReplyTo] = useState<IOrbisPost | null>(null);
   const [showThread, setShowThread] = useState(false);
   const [scrollToEl, setScrollToEl] = useState<HTMLElement | string | null>(
@@ -21,7 +21,7 @@ const MasterPost = ({ post, onDeletion }) => {
   const getMasterPost = async () => {
     const { data, error } = await orbis.getPost(post.stream_id);
 
-    if (error) console.log(error);
+    if (error) setMasterPost({ ...post });
 
     if (data) {
       setMasterPost(data);

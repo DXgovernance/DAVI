@@ -16,7 +16,7 @@ import {
   DiscussionEmpty,
 } from './Discussion.styled';
 import { Box } from 'components/primitives/Layout';
-import { IOrbisPost } from 'types/types.orbis';
+import { IOrbisGetPostsAlgorithm, IOrbisPost } from 'types/types.orbis';
 
 function Discussion({
   context,
@@ -25,7 +25,7 @@ function Discussion({
 }: {
   context: string;
   master?: string;
-  algorithm?: string;
+  algorithm?: keyof typeof IOrbisGetPostsAlgorithm;
 }) {
   const { t } = useTranslation();
   const { orbis } = useContext(OrbisContext);

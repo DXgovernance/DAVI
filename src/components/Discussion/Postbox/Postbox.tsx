@@ -51,7 +51,8 @@ const Postbox = ({
   cancelReplyTo?: () => void;
 }) => {
   const { t } = useTranslation();
-  const { orbis, profile, connectOrbis } = useContext(OrbisContext);
+  const { orbis, profile, connectOrbis, checkOrbisConnection } =
+    useContext(OrbisContext);
   const { isConnected, connector } = useAccount();
 
   const postboxArea = useRef<HTMLDivElement>(null);
@@ -170,7 +171,7 @@ const Postbox = ({
 
       const timestamp = Math.floor(Date.now() / 1000);
 
-      const _callbackContent = {
+      const newPost = {
         content,
         context,
         creator: profile.did,
@@ -193,16 +194,17 @@ const Postbox = ({
         type: replyTo ? 'reply' : null,
       };
 
-      console.log(_callbackContent);
+      console.log(newPost);
 
-      if (callback) callback(_callbackContent);
+      if (callback) callback(newPost);
       postboxArea.current.innerText = '';
 
       const res = await orbis.createPost(content);
 
+      console.log(res);
       if (res.status === 200) {
-        _callbackContent.stream_id = res.doc;
-        if (callback) callback(_callbackContent);
+        newPost.stream_id = res.doc;
+        if (callback) callback(newPost);
       }
     }
   };
@@ -305,12 +307,9 @@ const Postbox = ({
   }, [editPost]);
 
   useEffect(() => {
-    console.log({
-      isConnected,
-      connector,
-      readOnlyConnector: isReadOnly(connector),
-    });
-  }, [isConnected, connector]);
+    if (!profile && isConnected && !isReadOnly(connector))
+      checkOrbisConnection(true);
+  }, [isConnected, connector, profile, checkOrbisConnection]);
 
   if (isConnected && isReadOnly(connector)) {
     return (
@@ -320,9 +319,7 @@ const Postbox = ({
         </PostboxInputWrapper>
       </PostboxWrapper>
     );
-  }
-
-  if (!profile) {
+  } else if (!profile) {
     return (
       <PostboxWrapper>
         <PostboxInputWrapper>
