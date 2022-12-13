@@ -14,6 +14,7 @@ import { ActionViewProps } from '..';
 import GenericCallParamsMatcher from './GenericCallParamsMatcher';
 import { useTranslation } from 'react-i18next';
 import { preventEmptyString } from 'utils';
+import './Override.css';
 
 export interface FunctionParamWithValue extends RichContractFunctionParam {
   value: string;
@@ -91,7 +92,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
             <>
               <Segment>
                 {!!tokenInfo
-                  ? approvalAmount + tokenInfo?.symbol ?? ''
+                  ? `${approvalAmount} ${tokenInfo?.symbol}` ?? ''
                   : 'Unknown token'}
               </Segment>
               <Segment>
@@ -102,6 +103,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
           <Segment>
             <Interweave
               content={functionData?.templateLiteral}
+              className="GenericCallMatcher"
               matchers={[
                 new GenericCallParamsMatcher('genericCallParamsMatcher', {
                   params,

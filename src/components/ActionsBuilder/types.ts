@@ -32,7 +32,7 @@ export interface DecodedCall {
   from: string;
   to: string;
   value: BigNumber | string;
-  function: utils.FunctionFragment;
+  function?: utils.FunctionFragment;
   args: Record<string, any>;
   richData?: RichContractData;
   richFunctionData?: RichContractFunction;
@@ -47,6 +47,7 @@ export interface DecodedAction {
   contract: utils.Interface;
   approval?: ApproveSendTokens;
   simulationResult?: any;
+  actionDenied?: boolean;
 }
 
 export interface Option {
@@ -55,6 +56,7 @@ export interface Option {
   color: string;
   actions?: Call[];
   decodedActions?: DecodedAction[];
+  permissions?: Permission[];
   totalVotes?: BigNumber;
   votePercentage?: number;
 }
@@ -62,4 +64,11 @@ export interface Option {
 export interface ApproveSendTokens extends DecodedCall {
   amount?: BigNumber | string;
   token?: string;
+}
+
+export interface Permission {
+  from: string;
+  to: string;
+  callType?: string;
+  functionSignature: string;
 }

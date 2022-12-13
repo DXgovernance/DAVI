@@ -29,7 +29,7 @@ const validateAssetTransferPermission = (
     amount: null,
     functionName: null,
   };
-  if (activeTab === 0) {
+  if (activeTab === TABS.ASSET_TRANSFER) {
     if (!tokenAddress || tokenAddress === ZERO_ADDRESS) {
       errors.tokenAddress = t('tokenAddressIsRequired');
     } else if (!utils.isAddress(tokenAddress)) {
@@ -37,7 +37,7 @@ const validateAssetTransferPermission = (
     }
   }
 
-  if (activeTab === 1) {
+  if (activeTab === TABS.FUNCTION_CALL) {
     if (functionName || functionName.trim() !== '') {
       if (!functionName.match(regexFunctionName)) {
         if (

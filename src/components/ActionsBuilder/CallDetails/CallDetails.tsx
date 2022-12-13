@@ -37,7 +37,6 @@ function getStringValueForParam(type: string, value: any) {
 
 function renderDefaultParamValue(param: Param) {
   if (!param) return null;
-
   if (param.type === 'address') {
     return <BlockExplorerLink address={param.value} />;
   }

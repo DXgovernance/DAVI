@@ -51,7 +51,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   const [clonedOptions, setClonedOptions] = useState<Option[]>(null);
   const recentlyMovedToNewContainer = useRef(false);
   const theme = useTheme();
-
   useEffect(() => {
     requestAnimationFrame(() => {
       recentlyMovedToNewContainer.current = false;
@@ -59,7 +58,9 @@ export const OptionsList: React.FC<OptionsListProps> = ({
   }, [options]);
 
   function updateOption(index: number, option: Option) {
-    onChange(options.map((o, i) => (i === index ? option : o)));
+    if (onChange) {
+      onChange(options.map((o, i) => (i === index ? option : o)));
+    }
   }
 
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
@@ -323,7 +324,6 @@ export const OptionsList: React.FC<OptionsListProps> = ({
       return true;
     else return false;
   }, [options, simulationStatus]);
-
   return (
     <DndContext
       sensors={sensors}
@@ -367,6 +367,7 @@ export const OptionsList: React.FC<OptionsListProps> = ({
               actions: [],
               decodedActions: [],
               totalVotes: BigNumber.from(0),
+              permissions: [],
             }}
             isEditable={false}
             onChange={() => {}}

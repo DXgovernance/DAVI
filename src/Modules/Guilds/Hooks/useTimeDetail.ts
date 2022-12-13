@@ -21,7 +21,7 @@ const useTimeDetail = (
   // with states Executable and Failed we show the time difference with execution time. Otherwise, with ending time
   if (status === ProposalState.Executable || status === ProposalState.Failed) {
     endTimeMoment = moment(endTime).add(
-      guildConfig?.timeForExecution.toNumber(),
+      guildConfig?.timeForExecution?.toNumber(),
       'seconds'
     );
 

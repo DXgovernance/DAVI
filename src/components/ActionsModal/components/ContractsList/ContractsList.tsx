@@ -64,7 +64,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            {t('setPermissions')}
+            {t('permissions.setPermissions')}
           </ButtonLabel>
         </ActionsButton>
         {!!isRepGuild ? (
