@@ -94,13 +94,17 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     if (isEditable && isDragging) return CardStatus.dragging;
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
+
     if (permissionValues?.includes('0')) {
       return CardStatus.permissionDenied;
     }
-    if (!decodedCall || hasValueTransferOnContractCall)
-      return CardStatus.warning;
 
-    if (!decodedAction?.simulationResult) return CardStatus.normal;
+    if (
+      !decodedCall ||
+      hasValueTransferOnContractCall ||
+      decodedCall.callType === 'RAW_TRANSACTION'
+    )
+      if (!decodedAction?.simulationResult) return CardStatus.normal;
 
     if (decodedAction?.simulationResult.simulation.status === false) {
       return CardStatus.simulationFailed;
@@ -146,7 +150,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           {InfoLine && (
             <InfoLine decodedCall={decodedCall} approveSpendTokens={approval} />
           )}
-          {!decodedCall && <UndecodableCallInfoLine />}
+          {!decodedCall && <UndecodableCallInfoLine call={call} />}
         </CardLabel>
         <CardActions>
           {isEditable && (

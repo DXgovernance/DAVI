@@ -25,14 +25,17 @@ const Summary = ({ decodedCall }: SummaryProps) => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
 
+  const isNativeTransfer =
+    decodedCall?.callType === SupportedAction.NATIVE_TRANSFER;
+
+  const isRawTransaction =
+    decodedCall?.callType === SupportedAction.RAW_TRANSACTION;
+
   return (
     <>
       <DetailHeader>
-        {decodedCall?.callType === SupportedAction?.NATIVE_TRANSFER
-          ? t('transfer')
-          : t('interactWith')}{' '}
-        {decodedCall?.callType !== SupportedAction?.NATIVE_TRANSFER &&
-        parsedValueToString !== '0.0' ? (
+        {isNativeTransfer ? t('transfer') : t('interactWith')}{' '}
+        {!isNativeTransfer && parsedValueToString !== '0.0' ? (
           <RedHighlight>
             {parsedValueToString} {nativeTokenSymbol}
           </RedHighlight>
@@ -44,11 +47,13 @@ const Summary = ({ decodedCall }: SummaryProps) => {
         :
       </DetailHeader>
 
-      <DetailRow>
-        <DetailBody>
-          <BlockExplorerLink address={decodedCall?.to} showAvatar />
-        </DetailBody>
-      </DetailRow>
+      {!isRawTransaction && (
+        <DetailRow>
+          <DetailBody>
+            <BlockExplorerLink address={decodedCall?.to} showAvatar />
+          </DetailBody>
+        </DetailRow>
+      )}
     </>
   );
 };

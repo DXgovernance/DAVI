@@ -23,6 +23,9 @@ import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLin
 import SetGuildConfigInfoLine from './SetGuildConfig/SetGuildConfigInfoLine';
 import SetGuildConfigEditor from './SetGuildConfig/SetGuildConfigEditor';
 import Summary from './common/Summary';
+import RawTransactionEditor from './RawTransaction/RawTransactionEditor';
+import RawTransactionInfoLine from './RawTransaction/RawTransactionInfoLine';
+
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -87,6 +90,11 @@ export const supportedActions: Record<
     infoLineView: UpdateENSContentInfoLine,
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
+  },
+  [SupportedAction.RAW_TRANSACTION]: {
+    title: 'Raw Transaction',
+    infoLineView: RawTransactionInfoLine,
+    editor: RawTransactionEditor,
   },
   [SupportedAction.SET_GUILD_CONFIG]: {
     title: 'Set Guild Config',
@@ -194,6 +202,21 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
       optionalProps: {
         ensName: '',
         ipfsHash: '',
+      },
+    },
+  },
+  [SupportedAction.RAW_TRANSACTION]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.RAW_TRANSACTION,
+      function: null,
+      to: '',
+      args: {},
+      value: BigNumber.from(0),
+      optionalProps: {
+        data: '',
       },
     },
   },

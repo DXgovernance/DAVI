@@ -12,17 +12,19 @@ export enum SupportedAction {
   GENERIC_CALL = 'GENERIC_CALL',
   SET_PERMISSIONS = 'SET_PERMISSIONS',
   ENS_UPDATE_CONTENT = 'ENS_UPDATE_CONTENT',
+  RAW_TRANSACTION = 'RAW_TRANSACTION',
   SET_GUILD_CONFIG = 'SET_GUILD_CONFIG',
 }
 
 export interface Call {
   from: string;
   to: string;
-  data: string;
+  data?: string;
   value: BigNumber | string;
   approval?: ApproveSendTokens;
   functionName?: string;
   approvalCall?: Call;
+  optionalProps?: Record<string, any>;
 }
 
 export interface DecodedCall {
