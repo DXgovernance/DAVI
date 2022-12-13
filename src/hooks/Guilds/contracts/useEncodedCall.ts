@@ -1,4 +1,5 @@
 import { Call, DecodedCall, Option } from 'components/ActionsBuilder/types';
+import { getPermissionArgs } from 'components/ActionsBuilder/utils';
 import ERC20 from 'contracts/ERC20.json';
 import { utils, BigNumber } from 'ethers';
 import { preventEmptyString } from 'utils';
@@ -54,6 +55,7 @@ export const bulkEncodeCallsFromOptions = (options: Option[]): Option[] => {
     return {
       ...option,
       actions: encodedCalls,
+      permissions: getPermissionArgs(decodedActions),
     };
   });
 };
