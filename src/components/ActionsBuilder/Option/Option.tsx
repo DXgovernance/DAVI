@@ -130,7 +130,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
               return (
                 <ActionRow
                   key={index}
-                  call={action}
                   isEditable={true}
                   decodedAction={option?.decodedActions?.[index]}
                   permissionArgs={permissionArgs}
