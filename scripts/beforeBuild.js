@@ -26,6 +26,7 @@ fs.writeFileSync(
           multicall: '0x0000000000000000000000000000000000000000',
           dxDaoNFT: '0x0000000000000000000000000000000000000000',
           dxdVestingFactory: '0x0000000000000000000000000000000000000000',
+          guildRegistry: '0x0a0d10cc9CB839c6aEbff5055f2a5c03ecC90341',
         },
         votingMachines: {},
       },

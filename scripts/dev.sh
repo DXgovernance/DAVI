@@ -52,7 +52,9 @@
 # contents="$(jq '.compilerOptions.module = "commonjs"' tsconfig.json)" && \
 # echo "${contents}" > tsconfig.json
 
-# node scripts/beforeBuild.js
+echo "Executing beforeBuild"
+node scripts/beforeBuild.js
+
 
 # Deploy local contracts
 # yarn hardhat run --network localhost scripts/dev.ts
