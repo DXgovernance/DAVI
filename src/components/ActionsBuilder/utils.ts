@@ -12,7 +12,9 @@ export const getPermissionArgs = (
   const permissions = decodedActions.map(decodedAction => {
     // Native transfer of ETH does not have a function
     if (
-      decodedAction?.decodedCall?.callType === SupportedAction.NATIVE_TRANSFER
+      decodedAction?.decodedCall?.callType ===
+        SupportedAction.NATIVE_TRANSFER ||
+      decodedAction?.decodedCall?.callType === SupportedAction.RAW_TRANSACTION
     ) {
       return {
         from: decodedAction?.decodedCall?.from,
