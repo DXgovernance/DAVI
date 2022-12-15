@@ -125,7 +125,7 @@ export const OptionRow: React.FC<OptionRowProps> = ({
             items={option?.decodedActions?.map(action => action.id)}
             strategy={verticalListSortingStrategy}
           >
-            {option?.actions?.map((action, index) => {
+            {option?.decodedActions?.map((action, index) => {
               const permissionArgs = option?.permissions?.[index];
               return (
                 <ActionRow
