@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNetwork, useProvider } from 'wagmi';
-import { SHA256, enc } from 'crypto-js';
+import Web3 from 'web3';
 import { GuildImplementationType } from 'types/types.guilds.d';
 import deployedHashedBytecodes from 'bytecodes/prod.json';
 import deployedHashedBytecodesLocal from 'bytecodes/local.json';
@@ -56,7 +56,7 @@ export default function useGuildImplementationTypeConfig(
       );
       if (!localBtcode) {
         const btcode = await provider.getCode(guildAddress);
-        const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
+        const hashedBytecode = Web3.utils.keccak256(btcode);
         setGuildBytecode(hashedBytecode);
         localStorage.setItem(`hashed-bytecode-${guildAddress}`, hashedBytecode);
         setLoaded(true);
