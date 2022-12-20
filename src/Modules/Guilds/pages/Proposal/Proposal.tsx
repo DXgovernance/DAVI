@@ -40,6 +40,10 @@ import {
 import { useTranslation } from 'react-i18next';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
+import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
+import { Header as CardHeader } from 'components/Card';
+import { Discussion } from 'components/Discussion';
+import useDiscussionContext from 'Modules/Guilds/Hooks/useDiscussionContext';
 
 const ProposalPage: React.FC = () => {
   const { t } = useTranslation();
@@ -54,6 +58,7 @@ const ProposalPage: React.FC = () => {
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
   const { loaded } = useGuildImplementationTypeConfig(guildId);
+  const { context } = useDiscussionContext(`${guildId}-${proposalId}`);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
@@ -141,6 +146,16 @@ const ProposalPage: React.FC = () => {
           <ProposalActionsWrapper>
             <ActionsBuilder options={options} editable={false} />
           </ProposalActionsWrapper>
+
+          <SidebarCard
+            header={
+              <SidebarCardHeaderSpaced>
+                <CardHeader>{t('discussionTitle')}</CardHeader>
+              </SidebarCardHeaderSpaced>
+            }
+          >
+            <Discussion context={context} master={''} />
+          </SidebarCard>
         </PageContent>
         <SidebarContent>
           <ProposalVoteCardWrapper />

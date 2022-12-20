@@ -275,7 +275,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               %
             </div>
             <input
-              aria-label="Voting power percentage for proposal execution"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -317,7 +317,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               %
             </div>
             <input
-              aria-label="Voting power percentage for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -357,7 +357,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Vote gas"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -397,7 +397,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Max gas price"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -437,7 +437,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Max active proposals"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -499,7 +499,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Minimum members for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"
@@ -539,7 +539,7 @@ exports[`SetGuildConfigEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
-              aria-label="Minimum tokens locked for proposal creation"
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8"

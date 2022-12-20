@@ -8,8 +8,8 @@ const useRichContractData = (decodedCall: DecodedCall) => {
   // Find the rich contract data for the decoded call function.
   const functionData: RichContractFunction = useMemo(() => {
     if (!decodedCall || !decodedCall.richData) return null;
-
     const decodedFnName = decodedCall.function.name;
+    const decodedFnTitle = decodedCall.functionTitle;
     const decodedFnParams = decodedCall.function.inputs
       .map(input => input.type)
       .join(',');
@@ -18,8 +18,9 @@ const useRichContractData = (decodedCall: DecodedCall) => {
       const nameMatch = fn.functionName === decodedFnName;
       const paramsMatch =
         fn.params.map(param => param.type).join(',') === decodedFnParams;
+      const titleMatch = fn.title === decodedFnTitle;
 
-      return nameMatch && paramsMatch;
+      return nameMatch && paramsMatch && titleMatch;
     });
   }, [decodedCall]);
 

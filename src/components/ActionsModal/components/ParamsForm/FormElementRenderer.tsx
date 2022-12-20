@@ -15,6 +15,8 @@ import { Toggle } from 'components/primitives/Forms/Toggle';
 import { TokenAmountInput } from 'components/primitives/Forms/TokenAmountInput';
 import { DurationInput } from 'components/primitives/Forms/DurationInput';
 import { SwaprPicker } from 'components/SwaprPicker';
+import { isBytes32 } from 'utils/bytes';
+import TokenPickerInput from 'components/TokenPickerInput/TokenPickerInput';
 
 interface FormElementRendererProps extends FormElementProps<any> {
   param: RichContractFunctionParam;
@@ -44,6 +46,8 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
         return TokenAmountInput;
       case 'contentHash':
         return Input;
+      case 'tokenPicker':
+        return TokenPickerInput;
       case 'swaprPicker':
         return SwaprPicker;
       default:
@@ -78,6 +82,7 @@ const FormElementRenderer: React.FC<FormElementRendererProps> = ({
     <FormElement
       value={value}
       onChange={onChange}
+      defaultValue={param.defaultValue}
       {...props}
       {...remainingProps}
     />
@@ -95,6 +100,12 @@ export const getDefaultValidationsByFormElement = (
   const validations: Validations = { required: 'This field is required.' };
 
   switch (param.component) {
+    case 'string':
+      validations.validate = (value: string) =>
+        param.type !== 'bytes32' ||
+        (param.type === 'bytes32' && isBytes32(value)) ||
+        'Invalid bytes32';
+      break;
     case 'address':
       validations.validate = (value: string) =>
         !!isAddress(value) || 'Invalid address.';

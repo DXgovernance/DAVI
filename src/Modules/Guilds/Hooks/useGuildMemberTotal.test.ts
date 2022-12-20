@@ -3,76 +3,81 @@ import {
   MOCK_GUILD_MEMBERS_TOTAL,
   MOCK_GUILD_ADDRESS,
   MOCK_TOKEN,
-  MOCK_CONTRACT_INTERFACE,
 } from 'Modules/Guilds/Hooks/fixtures';
-import wagmi, { useContractRead } from 'wagmi';
+import wagmi, { useContractReads } from 'wagmi';
+import { ERC20SnapshotRep } from 'contracts/ts-files/ERC20SnapshotRep';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 jest.mock('wagmi', () => ({
-  useContractRead: () => ({
+  useContractReads: () => ({
     data: MOCK_GUILD_MEMBERS_TOTAL,
-    isLoading: false,
-    isError: false,
   }),
+
+  useContractEvent: () => jest.fn(),
 }));
 
 describe('useGuildMemberTotal', () => {
   it('should return guild member totals', () => {
-    const { data, isError, isLoading } = useGuildMemberTotal(
-      MOCK_GUILD_ADDRESS,
-      MOCK_TOKEN,
-      false
-    );
+    const { data } = useGuildMemberTotal(MOCK_GUILD_ADDRESS, MOCK_TOKEN, false);
 
     expect(data).toMatchInlineSnapshot(`3`);
-    expect(isError).toBe(false);
-    expect(isLoading).toBe(false);
   });
 
   it('should call getTotalHolders when isRepGuild is true', () => {
     const isRepGuild = true;
-
     const mockUseContractRead = jest
-      .spyOn(wagmi, 'useContractRead')
+      .spyOn(wagmi, 'useContractReads')
       .mockImplementationOnce(() => ({
-        ...useContractRead({
-          addressOrName: MOCK_GUILD_ADDRESS,
-          contractInterface: MOCK_CONTRACT_INTERFACE,
-          functionName: 'getTotalHolders',
-        }),
-        isLoading: false,
-        isError: false,
+        ...(useContractReads({
+          contracts: [
+            {
+              address: MOCK_TOKEN,
+              abi: ERC20SnapshotRep.abi,
+              functionName: 'getTotalHolders',
+            },
+          ],
+        }) as any),
       }));
 
     useGuildMemberTotal(MOCK_GUILD_ADDRESS, MOCK_TOKEN, isRepGuild);
 
-    expect(mockUseContractRead).toBeCalledWith(
-      expect.objectContaining({
-        functionName: 'getTotalHolders',
-      })
-    );
+    expect(mockUseContractRead).toHaveBeenCalledWith({
+      contracts: [
+        {
+          address: MOCK_TOKEN,
+          abi: ERC20SnapshotRep.abi,
+          functionName: 'getTotalHolders',
+        },
+      ],
+    });
   });
 
   it('should call getTotalMembers when isRepGuild is false', () => {
     const isRepGuild = false;
-
     const mockUseContractRead = jest
-      .spyOn(wagmi, 'useContractRead')
+      .spyOn(wagmi, 'useContractReads')
       .mockImplementationOnce(() => ({
-        ...useContractRead({
-          addressOrName: MOCK_GUILD_ADDRESS,
-          contractInterface: MOCK_CONTRACT_INTERFACE,
-          functionName: 'getTotalMembers',
-        }),
-        isLoading: false,
-        isError: false,
+        ...(useContractReads({
+          contracts: [
+            {
+              address: MOCK_GUILD_ADDRESS,
+              abi: BaseERC20Guild.abi,
+              functionName: 'getTotalMembers',
+            },
+          ],
+        }) as any),
       }));
 
     useGuildMemberTotal(MOCK_GUILD_ADDRESS, MOCK_TOKEN, isRepGuild);
 
-    expect(mockUseContractRead).toBeCalledWith(
-      expect.objectContaining({
-        functionName: 'getTotalMembers',
-      })
-    );
+    expect(mockUseContractRead).toHaveBeenCalledWith({
+      contracts: [
+        {
+          address: MOCK_GUILD_ADDRESS,
+          abi: BaseERC20Guild.abi,
+          functionName: 'getTotalMembers',
+        },
+      ],
+    });
   });
 });

@@ -1,5 +1,6 @@
 import { TFunction } from 'react-i18next';
 import { utils } from 'ethers';
+import { removeNullValues } from 'utils';
 
 interface validateRepMintValues {
   repPercent: string;
@@ -34,12 +35,7 @@ const validateRepMint = (values: validateRepMintValues, { t }: Context) => {
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };

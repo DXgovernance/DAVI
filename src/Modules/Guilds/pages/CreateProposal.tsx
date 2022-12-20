@@ -2,7 +2,7 @@ import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapp
 import { Input } from 'components/primitives/Forms/Input';
 import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import contentHash from '@ensdomains/content-hash';
+import ensContentHash from '@ensdomains/content-hash';
 import { useTransactions } from 'contexts/Guilds';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { BigNumber } from 'ethers';
@@ -13,7 +13,13 @@ import { ActionsBuilder } from 'components/ActionsBuilder';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { useTextEditor } from 'components/Editor';
 import { Loading } from 'components/primitives/Loading';
-import React, { useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+} from 'react';
 import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
@@ -46,21 +52,24 @@ const CreateProposalPage: React.FC = () => {
   const { isLoading: isGuildAvailabilityLoading } = useContext(
     GuildAvailabilityContext
   );
-
   const navigate = useNavigate();
   const { t } = useTranslation();
   const theme = useTheme();
   const [editMode, setEditMode] = useState(true);
   const [isCreatingProposal, setIsCreatingProposal] = useState(false);
   const [title, setTitle] = useState('');
+  const [ignoreWarning, setIgnoreWarning] = useState(false);
   const [options, setOptions] = useState<Option[]>([
     {
       id: `option-1-For`,
       label: t('for', { defaultValue: 'For' }),
       color: theme?.colors?.votes?.[1],
       decodedActions: [],
+      permissions: [],
     },
   ]);
+  const [isPermissionWarningModalOpen, setIsPermissionWarningModalOpen] =
+    useState(false);
   const {
     Editor,
     EditorConfig,
@@ -77,6 +86,13 @@ const CreateProposalPage: React.FC = () => {
   const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
   const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
 
+  const isActionDenied = useMemo(
+    () =>
+      options.some(({ decodedActions }) =>
+        decodedActions.some(({ actionDenied }) => !!actionDenied)
+      ),
+    [options]
+  );
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
     if (editMode && !title.trim() && !proposalBodyMd.trim()) return;
@@ -100,7 +116,7 @@ const CreateProposalPage: React.FC = () => {
     if (pinataPinResult.IpfsHash !== `${cid}`) {
       throw new Error(t('ipfs.hashNotTheSame'));
     }
-    return contentHash.fromIpfs(cid);
+    return ensContentHash.fromIpfs(cid);
   };
 
   const handleSkipUploadToIPFS = () => {
@@ -121,6 +137,15 @@ const CreateProposalPage: React.FC = () => {
   const { createTransaction } = useTransactions();
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
+
+  const checkIfWarningIgnored = useCallback(async () => {
+    if (!ignoreWarning && isActionDenied) {
+      setIsPermissionWarningModalOpen(true);
+      return;
+    }
+    handleCreateProposal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ignoreWarning, isActionDenied]);
 
   const handleCreateProposal = async () => {
     let contentHash: Promise<string>;
@@ -207,6 +232,9 @@ const CreateProposalPage: React.FC = () => {
       );
     }
   };
+  useEffect(() => {
+    if (ignoreWarning) checkIfWarningIgnored();
+  }, [ignoreWarning, checkIfWarningIgnored]);
 
   const isValid = useMemo(() => {
     if (!title) return false;
@@ -273,7 +301,13 @@ const CreateProposalPage: React.FC = () => {
         </Box>
         <Box margin="16px 0px">
           <StyledButton
-            onClick={handleCreateProposal}
+            onClick={() => {
+              if (isActionDenied) {
+                checkIfWarningIgnored();
+              } else {
+                handleCreateProposal();
+              }
+            }}
             variant="secondary"
             disabled={!isValid || isCreatingProposal}
             data-testid="create-proposal-action-button"
@@ -306,7 +340,42 @@ const CreateProposalPage: React.FC = () => {
               {t('createAnyway')}
             </StyledButton>
             <StyledButton
-              onClick={() => setIsIpfsErrorModalOpen(false)}
+              onClick={() => {
+                setIsIpfsErrorModalOpen(false);
+              }}
+              variant="secondary"
+            >
+              {t('close')}
+            </StyledButton>
+          </Flex>
+        </Flex>
+      </Modal>
+      <Modal
+        isOpen={isPermissionWarningModalOpen}
+        onDismiss={() => setIsPermissionWarningModalOpen(false)}
+        header={t('permissions.warningMessage')}
+        maxWidth={390}
+      >
+        <Flex padding={'1.5rem'}>
+          <Flex>
+            <WarningCircle>
+              <FiX size={40} />
+            </WarningCircle>
+            <Flex padding={'1.5rem 0'}>
+              {t('permissions.proposalNotExecuted')}
+            </Flex>
+          </Flex>
+          <Flex direction="row" style={{ columnGap: '1rem' }}>
+            <StyledButton
+              onClick={() => {
+                setIgnoreWarning(true);
+              }}
+              variant="secondary"
+            >
+              {t('createAnyway')}
+            </StyledButton>
+            <StyledButton
+              onClick={() => setIsPermissionWarningModalOpen(false)}
               variant="secondary"
             >
               {t('close')}

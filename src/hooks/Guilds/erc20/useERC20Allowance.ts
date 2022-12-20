@@ -1,21 +1,31 @@
-import ERC20 from 'contracts/ERC20.json';
+import { ERC20 } from 'contracts/ts-files/ERC20';
 import { BigNumber } from 'ethers';
-import { useContractRead } from 'wagmi';
+import { useContractEvent, useContractRead } from 'wagmi';
 
 export const useERC20Allowance = (
   contractAddress: string,
-  walletAddress: string,
-  spenderAddress: string
+  walletAddress: `0x${string}`,
+  spenderAddress: `0x${string}`
 ) => {
-  const { data, ...rest } = useContractRead({
-    addressOrName: contractAddress,
-    contractInterface: ERC20.abi,
+  const { data, refetch, ...rest } = useContractRead({
+    address: contractAddress,
+    abi: ERC20.abi,
     functionName: 'allowance',
     args: [walletAddress, spenderAddress],
-    watch: true,
   });
+
+  useContractEvent({
+    address: contractAddress,
+    abi: ERC20.abi,
+    eventName: 'Approval',
+    listener() {
+      refetch();
+    },
+  });
+
   return {
     data: data ? BigNumber.from(data) : undefined,
+    refetch,
     ...rest,
   };
 };

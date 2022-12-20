@@ -261,7 +261,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
             <div />
           </div>
           <input
-            aria-label="recipient address input"
+            aria-label="address input"
             class="c8"
             data-testid="address input"
             name="recipient-address"
@@ -306,6 +306,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8 c10"
@@ -359,6 +360,7 @@ exports[`RepMintEditor Should match snapshot 1`] = `
               class="c7"
             />
             <input
+              aria-label="numerical input"
               autocomplete="off"
               autocorrect="off"
               class="c8 c10"

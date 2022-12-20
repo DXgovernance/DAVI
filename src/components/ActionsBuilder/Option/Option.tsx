@@ -17,7 +17,6 @@ import {
   OptionWrapper,
 } from './Option.styled';
 import { useTranslation } from 'react-i18next';
-
 interface OptionRowProps {
   option: Option;
   isEditable?: boolean;
@@ -32,7 +31,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   editOption,
 }) => {
   const { t } = useTranslation();
-
   const {
     attributes,
     listeners,
@@ -43,32 +41,37 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   } = useSortable({ id: option.id });
   const [isActionsModalOpen, setIsActionsModalOpen] = useState(false);
 
-  function addAction(action: DecodedAction) {
+  function addActions(actions: DecodedAction[]) {
     onChange({
       ...option,
-      decodedActions: [...option.decodedActions, action],
+      decodedActions: [...option.decodedActions, ...actions],
     });
   }
 
-  function updateAction(index: number, action: DecodedAction) {
-    const updatedActions = option?.decodedActions.map((a, i) =>
-      index === i ? action : a
+  function updateAction(action: DecodedAction) {
+    const updatedActions = option?.decodedActions.map(a =>
+      a.id === action.id ? action : a
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions,
+    });
   }
 
   function removeAction(action: DecodedAction) {
     const updatedActions = option?.decodedActions.filter(
       a => a.id !== action.id
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions,
+    });
   }
 
   const dndStyles = {
     transform: CSS.Translate.toString(transform),
     transition,
   };
-
   return (
     <OptionWrapper
       dragging={isDragging}
@@ -103,22 +106,35 @@ export const OptionRow: React.FC<OptionRowProps> = ({
 
       <ActionsWrapper indented={isEditable}>
         {!isEditable &&
-          option?.actions?.map((action, index) => (
-            <ActionRow key={index} call={action} isEditable={false} />
-          ))}
+          option?.actions?.map((action, index) => {
+            const permissionArgs = option?.permissions?.[index];
+            return (
+              <ActionRow
+                key={index}
+                call={action}
+                decodedAction={option?.decodedActions?.[index]}
+                isEditable={false}
+                permissionArgs={permissionArgs}
+                onEdit={updatedAction => updateAction(updatedAction)}
+              />
+            );
+          })}
 
         {isEditable && (
           <SortableContext
             items={option?.decodedActions?.map(action => action.id)}
             strategy={verticalListSortingStrategy}
           >
-            {option?.decodedActions?.map((action, index) => {
+            {option?.actions?.map((action, index) => {
+              const permissionArgs = option?.permissions?.[index];
               return (
                 <ActionRow
                   key={index}
+                  call={action}
                   isEditable={true}
-                  decodedAction={action}
-                  onEdit={updatedAction => updateAction(index, updatedAction)}
+                  decodedAction={option?.decodedActions?.[index]}
+                  permissionArgs={permissionArgs}
+                  onEdit={updatedAction => updateAction(updatedAction)}
                   onRemove={targetAction => removeAction(targetAction)}
                 />
               );
@@ -137,10 +153,12 @@ export const OptionRow: React.FC<OptionRowProps> = ({
       <ActionModal
         isOpen={isActionsModalOpen}
         setIsOpen={setIsActionsModalOpen}
-        onAddAction={action => {
-          addAction(action);
+        onAddActions={action => {
+          addActions(action);
           setIsActionsModalOpen(false);
         }}
+        onEditAction={updateAction}
+        isEditing={false}
       />
     </OptionWrapper>
   );

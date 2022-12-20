@@ -77,7 +77,8 @@ const DurationInput: React.FC<DurationInputProps> = ({
                     data-testid={durationKey}
                     id={durationKey}
                     muted={count === 0 ? true : false}
-                    aria-label={`Numerical input for ${durationKey}`}
+                    ariaLabel={`Numerical input for ${durationKey}`}
+                    displayClearIcon={false}
                   />
                   <ColumnButton
                     onClick={() => decrement(durationKey)}

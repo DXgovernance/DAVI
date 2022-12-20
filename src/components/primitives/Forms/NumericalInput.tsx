@@ -1,8 +1,9 @@
 // Based on https://github.com/levelkdev/dxswap-dapp/blob/master/src/components/Input/NumericalInput/index.tsx
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input, InputProps } from 'components/primitives/Forms/Input';
 import { escapeRegExp } from 'utils';
+import { IconRight } from './IconRight';
 
 const inputRegex = RegExp(`^\\d*(?:\\\\[.])?\\d*$`); // match escaped "." characters via in a non-capturing group
 
@@ -10,13 +11,33 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
   value,
   onChange,
   placeholder,
+  disabled = false,
+  defaultValue,
+  ariaLabel,
   isInvalid = false,
+  iconRight = null,
+  displayClearIcon = true,
   ...rest
 }) => {
   const enforcer = (nextUserInput: string) => {
     if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {
       onChange(nextUserInput);
     }
+  };
+  useEffect(() => {
+    setDisabledState(defaultValue ? true : disabled);
+  }, [disabled, defaultValue]);
+
+  const [disabledState, setDisabledState] = useState(
+    defaultValue ? true : disabled
+  );
+  const iconRightProps = {
+    disabled: disabledState,
+    value,
+    onChange: onChange,
+    defaultValue,
+    setDisabledState,
+    type: 'number',
   };
 
   return (
@@ -38,6 +59,15 @@ export const NumericalInput: React.FC<InputProps<string>> = ({
       minLength={1}
       maxLength={79}
       spellCheck="false"
+      disabled={disabledState}
+      iconRight={
+        iconRight ? (
+          iconRight
+        ) : displayClearIcon ? (
+          <IconRight {...iconRightProps} />
+        ) : null
+      }
+      aria-label={ariaLabel ? ariaLabel : 'numerical input'}
       isInvalid={isInvalid}
     />
   );

@@ -1,5 +1,4 @@
 import { Option } from '../types';
-
 export interface OptionsListProps {
   isEditable: boolean;
   options: Option[];

@@ -18,6 +18,21 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
+jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
+  useERC20Info: () => ({
+    name: 'Test ERC20',
+    symbol: 'TEST',
+    decimals: 18,
+    totalSupply: mockBigNumber,
+  }),
+}));
+
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => ({
+    tokens: [],
+  }),
+}));
+
 jest.mock('utils', () => ({
   getNetworkById: () => ({
     nativeAsset: {
@@ -25,6 +40,7 @@ jest.mock('utils', () => ({
     },
   }),
   preventEmptyString: () => mockBigNumber,
+  shortenAddress: () => {},
 }));
 
 jest.mock('wagmi', () => ({
@@ -32,6 +48,9 @@ jest.mock('wagmi', () => ({
   chain: {
     mainnet: {},
   },
+  useEnsAddress: () => ({
+    data: '0x0000000000000000000000000000000000000000',
+  }),
 }));
 
 describe('CallDetails', () => {

@@ -1,43 +1,41 @@
 import useBigNumberToString from 'hooks/Guilds/conversions/useBigNumberToString';
-import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import { Avatar } from 'components/Avatar';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { getNetworkById, MAINNET_ID, preventEmptyString } from 'utils';
+import { getNetworkById, preventEmptyString } from 'utils';
 import { useNetwork } from 'wagmi';
-import { Segment } from './infoLine';
 import {
   DetailBody,
   DetailHeader,
   DetailRow,
   RedHighlight,
-  StyledSegmentLink,
 } from './Summary.styled';
 import { SummaryProps } from './types';
-import { BiLinkExternal } from 'react-icons/bi';
 import { SupportedAction } from 'components/ActionsBuilder/types';
+import { BlockExplorerLink } from 'components/primitives/Links';
 
-const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
+const Summary = ({ decodedCall }: SummaryProps) => {
   const { t } = useTranslation();
 
   const parsedValueToString = useBigNumberToString(
     preventEmptyString(decodedCall?.value),
     18
   );
-  const { ensName, imageUrl } = useENSAvatar(decodedCall.to, MAINNET_ID);
   const { chain } = useNetwork();
   const nativeTokenSymbol = useMemo(() => {
     return getNetworkById(chain?.id).nativeAsset.symbol;
   }, [chain]);
 
+  const isNativeTransfer =
+    decodedCall?.callType === SupportedAction.NATIVE_TRANSFER;
+
+  const isRawTransaction =
+    decodedCall?.callType === SupportedAction.RAW_TRANSACTION;
+
   return (
     <>
       <DetailHeader>
-        {decodedCall?.callType === SupportedAction?.NATIVE_TRANSFER
-          ? t('transfer')
-          : t('interactWith')}{' '}
-        {decodedCall?.callType !== SupportedAction?.NATIVE_TRANSFER &&
-        parsedValueToString !== '0.0' ? (
+        {isNativeTransfer ? t('transfer') : t('interactWith')}{' '}
+        {!isNativeTransfer && parsedValueToString !== '0.0' ? (
           <RedHighlight>
             {parsedValueToString} {nativeTokenSymbol}
           </RedHighlight>
@@ -49,21 +47,13 @@ const Summary = ({ decodedCall, blockExplorerUrl }: SummaryProps) => {
         :
       </DetailHeader>
 
-      <DetailRow>
-        <DetailBody>
-          <Segment>
-            <Avatar defaultSeed={decodedCall.to} src={imageUrl} size={24} />
-          </Segment>
-          <StyledSegmentLink
-            href={blockExplorerUrl}
-            target="_blank"
-            rel="noopener"
-          >
-            {ensName || decodedCall.to}
-            <BiLinkExternal />
-          </StyledSegmentLink>
-        </DetailBody>
-      </DetailRow>
+      {!isRawTransaction && (
+        <DetailRow>
+          <DetailBody>
+            <BlockExplorerLink address={decodedCall?.to} showAvatar />
+          </DetailBody>
+        </DetailRow>
+      )}
     </>
   );
 };

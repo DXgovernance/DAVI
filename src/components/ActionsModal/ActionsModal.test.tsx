@@ -45,7 +45,7 @@ describe('ActionsModal', () => {
     props = {
       isOpen: false,
       setIsOpen: jest.fn(),
-      onAddAction: jest.fn(), // (action: DecodedAction) => void;
+      onAddActions: jest.fn(), // (actions: DecodedAction[]) => void;
     };
   });
 

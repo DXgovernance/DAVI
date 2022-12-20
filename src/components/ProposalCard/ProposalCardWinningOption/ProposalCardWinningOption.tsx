@@ -24,9 +24,9 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
 
   const option = useMemo(() => {
     if (!options) return null;
-    return options?.reduce(
+    return options.reduce(
       (acc, option) =>
-        bn(option?.totalVotes).gt(bn(acc?.totalVotes)) ? option : acc,
+        bn(option.totalVotes).gt(bn(acc.totalVotes)) ? option : acc,
       options[0]
     );
   }, [options]);
@@ -42,16 +42,16 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
     );
   }
 
-  const firstAction = option?.decodedActions[0];
-  const allActions = option?.decodedActions;
-  const numberOfActions = allActions?.length;
+  const firstDecodedAction = option?.decodedActions[0];
+  const firstUnknownAction = option?.actions[0];
+  const numberOfActions = option?.actions?.length;
 
   const handleExpandActions = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (numberOfActions > 1) setExpandedActionsVisible(!expandedActionsVisible);
   };
 
-  const InfoLine = getInfoLineView(firstAction?.decodedCall?.callType);
+  const InfoLine = getInfoLineView(firstDecodedAction?.decodedCall?.callType);
 
   return (
     <WinningOptionWrapper>
@@ -78,13 +78,17 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
         {numberOfActions === 1 ? (
           !!InfoLine ? (
             <InfoLine
-              decodedCall={firstAction?.decodedCall}
-              approveSpendTokens={firstAction?.approval}
+              decodedCall={firstDecodedAction?.decodedCall}
+              approveSpendTokens={firstDecodedAction?.approval}
               compact
               noAvatar
             />
           ) : (
-            <UndecodableCallInfoLine />
+            <UndecodableCallInfoLine
+              call={firstUnknownAction}
+              compact
+              noAvatar
+            />
           )
         ) : (
           <ActionCountWrapper>
@@ -92,7 +96,7 @@ const ProposalCardWinningOption: React.FC<ProposalCardWinningOptionProps> = ({
           </ActionCountWrapper>
         )}
 
-        {expandedActionsVisible && <ExpandedActionsList actions={allActions} />}
+        {expandedActionsVisible && <ExpandedActionsList option={option} />}
       </ActionDetailsButton>
     </WinningOptionWrapper>
   );
