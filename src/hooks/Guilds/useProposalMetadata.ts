@@ -22,6 +22,7 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
     }
   }, [proposal?.contentHash]);
 
+  // Get orbis data
   useEffect(() => {
     let data;
     if (proposal?.contentHash?.startsWith('streamId://')) {
@@ -39,6 +40,7 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
 
   const { data: metadata, error: metadataError } =
     useIPFSFile<ProposalMetadata>(decodedContentHash);
+  console.log({ metadata });
   if (orbisData) {
     return {
       data: {

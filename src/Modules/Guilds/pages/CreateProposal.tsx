@@ -149,7 +149,6 @@ const CreateProposalPage: React.FC = () => {
 
   const handleCreateOrbisMetadata = async (post: DiscussionContent) => {
     const res = await createPost(orbis, post);
-    handleBack();
     return {
       res,
       postTemplate,
@@ -175,7 +174,7 @@ const CreateProposalPage: React.FC = () => {
         contentHash = `streamId://${res.doc}`;
       } else {
         console.log(res);
-        setIpfsError(res.status);
+        setIpfsError(res.result);
         setIsIpfsErrorModalOpen(true);
         return;
       }
@@ -360,7 +359,10 @@ const CreateProposalPage: React.FC = () => {
               {t('createAnyway')}
             </StyledButton>
             <StyledButton
-              onClick={() => setIsIpfsErrorModalOpen(false)}
+              onClick={() => {
+                setIsCreatingProposal(false);
+                setIsIpfsErrorModalOpen(false);
+              }}
               variant="secondary"
             >
               {t('close')}
