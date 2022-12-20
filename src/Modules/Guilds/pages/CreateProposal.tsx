@@ -171,7 +171,7 @@ const CreateProposalPage: React.FC = () => {
       postTemplate,
     };
   };
-  
+
   const checkIfWarningIgnored = useCallback(async () => {
     if (!ignoreWarning && isActionDenied) {
       setIsPermissionWarningModalOpen(true);
