@@ -45,8 +45,7 @@ export const NETWORK_OPTIONS = {
 };
 
 export const WALLET_OPTIONS = {
-//TODO: atm getting values injected instead of Metamask
-  metamask: 'Injected',
+  metamask: 'MetaMask',
   walletConnect: 'WalletConnect',
   coinbaseWallet: 'Coinbase Wallet',
 };
