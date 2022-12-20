@@ -117,7 +117,7 @@ exports[`DiscussionCard should render with full parameters 1`] = `
   <a
     class="c0"
     data-testid="discussion-card"
-    href="/"
+    href="/undefined/undefined/discussion/kjzl6cwe1jw148wi063e3zuf4o1cgvcx9j40kps2fdihdfu9t5yqyntgfq4xsl1"
   >
     <div
       class="c1 c2 c3"

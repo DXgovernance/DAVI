@@ -16,7 +16,7 @@ import { Loading } from 'components/primitives/Loading';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { FiChevronLeft, FiX } from 'react-icons/fi';
 import { MdOutlinePreview, MdOutlineModeEdit } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import sanitizeHtml from 'sanitize-html';
 import { preventEmptyString, ZERO_ADDRESS, ZERO_HASH } from 'utils';
 import { useTranslation } from 'react-i18next';
@@ -33,6 +33,14 @@ import {
 import usePinataIPFS from 'hooks/Guilds/ipfs/usePinataIPFS';
 import { Modal } from 'components/primitives/Modal';
 import { WarningCircle } from 'components/primitives/StatusCircles';
+import {
+  connect,
+  isConnected,
+  createPost,
+  postTemplate,
+} from 'components/Forum';
+import { OrbisContext } from 'contexts/Guilds/orbis';
+import { DiscussionContent } from 'components/Forum/types';
 
 export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -43,9 +51,13 @@ export const EMPTY_CALL: Call = {
 
 const CreateProposalPage: React.FC = () => {
   const { guildId, chainName: chain } = useTypedParams();
+  const [searchParams] = useSearchParams();
+  const discussionId = searchParams.get('ref');
+
   const { isLoading: isGuildAvailabilityLoading } = useContext(
     GuildAvailabilityContext
   );
+  const { orbis } = useContext(OrbisContext);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -76,6 +88,7 @@ const CreateProposalPage: React.FC = () => {
   const [ipfsError, setIpfsError] = useState('');
   const [isIpfsErrorModalOpen, setIsIpfsErrorModalOpen] = useState(false);
   const [skipUploadToIPFs, setSkipUploadToIPFs] = useState(false);
+  const [user, setUser] = useState('');
 
   const handleToggleEditMode = () => {
     // TODO: add proper validation if toggle from edit to preview without required fields
@@ -122,10 +135,51 @@ const CreateProposalPage: React.FC = () => {
   const { guildId: guildAddress } = useTypedParams();
   const guildContract = useERC20Guild(guildAddress);
 
+  useEffect(() => {
+    isConnected(orbis).then(res => {
+      if (res) {
+        console.log('Already connected with: ', res);
+      } else {
+        connect(orbis).then(did => {
+          setUser(did);
+        });
+      }
+    });
+  }, [user, orbis]);
+
+  const handleCreateOrbisMetadata = async (post: DiscussionContent) => {
+    const res = await createPost(orbis, post);
+    handleBack();
+    return {
+      res,
+      postTemplate,
+    };
+  };
+
   const handleCreateProposal = async () => {
-    let contentHash: Promise<string>;
+    let contentHash: Promise<string> | string;
     setIsCreatingProposal(true);
-    if (!skipUploadToIPFs) {
+    if (!!discussionId && isConnected(orbis)) {
+      const { res } = await handleCreateOrbisMetadata({
+        title,
+        body: proposalBodyHTML,
+        context: guildId,
+        master: discussionId,
+        replyTo: null,
+        mentions: [],
+        data: {
+          voteOptions: ['', ...options.map(({ label }) => label)],
+        },
+      });
+      if (res.status === 200) {
+        contentHash = `streamId://${res.doc}`;
+      } else {
+        console.log(res);
+        setIpfsError(res.status);
+        setIsIpfsErrorModalOpen(true);
+        return;
+      }
+    } else if (!skipUploadToIPFs) {
       try {
         contentHash = await uploadToIPFS();
       } catch (e) {
@@ -193,7 +247,7 @@ const CreateProposalPage: React.FC = () => {
             valueArray,
             totalOptions,
             title,
-            `0x${contentHash}`
+            `${contentHash}`
           );
         },
         true,
