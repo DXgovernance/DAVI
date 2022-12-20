@@ -1,6 +1,7 @@
 import { BigNumber, utils } from 'ethers';
-import { TokenInfoWithType, TokenType } from 'hooks/Guilds/tokens/useTokenList';
 import { TFunction } from 'react-i18next';
+import { removeNullValues } from 'utils';
+import { TokenInfoWithType, TokenType } from 'hooks/Guilds/tokens/useTokenList';
 
 interface ValidateTokenTransferValues {
   recipientAddress: string;
@@ -48,12 +49,7 @@ const validateERC20Transfer = (
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };

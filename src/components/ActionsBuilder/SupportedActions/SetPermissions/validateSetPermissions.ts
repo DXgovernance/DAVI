@@ -1,6 +1,6 @@
 import { utils, BigNumber } from 'ethers';
 import { TFunction } from 'react-i18next';
-import { ZERO_ADDRESS } from 'utils';
+import { removeNullValues, ZERO_ADDRESS } from 'utils';
 import { TABS } from './types';
 
 interface ValidateSetPermissionsValues {
@@ -68,12 +68,7 @@ const validateAssetTransferPermission = (
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };
