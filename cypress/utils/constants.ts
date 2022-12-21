@@ -39,7 +39,7 @@ export const NETWORK_OPTIONS = {
   ethereum: 'Ethereum',
   REPGuild: 'Goerli',
   arbitrumOne: 'Arbitrum One',
-  arbitrumRinkeby: 'Arbitrum Rinkeby',
+  arbitrumRinkeby: 'Arbitrum Goerli',
   gnosis: 'Gnosis',
   localhost: 'Localhost',
 };

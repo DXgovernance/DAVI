@@ -1008,7 +1008,7 @@ async function main() {
       'Ethereum',
       'Goerli',
       'Arbitrum One',
-      'Arbitrum Rinkeby',
+      'Arbitrum Goerli',
       'Gnosis',
       'Localhost',
     ],
