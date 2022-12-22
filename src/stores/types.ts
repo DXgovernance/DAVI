@@ -9,11 +9,11 @@ interface GovernanceCapabilities {
   votingPowerTally: 'snapshot' | 'live';
 }
 
-type SupportedABIs = 'SnapshotERC20Guild';
+type SupportedGovernanceSystem = 'SnapshotERC20Guild' | 'SnapshotRepGuild';
 
 export interface GovernanceInterface {
-  name: SupportedABIs;
-  bytecode: string;
+  name: SupportedGovernanceSystem;
+  bytecode: `0x${string}`;
   hooks: HooksInterface;
   capabilities: GovernanceCapabilities;
 }

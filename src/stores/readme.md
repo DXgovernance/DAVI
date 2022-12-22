@@ -1,8 +1,6 @@
-# Governance systems
+# Overview
 
-## Overview
-
-### Main folder
+## Main folder
 
 - **modules**: folder containing different governance implementations
 - **governanceInterfaces.ts**: file that exports an array of every governance interface supported. That array is made of all the governance interface objects of each governance module
@@ -12,9 +10,9 @@
   - Exports the governance interface of the current guild
 - **types.ts**: common typings used in the modules
 
-### Governance module folder
+## Governance module folder
 
-#### Structure
+### Structure
 
 Each governance module has this structure:
 
@@ -35,7 +33,7 @@ Each governance module has this structure:
 
 ```
 
-#### Contents
+### Contents
 
 - **events**: folder containing event listeners
 - **fetchers**: folder containing different fetching hooks
@@ -45,9 +43,9 @@ Each governance module has this structure:
 
 ---
 
-## Guides
+# Guides
 
-### Migrating a hook to a supported governance system
+## Migrating a hook to a supported governance system
 
 1. Copy the hook file to folder, depending of it is a fetcher or writer:
    1. `[implementationName] > writers`
@@ -71,3 +69,17 @@ Each governance module has this structure:
 
 5. Delete the old hook file
 6. Run `yarn test` to check for broken tests due to lack of context setup
+
+## Adding a new governance system
+
+1. Copy an existing governance system from the `modules` folder. It helps to copy the most similar one
+2. Rename the folder
+3. In `types.ts` add the new governance system to `SupportedGovernanceSystem` type
+4. In `[implementationName] > index.ts` change:
+   1. Exported object name
+   2. name
+   3. bytecode
+   4. hooks
+   5. adjust the capabilities
+5. Import and add the governance interface to the exported array in `governanceInterfaces.ts`
+6. Add / modify / delete the hooks depending on the governance requirements
