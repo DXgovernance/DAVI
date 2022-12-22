@@ -52,8 +52,8 @@ Each governance module has this structure:
 1. Copy the hook file to folder, depending of it is a fetcher or writer:
    1. `[implementationName] > writers`
    2. `[implementationName] > fetchers > [fetchingImplementation]`
-2. In `[implementationName] > index.ts`: Import the hook and add it to the `hooks` key of the exported governance interface
-3. In `types.ts` add the new hook to `HooksInterface`, with the corresponding type
+2. In `types.ts` add the new hook to `HooksInterface`, with the corresponding type
+3. In `[implementationName] > index.ts`: import the hook and add it to the `hooks` key of the exported governance interface
 4. Find every file where the hook is used and:
 
    1. Delete the previous hook import
