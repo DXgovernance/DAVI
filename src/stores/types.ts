@@ -5,9 +5,17 @@ export interface GovernanceCapabilities {
   tokenType: 'ERC20' | 'ERC721';
   consensus: 'holographic' | 'quorum';
   votingStyle: 'binary' | 'competition';
+  votingPowerTally: 'snapshot' | 'live';
 }
 
-export type SupportedABIs = 'SnapshotERC20Guild' | 'Governance1-5';
+export type SupportedABIs = 'SnapshotERC20Guild';
+
+export interface GovernanceInterface {
+  name: SupportedABIs;
+  bytecode: string;
+  hooks: HooksInterface;
+  capabilities: GovernanceCapabilities;
+}
 
 export interface HooksInterface {
   useProposal: (

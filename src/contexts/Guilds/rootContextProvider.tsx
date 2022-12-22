@@ -1,7 +1,7 @@
 import React from 'react';
 import { FilterProvider } from '.';
 import { OrbisProvider } from './orbis';
-import { HookStoreProvider } from 'stores/mainStore';
+import { HookStoreProvider } from 'stores';
 
 // TODO: Rename GuildsContextProvider to something more general
 

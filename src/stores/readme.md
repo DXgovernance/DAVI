@@ -62,4 +62,3 @@ Each governance system has this structure:
 
 5. Delete the old hook file
 6. Run `yarn test` to check for broken tests due to lack of context setup
-
