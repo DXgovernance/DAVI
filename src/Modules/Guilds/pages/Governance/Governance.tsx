@@ -120,9 +120,12 @@ const Governance = ({ guildId }) => {
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
         {activeProposals && activeProposals._hex === '0x00' && (
-          <div>
+          <div data-testid="no-active-proposals-message">
             {t('noActiveProposalsMessage')}.{' '}
-            <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
+            <StyledLink
+              data-testid="all-proposals-hyperlink"
+              to={`/${chainName}/${guildId}/all-proposals`}
+            >
               {t('goToAllProposalsPage')}.
             </StyledLink>
           </div>

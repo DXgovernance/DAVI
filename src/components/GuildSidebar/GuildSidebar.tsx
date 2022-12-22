@@ -63,12 +63,15 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
         {actions}
       </DaoInfoPanel>
       <SidebarMenu>
-        <UnstyledLink to={locations.governance}>
+        <UnstyledLink data-testid="governance-page" to={locations.governance}>
           <SidebarMenuItem current={pathname === locations.governance}>
             {t('governance')}
           </SidebarMenuItem>
         </UnstyledLink>
-        <UnstyledLink to={locations.allProposals}>
+        <UnstyledLink
+          data-testid="all-proposals-page"
+          to={locations.allProposals}
+        >
           <SidebarMenuItem current={pathname === locations.allProposals}>
             {t('allProposals')}
           </SidebarMenuItem>

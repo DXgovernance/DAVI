@@ -14,7 +14,7 @@ class LandingPage  {
   public walletModalTitle: string;
   public walletModalOptionId: string;
   public walletModalOptions: string[];
-  public SWPRGuildName: string;
+  public guildName: string;
 
   constructor() {
     this.projectNameText = 'project-name';
@@ -26,7 +26,7 @@ class LandingPage  {
     this.walletModalTitle = 'modal-title';
     this.walletModalOptionId = '';
     this.walletModalOptions = localhostConfigJSON.walletOptions;
-    this.SWPRGuildName = 'guild-name'
+    this.guildName = 'guild-name'
   }
 
   projectName() {
@@ -49,9 +49,9 @@ class LandingPage  {
       .contains('Connect to a wallet')
   }
 
-  goToSWPRGuildPage() {
-    cy.findAllByTestId(this.SWPRGuildName).eq(2)
-      .contains('SWPRGuild')
+  goToGuildPage(guildIndex, guildName) {
+    cy.findAllByTestId(this.guildName).eq(guildIndex)
+      .contains(guildName)
       .click()
   }
 }

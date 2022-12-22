@@ -49,3 +49,29 @@ export const WALLET_OPTIONS = {
   walletConnect: 'WalletConnect',
   coinbaseWallet: 'Coinbase Wallet',
 };
+
+export const STATE_FILTER_OPTIONS = {
+  active: "Active",
+  executable: "Executable",
+  executed: "Executed",
+  rejected: "Rejected",
+  failed: "Failed",
+  finished: "Finished"
+};
+
+export const ACTION_FILTER_OPTIONS = {
+  nativeTransfer: "Native Transfer",
+  erc20Transfer: "Erc20 Transfer",
+  repMint: "Rep Mint",
+  genericCall: "Generic Call",
+  setPermission: "Set Permissions",
+  ensUpdateContent: "Ens Update Content",
+  rawTransaction: "Raw Transaction",
+  setGuildConfig: "Set Guild Config"
+};
+
+export const CURRENCY_FILTER_OPTION = {
+  dxd: "DXD",
+  rgt: "RGT",
+  swpr: "SWPR"
+};

@@ -1,7 +1,9 @@
 // 
 // Filename: SmokeLandingPage.spec.ts
-// Execution: yarn cypress run -s /Users/filip/Desktop/DXDAO/DAVI-QA/cypress/integration/smoke/SmokeLandingPage.spec.ts
+// Execution: yarn cypress run -s [path-to-file]
 // 
+
+/// <reference types="cypress" />
 
 import LandingPage from "../../support/pageObjects/LandingPage";
 import Guilds from '../../support/pageObjects/Guilds';
@@ -13,15 +15,13 @@ import {
   clickAnywhereToClose
 } from '../../utils';
 
-
 describe('Check Landing Page', () => {
-  beforeEach(() => {
+  before(() => {
     //TODO: improve this step
-    cy.visit(configDevelopmentJSON.baseUrl)
+    cy.visit(configDevelopmentJSON.baseUrl);
   });
 
   it('Check project name', () => {
-    // cy.wait(5000)
     LandingPage.projectName();
   });  
   
