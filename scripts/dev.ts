@@ -1031,11 +1031,7 @@ async function main() {
       'Raw Transaction',
       'Set Guild Config',
     ],
-    currencyFilterOptions: [
-      'DXD', 
-      'RGT', 
-      'SWPR'
-    ],
+    currencyFilterOptions: ['DXD', 'RGT', 'SWPR'],
   };
 
   await hre.run('actions-dxdao-contracts', {

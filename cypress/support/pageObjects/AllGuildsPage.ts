@@ -1,15 +1,15 @@
-// 
+//
 // Filename: AllGuildPages.ts
-// 
+//
 
 import localhostConfigJSON from '../../../src/configs/localhost/config.json';
 import {
   STATE_FILTER_OPTIONS,
   ACTION_FILTER_OPTIONS,
-  CURRENCY_FILTER_OPTION
+  CURRENCY_FILTER_OPTION,
 } from '../../utils';
 
-class AllGuilds {  
+class AllGuilds {
   public guildName: string;
   public governancePage: string;
   public allProposalsPage: string;
@@ -57,24 +57,19 @@ class AllGuilds {
   }
 
   checkIfYouAreOnSWPRGuildPage() {
-    cy.findAllByTestId(this.guildName)
-      .contains('SWPRGuild');
+    cy.findAllByTestId(this.guildName).contains('SWPRGuild');
   }
 
   checkIfYouAreOnREPGuildPage() {
-    cy.findAllByTestId(this.guildName)
-      .contains('REPGuild');
+    cy.findAllByTestId(this.guildName).contains('REPGuild');
   }
 
   checkIfYouAreOnDXDGuildPage() {
-    cy.findAllByTestId(this.guildName)
-      .contains('DXDGuild');
+    cy.findAllByTestId(this.guildName).contains('DXDGuild');
   }
 
   openWalletModalFromGuildSidebar() {
-    cy.get('button').eq(2)
-      .contains('Connect Wallet')
-      .click();
+    cy.get('button').eq(2).contains('Connect Wallet').click();
   }
 
   checkIfYouAreOnGovernancePage() {
@@ -84,31 +79,25 @@ class AllGuilds {
   }
 
   checkProposalsOnGovernancePage() {
-    cy.wait(2000)
-    cy.get('[data-testid="proposals-list"]')
-      .then(($el) => {
-        if ($el.text().includes('There are no active proposals.')) {
-          cy.findByTestId(this.noActiveProposalsMessage)
-            .should('be.visible')
-            .contains('There are no active proposals. Go to all proposals page.');
-          this.goToAllProposalsPageViaHyperlink();
-          this.checkIfYouAreOnAllProposalsPage();
-        }
-        else {
-          cy.findAllByTestId(this.proposalCard)
-            .first()
-            .should('be.visible');
-          cy.findAllByTestId(this.proposalState)
-            .first()
-            .contains(/Active|Executable/);    
-        }
-      })
+    cy.wait(2000);
+    cy.get('[data-testid="proposals-list"]').then($el => {
+      if ($el.text().includes('There are no active proposals.')) {
+        cy.findByTestId(this.noActiveProposalsMessage)
+          .should('be.visible')
+          .contains('There are no active proposals. Go to all proposals page.');
+        this.goToAllProposalsPageViaHyperlink();
+        this.checkIfYouAreOnAllProposalsPage();
+      } else {
+        cy.findAllByTestId(this.proposalCard).first().should('be.visible');
+        cy.findAllByTestId(this.proposalState)
+          .first()
+          .contains(/Active|Executable/);
+      }
+    });
   }
 
   goToAllProposalsPageFromSidebar() {
-    cy.findByTestId(this.allProposalsPage)
-      .contains('All proposals')
-      .click();
+    cy.findByTestId(this.allProposalsPage).contains('All proposals').click();
   }
 
   goToAllProposalsPageViaHyperlink() {
@@ -118,71 +107,62 @@ class AllGuilds {
   }
 
   checkIfYouAreOnAllProposalsPage() {
-    cy.wait(500)
-    cy.findByTestId(this.allProposalsPage)
-      .should('have.css', 'color', 'rgb(255, 255, 255)');
+    cy.wait(500);
+    cy.findByTestId(this.allProposalsPage).should(
+      'have.css',
+      'color',
+      'rgb(255, 255, 255)'
+    );
   }
 
   checkStateFiltersOnAllProposalsPage() {
-    cy.findByTestId(this.stateFilterBtn)
-      .contains('State')
-      .click()
-    cy.findAllByTestId(this.stateFilterOption)
-      .should('have.length', this.stateFilterOptions.length
-      );
+    cy.findByTestId(this.stateFilterBtn).contains('State').click();
+    cy.findAllByTestId(this.stateFilterOption).should(
+      'have.length',
+      this.stateFilterOptions.length
+    );
     Object.values(STATE_FILTER_OPTIONS).forEach(option => {
-      cy.contains(option)
-        .should('be.visible');
+      cy.contains(option).should('be.visible');
     });
   }
 
   checkActionFiltersOnAllProposalsPage() {
-    cy.findByTestId(this.actionFilterBtn)
-      .contains('Action')
-      .click()
-    cy.findAllByTestId(this.actionFilterOption)
-      .should('have.length', this.actionFilterOptions.length
-      );
+    cy.findByTestId(this.actionFilterBtn).contains('Action').click();
+    cy.findAllByTestId(this.actionFilterOption).should(
+      'have.length',
+      this.actionFilterOptions.length
+    );
     Object.values(ACTION_FILTER_OPTIONS).forEach(option => {
-      cy.contains(option)
-        .should('be.visible');
+      cy.contains(option).should('be.visible');
     });
   }
 
   checkCurrencyFiltersOnAllProposalsPage() {
-    cy.findByTestId(this.currencyFilterBtn)
-      .contains('Currency')
-      .click();
-    cy.findAllByTestId(this.currencyFilterOption)
-      .should('have.length', this.currencyFilterOptions.length
-      );
+    cy.findByTestId(this.currencyFilterBtn).contains('Currency').click();
+    cy.findAllByTestId(this.currencyFilterOption).should(
+      'have.length',
+      this.currencyFilterOptions.length
+    );
     Object.values(CURRENCY_FILTER_OPTION).forEach(option => {
-      cy.contains(option)
-        .should('be.visible');
+      cy.contains(option).should('be.visible');
     });
   }
 
   checkSearchbarOnAllProposalPage() {
-    cy.findByTestId(this.searchbarBtn)
-      .should('be.visible')
-      .click();
+    cy.findByTestId(this.searchbarBtn).should('be.visible').click();
     cy.findByTestId(this.searchbarInputField)
       .should('be.visible')
-      .get('input[placeholder=\"Search proposal, discussion, ENS, address\"]');
+      .get('input[placeholder="Search proposal, discussion, ENS, address"]');
   }
 
   goToFirstProposalPage() {
-    cy.wait(5000)
-    cy.findAllByTestId(this.guildPageProposalTitle)
-      .first()
-      .click();
+    cy.wait(5000);
+    cy.findAllByTestId(this.guildPageProposalTitle).first().click();
   }
 
   checkIfYouAreOnProposalPage() {
-    cy.findByTestId(this.proposalPageProposalTitle)
-      .should('be.visible')
+    cy.findByTestId(this.proposalPageProposalTitle).should('be.visible');
   }
-  
 }
 
 const allGuilds: AllGuilds = new AllGuilds();

@@ -1,10 +1,10 @@
-// 
+//
 // Filename: LandingPage.ts
-// 
+//
 
 import localhostConfigJSON from '../../../src/configs/localhost/config.json';
 
-class LandingPage  {
+class LandingPage {
   public projectNameText: string;
   public networkModalBtn: string;
   public networkModalTitle: string;
@@ -26,33 +26,28 @@ class LandingPage  {
     this.walletModalTitle = 'modal-title';
     this.walletModalOptionId = '';
     this.walletModalOptions = localhostConfigJSON.walletOptions;
-    this.guildName = 'guild-name'
+    this.guildName = 'guild-name';
   }
 
   projectName() {
-    cy.findByTestId(this.projectNameText).should('be.visible')
+    cy.findByTestId(this.projectNameText).should('be.visible');
   }
 
   openNetworkModal() {
-    cy.findByTestId(this.networkModalBtn)
-      .should('be.visible') 
-      .click()
-    cy.findByTestId(this.networkModalTitle)
-      .contains('Switch Network')
+    cy.findByTestId(this.networkModalBtn).should('be.visible').click();
+    cy.findByTestId(this.networkModalTitle).contains('Switch Network');
   }
 
   openWalletModal() {
-    cy.findByTestId(this.walletModalBtn)
-      .should('be.visible') 
-      .click()
-    cy.findByTestId(this.walletModalTitle)
-      .contains('Connect to a wallet')
+    cy.findByTestId(this.walletModalBtn).should('be.visible').click();
+    cy.findByTestId(this.walletModalTitle).contains('Connect to a wallet');
   }
 
   goToGuildPage(guildIndex, guildName) {
-    cy.findAllByTestId(this.guildName).eq(guildIndex)
+    cy.findAllByTestId(this.guildName)
+      .eq(guildIndex)
       .contains(guildName)
-      .click()
+      .click();
   }
 }
 
