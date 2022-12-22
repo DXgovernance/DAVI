@@ -6,4 +6,3 @@ fs.writeFileSync(
   path.resolve(__dirname, '../src/bytecodes/local.json'),
   JSON.stringify(local, null, 2)
 );
-
