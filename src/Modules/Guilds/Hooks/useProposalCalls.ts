@@ -3,7 +3,6 @@ import { useTheme } from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { bulkDecodeCallsFromOptions } from 'hooks/Guilds/contracts/useDecodedCall';
 import { decodeCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
 import { Call, Option } from 'components/ActionsBuilder/types';
 import { preventEmptyString, ZERO_HASH } from 'utils';
@@ -14,6 +13,7 @@ import { useNetwork } from 'wagmi';
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 import { EMPTY_CALL } from 'Modules/Guilds/pages/CreateProposal';
 import useGuildImplementationTypeConfig from './useGuildImplementationType';
+import { useHookStoreProvider } from 'stores/mainStore';
 
 const isApprovalData = (data: string) =>
   data && data?.substring(0, 10) === ERC20_APPROVE_SIGNATURE;
@@ -22,6 +22,7 @@ const isZeroHash = (data: string) => data === ZERO_HASH;
 
 const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
   // Decode calls from existing proposal
+  const { useProposal } = useHookStoreProvider();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
   const votingResults = useVotingResults(guildId, proposalId);

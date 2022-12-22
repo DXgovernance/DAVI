@@ -1,11 +1,11 @@
+import { useMemo } from 'react';
+import { BigNumber } from 'ethers';
+import { useHookStoreProvider } from 'stores/mainStore';
 import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { BigNumber } from 'ethers';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
-import { useMemo } from 'react';
 
 export interface VoteData {
   options: { [name: string]: BigNumber };
@@ -18,6 +18,7 @@ export const useVotingResults = (
   optionalGuildId?: string,
   optionalProposalId?: `0x${string}`
 ): VoteData => {
+  const { useProposal } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
 
   // swr hooks

@@ -1,8 +1,8 @@
+import { useMemo } from 'react';
+import { useHookStoreProvider } from 'stores/mainStore';
 import { useTransactions } from 'contexts/Guilds/transactions';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { useMemo } from 'react';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 
 interface useExecutableReturns {
   data: {
@@ -13,6 +13,7 @@ interface useExecutableReturns {
 }
 
 function useExecutable(): useExecutableReturns {
+  const { useProposal } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { createTransaction } = useTransactions();
