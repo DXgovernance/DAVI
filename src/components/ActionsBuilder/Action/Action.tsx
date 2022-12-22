@@ -25,14 +25,13 @@ import {
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
 import { Permission } from 'components/ActionsBuilder/types';
-import { useGetETHPermission } from 'Modules/Guilds/Hooks/useETHPermissions';
 import { preventEmptyString } from 'utils';
-import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { useETHPermissions } from 'Modules/Guilds/Hooks/useETHPermissions';
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  permissionArgs?: Permission;
+  permissionArgsArray?: Permission[];
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
@@ -47,7 +46,7 @@ export enum CardStatus {
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
-  permissionArgs,
+  permissionArgsArray,
   decodedAction,
   isEditable,
   onEdit,
@@ -63,18 +62,12 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
   } = useSortable({ id: decodedAction?.id, disabled: !isEditable });
   const action = useDecodedCall(call);
-  const permissionRegistryAddress = useGuildConfig(call?.from)?.data
-    ?.permissionRegistry;
-  const permission = useGetETHPermission({
-    permissionRegistryAddress,
-    from: permissionArgs?.from,
-    to: permissionArgs?.to,
-    callType: permissionArgs?.callType,
-    functionSignature: permissionArgs?.functionSignature,
-  })?.data;
-  const permissionValues = permission?.split(',');
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
+  const permissions = useETHPermissions(permissionArgsArray);
+  const permissionValuesArray = permissions.map(permission =>
+    permission?.data?.split(',')
+  );
 
   const [expanded, setExpanded] = useState(false);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
@@ -95,7 +88,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
 
-    if (permissionValues?.includes('0')) {
+    if (permissionValuesArray?.some(p => p?.includes('0'))) {
       return CardStatus.permissionDenied;
     }
 
@@ -115,7 +108,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     decodedAction?.simulationResult,
     isEditable,
     isDragging,
-    permissionValues,
+    permissionValuesArray,
   ]);
 
   useEffect(() => {
