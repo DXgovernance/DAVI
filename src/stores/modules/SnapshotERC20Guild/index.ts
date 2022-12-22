@@ -1,12 +1,6 @@
 import { GovernanceInterface } from 'stores/types';
 import useProposal from './fetchers/useProposal';
 
-// TODO: Add types
-// TODO: change variable name
-export const snapshotGuildImplementation = {
-  useProposal,
-};
-
 export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
   name: 'SnapshotERC20Guild',
   bytecode:

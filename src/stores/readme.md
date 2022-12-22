@@ -2,10 +2,24 @@
 
 ## Overview
 
-Each governance system has this structure:
+### Main folder
+
+- **modules**: folder containing different governance implementations
+- **governanceInterfaces.ts**: file that exports an array of every governance interface supported. That array is made of all the governance interface objects of each governance module
+- **index.tsx**:
+  - Contains the logic to switch between governance implementations
+  - Is a context
+  - Exports the governance interface of the current guild
+- **types.ts**: common typings used in the modules
+
+### Governance module folder
+
+#### Structure
+
+Each governance module has this structure:
 
 ```
-+ ImplmentationName
++ GovernanceImplmentationName
 |-+ events
 |-+ fetchers
 | |-- index.ts ( ? )
@@ -21,31 +35,24 @@ Each governance system has this structure:
 
 ```
 
-### Terminololgy
+#### Contents
 
 - **events**: folder containing event listeners
 - **fetchers**: folder containing different fetching hooks
   - **index.ts**:
 - **writers**: folder containing writing hooks
-- **capabilities.ts**: file stating the capabilities of the implementation
-- **index.ts**: file that will export the full set of hooks from the implementation
-
-## Main folder
-
-- **modules**: folder containing different governance implementations
-- **mainStore.ts**: file that contains the logic to switch between governance implementations. It will export a `store` variable containing all the hooks of that governance system
-- **types.ts**: common typings used in the modules
+- **index.ts**: this file exports all the information needed for that governance type: the name, bytecode, available hooks, and all capabilities (features) this governance system has
 
 ---
 
 ## Guides
 
-### Migrating hooks to an existing governance system
+### Migrating a hook to a supported governance system
 
 1. Copy the hook file to folder, depending of it is a fetcher or writer:
    1. `[implementationName] > writers`
    2. `[implementationName] > fetchers > [fetchingImplementation]`
-2. In `[implementationName] > index.ts`: Import the hook and add it to the exported implementation object
+2. In `[implementationName] > index.ts`: Import the hook and add it to the `hooks` key of the exported governance interface
 3. In `types.ts` add the new hook to `HooksInterface`, with the corresponding type
 4. Find every file where the hook is used and:
 
@@ -54,10 +61,12 @@ Each governance system has this structure:
 
       ```javascript
       // Imports
-      import { useHookStoreProvider } from 'stores/mainStore';
+      import { useHookStoreProvider } from 'stores';
 
       // Inside the component
-      const { useNameOfTheHook } = useHookStoreProvider();
+      const {
+        hooks: { useHookName },
+      } = useHookStoreProvider();
       ```
 
 5. Delete the old hook file
