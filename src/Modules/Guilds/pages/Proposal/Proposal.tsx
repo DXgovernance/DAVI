@@ -43,10 +43,12 @@ import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
 import { Header as CardHeader } from 'components/Card';
 import { Discussion } from 'components/Discussion';
 import useDiscussionContext from 'Modules/Guilds/Hooks/useDiscussionContext';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 
 const ProposalPage: React.FC = () => {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { t } = useTranslation();
   const { connector } = useAccount();
   const { chainName, guildId, proposalId } = useTypedParams();

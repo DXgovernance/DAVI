@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 
@@ -10,7 +10,9 @@ export default function useVoteSummary(
   guildId: string,
   proposalId: `0x${string}`
 ): number[] {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 
   const { data: snapshotId } = useSnapshotId({

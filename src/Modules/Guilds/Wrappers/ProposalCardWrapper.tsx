@@ -8,7 +8,7 @@ import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 
 interface ProposalCardWrapperProps {
   proposalId?: `0x${string}`;
@@ -16,7 +16,9 @@ interface ProposalCardWrapperProps {
 const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,
 }) => {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { guildId, chainName } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);

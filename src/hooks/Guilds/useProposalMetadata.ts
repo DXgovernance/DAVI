@@ -2,10 +2,12 @@ import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
 import { useMemo } from 'react';
 import { ProposalMetadata } from 'types/types.guilds';
 import contentHash from '@ensdomains/content-hash';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 
 function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { data: proposal, error } = useProposal(guildId, proposalId);
 
   const { decodedContentHash, decodeError } = useMemo(() => {

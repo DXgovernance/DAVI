@@ -11,10 +11,12 @@ import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useGuildImplementationTypeConfig from '../Hooks/useGuildImplementationType';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 
 const ProposalVoteCardWrapper = () => {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { address: userAddress } = useAccount();
   const { data: proposal } = useProposal(guildId, proposalId);

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
-import { useHookStoreProvider } from 'stores/mainStore';
+import { useHookStoreProvider } from 'stores';
 import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
@@ -18,7 +18,9 @@ export const useVotingResults = (
   optionalGuildId?: string,
   optionalProposalId?: `0x${string}`
 ): VoteData => {
-  const { useProposal } = useHookStoreProvider();
+  const {
+    hooks: { useProposal },
+  } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
 
   // swr hooks
