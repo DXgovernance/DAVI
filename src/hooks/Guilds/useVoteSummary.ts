@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { useHookStoreProvider } from 'stores';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 
 import { getBigNumberPercentage } from 'utils/bnPercentage';
@@ -11,7 +10,7 @@ export default function useVoteSummary(
   proposalId: `0x${string}`
 ): number[] {
   const {
-    hooks: { useProposal },
+    hooks: { useProposal, useSnapshotId },
   } = useHookStoreProvider();
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 

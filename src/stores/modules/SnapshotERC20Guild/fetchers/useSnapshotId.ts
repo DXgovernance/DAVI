@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
-import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
+import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 
 interface useSnapshotIdProps {

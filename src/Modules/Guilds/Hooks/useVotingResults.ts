@@ -4,7 +4,6 @@ import { useHookStoreProvider } from 'stores';
 import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 
 export interface VoteData {
@@ -19,7 +18,7 @@ export const useVotingResults = (
   optionalProposalId?: `0x${string}`
 ): VoteData => {
   const {
-    hooks: { useProposal },
+    hooks: { useProposal, useSnapshotId },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
 

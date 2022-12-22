@@ -1,6 +1,5 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
@@ -15,7 +14,7 @@ import { useHookStoreProvider } from 'stores';
 
 const ProposalVoteCardWrapper = () => {
   const {
-    hooks: { useProposal },
+    hooks: { useProposal, useSnapshotId },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { address: userAddress } = useAccount();

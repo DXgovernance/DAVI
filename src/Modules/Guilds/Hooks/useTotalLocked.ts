@@ -1,15 +1,19 @@
 import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
+import { useHookStoreProvider } from 'stores';
 
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   // Hooks call
+  const {
+    hooks: { useSnapshotId },
+  } = useHookStoreProvider();
+
   const { proposalId } = useTypedParams();
   const { data: _snapshotId } = useSnapshotId({
     contractAddress: guildAddress,

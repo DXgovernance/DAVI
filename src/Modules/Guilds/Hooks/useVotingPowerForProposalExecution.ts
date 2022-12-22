@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
 import { useContractRead } from 'wagmi';
 import { ReadContractConfig } from '@wagmi/core';
+import { useHookStoreProvider } from 'stores';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
-// import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
@@ -86,6 +85,10 @@ export const useVotingPowerForProposalExecution = ({
 }: UseVotingPowerForProposalExecutionProps): { data: BigNumber } => {
   const { isSnapshotGuild, isRepGuild, loaded } =
     useGuildImplementationType(contractAddress);
+
+  const {
+    hooks: { useSnapshotId },
+  } = useHookStoreProvider();
 
   const { proposalId: FALLBACK_PROPOSAL_ID } = useTypedParams();
 
