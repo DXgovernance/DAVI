@@ -106,7 +106,10 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     )
       if (!decodedAction?.simulationResult) return CardStatus.normal;
 
-    if (decodedAction?.simulationResult.simulation.status === false) {
+    if (
+      decodedAction?.simulationResult &&
+      decodedAction?.simulationResult.simulation.status === false
+    ) {
       return CardStatus.simulationFailed;
     }
     return CardStatus.normal; // default return so ESLint doesn't complain
