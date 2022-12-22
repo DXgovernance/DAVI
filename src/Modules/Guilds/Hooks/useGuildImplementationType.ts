@@ -11,13 +11,15 @@ const defaultImplementation = deployedHashedBytecodes.find(
 ) ?? {
   type: GuildImplementationType.IERC20Guild,
   features: [],
-  bytecode_hash: '',
+  deployedBytecodeHash: '',
+  bytecodeHash: '',
 };
 
 interface ImplementationTypeConfig {
   type: string;
   features: string[];
-  bytecode_hash: string;
+  deployedBytecodeHash: string;
+  bytecodeHash: string;
 }
 
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
@@ -46,7 +48,8 @@ export default function useGuildImplementationTypeConfig(
   const { chain } = useNetwork();
   const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
 
-  const [guildBytecode, setGuildBytecode] = useState<string>('');
+  const [guildDeployedBytecode, setGuildDeployedBytecode] =
+    useState<string>('');
   const [loaded, setLoaded] = useState<boolean>(false);
   const provider = useProvider();
   useEffect(() => {
@@ -57,12 +60,12 @@ export default function useGuildImplementationTypeConfig(
       if (!localBtcode) {
         const btcode = await provider.getCode(guildAddress);
         const hashedBytecode = Web3.utils.keccak256(btcode);
-        setGuildBytecode(hashedBytecode);
+        setGuildDeployedBytecode(hashedBytecode);
         localStorage.setItem(`hashed-bytecode-${guildAddress}`, hashedBytecode);
         setLoaded(true);
         return;
       }
-      setGuildBytecode(localBtcode);
+      setGuildDeployedBytecode(localBtcode);
       setLoaded(true);
     };
     getBytecode();
@@ -70,14 +73,17 @@ export default function useGuildImplementationTypeConfig(
   }, [guildAddress]);
 
   const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
-    if (!guildBytecode) return defaultImplementation;
+    if (!guildDeployedBytecode) return defaultImplementation;
 
     const match = (
       isLocalhost ? deployedHashedBytecodesLocal : deployedHashedBytecodes
-    ).find(({ bytecode_hash }) => guildBytecode === bytecode_hash);
+    ).find(
+      ({ deployedBytecodeHash }) =>
+        guildDeployedBytecode === deployedBytecodeHash
+    );
 
     return match ?? defaultImplementation; // default to IERC20Guild
-  }, [guildBytecode, isLocalhost]);
+  }, [guildDeployedBytecode, isLocalhost]);
 
   return { ...parseConfig(implementationTypeConfig), loaded };
 }

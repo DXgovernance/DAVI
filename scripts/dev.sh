@@ -55,6 +55,9 @@
 echo "Executing beforeBuild"
 node scripts/beforeBuild.js
 
+echo "Updating DAVI bytecodes"
+node scripts/updateBytecodes.js
+
 
 # Deploy local contracts
 # yarn hardhat run --network localhost scripts/dev.ts
