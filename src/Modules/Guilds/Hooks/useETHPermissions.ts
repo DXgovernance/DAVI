@@ -5,7 +5,6 @@ import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { Permission } from 'components/ActionsBuilder/types';
 
 export const useETHPermissions = (permissionArgsArray: Permission[]) => {
-  debugger;
   const { guildId } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildId);
 

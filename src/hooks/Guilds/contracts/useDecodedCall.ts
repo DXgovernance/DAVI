@@ -161,7 +161,24 @@ export const decodeCall = async (
       };
   }
   if (!matchedContract) {
-    return null;
+    decodedCall = {
+      callType: SupportedAction.RAW_TRANSACTION,
+      from: call.from,
+      to: call.to,
+      value: call.value,
+      function: null,
+      args: {},
+      optionalProps: {
+        data: '0x01',
+      },
+    };
+
+    return {
+      id: `action-${Math.random()}`,
+      decodedCall,
+      contract: null,
+      approval: null,
+    };
   }
   const { callType, contractInterface } = matchedContract;
 
