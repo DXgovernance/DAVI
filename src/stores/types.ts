@@ -1,5 +1,5 @@
-import useProposal from './modules/SnapshotERC20Guild/fetchers/useProposal';
-import useSnapshotId from './modules/SnapshotERC20Guild/fetchers/useSnapshotId';
+import useProposal from './modules/common/fetchers/useProposal';
+import useSnapshotId from './modules/common/fetchers/useSnapshotId';
 import useTotalLocked from './modules/SnapshotERC20Guild/fetchers/useTotalLocked';
 
 interface GovernanceCapabilities {
@@ -25,7 +25,7 @@ export interface GovernanceInterface {
 
 export interface FetcherHooksInterface {
   useProposal: (
-    guildId: string,
+    daoId: string,
     proposalId: `0x${string}`
   ) => ReturnType<typeof useProposal>;
   useSnapshotId: (useSnapshotIdProps: {

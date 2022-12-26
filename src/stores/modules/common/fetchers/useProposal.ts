@@ -27,9 +27,9 @@ const formatterMiddleware = (data: InitialProposal): Proposal => {
   return clone as Proposal;
 };
 
-const useProposal = (guildId: string, proposalId: `0x${string}`) => {
+const useProposal = (daoId: string, proposalId: `0x${string}`) => {
   const { data, refetch, ...rest } = useContractRead({
-    address: guildId,
+    address: daoId,
     abi: SnapshotERC20Guild.abi,
     functionName: 'getProposal',
     args: [proposalId],
@@ -37,7 +37,7 @@ const useProposal = (guildId: string, proposalId: `0x${string}`) => {
   const proposalData = data as unknown as InitialProposal;
 
   useContractEvent({
-    address: guildId,
+    address: daoId,
     abi: SnapshotERC20Guild.abi,
     eventName: 'ProposalStateChanged',
     listener(node, label, eventDetails) {
@@ -47,7 +47,7 @@ const useProposal = (guildId: string, proposalId: `0x${string}`) => {
   });
 
   useContractEvent({
-    address: guildId,
+    address: daoId,
     abi: SnapshotERC20Guild.abi,
     eventName: 'VoteAdded',
     listener(node, label, eventDetails) {

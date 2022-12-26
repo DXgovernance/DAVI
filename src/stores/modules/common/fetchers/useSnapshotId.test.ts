@@ -4,7 +4,7 @@ import {
   MOCK_PROPOSAL_ID,
   MOCK_SNAPSHOT_ID,
 } from 'Modules/Guilds/Hooks/fixtures';
-jest.mock('stores/modules/SnapshotRepGuild/fetchers/useSnapshotId', () => ({
+jest.mock('stores/modules/common/fetchers/useSnapshotId', () => ({
   __esModule: true,
   default: () => ({
     data: MOCK_SNAPSHOT_ID,

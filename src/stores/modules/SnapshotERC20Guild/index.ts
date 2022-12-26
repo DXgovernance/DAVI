@@ -1,6 +1,6 @@
 import { GovernanceInterface } from 'stores/types';
-import useProposal from './fetchers/useProposal';
-import useSnapshotId from './fetchers/useSnapshotId';
+import useProposal from '../common/fetchers/useProposal';
+import useSnapshotId from '../common/fetchers/useSnapshotId';
 import useTotalLocked from './fetchers/useTotalLocked';
 
 export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {

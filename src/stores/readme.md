@@ -41,8 +41,6 @@ Each governance module has this structure:
 - **writers**: folder containing writing hooks
 - **index.ts**: this file exports all the information needed for that governance type: the name, bytecode, available hooks, and all capabilities (features) this governance system has
 
----
-
 # Guides
 
 ## Migrating a hook to a supported governance system

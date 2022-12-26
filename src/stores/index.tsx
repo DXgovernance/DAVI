@@ -10,9 +10,10 @@ export const HookStoreContext = createContext<GovernanceInterface>(null);
 export const HookStoreProvider = ({ children }) => {
   ///////////////////////////////
 
-  const urlParams = useMatch('/:chainName/:guildId/*');
-  const guildAddress = useMemo(
-    () => (urlParams ? urlParams.params.guildId : ''),
+  // TODO: Replace getting the daoId from the URL with some kind of setter/getter
+  const urlParams = useMatch('/:chainName/:daoId/*');
+  const daoId = useMemo(
+    () => (urlParams ? urlParams.params.daoId : ''),
     [urlParams]
   );
 
@@ -20,41 +21,39 @@ export const HookStoreProvider = ({ children }) => {
   // const { chain } = useNetwork();
   // const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
 
-  const [guildBytecode, setGuildBytecode] = useState<string>('');
+  const [daoBytecode, setDaoBytecode] = useState<string>('');
   const [loaded, setLoaded] = useState<boolean>(false);
   const provider = useProvider();
 
   useEffect(() => {
     const getBytecode = async () => {
-      const localBtcode = localStorage.getItem(
-        `hashed-bytecode-${guildAddress}`
-      );
+      const localBtcode = localStorage.getItem(`hashed-bytecode-${daoId}`);
       if (!localBtcode) {
-        const btcode = await provider.getCode(guildAddress);
+        const btcode = await provider.getCode(daoId);
         const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
-        setGuildBytecode(hashedBytecode);
-        localStorage.setItem(`hashed-bytecode-${guildAddress}`, hashedBytecode);
+        setDaoBytecode(hashedBytecode);
+        localStorage.setItem(`hashed-bytecode-${daoId}`, hashedBytecode);
         setLoaded(true);
         return;
       }
-      setGuildBytecode(localBtcode);
+      setDaoBytecode(localBtcode);
       setLoaded(true);
     };
     getBytecode();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guildAddress]);
+  }, [daoId]);
 
   const governanceType: GovernanceInterface = useMemo(() => {
     // TODO: make prod and local ternary
     // const match = (
     //   isLocalhost ? deployedHashedBytecodesLocal : deployedHashedBytecodes
-    // ).find(({ bytecode_hash }) => guildBytecode === bytecode_hash);
+    // ).find(({ bytecode_hash }) => daoBytecode === bytecode_hash);
     const match = governanceInterfaces.find(governance => {
-      return governance.bytecode === guildBytecode;
+      return governance.bytecode === daoBytecode;
     });
 
-    return match ?? governanceInterfaces[0]; // default to IERC20Guild
-  }, [guildBytecode]);
+    return match ?? governanceInterfaces[0]; // default to IERC20Dao
+  }, [daoBytecode]);
 
   // TODO: handle loading state
   console.log(loaded);
