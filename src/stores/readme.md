@@ -3,6 +3,7 @@
 ## Main folder
 
 - **modules**: folder containing different governance implementations
+  - **common**: folder containing common files, like hook implementations, that can be imported by multiple implementations, to avoid code duplication
 - **governanceInterfaces.ts**: file that exports an array of every governance interface supported. That array is made of all the governance interface objects of each governance module
 - **index.tsx**:
   - Contains the logic to switch between governance implementations
