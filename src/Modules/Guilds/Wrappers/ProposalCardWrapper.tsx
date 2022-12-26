@@ -17,7 +17,9 @@ const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,
 }) => {
   const {
-    hooks: { useProposal },
+    hooks: {
+      fetchers: { useProposal },
+    },
   } = useHookStoreProvider();
   const { guildId, chainName } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);

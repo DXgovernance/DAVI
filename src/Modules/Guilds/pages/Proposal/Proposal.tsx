@@ -46,7 +46,9 @@ import { useHookStoreProvider } from 'stores';
 
 const ProposalPage: React.FC = () => {
   const {
-    hooks: { useProposal, useSnapshotId },
+    hooks: {
+      fetchers: { useProposal, useSnapshotId },
+    },
   } = useHookStoreProvider();
   const { t } = useTranslation();
   const { connector } = useAccount();

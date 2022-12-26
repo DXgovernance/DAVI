@@ -14,7 +14,9 @@ interface useExecutableReturns {
 
 function useExecutable(): useExecutableReturns {
   const {
-    hooks: { useProposal },
+    hooks: {
+      fetchers: { useProposal },
+    },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { data: proposal, error } = useProposal(guildId, proposalId);

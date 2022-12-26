@@ -14,7 +14,9 @@ import { useHookStoreProvider } from 'stores';
 
 const ProposalVoteCardWrapper = () => {
   const {
-    hooks: { useProposal, useSnapshotId },
+    hooks: {
+      fetchers: { useProposal, useSnapshotId },
+    },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { address: userAddress } = useAccount();

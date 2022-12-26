@@ -10,7 +10,9 @@ export default function useVoteSummary(
   proposalId: `0x${string}`
 ): number[] {
   const {
-    hooks: { useProposal, useSnapshotId },
+    hooks: {
+      fetchers: { useProposal, useSnapshotId },
+    },
   } = useHookStoreProvider();
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 

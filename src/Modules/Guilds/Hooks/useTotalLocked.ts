@@ -11,7 +11,9 @@ import { useHookStoreProvider } from 'stores';
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   // Hooks call
   const {
-    hooks: { useSnapshotId },
+    hooks: {
+      fetchers: { useSnapshotId },
+    },
   } = useHookStoreProvider();
 
   const { proposalId } = useTypedParams();

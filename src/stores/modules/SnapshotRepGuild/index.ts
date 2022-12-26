@@ -1,14 +1,20 @@
 import { GovernanceInterface } from 'stores/types';
 import useProposal from './fetchers/useProposal';
 import useSnapshotId from './fetchers/useSnapshotId';
+import useTotalLocked from './fetchers/useTotalLocked';
 
 export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
   name: 'SnapshotRepGuild',
   bytecode:
     '0x5220f03f768c7f09437ccf760eb5307dc60f60e18c9c9ff9599a9ab3ad71d2a0',
   hooks: {
-    useProposal,
-    useSnapshotId,
+    events: null,
+    fetchers: {
+      useProposal,
+      useSnapshotId,
+      useTotalLocked,
+    },
+    writers: null,
   },
   capabilities: {
     votingPower: 'soulbound',

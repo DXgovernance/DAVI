@@ -29,10 +29,12 @@ let mockedData = {
 jest.mock('stores', () => ({
   useHookStoreProvider: () => ({
     hooks: {
-      useProposal: jest
-        .fn()
-        .mockReturnValueOnce({ data: mockedData })
-        .mockReturnValueOnce({ data: null }),
+      fetchers: {
+        useProposal: jest
+          .fn()
+          .mockReturnValueOnce({ data: mockedData })
+          .mockReturnValueOnce({ data: null }),
+      },
     },
   }),
 }));

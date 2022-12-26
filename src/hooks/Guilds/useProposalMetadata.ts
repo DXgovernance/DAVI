@@ -6,7 +6,9 @@ import { useHookStoreProvider } from 'stores';
 
 function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
   const {
-    hooks: { useProposal },
+    hooks: {
+      fetchers: { useProposal },
+    },
   } = useHookStoreProvider();
   const { data: proposal, error } = useProposal(guildId, proposalId);
 

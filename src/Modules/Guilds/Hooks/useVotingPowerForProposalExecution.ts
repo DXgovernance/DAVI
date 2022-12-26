@@ -87,7 +87,9 @@ export const useVotingPowerForProposalExecution = ({
     useGuildImplementationType(contractAddress);
 
   const {
-    hooks: { useSnapshotId },
+    hooks: {
+      fetchers: { useSnapshotId },
+    },
   } = useHookStoreProvider();
 
   const { proposalId: FALLBACK_PROPOSAL_ID } = useTypedParams();

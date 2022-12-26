@@ -18,7 +18,9 @@ export const useVotingResults = (
   optionalProposalId?: `0x${string}`
 ): VoteData => {
   const {
-    hooks: { useProposal, useSnapshotId },
+    hooks: {
+      fetchers: { useProposal, useSnapshotId },
+    },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
 

@@ -23,7 +23,9 @@ const isZeroHash = (data: string) => data === ZERO_HASH;
 const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
   // Decode calls from existing proposal
   const {
-    hooks: { useProposal },
+    hooks: {
+      fetchers: { useProposal },
+    },
   } = useHookStoreProvider();
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);
