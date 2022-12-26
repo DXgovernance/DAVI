@@ -14,15 +14,20 @@ import { formatUnits } from 'ethers/lib/utils';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { useState } from 'react';
 import { WalletModal } from 'components/Web3Modals';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import StakeTokensModalWrapper from './StakeTokensModalWrapper';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
+import { useHookStoreProvider } from 'stores';
 
 const GuildSidebarWrapper = () => {
   const [isStakeModalOpen, setIsStakeModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const {
+    hooks: {
+      fetchers: { useTotalLocked },
+    },
+  } = useHookStoreProvider();
 
   const { guildId: guildAddress } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildAddress);

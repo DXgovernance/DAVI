@@ -2,6 +2,8 @@ import { BigNumber } from 'ethers';
 import { useMatch } from 'react-router';
 import { useHookStoreProvider } from 'stores';
 import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
+import { useContractRead } from 'wagmi';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 
 const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
   // TODO: make useTypedMatch
@@ -28,11 +30,23 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
     snapshotId: SNAPSHOT_ID,
   });
 
-  return {
-    data: totalLockedAtProposalSnapshotResponse
-      ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
-      : undefined,
-  };
+  const { data: totalLockedResponse } = useContractRead({
+    address: guildAddress,
+    abi: BaseERC20Guild.abi,
+    functionName: 'getTotalLocked',
+  });
+
+  return SNAPSHOT_ID
+    ? {
+        data: totalLockedAtProposalSnapshotResponse
+          ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
+          : undefined,
+      }
+    : {
+        data: totalLockedResponse
+          ? BigNumber.from(totalLockedResponse)
+          : undefined,
+      };
 };
 
 export default useTotalLocked;

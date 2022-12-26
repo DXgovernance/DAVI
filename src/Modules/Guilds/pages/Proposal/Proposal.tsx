@@ -7,7 +7,6 @@ import { UnstyledLink } from 'components/primitives/Links';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { Loading } from 'components/primitives/Loading';
 import { Result, ResultState } from 'components/Result';
@@ -47,7 +46,7 @@ import { useHookStoreProvider } from 'stores';
 const ProposalPage: React.FC = () => {
   const {
     hooks: {
-      fetchers: { useProposal, useSnapshotId },
+      fetchers: { useProposal, useSnapshotId, useTotalLocked },
     },
   } = useHookStoreProvider();
   const { t } = useTranslation();
