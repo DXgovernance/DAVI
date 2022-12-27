@@ -32,9 +32,9 @@ const DiscussionPage: React.FC = () => {
   const { data: guildConfig } = useGuildConfig(guildId);
   const { orbis } = useContext(OrbisContext);
   const { context } = useDiscussionContext(
-    `${guildId}-${discussionId}-discussions`
+    `DAVI-${guildId}-${discussionId}-discussions`
   );
-  console.log({ op });
+
   const getPost = async () => {
     const { data } = await orbis.getPost(discussionId);
     setOp(data);

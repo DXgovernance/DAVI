@@ -40,7 +40,7 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
 
   const { data: metadata, error: metadataError } =
     useIPFSFile<ProposalMetadata>(decodedContentHash);
-  console.log({ metadata });
+
   if (orbisData) {
     return {
       data: {

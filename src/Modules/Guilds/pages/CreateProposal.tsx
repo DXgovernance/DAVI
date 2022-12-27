@@ -188,7 +188,7 @@ const CreateProposalPage: React.FC = () => {
       const { res } = await handleCreateOrbisMetadata({
         title,
         body: proposalBodyHTML,
-        context: guildId,
+        context: `DAVI-${guildId}`,
         master: discussionId,
         replyTo: null,
         mentions: [],
