@@ -132,7 +132,7 @@ const ProposalPage: React.FC = () => {
                   <ExecuteButton executeProposal={executeProposal} />
                 )}
             </HeaderTopRow>
-            <PageTitle>
+            <PageTitle data-testid="proposal-page-title">
               {proposal?.title || (
                 <Loading loading text skeletonProps={{ width: '800px' }} />
               )}
