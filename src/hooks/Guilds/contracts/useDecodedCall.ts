@@ -169,7 +169,7 @@ export const decodeCall = async (
       function: null,
       args: {},
       optionalProps: {
-        data: '0x01',
+        data: call.data,
       },
     };
 
@@ -218,6 +218,7 @@ export const bulkDecodeCallsFromOptions = (
         async action => await decodeCall(action, contracts, chainId)
       );
       const decodedActions = await Promise.all(actionPromisesArray);
+      debugger;
       return {
         ...option,
         decodedActions,
