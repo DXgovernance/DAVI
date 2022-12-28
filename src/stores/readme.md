@@ -1,5 +1,11 @@
 # Overview
 
+The store exposes hooks to the components. The actual logic that the hook uses to get that information will depend on the governance implementation.
+
+Each implementation should expose the same hooks, and difer the logic to provide the information the component needs.
+
+For example: the `useTotalLocked` hook returns the amount of tokens a DAO has. In the case of an ERC20Guild, that is the amount of tokens locked in the guild, obtained calling `getTokensLockedAt` to the guild contract; but in the case of a RepGuild, this value is obtained calling `useTotalSupplyAt` to the token contract. The component doesn't know about that logic, and only will care for the total amount of tokens.
+
 ## Main folder
 
 - **modules**: folder containing different governance implementations
@@ -34,7 +40,7 @@ Each governance module has this structure:
 
 ```
 
-### Contents
+### Content
 
 - **events**: folder containing event listeners
 - **fetchers**: folder containing different fetching hooks
