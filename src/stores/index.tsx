@@ -5,25 +5,31 @@ import { useProvider } from 'wagmi';
 import { SHA256, enc } from 'crypto-js';
 import { governanceInterfaces } from './governanceInterfaces';
 
-export const HookStoreContext = createContext<GovernanceInterface>(null);
+interface HookStoreContextInterface extends GovernanceInterface {
+  isLoading: boolean;
+  daoId: string;
+}
+
+export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 
 export const HookStoreProvider = ({ children }) => {
   ///////////////////////////////
 
   // TODO: Replace getting the daoId from the URL with some kind of setter/getter
   const urlParams = useMatch('/:chainName/:daoId/*');
-  const daoId = useMemo(
-    () => (urlParams ? urlParams.params.daoId : ''),
-    [urlParams]
-  );
+  const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');
+  useEffect(() => {
+    setIsLoading(true);
+    setDaoId(urlParams?.params?.daoId);
+  }, [urlParams?.params?.daoId, daoId]);
 
-  // TODO: make localhost boolean
-  // const { chain } = useNetwork();
-  // const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
-
-  const [daoBytecode, setDaoBytecode] = useState<string>('');
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const [daoBytecode, setDaoBytecode] = useState<string>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const provider = useProvider();
+
+  useEffect(() => {
+    return () => setIsLoading(true);
+  }, []);
 
   useEffect(() => {
     const getBytecode = async () => {
@@ -33,21 +39,20 @@ export const HookStoreProvider = ({ children }) => {
         const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
         setDaoBytecode(hashedBytecode);
         localStorage.setItem(`hashed-bytecode-${daoId}`, hashedBytecode);
-        setLoaded(true);
+        setIsLoading(false);
         return;
       }
       setDaoBytecode(localBtcode);
-      setLoaded(true);
+      setIsLoading(false);
     };
+
     getBytecode();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [daoId]);
 
   const governanceType: GovernanceInterface = useMemo(() => {
-    // TODO: make prod and local ternary
-    // const match = (
-    //   isLocalhost ? deployedHashedBytecodesLocal : deployedHashedBytecodes
-    // ).find(({ bytecode_hash }) => daoBytecode === bytecode_hash);
+    // TODO: make array of supported bytecodes
+
     const match = governanceInterfaces.find(governance => {
       return governance.bytecode === daoBytecode;
     });
@@ -55,13 +60,12 @@ export const HookStoreProvider = ({ children }) => {
     return match ?? governanceInterfaces[0]; // default to IERC20Dao
   }, [daoBytecode]);
 
-  // TODO: handle loading state
-  console.log(loaded);
+  console.log({ ...governanceType, isLoading, daoId });
 
   ///////////////////////////////
 
   return (
-    <HookStoreContext.Provider value={governanceType}>
+    <HookStoreContext.Provider value={{ ...governanceType, isLoading, daoId }}>
       {children}
     </HookStoreContext.Provider>
   );

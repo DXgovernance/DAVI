@@ -1,5 +1,6 @@
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import GuildSidebarWrapper from 'Modules/Guilds/Wrappers/GuildSidebarWrapper';
+import { useHookStoreProvider } from 'stores';
 import { AllProposals } from '../AllProposals';
 import { Governance } from '../Governance';
 import { PageContainer, PageContent, SidebarContent } from './Guilds.styled';
@@ -12,6 +13,10 @@ const GuildsPage: React.FC<GuildsPageProps> = ({
   pageContent = 'governance',
 }) => {
   const { guildId } = useTypedParams();
+
+  const { isLoading } = useHookStoreProvider();
+
+  if (isLoading) return <></>;
 
   return (
     <PageContainer>
