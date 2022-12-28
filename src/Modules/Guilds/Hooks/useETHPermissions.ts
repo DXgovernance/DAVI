@@ -3,6 +3,7 @@ import { useContractReads } from 'wagmi';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { Permission } from 'components/ActionsBuilder/types';
+const FROM_TIME = 1;
 
 export const useETHPermissions = (permissionArgsArray: Permission[]) => {
   const { guildId } = useTypedParams();
@@ -47,7 +48,7 @@ const getParsed = (permission, permissionArgsArray, rest, index: number) => {
     };
   }
   return {
-    data: permission.toString(),
+    data: permission[FROM_TIME].toString(),
     ...rest,
   };
 };
