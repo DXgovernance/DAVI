@@ -1,54 +1,40 @@
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
-import { useContractReads } from 'wagmi';
+import { useContractRead } from 'wagmi';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { Permission } from 'components/ActionsBuilder/types';
+import { useMemo } from 'react';
 const FROM_TIME = 1;
 
-export const useETHPermissions = (permissionArgsArray: Permission[]) => {
+export const useETHPermissions = (permissionArgs: Permission) => {
   const { guildId } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildId);
 
-  let contractArray = [];
-
-  permissionArgsArray.forEach(permissionArg => {
-    const contract = {
-      address: guildConfig?.permissionRegistry,
-      abi: PermissionRegistry.abi,
-      functionName: 'getETHPermission(address,address,bytes4)',
-      args: [
-        permissionArg.from,
-        permissionArg.to,
-        permissionArg.functionSignature,
-      ],
-      watch: true,
-    };
-    contractArray.push(contract);
+  const { data: permission, ...rest } = useContractRead({
+    address: guildConfig?.permissionRegistry,
+    abi: PermissionRegistry.abi,
+    functionName: 'getETHPermission(address,address,bytes4)',
+    args: [
+      permissionArgs.from,
+      permissionArgs.to,
+      permissionArgs.functionSignature,
+    ],
+    watch: true,
   });
 
-  const { data: permissions, ...rest } = useContractReads({
-    contracts: contractArray,
-  });
-
-  let parsedPermissionsArray = [];
-
-  permissions?.forEach((permission, index) => {
-    const parsed = getParsed(permission, permissionArgsArray, rest, index);
-    parsedPermissionsArray.push(parsed);
-  });
-  return parsedPermissionsArray;
-};
-
-const getParsed = (permission, permissionArgsArray, rest, index: number) => {
-  if (!permission) return null;
-  if (permissionArgsArray[index].callType === 'NATIVE_TRANSFER') {
+  const parsed = useMemo(() => {
+    if (!permission) return null;
+    if (permissionArgs.callType === 'NATIVE_TRANSFER') {
+      return {
+        data: 'true',
+        ...rest,
+      };
+    }
     return {
-      data: 'true',
+      data: permission[FROM_TIME].toString(),
       ...rest,
     };
-  }
-  return {
-    data: permission[FROM_TIME].toString(),
-    ...rest,
-  };
+  }, [permission, permissionArgs.callType, rest]);
+
+  return parsed;
 };

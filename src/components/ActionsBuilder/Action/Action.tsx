@@ -31,7 +31,7 @@ interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
-  permissionArgsArray?: Permission[];
+  permissionArgs?: Permission;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
@@ -46,7 +46,7 @@ export enum CardStatus {
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
-  permissionArgsArray,
+  permissionArgs,
   decodedAction,
   isEditable,
   onEdit,
@@ -64,10 +64,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
   const action = useDecodedCall(call);
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
-  const permissions = useETHPermissions(permissionArgsArray);
-  const permissionValuesArray = permissions.map(permission =>
-    permission?.data?.split(',')
-  );
+  const permissions = useETHPermissions(permissionArgs);
 
   const [expanded, setExpanded] = useState(false);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
@@ -88,7 +85,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
 
-    if (permissionValuesArray?.some(p => p?.includes('0'))) {
+    if (permissions?.data === '0') {
       return CardStatus.permissionDenied;
     }
 
@@ -108,7 +105,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     decodedAction?.simulationResult,
     isEditable,
     isDragging,
-    permissionValuesArray,
+    permissions,
   ]);
 
   useEffect(() => {
