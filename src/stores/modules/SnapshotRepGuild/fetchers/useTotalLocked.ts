@@ -5,27 +5,21 @@ import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { useHookStoreProvider } from 'stores';
-import { useMatch } from 'react-router-dom';
 
-const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
+const useTotalLocked = (guildAddress: string, proposalId?: `0x${string}`) => {
   console.log('rep guild implementation');
   const {
     hooks: {
       fetchers: { useSnapshotId },
     },
   } = useHookStoreProvider();
-  // Hooks call
-  const urlParams = useMatch('/:chainName/:guildId/proposal/:proposalId/*');
-  const proposalId = urlParams?.params.proposalId as `0x${string}`; // TODO: remove type coercion
 
   const { data: guildTokenAddress } = useGuildToken(guildAddress);
 
-  const { data: _snapshotId } = useSnapshotId({
+  const { data: snapshotId } = useSnapshotId({
     contractAddress: guildTokenAddress,
     proposalId,
   });
-
-  const SNAPSHOT_ID = snapshotId ?? _snapshotId?.toString() ?? null;
 
   const { loaded } = useGuildImplementationType(guildAddress);
 
@@ -55,7 +49,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
 
   const { data: totalSupplyAtSnapshotResponse } = useTotalSupplyAt({
     contractAddress: guildTokenAddress,
-    snapshotId: SNAPSHOT_ID,
+    snapshotId: snapshotId?.toString() ?? null,
   });
 
   // Return response based on implementation type
@@ -64,7 +58,7 @@ const useTotalLocked = (guildAddress: string, snapshotId?: string) => {
       data: undefined,
     };
   }
-  return SNAPSHOT_ID
+  return snapshotId?.toString()
     ? {
         data: totalSupplyAtSnapshotResponse
           ? BigNumber.from(totalSupplyAtSnapshotResponse)

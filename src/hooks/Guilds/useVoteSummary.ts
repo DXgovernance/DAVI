@@ -10,17 +10,12 @@ export default function useVoteSummary(
 ): number[] {
   const {
     hooks: {
-      fetchers: { useProposal, useSnapshotId, useTotalLocked },
+      fetchers: { useProposal, useTotalLocked },
     },
   } = useHookStoreProvider();
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId,
-  });
-
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(guildId, proposalId);
 
   const votes = useMemo(() => {
     if (totalVotes && totalLocked) {

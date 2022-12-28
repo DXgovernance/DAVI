@@ -18,7 +18,7 @@ export const useVotingResults = (
 ): VoteData => {
   const {
     hooks: {
-      fetchers: { useProposal, useSnapshotId, useTotalLocked },
+      fetchers: { useProposal, useTotalLocked },
     },
   } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
@@ -29,11 +29,6 @@ export const useVotingResults = (
     optionalProposalId || proposalId
   );
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId: proposal?.id,
-  });
-
   const { data } = useGuildConfig(
     optionalGuildId || guildId,
     optionalProposalId || proposalId
@@ -41,7 +36,10 @@ export const useVotingResults = (
 
   const { data: tokenInfo } = useERC20Info(data?.token);
 
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(
+    guildId,
+    optionalProposalId || proposalId
+  );
 
   const voteData = useMemo(() => {
     if (!proposal || !data || !tokenInfo) return undefined;

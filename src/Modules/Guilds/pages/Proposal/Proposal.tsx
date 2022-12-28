@@ -46,7 +46,7 @@ import { useHookStoreProvider } from 'stores';
 const ProposalPage: React.FC = () => {
   const {
     hooks: {
-      fetchers: { useProposal, useSnapshotId, useTotalLocked },
+      fetchers: { useProposal, useTotalLocked },
     },
   } = useHookStoreProvider();
   const { t } = useTranslation();
@@ -68,12 +68,7 @@ const ProposalPage: React.FC = () => {
     proposalId
   );
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId,
-  });
-
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(guildId, proposalId);
 
   const quorum = useVotingPowerPercent(
     guildConfig?.votingPowerForProposalExecution,
