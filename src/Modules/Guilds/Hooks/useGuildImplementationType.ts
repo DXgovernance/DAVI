@@ -18,7 +18,6 @@ import { useHookStoreProvider } from 'stores';
 interface ImplementationTypeConfig {
   type: string;
   features: string[];
-  bytecode_hash: string;
 }
 
 interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
@@ -52,7 +51,7 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
 export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
-  const { isLoading, capabilities, name, bytecode } = useHookStoreProvider();
+  const { isLoading, capabilities, name } = useHookStoreProvider();
 
   let type: GuildImplementationType;
 
@@ -70,7 +69,6 @@ export default function useGuildImplementationTypeConfig(
   return {
     type,
     features: [],
-    bytecode_hash: bytecode,
 
     isRepGuild: capabilities.votingPower === 'soulbound' ? true : false,
     isSnapshotGuild:

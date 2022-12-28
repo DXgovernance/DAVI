@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { GovernanceInterface } from './types';
-import { useMatch } from 'react-router-dom';
 import { useProvider } from 'wagmi';
 import { SHA256, enc } from 'crypto-js';
+import { useMatch } from 'react-router-dom';
+import { GovernanceInterface } from './types';
 import { governanceInterfaces } from './governanceInterfaces';
 
 interface HookStoreContextInterface extends GovernanceInterface {
@@ -13,10 +13,9 @@ interface HookStoreContextInterface extends GovernanceInterface {
 export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 
 export const HookStoreProvider = ({ children }) => {
-  ///////////////////////////////
-
   // TODO: Replace getting the daoId from the URL with some kind of setter/getter
   const urlParams = useMatch('/:chainName/:daoId/*');
+
   const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');
   useEffect(() => {
     setIsLoading(true);
@@ -51,18 +50,14 @@ export const HookStoreProvider = ({ children }) => {
   }, [daoId]);
 
   const governanceType: GovernanceInterface = useMemo(() => {
-    // TODO: make array of supported bytecodes
-
     const match = governanceInterfaces.find(governance => {
-      return governance.bytecode === daoBytecode;
+      return governance.bytecodes.find(bytecode => bytecode === daoBytecode);
     });
 
-    return match ?? governanceInterfaces[0]; // default to IERC20Dao
+    return match ?? governanceInterfaces[0];
   }, [daoBytecode]);
 
   console.log({ ...governanceType, isLoading, daoId });
-
-  ///////////////////////////////
 
   return (
     <HookStoreContext.Provider value={{ ...governanceType, isLoading, daoId }}>

@@ -14,7 +14,7 @@ type SupportedGovernanceSystem = 'SnapshotERC20Guild' | 'SnapshotRepGuild';
 
 export interface GovernanceInterface {
   name: SupportedGovernanceSystem;
-  bytecode: `0x${string}`;
+  bytecodes: `0x${string}`[];
   hooks: {
     events: null; //! change when implemented
     fetchers: FetcherHooksInterface;
