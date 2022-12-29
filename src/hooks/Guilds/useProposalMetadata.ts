@@ -28,7 +28,6 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
     if (proposal?.contentHash?.startsWith('streamId://')) {
       const fetchData = async () => {
         data = await orbis.getPost(proposal?.contentHash.slice(11));
-        console.log({ data });
         if (data.status === 200) setOrbisData(data);
         else setOrbisData(data.error);
       };

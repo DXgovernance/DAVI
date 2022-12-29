@@ -79,7 +79,6 @@ export const GuildSidebar: React.FC<GuildSidebarProps> = ({
             {t('allDiscussions')}
           </SidebarMenuItem>
         </UnstyledLink>
-        {/* <SidebarMenuItem>{t('settings')}</SidebarMenuItem> */}
       </SidebarMenu>
     </SidebarWrapper>
   );
