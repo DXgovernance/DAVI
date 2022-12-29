@@ -56,13 +56,13 @@ export const supportedActions: Record<
   SupportedActionViews & SupportedActionEditors & SupportedActionMetadata
 > = {
   [SupportedAction.NATIVE_TRANSFER]: {
-    title: 'Transfers & Mint',
+    title: 'Transfer',
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
   },
   [SupportedAction.ERC20_TRANSFER]: {
-    title: 'Transfers & Mint',
+    title: 'Transfer',
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
