@@ -1,6 +1,6 @@
-import useProposal from './modules/common/fetchers/useProposal';
-import useSnapshotId from './modules/common/fetchers/useSnapshotId';
-import useTotalLocked from './modules/SnapshotERC20Guild/fetchers/useTotalLocked';
+import { useProposal } from './modules/common/fetchers/useProposal';
+import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
+import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/useTotalLocked';
 
 interface GovernanceCapabilities {
   votingPower: 'soulbound' | 'hybrid' | 'liquid';
@@ -12,15 +12,19 @@ interface GovernanceCapabilities {
 
 type SupportedGovernanceSystem = 'SnapshotERC20Guild' | 'SnapshotRepGuild';
 
+interface HooksInterface {
+  events: null;
+  fetchers: FetcherHooksInterface;
+  writers: null;
+}
+
 export interface GovernanceInterface {
   name: SupportedGovernanceSystem;
   bytecodes: `0x${string}`[];
-  hooks: {
-    events: null; //! change when implemented
-    fetchers: FetcherHooksInterface;
-    writers: null; //! change when implemented
-  };
+  hooks: HooksInterface;
+  hooksFallback: HooksInterface;
   capabilities: GovernanceCapabilities;
+  checkDataSourceAvailability: () => boolean;
 }
 
 export interface FetcherHooksInterface {

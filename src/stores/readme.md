@@ -6,6 +6,10 @@ Each implementation should expose the same hooks, and difer the logic to provide
 
 For example: the `useTotalLocked` hook returns the amount of tokens a DAO has. In the case of an ERC20Guild, that is the amount of tokens locked in the guild, obtained calling `getTokensLockedAt` to the guild contract; but in the case of a RepGuild, this value is obtained calling `useTotalSupplyAt` to the token contract. The component doesn't know about that logic, and only will care for the total amount of tokens.
 
+The store supports fetching from two different data sources: default and fallback. The implementation also has a `checkDataSourceAvailability` function, that handles the logic to switch between them.
+
+An example of this could be: a subgraph in TheGraph as the main source, RPC calls for the fallback, and a call to TheGraph to check if it's online and available.
+
 ## Main folder
 
 - **modules**: folder containing different governance implementations
@@ -33,9 +37,12 @@ Each governance module has this structure:
 | | | |- useFetchHook2.ts
 | | | |- useFetchHook3.ts
 | | + fetchImplementation2
+| | | |- useFetchHook1.ts
+| | | |- useFetchHook2.ts
+| | | |- useFetchHook3.ts
 |-+ writers
 | | |- useWriteHook.ts
-|-- capabilities.ts
+|-- checkDataSourceAvailability.ts
 |-- index.ts
 
 ```
@@ -46,6 +53,7 @@ Each governance module has this structure:
 - **fetchers**: folder containing different fetching hooks
   - **index.ts**:
 - **writers**: folder containing writing hooks
+- **checkDataSourceAvailability.ts**: this file exports a function to check if the default data source is available or not, and returns a boolean. If the default data source isn't available, it'll use the fallback source until the next check. If the governance implementation doesn't have a fallback data source, it should return always `true`
 - **index.ts**: this file exports all the information needed for that governance type: the name, bytecode, available hooks, and all capabilities (features) this governance system has
 
 # Guides
@@ -83,8 +91,11 @@ Each governance module has this structure:
 4. In `[implementationName] > index.ts` change:
    1. Exported object name
    2. name
-   3. bytecode
+   3. bytecodes array
    4. hooks
-   5. adjust the capabilities
+   5. hooksFallback
+   6. capabilities
+   7. checkDataSourceAvailability
+   8. adjust the capabilities
 5. Import and add the governance interface to the exported array in `governanceInterfaces.ts`
 6. Add / modify / delete the hooks depending on the governance requirements

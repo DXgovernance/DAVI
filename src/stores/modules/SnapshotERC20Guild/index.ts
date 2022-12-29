@@ -1,7 +1,8 @@
 import { GovernanceInterface } from 'stores/types';
-import useProposal from '../common/fetchers/useProposal';
-import useSnapshotId from '../common/fetchers/useSnapshotId';
-import useTotalLocked from './fetchers/useTotalLocked';
+import { useProposal } from '../common/fetchers/useProposal';
+import { useSnapshotId } from '../common/fetchers/useSnapshotId';
+import { useTotalLocked } from './fetchers/useTotalLocked';
+import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
   name: 'SnapshotERC20Guild',
@@ -18,6 +19,15 @@ export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
     },
     writers: null,
   },
+  hooksFallback: {
+    events: null,
+    fetchers: {
+      useProposal,
+      useSnapshotId,
+      useTotalLocked,
+    },
+    writers: null,
+  },
   capabilities: {
     votingPower: 'liquid',
     tokenType: 'ERC20',
@@ -25,4 +35,5 @@ export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
     votingStyle: 'competition',
     votingPowerTally: 'snapshot',
   },
+  checkDataSourceAvailability,
 };

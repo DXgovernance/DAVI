@@ -9,7 +9,10 @@ interface useSnapshotIdProps {
   proposalId: `0x${string}`;
 }
 
-const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
+export const useSnapshotId = ({
+  contractAddress,
+  proposalId,
+}: useSnapshotIdProps) => {
   const {
     capabilities: { votingPowerTally },
   } = useHookStoreProvider();

@@ -27,7 +27,7 @@ const formatterMiddleware = (data: InitialProposal): Proposal => {
   return clone as Proposal;
 };
 
-const useProposal = (daoId: string, proposalId: `0x${string}`) => {
+export const useProposal = (daoId: string, proposalId: `0x${string}`) => {
   const { data, refetch, ...rest } = useContractRead({
     address: daoId,
     abi: SnapshotERC20Guild.abi,
@@ -63,5 +63,3 @@ const useProposal = (daoId: string, proposalId: `0x${string}`) => {
     ...rest,
   };
 };
-
-export default useProposal;

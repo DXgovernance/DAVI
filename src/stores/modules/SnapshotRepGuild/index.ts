@@ -1,7 +1,9 @@
 import { GovernanceInterface } from 'stores/types';
-import useProposal from '../common/fetchers/useProposal';
-import useSnapshotId from '../common/fetchers/useSnapshotId';
-import useTotalLocked from './fetchers/useTotalLocked';
+import { useProposal } from '../common/fetchers/useProposal';
+import { useSnapshotId } from '../common/fetchers/useSnapshotId';
+import { useTotalLocked as useTotalLockedDefault } from './fetchers/subgraphSnapshotRep/useTotalLocked';
+import { useTotalLocked as useTotalLockedFallback } from './fetchers/wagmiSnapshotRep/useTotalLocked';
+import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
   name: 'SnapshotRepGuild',
@@ -14,7 +16,16 @@ export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
     fetchers: {
       useProposal,
       useSnapshotId,
-      useTotalLocked,
+      useTotalLocked: useTotalLockedDefault,
+    },
+    writers: null,
+  },
+  hooksFallback: {
+    events: null,
+    fetchers: {
+      useProposal,
+      useSnapshotId,
+      useTotalLocked: useTotalLockedFallback,
     },
     writers: null,
   },
@@ -25,4 +36,5 @@ export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
     votingStyle: 'competition',
     votingPowerTally: 'snapshot',
   },
+  checkDataSourceAvailability,
 };

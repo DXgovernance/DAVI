@@ -1,4 +1,5 @@
-import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
+// import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
+import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
@@ -9,23 +10,26 @@ export const useTotalLocked = (
   guildAddress: string,
   proposalId?: `0x${string}`
 ) => {
-  console.log('ERC20 guild implementation');
+  console.log('hello from the subgraph implementation');
   const {
     hooks: {
       fetchers: { useSnapshotId },
     },
-    isLoading,
   } = useHookStoreProvider();
 
+  // const { data: guildTokenAddress } = useGuildToken(guildAddress);
+  // console.log(guildTokenAddress);
+  const guildTokenAddress = '0x7bc0dedafd60611d430c89353cc30e1a11b90ac7';
+
   const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildAddress,
+    contractAddress: guildTokenAddress,
     proposalId,
   });
 
   const { loaded } = useGuildImplementationType(guildAddress);
 
   const { data: totalLockedResponse, refetch } = useContractRead({
-    address: !isLoading ? guildAddress : null,
+    address: loaded ? guildAddress : null,
     abi: BaseERC20Guild.abi,
     functionName: 'getTotalLocked',
   });
@@ -48,8 +52,8 @@ export const useTotalLocked = (
     },
   });
 
-  const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
-    contractAddress: guildAddress,
+  const { data: totalSupplyAtSnapshotResponse } = useTotalSupplyAt({
+    contractAddress: guildTokenAddress,
     snapshotId: snapshotId?.toString() ?? null,
   });
 
@@ -59,11 +63,10 @@ export const useTotalLocked = (
       data: undefined,
     };
   }
-
   return snapshotId?.toString()
     ? {
-        data: totalLockedAtProposalSnapshotResponse
-          ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
+        data: totalSupplyAtSnapshotResponse
+          ? BigNumber.from(totalSupplyAtSnapshotResponse)
           : undefined,
       }
     : {

@@ -6,8 +6,11 @@ import { BigNumber } from 'ethers';
 import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { useHookStoreProvider } from 'stores';
 
-const useTotalLocked = (guildAddress: string, proposalId?: `0x${string}`) => {
-  console.log('rep guild implementation');
+export const useTotalLocked = (
+  guildAddress: string,
+  proposalId?: `0x${string}`
+) => {
+  console.log('hello from the wagmi RPC implementation');
   const {
     hooks: {
       fetchers: { useSnapshotId },
@@ -70,5 +73,3 @@ const useTotalLocked = (guildAddress: string, proposalId?: `0x${string}`) => {
           : undefined,
       };
 };
-
-export default useTotalLocked;
