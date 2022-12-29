@@ -179,7 +179,9 @@ const Permissions: React.FC<ActionEditorProps> = ({
         to: values.toAddress,
         // native value allowed
         valueAllowed: values.amount,
-        functionSignature: values.functionSignature,
+        functionSignature: values.functionSignature
+          ? values.functionSignature
+          : ANY_FUNC_SIGNATURE,
         // "from" field set by default previously as guild id
       },
       optionalProps: {
