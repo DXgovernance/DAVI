@@ -2,20 +2,12 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useProvider } from 'wagmi';
 import { SHA256, enc } from 'crypto-js';
 import { useMatch } from 'react-router-dom';
-import { GovernanceInterface } from './types';
+import { GovernanceInterface, HookStoreContextInterface } from './types';
 import { governanceInterfaces } from './governanceInterfaces';
-
-type GovernanceWithoutFallback = Omit<GovernanceInterface, 'hooksFallback'>;
-
-interface HookStoreContextInterface extends GovernanceWithoutFallback {
-  isLoading: boolean;
-  daoId: string;
-}
 
 export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 
 export const HookStoreProvider = ({ children }) => {
-  // TODO: Replace getting the daoId from the URL with some kind of setter/getter
   const urlParams = useMatch('/:chainName/:daoId/*');
 
   const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');

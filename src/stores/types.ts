@@ -1,6 +1,6 @@
 import { useProposal } from './modules/common/fetchers/useProposal';
 import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
-import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/useTotalLocked';
+import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/default/useTotalLocked';
 
 interface GovernanceCapabilities {
   votingPower: 'soulbound' | 'hybrid' | 'liquid';
@@ -11,6 +11,21 @@ interface GovernanceCapabilities {
 }
 
 type SupportedGovernanceSystem = 'SnapshotERC20Guild' | 'SnapshotRepGuild';
+
+export interface FetcherHooksInterface {
+  useProposal: (
+    daoId: string,
+    proposalId: `0x${string}`
+  ) => ReturnType<typeof useProposal>;
+  useSnapshotId: (useSnapshotIdProps: {
+    contractAddress: string;
+    proposalId: `0x${string}`;
+  }) => ReturnType<typeof useSnapshotId>;
+  useTotalLocked: (
+    guildAddress: string,
+    proposalId?: `0x${string}`
+  ) => ReturnType<typeof useTotalLocked>;
+}
 
 interface HooksInterface {
   events: null;
@@ -27,19 +42,10 @@ export interface GovernanceInterface {
   checkDataSourceAvailability: () => boolean;
 }
 
-export interface FetcherHooksInterface {
-  useProposal: (
-    daoId: string,
-    proposalId: `0x${string}`
-  ) => ReturnType<typeof useProposal>;
-  useSnapshotId: (useSnapshotIdProps: {
-    contractAddress: string;
-    proposalId: `0x${string}`;
-  }) => ReturnType<typeof useSnapshotId>;
-  useTotalLocked: (
-    guildAddress: string,
-    proposalId?: `0x${string}`
-  ) => ReturnType<typeof useTotalLocked>;
+export interface HookStoreContextInterface
+  extends Omit<GovernanceInterface, 'hooksFallback'> {
+  isLoading: boolean;
+  daoId: string;
 }
 
 // TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>
