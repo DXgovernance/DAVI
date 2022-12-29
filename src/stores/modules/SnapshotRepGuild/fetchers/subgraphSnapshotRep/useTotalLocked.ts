@@ -1,4 +1,4 @@
-// import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
+import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
 import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
@@ -17,9 +17,7 @@ export const useTotalLocked = (
     },
   } = useHookStoreProvider();
 
-  // const { data: guildTokenAddress } = useGuildToken(guildAddress);
-  // console.log(guildTokenAddress);
-  const guildTokenAddress = '0x7bc0dedafd60611d430c89353cc30e1a11b90ac7';
+  const { data: guildTokenAddress } = useGuildToken(guildAddress);
 
   const { data: snapshotId } = useSnapshotId({
     contractAddress: guildTokenAddress,

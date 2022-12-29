@@ -1,10 +1,7 @@
-export const checkDataSourceAvailability = () => {
-  const num = Math.floor(Math.random() * 2);
-  if (num === 1) {
-    console.log(`${num}: now using default data source`);
-    return true;
-  } else {
-    console.log(`${num}: using fallback data source`);
-    return false;
-  }
-};
+/*
+  In this governance implementation we only have one data source (RPC call),
+  so the checkDataSourceAvailability will always return true, as we'll
+  only use the default source.
+
+*/
+export const checkDataSourceAvailability = () => true;
