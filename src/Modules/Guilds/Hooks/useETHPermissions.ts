@@ -10,7 +10,11 @@ export const useETHPermissions = (permissionArgs: Permission) => {
   const { guildId } = useTypedParams();
   const { data: guildConfig } = useGuildConfig(guildId);
 
-  const { data: permission, ...rest } = useContractRead({
+  const {
+    data: permission,
+    isError,
+    isLoading,
+  } = useContractRead({
     address: guildConfig?.permissionRegistry,
     abi: PermissionRegistry.abi,
     functionName: 'getETHPermission(address,address,bytes4)',
@@ -27,14 +31,16 @@ export const useETHPermissions = (permissionArgs: Permission) => {
     if (permissionArgs.callType === 'NATIVE_TRANSFER') {
       return {
         data: 'true',
-        ...rest,
+        isError,
+        isLoading,
       };
     }
     return {
       data: permission[FROM_TIME].toString(),
-      ...rest,
+      isError,
+      isLoading,
     };
-  }, [permission, permissionArgs.callType, rest]);
+  }, [permission, permissionArgs.callType, isError, isLoading]);
 
   return parsed;
 };
