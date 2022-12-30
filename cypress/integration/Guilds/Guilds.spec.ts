@@ -1,3 +1,7 @@
+//
+// File name: Guilds.spec.ts
+// Executing guide:
+
 /// <reference types="cypress" />
 import Guilds from '../../support/pageObjects/Guilds';
 import {
@@ -124,4 +128,3 @@ describe('Guilds', () => {
     /// verify that proposal is created
   });
 });
-

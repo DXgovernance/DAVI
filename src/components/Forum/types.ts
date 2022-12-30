@@ -14,7 +14,7 @@ export interface DiscussionContent {
   master?: string | null;
   replyTo?: string | null;
   mentions?: string[];
-  data?: Record<string, string>;
+  data?: any;
 }
 
 export interface Discussion {

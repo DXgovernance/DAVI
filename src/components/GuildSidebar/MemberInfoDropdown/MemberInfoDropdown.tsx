@@ -117,7 +117,10 @@ export const MemberInfoDropdown: React.FC<MemberInfoDropdownProps> = ({
             </ContentItem>
           )}
 
-          <LockButton onClick={showStakeModal}>
+          <LockButton
+            data-testid="increase-voting-power-btn"
+            onClick={showStakeModal}
+          >
             {t('increaseVotingPower')}
           </LockButton>
 

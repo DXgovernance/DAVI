@@ -52,7 +52,6 @@ const SetPermissionsInfoLine: React.FC<ActionViewProps> = ({
       <Segment>
         <BiCheckShield size={16} />
       </Segment>
-      <Segment>{t('permissions.setPermissionsFor')}</Segment>
       <Segment>
         {t(
           parsedData?.functionSignature === ERC20_APPROVE_SIGNATURE

@@ -327,6 +327,7 @@ exports[`ActionsModal Should match snapshot 2 1`] = `
           >
             <h2
               class="c4 c5"
+              data-testid="modal-title"
             >
               addAction
             </h2>

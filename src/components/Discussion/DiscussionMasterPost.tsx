@@ -13,7 +13,7 @@ const MasterPost = ({ post, onDeletion }) => {
 
   const [masterPost, setMasterPost] = useState<IOrbisPost | null>(null);
   const [replyTo, setReplyTo] = useState<IOrbisPost | null>(null);
-  const [showThread, setShowThread] = useState(false);
+  const [showThread, setShowThread] = useState(true);
   const [scrollToEl, setScrollToEl] = useState<HTMLElement | string | null>(
     null
   );

@@ -303,6 +303,7 @@ exports[`NetworkModal Should match snapshot 1`] = `
           >
             <h2
               class="c4 c5"
+              data-testid="modal-title"
             >
               <div>
                 switchNetwork

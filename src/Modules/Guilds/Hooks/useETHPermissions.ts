@@ -1,41 +1,46 @@
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import { useContractRead } from 'wagmi';
+import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
+import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { Permission } from 'components/ActionsBuilder/types';
 import { useMemo } from 'react';
+const FROM_TIME = 1;
 
-interface useGetETHPermissionProps {
-  permissionRegistryAddress: string;
-  from: string;
-  to: string;
-  callType: string;
-  functionSignature: string;
-}
+export const useETHPermissions = (permissionArgs: Permission) => {
+  const { guildId } = useTypedParams();
+  const { data: guildConfig } = useGuildConfig(guildId);
 
-export const useGetETHPermission = ({
-  permissionRegistryAddress,
-  from,
-  to,
-  callType,
-  functionSignature,
-}: useGetETHPermissionProps) => {
-  const { data, ...rest } = useContractRead({
-    address: permissionRegistryAddress,
+  const {
+    data: permission,
+    isError,
+    isLoading,
+  } = useContractRead({
+    address: guildConfig?.permissionRegistry,
     abi: PermissionRegistry.abi,
     functionName: 'getETHPermission(address,address,bytes4)',
-    args: [from, to, functionSignature],
+    args: [
+      permissionArgs.from,
+      permissionArgs.to,
+      permissionArgs.functionSignature,
+    ],
     watch: true,
   });
+
   const parsed = useMemo(() => {
-    if (!data) return null;
-    if (callType === 'NATIVE_TRANSFER') {
+    if (!permission) return null;
+    if (permissionArgs.callType === 'NATIVE_TRANSFER') {
       return {
         data: 'true',
-        ...rest,
+        isError,
+        isLoading,
       };
     }
     return {
-      data: data.toString(),
-      ...rest,
+      data: permission[FROM_TIME].toString(),
+      isError,
+      isLoading,
     };
-  }, [data, rest, callType]);
+  }, [permission, permissionArgs.callType, isError, isLoading]);
+
   return parsed;
 };

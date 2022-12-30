@@ -61,7 +61,7 @@ const ProposalPage: React.FC = () => {
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
   const { loaded } = useGuildImplementationTypeConfig(guildId);
-  const { context } = useDiscussionContext(`${guildId}-${proposalId}`);
+  const { context } = useDiscussionContext(`DAVI-${guildId}-${proposalId}`);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
@@ -130,7 +130,7 @@ const ProposalPage: React.FC = () => {
                   <ExecuteButton executeProposal={executeProposal} />
                 )}
             </HeaderTopRow>
-            <PageTitle>
+            <PageTitle data-testid="proposal-page-title">
               {proposal?.title || (
                 <Loading loading text skeletonProps={{ width: '800px' }} />
               )}
