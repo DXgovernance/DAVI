@@ -18,6 +18,7 @@ import {
   BackButton,
   SecondaryCloseIcon,
 } from './Modal.styled';
+import { useState } from 'react';
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,
@@ -39,20 +40,35 @@ export const Modal: React.FC<ModalProps> = ({
   leftIcon = true,
   dataTestId,
 }) => {
-  const handleClickOnBackdrop = e => {
+  const [clickedOnBackdrop, setClickedOnBackdrop] = useState(false);
+
+  const handleOnMouseDownOnBackdrop = e => {
     e.stopPropagation();
     if (
       typeof e.target.className === 'string' &&
       e.target.className.includes(`backdropModal`)
     ) {
+      setClickedOnBackdrop(true);
+    }
+  };
+
+  const handleOnMouseUpOnBackdrop = e => {
+    e.stopPropagation();
+    if (
+      typeof e.target.className === 'string' &&
+      e.target.className.includes(`backdropModal`) &&
+      clickedOnBackdrop
+    ) {
       onDismiss();
     }
+    setClickedOnBackdrop(false);
   };
 
   const modal = (
     <div data-testid={dataTestId}>
       <Backdrop
-        onClick={e => handleClickOnBackdrop(e)}
+        onMouseDown={e => handleOnMouseDownOnBackdrop(e)}
+        onMouseUp={e => handleOnMouseUpOnBackdrop(e)}
         zIndex={zIndex}
         className={`backdropModal`}
       >
