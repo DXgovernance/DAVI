@@ -46,6 +46,7 @@ export const Filter: React.FC<FilterProps> = ({
 
         <ButtonContainer>
           <StyledIconButton
+            data-testid="search-btn-all-proposals"
             variant="secondary"
             padding="0.4rem"
             onClick={() => setOpenSearchBar(!openSearchBar)}
@@ -70,6 +71,7 @@ export const Filter: React.FC<FilterProps> = ({
       {openSearchBar ? (
         <StyledInputWrapper>
           <Input
+            data-testid="search-bar-all-proposals"
             value={searchQuery}
             onChange={e => {
               setSearchQuery(e.target.value);

@@ -96,7 +96,10 @@ export const ProposalStatus: React.FC<ProposalStatusProps> = ({
           </DetailText>
         )}
         {status ? (
-          <ProposalStatusDetail statusDetail={status}>
+          <ProposalStatusDetail
+            data-testid="proposal-state"
+            statusDetail={status}
+          >
             {' '}
             {status}
           </ProposalStatusDetail>

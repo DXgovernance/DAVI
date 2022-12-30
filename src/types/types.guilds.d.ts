@@ -41,6 +41,10 @@ export enum ContractState {
 export interface ProposalMetadata {
   description: string;
   voteOptions: string[];
+  link?: {
+    master: string;
+    context: string;
+  }
 }
 export interface Transaction {
   hash: string

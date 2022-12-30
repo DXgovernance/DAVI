@@ -177,7 +177,7 @@ export const decodeCall = async (
       id: `action-${Math.random()}`,
       decodedCall,
       contract: null,
-      approval: null,
+      approval: call.approval || null,
     };
   }
   const { callType, contractInterface } = matchedContract;

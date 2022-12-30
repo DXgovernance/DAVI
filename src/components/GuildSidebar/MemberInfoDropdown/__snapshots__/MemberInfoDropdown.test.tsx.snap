@@ -150,6 +150,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed with data 1`] = `
         </div>
         <button
           class="c6 c7"
+          data-testid="increase-voting-power-btn"
         >
           increaseVotingPower
         </button>
@@ -355,6 +356,7 @@ exports[`MemberInfoDropdown Should match snapshot in closed without data 1`] = `
         </div>
         <button
           class="c6 c7"
+          data-testid="increase-voting-power-btn"
         >
           increaseVotingPower
         </button>
@@ -515,6 +517,7 @@ exports[`MemberInfoDropdown Should match snapshot when open with data 1`] = `
         </div>
         <button
           class="c6 c7"
+          data-testid="increase-voting-power-btn"
         >
           increaseVotingPower
         </button>
@@ -720,6 +723,7 @@ exports[`MemberInfoDropdown Should match snapshot when open without data 1`] = `
         </div>
         <button
           class="c6 c7"
+          data-testid="increase-voting-power-btn"
         >
           increaseVotingPower
         </button>

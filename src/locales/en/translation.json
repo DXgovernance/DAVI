@@ -12,6 +12,7 @@
   "proposals_one": "{{count}} proposal",
   "proposals_other": "{{count}} proposals",
   "allProposals": "All proposals",
+  "allDiscussions": "All discussions",
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",
@@ -293,5 +294,28 @@
   "votingPowerPercentageForProposalExecutionHasToBeMoreThanZero": "Voting power percentage for execution has to be more than 0",
   "voteGasHasToBeEqualOrLowerThan117000": "vote gas has to be equal or lower than 117000",
   "setGuildConfig": "Set Guild Config",
-  "cantBeGreaterThan100": "Can't be greater than 100%"
+  "cantBeGreaterThan100": "Can't be greater than 100%",
+  "discussionTitle": "Discussion",
+  "discussionEmpty": "No comment yet",
+  "discussionLoadMore": "Load more comments",
+  "mentionsSearchLoading": "Loading...",
+  "replyingTo": "Replying to",
+  "postEdited": "edited",
+  "postboxShare": "Share",
+  "postboxConnectWallet": "Connect wallet to start sharing comment",
+  "postboxConnectCeramic": "Generate a new Ceramic session to start sharing comment",
+  "postboxConnectCeramicButton": "Generate Ceramic Session",
+  "postboxEditCancel": "Cancel",
+  "postboxEditSave": "Save",
+  "postActions": {
+    "reply": "Reply",
+    "toggleThread": "Toggle thread",
+    "like": "Like",
+    "haha": "Haha",
+    "downvote": "Downvote"
+  },
+  "postOptions": {
+    "edit": "Edit",
+    "delete": "Delete"
+  }
 }

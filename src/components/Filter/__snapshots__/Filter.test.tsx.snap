@@ -287,6 +287,7 @@ exports[`Filter Should match snapshot 1`] = `
         >
           <button
             class="c6 c7 c8"
+            data-testid="state-filter-btn"
           >
             state
              
@@ -314,36 +315,42 @@ exports[`Filter Should match snapshot 1`] = `
             >
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Active
                  
               </a>
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Executable
                  
               </a>
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Executed
                  
               </a>
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Rejected
                  
               </a>
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Failed
                  
               </a>
               <a
                 class="c12 c13"
+                data-testid="state-dropdown-option"
               >
                 Finished
                  
@@ -356,6 +363,7 @@ exports[`Filter Should match snapshot 1`] = `
         >
           <button
             class="c6 c7 c8"
+            data-testid="action-filter-btn"
           >
             actions_one
              
@@ -383,41 +391,49 @@ exports[`Filter Should match snapshot 1`] = `
             >
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Native Transfer
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Erc20 Transfer
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Rep Mint
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Generic Call
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Set Permissions
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Ens Update Content
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Raw Transaction
               </a>
               <a
                 class="c12 c13"
+                data-testid="action-dropdown-option"
               >
                 Set Guild Config
               </a>
@@ -430,6 +446,7 @@ exports[`Filter Should match snapshot 1`] = `
       >
         <button
           class="c15 c16"
+          data-testid="search-btn-all-proposals"
         >
           <svg
             fill="currentColor"
