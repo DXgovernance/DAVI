@@ -16,6 +16,7 @@ import { ThemeProvider } from 'styled-components';
 import { GuildsDarkTheme } from 'components/theme';
 import CreateDiscussionPage from 'Modules/Guilds/pages/CreateDiscussion';
 import { OnlineStatus } from 'components/OnlineStatus';
+import { DiscussionPage } from 'Modules/Guilds/pages/Discussion';
 
 const App = () => {
   return (
@@ -34,12 +35,24 @@ const App = () => {
                   element={<GuildsPage pageContent={'allProposals'} />}
                 />
                 <Route
+                  path="/:chainName/:guildId/all-discussions"
+                  element={<GuildsPage pageContent={'allDiscussions'} />}
+                />
+                <Route
                   path="/:chainName/:guildId/proposal-type"
                   element={<ProposalTypes data={ProposalTypesConfig} />}
                 />
                 <Route
                   path="/:chainName/:guildId/proposal/:proposalId"
                   element={<ProposalPage />}
+                />
+                <Route
+                  path="/:chainName/:guildId/proposal/:proposalId?ref=:discussionId"
+                  element={<ProposalPage />}
+                />
+                <Route
+                  path="/:chainName/:guildId/discussion/:discussionId"
+                  element={<DiscussionPage />}
                 />
                 <Route
                   path="/:chainName/:guildId/create-proposal"

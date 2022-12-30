@@ -33,7 +33,7 @@ const Discussions = () => {
     let { data, error } = await orbis.getPosts(
       {
         algorithm: 'all-context-master-posts',
-        context: guildId,
+        context: `DAVI-${guildId}`,
       },
       page
     );
