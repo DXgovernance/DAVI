@@ -136,6 +136,7 @@ exports[`Header Should match snapshot 1`] = `
     >
       <h2
         class="c4 c5"
+        data-testid="project-name"
         size="2"
       >
         <svg
@@ -154,7 +155,7 @@ exports[`Header Should match snapshot 1`] = `
         </button>
         <button
           class="c8"
-          data-testid="connectWalletBtn"
+          data-testid="connect-wallet-btn"
         >
           connectWallet
         </button>

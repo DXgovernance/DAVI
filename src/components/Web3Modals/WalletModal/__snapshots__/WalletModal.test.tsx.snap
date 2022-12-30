@@ -140,6 +140,7 @@ exports[`WalletModal Should match snapshot 1`] = `
           >
             <h2
               class="c4 c5"
+              data-testid="modal-title"
             >
               connectToAWallet
             </h2>

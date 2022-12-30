@@ -12,6 +12,7 @@
   "proposals_one": "{{count}} proposal",
   "proposals_other": "{{count}} proposals",
   "allProposals": "All proposals",
+  "allDiscussions": "All discussions",
   "actions_one": "Action",
   "actions_other": "Actions",
   "save": "Save",

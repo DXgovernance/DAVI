@@ -266,6 +266,7 @@ exports[`GuildSidebar Should render with data 1`] = `
     >
       <a
         class="c13"
+        data-testid="governance-page"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <div
@@ -276,6 +277,7 @@ exports[`GuildSidebar Should render with data 1`] = `
       </a>
       <a
         class="c13"
+        data-testid="all-proposals-page"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-proposals"
       >
         <div
@@ -284,11 +286,16 @@ exports[`GuildSidebar Should render with data 1`] = `
           allProposals
         </div>
       </a>
-      <div
-        class="c14"
+      <a
+        class="c13"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-discussions"
       >
-        settings
-      </div>
+        <div
+          class="c14"
+        >
+          allDiscussions
+        </div>
+      </a>
     </div>
   </div>
    
@@ -540,6 +547,7 @@ exports[`GuildSidebar Should render without data 1`] = `
     >
       <a
         class="c11"
+        data-testid="governance-page"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2"
       >
         <div
@@ -550,6 +558,7 @@ exports[`GuildSidebar Should render without data 1`] = `
       </a>
       <a
         class="c11"
+        data-testid="all-proposals-page"
         href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-proposals"
       >
         <div
@@ -558,11 +567,16 @@ exports[`GuildSidebar Should render without data 1`] = `
           allProposals
         </div>
       </a>
-      <div
-        class="c12"
+      <a
+        class="c11"
+        href="/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2/all-discussions"
       >
-        settings
-      </div>
+        <div
+          class="c12"
+        >
+          allDiscussions
+        </div>
+      </a>
     </div>
   </div>
    

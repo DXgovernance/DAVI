@@ -398,6 +398,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
             </div>
             <div
               class="c1 c10"
+              data-testid="proposal-state"
             >
                
               Active
@@ -410,6 +411,7 @@ exports[`ProposalCard ProposalCard Renders properly with data 1`] = `
       >
         <h2
           class="c12 c13"
+          data-testid="proposal-title"
           size="2"
         >
           <strong>
@@ -911,6 +913,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
             </div>
             <div
               class="c1 c10"
+              data-testid="proposal-state"
             >
                
               Active
@@ -923,6 +926,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option  1
       >
         <h2
           class="c12 c13"
+          data-testid="proposal-title"
           size="2"
         >
           <strong>
@@ -1440,6 +1444,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
             </div>
             <div
               class="c1 c10"
+              data-testid="proposal-state"
             >
                
               Active
@@ -1452,6 +1457,7 @@ exports[`ProposalCard ProposalCard Renders properly with more than one option co
       >
         <h2
           class="c12 c13"
+          data-testid="proposal-title"
           size="2"
         >
           <strong>
@@ -1799,6 +1805,7 @@ exports[`ProposalCard ProposalCard loading 1`] = `
       >
         <h2
           class="c11 c12"
+          data-testid="proposal-title"
           size="2"
         >
           <strong>

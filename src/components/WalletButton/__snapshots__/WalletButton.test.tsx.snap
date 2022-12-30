@@ -44,7 +44,7 @@ exports[`WalletButton Should match snapshot and display connect wallet 1`] = `
    
   <button
     class="c0"
-    data-testid="connectWalletBtn"
+    data-testid="connect-wallet-btn"
   >
     connectWallet
   </button>
