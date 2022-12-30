@@ -25,9 +25,8 @@ import {
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
 import { Permission } from 'components/ActionsBuilder/types';
-import { useGetETHPermission } from 'Modules/Guilds/Hooks/useETHPermissions';
 import { preventEmptyString } from 'utils';
-import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
+import { useETHPermissions } from 'Modules/Guilds/Hooks/useETHPermissions';
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
@@ -63,18 +62,9 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
   } = useSortable({ id: decodedAction?.id, disabled: !isEditable });
   const action = useDecodedCall(call);
-  const permissionRegistryAddress = useGuildConfig(call?.from)?.data
-    ?.permissionRegistry;
-  const permission = useGetETHPermission({
-    permissionRegistryAddress,
-    from: permissionArgs?.from,
-    to: permissionArgs?.to,
-    callType: permissionArgs?.callType,
-    functionSignature: permissionArgs?.functionSignature,
-  })?.data;
-  const permissionValues = permission?.split(',');
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
+  const permissions = useETHPermissions(permissionArgs);
 
   const [expanded, setExpanded] = useState(false);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
@@ -95,7 +85,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
 
-    if (permissionValues?.includes('0')) {
+    if (permissions?.data === '0') {
       return CardStatus.permissionDenied;
     }
 
@@ -106,7 +96,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     )
       if (!decodedAction?.simulationResult) return CardStatus.normal;
 
-    if (decodedAction?.simulationResult.simulation.status === false) {
+    if (decodedAction?.simulationResult?.simulation.status === false) {
       return CardStatus.simulationFailed;
     }
     return CardStatus.normal; // default return so ESLint doesn't complain
@@ -115,7 +105,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     decodedAction?.simulationResult,
     isEditable,
     isDragging,
-    permissionValues,
+    permissions,
   ]);
 
   useEffect(() => {

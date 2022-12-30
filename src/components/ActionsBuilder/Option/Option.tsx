@@ -106,12 +106,11 @@ export const OptionRow: React.FC<OptionRowProps> = ({
 
       <ActionsWrapper indented={isEditable}>
         {!isEditable &&
-          option?.actions?.map((action, index) => {
-            const permissionArgs = option?.permissions?.[index];
+          option?.decodedActions?.map((action, index) => {
+            const permissionArgs = option?.permissions[index];
             return (
               <ActionRow
                 key={index}
-                call={action}
                 decodedAction={option?.decodedActions?.[index]}
                 isEditable={false}
                 permissionArgs={permissionArgs}
@@ -125,15 +124,14 @@ export const OptionRow: React.FC<OptionRowProps> = ({
             items={option?.decodedActions?.map(action => action.id)}
             strategy={verticalListSortingStrategy}
           >
-            {option?.actions?.map((action, index) => {
-              const permissionArgs = option?.permissions?.[index];
+            {option?.decodedActions?.map((action, index) => {
+              const permissionsArgs = option?.permissions[index];
               return (
                 <ActionRow
                   key={index}
-                  call={action}
                   isEditable={true}
                   decodedAction={option?.decodedActions?.[index]}
-                  permissionArgs={permissionArgs}
+                  permissionArgs={permissionsArgs}
                   onEdit={updatedAction => updateAction(updatedAction)}
                   onRemove={targetAction => removeAction(targetAction)}
                 />
