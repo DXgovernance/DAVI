@@ -10,13 +10,13 @@ export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 export const HookStoreProvider = ({ children }) => {
   const urlParams = useMatch('/:chainName/:daoId/*');
 
-  const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');
-
+  const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : null);
   const [daoBytecode, setDaoBytecode] = useState<string>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
   const [useDefaultSource, setUseDefaultSource] = useState(true);
   const provider = useProvider();
+  const CHECK_DATA_SOURCE_INTEVAL = 10000;
 
   useEffect(() => {
     if (urlParams?.params?.daoId) {
@@ -26,7 +26,6 @@ export const HookStoreProvider = ({ children }) => {
   }, [urlParams?.params?.daoId, daoId]);
 
   useEffect(() => {
-    debugger;
     const getBytecode = async () => {
       const localBtcode = localStorage.getItem(`hashed-bytecode-${daoId}`);
       if (!localBtcode) {
@@ -42,8 +41,7 @@ export const HookStoreProvider = ({ children }) => {
     };
 
     getBytecode();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [daoId]);
+  }, [daoId, provider]);
 
   const governanceType: Omit<GovernanceInterface, 'hooksFallback'> =
     useMemo(() => {
@@ -73,9 +71,9 @@ export const HookStoreProvider = ({ children }) => {
             governanceInterfaces[0].checkDataSourceAvailability,
         };
       }
-
-      // return match ?? governanceInterfaces[0];
     }, [daoBytecode, useDefaultSource]);
+
+  // TODO: maybe implement states of the app. Instead of changing the boolean states everywhere, use a switch case
 
   useEffect(() => {
     if (isFetching) {
@@ -95,11 +93,10 @@ export const HookStoreProvider = ({ children }) => {
           setUseDefaultSource(isDefaultSourceAvailable);
         }
       }
-    }, 10000);
+    }, CHECK_DATA_SOURCE_INTEVAL); // This implementation makes a data source health check every 10 seconds. This interval is arbitrary.
+
     return () => clearInterval(interval);
   }, [governanceType, useDefaultSource]);
-
-  console.log({ ...governanceType, isLoading, daoId });
 
   // TODO: Make a better loading screen
 
@@ -113,3 +110,10 @@ export const HookStoreProvider = ({ children }) => {
 };
 
 export const useHookStoreProvider = () => useContext(HookStoreContext);
+
+// General TODOS
+// TODO: port writer hooks
+// TODO: port fetching hooks
+// TODO: extract events from hooks (?)
+// TODO: implement subgraph data fetching
+// TODO: replace mentions of "guilds" for "dao" as is a more general term

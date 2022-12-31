@@ -9,6 +9,7 @@ interface GovernanceCapabilities {
   votingStyle: 'binary' | 'competition';
   votingPowerTally: 'snapshot' | 'live';
 }
+// TODO: make a series of utils that parses the capabilities and translates them to a series of boolean flags, to make it easier to conditionally render UI elements
 
 type SupportedGovernanceSystem = 'SnapshotERC20Guild' | 'SnapshotRepGuild';
 
@@ -26,6 +27,10 @@ export interface FetcherHooksInterface {
     proposalId?: `0x${string}`
   ) => ReturnType<typeof useTotalLocked>;
 }
+
+// TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>
+
+// TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not as a global hook
 
 interface HooksInterface {
   events: null;
@@ -47,5 +52,3 @@ export interface HookStoreContextInterface
   isLoading: boolean;
   daoId: string;
 }
-
-// TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>

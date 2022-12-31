@@ -1,9 +1,12 @@
 import { GovernanceInterface } from 'stores/types';
-import { useProposal } from '../common/fetchers/useProposal';
-import { useSnapshotId } from '../common/fetchers/useSnapshotId';
-import { useTotalLocked } from './fetchers/default/useTotalLocked';
+import { useProposal, useSnapshotId } from '../common/fetchers';
+import { useTotalLocked } from './fetchers/default';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
+/* 
+  I left this case purposefully with just one data source (default), 
+  to show that a governance implementation doesn't need two sources.
+*/
 export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
   name: 'SnapshotERC20Guild',
   bytecodes: [
