@@ -11,10 +11,6 @@ export const HookStoreProvider = ({ children }) => {
   const urlParams = useMatch('/:chainName/:daoId/*');
 
   const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');
-  useEffect(() => {
-    setIsLoading(true);
-    setDaoId(urlParams?.params?.daoId);
-  }, [urlParams?.params?.daoId, daoId]);
 
   const [daoBytecode, setDaoBytecode] = useState<string>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +19,14 @@ export const HookStoreProvider = ({ children }) => {
   const provider = useProvider();
 
   useEffect(() => {
+    if (urlParams?.params?.daoId) {
+      setIsLoading(true);
+      setDaoId(urlParams?.params?.daoId);
+    }
+  }, [urlParams?.params?.daoId, daoId]);
+
+  useEffect(() => {
+    debugger;
     const getBytecode = async () => {
       const localBtcode = localStorage.getItem(`hashed-bytecode-${daoId}`);
       if (!localBtcode) {
@@ -46,6 +50,8 @@ export const HookStoreProvider = ({ children }) => {
       const match = governanceInterfaces.find(governance => {
         return governance.bytecodes.find(bytecode => bytecode === daoBytecode);
       });
+
+      setIsLoading(false);
 
       if (match) {
         return {
