@@ -1,6 +1,12 @@
 export * from './constants';
 
 export const clickAnywhereToClose = (nodeOrSelector: string = 'body') => {
-  return cy.get(nodeOrSelector).first().click(0, 0).wait(1000);
+    cy.get(nodeOrSelector)
+    .first()
+    .trigger('mousedown', { which: 1, pageX: 1, pageY: 1 });
+  cy.get(nodeOrSelector)
+    .first()
+    .trigger('mouseup', { which: 1, pageX: 1, pageY: 1 });
+  return;
 };
 

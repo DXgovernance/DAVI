@@ -204,7 +204,7 @@
     "utils": {
       "dxdVestingFactory": "0x45734dB5C3342c66932db308Dbb23a5e2B159561",
       "multicall": "0xDD032cd0dfCB54050E1FA30Be59056403e292700",
-      "guildRegistry": "0xc74a2306504a39fad0117d732ed8e9efc64dbe85"
+      "guildRegistry": "0x7E6EB84621c3bb8455046f380c3934fAf8076158"
     },
     "votingMachines": {
       "0x053f406aD40c9Eb8eB43aFf28DA0D0EC17dF8e44": {
