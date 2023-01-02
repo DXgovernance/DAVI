@@ -14,9 +14,18 @@ export const HookStoreProvider = ({ children }) => {
   const [daoBytecode, setDaoBytecode] = useState<string>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [useDefaultDataSource, setUseDefaultDataSource] = useState(true);
-  const [isFetching, setIsFetching] = useState(false);
+  const [shouldSwitchDataSource, setShouldSwitchDataSource] = useState(false);
+  const [isMatched, setIsMatched] = useState(false);
   const provider = useProvider();
   const CHECK_DATA_SOURCE_INTERVAL = 10000;
+
+  useEffect(() => {
+    /* 
+      This is here to handle the store unmounting while developing, because react
+      refreshes the page. If not here, it might cause the page stuck on "loading..."
+    */
+    return () => setIsLoading(true);
+  }, []);
 
   useEffect(() => {
     if (urlParams?.params?.daoId) {
@@ -24,6 +33,10 @@ export const HookStoreProvider = ({ children }) => {
       setDaoId(urlParams?.params?.daoId);
     }
   }, [urlParams?.params?.daoId, daoId]);
+
+  useEffect(() => {
+    if (isMatched) setIsLoading(false);
+  }, [isMatched]);
 
   useEffect(() => {
     const getBytecode = async () => {
@@ -71,16 +84,16 @@ export const HookStoreProvider = ({ children }) => {
             governanceInterfaces[0].checkDataSourceAvailability,
         };
       }
-      setIsLoading(false);
+      setIsMatched(true);
       return returnedGovernanceType;
     }, [daoBytecode]);
 
   useEffect(() => {
-    if (isFetching) {
-      setIsFetching(false);
+    if (shouldSwitchDataSource) {
+      setShouldSwitchDataSource(false);
       setIsLoading(false);
     }
-  }, [isFetching]);
+  }, [shouldSwitchDataSource]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -89,7 +102,7 @@ export const HookStoreProvider = ({ children }) => {
           governanceType.checkDataSourceAvailability();
         if (useDefaultDataSource !== isDefaultSourceAvailable) {
           setIsLoading(true);
-          setIsFetching(true);
+          setShouldSwitchDataSource(true);
           setUseDefaultDataSource(isDefaultSourceAvailable);
         }
       }
