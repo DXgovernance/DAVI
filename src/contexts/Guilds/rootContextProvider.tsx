@@ -3,8 +3,6 @@ import { FilterProvider } from '.';
 import { OrbisProvider } from './orbis';
 import { HookStoreProvider } from 'stores';
 
-// TODO: Rename GuildsContextProvider to something more general
-
 export const GuildsContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

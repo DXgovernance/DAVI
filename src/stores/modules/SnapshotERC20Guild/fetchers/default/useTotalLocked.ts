@@ -9,7 +9,6 @@ export const useTotalLocked = (
   guildAddress: string,
   proposalId?: `0x${string}`
 ) => {
-  console.log('ERC20 guild implementation');
   const {
     hooks: {
       fetchers: { useSnapshotId },
@@ -53,7 +52,6 @@ export const useTotalLocked = (
     snapshotId: snapshotId?.toString() ?? null,
   });
 
-  // Return response based on implementation type
   if (!loaded) {
     return {
       data: undefined,

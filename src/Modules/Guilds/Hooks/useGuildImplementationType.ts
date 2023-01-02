@@ -1,19 +1,5 @@
-// import { useEffect, useMemo, useState } from 'react';
-// import { useNetwork, useProvider } from 'wagmi';
-// import { SHA256, enc } from 'crypto-js';
 import { GuildImplementationType } from 'types/types.guilds.d';
-// import deployedHashedBytecodes from 'bytecodes/prod.json';
-// import deployedHashedBytecodesLocal from 'bytecodes/local.json';
-// import { LOCALHOST_ID } from 'utils';
 import { useHookStoreProvider } from 'stores';
-
-// const defaultImplementation = deployedHashedBytecodes.find(
-//   ({ type }) => type === GuildImplementationType.IERC20Guild
-// ) ?? {
-//   type: GuildImplementationType.IERC20Guild,
-//   features: [],
-//   bytecode_hash: '',
-// };
 
 interface ImplementationTypeConfig {
   type: string;
@@ -25,15 +11,6 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   isSnapshotGuild: boolean;
   loaded?: boolean;
 }
-// const parseConfig = (
-//   config: ImplementationTypeConfig
-// ): ImplementationTypeConfigReturn => {
-//   return {
-//     ...config,
-//     isRepGuild: config.features.includes('REP'),
-//     isSnapshotGuild: config.features.includes('SNAPSHOT'),
-//   };
-// };
 
 /*
   The loading logic will only live on the store.
@@ -43,11 +20,8 @@ interface ImplementationTypeConfigReturn extends ImplementationTypeConfig {
   used for calls to the store.
 */
 
-/**
- * @function useGuildImplementationType
- * @param {string} guildAddress
- * @returns {ImplementationTypeConfigReturn}
- */
+// TODO: replace components using this hook with calls to the store, then delete the hook
+
 export default function useGuildImplementationTypeConfig(
   guildAddress: string
 ): ImplementationTypeConfigReturn {
@@ -60,7 +34,7 @@ export default function useGuildImplementationTypeConfig(
       type = GuildImplementationType.SnapshotERC20Guild;
       break;
     case 'SnapshotRepGuild':
-      type = GuildImplementationType.SnapshotERC20Guild;
+      type = GuildImplementationType.SnapshotRepERC20Guild;
       break;
     default:
       break;
@@ -75,41 +49,4 @@ export default function useGuildImplementationTypeConfig(
       capabilities.votingPowerTally === 'snapshot' ? true : false,
     loaded: !isLoading,
   };
-  // const { chain } = useNetwork();
-  // const isLocalhost = useMemo(() => chain?.id === LOCALHOST_ID, [chain]);
-
-  // const [guildBytecode, setGuildBytecode] = useState<string>('');
-  // const [loaded, setLoaded] = useState<boolean>(false);
-  // const provider = useProvider();
-  // useEffect(() => {
-  //   const getBytecode = async () => {
-  //     const localBtcode = localStorage.getItem(
-  //       `hashed-bytecode-${guildAddress}`
-  //     );
-  //     if (!localBtcode) {
-  //       const btcode = await provider.getCode(guildAddress);
-  //       const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
-  //       setGuildBytecode(hashedBytecode);
-  //       localStorage.setItem(`hashed-bytecode-${guildAddress}`, hashedBytecode);
-  //       setLoaded(true);
-  //       return;
-  //     }
-  //     setGuildBytecode(localBtcode);
-  //     setLoaded(true);
-  //   };
-  //   getBytecode();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [guildAddress]);
-
-  // const implementationTypeConfig: ImplementationTypeConfig = useMemo(() => {
-  //   if (!guildBytecode) return defaultImplementation;
-
-  //   const match = (
-  //     isLocalhost ? deployedHashedBytecodesLocal : deployedHashedBytecodes
-  //   ).find(({ bytecode_hash }) => guildBytecode === bytecode_hash);
-
-  //   return match ?? defaultImplementation; // default to IERC20Guild
-  // }, [guildBytecode, isLocalhost]);
-
-  // return { ...parseConfig(implementationTypeConfig), loaded };
 }

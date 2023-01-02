@@ -3,7 +3,7 @@ export const checkDataSourceAvailability = () => true;
 // TODO: make a real implementation of checkDataSourceAvailability
 
 /*
-  I left this function commentes as an example of a check.
+  I left this function commented as an example of a check.
   This is a test function that switches the default data source
   with a 25% chance, just to check how a (very unreliable)
   data source interaction will look like.

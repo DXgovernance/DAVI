@@ -83,17 +83,17 @@ jest.mock('hooks/Guilds/contracts/useContract', () => ({
 
 describe('useExecutable', () => {
   it(`executeProposal function is valid if there is proposal data`, async () => {
-    // ! This test needs mockedData as proposal data
+    // This test needs mockedData as proposal data
     const { result } = renderHook(() => useExecutable());
     expect(result.current.loading).toBeFalsy();
     expect(result.current.data.executeProposal).toBeTruthy();
   });
 
   it.skip(`executeProposal function is null if there isn't proposal data`, async () => {
-    // ! This test needs null as proposal data
+    // TODO: Fix test. Couldn't make mockReturnValueOnce work to change returned data by the hook
+
+    // This test needs null as proposal data
     const { result } = renderHook(() => useExecutable());
-    console.log('HERE');
-    console.log(result.current);
 
     expect(result.current.loading).toBeTruthy();
     expect(result.current.data.executeProposal).toBeNull();
