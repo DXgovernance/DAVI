@@ -32,23 +32,34 @@ export interface FetcherHooksInterface {
 
 // TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not as a global hook
 
-interface HooksInterface {
+interface HooksInterfaceWithFallback {
   events: null;
-  fetchers: FetcherHooksInterface;
+  fetchers: {
+    default: FetcherHooksInterface;
+    fallback: FetcherHooksInterface;
+  };
   writers: null;
 }
 
-export interface GovernanceInterface {
+interface HooksInterfaceWithoutFallback
+  extends Omit<HooksInterfaceWithFallback, 'fetchers'> {
+  fetchers: FetcherHooksInterface;
+}
+
+export interface FullGovernanceImplementation {
   name: SupportedGovernanceSystem;
   bytecodes: `0x${string}`[];
-  hooks: HooksInterface;
-  hooksFallback: HooksInterface;
+  hooks: HooksInterfaceWithFallback;
   capabilities: GovernanceCapabilities;
   checkDataSourceAvailability: () => boolean;
 }
 
-export interface HookStoreContextInterface
-  extends Omit<GovernanceInterface, 'hooksFallback'> {
+export interface GovernanceTypeInterface
+  extends Omit<FullGovernanceImplementation, 'hooks'> {
+  hooks: HooksInterfaceWithoutFallback;
+}
+
+export interface HookStoreContextInterface extends GovernanceTypeInterface {
   isLoading: boolean;
   daoId: string;
 }

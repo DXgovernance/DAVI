@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useProvider } from 'wagmi';
 import { SHA256, enc } from 'crypto-js';
 import { useMatch } from 'react-router-dom';
-import { GovernanceInterface, HookStoreContextInterface } from './types';
+import { GovernanceTypeInterface, HookStoreContextInterface } from './types';
 import { governanceInterfaces } from './governanceInterfaces';
 
 export const HookStoreContext = createContext<HookStoreContextInterface>(null);
@@ -56,37 +56,45 @@ export const HookStoreProvider = ({ children }) => {
     getBytecode();
   }, [daoId, provider]);
 
-  const governanceType: Omit<GovernanceInterface, 'hooksFallback'> =
-    useMemo(() => {
-      const match = governanceInterfaces.find(governance => {
-        return governance.bytecodes.find(bytecode => bytecode === daoBytecode);
-      });
+  const governanceType: GovernanceTypeInterface = useMemo(() => {
+    const match = governanceInterfaces.find(governance => {
+      return governance.bytecodes.find(bytecode => bytecode === daoBytecode);
+    });
 
-      let returnedGovernanceType: Omit<GovernanceInterface, 'hooksFallback'>;
+    let returnedGovernanceType: GovernanceTypeInterface;
 
-      // TODO: throw an error instead of falling back to a default if the store can't match the governance implementation
+    // TODO: throw an error instead of falling back to a default if the store can't match the governance implementation
 
-      if (match) {
-        returnedGovernanceType = {
-          name: match.name,
-          bytecodes: match.bytecodes,
-          capabilities: match.capabilities,
-          hooks: match.hooks,
-          checkDataSourceAvailability: match.checkDataSourceAvailability,
-        };
-      } else {
-        returnedGovernanceType = {
-          name: governanceInterfaces[0].name,
-          bytecodes: governanceInterfaces[0].bytecodes,
-          capabilities: governanceInterfaces[0].capabilities,
-          hooks: governanceInterfaces[0].hooks,
-          checkDataSourceAvailability:
-            governanceInterfaces[0].checkDataSourceAvailability,
-        };
-      }
-      setIsMatched(true);
-      return returnedGovernanceType;
-    }, [daoBytecode]);
+    if (match) {
+      returnedGovernanceType = {
+        name: match.name,
+        bytecodes: match.bytecodes,
+        capabilities: match.capabilities,
+        hooks: {
+          events: match.hooks.events,
+          fetchers: match.hooks.fetchers.default,
+          writers: match.hooks.writers,
+        },
+        checkDataSourceAvailability: match.checkDataSourceAvailability,
+      };
+    } else {
+      returnedGovernanceType = {
+        name: governanceInterfaces[0].name,
+        bytecodes: governanceInterfaces[0].bytecodes,
+        capabilities: governanceInterfaces[0].capabilities,
+        hooks: {
+          events: governanceInterfaces[0].hooks.events,
+          fetchers: governanceInterfaces[0].hooks.fetchers.default,
+          writers: governanceInterfaces[0].hooks.writers,
+        },
+
+        checkDataSourceAvailability:
+          governanceInterfaces[0].checkDataSourceAvailability,
+      };
+    }
+    setIsMatched(true);
+    return returnedGovernanceType;
+  }, [daoBytecode]);
 
   useEffect(() => {
     if (shouldSwitchDataSource) {
