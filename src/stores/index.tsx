@@ -17,7 +17,7 @@ export const HookStoreProvider = ({ children }) => {
   const [shouldSwitchDataSource, setShouldSwitchDataSource] = useState(false);
   const [isMatched, setIsMatched] = useState(false);
   const provider = useProvider();
-  const CHECK_DATA_SOURCE_INTERVAL = 10000;
+  const CHECK_DATA_SOURCE_INTERVAL = 5000;
 
   useEffect(() => {
     /* 
@@ -72,7 +72,9 @@ export const HookStoreProvider = ({ children }) => {
         capabilities: match.capabilities,
         hooks: {
           events: match.hooks.events,
-          fetchers: match.hooks.fetchers.default,
+          fetchers: useDefaultDataSource
+            ? match.hooks.fetchers.default
+            : match.hooks.fetchers.fallback,
           writers: match.hooks.writers,
         },
         checkDataSourceAvailability: match.checkDataSourceAvailability,
@@ -84,7 +86,9 @@ export const HookStoreProvider = ({ children }) => {
         capabilities: governanceInterfaces[0].capabilities,
         hooks: {
           events: governanceInterfaces[0].hooks.events,
-          fetchers: governanceInterfaces[0].hooks.fetchers.default,
+          fetchers: useDefaultDataSource
+            ? governanceInterfaces[0].hooks.fetchers.default
+            : governanceInterfaces[0].hooks.fetchers.fallback,
           writers: governanceInterfaces[0].hooks.writers,
         },
 
@@ -94,7 +98,7 @@ export const HookStoreProvider = ({ children }) => {
     }
     setIsMatched(true);
     return returnedGovernanceType;
-  }, [daoBytecode]);
+  }, [daoBytecode, useDefaultDataSource]);
 
   useEffect(() => {
     if (shouldSwitchDataSource) {
