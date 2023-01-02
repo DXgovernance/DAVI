@@ -1,5 +1,4 @@
 import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
-import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
@@ -13,7 +12,6 @@ export const useTotalLocked = (
     hooks: {
       fetchers: { useSnapshotId },
     },
-    isLoading,
   } = useHookStoreProvider();
 
   const { data: snapshotId } = useSnapshotId({
@@ -21,10 +19,8 @@ export const useTotalLocked = (
     proposalId,
   });
 
-  const { loaded } = useGuildImplementationType(guildAddress);
-
   const { data: totalLockedResponse, refetch } = useContractRead({
-    address: !isLoading ? guildAddress : null,
+    address: guildAddress,
     abi: BaseERC20Guild.abi,
     functionName: 'getTotalLocked',
   });
@@ -51,12 +47,6 @@ export const useTotalLocked = (
     contractAddress: guildAddress,
     snapshotId: snapshotId?.toString() ?? null,
   });
-
-  if (!loaded) {
-    return {
-      data: undefined,
-    };
-  }
 
   return snapshotId?.toString()
     ? {
