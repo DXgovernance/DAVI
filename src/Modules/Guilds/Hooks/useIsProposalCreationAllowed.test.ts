@@ -11,6 +11,12 @@ jest.mock('wagmi', () => ({
   useAccount: () => ({ address: mockAddress }),
 }));
 
+jest.mock('stores', () => ({
+  useHookStoreProvider: () => ({
+    hooks: { writers: { useLockTokens: jest.fn() } },
+  }),
+}));
+
 describe('useIsProposalCreationAllowed', () => {
   it('should return true if it has more voting power than required', async () => {
     jest.spyOn(useGuildConfig, 'useGuildConfig').mockImplementation(

@@ -47,6 +47,12 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
+jest.mock('stores', () => ({
+  useHookStoreProvider: () => ({
+    hooks: { writers: { useLockTokens: jest.fn() } },
+  }),
+}));
+
 describe('ProposalCardWinningOption', () => {
   it('renders properly with one action', () => {
     const { container } = render(

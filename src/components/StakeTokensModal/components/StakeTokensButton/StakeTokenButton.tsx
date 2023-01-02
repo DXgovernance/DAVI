@@ -1,11 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import { MAX_UINT } from 'utils';
-import { formatUnits } from 'ethers/lib/utils';
-import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
-import { Loading } from 'components/primitives/Loading';
-import { StakeTokenButtonProps } from '../../types';
-import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { MAX_UINT } from 'utils';
+// import { formatUnits } from 'ethers/lib/utils';
+import { Loading } from 'components/primitives/Loading';
+import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
+import { StakeTokenButtonProps } from '../../types';
+import { useHookStoreProvider } from 'stores';
 const StakeTokensButton = ({
   isRepGuild,
   stakeAmount,
@@ -17,6 +18,21 @@ const StakeTokensButton = ({
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [approvedTokenAllowance, setApprovedTokenAllowance] = useState(false);
+
+  const {
+    hooks: {
+      writers: { useLockTokens },
+    },
+    daoId,
+  } = useHookStoreProvider();
+
+  const lockTokens = useLockTokens(
+    daoId,
+    stakeAmount,
+    token?.info?.decimals,
+    token?.info.symbol
+  );
+
   useEffect(() => {
     if (
       stakeAmount &&
@@ -26,15 +42,10 @@ const StakeTokensButton = ({
       setApprovedTokenAllowance(true);
     }
   }, [token, stakeAmount, approvedTokenAllowance]);
-  const lockTokens = async () => {
+  const handleLockTokens = async () => {
     if (!isStakeAmountValid) return;
 
-    createTransaction(
-      `Lock ${formatUnits(stakeAmount, token?.info?.decimals)} ${
-        token?.info?.symbol
-      } tokens`,
-      async () => guild?.contract?.lockTokens(stakeAmount)
-    );
+    await lockTokens();
   };
 
   const approveTokenSpending = async () => {
@@ -53,7 +64,7 @@ const StakeTokensButton = ({
           <ActionButton
             data-testid="lock-token-spending"
             disabled={!isStakeAmountValid}
-            onClick={lockTokens}
+            onClick={handleLockTokens}
           >
             Lock{' '}
             {token?.info?.symbol || (

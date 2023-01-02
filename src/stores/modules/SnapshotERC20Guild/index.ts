@@ -1,6 +1,7 @@
 import { GovernanceInterface } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
 import { useTotalLocked } from './fetchers/default';
+import { useLockTokens } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 /* 
@@ -20,7 +21,9 @@ export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
       useSnapshotId,
       useTotalLocked,
     },
-    writers: null,
+    writers: {
+      useLockTokens,
+    },
   },
   hooksFallback: {
     events: null,
@@ -29,7 +32,9 @@ export const snapshotERC20GuildImplementation: Readonly<GovernanceInterface> = {
       useSnapshotId,
       useTotalLocked,
     },
-    writers: null,
+    writers: {
+      useLockTokens,
+    },
   },
   capabilities: {
     votingPower: 'liquid',

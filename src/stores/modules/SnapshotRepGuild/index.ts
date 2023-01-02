@@ -2,6 +2,7 @@ import { GovernanceInterface } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
 import { useTotalLocked as useTotalLockedDefault } from './fetchers/subgraphSnapshotRep';
 import { useTotalLocked as useTotalLockedFallback } from './fetchers/wagmiSnapshotRep';
+import { useLockTokens } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
@@ -17,7 +18,9 @@ export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
       useSnapshotId,
       useTotalLocked: useTotalLockedDefault,
     },
-    writers: null,
+    writers: {
+      useLockTokens,
+    },
   },
   hooksFallback: {
     events: null,
@@ -26,7 +29,9 @@ export const snapshotRepGuildImplementation: Readonly<GovernanceInterface> = {
       useSnapshotId,
       useTotalLocked: useTotalLockedFallback,
     },
-    writers: null,
+    writers: {
+      useLockTokens,
+    },
   },
   capabilities: {
     votingPower: 'soulbound',

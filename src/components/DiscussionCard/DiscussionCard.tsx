@@ -9,7 +9,6 @@ import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 export const DiscussionCard: React.FC<DiscussionCardProps> = ({
   discussion,
 }) => {
-  console.log({ discussion });
   const { guildId, chainName } = useTypedParams();
   const creatorAddress = discussion.creator_details.metadata?.address;
   const { ensName } = useENSAvatar(creatorAddress, 1);

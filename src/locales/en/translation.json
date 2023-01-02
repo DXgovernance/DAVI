@@ -317,5 +317,8 @@
   "postOptions": {
     "edit": "Edit",
     "delete": "Delete"
+  },
+  "hookStoreErrors": {
+    "methodNotSupported": "This method isn't supported in this governance implementation"
   }
 }
