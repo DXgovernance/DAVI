@@ -10,13 +10,13 @@ export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 export const HookStoreProvider = ({ children }) => {
   const urlParams = useMatch('/:chainName/:daoId/*');
 
-  const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : null);
+  const [daoId, setDaoId] = useState(urlParams ? urlParams.params.daoId : '');
   const [daoBytecode, setDaoBytecode] = useState<string>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [useDefaultDataSource, setUseDefaultDataSource] = useState(true);
   const [isFetching, setIsFetching] = useState(false);
-  const [useDefaultSource, setUseDefaultSource] = useState(true);
   const provider = useProvider();
-  const CHECK_DATA_SOURCE_INTEVAL = 10000;
+  const CHECK_DATA_SOURCE_INTERVAL = 10000;
 
   useEffect(() => {
     if (urlParams?.params?.daoId) {
@@ -30,7 +30,7 @@ export const HookStoreProvider = ({ children }) => {
       const localBtcode = localStorage.getItem(`hashed-bytecode-${daoId}`);
       if (!localBtcode) {
         const btcode = await provider.getCode(daoId);
-        const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`;
+        const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`; // TODO: switch SHA256 to keccak256 when this gets into the monorepo
         setDaoBytecode(hashedBytecode);
         localStorage.setItem(`hashed-bytecode-${daoId}`, hashedBytecode);
         setIsLoading(false);
@@ -49,31 +49,31 @@ export const HookStoreProvider = ({ children }) => {
         return governance.bytecodes.find(bytecode => bytecode === daoBytecode);
       });
 
-      setIsLoading(false);
+      let returnedGovernanceType: Omit<GovernanceInterface, 'hooksFallback'>;
+
+      // TODO: throw an error instead of falling back to a default if the store can't match the governance implementation
 
       if (match) {
-        return {
+        returnedGovernanceType = {
           name: match.name,
           bytecodes: match.bytecodes,
           capabilities: match.capabilities,
-          hooks: useDefaultSource ? match.hooks : match.hooksFallback,
+          hooks: match.hooks,
           checkDataSourceAvailability: match.checkDataSourceAvailability,
         };
       } else {
-        return {
+        returnedGovernanceType = {
           name: governanceInterfaces[0].name,
           bytecodes: governanceInterfaces[0].bytecodes,
           capabilities: governanceInterfaces[0].capabilities,
-          hooks: useDefaultSource
-            ? governanceInterfaces[0].hooks
-            : governanceInterfaces[0].hooksFallback,
+          hooks: governanceInterfaces[0].hooks,
           checkDataSourceAvailability:
             governanceInterfaces[0].checkDataSourceAvailability,
         };
       }
-    }, [daoBytecode, useDefaultSource]);
-
-  // TODO: maybe implement states of the app. Instead of changing the boolean states everywhere, use a switch case
+      setIsLoading(false);
+      return returnedGovernanceType;
+    }, [daoBytecode]);
 
   useEffect(() => {
     if (isFetching) {
@@ -87,16 +87,16 @@ export const HookStoreProvider = ({ children }) => {
       if (governanceType) {
         const isDefaultSourceAvailable =
           governanceType.checkDataSourceAvailability();
-        if (useDefaultSource !== isDefaultSourceAvailable) {
+        if (useDefaultDataSource !== isDefaultSourceAvailable) {
           setIsLoading(true);
           setIsFetching(true);
-          setUseDefaultSource(isDefaultSourceAvailable);
+          setUseDefaultDataSource(isDefaultSourceAvailable);
         }
       }
-    }, CHECK_DATA_SOURCE_INTEVAL); // This implementation makes a data source health check every 10 seconds. This interval is arbitrary.
+    }, CHECK_DATA_SOURCE_INTERVAL); // This implementation makes a data source health check every 10 seconds. This interval is arbitrary.
 
     return () => clearInterval(interval);
-  }, [governanceType, useDefaultSource]);
+  }, [governanceType, useDefaultDataSource]);
 
   // TODO: Make a better loading screen
 
@@ -117,3 +117,16 @@ export const useHookStoreProvider = () => useContext(HookStoreContext);
 // TODO: extract events from hooks (?)
 // TODO: implement subgraph data fetching
 // TODO: replace mentions of "guilds" for "dao" as is a more general term
+
+/*
+  React really doesn't like to switch hooks, and this has been a source of bugs. As far
+  as I tested, it's been fixed.
+  A way to trigger potential bugs is to navigate to different governance implementations
+  using the UI and entering the guild address directly in the URL.
+*/
+
+/*
+  REP guild: http://localhost:3000/#/localhost/0x140d68e4E3f80cdCf7036De007b3bCEC54D38b1f
+  DXD guild: http://localhost:3000/#/localhost/0xE9bDaB08f2FBb370d2a6F6661a92d9B6157E9fd2
+  SWP guild: http://localhost:3000/#/localhost/0xBF81De2C44B15e0d2c7AEaa0FBba4f1Dd02E3570
+*/
