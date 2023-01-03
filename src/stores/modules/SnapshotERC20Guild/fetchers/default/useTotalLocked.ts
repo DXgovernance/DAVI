@@ -1,8 +1,8 @@
-import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
-import { useContractEvent, useContractRead } from 'wagmi';
+import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { useHookStoreProvider } from 'stores';
+import { useListenToLockAndWithdrawTokens } from '../../events/useListenToLockAndWithdrawTokens';
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 
 export const useTotalLocked = (
   guildAddress: string,
@@ -21,38 +21,28 @@ export const useTotalLocked = (
 
   const {
     data: totalLockedResponse,
-    refetch,
+    refetch: refetchGetTotalLocked,
     ...totalLockedResponseRest
   } = useContractRead({
     address: guildAddress,
-    abi: BaseERC20Guild.abi,
+    abi: SnapshotERC20Guild.abi,
     functionName: 'getTotalLocked',
-  });
-
-  useContractEvent({
-    address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensLocked',
-    listener() {
-      refetch();
-    },
-  });
-
-  useContractEvent({
-    address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensWithdrawn',
-    listener() {
-      refetch();
-    },
   });
 
   const {
     data: totalLockedAtProposalSnapshotResponse,
+    refetch: refetchTotalLockedAt,
     ...totalLockedAtProposalSnapshotResponseRest
-  } = useTotalLockedAt({
-    contractAddress: guildAddress,
-    snapshotId: snapshotId?.toString() ?? null,
+  } = useContractRead({
+    address: guildAddress,
+    abi: SnapshotERC20Guild.abi,
+    functionName: 'totalLockedAt',
+    args: [BigNumber.from(snapshotId ? snapshotId : '0')],
+  });
+
+  useListenToLockAndWithdrawTokens(guildAddress, () => {
+    refetchGetTotalLocked();
+    refetchTotalLockedAt();
   });
 
   return snapshotId?.toString()

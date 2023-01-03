@@ -23,7 +23,7 @@ export interface FetcherHooksInterface {
     proposalId: `0x${string}`;
   }) => ReturnType<typeof useSnapshotId>;
   useTotalLocked: (
-    guildAddress: string,
+    daoId: string,
     proposalId?: `0x${string}`
   ) => ReturnType<typeof useTotalLocked>;
 }
