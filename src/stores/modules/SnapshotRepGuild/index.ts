@@ -11,7 +11,6 @@ export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementati
       '0xb33418b664bfb6eba3ea37a77429d95daee4f0ab24f47ee63c4669340c4aae5a',
     ],
     hooks: {
-      events: null,
       fetchers: {
         default: {
           useProposal,

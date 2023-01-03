@@ -33,7 +33,6 @@ export interface FetcherHooksInterface {
 // TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not as a global hook
 
 interface HooksInterfaceWithFallback {
-  events: null;
   fetchers: {
     default: FetcherHooksInterface;
     fallback: FetcherHooksInterface;

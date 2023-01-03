@@ -15,7 +15,6 @@ export const snapshotERC20GuildImplementation: Readonly<FullGovernanceImplementa
       '0xcfe42d56f58ab49603c49e6c7ca4bd3d2260cec51d296e4a5cfa2a407e299b6c',
     ],
     hooks: {
-      events: null,
       fetchers: {
         default: {
           useProposal,

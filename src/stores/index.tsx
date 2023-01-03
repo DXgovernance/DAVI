@@ -71,7 +71,6 @@ export const HookStoreProvider = ({ children }) => {
         bytecodes: match.bytecodes,
         capabilities: match.capabilities,
         hooks: {
-          events: match.hooks.events,
           fetchers: useDefaultDataSource
             ? match.hooks.fetchers.default
             : match.hooks.fetchers.fallback,
@@ -85,7 +84,6 @@ export const HookStoreProvider = ({ children }) => {
         bytecodes: governanceInterfaces[0].bytecodes,
         capabilities: governanceInterfaces[0].capabilities,
         hooks: {
-          events: governanceInterfaces[0].hooks.events,
           fetchers: useDefaultDataSource
             ? governanceInterfaces[0].hooks.fetchers.default
             : governanceInterfaces[0].hooks.fetchers.fallback,
