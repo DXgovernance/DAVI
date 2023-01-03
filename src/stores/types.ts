@@ -1,6 +1,7 @@
 import { BigNumber } from 'ethers';
 import { useProposal } from './modules/common/fetchers/useProposal';
 import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
+import { useCreateProposal } from './modules/common/writers';
 import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/default/useTotalLocked';
 import {
   useLockTokens,
@@ -45,6 +46,9 @@ export interface WriterHooksInteface {
     daoTokenVault: `0x${string}`,
     amount?: string
   ) => ReturnType<typeof useApproveTokens>;
+  useCreateProposal: (
+    daoContractAdress: string
+  ) => ReturnType<typeof useCreateProposal>;
 }
 
 // TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>

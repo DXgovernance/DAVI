@@ -3,10 +3,8 @@ import { Input } from 'components/primitives/Forms/Input';
 import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import ensContentHash from '@ensdomains/content-hash';
-import { useTransactions } from 'contexts/Guilds';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { BigNumber } from 'ethers';
-import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { bulkEncodeCallsFromOptions } from 'hooks/Guilds/contracts/useEncodedCall';
 import useIPFSNode from 'hooks/Guilds/ipfs/useIPFSNode';
 import { ActionsBuilder } from 'components/ActionsBuilder';
@@ -47,6 +45,7 @@ import {
 } from 'components/Forum';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 import { DiscussionContent } from 'components/Forum/types';
+import { useHookStoreProvider } from 'stores';
 
 export const EMPTY_CALL: Call = {
   data: ZERO_HASH,
@@ -64,7 +63,13 @@ const CreateProposalPage: React.FC = () => {
     GuildAvailabilityContext
   );
   const { orbis } = useContext(OrbisContext);
+  const {
+    hooks: {
+      writers: { useCreateProposal },
+    },
+  } = useHookStoreProvider();
 
+  const createProposal = useCreateProposal(guildId);
   const navigate = useNavigate();
   const { t } = useTranslation();
   const theme = useTheme();
@@ -147,10 +152,6 @@ const CreateProposalPage: React.FC = () => {
     setIsIpfsErrorModalOpen(false);
     handleCreateProposal();
   };
-
-  const { createTransaction } = useTransactions();
-  const { guildId: guildAddress } = useTypedParams();
-  const guildContract = useERC20Guild(guildAddress);
 
   useEffect(() => {
     isConnected(orbis).then(res => {
@@ -263,27 +264,20 @@ const CreateProposalPage: React.FC = () => {
     if (!isValid) {
       toast.error(error);
     } else {
-      createTransaction(
-        `Create proposal ${title}`,
-        async () => {
-          return guildContract.createProposal(
-            toArray,
-            dataArray,
-            valueArray,
-            totalOptions,
-            title,
-            `${contentHash}`
-          );
-        },
-        true,
-        err => {
-          setIsCreatingProposal(false);
-          if (!err) {
-            editMode && clear();
-            navigate(`/${chain}/${guildId}`);
-          }
+      const proposalData = {
+        toArray,
+        dataArray,
+        valueArray,
+        totalOptions,
+        contentHash,
+      };
+      createProposal(title, proposalData, err => {
+        setIsCreatingProposal(false);
+        if (!err) {
+          editMode && clear();
+          navigate(`/${chain}/${guildId}`);
         }
-      );
+      });
     }
   };
   useEffect(() => {
