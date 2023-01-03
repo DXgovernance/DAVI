@@ -15,15 +15,32 @@ An example of this could be: a subgraph in TheGraph as the main source, RPC call
 ## Main folder
 
 - **modules**: folder containing different governance implementations
-  - **common**: folder containing common files, like hook implementations, that can be imported by multiple implementations, to avoid code duplication
+  - **common**: folder containing common files, like hook implementations, that can be imported by multiple governance modules, to avoid code duplication
 - **governanceInterfaces.ts**: file that exports an array of every governance interface supported. That array is made of all the governance interface objects of each governance module
 - **index.tsx**:
-  - Contains the logic to switch between governance implementations
+  - Contains the logic to switch between governance implementations and data sources
   - Is a context
   - Exports the governance interface of the current guild
 - **types.ts**: common typings used in the modules
 
-## Governance module folder
+## Exposed store interface
+
+- **name**: name of the governance implementation
+- **bytecodes**: array of compatible bytecodes
+- **hooks**:
+  - **fetchers**: set of fetcher hooks. From a component perspective, there's no "default" or "fallback", just fetchers
+  - **writers**: set of writer hooks
+- **capabilities**
+  - **votingPower**
+  - **tokenType**
+  - **consensus**
+  - **votingStyle**
+  - **votingPowerTally**
+- **checkDataSourceAvailability**: method for doing a health check on the default data source. Returns `true` if it's healty, and `false` if the store should switch to the fallback. Will always return true if there's only one data source
+- **isLoading**: boolean that tracks wether the store is fully loaded or not. The components and hooks won't make use of this, it is tracked at the top-level components to trigger re-renders
+- **daoId**: address of the current DAO
+
+## Governance implementation module folder
 
 ### Structure
 
@@ -50,27 +67,28 @@ Each governance module has this structure:
 
 ### Content
 
-- **events**: folder containing event listeners
-- **fetchers**: folder containing the fetcher hooks. The governance implementation must have a default data source, and an optional fallback. The folders can have any name
+- **events**: folder containing hooks for event listeners. The events aren't exposed in the store, but used internally by the implementation' fetcher hooks
+- **fetchers**: folder containing the fetcher hooks. The governance implementation must have a default data source and an optional fallback. The folders can have any name
   - **defaultDataSource**: folder containing fetchers for the default data source
   - **fallbackDataSource** _(optional)_: folder containing fetchers for the default data source
 - **writers**: folder containing writing hooks
-- **checkDataSourceAvailability.ts**: this file exports a function to check if the default data source is available or not, and returns a boolean. If the default data source isn't available, it'll use the fallback source until the next check. If the governance implementation doesn't have a fallback data source, it should return always `true`
+- **checkDataSourceAvailability.ts**: this file exports a function to check if the default data source is available or not, and returns a boolean. If the default data source isn't available it'll use the fallback source until the next check. If the governance implementation doesn't have a fallback data source, it should always return `true`
 - **index.ts**: this file exports all the information needed for that governance type: the name, bytecode, available hooks, and all capabilities (features) this governance system has
 
 ---
 
 # Guides
 
-## Migrating a hook to a supported governance system
+## Migrating a fetcher / writer hook to a supported governance system
 
 1. Copy the hook file to the appropiate folder:
-   1. `[implementationName] > events`
-   2. `[implementationName] > fetchers > [fetchingImplementation]`
-   3. `[implementationName] > writers`
-2. In `types.ts` add the new hook to `HooksInterface`, with the corresponding type
-3. In `[implementationName] > index.ts`: import the hook and add it to the `hooks` or `hooksFallback` key of the exported governance interface
-4. Find every file where the hook is used and:
+   - `[implementationName] > fetchers > [fetchingImplementation]`
+   - `[implementationName] > writers`
+2. Extract the events onto their own hook, with the name: `useListenToEventDescription`. Save it in the `[implementationName] > events` folder
+3. Export the hook in the `index.ts` file
+4. In `types.ts` add the new hook to `HooksInterfaceWithFallback`, with the corresponding type
+5. In `[implementationName] > index.ts`: import the hook and add it to `hooks > fetchers > [default | fallback]` key of the exported governance interface
+6. Find every file where the hook is used and:
 
    1. Delete the previous hook import
    2. Add
@@ -82,15 +100,15 @@ Each governance module has this structure:
       // Inside the component
       const {
         hooks: {
-          fetchers/writers/events: {
+          fetchers | writers: {
              useHookName
           }
         },
       } = useHookStoreProvider();
       ```
 
-5. Delete the old hook file
-6. Run `yarn test` to check for broken tests due to lack of context setup
+7. Delete the old hook file
+8. Run `yarn test` to check for broken tests due to lack of context setup
 
 ## Adding a new governance system
 

@@ -25,7 +25,7 @@ export interface FetcherHooksInterface {
     proposalId: `0x${string}`;
   }) => ReturnType<typeof useSnapshotId>;
   useTotalLocked: (
-    guildAddress: string,
+    daoId: string,
     proposalId?: `0x${string}`
   ) => ReturnType<typeof useTotalLocked>;
 }
@@ -43,23 +43,33 @@ export interface WriterHooksInteface {
 
 // TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not as a global hook
 
-interface HooksInterface {
-  events: null;
-  fetchers: FetcherHooksInterface;
+interface HooksInterfaceWithFallback {
+  fetchers: {
+    default: FetcherHooksInterface;
+    fallback: FetcherHooksInterface;
+  };
   writers: WriterHooksInteface;
 }
 
-export interface GovernanceInterface {
+interface HooksInterfaceWithoutFallback
+  extends Omit<HooksInterfaceWithFallback, 'fetchers'> {
+  fetchers: FetcherHooksInterface;
+}
+
+export interface FullGovernanceImplementation {
   name: SupportedGovernanceSystem;
   bytecodes: `0x${string}`[];
-  hooks: HooksInterface;
-  hooksFallback: HooksInterface;
+  hooks: HooksInterfaceWithFallback;
   capabilities: GovernanceCapabilities;
   checkDataSourceAvailability: () => boolean;
 }
 
-export interface HookStoreContextInterface
-  extends Omit<GovernanceInterface, 'hooksFallback'> {
+export interface GovernanceTypeInterface
+  extends Omit<FullGovernanceImplementation, 'hooks'> {
+  hooks: HooksInterfaceWithoutFallback;
+}
+
+export interface HookStoreContextInterface extends GovernanceTypeInterface {
   isLoading: boolean;
   daoId: string;
 }

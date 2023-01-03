@@ -1,9 +1,10 @@
-import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
-import useTotalSupplyAt from 'Modules/Guilds/Hooks/useTotalSupplyAt';
-import { useContractEvent, useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
+import { useContractRead } from 'wagmi';
 import { useHookStoreProvider } from 'stores';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
+import { ERC20SnapshotRep } from 'contracts/ts-files/ERC20SnapshotRep';
+import useGuildToken from 'Modules/Guilds/Hooks/useGuildToken';
+import { useListenToTokenTransfer } from '../../events/useListenToTokenTransfer';
 
 export const useTotalLocked = (
   guildAddress: string,
@@ -22,33 +23,30 @@ export const useTotalLocked = (
     proposalId,
   });
 
-  const { data: totalLockedResponse, refetch } = useContractRead({
+  const {
+    data: totalLockedResponse,
+    refetch: refetchTotalLockedResponse,
+    ...totalLockedResponseRest
+  } = useContractRead({
     address: guildAddress,
     abi: BaseERC20Guild.abi,
     functionName: 'getTotalLocked',
   });
 
-  useContractEvent({
-    address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensLocked',
-    listener() {
-      refetch();
-    },
+  const {
+    data: totalSupplyAtSnapshotResponse,
+    refetch: refetchTotalSupplyAtSnapshotResponse,
+    ...totalSupplyAtSnapshotResponseRest
+  } = useContractRead({
+    address: guildTokenAddress,
+    abi: ERC20SnapshotRep.abi,
+    functionName: 'totalSupplyAt',
+    args: [BigNumber.from(snapshotId ? snapshotId : '0')],
   });
 
-  useContractEvent({
-    address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensWithdrawn',
-    listener() {
-      refetch();
-    },
-  });
-
-  const { data: totalSupplyAtSnapshotResponse } = useTotalSupplyAt({
-    contractAddress: guildTokenAddress,
-    snapshotId: snapshotId?.toString() ?? null,
+  useListenToTokenTransfer(guildTokenAddress, () => {
+    refetchTotalLockedResponse();
+    refetchTotalSupplyAtSnapshotResponse();
   });
 
   return snapshotId?.toString()
@@ -56,10 +54,14 @@ export const useTotalLocked = (
         data: totalSupplyAtSnapshotResponse
           ? BigNumber.from(totalSupplyAtSnapshotResponse)
           : undefined,
+        refetchTotalSupplyAtSnapshotResponse,
+        ...totalSupplyAtSnapshotResponseRest,
       }
     : {
         data: totalLockedResponse
           ? BigNumber.from(totalLockedResponse)
           : undefined,
+        refetchTotalLockedResponse,
+        ...totalLockedResponseRest,
       };
 };

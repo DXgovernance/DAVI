@@ -1,8 +1,8 @@
-import useTotalLockedAt from 'Modules/Guilds/Hooks/useTotalLockedAt';
-import { useContractEvent, useContractRead } from 'wagmi';
+import { useContractRead } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
 import { useHookStoreProvider } from 'stores';
+import { useListenToLockAndWithdrawTokens } from '../../events/useListenToLockAndWithdrawTokens';
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 
 export const useTotalLocked = (
   guildAddress: string,
@@ -19,33 +19,30 @@ export const useTotalLocked = (
     proposalId,
   });
 
-  const { data: totalLockedResponse, refetch } = useContractRead({
+  const {
+    data: totalLockedResponse,
+    refetch: refetchGetTotalLocked,
+    ...totalLockedResponseRest
+  } = useContractRead({
     address: guildAddress,
-    abi: BaseERC20Guild.abi,
+    abi: SnapshotERC20Guild.abi,
     functionName: 'getTotalLocked',
   });
 
-  useContractEvent({
+  const {
+    data: totalLockedAtProposalSnapshotResponse,
+    refetch: refetchTotalLockedAt,
+    ...totalLockedAtProposalSnapshotResponseRest
+  } = useContractRead({
     address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensLocked',
-    listener() {
-      refetch();
-    },
+    abi: SnapshotERC20Guild.abi,
+    functionName: 'totalLockedAt',
+    args: [BigNumber.from(snapshotId ? snapshotId : '0')],
   });
 
-  useContractEvent({
-    address: guildAddress,
-    abi: BaseERC20Guild.abi,
-    eventName: 'TokensWithdrawn',
-    listener() {
-      refetch();
-    },
-  });
-
-  const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
-    contractAddress: guildAddress,
-    snapshotId: snapshotId?.toString() ?? null,
+  useListenToLockAndWithdrawTokens(guildAddress, () => {
+    refetchGetTotalLocked();
+    refetchTotalLockedAt();
   });
 
   return snapshotId?.toString()
@@ -53,10 +50,12 @@ export const useTotalLocked = (
         data: totalLockedAtProposalSnapshotResponse
           ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
           : undefined,
+        ...totalLockedAtProposalSnapshotResponseRest,
       }
     : {
         data: totalLockedResponse
           ? BigNumber.from(totalLockedResponse)
           : undefined,
+        ...totalLockedResponseRest,
       };
 };
