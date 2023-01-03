@@ -19,7 +19,11 @@ export const useTotalLocked = (
     proposalId,
   });
 
-  const { data: totalLockedResponse, refetch } = useContractRead({
+  const {
+    data: totalLockedResponse,
+    refetch,
+    ...totalLockedResponseRest
+  } = useContractRead({
     address: guildAddress,
     abi: BaseERC20Guild.abi,
     functionName: 'getTotalLocked',
@@ -43,7 +47,10 @@ export const useTotalLocked = (
     },
   });
 
-  const { data: totalLockedAtProposalSnapshotResponse } = useTotalLockedAt({
+  const {
+    data: totalLockedAtProposalSnapshotResponse,
+    ...totalLockedAtProposalSnapshotResponseRest
+  } = useTotalLockedAt({
     contractAddress: guildAddress,
     snapshotId: snapshotId?.toString() ?? null,
   });
@@ -53,10 +60,12 @@ export const useTotalLocked = (
         data: totalLockedAtProposalSnapshotResponse
           ? BigNumber.from(totalLockedAtProposalSnapshotResponse)
           : undefined,
+        ...totalLockedAtProposalSnapshotResponseRest,
       }
     : {
         data: totalLockedResponse
           ? BigNumber.from(totalLockedResponse)
           : undefined,
+        ...totalLockedResponseRest,
       };
 };
