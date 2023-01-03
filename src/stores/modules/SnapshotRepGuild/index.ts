@@ -1,7 +1,6 @@
 import { FullGovernanceImplementation } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
-import { useTotalLocked as useTotalLockedDefault } from './fetchers/subgraphSnapshotRep';
-import { useTotalLocked as useTotalLockedFallback } from './fetchers/wagmiSnapshotRep';
+import { useTotalLocked } from './fetchers/wagmiSnapshotRep';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementation> =
@@ -17,12 +16,12 @@ export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementati
         default: {
           useProposal,
           useSnapshotId,
-          useTotalLocked: useTotalLockedDefault,
+          useTotalLocked,
         },
         fallback: {
           useProposal,
           useSnapshotId,
-          useTotalLocked: useTotalLockedFallback,
+          useTotalLocked,
         },
       },
       writers: null,
