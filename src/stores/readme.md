@@ -84,10 +84,11 @@ Each governance module has this structure:
 1. Copy the hook file to the appropiate folder:
    - `[implementationName] > fetchers > [fetchingImplementation]`
    - `[implementationName] > writers`
-2. Export the hook in the `index.ts` file
-3. In `types.ts` add the new hook to `HooksInterfaceWithFallback`, with the corresponding type
-4. In `[implementationName] > index.ts`: import the hook and add it to `hooks > fetchers > [default | fallback]` key of the exported governance interface
-5. Find every file where the hook is used and:
+2. Extract the events onto their own hook, with the name: `useListenToEventDescription`. Save it in the `[implementationName] > events` folder
+3. Export the hook in the `index.ts` file
+4. In `types.ts` add the new hook to `HooksInterfaceWithFallback`, with the corresponding type
+5. In `[implementationName] > index.ts`: import the hook and add it to `hooks > fetchers > [default | fallback]` key of the exported governance interface
+6. Find every file where the hook is used and:
 
    1. Delete the previous hook import
    2. Add
@@ -106,8 +107,8 @@ Each governance module has this structure:
       } = useHookStoreProvider();
       ```
 
-6. Delete the old hook file
-7. Run `yarn test` to check for broken tests due to lack of context setup
+7. Delete the old hook file
+8. Run `yarn test` to check for broken tests due to lack of context setup
 
 ## Adding a new governance system
 
