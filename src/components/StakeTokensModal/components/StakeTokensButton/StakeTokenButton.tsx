@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { MAX_UINT } from 'utils';
+// import { MAX_UINT } from 'utils';
 // import { formatUnits } from 'ethers/lib/utils';
 import { Loading } from 'components/primitives/Loading';
 import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
@@ -13,7 +13,6 @@ const StakeTokensButton = ({
   token,
   guild,
   isStakeAmountValid,
-  createTransaction,
 }: StakeTokenButtonProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -21,7 +20,7 @@ const StakeTokensButton = ({
 
   const {
     hooks: {
-      writers: { useLockTokens },
+      writers: { useLockTokens, useApproveTokens },
     },
     daoId,
   } = useHookStoreProvider();
@@ -33,6 +32,11 @@ const StakeTokensButton = ({
     token?.info.symbol
   );
 
+  const approveTokens = useApproveTokens(
+    guild?.config?.token,
+    guild?.config?.tokenVault
+  );
+
   useEffect(() => {
     if (
       stakeAmount &&
@@ -42,19 +46,15 @@ const StakeTokensButton = ({
       setApprovedTokenAllowance(true);
     }
   }, [token, stakeAmount, approvedTokenAllowance]);
+
   const handleLockTokens = async () => {
     if (!isStakeAmountValid) return;
-
     await lockTokens();
   };
 
   const approveTokenSpending = async () => {
     if (!isStakeAmountValid) return;
-
-    createTransaction(
-      `Approve ${token?.info?.symbol} token spending`,
-      async () => token?.contract.approve(guild?.config?.tokenVault, MAX_UINT)
-    );
+    await approveTokens();
   };
 
   return (

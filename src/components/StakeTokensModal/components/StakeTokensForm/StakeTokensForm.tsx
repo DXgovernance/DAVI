@@ -24,7 +24,6 @@ import { StakeTokensButton } from '../StakeTokensButton';
 const StakeTokensForm = ({
   token,
   userVotingPower,
-  createTransaction,
   guild,
   isRepGuild,
 }: StakeTokensFormsProps) => {
@@ -80,7 +79,6 @@ const StakeTokensForm = ({
       <StakeTokensButton
         isRepGuild={isRepGuild}
         isStakeAmountValid={isStakeAmountValid}
-        createTransaction={createTransaction}
         token={token}
         stakeAmount={stakeAmount}
         guild={guild}

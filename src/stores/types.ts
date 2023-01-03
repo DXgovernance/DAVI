@@ -2,7 +2,10 @@ import { BigNumber } from 'ethers';
 import { useProposal } from './modules/common/fetchers/useProposal';
 import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
 import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/default/useTotalLocked';
-import { useLockTokens } from './modules/SnapshotERC20Guild/writers';
+import {
+  useLockTokens,
+  useApproveTokens,
+} from './modules/SnapshotERC20Guild/writers';
 
 interface GovernanceCapabilities {
   votingPower: 'soulbound' | 'hybrid' | 'liquid';
@@ -37,6 +40,11 @@ export interface WriterHooksInteface {
     decimals?: number,
     symbol?: string
   ) => ReturnType<typeof useLockTokens>;
+  useApproveTokens: (
+    tokenAddress: `0x${string}`,
+    daoTokenVault: `0x${string}`,
+    amount?: string
+  ) => ReturnType<typeof useApproveTokens>;
 }
 
 // TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>

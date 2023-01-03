@@ -8,7 +8,12 @@ jest.mock('ipfs-only-hash', () => jest.fn());
 
 jest.mock('stores', () => ({
   useHookStoreProvider: () => ({
-    hooks: { writers: { useLockTokens: jest.fn() } },
+    hooks: {
+      writers: {
+        useLockTokens: jest.fn(),
+        useApproveTokens: jest.fn(),
+      },
+    },
   }),
 }));
 
