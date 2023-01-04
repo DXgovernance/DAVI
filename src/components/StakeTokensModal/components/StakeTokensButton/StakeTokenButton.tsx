@@ -25,17 +25,9 @@ const StakeTokensButton = ({
     daoId,
   } = useHookStoreProvider();
 
-  const lockTokens = useLockTokens(
-    daoId,
-    stakeAmount,
-    token?.info?.decimals,
-    token?.info.symbol
-  );
+  const lockTokens = useLockTokens(daoId);
 
-  const approveTokens = useApproveTokens(
-    guild?.config?.token,
-    guild?.config?.tokenVault
-  );
+  const approveTokens = useApproveTokens(guild?.config?.token);
 
   useEffect(() => {
     if (
@@ -49,12 +41,12 @@ const StakeTokensButton = ({
 
   const handleLockTokens = async () => {
     if (!isStakeAmountValid) return;
-    await lockTokens();
+    await lockTokens(stakeAmount, token?.info?.decimals, token?.info.symbol);
   };
 
   const approveTokenSpending = async () => {
     if (!isStakeAmountValid) return;
-    await approveTokens();
+    await approveTokens(guild?.config?.tokenVault);
   };
 
   return (

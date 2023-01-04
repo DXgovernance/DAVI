@@ -1,12 +1,7 @@
 import { BigNumber } from 'ethers';
 import { useProposal } from './modules/common/fetchers/useProposal';
 import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
-import { useCreateProposal } from './modules/common/writers';
 import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/default/useTotalLocked';
-import {
-  useLockTokens,
-  useApproveTokens,
-} from './modules/SnapshotERC20Guild/writers';
 
 interface GovernanceCapabilities {
   votingPower: 'soulbound' | 'hybrid' | 'liquid';
@@ -36,24 +31,27 @@ export interface FetcherHooksInterface {
 
 export interface WriterHooksInteface {
   useLockTokens: (
-    guildAddress: string,
+    guildAddress: string
+  ) => (
     stakeAmount: BigNumber,
     decimals?: number,
     symbol?: string
-  ) => ReturnType<typeof useLockTokens>;
+  ) => Promise<void>;
   useApproveTokens: (
-    tokenAddress: `0x${string}`,
-    daoTokenVault: `0x${string}`,
-    amount?: string
-  ) => ReturnType<typeof useApproveTokens>;
+    tokenAddress: `0x${string}`
+  ) => (daoTokenVault: string, amount?: string) => Promise<void>;
   useCreateProposal: (
     daoContractAdress: string
-  ) => ReturnType<typeof useCreateProposal>;
+  ) => (
+    title: string,
+    proposalData: any,
+    cb?: (error?: any, txtHash?: any) => void
+  ) => Promise<void>;
 }
 
 // TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>
 
-// TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not as a global hook
+// TODO: useSnapshotId and implementation-specific hooks should be removed when all the hooks are ported. That logic should only reside inside the implementation, not 1as a global hook
 
 interface HooksInterfaceWithFallback {
   fetchers: {

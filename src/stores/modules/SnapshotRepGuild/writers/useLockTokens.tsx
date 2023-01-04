@@ -1,16 +1,25 @@
 import { BigNumber } from 'ethers';
+import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { WriterHooksInteface } from 'stores/types';
 
-export const useLockTokens = (
-  guildAddress: string,
-  stakeAmount: BigNumber,
-  decimals: number = 18,
-  symbol: string = ''
-) => {
+type UseLockTokensInterface = WriterHooksInteface['useLockTokens'];
+
+export const useLockTokens: UseLockTokensInterface = (guildAddress: string) => {
   const { t } = useTranslation();
 
-  const methodNotSupported = async () =>
-    Promise.reject(t('hookStoreErrors.methodNotSupported'));
+  const methodNotSupported = useCallback(
+    async (
+      stakeAmount: BigNumber,
+      decimals: number = 18,
+      symbol: string = ''
+    ): Promise<void> => {
+      return new Promise((resolve, reject) => {
+        reject(t('hookStoreErrors.methodNotSupported'));
+      });
+    },
+    [t]
+  );
 
   return methodNotSupported;
 };
