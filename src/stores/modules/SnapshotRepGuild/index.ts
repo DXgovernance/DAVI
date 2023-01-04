@@ -2,10 +2,11 @@ import { FullGovernanceImplementation } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
 import { useTotalLocked } from './fetchers/wagmiSnapshotRep';
 import {
-  useLockTokens,
   useApproveTokens,
   useCreateProposal,
   useExecuteProposal,
+  useLockTokens,
+  useVoteOnProposal,
 } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
@@ -34,6 +35,7 @@ export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementati
         useCreateProposal,
         useExecuteProposal,
         useLockTokens,
+        useVoteOnProposal,
       },
     },
     capabilities: {

@@ -1,4 +1,3 @@
-import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
 import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
@@ -6,7 +5,6 @@ import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import useTimedRerender from 'hooks/Guilds/time/useTimedRerender';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { ProposalVoteCard } from 'components/ProposalVoteCard';
-import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useGuildImplementationTypeConfig from '../Hooks/useGuildImplementationType';
@@ -37,13 +35,10 @@ const ProposalVoteCardWrapper = () => {
     contractAddress: guildId,
     userAddress,
   });
-  const contract = useERC20Guild(guildId, true);
   const { data: snapshotId } = useSnapshotId({
     contractAddress: guildId,
     proposalId,
   });
-
-  const { createTransaction } = useTransactions();
 
   // Get voting power without fallbackSnapshotId
   const { data: votingPowerAtProposalSnapshot } = useVotingPowerOf({
@@ -78,9 +73,8 @@ const ProposalVoteCardWrapper = () => {
         percent: votingPowerPercent,
         atCurrentSnapshot: votingPowerAtProposalCurrentSnapshot,
       }}
-      contract={contract}
-      createTransaction={createTransaction}
       userVote={userVote}
+      votingMachineAddress={guildId}
     />
   );
 };

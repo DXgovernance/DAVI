@@ -2,10 +2,11 @@ import { FullGovernanceImplementation } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
 import { useTotalLocked } from './fetchers/default';
 import {
-  useLockTokens,
   useApproveTokens,
   useCreateProposal,
   useExecuteProposal,
+  useLockTokens,
+  useVoteOnProposal,
 } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
@@ -38,6 +39,7 @@ export const snapshotERC20GuildImplementation: Readonly<FullGovernanceImplementa
         useCreateProposal,
         useExecuteProposal,
         useLockTokens,
+        useVoteOnProposal,
       },
     },
     capabilities: {

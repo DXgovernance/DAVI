@@ -20,24 +20,30 @@ import {
   VoteOptionButton,
   VoteOptionsLabel,
 } from './ProposalVoteCard.styled';
-import { voteOnProposal, confirmVoteProposal } from './utils';
+import { checkVotingPower } from './utils';
 import { useTheme } from 'styled-components';
 import { hasVotingPowerProps, ProposalVoteCardProps } from './types';
 import { useTranslation } from 'react-i18next';
 import { getOptionLabel } from 'components/ProposalVoteCard/utils';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
+import { useHookStoreProvider } from 'stores';
 
 const ProposalVoteCard = ({
   voteData,
   proposal,
   votingPower,
   timestamp,
-  contract,
-  createTransaction,
   userVote,
+  votingMachineAddress,
 }: ProposalVoteCardProps) => {
   const theme = useTheme();
   const { t } = useTranslation();
+
+  const {
+    hooks: {
+      writers: { useVoteOnProposal },
+    },
+  } = useHookStoreProvider();
 
   const [isPercent, setIsPercent] = useState(true);
   const [selectedOption, setSelectedOption] = useState<BigNumber>();
@@ -46,6 +52,8 @@ const ProposalVoteCard = ({
     () => proposal?.endTime?.isAfter(moment(timestamp)),
     [proposal, timestamp]
   );
+
+  const voteOnProposal = useVoteOnProposal(votingMachineAddress);
 
   const votedOptionLabel = useMemo(() => {
     if (!userVote?.option) return null;
@@ -66,10 +74,11 @@ const ProposalVoteCard = ({
       hideProgressBar: true,
     });
 
-  const { hasNoVotingPower, hasVotingPowerAtCurrentSnapshot } = voteOnProposal({
-    votingPowerAtProposalSnapshot: votingPower?.atSnapshot,
-    votingPowerAtProposalCurrentSnapshot: votingPower?.atCurrentSnapshot,
-  });
+  const { hasNoVotingPower, hasVotingPowerAtCurrentSnapshot } =
+    checkVotingPower({
+      votingPowerAtProposalSnapshot: votingPower?.atSnapshot,
+      votingPowerAtProposalCurrentSnapshot: votingPower?.atCurrentSnapshot,
+    });
 
   const handleVoteOnProposal = ({
     hasNoVotingPower,
@@ -181,13 +190,13 @@ const ProposalVoteCard = ({
         isOpen={modalOpen}
         onDismiss={() => setModalOpen(false)}
         onConfirm={() => {
-          confirmVoteProposal({
-            proposal,
-            contract,
+          voteOnProposal(
+            proposal?.id,
             selectedOption,
-            userVotingPower: votingPower.userVotingPower,
-            createTransaction,
-          });
+            votingPower.userVotingPower,
+            proposal?.title
+          );
+
           setModalOpen(false);
           setSelectedOption(null);
         }}

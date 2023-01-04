@@ -1,6 +1,6 @@
-import { ConfirmVoteProposalProps, VoteOnProposalProps } from './types';
+import { VoteOnProposalProps } from './types';
 
-export const voteOnProposal = ({
+export const checkVotingPower = ({
   votingPowerAtProposalSnapshot,
   votingPowerAtProposalCurrentSnapshot,
 }: VoteOnProposalProps) => {
@@ -15,22 +15,6 @@ export const voteOnProposal = ({
     hasNoVotingPower,
     hasVotingPowerAtCurrentSnapshot,
   };
-};
-
-export const confirmVoteProposal = ({
-  proposal,
-  contract,
-  selectedOption,
-  userVotingPower,
-  createTransaction,
-  cb,
-}: ConfirmVoteProposalProps) => {
-  createTransaction(
-    `Vote on proposal ${proposal?.title}`,
-    async () => contract.setVote(proposal?.id, selectedOption, userVotingPower),
-    true,
-    cb
-  );
 };
 
 export const getOptionLabel = ({ metadata, optionKey, t }) => {

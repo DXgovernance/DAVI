@@ -50,6 +50,15 @@ export interface WriterHooksInteface {
     decimals?: number,
     symbol?: string
   ) => Promise<void>;
+  useVoteOnProposal: (
+    votingMachineAddress: string
+  ) => (
+    proposalId: string,
+    option: BigNumber,
+    votingPower: BigNumber,
+    title?: string,
+    cb?: (error?: any, txtHash?: any) => void
+  ) => Promise<void>;
 }
 
 // TODO: here, the types depend on a very specific return type of the hook. Maybe at some point this should change, or have our own defined return types instead of relying on ReturnType<typeof hook>

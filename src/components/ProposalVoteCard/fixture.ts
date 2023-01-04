@@ -1,5 +1,6 @@
 import { BigNumber } from 'ethers';
 import moment from 'moment';
+import { ANY_ADDRESS } from 'utils';
 
 const mockBignumber = BigNumber.from(100000000);
 const mockBigNumberOption = BigNumber.from(100000000000000);
@@ -36,13 +37,12 @@ export const mockProposalVoteCardProps = {
     atSnapshot: mockBignumber,
     atCurrentSnapshot: mockBignumber,
   },
-  contract: {} as any,
-  createTransaction: () => {},
   currentLockedPercent: 100,
   userVote: {
     option: '0',
     votingPower: BigNumber.from(100000000),
   },
+  votingMachineAddress: ANY_ADDRESS,
 };
 
 export const mockVoteResults = {
