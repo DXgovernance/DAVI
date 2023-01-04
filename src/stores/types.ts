@@ -30,22 +30,25 @@ export interface FetcherHooksInterface {
 }
 
 export interface WriterHooksInteface {
+  useApproveTokens: (
+    tokenAddress: `0x${string}`
+  ) => (daoTokenVault: string, amount?: string) => Promise<void>;
+  useCreateProposal: (
+    daoId: string
+  ) => (
+    title: string,
+    proposalData: any,
+    cb?: (error?: any, txtHash?: any) => void
+  ) => Promise<void>;
+  useExecuteProposal: (
+    daoId: string
+  ) => (proposalId: `0x${string}`) => Promise<void>;
   useLockTokens: (
     guildAddress: string
   ) => (
     stakeAmount: BigNumber,
     decimals?: number,
     symbol?: string
-  ) => Promise<void>;
-  useApproveTokens: (
-    tokenAddress: `0x${string}`
-  ) => (daoTokenVault: string, amount?: string) => Promise<void>;
-  useCreateProposal: (
-    daoContractAdress: string
-  ) => (
-    title: string,
-    proposalData: any,
-    cb?: (error?: any, txtHash?: any) => void
   ) => Promise<void>;
 }
 

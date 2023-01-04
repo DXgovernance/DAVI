@@ -3,17 +3,10 @@ import '@testing-library/jest-dom';
 import { ExecuteButton } from './ExecuteButton';
 import { render } from 'utils/tests';
 
-let mockedIsExecutable = true;
 let mockedExecuteProposal = jest.fn();
-jest.mock('hooks/Guilds/useExecutable', () => ({
-  __esModule: true,
-  default: () => ({
-    data: {
-      isExecutable: mockedIsExecutable,
-      executeProposal: mockedExecuteProposal,
-    },
-    loading: false,
-    error: null,
+jest.mock('stores', () => ({
+  useHookStoreProvider: () => ({
+    hooks: { writers: { useExecuteProposal: mockedExecuteProposal } },
   }),
 }));
 

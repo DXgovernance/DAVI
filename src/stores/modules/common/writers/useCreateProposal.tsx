@@ -6,9 +6,9 @@ import { WriterHooksInteface } from 'stores/types';
 type UseCreateProposalInterface = WriterHooksInteface['useCreateProposal'];
 
 export const useCreateProposal: UseCreateProposalInterface = (
-  daoContractAdress: string
+  daoId: string
 ) => {
-  const guildContract = useERC20Guild(daoContractAdress);
+  const guildContract = useERC20Guild(daoId);
   const { createTransaction } = useTransactions();
 
   const handleCreateProposal = useCallback(
