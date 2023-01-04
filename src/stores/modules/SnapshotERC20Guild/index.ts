@@ -1,6 +1,6 @@
 import { FullGovernanceImplementation } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
-import { useTotalLocked } from './fetchers/default';
+import { useTotalLocked } from './fetchers/rpc';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 /* 

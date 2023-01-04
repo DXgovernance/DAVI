@@ -1,6 +1,6 @@
 import { useProposal } from './modules/common/fetchers/useProposal';
 import { useSnapshotId } from './modules/common/fetchers/useSnapshotId';
-import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/default/useTotalLocked';
+import { useTotalLocked } from './modules/SnapshotERC20Guild/fetchers/rpc/useTotalLocked';
 
 interface GovernanceCapabilities {
   votingPower: 'soulbound' | 'hybrid' | 'liquid';
