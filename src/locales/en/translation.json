@@ -317,5 +317,6 @@
   "postOptions": {
     "edit": "Edit",
     "delete": "Delete"
-  }
+  },
+  "loadingDao": "Loading DAO"
 }

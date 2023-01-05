@@ -47,6 +47,12 @@ jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: mockChain, chains: [mockChain] }),
 }));
 
+jest.mock('provider/ReadOnlyConnector', () => ({
+  READ_ONLY_CONNECTOR_ID: 'readOnly',
+}));
+
+jest.mock('contexts/Guilds/orbis', () => ({}));
+
 describe('ProposalCardWinningOption', () => {
   it('renders properly with one action', () => {
     const { container } = render(

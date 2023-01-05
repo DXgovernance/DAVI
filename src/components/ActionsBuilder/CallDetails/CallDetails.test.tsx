@@ -53,6 +53,12 @@ jest.mock('wagmi', () => ({
   }),
 }));
 
+jest.mock('provider/ReadOnlyConnector', () => ({
+  READ_ONLY_CONNECTOR_ID: 'readOnly',
+}));
+
+jest.mock('contexts/Guilds/orbis', () => ({}));
+
 describe('CallDetails', () => {
   it('Should match', () => {
     const { container } = render(<CallDetails decodedCall={decodedCallMock} />);

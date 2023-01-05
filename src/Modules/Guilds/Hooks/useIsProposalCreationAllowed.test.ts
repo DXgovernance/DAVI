@@ -8,8 +8,15 @@ const mockBigNumber = (value: number) => BigNumber.from(value);
 
 const mockAddress = ZERO_ADDRESS;
 jest.mock('wagmi', () => ({
+  chain: {},
   useAccount: () => ({ address: mockAddress }),
 }));
+
+jest.mock('provider/ReadOnlyConnector', () => ({
+  READ_ONLY_CONNECTOR_ID: 'readOnly',
+}));
+
+jest.mock('contexts/Guilds/orbis', () => ({}));
 
 describe('useIsProposalCreationAllowed', () => {
   it('should return true if it has more voting power than required', async () => {

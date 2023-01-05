@@ -4,6 +4,7 @@ import { SHA256, enc } from 'crypto-js';
 import { useMatch } from 'react-router-dom';
 import { GovernanceTypeInterface, HookStoreContextInterface } from './types';
 import { governanceInterfaces } from './governanceInterfaces';
+import { LoadingPage } from 'components/LoadingPage';
 
 export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 
@@ -121,10 +122,8 @@ export const HookStoreProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [governanceType, useDefaultDataSource]);
 
-  // TODO: Make a better loading screen
-
   return isLoading ? (
-    <>Loading...</>
+    <LoadingPage />
   ) : (
     <HookStoreContext.Provider value={{ ...governanceType, isLoading, daoId }}>
       {children}

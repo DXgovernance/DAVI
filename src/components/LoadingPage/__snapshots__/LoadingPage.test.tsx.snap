@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingPage should match snapshot 1`] = `
+.c8 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  border: 1px solid #303338;
+  background-color: #295FF4;
+  color: #fff;
+  border-radius: 32px;
+  padding: 0.5rem 0.8rem;
+  margin: 0.2rem;
+  width: auto;
+}
+
+.c8:disabled {
+  color: initial;
+  opacity: 0.4;
+  cursor: auto;
+}
+
+.c8:hover:enabled {
+  border-color: #fff;
+}
+
+.c8:active:enabled {
+  border: 1px solid #303338;
+}
+
+.c4 {
+  font-family: 'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.c1 {
+  box-sizing: 'border-box';
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.c2 {
+  width: 1200px;
+  max-width: calc(100% - 1.25rem);
+  margin: 0 auto;
+}
+
+.c10 {
+  -webkit-animation: fvtopB 1s cubic-bezier(0.42,0.8,0.6,0.83) infinite;
+  animation: fvtopB 1s cubic-bezier(0.42,0.8,0.6,0.83) infinite;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.c0 {
+  padding: 0.75rem 0;
+  max-height: 80px;
+  position: -webkit-sticky;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #1B1D1F;
+  z-index: 200;
+  border-bottom: 1px solid #303338;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0;
+  color: #fff;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-left: auto;
+}
+
+.c5 {
+  cursor: pointer;
+}
+
+.c6 {
+  width: 40%;
+  max-height: 50px;
+}
+
+.c9 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.c11 {
+  font-size: 1rem;
+}
+
+@media only screen and (min-width:768px) {
+  .c2 {
+    padding: 3rem 0rem;
+  }
+}
+
+@media only screen and(min-width:768px) {
+  .c0 {
+    padding: 1.5rem 0;
+  }
+}
+
+<div>
+   
+  <header
+    class="c0"
+  >
+    <div
+      class="c1 c2 c3"
+    >
+      <h2
+        class="c4 c5"
+        data-testid="project-name"
+        size="2"
+      >
+        <svg
+          class="c6"
+        >
+          project_davi_logo_white.svg
+        </svg>
+      </h2>
+      <div
+        class="c1 c7"
+      >
+        <button
+          class="c8"
+        >
+          notConnected
+        </button>
+        <button
+          class="c8"
+          data-testid="connect-wallet-btn"
+        >
+          connectWallet
+        </button>
+      </div>
+    </div>
+  </header>
+  <div
+    class="c1 c2"
+  >
+    <div
+      class="c9"
+    >
+      <div
+        class=""
+      >
+        <div
+          class="c10"
+        >
+          <svg
+            fill="currentColor"
+            height="80"
+            stroke="currentColor"
+            stroke-width="0"
+            viewBox="0 0 1024 1024"
+            width="80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+            />
+          </svg>
+        </div>
+      </div>
+      <p
+        class="c11"
+      >
+        loadingDao
+      </p>
+    </div>
+  </div>
+   
+</div>
+`;
