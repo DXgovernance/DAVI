@@ -61,7 +61,7 @@ const ProposalPage: React.FC = () => {
   const { options } = useProposalCalls(guildId, proposalId);
   const { data: guildConfig } = useGuildConfig(guildId);
   const { loaded } = useGuildImplementationTypeConfig(guildId);
-  const { context } = useDiscussionContext(`DAVI-${guildId}-${proposalId}`);
+  const { context } = useDiscussionContext(`${guildId}-${proposalId}`);
 
   const { data: metadata, error: metadataError } = useProposalMetadata(
     guildId,
