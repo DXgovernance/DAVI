@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import { MAX_UINT } from 'utils';
-// import { formatUnits } from 'ethers/lib/utils';
 import { Loading } from 'components/primitives/Loading';
 import { ActionButton } from '../StakeTokensForm/StakeTokensForm.styled';
 import { StakeTokenButtonProps } from '../../types';
@@ -26,7 +24,6 @@ const StakeTokensButton = ({
   } = useHookStoreProvider();
 
   const lockTokens = useLockTokens(daoId);
-
   const approveTokens = useApproveTokens(guild?.config?.token);
 
   useEffect(() => {
@@ -44,7 +41,7 @@ const StakeTokensButton = ({
     await lockTokens(stakeAmount, token?.info?.decimals, token?.info.symbol);
   };
 
-  const approveTokenSpending = async () => {
+  const handleApproveTokenSpending = async () => {
     if (!isStakeAmountValid) return;
     await approveTokens(guild?.config?.tokenVault);
   };
@@ -66,7 +63,7 @@ const StakeTokensButton = ({
         ) : (
           <ActionButton
             disabled={!isStakeAmountValid}
-            onClick={approveTokenSpending}
+            onClick={handleApproveTokenSpending}
             data-testid="approve-token-spending"
           >
             {t('approve')}{' '}
