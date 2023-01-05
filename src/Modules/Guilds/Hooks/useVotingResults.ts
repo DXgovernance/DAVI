@@ -1,11 +1,9 @@
+import { useMemo } from 'react';
+import { BigNumber } from 'ethers';
+import { useHookStoreProvider } from 'stores';
 import { ERC20Info, useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useGuildConfig } from 'Modules/Guilds/Hooks/useGuildConfig';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import { BigNumber } from 'ethers';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
-import { useMemo } from 'react';
 
 export interface VoteData {
   options: { [name: string]: BigNumber };
@@ -18,6 +16,11 @@ export const useVotingResults = (
   optionalGuildId?: string,
   optionalProposalId?: `0x${string}`
 ): VoteData => {
+  const {
+    hooks: {
+      fetchers: { useProposal, useTotalLocked },
+    },
+  } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
 
   // swr hooks
@@ -26,11 +29,6 @@ export const useVotingResults = (
     optionalProposalId || proposalId
   );
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId: proposal?.id,
-  });
-
   const { data } = useGuildConfig(
     optionalGuildId || guildId,
     optionalProposalId || proposalId
@@ -38,7 +36,10 @@ export const useVotingResults = (
 
   const { data: tokenInfo } = useERC20Info(data?.token);
 
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(
+    guildId,
+    optionalProposalId || proposalId
+  );
 
   const voteData = useMemo(() => {
     if (!proposal || !data || !tokenInfo) return undefined;

@@ -1,7 +1,5 @@
 import { useMemo } from 'react';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
+import { useHookStoreProvider } from 'stores';
 
 import { getBigNumberPercentage } from 'utils/bnPercentage';
 
@@ -10,14 +8,14 @@ export default function useVoteSummary(
   guildId: string,
   proposalId: `0x${string}`
 ): number[] {
+  const {
+    hooks: {
+      fetchers: { useProposal, useTotalLocked },
+    },
+  } = useHookStoreProvider();
   const { data: { totalVotes } = {} } = useProposal(guildId, proposalId);
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId,
-  });
-
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(guildId, proposalId);
 
   const votes = useMemo(() => {
     if (totalVotes && totalLocked) {

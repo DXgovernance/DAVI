@@ -1,7 +1,5 @@
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import useProposalMetadata from 'hooks/Guilds/useProposalMetadata';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
 import { useVotingResults } from 'Modules/Guilds/Hooks/useVotingResults';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
@@ -12,8 +10,14 @@ import { useTransactions } from 'contexts/Guilds';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useGuildImplementationTypeConfig from '../Hooks/useGuildImplementationType';
+import { useHookStoreProvider } from 'stores';
 
 const ProposalVoteCardWrapper = () => {
+  const {
+    hooks: {
+      fetchers: { useProposal, useSnapshotId },
+    },
+  } = useHookStoreProvider();
   const { guildId, proposalId } = useTypedParams();
   const { address: userAddress } = useAccount();
   const { data: proposal } = useProposal(guildId, proposalId);

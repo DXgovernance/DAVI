@@ -9,11 +9,17 @@ import { useERC20Balance } from 'hooks/Guilds/erc20/useERC20Balance';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useERC20, useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 import { useVotingPowerOf } from 'Modules/Guilds/Hooks/useVotingPowerOf';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
 import { useAccount } from 'wagmi';
+import { useHookStoreProvider } from 'stores';
 
 const StakeTokensModalWrapper = ({ isOpen, onDismiss }) => {
   const { guildId: guildAddress } = useTypedParams();
+
+  const {
+    hooks: {
+      fetchers: { useTotalLocked },
+    },
+  } = useHookStoreProvider();
 
   const { data: guildConfig } = useGuildConfig(guildAddress);
   const { data: tokenInfo } = useERC20Info(guildConfig?.token);

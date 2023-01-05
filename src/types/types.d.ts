@@ -82,7 +82,7 @@ declare global {
   }
 
   interface Proposal {
-    id: string;
+    id: `0x${string}`;
     scheme: string;
     title: string;
     to: string[];
