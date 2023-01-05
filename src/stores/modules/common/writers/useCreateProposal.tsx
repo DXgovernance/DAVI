@@ -1,13 +1,15 @@
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { WriterHooksInteface } from 'stores/types';
 import { useTransactions } from 'contexts/Guilds';
 import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { useCallback } from 'react';
-import { WriterHooksInteface } from 'stores/types';
 
 type UseCreateProposalInterface = WriterHooksInteface['useCreateProposal'];
 
 export const useCreateProposal: UseCreateProposalInterface = (
   daoId: string
 ) => {
+  const { t } = useTranslation();
   const guildContract = useERC20Guild(daoId);
   const { createTransaction } = useTransactions();
 
@@ -21,7 +23,7 @@ export const useCreateProposal: UseCreateProposalInterface = (
         proposalData;
 
       createTransaction(
-        `Create proposal ${title}`,
+        `${t('createProposal')} ${title}`,
         async () => {
           return guildContract.createProposal(
             toArray,
@@ -36,7 +38,7 @@ export const useCreateProposal: UseCreateProposalInterface = (
         cb
       );
     },
-    [guildContract, createTransaction]
+    [guildContract, createTransaction, t]
   );
 
   return handleCreateProposal;
