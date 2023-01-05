@@ -178,15 +178,15 @@ async function main() {
         distribution: [
           {
             address: accounts[0],
-            amount: web3.utils.toWei('320'),
+            amount: web3.utils.toWei('3200000'),
           },
           {
             address: accounts[1],
-            amount: web3.utils.toWei('50'),
+            amount: web3.utils.toWei('500000'),
           },
           {
             address: accounts[2],
-            amount: web3.utils.toWei('10'),
+            amount: web3.utils.toWei('100000'),
           },
         ],
       },
@@ -198,15 +198,15 @@ async function main() {
         distribution: [
           {
             address: accounts[0],
-            amount: web3.utils.toWei('100'),
+            amount: web3.utils.toWei('100000'),
           },
           {
             address: accounts[1],
-            amount: web3.utils.toWei('50'),
+            amount: web3.utils.toWei('50000'),
           },
           {
             address: accounts[2],
-            amount: web3.utils.toWei('10'),
+            amount: web3.utils.toWei('10000'),
           },
         ],
       },
@@ -218,15 +218,15 @@ async function main() {
         distribution: [
           {
             address: accounts[0],
-            amount: web3.utils.toWei('200'),
+            amount: web3.utils.toWei('200000'),
           },
           {
             address: accounts[1],
-            amount: web3.utils.toWei('40'),
+            amount: web3.utils.toWei('40000'),
           },
           {
             address: accounts[2],
-            amount: web3.utils.toWei('100'),
+            amount: web3.utils.toWei('100000'),
           },
         ],
       },
@@ -244,8 +244,8 @@ async function main() {
         name: 'DXDGuild',
         proposalTime: moment.duration(10, 'minutes').asSeconds(),
         timeForExecution: moment.duration(50, 'minutes').asSeconds(),
-        votingPowerPercentageForProposalExecution: '30',
-        votingPowerPercentageForProposalCreation: '1',
+        votingPowerPercentageForProposalExecution: '3000',
+        votingPowerPercentageForProposalCreation: '100',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '9999',
@@ -257,8 +257,8 @@ async function main() {
         name: 'REPGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(2, 'minutes').asSeconds(),
-        votingPowerPercentageForProposalExecution: '50',
-        votingPowerPercentageForProposalCreation: '5',
+        votingPowerPercentageForProposalExecution: '5000',
+        votingPowerPercentageForProposalCreation: '500',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '5',
@@ -270,8 +270,8 @@ async function main() {
         name: 'SWPRGuild',
         proposalTime: moment.duration(5, 'minutes').asSeconds(),
         timeForExecution: moment.duration(60, 'minutes').asSeconds(),
-        votingPowerPercentageForProposalExecution: '30',
-        votingPowerPercentageForProposalCreation: '5',
+        votingPowerPercentageForProposalExecution: '3000',
+        votingPowerPercentageForProposalCreation: '500',
         voteGas: '0',
         maxGasPrice: '0',
         maxActiveProposals: '999',
@@ -1004,6 +1004,34 @@ async function main() {
       networkContracts.addresses.REPGuild,
       networkContracts.addresses.SWPRGuild,
     ],
+    networkOptions: [
+      'Ethereum',
+      'Goerli',
+      'Arbitrum One',
+      'Arbitrum Goerli',
+      'Gnosis',
+      'Localhost',
+    ],
+    walletOptions: ['MetaMask', 'WalletConnect', 'Coinbase Wallet'],
+    stateFilterOptions: [
+      'Active',
+      'Executable',
+      'Executed',
+      'Rejected',
+      'Failed',
+      'Finished',
+    ],
+    actionFilterOptions: [
+      'Native Transfer',
+      'Erc20 Transfer',
+      'Rep Mint',
+      'Generic Call',
+      'Set Permissions',
+      'Ens Update Content',
+      'Raw Transaction',
+      'Set Guild Config',
+    ],
+    currencyFilterOptions: ['DXD', 'RGT', 'SWPR'],
   };
 
   await hre.run('actions-dxdao-contracts', {

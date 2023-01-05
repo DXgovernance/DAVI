@@ -13,12 +13,7 @@ import useActiveProposalsNow from 'Modules/Guilds/Hooks/useGuildActiveProposals'
 import { useTypedParams } from '../../Hooks/useTypedParams';
 import { UnstyledLink } from 'components/primitives/Links';
 import { Button } from 'components/primitives/Button';
-import {
-  ProposalsList,
-  StyledButton,
-  StyledHeading,
-  StyledLink,
-} from './Governance.styled';
+import { ProposalsList, StyledHeading, StyledLink } from './Governance.styled';
 import { ProposalState } from 'types/types.guilds.d';
 import Discussions from 'Modules/Social/Discussions';
 import useIsProposalCreationAllowed from 'Modules/Guilds/Hooks/useIsProposalCreationAllowed';
@@ -94,35 +89,22 @@ const Governance = ({ guildId }) => {
           placeholder={t('searchTitleEnsAddress')}
         />
         {isProposalCreationAllowed && (
-          <UnstyledLink to={`/${chainName}/${guildId}/create-proposal`}>
-            <StyledButton
-              variant="secondary"
-              data-testid="create-proposal-button"
-            >
-              {t('createProposal')}
-            </StyledButton>
+          <UnstyledLink to={`/${chainName}/${guildId}/create`}>
+            <Button variant="secondary" data-testid="create-discussion-button">
+              {t('forum.createDiscussion')}
+            </Button>
           </UnstyledLink>
-        )}
-        {process.env.NODE_ENV !== 'production' && (
-          <>
-            /
-            <UnstyledLink to={`/${chainName}/${guildId}/create`}>
-              <Button
-                variant="secondary"
-                data-testid="create-discussion-button"
-              >
-                {t('forum.createDiscussion')}
-              </Button>
-            </UnstyledLink>
-          </>
         )}
       </Flex>
       <ProposalsList data-testid="proposals-list">
         <StyledHeading size={2}>{t('proposals')}</StyledHeading>
         {activeProposals && activeProposals._hex === '0x00' && (
-          <div>
+          <div data-testid="no-active-proposals-message">
             {t('noActiveProposalsMessage')}.{' '}
-            <StyledLink to={`/${chainName}/${guildId}/all-proposals`}>
+            <StyledLink
+              data-testid="all-proposals-hyperlink"
+              to={`/${chainName}/${guildId}/all-proposals`}
+            >
               {t('goToAllProposalsPage')}.
             </StyledLink>
           </div>
@@ -143,12 +125,10 @@ const Governance = ({ guildId }) => {
           </>
         )}
       </ProposalsList>
-      {process.env.NODE_ENV !== 'production' && (
-        <ProposalsList>
-          <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
-          <Discussions />
-        </ProposalsList>
-      )}
+      <ProposalsList>
+        <StyledHeading size={2}>{t('forum.discussions_other')}</StyledHeading>
+        <Discussions />
+      </ProposalsList>
     </>
   );
 };

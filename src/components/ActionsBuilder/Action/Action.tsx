@@ -7,7 +7,7 @@ import { Call, DecodedAction } from '../types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { useDecodedCall } from 'hooks/Guilds/contracts/useDecodedCall';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
 import {
   CardActions,
@@ -24,12 +24,14 @@ import {
 } from './Action.styled';
 import { ConfirmRemoveActionModal } from '../ConfirmRemoveActionModal';
 import { ActionModal } from 'components/ActionsModal';
+import { Permission } from 'components/ActionsBuilder/types';
 import { preventEmptyString } from 'utils';
-
+import { useETHPermissions } from 'Modules/Guilds/Hooks/useETHPermissions';
 interface ActionViewProps {
   call?: Call;
   decodedAction?: DecodedAction;
   isEditable?: boolean;
+  permissionArgs?: Permission;
   onEdit?: (updatedCall: DecodedAction) => void;
   onRemove?: (updatedCall: DecodedAction) => void;
 }
@@ -39,10 +41,12 @@ export enum CardStatus {
   normal,
   simulationFailed,
   warning,
+  permissionDenied,
 }
 
 export const ActionRow: React.FC<ActionViewProps> = ({
   call,
+  permissionArgs,
   decodedAction,
   isEditable,
   onEdit,
@@ -58,9 +62,9 @@ export const ActionRow: React.FC<ActionViewProps> = ({
     isDragging,
   } = useSortable({ id: decodedAction?.id, disabled: !isEditable });
   const action = useDecodedCall(call);
-
   const decodedCall = action.decodedCall || decodedAction?.decodedCall;
   const approval = action.approval || decodedAction?.approval;
+  const permissions = useETHPermissions(permissionArgs);
 
   const [expanded, setExpanded] = useState(false);
   const [confirmRemoveActionModalIsOpen, setConfirmRemoveActionModalIsOpen] =
@@ -78,22 +82,50 @@ export const ActionRow: React.FC<ActionViewProps> = ({
 
   const cardStatus: CardStatus = useMemo(() => {
     if (isEditable && isDragging) return CardStatus.dragging;
-
     let hasValueTransferOnContractCall: boolean =
       decodedCall?.args && preventEmptyString(decodedCall?.value).gt(0);
 
-    if (!decodedCall || hasValueTransferOnContractCall)
-      return CardStatus.warning;
-
-    if (!decodedAction?.simulationResult) return CardStatus.normal;
-
-    if (decodedAction?.simulationResult.simulation.status === false) {
-      return CardStatus.simulationFailed;
+    if (permissions?.data === '0') {
+      return CardStatus.permissionDenied;
     }
 
-    return CardStatus.normal; // default return so ESLint doesn't complain
-  }, [decodedCall, decodedAction?.simulationResult, isEditable, isDragging]);
+    if (
+      !decodedCall ||
+      hasValueTransferOnContractCall ||
+      decodedCall.callType === 'RAW_TRANSACTION'
+    )
+      if (!decodedAction?.simulationResult) return CardStatus.normal;
 
+    if (decodedAction?.simulationResult?.simulation.status === false) {
+      return CardStatus.simulationFailed;
+    }
+    return CardStatus.normal; // default return so ESLint doesn't complain
+  }, [
+    decodedCall,
+    decodedAction?.simulationResult,
+    isEditable,
+    isDragging,
+    permissions,
+  ]);
+
+  useEffect(() => {
+    if (!onEdit || !decodedAction) return;
+    if (
+      cardStatus === CardStatus.permissionDenied &&
+      decodedAction.actionDenied === true
+    )
+      return;
+    if (
+      cardStatus !== CardStatus.permissionDenied &&
+      decodedAction.actionDenied === false
+    )
+      return;
+
+    return onEdit({
+      ...decodedAction,
+      actionDenied: cardStatus === CardStatus.permissionDenied,
+    });
+  }, [cardStatus, onEdit, decodedAction]);
   return (
     <CardWrapperWithMargin
       cardStatus={cardStatus}
@@ -108,7 +140,7 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           {InfoLine && (
             <InfoLine decodedCall={decodedCall} approveSpendTokens={approval} />
           )}
-          {!decodedCall && <UndecodableCallInfoLine />}
+          {!decodedCall && <UndecodableCallInfoLine call={call} />}
         </CardLabel>
         <CardActions>
           {isEditable && (
@@ -151,6 +183,19 @@ export const ActionRow: React.FC<ActionViewProps> = ({
               <Separator />
             </>
           )}
+          {cardStatus === CardStatus.permissionDenied && (
+            <>
+              <DetailWrapper>
+                <SectionHeader>
+                  {t('permissions.permissionDenied')}
+                </SectionHeader>
+                <SectionBody>
+                  {t('permissions.permissionDeniedMessage')}
+                </SectionBody>
+              </DetailWrapper>
+              <Separator />
+            </>
+          )}
           <DetailWrapper>
             {decodedCall ? (
               <CallDetails
@@ -179,7 +224,9 @@ export const ActionRow: React.FC<ActionViewProps> = ({
           isOpen={isEditActionModalOpen}
           setIsOpen={setIsEditActionModalOpen}
           action={decodedAction}
-          onAddAction={onEdit}
+          onAddActions={null}
+          onEditAction={onEdit}
+          isEditing={true}
         />
       )}
     </CardWrapperWithMargin>

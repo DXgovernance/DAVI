@@ -69,6 +69,7 @@ const FilterMenu = () => {
     <FilterButtons>
       <DropdownMenu ref={stateRef} position={DropdownPosition.BottomRight}>
         <FilterButton
+          data-testid="state-filter-btn"
           iconRight
           onClick={() => {
             setShowState(!showState);
@@ -89,6 +90,7 @@ const FilterMenu = () => {
             {Object.values(ProposalState).map(state => {
               return (
                 <DropdownMenuItem
+                  data-testid="state-dropdown-option"
                   key={state}
                   onClick={() => onToggleState(state)}
                 >
@@ -106,7 +108,11 @@ const FilterMenu = () => {
       </DropdownMenu>
 
       <DropdownMenu ref={typeRef} position={DropdownPosition.BottomRight}>
-        <FilterButton iconRight onClick={() => setShowType(!showType)}>
+        <FilterButton
+          data-testid="action-filter-btn"
+          iconRight
+          onClick={() => setShowType(!showType)}
+        >
           {t('actions_one')} <FiChevronDown />
         </FilterButton>
         <DropdownContent fullScreenMobile={true} show={showType}>
@@ -121,6 +127,7 @@ const FilterMenu = () => {
           <Menu>
             {Object.values(SupportedAction).map(action => (
               <DropdownMenuItem
+                data-testid="action-dropdown-option"
                 key={action}
                 onClick={() => onToggleActionType(action)}
               >
@@ -140,6 +147,7 @@ const FilterMenu = () => {
       {tokens?.length && (
         <DropdownMenu ref={currencyRef} position={DropdownPosition.BottomRight}>
           <FilterButton
+            data-testid="currency-filter-btn"
             iconRight
             onClick={() => setShowCurrency(!showCurrency)}
           >
@@ -158,6 +166,7 @@ const FilterMenu = () => {
               {tokens.map(token => {
                 return (
                   <DropdownMenuItem
+                    data-testid="currency-dropdown-option"
                     onClick={() => onToggleCurrency(token.address)}
                     key={token.address}
                   >

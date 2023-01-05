@@ -59,6 +59,7 @@ export const AddEditOptionModal: React.FC<AddEditOptionModalProps> = ({
         label,
         color: theme?.colors?.votes?.[options.length + 1],
         decodedActions: [],
+        permissions: [],
       },
     ];
     onChange(newOptions);

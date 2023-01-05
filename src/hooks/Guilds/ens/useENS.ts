@@ -3,7 +3,11 @@ import useAddressFromENSName from './useAddressFromENSName';
 import useENSNameFromAddress from './useENSNameFromAddress';
 
 export default function useENS(nameOrAddress: string, chainId?: number) {
-  const validAddress = isAddress(nameOrAddress);
+  const validAddress = isAddress(
+    nameOrAddress?.endsWith('.eth')
+      ? nameOrAddress.substring(0, nameOrAddress.length - 4)
+      : nameOrAddress
+  );
   const validENS = nameOrAddress?.endsWith('.eth');
   const resolvedAddress = useAddressFromENSName(
     !validAddress && validENS ? nameOrAddress : undefined,

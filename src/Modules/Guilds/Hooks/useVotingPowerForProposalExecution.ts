@@ -3,12 +3,12 @@ import { BigNumber } from 'ethers';
 import { useContractRead } from 'wagmi';
 import { ReadContractConfig } from '@wagmi/core';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
+// import { WagmiUseContractReadResponse } from 'Modules/Guilds/Hooks/types';
 import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import BaseERC20GuildContract from 'contracts/BaseERC20Guild.json';
-import SnapshotERC20Guild from 'contracts/SnapshotERC20Guild.json';
-import SnapshotRepERC20Guild from 'contracts/SnapshotRepERC20Guild.json';
+import { BaseERC20Guild } from 'contracts/ts-files/BaseERC20Guild';
+import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
+import { SnapshotRepERC20Guild } from 'contracts/ts-files/SnapshotRepERC20Guild';
 
 /**
  * -  BaseERC20GuildContract
@@ -23,7 +23,7 @@ import SnapshotRepERC20Guild from 'contracts/SnapshotRepERC20Guild.json';
 
 interface UseVotingPowerForProposalExecutionProps {
   contractAddress: string;
-  proposalId?: string;
+  proposalId?: `0x${string}`;
 }
 interface GetConfigArgs {
   isRepGuild: boolean;
@@ -43,31 +43,32 @@ const getConfig = ({
 }: GetConfigArgs): ReadContractConfig => {
   const baseErc20Config = {
     enabled: !!contractAddress,
-    addressOrName: contractAddress,
-    contractInterface: BaseERC20GuildContract.abi,
+    address: contractAddress,
+    abi: BaseERC20Guild.abi,
     functionName: 'getVotingPowerForProposalExecution',
+    args: [],
   };
 
   const snapshotConfig = {
     enabled: !!contractAddress && !!snapshotId,
-    addressOrName: contractAddress,
-    contractInterface: SnapshotERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotERC20Guild.abi,
     functionName: 'getVotingPowerForProposalExecution(uint256)',
     args: [snapshotId?.toString()],
   };
 
   const snapshotRepConf = {
     enabled: !!contractAddress && !!proposalId,
-    addressOrName: contractAddress,
-    contractInterface: SnapshotRepERC20Guild.abi,
+    address: contractAddress,
+    abi: SnapshotRepERC20Guild.abi,
     functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
     args: [proposalId],
   };
 
   const stillLoadingConf = {
     enabled: false,
-    addressOrName: null,
-    contractInterface: SnapshotRepERC20Guild.abi,
+    address: null,
+    abi: SnapshotRepERC20Guild.abi,
     functionName: 'getSnapshotVotingPowerForProposalExecution(bytes32)',
     args: [proposalId],
   };
@@ -82,13 +83,13 @@ const getConfig = ({
 export const useVotingPowerForProposalExecution = ({
   contractAddress,
   proposalId: proposalIdProp,
-}: UseVotingPowerForProposalExecutionProps): WagmiUseContractReadResponse<BigNumber> => {
+}: UseVotingPowerForProposalExecutionProps): { data: BigNumber } => {
   const { isSnapshotGuild, isRepGuild, loaded } =
     useGuildImplementationType(contractAddress);
 
   const { proposalId: FALLBACK_PROPOSAL_ID } = useTypedParams();
 
-  const proposalId = proposalIdProp ?? FALLBACK_PROPOSAL_ID;
+  const proposalId: `0x${string}` = proposalIdProp ?? FALLBACK_PROPOSAL_ID;
   const { data: snapshotId } = useSnapshotId({
     contractAddress,
     proposalId,
@@ -104,6 +105,7 @@ export const useVotingPowerForProposalExecution = ({
       proposalId,
     })
   );
+
   return useMemo(() => {
     return {
       data: data ? BigNumber.from(data) : null,

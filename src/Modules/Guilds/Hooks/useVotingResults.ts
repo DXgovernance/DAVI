@@ -16,7 +16,7 @@ export interface VoteData {
 
 export const useVotingResults = (
   optionalGuildId?: string,
-  optionalProposalId?: string
+  optionalProposalId?: `0x${string}`
 ): VoteData => {
   const { guildId, proposalId } = useTypedParams();
 

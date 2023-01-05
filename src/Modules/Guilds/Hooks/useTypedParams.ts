@@ -1,22 +1,26 @@
 import { useParams } from 'react-router-dom';
 
 interface TypedParams {
-  guildId: string;
-  proposalId: string;
+  guildId: `0x${string}`;
+  proposalId: `0x${string}`;
+  discussionId: `${string}`;
   proposalType: string;
   chainName: string;
 }
 
 export const useTypedParams = (): TypedParams => {
-  const { guildId, proposalId, proposalType, chainName } = useParams<{
-    guildId?: string;
-    proposalId?: string;
-    proposalType?: string;
-    chainName?: string;
-  }>();
+  const { guildId, proposalId, discussionId, proposalType, chainName } =
+    useParams<{
+      guildId?: `0x${string}`;
+      proposalId?: `0x${string}`;
+      discussionId?: `${string}`;
+      proposalType?: string;
+      chainName?: string;
+    }>();
   return {
     guildId,
     proposalId,
+    discussionId,
     proposalType,
     chainName,
   };

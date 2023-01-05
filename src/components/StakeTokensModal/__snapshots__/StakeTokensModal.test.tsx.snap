@@ -134,6 +134,7 @@ exports[`StakeTokensModal StakeTokensModal renders properly 1`] = `
           >
             <h2
               class="c4 c5"
+              data-testid="modal-title"
             >
               stakeTokens
             </h2>

@@ -20,7 +20,7 @@ const isApprovalData = (data: string) =>
 const isApprovalCall = (call: Call) => isApprovalData(call?.data);
 const isZeroHash = (data: string) => data === ZERO_HASH;
 
-const useProposalCalls = (guildId: string, proposalId: string) => {
+const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
   // Decode calls from existing proposal
   const { data: proposal } = useProposal(guildId, proposalId);
   const { data: metadata } = useProposalMetadata(guildId, proposalId);

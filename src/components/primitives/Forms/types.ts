@@ -4,4 +4,5 @@ export interface FormElementProps<T> {
   isInvalid?: boolean;
   name?: string;
   disabled?: boolean;
+  defaultValue?: string;
 }

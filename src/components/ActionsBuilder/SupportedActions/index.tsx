@@ -7,6 +7,7 @@ import {
 } from 'components/ActionsBuilder/types';
 import ENSPublicResolver from 'contracts/ENSPublicResolver.json';
 import ERC20 from 'contracts/ERC20.json';
+import BaseERC20Guild from 'contracts/BaseERC20Guild.json';
 import ERC20SnapshotRep from 'contracts/ERC20SnapshotRep.json';
 import PermissionRegistry from 'contracts/PermissionRegistry.json';
 import ERC20TransferEditor from './ERC20Transfer/ERC20TransferEditor';
@@ -19,7 +20,12 @@ import SetPermissionsInfoLine from './SetPermissions/SetPermissionsInfoLine';
 import UpdateENSContentEditor from './UpdateENSContent/UpdateENSContentEditor';
 import UpdateENSContentSummary from './UpdateENSContent/UpdateENSContentSummary';
 import UpdateENSContentInfoLine from './UpdateENSContent/UpdateENSContentInfoLine';
+import SetGuildConfigInfoLine from './SetGuildConfig/SetGuildConfigInfoLine';
+import SetGuildConfigEditor from './SetGuildConfig/SetGuildConfigEditor';
 import Summary from './common/Summary';
+import RawTransactionEditor from './RawTransaction/RawTransactionEditor';
+import RawTransactionInfoLine from './RawTransaction/RawTransactionInfoLine';
+
 export interface SupportedActionMetadata {
   title: string;
 }
@@ -32,7 +38,8 @@ export interface ActionViewProps {
 
 export interface ActionEditorProps extends ActionViewProps {
   updateCall?: (updatedCall: DecodedCall) => void;
-  onSubmit: (decodedCall: DecodedCall) => void;
+  onSubmit: (decodedCall: DecodedCall[]) => void;
+  isEdit?: boolean;
 }
 
 type SupportedActionViews = {
@@ -49,13 +56,13 @@ export const supportedActions: Record<
   SupportedActionViews & SupportedActionEditors & SupportedActionMetadata
 > = {
   [SupportedAction.NATIVE_TRANSFER]: {
-    title: 'Transfers & Mint',
+    title: 'Transfer',
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
   },
   [SupportedAction.ERC20_TRANSFER]: {
-    title: 'Transfers & Mint',
+    title: 'Transfer',
     infoLineView: ERC20TransferInfoLine,
     summaryView: Summary,
     editor: ERC20TransferEditor,
@@ -84,8 +91,20 @@ export const supportedActions: Record<
     summaryView: UpdateENSContentSummary,
     editor: UpdateENSContentEditor,
   },
+  [SupportedAction.RAW_TRANSACTION]: {
+    title: 'Raw Transaction',
+    infoLineView: RawTransactionInfoLine,
+    editor: RawTransactionEditor,
+  },
+  [SupportedAction.SET_GUILD_CONFIG]: {
+    title: 'Set Guild Config',
+    infoLineView: SetGuildConfigInfoLine,
+    summaryView: Summary,
+    editor: SetGuildConfigEditor,
+  },
 };
 const ERC20Contract = new utils.Interface(ERC20.abi);
+const BaseERC20GuildContract = new utils.Interface(BaseERC20Guild.abi);
 const ERC20SnapshotRepContract = new utils.Interface(ERC20SnapshotRep.abi);
 const ENSPublicResolverContract = new utils.Interface(ENSPublicResolver.abi);
 const PermissionRegistryContract = new utils.Interface(PermissionRegistry.abi);
@@ -184,6 +203,45 @@ export const defaultValues: Record<SupportedAction, DecodedAction> = {
         ensName: '',
         ipfsHash: '',
       },
+    },
+  },
+  [SupportedAction.RAW_TRANSACTION]: {
+    id: '',
+    contract: null,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.RAW_TRANSACTION,
+      function: null,
+      to: '',
+      args: {},
+      value: BigNumber.from(0),
+      optionalProps: {
+        data: '',
+      },
+    },
+  },
+  [SupportedAction.SET_GUILD_CONFIG]: {
+    id: '',
+    contract: BaseERC20GuildContract,
+    decodedCall: {
+      from: '',
+      callType: SupportedAction.SET_GUILD_CONFIG,
+      function: BaseERC20GuildContract.getFunction('setConfig'),
+      to: '',
+      value: BigNumber.from(0),
+      args: {
+        _proposalTime: '',
+        _timeForExecution: '',
+        _votingPowerPercentageForProposalExecution: '',
+        _votingPowerPercentageForProposalCreation: '',
+        _voteGas: '',
+        _maxGasPrice: '',
+        _maxActiveProposals: '',
+        _lockTime: '',
+        _minimumMembersForProposalCreation: '',
+        _minimumTokensLockedForProposalCreation: '',
+      },
+      optionalProps: {},
     },
   },
 };

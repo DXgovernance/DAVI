@@ -23,6 +23,19 @@ jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
   }),
 }));
 
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => ({
+    tokens: [],
+  }),
+}));
+
+jest.mock('wagmi', () => ({
+  useNetwork: () => ({ chain: { id: 1 } }),
+  chain: {
+    mainnet: {},
+  },
+}));
+
 describe('GenericCallParamsMatcher', () => {
   const paramDefaults: Omit<
     FunctionParamWithValue,

@@ -453,7 +453,7 @@
     "token": "0x643b14f6ea235668278da5974930105852f2b7c4",
     "utils": {
       "multicall": "0x742121cD0BB9784c1f17f25B8da1bF3445b93ED4",
-      "guildRegistry": "0xc74a2306504a39fad0117d732ed8e9efc64dbe85"
+      "guildRegistry": "0x7E6EB84621c3bb8455046f380c3934fAf8076158"
     },
     "votingMachines": {
       "0x1C18bAd5a3ee4e96611275B13a8ed062B4a13055": {

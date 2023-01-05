@@ -27,6 +27,13 @@ let mockedData = {
   totalVotes: [BigNumber.from(0)],
 };
 
+jest.mock('Modules/Guilds/Hooks/useProposal', () => ({
+  __esModule: true,
+  default: () => ({
+    data: mockedData,
+  }),
+}));
+
 jest.mock('react-router-dom', () => ({
   _esModule: true,
   useMatch: () => ({ url: '/guild_id/proposal_id/' }),

@@ -1,5 +1,6 @@
-import { ENSContentForm } from './types';
+import { removeNullValues } from 'utils';
 import { isEnsName, isIpfsHash } from 'utils/validations';
+import { ENSContentForm } from './types';
 
 const validateENSContent = (values: ENSContentForm) => {
   const { ensName, ipfsHash } = values;
@@ -16,12 +17,7 @@ const validateENSContent = (values: ENSContentForm) => {
   errors.ipfsHash = ipfsValidation.validationError;
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };

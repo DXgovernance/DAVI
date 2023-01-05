@@ -15,7 +15,7 @@ export interface PointedDecodedAction extends DecodedAction {
 
 export const useProposalSummaryActions = (
   guildId: string,
-  proposalId: string,
+  proposalId: `0x${string}`,
   maxActions?: number
 ): PointedDecodedAction[] => {
   const { options } = useProposalCalls(guildId, proposalId);

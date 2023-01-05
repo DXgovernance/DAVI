@@ -4,7 +4,7 @@ import {
 } from 'ethers';
 import { UseProposalVotesOfVoterReturn } from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 export interface Proposal {
-  id: string;
+  id: `0x${string}`;
   creator: string; 
   startTime: Moment;
   endTime: Moment;
@@ -41,6 +41,10 @@ export enum ContractState {
 export interface ProposalMetadata {
   description: string;
   voteOptions: string[];
+  link?: {
+    master: string;
+    context: string;
+  }
 }
 export interface Transaction {
   hash: string

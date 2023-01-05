@@ -20,8 +20,8 @@ export default function useContract<T extends Contract>(
     if (!provider || !contractId || !abi) return null;
     try {
       const contract = getContract({
-        addressOrName: contractId,
-        contractInterface: abi,
+        address: contractId,
+        abi: abi,
         signerOrProvider: withSignerIfPossible && isSuccess ? signer : provider,
       });
 

@@ -4,8 +4,6 @@ import { BigNumber } from 'ethers';
 import { Button } from 'components/primitives/Button';
 import { Box } from 'components/primitives/Layout/Box';
 import { Flex } from 'components/primitives/Layout/Flex';
-import { UnstyledLink } from 'components/primitives/Links';
-import { FiExternalLink } from 'react-icons/fi';
 import { useTheme } from 'styled-components';
 import { Divider } from 'components/Divider';
 import { getSummaryView } from '../SupportedActions';
@@ -23,6 +21,8 @@ import { useTranslation } from 'react-i18next';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { SupportedAction } from 'components/ActionsBuilder/types';
 import { renderGenericCallParamValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallParamsMatcher';
+import UndecodableCallDetails from 'components/ActionsBuilder/UndecodableCalls/UndecodableCallDetails';
+import { BlockExplorerLink } from 'components/primitives/Links/BlockExplorerLink';
 
 type Param = Partial<FunctionParamWithValue>;
 
@@ -37,15 +37,8 @@ function getStringValueForParam(type: string, value: any) {
 
 function renderDefaultParamValue(param: Param) {
   if (!param) return null;
-
   if (param.type === 'address') {
-    return (
-      <UnstyledLink to="#">
-        <ParamDetail>
-          {param.value} <FiExternalLink size={16} />
-        </ParamDetail>
-      </UnstyledLink>
-    );
+    return <BlockExplorerLink address={param.value} />;
   }
 
   if (param.type.startsWith('uint') || param.type.startsWith('int')) {
@@ -82,7 +75,13 @@ export const CallDetails: React.FC<ActionViewProps> = ({
   const ActionSummary = getSummaryView(decodedCall?.callType);
   const { functionData } = useRichContractData(decodedCall);
 
-  const isGenericCall = decodedCall.callType === SupportedAction.GENERIC_CALL;
+  const isGenericCall = decodedCall?.callType === SupportedAction.GENERIC_CALL;
+
+  const isRawTransaction =
+    decodedCall?.callType === SupportedAction.RAW_TRANSACTION;
+
+  const isNativeTransfer =
+    decodedCall?.callType === SupportedAction.NATIVE_TRANSFER;
 
   const genericParams: Param[] = useMemo(() => {
     if (
@@ -97,7 +96,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
     }));
   }, [functionData, decodedCall]);
 
-  const renderRawDataParams = () => {
+  const renderRawInputParams = () => {
     return decodedCall?.function?.inputs?.map((param, index) => (
       <ActionParamRow key={index}>
         <ParamTitleRow>
@@ -177,7 +176,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                   t('approveSpendingCall')
                 ) : (
                   <>
-                    approve ({' '}
+                    {t('approve').toLowerCase()} ({' '}
                     <ParamTag
                       color={
                         isApprovalExpanded
@@ -231,7 +230,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                     <ActionParamRow>
                       <ParamTitleRow>
                         <ParamTitleTag color={theme?.colors?.params?.[0]}>
-                          spender <em>(address)</em>
+                          {t('spender').toLowerCase()} <em>(address)</em>
                         </ParamTitleTag>
                       </ParamTitleRow>
 
@@ -243,7 +242,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
                     <ActionParamRow>
                       <ParamTitleRow>
                         <ParamTitleTag color={theme?.colors?.params?.[1]}>
-                          amount <em>(uint256)</em>
+                          {t('amount').toLowerCase()} <em>(uint256)</em>
                         </ParamTitleTag>
                       </ParamTitleRow>
                       {renderDefaultParamValue({
@@ -266,7 +265,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
         </Box>
       )}
 
-      {decodedCall.callType !== SupportedAction.NATIVE_TRANSFER && (
+      {!isNativeTransfer && !isRawTransaction && (
         <DetailsSection>
           <DetailsButton
             onClick={() => setIsExpanded(!isExpanded)}
@@ -301,8 +300,13 @@ export const CallDetails: React.FC<ActionViewProps> = ({
           {isExpanded
             ? isGenericCall && genericParams && displayRichData
               ? renderRichDataParams()
-              : renderRawDataParams()
+              : renderRawInputParams()
             : null}
+        </DetailsSection>
+      )}
+      {isRawTransaction && (
+        <DetailsSection>
+          <UndecodableCallDetails call={decodedCall} />
         </DetailsSection>
       )}
     </>

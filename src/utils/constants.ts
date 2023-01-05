@@ -4,13 +4,15 @@ export const MAX_UINT =
   '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff';
 export const ZERO_HASH =
   '0x0000000000000000000000000000000000000000000000000000000000000000';
-export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+export const ZERO_ADDRESS: `0x${string}` =
+  '0x0000000000000000000000000000000000000000';
 export const ANY_ADDRESS = '0xaAaAaAaaAaAaAaaAaAAAAAAAAaaaAaAaAaaAaaAa';
-export const ANY_FUNC_SIGNATURE = '0xaaaaaaaa';
+export const ANY_FUNC_SIGNATURE = '0x00000000';
 export const ERC20_TRANSFER_SIGNATURE = '0xa9059cbb';
 export const SET_PERMISSION_SIGNATURE = '0x6cfe0489';
 export const MINT_REP_SIGNATURE = '0x40c10f19';
 export const ENS_UPDATE_CONTENT_SIGNATURE = '0x304e6ade';
+export const SET_GUILD_CONFIG_SIGNATURE = '0x123f6d67';
 
 export const ERC20_APPROVE_SIGNATURE = '0x095ea7b3';
 export const DEFAULT_TOKEN_DECIMALS = 18;

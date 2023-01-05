@@ -14,6 +14,7 @@ import { ActionViewProps } from '..';
 import GenericCallParamsMatcher from './GenericCallParamsMatcher';
 import { useTranslation } from 'react-i18next';
 import { preventEmptyString } from 'utils';
+import './Override.css';
 
 export interface FunctionParamWithValue extends RichContractFunctionParam {
   value: string;
@@ -32,8 +33,12 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
   );
   const { functionData } = useRichContractData(decodedCall);
 
-  function getStringForParam(type: string, value: any) {
+  function getReadableStringForParam(type: string, value: any, name: string) {
     if (!type || !value) return null;
+
+    if (name === 'proposalId') {
+      return `${value.substring(0, 6)}...${value.substring(value.length - 4)}`;
+    }
 
     if (type.startsWith('uint') || type.startsWith('int')) {
       return BigNumber.from(value).toString();
@@ -47,7 +52,11 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
     return functionData.params
       .map(param => ({
         ...param,
-        value: getStringForParam(param.type, decodedCall.args[param.name]),
+        value: getReadableStringForParam(
+          param.type,
+          decodedCall.args[param.name],
+          param.name
+        ),
       }))
       .concat(getTokenInfoParsedParams(tokenInfo));
   }, [functionData, decodedCall, tokenInfo]);
@@ -83,7 +92,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
             <>
               <Segment>
                 {!!tokenInfo
-                  ? approvalAmount + tokenInfo?.symbol ?? ''
+                  ? `${approvalAmount} ${tokenInfo?.symbol}` ?? ''
                   : 'Unknown token'}
               </Segment>
               <Segment>
@@ -94,6 +103,7 @@ const GenericCallInfoLine: React.FC<ActionViewProps> = ({
           <Segment>
             <Interweave
               content={functionData?.templateLiteral}
+              className="GenericCallMatcher"
               matchers={[
                 new GenericCallParamsMatcher('genericCallParamsMatcher', {
                   params,
