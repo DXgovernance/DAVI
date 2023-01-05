@@ -7,6 +7,7 @@ import {
   useExecuteProposal,
   useLockTokens,
   useVoteOnProposal,
+  useWithdrawTokens,
 } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
@@ -36,6 +37,7 @@ export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementati
         useExecuteProposal,
         useLockTokens,
         useVoteOnProposal,
+        useWithdrawTokens,
       },
     },
     capabilities: {

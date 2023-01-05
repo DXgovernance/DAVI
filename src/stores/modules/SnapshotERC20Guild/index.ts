@@ -7,6 +7,7 @@ import {
   useExecuteProposal,
   useLockTokens,
   useVoteOnProposal,
+  useWithdrawTokens,
 } from './writers';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
@@ -40,6 +41,7 @@ export const snapshotERC20GuildImplementation: Readonly<FullGovernanceImplementa
         useExecuteProposal,
         useLockTokens,
         useVoteOnProposal,
+        useWithdrawTokens,
       },
     },
     capabilities: {

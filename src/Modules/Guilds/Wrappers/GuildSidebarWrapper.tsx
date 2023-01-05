@@ -8,9 +8,6 @@ import { GuestActions } from 'components/GuildSidebar/GuestActions';
 import { useERC20Info } from 'hooks/Guilds/erc20/useERC20Info';
 import { useVoterLockTimestamp } from 'Modules/Guilds/Hooks/useVoterLockTimestamp';
 import useGuildImplementationType from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import { useTransactions } from 'contexts/Guilds';
-import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
-import { formatUnits } from 'ethers/lib/utils';
 import useVotingPowerPercent from 'Modules/Guilds/Hooks/useVotingPowerPercent';
 import { useState } from 'react';
 import { WalletModal } from 'components/Web3Modals';
@@ -26,6 +23,7 @@ const GuildSidebarWrapper = () => {
   const {
     hooks: {
       fetchers: { useTotalLocked },
+      writers: { useWithdrawTokens },
     },
   } = useHookStoreProvider();
 
@@ -50,18 +48,10 @@ const GuildSidebarWrapper = () => {
     userVotingPower,
     totalLocked
   );
+  const withdrawTokens = useWithdrawTokens(guildAddress);
 
-  const { createTransaction } = useTransactions();
-
-  const guildContract = useERC20Guild(guildAddress);
-  const withdrawTokens = async () => {
-    createTransaction(
-      `Unlock and withdraw ${formatUnits(
-        userVotingPower,
-        guildToken?.decimals
-      )} ${guildToken?.symbol} tokens`,
-      async () => guildContract.withdrawTokens(userVotingPower)
-    );
+  const handleWithdrawTokens = async () => {
+    withdrawTokens(userVotingPower, guildToken?.decimals, guildToken?.symbol);
   };
 
   return (
@@ -79,7 +69,7 @@ const GuildSidebarWrapper = () => {
               userVotingPower={userVotingPower}
               userVotingPowerPercent={votingPowerPercent}
               unlockedAt={unlockedAt}
-              onWithdraw={withdrawTokens}
+              onWithdraw={handleWithdrawTokens}
               onShowStakeModal={() => setIsStakeModalOpen(true)}
             />
           ) : (

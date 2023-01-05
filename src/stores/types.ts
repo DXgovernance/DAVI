@@ -34,17 +34,17 @@ export interface WriterHooksInteface {
     tokenAddress: `0x${string}`
   ) => (daoTokenVault: string, amount?: string) => Promise<void>;
   useCreateProposal: (
-    daoId: string
+    daoAddress: string
   ) => (
     title: string,
     proposalData: any,
     cb?: (error?: any, txtHash?: any) => void
   ) => Promise<void>;
   useExecuteProposal: (
-    daoId: string
+    daoAddress: string
   ) => (proposalId: `0x${string}`) => Promise<void>;
   useLockTokens: (
-    guildAddress: string
+    daoAddress: string
   ) => (
     stakeAmount: BigNumber,
     decimals?: number,
@@ -58,6 +58,13 @@ export interface WriterHooksInteface {
     votingPower: BigNumber,
     title?: string,
     cb?: (error?: any, txtHash?: any) => void
+  ) => Promise<void>;
+  useWithdrawTokens: (
+    daoAddress: string
+  ) => (
+    amount: BigNumber,
+    tokenDecimals?: number,
+    tokenSymbol?: string
   ) => Promise<void>;
 }
 
