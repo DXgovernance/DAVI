@@ -9,7 +9,7 @@ export const GuildCardContent: React.FC<GuildCardContentProps> = ({
   data,
 }) => {
   return (
-    <Content>
+    <Content data-testid="guild-name">
       <DaoIcon src={dxDaoIcon} />
       {isLoading ? (
         <Loading

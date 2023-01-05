@@ -34,7 +34,7 @@ export const AddressInput: React.FC<AddressInputProps> = ({
     localValue.endsWith('.eth') ? localValue : `${localValue}.eth`
   );
   const handleChange = value => {
-    setLocalValue(value);
+    setLocalValue(value.trim());
   };
 
   const iconRightProps = {

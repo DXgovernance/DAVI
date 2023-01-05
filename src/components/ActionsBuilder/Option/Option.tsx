@@ -17,7 +17,6 @@ import {
   OptionWrapper,
 } from './Option.styled';
 import { useTranslation } from 'react-i18next';
-
 interface OptionRowProps {
   option: Option;
   isEditable?: boolean;
@@ -32,7 +31,6 @@ export const OptionRow: React.FC<OptionRowProps> = ({
   editOption,
 }) => {
   const { t } = useTranslation();
-
   const {
     attributes,
     listeners,
@@ -54,21 +52,26 @@ export const OptionRow: React.FC<OptionRowProps> = ({
     const updatedActions = option?.decodedActions.map(a =>
       a.id === action.id ? action : a
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions,
+    });
   }
 
   function removeAction(action: DecodedAction) {
     const updatedActions = option?.decodedActions.filter(
       a => a.id !== action.id
     );
-    onChange({ ...option, decodedActions: updatedActions });
+    onChange({
+      ...option,
+      decodedActions: updatedActions,
+    });
   }
 
   const dndStyles = {
     transform: CSS.Translate.toString(transform),
     transition,
   };
-
   return (
     <OptionWrapper
       dragging={isDragging}
@@ -103,9 +106,18 @@ export const OptionRow: React.FC<OptionRowProps> = ({
 
       <ActionsWrapper indented={isEditable}>
         {!isEditable &&
-          option?.actions?.map((action, index) => (
-            <ActionRow key={index} call={action} isEditable={false} />
-          ))}
+          option?.decodedActions?.map((action, index) => {
+            const permissionArgs = option?.permissions[index];
+            return (
+              <ActionRow
+                key={index}
+                decodedAction={option?.decodedActions?.[index]}
+                isEditable={false}
+                permissionArgs={permissionArgs}
+                onEdit={updatedAction => updateAction(updatedAction)}
+              />
+            );
+          })}
 
         {isEditable && (
           <SortableContext
@@ -113,12 +125,14 @@ export const OptionRow: React.FC<OptionRowProps> = ({
             strategy={verticalListSortingStrategy}
           >
             {option?.decodedActions?.map((action, index) => {
+              const permissionsArgs = option?.permissions[index];
               return (
                 <ActionRow
                   key={index}
                   isEditable={true}
-                  decodedAction={action}
-                  onEdit={updateAction}
+                  decodedAction={option?.decodedActions?.[index]}
+                  permissionArgs={permissionsArgs}
+                  onEdit={updatedAction => updateAction(updatedAction)}
                   onRemove={targetAction => removeAction(targetAction)}
                 />
               );

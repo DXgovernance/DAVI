@@ -1,6 +1,6 @@
 import { utils, BigNumber } from 'ethers';
 import { TFunction } from 'react-i18next';
-import { ZERO_ADDRESS } from 'utils';
+import { removeNullValues, ZERO_ADDRESS } from 'utils';
 import { TABS } from './types';
 
 interface ValidateSetPermissionsValues {
@@ -29,7 +29,7 @@ const validateAssetTransferPermission = (
     amount: null,
     functionName: null,
   };
-  if (activeTab === 0) {
+  if (activeTab === TABS.ASSET_TRANSFER) {
     if (!tokenAddress || tokenAddress === ZERO_ADDRESS) {
       errors.tokenAddress = t('tokenAddressIsRequired');
     } else if (!utils.isAddress(tokenAddress)) {
@@ -37,7 +37,7 @@ const validateAssetTransferPermission = (
     }
   }
 
-  if (activeTab === 1) {
+  if (activeTab === TABS.FUNCTION_CALL) {
     if (functionName || functionName.trim() !== '') {
       if (!functionName.match(regexFunctionName)) {
         if (
@@ -68,12 +68,7 @@ const validateAssetTransferPermission = (
   }
 
   return {
-    errors: Object.entries(errors).reduce((acc, [key, value]) => {
-      return {
-        ...acc,
-        ...(!!value && { [key]: value }), // remove keys that has no error value
-      };
-    }, {}),
+    errors: removeNullValues(errors),
     values,
   };
 };

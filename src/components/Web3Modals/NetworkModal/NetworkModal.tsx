@@ -41,7 +41,7 @@ const NetworkModal: React.FC<NetworkModalProps> = ({ isOpen, onClose }) => {
                   onClick={() => handleNetworkSwitch(chain.id)}
                   key={chain.name}
                   icon={getChainIcon(chain.id)}
-                  active={isConnected && chain.id === activeChain.id}
+                  active={isConnected && chain.id === activeChain?.id}
                   header={chain.name}
                 />
               ))}

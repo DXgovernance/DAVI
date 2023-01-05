@@ -28,7 +28,7 @@ class Guilds {
     this.createProposalTitleId = 'create-proposal-title';
     this.createProposalLinkId = 'create-proposal-link';
     this.createProposalEditorId = 'editor-content';
-    this.connectWalletId = 'connectWalletBtn';
+    this.connectWalletId = 'connect-wallet-btn';
     this.guildCardId = 'guildCard';
     this.proposalCard = 'proposal-card';
     this.createProposalBtn = 'create-proposal-button';

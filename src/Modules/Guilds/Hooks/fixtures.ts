@@ -19,4 +19,6 @@ export const MOCK_PROPOSAL_ID = '0x01';
 export const MOCK_PROPOSAL_VOTES = 1;
 export const MOCK_TOTAL_LOCKED_AT = 1;
 export const MOCK_USER_ADDRESS = '0x0000000000000000000000000000000000000004';
+export const MOCK_VALID_PERMISSION = '500000, 500000';
+
 export const mockTimestamp = moment.unix(Number(MOCK_BIG_NUMBER));

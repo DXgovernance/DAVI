@@ -1,3 +1,4 @@
+import { BigNumber } from 'ethers';
 import { render } from 'utils/tests';
 import {
   callMock,
@@ -29,6 +30,23 @@ jest.mock('wagmi', () => ({
   }),
   useContractReads: () => ({
     data: [{}],
+  }),
+}));
+
+const mockBigNumber = BigNumber.from(100000000);
+
+jest.mock('hooks/Guilds/erc20/useERC20Info', () => ({
+  useERC20Info: () => ({
+    name: 'Test ERC20',
+    symbol: 'TEST',
+    decimals: 18,
+    totalSupply: mockBigNumber,
+  }),
+}));
+
+jest.mock('hooks/Guilds/tokens/useTokenList', () => ({
+  useTokenList: () => ({
+    tokens: [],
   }),
 }));
 

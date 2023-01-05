@@ -12,16 +12,17 @@ import {
   SectionTitle,
   SectionWrapper,
   Wrapper,
-} from '../../ActionsModal.styled';
+} from 'components/ActionsModal/ActionsModal.styled';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   RichContractData,
   useRichContractRegistry,
 } from 'hooks/Guilds/contracts/useRichContractRegistry';
 import { useNetwork } from 'wagmi';
 import { isAvailableOnENS } from 'hooks/Guilds/ens/utils';
+import { ExpandButton } from 'components/ExpandButton';
 
 interface ContractsListProps {
   onSelect: (contract: RichContractData) => void;
@@ -37,6 +38,10 @@ const ContractsList: React.FC<ContractsListProps> = ({
   const { contracts } = useRichContractRegistry(chain?.id);
   const { guildId: guildAddress } = useTypedParams();
   const { isRepGuild } = useGuildImplementationTypeConfig(guildAddress);
+
+  const [isAdvancedOptionsExpanded, setIsAdvancedOptionsExpanded] =
+    useState(false);
+
   return (
     <Wrapper data-testid="actions-modal-contract-list">
       <SectionWrapper>
@@ -59,7 +64,7 @@ const ContractsList: React.FC<ContractsListProps> = ({
         >
           <ButtonLabel>
             <StyledIcon src={Vector} />
-            {t('setPermissions')}
+            {t('permissions.setPermissions')}
           </ButtonLabel>
         </ActionsButton>
         {!!isRepGuild ? (
@@ -111,6 +116,27 @@ const ContractsList: React.FC<ContractsListProps> = ({
             </ButtonDetail>
           </ActionsButton>
         ))}
+      </SectionWrapper>
+      <SectionWrapper>
+        <SectionTitle
+          direction="row"
+          justifyContent="space-between"
+          onClick={() =>
+            setIsAdvancedOptionsExpanded(!isAdvancedOptionsExpanded)
+          }
+        >
+          {t('advancedOptions')}
+          <ExpandButton expanded={isAdvancedOptionsExpanded} />
+        </SectionTitle>
+        {isAdvancedOptionsExpanded && (
+          <ActionsButton
+            onClick={() =>
+              onSupportedActionSelect(SupportedAction.RAW_TRANSACTION)
+            }
+          >
+            {t('rawTransaction')}
+          </ActionsButton>
+        )}
       </SectionWrapper>
     </Wrapper>
   );

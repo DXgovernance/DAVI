@@ -47,7 +47,7 @@ export const ProposalCard: React.FC<ProposalCardProps> = ({
           <ProposalStatus {...statusProps} />
         </CardHeader>
         <CardContent>
-          <CardTitle size={2}>
+          <CardTitle data-testid="proposal-title" size={2}>
             <strong>
               {proposal?.title || (
                 <Loading style={{ margin: 0 }} loading text />

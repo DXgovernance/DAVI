@@ -60,6 +60,7 @@ exports[`NetworkButton Should match snapshot and display network 1`] = `
    
   <button
     class="c0 c1"
+    data-testid="change-network-btn"
   >
     <img
       alt="Icon"
