@@ -1,6 +1,5 @@
 import { FullGovernanceImplementation } from 'stores/types';
 import { useProposal, useSnapshotId } from '../common/fetchers';
-import { useTotalLocked } from './fetchers/wagmiSnapshotRep';
 import {
   useApproveTokens,
   useCreateProposal,
@@ -9,6 +8,7 @@ import {
   useVoteOnProposal,
   useWithdrawTokens,
 } from './writers';
+import { useTotalLocked } from './fetchers/rpc';
 import { checkDataSourceAvailability } from './checkDataSourceAvailability';
 
 export const snapshotRepGuildImplementation: Readonly<FullGovernanceImplementation> =
