@@ -134,7 +134,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/react-hooks": "^8.0.1",
-    "@types/crypto-js": "^4.1.1",
     "@types/diff": "^5.0.2",
     "@types/jest": "^27.4.0",
     "@types/jsonexport": "^3.0.2",
