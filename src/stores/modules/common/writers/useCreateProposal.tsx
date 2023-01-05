@@ -7,10 +7,10 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 type UseCreateProposalInterface = WriterHooksInteface['useCreateProposal'];
 
 export const useCreateProposal: UseCreateProposalInterface = (
-  daoId: string
+  daoAddress: string
 ) => {
   const { t } = useTranslation();
-  const guildContract = useERC20Guild(daoId);
+  const daoContract = useERC20Guild(daoAddress);
   const { createTransaction } = useTransactions();
 
   const handleCreateProposal = useCallback(
@@ -25,7 +25,7 @@ export const useCreateProposal: UseCreateProposalInterface = (
       createTransaction(
         `${t('createProposal')} ${title}`,
         async () => {
-          return guildContract.createProposal(
+          return daoContract.createProposal(
             toArray,
             dataArray,
             valueArray,
@@ -38,7 +38,7 @@ export const useCreateProposal: UseCreateProposalInterface = (
         cb
       );
     },
-    [guildContract, createTransaction, t]
+    [daoContract, createTransaction, t]
   );
 
   return handleCreateProposal;

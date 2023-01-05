@@ -7,11 +7,11 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 type UseExecuteProposalInterface = WriterHooksInteface['useExecuteProposal'];
 
 export const useExecuteProposal: UseExecuteProposalInterface = (
-  daoId: string
+  daoAddress: string
 ) => {
   const { t } = useTranslation();
   const { createTransaction } = useTransactions();
-  const daoContract = useERC20Guild(daoId);
+  const daoContract = useERC20Guild(daoAddress);
 
   const executeProposal = useCallback(
     async (proposalId: `0x${string}`) => {

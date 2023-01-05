@@ -51,7 +51,7 @@ export interface WriterHooksInteface {
     symbol?: string
   ) => Promise<void>;
   useVoteOnProposal: (
-    votingMachineAddress: string
+    daoAddress: string
   ) => (
     proposalId: string,
     option: BigNumber,

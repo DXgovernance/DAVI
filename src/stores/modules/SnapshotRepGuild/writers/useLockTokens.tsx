@@ -5,7 +5,7 @@ import { WriterHooksInteface } from 'stores/types';
 
 type UseLockTokensInterface = WriterHooksInteface['useLockTokens'];
 
-export const useLockTokens: UseLockTokensInterface = (guildAddress: string) => {
+export const useLockTokens: UseLockTokensInterface = (daoAddress: string) => {
   const { t } = useTranslation();
 
   const methodNotSupported = useCallback(

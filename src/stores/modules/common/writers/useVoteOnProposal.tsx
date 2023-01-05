@@ -7,10 +7,12 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 
 type UseVoteOnProposalInterface = WriterHooksInteface['useVoteOnProposal'];
 
-export const useVoteOnProposal: UseVoteOnProposalInterface = daoId => {
+export const useVoteOnProposal: UseVoteOnProposalInterface = (
+  daoAddress: string
+) => {
   const { t } = useTranslation();
   const { createTransaction } = useTransactions();
-  const daoContract = useERC20Guild(daoId, true);
+  const daoContract = useERC20Guild(daoAddress, true);
 
   const voteOnProposal = useCallback(
     async (

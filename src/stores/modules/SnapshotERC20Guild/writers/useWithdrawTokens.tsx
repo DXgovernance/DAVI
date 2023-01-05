@@ -8,10 +8,10 @@ import { useERC20Guild } from 'hooks/Guilds/contracts/useContract';
 
 type UseWithdrawTokens = WriterHooksInteface['useWithdrawTokens'];
 
-export const useWithdrawTokens: UseWithdrawTokens = (guildAddress: string) => {
+export const useWithdrawTokens: UseWithdrawTokens = (daoAddress: string) => {
   const { t } = useTranslation();
   const { createTransaction } = useTransactions();
-  const guildContract = useERC20Guild(guildAddress);
+  const guildContract = useERC20Guild(daoAddress);
 
   const withdrawTokens = useCallback(
     async (amount: BigNumber, decimals?: number, symbol?: string) => {
