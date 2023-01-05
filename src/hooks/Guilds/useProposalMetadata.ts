@@ -1,10 +1,16 @@
 import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
 import { useContext, useEffect, useState } from 'react';
 import { ProposalMetadata } from 'types/types.guilds';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
+// import contentHash from '@ensdomains/content-hash';
+import { useHookStoreProvider } from 'stores';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 
 function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
+  const {
+    hooks: {
+      fetchers: { useProposal },
+    },
+  } = useHookStoreProvider();
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { orbis } = useContext(OrbisContext);
   const [orbisData, setOrbisData] = useState<any>();

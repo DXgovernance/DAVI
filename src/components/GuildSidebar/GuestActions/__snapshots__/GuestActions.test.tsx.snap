@@ -104,6 +104,7 @@ exports[`GuestActions Should match snapshot without data 1`] = `
    
   <button
     class="c0"
+    data-testid="guest-action-connect-wallet"
   >
     connectWallet
   </button>

@@ -24,7 +24,11 @@ export const GuestActions: React.FC<GuestActionsProps> = ({
           {t('join')}
         </Button>
       ) : (
-        <Button variant="secondary" onClick={onShowWalletModal}>
+        <Button
+          variant="secondary"
+          onClick={onShowWalletModal}
+          data-testid={'guest-action-connect-wallet'}
+        >
           {t('connectWallet')}
         </Button>
       )}

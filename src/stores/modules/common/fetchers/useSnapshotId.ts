@@ -1,18 +1,24 @@
 import { useMemo } from 'react';
 import { BigNumber } from 'ethers';
-import useGuildImplementationTypeConfig from 'Modules/Guilds/Hooks/useGuildImplementationType';
 import { useContractEvent, useContractRead } from 'wagmi';
 import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
+import { useHookStoreProvider } from 'stores';
 
 interface useSnapshotIdProps {
   contractAddress: string;
   proposalId: `0x${string}`;
 }
 
-const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
-  const { isSnapshotGuild } = useGuildImplementationTypeConfig(contractAddress);
+export const useSnapshotId = ({
+  contractAddress,
+  proposalId,
+}: useSnapshotIdProps) => {
+  const {
+    capabilities: { votingPowerTally },
+  } = useHookStoreProvider();
+
   const { data, refetch, ...rest } = useContractRead({
-    enabled: isSnapshotGuild,
+    enabled: votingPowerTally === 'snapshot',
     address: contractAddress,
     abi: SnapshotERC20Guild.abi,
     functionName: 'getProposalSnapshotId',
@@ -20,7 +26,7 @@ const useSnapshotId = ({ contractAddress, proposalId }: useSnapshotIdProps) => {
   });
 
   useContractEvent({
-    address: isSnapshotGuild ? contractAddress : null,
+    address: votingPowerTally === 'snapshot' ? contractAddress : null,
     abi: SnapshotERC20Guild.abi,
     eventName: 'ProposalStateChanged',
     listener(node, label, eventDetails) {

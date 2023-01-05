@@ -1,7 +1,6 @@
 import { useTypedParams } from '../Hooks/useTypedParams';
 import { ProposalCard } from 'components/ProposalCard';
 import useENSAvatar from 'hooks/Guilds/ens/useENSAvatar';
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import { MAINNET_ID } from 'utils/constants';
 import useProposalState from 'hooks/Guilds/useProposalState';
 import { useFilter } from 'contexts/Guilds/filters';
@@ -9,12 +8,19 @@ import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { useAccount } from 'wagmi';
 import useProposalVotesOfVoter from 'Modules/Guilds/Hooks/useProposalVotesOfVoter';
 import useTimeDetail from 'Modules/Guilds/Hooks/useTimeDetail';
+import { useHookStoreProvider } from 'stores';
+
 interface ProposalCardWrapperProps {
   proposalId?: `0x${string}`;
 }
 const ProposalCardWrapper: React.FC<ProposalCardWrapperProps> = ({
   proposalId,
 }) => {
+  const {
+    hooks: {
+      fetchers: { useProposal },
+    },
+  } = useHookStoreProvider();
   const { guildId, chainName } = useTypedParams();
   const { data: proposal } = useProposal(guildId, proposalId);
   const ensAvatar = useENSAvatar(proposal?.creator, MAINNET_ID);

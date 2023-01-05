@@ -2,6 +2,8 @@ import { ERC20SnapshotRep } from 'contracts/ts-files/ERC20SnapshotRep';
 import { BigNumber } from 'ethers';
 import { useContractEvent, useContractRead } from 'wagmi';
 
+// ! Deprecated. Moved to store. Delete when the test is ready
+
 interface useTotalSupplyAtProps {
   contractAddress: string;
   snapshotId: string;

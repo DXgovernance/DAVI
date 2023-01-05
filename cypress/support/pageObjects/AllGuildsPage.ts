@@ -69,7 +69,7 @@ class AllGuilds {
   }
 
   openWalletModalFromGuildSidebar() {
-    cy.get('button').eq(2).contains('Connect Wallet').click();
+    cy.findByTestId('guest-action-connect-wallet').click();
   }
 
   checkIfYouAreOnGovernancePage() {

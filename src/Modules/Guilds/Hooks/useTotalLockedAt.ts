@@ -2,6 +2,8 @@ import { SnapshotERC20Guild } from 'contracts/ts-files/SnapshotERC20Guild';
 import { BigNumber } from 'ethers';
 import { useContractEvent, useContractRead } from 'wagmi';
 
+// ! Deprecated. Moved to store. Delete when the test is ready
+
 interface useTotalLockedAtProps {
   contractAddress: string;
   snapshotId: string;

@@ -1,4 +1,3 @@
-import useProposal from 'Modules/Guilds/Hooks/useProposal';
 import AddressButton from 'components/AddressButton/AddressButton';
 import { ProposalDescription } from 'components/ProposalDescription';
 import { ProposalInfoCard } from 'components/ProposalInfoCard';
@@ -8,8 +7,6 @@ import { UnstyledLink } from 'components/primitives/Links';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { useGuildProposalIds } from 'Modules/Guilds/Hooks/useGuildProposalIds';
-import useTotalLocked from 'Modules/Guilds/Hooks/useTotalLocked';
-import useSnapshotId from 'Modules/Guilds/Hooks/useSnapshotId';
 import useProposalCalls from 'Modules/Guilds/Hooks/useProposalCalls';
 import { Loading } from 'components/primitives/Loading';
 import { Result, ResultState } from 'components/Result';
@@ -44,8 +41,14 @@ import { SidebarCard, SidebarCardHeaderSpaced } from 'components/SidebarCard';
 import { Header as CardHeader } from 'components/Card';
 import { Discussion } from 'components/Discussion';
 import useDiscussionContext from 'Modules/Guilds/Hooks/useDiscussionContext';
+import { useHookStoreProvider } from 'stores';
 
 const ProposalPage: React.FC = () => {
+  const {
+    hooks: {
+      fetchers: { useProposal, useTotalLocked },
+    },
+  } = useHookStoreProvider();
   const { t } = useTranslation();
   const { connector } = useAccount();
   const { chainName, guildId, proposalId } = useTypedParams();
@@ -65,12 +68,7 @@ const ProposalPage: React.FC = () => {
     proposalId
   );
 
-  const { data: snapshotId } = useSnapshotId({
-    contractAddress: guildId,
-    proposalId,
-  });
-
-  const { data: totalLocked } = useTotalLocked(guildId, snapshotId?.toString());
+  const { data: totalLocked } = useTotalLocked(guildId, proposalId);
 
   const quorum = useVotingPowerPercent(
     guildConfig?.votingPowerForProposalExecution,
