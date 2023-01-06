@@ -50,3 +50,6 @@ cypress/videos
 
 # storybook
 storybook-static
+
+# turbo
+.turbo

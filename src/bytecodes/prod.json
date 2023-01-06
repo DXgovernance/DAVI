@@ -1,22 +1,20 @@
 [
   {
     "type": "ERC20Guild",
-    "bytecode_hash": "",
+    "deployedBytecodeHash": "",
+    "bytecodeHash": "",
     "features": []
   },
   {
     "type": "SnapshotRepERC20Guild",
-    "bytecode_hash": "0x56735be1df2293bbbc687502a3673244d05fac86940394cb2222ea884f304daf",
-    "features": [
-      "REP",
-      "SNAPSHOT"
-    ]
+    "deployedBytecodeHash": "0x56735be1df2293bbbc687502a3673244d05fac86940394cb2222ea884f304daf",
+    "bytecodeHash": "",
+    "features": ["REP", "SNAPSHOT"]
   },
   {
     "type": "SnapshotERC20Guild",
-    "bytecode_hash": "0xcfe42d56f58ab49603c49e6c7ca4bd3d2260cec51d296e4a5cfa2a407e299b6c",
-    "features": [
-      "SNAPSHOT"
-    ]
+    "deployedBytecodeHash": "0xcfe42d56f58ab49603c49e6c7ca4bd3d2260cec51d296e4a5cfa2a407e299b6c",
+    "bytecodeHash": "",
+    "features": ["SNAPSHOT"]
   }
 ]

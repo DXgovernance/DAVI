@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-node scripts/beforeBuild.js
-yarn hardhat compile
+# node scripts/beforeBuild.js
+# yarn hardhat compile
 # Add in once we upgrade to support ordered environment variables
 # export REACT_APP_GIT_SHA=$(echo $(git rev-parse  HEAD) | cut -c1-9)
 export REACT_APP_VERSION=$npm_package_version

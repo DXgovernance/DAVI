@@ -2,7 +2,6 @@ import SidebarInfoCardWrapper from 'Modules/Guilds/Wrappers/SidebarInfoCardWrapp
 import { Input } from 'components/primitives/Forms/Input';
 import { Box, Flex } from 'components/primitives/Layout';
 import { useTypedParams } from 'Modules/Guilds/Hooks/useTypedParams';
-import ensContentHash from '@ensdomains/content-hash';
 import { useTransactions } from 'contexts/Guilds';
 import { GuildAvailabilityContext } from 'contexts/Guilds/guildAvailability';
 import { BigNumber } from 'ethers';
@@ -130,7 +129,7 @@ const CreateProposalPage: React.FC = () => {
     if (pinataPinResult.IpfsHash !== `${cid}`) {
       throw new Error(t('ipfs.hashNotTheSame'));
     }
-    return ensContentHash.fromIpfs(cid);
+    return `ipfs://${pinataPinResult.IpfsHash}`;
   };
 
   const handleSkipUploadToIPFS = () => {
@@ -182,7 +181,7 @@ const CreateProposalPage: React.FC = () => {
   }, [ignoreWarning, isActionDenied]);
 
   const handleCreateProposal = async () => {
-    let contentHash: Promise<string> | string;
+    let contentHash: string;
     setIsCreatingProposal(true);
     if (!!discussionId && isConnected(orbis)) {
       const { res } = await handleCreateOrbisMetadata({
@@ -272,7 +271,7 @@ const CreateProposalPage: React.FC = () => {
             valueArray,
             totalOptions,
             title,
-            `${contentHash}`
+            contentHash
           );
         },
         true,

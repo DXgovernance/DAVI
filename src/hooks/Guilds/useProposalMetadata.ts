@@ -1,7 +1,7 @@
 import useIPFSFile from 'hooks/Guilds/ipfs/useIPFSFile';
-import { useContext, useMemo, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProposalMetadata } from 'types/types.guilds';
-import contentHash from '@ensdomains/content-hash';
+// import contentHash from '@ensdomains/content-hash';
 import { useHookStoreProvider } from 'stores';
 import { OrbisContext } from 'contexts/Guilds/orbis';
 
@@ -14,18 +14,6 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
   const { data: proposal, error } = useProposal(guildId, proposalId);
   const { orbis } = useContext(OrbisContext);
   const [orbisData, setOrbisData] = useState<any>();
-
-  const { decodedContentHash, decodeError } = useMemo(() => {
-    if (!proposal?.contentHash || proposal?.contentHash?.includes('://'))
-      return {};
-
-    try {
-      return { decodedContentHash: contentHash.decode(proposal.contentHash) };
-    } catch (e) {
-      console.error(e);
-      return { decodeError: e };
-    }
-  }, [proposal?.contentHash]);
 
   // Get orbis data
   useEffect(() => {
@@ -43,7 +31,9 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
   }, [proposal?.contentHash]);
 
   const { data: metadata, error: metadataError } =
-    useIPFSFile<ProposalMetadata>(decodedContentHash);
+    useIPFSFile<ProposalMetadata>(
+      proposal?.contentHash?.substring(7, proposal?.contentHash?.length + 1)
+    );
 
   if (orbisData) {
     return {
@@ -57,8 +47,8 @@ function useProposalMetadata(guildId: string, proposalId: `0x${string}`) {
       },
       error: undefined,
     };
-  } else if (error || decodeError || metadataError) {
-    return { error: error || decodeError || metadataError };
+  } else if (error || metadataError) {
+    return { error: error || metadataError };
   } else if (!proposal || !metadata) {
     return { error: undefined, data: undefined };
   }

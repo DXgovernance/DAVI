@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { useProvider } from 'wagmi';
-import { SHA256, enc } from 'crypto-js';
 import { useMatch } from 'react-router-dom';
 import { GovernanceTypeInterface, HookStoreContextInterface } from './types';
 import { governanceInterfaces } from './governanceInterfaces';
+import Web3 from 'web3';
 
 export const HookStoreContext = createContext<HookStoreContextInterface>(null);
 
@@ -43,7 +43,7 @@ export const HookStoreProvider = ({ children }) => {
       const localBtcode = localStorage.getItem(`hashed-bytecode-${daoId}`);
       if (!localBtcode) {
         const btcode = await provider.getCode(daoId);
-        const hashedBytecode = `0x${SHA256(btcode).toString(enc.Hex)}`; // TODO: switch SHA256 to keccak256 when this gets into the monorepo
+        const hashedBytecode = Web3.utils.keccak256(btcode);
         setDaoBytecode(hashedBytecode);
         localStorage.setItem(`hashed-bytecode-${daoId}`, hashedBytecode);
         setIsLoading(false);
