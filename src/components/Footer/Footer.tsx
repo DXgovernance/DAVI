@@ -21,7 +21,7 @@ const Footer = () => {
           </>
         )}
         <Link
-          href="https://github.com/DXgovernance/DAVI/issues/new?assignees=&labels=Bug&template=bug_report.md&title="
+          href="https://github.com/DXgovernance/DAVI-monorepo/issues/new?labels=app:Frontend,User%20Submitted"
           target="_blank"
           rel="noopener"
         >

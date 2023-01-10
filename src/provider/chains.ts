@@ -27,9 +27,6 @@ export const chains: Chain[] = [
         'https://eth-mainnet.gateway.pokt.network/v1/lb/dda01e253305bbeac6507a80',
     },
   },
-  chain.goerli,
-  chain.arbitrum,
-  chain.arbitrumGoerli,
   gnosisChain,
 ];
 
@@ -51,8 +48,8 @@ if (process.env.NODE_ENV === 'development') {
     },
     testnet: true,
   };
-
   chains.push(localhost);
+  chains.push(chain.goerli);
 }
 
 export const getBlockExplorerUrl = (

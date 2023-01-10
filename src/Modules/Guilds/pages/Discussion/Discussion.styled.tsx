@@ -49,3 +49,11 @@ export const HeaderTopRow = styled(Box)`
   align-items: center;
   margin-bottom: 1rem;
 `;
+
+export const ActionsGroup = styled(Box)`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 1rem;
+`;
