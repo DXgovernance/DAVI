@@ -27,25 +27,28 @@ const TokenPickerInput: React.FC<SwaprPickerProps> = ({
 
     return tokens.find(({ address }) => address === token);
   }, [tokens, token]);
-
+  console.log({ isTokenPickerOpen });
   return (
-    <div onClick={() => setIsTokenPickerOpen(true)}>
-      <Input
-        value={tokenInfo?.symbol || ''}
-        placeholder="Token"
-        icon={
-          <div>
-            {token && (
-              <Avatar
-                src={resolveUri(selectedToken?.logoURI)}
-                defaultSeed={token}
-                size={18}
-              />
-            )}
-          </div>
-        }
-        iconRight={<FiChevronDown size={24} />}
-      />
+    <>
+      <div onClick={() => setIsTokenPickerOpen(true)}>
+        <Input
+          value={tokenInfo?.symbol || ''}
+          placeholder="Token"
+          icon={
+            <div>
+              {token && (
+                <Avatar
+                  src={resolveUri(selectedToken?.logoURI)}
+                  defaultSeed={token}
+                  size={18}
+                />
+              )}
+            </div>
+          }
+          iconRight={<FiChevronDown size={24} />}
+        />
+      </div>
+
       <TokenPicker
         walletAddress={guildId}
         isOpen={isTokenPickerOpen}
@@ -55,7 +58,7 @@ const TokenPickerInput: React.FC<SwaprPickerProps> = ({
           setIsTokenPickerOpen(false);
         }}
       />
-    </div>
+    </>
   );
 };
 
