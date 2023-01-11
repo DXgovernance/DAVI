@@ -161,24 +161,7 @@ export const decodeCall = async (
       };
   }
   if (!matchedContract) {
-    decodedCall = {
-      callType: SupportedAction.RAW_TRANSACTION,
-      from: call.from,
-      to: call.to,
-      value: call.value,
-      function: null,
-      args: {},
-      optionalProps: {
-        data: call.data,
-      },
-    };
-
-    return {
-      id: `action-${Math.random()}`,
-      decodedCall,
-      contract: null,
-      approval: call.approval || null,
-    };
+    return null;
   }
   const { callType, contractInterface } = matchedContract;
 
@@ -196,6 +179,7 @@ export const decodeCall = async (
         option.functionName === decodedCall.function.name &&
         option.params.length === decodedCall.function.inputs.length
     );
+    decodedCall.functionTitle = decodedCall.richFunctionData?.title;
   }
 
   return {
