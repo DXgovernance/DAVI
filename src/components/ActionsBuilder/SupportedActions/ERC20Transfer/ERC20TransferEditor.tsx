@@ -79,7 +79,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
     }
   }, [decodedCall, tokens]);
 
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, getValues } = useForm({
     resolver: validateERC20Transfer,
     context: { t },
     defaultValues: parsedData,
@@ -158,7 +158,7 @@ const ERC20TransferEditor: React.FC<ActionEditorProps> = ({
                   <ControlRow>
                     <TokenAmountInput
                       {...field}
-                      decimals={field.value?.decimals}
+                      decimals={getValues('token.decimals')}
                       isInvalid={!!error}
                     />
                   </ControlRow>
