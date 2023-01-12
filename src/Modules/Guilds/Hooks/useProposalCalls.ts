@@ -88,9 +88,12 @@ const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
   }, [calls, callsPerOption, totalOptionsNum]);
 
   useEffect(() => {
+    let cancelled = false;
+
     if (!guildId || !proposalId || !splitCalls || !loaded) {
       setOptions([]);
-      return;
+
+      return () => {};
     }
     async function decodeOptions() {
       const encodedOptions: Option[] = await Promise.all(
@@ -152,10 +155,16 @@ const useProposalCalls = (guildId: string, proposalId: `0x${string}`) => {
 
       return bulkDecodeCallsFromOptions(encodedOptions, contracts, chain?.id);
     }
-    decodeOptions().then(options =>
-      // Return options putting default against-call last
-      setOptions([...options.slice(1), options[0]])
-    );
+    decodeOptions().then(options => {
+      if (!cancelled) {
+        // Return options putting default against-call last
+        setOptions([...options.slice(1), options[0]]);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     guildId,
