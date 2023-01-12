@@ -57,3 +57,9 @@ export const ActionsGroup = styled(Box)`
   gap: 1rem;
   margin: 1rem;
 `;
+
+export const PostDetailsRow = styled(Box)`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
