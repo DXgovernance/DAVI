@@ -10,6 +10,18 @@ jest.mock('hooks/Guilds/ens/useENSAvatar', () => ({
   }),
 }));
 
+jest.mock('contexts/Guilds/orbis', () => ({
+  useOrbisContext: () => ({
+    orbis: {
+      getPosts: () => ({
+        data: [1, 2, 3],
+      }),
+    },
+  }),
+}));
+
+jest.mock('@orbisclub/orbis-sdk', () => {});
+
 jest.mock('wagmi', () => ({
   useNetwork: () => ({ chain: { id: 1 } }),
   chain: {

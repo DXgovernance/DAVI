@@ -1,11 +1,6 @@
-import { useState, useContext, useRef, useEffect } from 'react';
-import {
-  BsEmojiLaughing,
-  BsEmojiLaughingFill,
-  BsHandThumbsDown,
-  BsHandThumbsDownFill,
-} from 'react-icons/bs';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useState, useRef, useEffect } from 'react';
+import { BsHandThumbsDown, BsHandThumbsDownFill } from 'react-icons/bs';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 import {
   IoArrowUndoOutline,
   IoChatboxOutline,
@@ -25,6 +20,9 @@ import { useTranslation } from 'react-i18next';
 import { useAccount } from 'wagmi';
 import { isReadOnly } from 'provider/wallets';
 import { IOrbisPost } from 'types/types.orbis';
+import { FaLaughSquint, FaRegLaughSquint } from 'react-icons/fa';
+import { moderators } from 'configs';
+import { ImHammer2 } from 'react-icons/im';
 
 const PostActions = ({
   post,
@@ -36,14 +34,14 @@ const PostActions = ({
 }: {
   post: IOrbisPost;
   showThreadButton?: boolean;
-  toggleThread: () => void;
-  toggleReply: () => void;
-  onClickEdit: () => void;
-  onClickDelete: () => void;
+  toggleThread?: () => void;
+  toggleReply?: () => void;
+  onClickEdit?: () => void;
+  onClickDelete?: () => void;
 }) => {
   const { t } = useTranslation();
-  const { orbis, profile, checkOrbisConnection } = useContext(OrbisContext);
-  const { isConnected, connector } = useAccount();
+  const { orbis, profile, checkOrbisConnection } = useOrbisContext();
+  const { isConnected, connector, address } = useAccount();
 
   const [reacted, setReacted] = useState<string>(null);
   const [likes, setLikes] = useState<number>(0);
@@ -94,6 +92,15 @@ const PostActions = ({
     }
   };
 
+  const handleModeratorRemove = () => {
+    const confirmed = window.confirm(
+      `${t('removalMessage1')}'\r\n${t('removalMessage2')}`
+    );
+    if (confirmed) {
+      react('downvote');
+    }
+  };
+
   useEffect(() => {
     const getReaction = async () => {
       const { data } = await orbis.getReaction(post?.stream_id, profile?.did);
@@ -111,13 +118,15 @@ const PostActions = ({
   return (
     <>
       {/* Reply to post button */}
-      <PostActionButton
-        title={t('postActions.reply')}
-        onClick={handleClickReply}
-        disabled={isConnected && isReadOnly(connector)}
-      >
-        <IoArrowUndoOutline size={20} />
-      </PostActionButton>
+      {toggleReply && (
+        <PostActionButton
+          title={t('postActions.reply')}
+          onClick={handleClickReply}
+          disabled={isConnected && isReadOnly(connector)}
+        >
+          <IoArrowUndoOutline size={20} />
+        </PostActionButton>
+      )}
 
       {/* Toggle Thread */}
       {showThreadButton && (
@@ -153,9 +162,9 @@ const PostActions = ({
         disabled={isConnected && isReadOnly(connector)}
       >
         {reacted === 'haha' ? (
-          <BsEmojiLaughingFill size={18} />
+          <FaLaughSquint size={18} />
         ) : (
-          <BsEmojiLaughing size={18} />
+          <FaRegLaughSquint size={18} />
         )}
         <PostActionCount>{haha}</PostActionCount>
       </PostActionButton>
@@ -165,7 +174,9 @@ const PostActions = ({
         title={t('postActions.downvote')}
         active={reacted === 'downvote'}
         onClick={() => react('downvote')}
-        disabled={isConnected && isReadOnly(connector)}
+        disabled={
+          (isConnected && isReadOnly(connector)) || moderators.includes(address)
+        }
       >
         {reacted === 'downvote' ? (
           <BsHandThumbsDownFill size={18} />
@@ -174,6 +185,15 @@ const PostActions = ({
         )}
         <PostActionCount>{downvotes}</PostActionCount>
       </PostActionButton>
+      {moderators.includes(address) && (
+        <PostActionButton
+          title={t('postActions.downvote')}
+          active={reacted === 'downvote'}
+          onClick={() => handleModeratorRemove()}
+        >
+          <ImHammer2 size={18} />
+        </PostActionButton>
+      )}
 
       {post?.creator_details?.did === profile?.did && (
         <PostOptions style={{ marginLeft: 'auto' }}>
@@ -182,23 +202,27 @@ const PostActions = ({
           </PostActionButton>
           {showPopover && (
             <PostPopover ref={postPopover}>
-              <PostOptionsButton
-                onClick={() => {
-                  onClickEdit();
-                  setShowPopover(false);
-                }}
-              >
-                {t('postOptions.edit')}
-              </PostOptionsButton>
-              <PostOptionsButton
-                danger
-                onClick={() => {
-                  onClickDelete();
-                  setShowPopover(false);
-                }}
-              >
-                {t('postOptions.delete')}
-              </PostOptionsButton>
+              {onClickEdit && (
+                <PostOptionsButton
+                  onClick={() => {
+                    onClickEdit();
+                    setShowPopover(false);
+                  }}
+                >
+                  {t('postOptions.edit')}
+                </PostOptionsButton>
+              )}
+              {onClickDelete && (
+                <PostOptionsButton
+                  danger
+                  onClick={() => {
+                    onClickDelete();
+                    setShowPopover(false);
+                  }}
+                >
+                  {t('postOptions.delete')}
+                </PostOptionsButton>
+              )}
             </PostPopover>
           )}
         </PostOptions>

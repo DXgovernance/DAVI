@@ -30,6 +30,7 @@ const usePinataIPFS = () => {
     let url: string;
     const headers = {
       'Content-Type': 'application/json',
+      Accept: 'Accept: text/plain',
       Authorization: `Bearer ${DEFAULT_API_KEY}`,
     };
 

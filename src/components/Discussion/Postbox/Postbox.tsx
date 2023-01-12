@@ -1,11 +1,11 @@
-import { useState, useRef, useContext, useEffect, KeyboardEvent } from 'react';
+import { useState, useRef, useEffect, KeyboardEvent } from 'react';
 import { debounce } from 'lodash';
 import {
   IOrbisPost,
   IOrbisProfile,
   IOrbisPostMention,
 } from 'types/types.orbis';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 import {
   PostboxWrapper,
   PostboxInput,
@@ -52,7 +52,7 @@ const Postbox = ({
 }) => {
   const { t } = useTranslation();
   const { orbis, profile, connectOrbis, checkOrbisConnection } =
-    useContext(OrbisContext);
+    useOrbisContext();
   const { isConnected, connector } = useAccount();
 
   const postboxArea = useRef<HTMLDivElement>(null);
