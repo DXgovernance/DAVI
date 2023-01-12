@@ -27,7 +27,7 @@ const TokenPickerInput: React.FC<SwaprPickerProps> = ({
 
     return tokens.find(({ address }) => address === token);
   }, [tokens, token]);
-  console.log({ isTokenPickerOpen });
+
   return (
     <>
       <div onClick={() => setIsTokenPickerOpen(true)}>
