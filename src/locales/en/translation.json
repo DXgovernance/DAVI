@@ -274,7 +274,7 @@
   "retry": "Retry",
   "error": "Error",
   "displayRawData": "Display Raw Data",
-  "displayFormatedData": "Display Formated Data",
+  "displayFormattedData": "Display Formatted Data",
   "approveSpendingCall": "Approve spending call",
   "addressToWhichTheExpenseIsBeingAuthorized": "Address to which the expense is being authorized",
   "amountBeingApproved": "Amount being approved",
