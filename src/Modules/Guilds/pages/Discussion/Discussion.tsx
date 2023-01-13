@@ -14,6 +14,7 @@ import {
   PageContent,
   PageHeader,
   PageTitle,
+  PostDetailsRow,
   StyledIconButton,
 } from './Discussion.styled';
 import { useTranslation } from 'react-i18next';
@@ -24,6 +25,7 @@ import useDiscussionContext from 'Modules/Guilds/Hooks/useDiscussionContext';
 import { useOrbisContext } from 'contexts/Guilds/orbis';
 import { StyledButton } from 'Modules/Guilds/styles';
 import PostActions from 'components/Discussion/Post/PostActions';
+import moment from 'moment';
 
 const DiscussionPage: React.FC = () => {
   const { t } = useTranslation();
@@ -85,8 +87,10 @@ const DiscussionPage: React.FC = () => {
             )}
           </PageTitle>
         </PageHeader>
-
-        <AddressButton address={op?.creator_details.metadata?.address} />
+        <PostDetailsRow>
+          <AddressButton address={op?.creator_details.metadata?.address} />
+          {op?.timestamp && moment.unix(op.timestamp).fromNow()}
+        </PostDetailsRow>
 
         <ProposalDescription
           metadata={{ description: op?.content?.body }}

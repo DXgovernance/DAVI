@@ -26,16 +26,29 @@ export const useTransactionSimulation = () => {
       for (let i = 0; i < options.length; i++) {
         await forkProvider.send('evm_revert', [forkStartingPoint]); // Reset fork
         let currentOption = options[i];
-
+        let numberOfSpendingCalls = 0;
         for (let j = 0; j < currentOption.actions.length; j++) {
           let currentAction = currentOption.actions[j];
           let simulationResult = await simulateAction(
             forkUrl,
+            currentOption.decodedActions[j - (numberOfSpendingCalls + 1)]
+              ?.simulationResult.simulation.id,
             currentAction,
             chain?.id
           );
-          currentOption.decodedActions[j].simulationResult =
-            await simulationResult;
+          if (
+            currentOption.decodedActions[j - (numberOfSpendingCalls + 1)]
+              ?.approval
+          ) {
+            currentOption.decodedActions[
+              j - (numberOfSpendingCalls + 1)
+            ].simulationResult = await simulationResult;
+            numberOfSpendingCalls++;
+          } else {
+            currentOption.decodedActions[
+              j - numberOfSpendingCalls
+            ].simulationResult = await simulationResult;
+          }
 
           if (simulationResult.transaction.status === false)
             failedTransactions++;
@@ -84,6 +97,7 @@ const getForkData = async (chainId: number, provider) => {
 
 const simulateAction = async (
   forkUrl: string,
+  rootSimualtionId: string,
   action: Call,
   chainId: number
 ) => {
@@ -100,6 +114,8 @@ const simulateAction = async (
     input,
     gas: 800000,
     gas_price: '0',
+    root: rootSimualtionId,
+    // Tenderly returns 400 when value > amount in account, handle this to test value properly
     value: 0,
     save_if_fails: true,
     save: true,
