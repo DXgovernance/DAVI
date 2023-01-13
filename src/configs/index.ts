@@ -1,6 +1,7 @@
 export const RICH_CONTRACT_DATA_REGISTRY =
   'QmeacC3QZgWaYYrd6m4b7dbBQVEZcgei5XFhxrq5czn5u3';
 export const SITE_ID = 'NYKJUYYQ';
+export const SENTRY_ID = '4504496775561216'
 export const moderators = [
   '0x0b17cf48420400e1D71F8231d4a8e43B3566BB5B',
   '0x91aef3c3b9bab2c306548269ff9b6771f2b107d8',
