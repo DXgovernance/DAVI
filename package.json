@@ -48,6 +48,7 @@
     "@sentry/react": "^7.30.0",
     "@tiptap/extension-focus": "^2.0.0-beta.39",
     "@tiptap/extension-highlight": "^2.0.0-beta.32",
+    "@tiptap/extension-link": "^2.0.0-beta.209",
     "@tiptap/extension-placeholder": "^2.0.0-beta.48",
     "@tiptap/react": "^2.0.0-beta.105",
     "@tiptap/starter-kit": "^2.0.0-beta.171",
