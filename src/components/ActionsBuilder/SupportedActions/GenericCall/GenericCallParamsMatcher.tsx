@@ -5,7 +5,6 @@ import moment from 'moment';
 import { BlockExplorerLink } from 'components/primitives/Links';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
 import { getDurationData } from 'hooks/Guilds/useDuration/getDurationData';
-// import { capitalizeFirstLetter } from 'utils';
 interface MatcherOptions {
   params: FunctionParamWithValue[];
 }
