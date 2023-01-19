@@ -1,17 +1,11 @@
-import {
-  useState,
-  useMemo,
-  useRef,
-  useEffect,
-  useContext,
-  LegacyRef,
-} from 'react';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useState, useMemo, useRef, useEffect, LegacyRef } from 'react';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 import { useInterval } from 'utils';
 import { MasterGroup, MasterGroupPostbox, ThreadGroup } from './Thread.styled';
 import { Post } from '../Post';
 import { Postbox } from '../Postbox';
 import { IOrbisPost } from 'types/types.orbis';
+import { useTranslation } from 'react-i18next';
 
 const Group = ({
   items,
@@ -69,7 +63,8 @@ const Thread = ({
   onNewPost: (el: HTMLElement) => void;
   onThreadUpdated: (posts: IOrbisPost[]) => void;
 }) => {
-  const { orbis } = useContext(OrbisContext);
+  const { orbis } = useOrbisContext();
+  const { t } = useTranslation();
 
   const mainGroup = useRef<HTMLDivElement>(null);
 
@@ -141,7 +136,7 @@ const Thread = ({
 
   const handleDeletion = async (post: IOrbisPost) => {
     const confirmed = window.confirm(
-      'Are you sure you want to delete this post?\r\nIf you ask for deletion your post might be removed from the Ceramic nodes hosting it.'
+      `${t('deletionMessage1')}'\r\n${t('deletionMessage2')}`
     );
     if (confirmed) {
       const res = await orbis.deletePost(post.stream_id);

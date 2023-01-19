@@ -169,7 +169,7 @@ exports[`GenericCallParamsMatcher Should match snapshot for all component types 
 exports[`GenericCallParamsMatcher Should match snapshot for all component types 5`] = `
 <div>
    
-  52 years
+  53 years, 2 months, 1 day, 18 hours, 17 minutes and 18 seconds
    
 </div>
 `;
@@ -399,7 +399,7 @@ exports[`GenericCallParamsMatcher replaces all component types correctly 5`] = `
     matchedparam="timeParam"
     style="display: inline-block;"
   >
-    52 years
+    53 years, 2 months, 1 day, 18 hours, 17 minutes and 18 seconds
   </span>
    
 </div>

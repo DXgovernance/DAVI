@@ -143,11 +143,21 @@ export const decodeCall = async (
   }
 
   // Detect using the rich contract data registry.
-  const matchedRichContractData = contracts?.find(
+  let matchedRichContractData = contracts?.find(
     contract =>
       contract.networks[chainId].toLocaleLowerCase() ===
       call.to.toLocaleLowerCase()
   );
+
+  // Edge case when the same contract is in both core actions and rich contract registry
+  try {
+    matchedRichContractData.contractInterface.getFunction(
+      call.data.substring(0, 10)
+    );
+  } catch (e) {
+    matchedRichContractData = null;
+  }
+
   let matchedContract = matchedRichContractData
     ? getContractInterfaceFromRichContractData(matchedRichContractData)
     : getContractFromKnownSighashes(call.data);
@@ -196,6 +206,7 @@ export const decodeCall = async (
         option.functionName === decodedCall.function.name &&
         option.params.length === decodedCall.function.inputs.length
     );
+    decodedCall.functionTitle = decodedCall.richFunctionData?.title;
   }
 
   return {

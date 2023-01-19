@@ -25,10 +25,10 @@ import {
   postTemplate,
 } from 'components/Forum';
 import { DiscussionContent } from 'components/Forum/types';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 
 const CreateDiscussionPage: React.FC = () => {
-  const { orbis } = useContext(OrbisContext);
+  const { orbis } = useOrbisContext();
 
   const { guildId, chainName: chain } = useTypedParams();
   const { isLoading: isGuildAvailabilityLoading } = useContext(

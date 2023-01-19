@@ -1,12 +1,12 @@
-import { useState, useRef, useEffect, useContext } from 'react';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useState, useRef, useEffect } from 'react';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 import { DiscussionMasterPost } from './Discussion.styled';
 import { Post } from './Post';
 import { Thread } from './Thread';
 import { IOrbisPost } from 'types/types.orbis';
 
 const MasterPost = ({ post, onDeletion }) => {
-  const { orbis } = useContext(OrbisContext);
+  const { orbis } = useOrbisContext();
 
   const threadPostbox = useRef<HTMLDivElement>(null);
   const discussionMasterPost = useRef<HTMLDivElement>(null);

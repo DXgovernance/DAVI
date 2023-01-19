@@ -373,5 +373,70 @@
         "spendsTokens": true
       }
     ]
+  },
+  {
+    "title": "Llama pay vesting stream",
+    "tags": ["llama", "payment", "stream"],
+    "networks": {
+      "100": "0xb93427b83573c8f27a08a909045c3e809610411a"
+    },
+    "functions": [
+      {
+        "title": "Deploy vesting contract",
+        "functionName": "deploy_vesting_contract",
+        "params": [
+          {
+            "type": "address",
+            "component": "tokenPicker",
+            "name": "token",
+            "title": "Token",
+            "description": "Token to stream"
+          },
+          {
+            "type": "address",
+            "component": "address",
+            "name": "recipient",
+            "title": "Recipient",
+            "defaultValue": "",
+            "description": "Receiving address of tokens"
+          },
+          {
+            "type": "uint256",
+            "component": "tokenAmount",
+            "name": "amount",
+            "title": "Amount",
+            "description": "Number of tokens to stream"
+          },
+          {
+            "type": "uint256",
+            "component": "time",
+            "name": "vesting_duration",
+            "title": "Duration",
+            "defaultValue": "",
+            "description": "How long before stream finishes fully"
+          },
+          {
+            "type": "uint256",
+            "component": "date",
+            "name": "vesting_start",
+            "title": "Start time",
+            "defaultValue": "",
+            "description": "Starting time for stream"
+          },
+          {
+            "type": "uint256",
+            "component": "time",
+            "name": "cliff_length",
+            "title": "Cliff length",
+            "defaultValue": "0",
+            "description": "How long before cliff (receiver can start withdrawing)"
+          }
+        ],
+        "shortDescription": "Creates streaming contract with optional cliff ",
+        "longDescription": "Factory contract that creates streaming contract with optional cliff for ERC20 tokens. Only receiver can withdraw, owner can rugpull.",
+        "spendsTokens": true,
+        "templateLiteral": "Vest ${amount} ${token} for ${vesting_duration} with ${cliff_length} cliff for ${recipient}"
+      }
+    ]
   }
 ]

@@ -4,7 +4,7 @@ import { ChildrenNode, Matcher, MatchResponse, Node } from 'interweave';
 import moment from 'moment';
 import { BlockExplorerLink } from 'components/primitives/Links';
 import { FunctionParamWithValue } from 'components/ActionsBuilder/SupportedActions/GenericCall/GenericCallInfoLine';
-import { capitalizeFirstLetter } from 'utils';
+import { getDurationData } from 'hooks/Guilds/useDuration/getDurationData';
 interface MatcherOptions {
   params: FunctionParamWithValue[];
 }
@@ -37,9 +37,9 @@ export const renderGenericCallParamValue = (
       return `${moment.unix(Number(param.value)).utc().format('LLLL')} UTC`;
     case 'duration':
     case 'time':
-      return capitalizeFirstLetter(
-        moment.duration(Number(param.value), 'seconds').humanize()
-      );
+      return param.value === '0'
+        ? '0 seconds'
+        : getDurationData(Number(param.value))?.string;
     case 'boolean':
       return `${param.value}`;
     case 'tokenAmount':

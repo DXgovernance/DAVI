@@ -155,7 +155,7 @@ export const CallDetails: React.FC<ActionViewProps> = ({
             variant={'secondary'}
             onClick={() => setDisplayRichData(v => !v)}
           >
-            {displayRichData ? t('displayRawData') : t('displayFormatedData')}
+            {displayRichData ? t('displayRawData') : t('displayFormattedData')}
           </DetailsButton>
         </Flex>
       )}

@@ -74,7 +74,7 @@ const StakeTokensButton = ({
           </ActionButton>
         )
       ) : (
-        <ActionButton onClick={() => navigate('create-proposal')}>
+        <ActionButton onClick={() => navigate('create')}>
           {t('mintRep')}
         </ActionButton>
       )}

@@ -1,29 +1,8 @@
 {
   "contracts": {
     "utils": {
-      "dxDaoNFT": "0xF7A2f72E8f6aeb884905a1fE515c1BB5752D342f",
-      "dxdVestingFactory": "0xB5D42c8cA3B04479200E3782C41D99b46Cf8A6E1",
-      "guildRegistry": "0x304de4fd740e73db7f8a4fC11f41680d51dB1aF2",
-      "multicall": "0x1FDD273e0B7E0d921Bda044Ebf64811428A79f15"
+      "guildRegistry": "0x304de4fd740e73db7f8a4fC11f41680d51dB1aF2"
     }
   },
-  "tokens": [
-    {
-      "address": "0x2f9343cf18baacf57ac4a4e20188b9b00cfce3f1",
-      "name": "SWAPR",
-      "decimals": 18,
-      "symbol": "SWPR",
-      "fetchPrice": true,
-      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/200x200/12368.png"
-    },
-    {
-      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
-      "name": "Wrapped ETH",
-      "decimals": 18,
-      "symbol": "WETH",
-      "fetchPrice": true,
-      "logoURI": "https://assets.coingecko.com/coins/images/2518/thumb/weth.png?1547036627"
-    }
-  ],
   "version": 1
 }
