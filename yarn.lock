@@ -20439,11 +20439,6 @@ markdown-escapes@^1.0.0:
   resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.4.tgz#c95415ef451499d7602b91095f3c8e8975f78535"
   integrity sha512-8z4efJYk43E0upd0NbVXwgSTQs6cT3T06etieCMEg7dRbzCbxUCK/GHlX8mhHRDcp+OLlHkPKsvqQTCvsRl2cg==
 
-markdown-to-jsx@^7.1.5:
-  version "7.1.7"
-  resolved "https://registry.yarnpkg.com/markdown-to-jsx/-/markdown-to-jsx-7.1.7.tgz#a5f22102fb12241c8cea1ca6a4050bb76b23a25d"
-  integrity sha512-VI3TyyHlGkO8uFle0IOibzpO1c1iJDcXcS/zBrQrXQQvJ2tpdwVzVZ7XdKsyRz1NdRmre4dqQkMZzUHaKIG/1w==
-
 matcher@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/matcher/-/matcher-3.0.0.tgz#bd9060f4c5b70aa8041ccc6f80368760994f30ca"
@@ -23637,7 +23632,7 @@ prompts@^2.0.1, prompts@^2.4.0, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -24156,13 +24151,6 @@ react-datepicker@^4.8.0:
     prop-types "^15.7.2"
     react-onclickoutside "^6.12.0"
     react-popper "^2.2.5"
-
-react-datetime@^3.1.1:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-3.2.0.tgz#fdfa4dced5a9b59724f4c478a1ecc3cb6a6a80cf"
-  integrity sha512-w5XdeNIGzBht9CadaZIJhKUhEcDTgH0XokKxGPCxeeJRYL7B3HIKA8CM6Q0xej2JFJt0n5d+zi3maMwaY3262A==
-  dependencies:
-    prop-types "^15.5.7"
 
 react-dev-utils@^12.0.1:
   version "12.0.1"
