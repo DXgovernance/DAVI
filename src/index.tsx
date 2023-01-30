@@ -12,7 +12,9 @@ import EnsureReadOnlyConnection from 'components/Web3Modals/EnsureReadOnlyConnec
 import SyncRouterWithWagmi from 'components/Web3Modals/SyncRouterWithWagmi';
 import { useEffect } from 'react';
 import { loadFathom } from 'analytics/fathom';
-import { SITE_ID } from 'configs';
+import { SENTRY_ID, SITE_ID } from 'configs';
+import * as Sentry from '@sentry/react';
+import { CaptureConsole } from '@sentry/integrations';
 
 const { provider, webSocketProvider } = configureChains(chains, providers);
 
@@ -44,6 +46,34 @@ const Root = () => {
         console.error('Error loading Fathom analytics', error);
       });
   }, []);
+
+  Sentry.init({
+    dsn: `https://8df1b391b909437e9bb78de5d9128eba@o425302.ingest.sentry.io/${SENTRY_ID}`,
+    tunnel: 'https://sentry.project-davi.dev/api',
+    integrations: [
+      new CaptureConsole({
+        levels: ['error'],
+      }),
+    ],
+    beforeSend(event) {
+      const regex = /0x(([a-fA-F0-9]{64})|([a-fA-F0-9]{40}))/g;
+      const ensRegex = /((["' ])(\w+.eth)(["' ]))/g;
+      const jsonString = JSON.stringify(event);
+      const scrubbedString = jsonString.replace(regex, `0xScrubbed`);
+      const veryScrubbedString = scrubbedString.replace(
+        ensRegex,
+        `"ENS_SCRUBBED"`
+      );
+      var scrubbedEvent: any = { request: {} };
+      try {
+        scrubbedEvent = JSON.parse(veryScrubbedString);
+      } catch (e) {
+        console.error({ e });
+      }
+      scrubbedEvent.request = event.request;
+      return scrubbedEvent;
+    },
+  });
 
   return (
     <WagmiConfig client={client}>

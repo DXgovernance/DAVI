@@ -3,6 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Focus from '@tiptap/extension-focus';
 import Highlight from '@tiptap/extension-highlight';
 import Placeholder from '@tiptap/extension-placeholder';
+import Link from '@tiptap/extension-link';
 import { Editor } from './components/Editor';
 import TurndownService from 'turndown';
 import useLocalStorageWithExpiry from 'hooks/Guilds/useLocalStorageWithExpiry';
@@ -44,6 +45,7 @@ export const useTextEditor = (
         placeholder,
       }),
       Highlight,
+      Link,
     ],
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();

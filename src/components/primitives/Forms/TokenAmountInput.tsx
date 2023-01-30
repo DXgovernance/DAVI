@@ -4,6 +4,7 @@ import useStringToBigNumber from 'hooks/Guilds/conversions/useStringToBigNumber'
 import { useEffect, useState } from 'react';
 import { InputProps } from 'components/primitives/Forms/Input';
 import { NumericalInput } from 'components/primitives/Forms/NumericalInput';
+import { usePrevious } from 'utils';
 
 export interface TokenAmountInputProps extends InputProps<BigNumber> {
   decimals?: number;
@@ -21,6 +22,16 @@ export const TokenAmountInput: React.FC<TokenAmountInputProps> = ({
   const localAmountBN = useStringToBigNumber(localAmount, decimals);
 
   const valueAsString = useBigNumberToString(value, decimals);
+
+  const prevDecimals = usePrevious(decimals);
+  useEffect(() => {
+    if (prevDecimals && decimals && prevDecimals !== decimals && value) {
+      const valueNew = BigNumber.from(value)
+        .div(BigNumber.from(10).pow(prevDecimals))
+        .mul(BigNumber.from(10).pow(decimals));
+      onChange(valueNew);
+    }
+  }, [prevDecimals, decimals, value, onChange]);
 
   useEffect(() => {
     if (localAmount === '' && localAmount !== valueAsString) {

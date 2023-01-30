@@ -1,5 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
-// import { Orbis } from '@orbisclub/orbis-sdk';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Virtuoso } from 'react-virtuoso';
 import { DiscussionCard } from 'components/DiscussionCard';
@@ -11,10 +10,10 @@ import { ErrorLabel } from 'components/primitives/Forms/ErrorLabel';
 import { Button } from 'components/primitives/Button';
 import { DISCUSSIONS_TO_SHOW, REFRESH_DISCUSSIONS_INTERVAL } from './constants';
 import { Box } from 'components/primitives/Layout';
-import { OrbisContext } from 'contexts/Guilds/orbis';
+import { useOrbisContext } from 'contexts/Guilds/orbis';
 
 const Discussions = () => {
-  const { orbis } = useContext(OrbisContext);
+  const { orbis } = useOrbisContext();
 
   const [discussions, setDiscussions] = useState<Discussion[]>([]);
   const [error, setError] = useState(null);

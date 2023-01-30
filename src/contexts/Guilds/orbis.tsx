@@ -1,5 +1,5 @@
 import { Orbis } from '@orbisclub/orbis-sdk';
-import { useState, createContext } from 'react';
+import { useState, createContext, useContext } from 'react';
 import { useSigner } from 'wagmi';
 import { sleep } from 'utils';
 
@@ -70,3 +70,5 @@ export const OrbisProvider = ({ children }) => {
     </OrbisContext.Provider>
   );
 };
+
+export const useOrbisContext = () => useContext(OrbisContext);
